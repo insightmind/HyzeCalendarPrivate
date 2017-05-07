@@ -9,7 +9,6 @@
 import UIKit
 import EventKit
 
-
 class EventEditorViewController: UIViewController {
     
     var addEvent: Bool = false

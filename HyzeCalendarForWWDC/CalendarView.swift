@@ -6,7 +6,6 @@
 //  Copyright © 2017 Niklas Bülow. All rights reserved.
 //
 
-
 import UIKit
 import Foundation
 
@@ -51,7 +50,7 @@ class CalendarView:UICollectionView, UICollectionViewDataSource, UICollectionVie
         
         collectionView.layoutSubviews()
         
-        let number = mainCalendar.components(.month, from: ePast, to: eFuture, options: .matchLast).month!
+        let number = TMCalendar.components(.month, from: HTimeManagement.TMPast, to: HTimeManagement.TMFuture, options: .matchLast).month!
         
         //delete for release
         if debugMode {
@@ -79,18 +78,14 @@ class CalendarView:UICollectionView, UICollectionViewDataSource, UICollectionVie
         return number
     }
     
-    
+	
     // Asks your data source object for the cell that corresponds to the specified item in the collection view
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         //Create cell
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReusableID, for: indexPath) as! CalendarViewCell
 
-        visibleMonth = indexPath.section
-        rangeOfDaysInMonth = mainCalendar.range(of: .day, in: .month, for: firstDayOfMonth).length
-
-        let isToday = isTodayCheck(indexPathItem: (indexPath.item + 1), section: indexPath.section)
-        
+		let isToday = TMCalendar.isDateInToday(TimeManagement.convertToDate(indexPath))
         
         if isToday {
                 
@@ -108,29 +103,18 @@ class CalendarView:UICollectionView, UICollectionViewDataSource, UICollectionVie
                     
                 }
             }
-        if ((indexPath.item + 1) < firstWeekDayOfMonth) || ((indexPath.item + 2) > (rangeOfDaysInMonth + firstWeekDayOfMonth)){
-            
-            cell.isHidden = true
-            cell.label.text = "NIM"
-            
-        } else {
-            
-            cell.isHidden = false
-            cell.label.text = String(indexPath.item - firstWeekDayOfMonth + 2)
-            
-        }
-            if selectedCellIndexPath == indexPath {
+            if HSelection.selectedTime.conformToIndexPath() == indexPath {
                 if isToday{
                     cell.isSelected = true
                     self.visualSelectCell(cell, isToday: true)
-                    selectedCellIndexPath = indexPath
+                    HSelection.selectedTime = TMTime.init(indexPath)
                     if debugMode {
                         print("[DEBUG] Loaded SelectedTodaysCell for MonthView")
                     }
                 } else {
                     cell.isSelected = true
                     self.visualSelectCell(cell, isToday: false)
-                    selectedCellIndexPath = IndexPath(item: indexPath.item, section: indexPath.section)
+                    HSelection.selectedTime = TMTime.init(indexPath)
                     if debugMode {
                         print("[DEBUG] Loaded SelectedNormalCell for MonthView")
                     }
@@ -143,7 +127,7 @@ class CalendarView:UICollectionView, UICollectionViewDataSource, UICollectionVie
     //Tells the delegate that the item at the specified index path was selected.
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        if indexPath == selectedCellIndexPath {
+        if indexPath == HSelection.selectedTime.conformToIndexPath() {
             return
         }
         
@@ -151,7 +135,7 @@ class CalendarView:UICollectionView, UICollectionViewDataSource, UICollectionVie
         
         
         //Locale const Variable if cell is assigned to TodaysDate
-        let isToday = isTodayCheck(indexPathItem: indexPath.item + 1, section: indexPath.section)
+        let isToday = TMCalendar.isDateInToday(TimeManagement.convertToDate(indexPath, itemOffset: 1, sectionOffset: 1))
 
         //Create cell to access its components
         guard let cell = collectionView.cellForItem(at: indexPath) as? CalendarViewCell else {
@@ -163,27 +147,32 @@ class CalendarView:UICollectionView, UICollectionViewDataSource, UICollectionVie
         
         visualSelectCell(cell, isToday: isToday)
         
-        guard let dayNum = cell.label.text else {
-            if failureMode {
-                print("[FAILURE] NO CELL LABEL TEXT!")
-            }
-            return
-        }
-        
-        selectedDay = mainCalendar.date(era: mainCalendar.component(.era, from: ePast), year: mainCalendar.component(.year, from: ePast), month: mainCalendar.component(.month, from: ePast) + indexPath.section, day: mainCalendar.component(.day, from: ePast) + indexPath.item - firstWeekDayOfMonth + 1, hour: mainCalendar.component(.hour, from: ePast), minute: mainCalendar.component(.minute, from: ePast), second: mainCalendar.component(.second, from: ePast), nanosecond: mainCalendar.component(.nanosecond, from: ePast))!
-        
-        selectedCellIndexPath = indexPath
-        
-        selectedCellDayString = dayNum
-        
-        selectedCellMonthInt = indexPath.section % 12
-        
-        isSelectedDayToday = isToday
+        HSelection.selectedTime = TMTime.init(indexPath)
         
         selectedDayButton.image = #imageLiteral(resourceName: "ic_keyboard_arrow_right")
         eventTableView.reloadView()
     }
     
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        guard let ccell = cell as? CalendarViewCell else {
+            print("[FAILURE] Displayed Cell does not conform to the requirements of the custom CVCell")
+            return
+        }
+		
+		let timeConform = TMTime(IndexPath(item: indexPath.item, section: indexPath.section + 1))
+        
+        if ((indexPath.item) < timeConform.dayOffset) || ((indexPath.item) > (timeConform.monthRange + timeConform.dayOffset)){
+            ccell.isHidden = true
+            ccell.label.text = "NIM"
+            
+        } else {
+            
+            ccell.isHidden = false
+            ccell.label.text = String(timeConform.dayOffID)
+            
+        }
+    }
     
     //Tells the delegate that the item at the specified path was deselected.
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
@@ -244,14 +233,16 @@ extension CalendarView{
     func visualDeselectCell(_ collectionView: UICollectionView){
         
         if debugMode {
-            print("[DEBUG] SelectedCellIndexPath: \(selectedCellIndexPath)")
+            print("[DEBUG] SelectedCellIndexPath: \(HSelection.selectedTime.conformToIndexPath())")
         }
+		
+		let indexPath = HSelection.selectedTime.conformToIndexPath()
         
         //Locale const Variable if cell is assigned to TodaysDate
-        let isToday = isTodayCheck(indexPathItem: selectedCellIndexPath.item + 1, section: selectedCellIndexPath.section)
+		let isToday = TMCalendar.isDateInToday(TimeManagement.convertToDate(indexPath, itemOffset: 1, sectionOffset: 1))
         
         //Create cell to access its components
-        guard let cell = collectionView.cellForItem(at: IndexPath(item: selectedCellIndexPath.item, section: selectedCellIndexPath.section)) as? CalendarViewCell else {
+        guard let cell = collectionView.cellForItem(at: IndexPath(item: indexPath.item, section: indexPath.section)) as? CalendarViewCell else {
             if failureMode {
                 print("[FAILURE] FOUND NO CELL TO VISUALLY DESELECT!")
             }
@@ -294,82 +285,28 @@ extension CalendarView{
         content.backgroundColor = UIColor.clear
     }
     
-    func updateMonth(monthIndex: Int){
-        
-        //delete for release
-        if debugMode {
-            print("[DEBUG] CalendarView.updateMonth(monthIndex: Int, headerAccess: Bool) {var monthIndex} : \(monthIndex)")
-        }
-        
-        firstDayOfMonth = mainCalendar.date(era: mainCalendar.component(.era , from: ePast), year: mainCalendar.component(.year , from: ePast), month: mainCalendar.component(.month , from: ePast) + monthIndex, day: 1, hour: mainCalendar.component(.hour , from: firstDayOfMonth), minute: mainCalendar.component(.minute , from: firstDayOfMonth), second: mainCalendar.component(.second , from: firstDayOfMonth), nanosecond: mainCalendar.component(.nanosecond , from: firstDayOfMonth))!
-        
-        rangeOfDaysInMonth = mainCalendar.range(of: .day, in: .month, for: firstDayOfMonth).length
-        
-        times = times + 1
-        
-        firstWeekDayOfMonth = mainCalendar.component(.weekday, from: firstDayOfMonth)
-        
-        //delete for release
-        if informationMode {
-            print("[INFORMATION] Updated Month !!!: times: \(times) \n")
-            print("[INFORMATION] firstDayOfMonth: \(firstDayOfMonth)")
-            print("!!![INFORMATION]!!! FIRSTWEEKDAYOFMONTH: \(firstWeekDayOfMonth)")
-            print("!!![INFORMATION]!!! rnage: \(String(describing: rangeOfDaysInMonth))")
-        }
-    }
-    
-    func updateMonthbyCurrentMonth(nextMonth: Int) {
-        
-        //delete for release
-        if debugMode {
-            print("[DEBUG] CalendarView.updateMonth(monthIndex: Int, headerAccess: Bool) {var monthIndex} : \(nextMonth)")
-        }
-        
-        firstDayOfMonth = mainCalendar.date(era: mainCalendar.component(.era , from: firstDayOfMonth), year: mainCalendar.component(.year , from: firstDayOfMonth), month: mainCalendar.component(.month , from: firstDayOfMonth) + nextMonth, day: 1, hour: mainCalendar.component(.hour , from: firstDayOfMonth), minute: mainCalendar.component(.minute , from: firstDayOfMonth), second: mainCalendar.component(.second , from: firstDayOfMonth), nanosecond: mainCalendar.component(.nanosecond , from: firstDayOfMonth))!
-        
-        rangeOfDaysInMonth = mainCalendar.range(of: .day, in: .month, for: firstDayOfMonth).length
-        
-        times = times + 1
-        
-        firstWeekDayOfMonth = mainCalendar.component(.weekday, from: firstDayOfMonth)
-        
-        //delete for release
-        if informationMode {
-            print("[INFORMATION] Updated Month !!!: times: \(times) \n")
-            print("[INFORMATION] firstDayOfMonth: \(firstDayOfMonth)")
-            print("!!![INFORMATION]!!! FIRSTWEEKDAYOFMONTH: \(firstWeekDayOfMonth)")
-            print("!!![INFORMATION]!!! rnage: \(String(describing: rangeOfDaysInMonth))")
-        }
-    }
-    
-    
-    func isTodayCheck(indexPathItem: Int, section: Int) -> Bool {
-        
-        let todaysDateNumInMonth = mainCalendar.component(.day, from: todaysDate) + firstWeekDayOfMonth
-        
-        let monthSinceFirst = (mainCalendar.components(.month, from: ePast, to: todaysDate, options: .matchLast).month)!
-        
-        if ((indexPathItem + 1) == todaysDateNumInMonth) && (section == monthSinceFirst) {
-            
-            return true
-            
-        } else {
-            
-            return false
-            
-        }
-    }
-    
-    func getMonthName(monthDate: Date) -> String {
-        let prestr = monthName[mainCalendar.component(.month, from: monthDate) - 1]
-        let poststr = String(mainCalendar.component(.year, from: firstDayOfMonth))
-        let str = "\(prestr) \(poststr)"
-        return str
-    }
-    
     func scrollToNextSection(_ collectionView: CalendarView, monthIndex: Int, animated: Bool){
+        
         collectionView.allowsSelection = false
         collectionView.scrollToItem(at: IndexPath(item: 0, section: monthIndex), at: .top, animated: animated)
         collectionView.allowsSelection = true
     }
+    
+    func updateUntilComplet(completion: (_ success: Bool) -> Void, offset: Int, collectionView: CalendarView) {
+        collectionView.visibleMonth = collectionView.visibleMonth + offset
+        completion(true)
+    }
+    
+    func scrollToNextSectionbyOffset(_ collectionView: CalendarView, animated: Bool, offset: Int){
+        
+        updateUntilComplet(completion: {
+            (success) -> Void in
+            if success {
+                collectionView.allowsSelection = false
+                collectionView.scrollToItem(at: IndexPath(item: 0, section: collectionView.visibleMonth), at: .top, animated: animated)
+                collectionView.allowsSelection = true
+            }
+        }, offset: offset, collectionView: collectionView)
+    }
+    
 }

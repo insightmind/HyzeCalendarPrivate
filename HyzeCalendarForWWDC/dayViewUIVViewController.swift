@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 class dayViewUIVViewController: UIViewController {
 
     @IBOutlet weak var day: dayView!

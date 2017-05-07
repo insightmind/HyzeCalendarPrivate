@@ -6,7 +6,6 @@
 //  Copyright © 2017 Niklas Bülow. All rights reserved.
 //
 
-
 import UIKit
 
 class CalendarViewFlowLayout: UICollectionViewFlowLayout{

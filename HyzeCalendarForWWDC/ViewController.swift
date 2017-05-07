@@ -6,7 +6,6 @@
 //  Copyright © 2017 Niklas Bülow. All rights reserved.
 //
 
-
 import UIKit
 import CoreGraphics
 
@@ -38,12 +37,12 @@ class ViewController: UIViewController {
     @IBAction func jumpToToday(_ sender: UIBarButtonItem) {
         
         
-        if isSelectedDayToday != true {
-            if calendarview.visibleMonth == todaysIndexPath.section {
+        if TMCalendar.isDateInToday(HSelection.selectedTime.conformToDate()) != true {
+            if calendarview.visibleMonth == HTimeManagement.TMToday.conformToIndexPath().section {
                 if informationMode {
-                    print("jumpToToday todaysIndexPath:\(todaysIndexPath)")
+                    print("jumpToToday todaysIndexPath:\(HTimeManagement.TMToday.conformToIndexPath())")
                 }
-                guard let todaysCell = calendarview.cellForItem(at: todaysIndexPath) as? CalendarViewCell else {
+                guard let todaysCell = calendarview.cellForItem(at: HTimeManagement.TMToday.conformToIndexPath()) as? CalendarViewCell else {
                     if failureMode {
                         print("[FAILURE] There is no cell for today")
                     }
@@ -51,51 +50,43 @@ class ViewController: UIViewController {
                 }
                 calendarview.visualDeselectCell(calendarview)
                 calendarview.visualSelectCell(todaysCell, isToday: true)
-                selectedCellIndexPath = IndexPath(item: todaysIndexPath.item, section: todaysIndexPath.section)
+                HSelection.selectedTime = HTimeManagement.TMToday
             
             } else {
-                selectedCellIndexPath = IndexPath(item: todaysIndexPath.item, section: todaysIndexPath.section)
+                HSelection.selectedTime = HTimeManagement.TMToday
             }
-            selectedCellDayString = String(mainCalendar.component(.day, from: todaysDate))
-            selectedCellMonthInt = todaysIndexPath.section % 12
-            isSelectedDayToday = true
-            selectedDay = todaysDate
             eventTableView.reloadView()
         }
-        calendarview.updateMonth(monthIndex: todaysIndexPath.section)
-        calendarview.visibleMonth = todaysIndexPath.section
-        navigationBar.title = calendarview.getMonthName(monthDate: todaysDate)
-        calendarview.scrollToNextSection(calendarview, monthIndex: calendarview.visibleMonth, animated: true)
+        navigationBar.title = TimeManagement.getMonthName(HSelection.selectedTime.conformToDate())
+        
+        calendarview.scrollToNextSection(calendarview, monthIndex: HSelection.selectedTime.conformToIndexPath().section, animated: true)
+        
         updateSelectedDayIcon()
     }
     
     @IBAction func jumpToSelected(_ sender: UIBarButtonItem) {
-        calendarview.updateMonth(monthIndex: selectedCellIndexPath.section)
-        calendarview.visibleMonth = selectedCellIndexPath.section
-        navigationBar.title = calendarview.getMonthName(monthDate: selectedDay)
-        calendarview.scrollToNextSection(calendarview, monthIndex: calendarview.visibleMonth, animated: true)
+        navigationBar.title = TimeManagement.getMonthName(HSelection.selectedTime.conformToDate())
+        
+        calendarview.scrollToNextSection(calendarview, monthIndex: HSelection.selectedTime.conformToIndexPath().section, animated: true)
+        
         updateSelectedDayIcon()
     }
 
     @IBAction func scrollDown(_ sender: UISwipeGestureRecognizer) {
-        calendarview.updateMonthbyCurrentMonth(nextMonth: 1)
-        calendarview.visibleMonth = calendarview.visibleMonth + 1
-        navigationBar.title = calendarview.getMonthName(monthDate: firstDayOfMonth)
-        calendarview.scrollToNextSection(calendarview, monthIndex: calendarview.visibleMonth, animated: true)
+        calendarview.scrollToNextSectionbyOffset(calendarview, animated: true, offset: 1)
+        navigationBar.title = TimeManagement.getMonthName(TimeManagement.calculateFirstDayInMonth(of: Date())!)
         updateSelectedDayIcon()
     }
     @IBAction func scrollUp(_ sender: UISwipeGestureRecognizer) {
-        calendarview.updateMonthbyCurrentMonth(nextMonth: -1)
-        calendarview.visibleMonth = calendarview.visibleMonth - 1
-        navigationBar.title = calendarview.getMonthName(monthDate: firstDayOfMonth)
-        calendarview.scrollToNextSection(calendarview, monthIndex: calendarview.visibleMonth, animated: true)
+        calendarview.scrollToNextSectionbyOffset(calendarview, animated: true, offset: -1)
+        navigationBar.title = TimeManagement.getMonthName(TimeManagement.calculateFirstDayInMonth(of: Date())!)
         updateSelectedDayIcon()
     }
 
     func updateSelectedDayIcon(){
-        if calendarview.visibleMonth < selectedCellIndexPath.section {
+        if calendarview.visibleMonth < HSelection.selectedTime.conformToIndexPath().section {
             selectedDayButton.image = #imageLiteral(resourceName: "ic_keyboard_arrow_down")
-        } else if calendarview.visibleMonth > selectedCellIndexPath.section {
+        } else if calendarview.visibleMonth > HSelection.selectedTime.conformToIndexPath().section {
             selectedDayButton.image = #imageLiteral(resourceName: "ic_keyboard_arrow_up")
         } else {
             selectedDayButton.image = #imageLiteral(resourceName: "ic_keyboard_arrow_right")
@@ -126,12 +117,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         darkModeTemp = darkMode
-        reloadTodaysIndexPath()
-        selectedCellIndexPath = todaysIndexPath
-        rangeOfDaysInMonth = mainCalendar.range(of: .day, in: .month, for: todaysDate).length        
-        calendarview.updateMonth(monthIndex: todaysIndexPath.section)
-        calendarview.visibleMonth = todaysIndexPath.section
-        navigationBar.title = calendarview.getMonthName(monthDate: firstDayOfMonth)
+		HSelection.selectedTime = TMTime(date: Date())
+        navigationBar.title = TimeManagement.getMonthName(HSelection.selectedTime.conformToDate())
         
         calendarview.layoutIfNeeded()
         calendarview.layoutSubviews()
@@ -142,7 +129,7 @@ class ViewController: UIViewController {
         
         calendarview.scrollsToTop = false
         
-        calendarview.scrollToNextSection(calendarview, monthIndex: todaysIndexPath.section, animated: false)
+        calendarview.scrollToNextSection(calendarview, monthIndex: HSelection.selectedTime.conformToIndexPath().section, animated: false)
         
         calendarview.backgroundColor = UIColor.clear
         

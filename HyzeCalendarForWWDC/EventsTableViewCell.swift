@@ -6,7 +6,6 @@
 //  Copyright © 2017 Niklas Bülow. All rights reserved.
 //
 
-
 import UIKit
 import EventKit
 
@@ -73,7 +72,7 @@ class EventsTableViewCell: UITableViewCell {
                 dateformatter.locale = Locale(identifier: "de_DE")
             }
 
-            if mainCalendar.component(.day, from: from) != mainCalendar.component(.day, from: to) {
+            if TMCalendar.component(.day, from: from) != TMCalendar.component(.day, from: to) {
                 dateformatter.dateStyle = .short
                 dateformatter.timeStyle = .short
             } else {

@@ -22,6 +22,9 @@
 		3EA80D591E2BEC9300FD87C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EA80D581E2BEC9300FD87C3 /* Assets.xcassets */; };
 		3EA80D5C1E2BEC9300FD87C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EA80D5A1E2BEC9300FD87C3 /* LaunchScreen.storyboard */; };
 		3EA80D671E2BEC9300FD87C3 /* HyzeCalendarForWWDCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA80D661E2BEC9300FD87C3 /* HyzeCalendarForWWDCTests.swift */; };
+		3ECD09981E9BB39C00BF9627 /* TimeManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECD09971E9BB39C00BF9627 /* TimeManagement.swift */; };
+		3ECD099A1E9BCEDC00BF9627 /* TMTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECD09991E9BCEDC00BF9627 /* TMTime.swift */; };
+		3ECD09A11E9BFF3000BF9627 /* Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECD09A01E9BFF3000BF9627 /* Selection.swift */; };
 		3EE011611E560D3800743914 /* EventTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE011601E560D3800743914 /* EventTableView.swift */; };
 		3EE1E5AD1E48D48C00379576 /* GlobalAccessProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E5AC1E48D48C00379576 /* GlobalAccessProperties.swift */; };
 		3EF096B01E3FDC9F0011E726 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF096AF1E3FDC9F0011E726 /* ViewController.swift */; };
@@ -59,6 +62,9 @@
 		3EA80D621E2BEC9300FD87C3 /* HyzeCalendarForWWDCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HyzeCalendarForWWDCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EA80D661E2BEC9300FD87C3 /* HyzeCalendarForWWDCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyzeCalendarForWWDCTests.swift; sourceTree = "<group>"; };
 		3EA80D681E2BEC9300FD87C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3ECD09971E9BB39C00BF9627 /* TimeManagement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeManagement.swift; sourceTree = "<group>"; };
+		3ECD09991E9BCEDC00BF9627 /* TMTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMTime.swift; sourceTree = "<group>"; };
+		3ECD09A01E9BFF3000BF9627 /* Selection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Selection.swift; sourceTree = "<group>"; };
 		3EE011601E560D3800743914 /* EventTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableView.swift; sourceTree = "<group>"; };
 		3EE1E5AC1E48D48C00379576 /* GlobalAccessProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalAccessProperties.swift; sourceTree = "<group>"; };
 		3EF096AF1E3FDC9F0011E726 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -87,7 +93,8 @@
 		3E4A9B261E4BB479009E45EF /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				3E4A9B281E4BB4C0009E45EF /* EventsManagement.swift */,
+				3ECD099F1E9BFF1B00BF9627 /* Selection */,
+				3ECD099B1E9BD28900BF9627 /* TimeManagement */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -140,6 +147,48 @@
 				3E2D7B781E6715E600A0170D /* EventEditorViewController.swift */,
 			);
 			name = EventEditor;
+			sourceTree = "<group>";
+		};
+		3ECD099B1E9BD28900BF9627 /* TimeManagement */ = {
+			isa = PBXGroup;
+			children = (
+				3ECD099E1E9BD2CB00BF9627 /* Superclass */,
+				3ECD099D1E9BD2AC00BF9627 /* TypeConformers */,
+				3ECD099C1E9BD29800BF9627 /* Subclasses */,
+			);
+			name = TimeManagement;
+			sourceTree = "<group>";
+		};
+		3ECD099C1E9BD29800BF9627 /* Subclasses */ = {
+			isa = PBXGroup;
+			children = (
+				3E4A9B281E4BB4C0009E45EF /* EventsManagement.swift */,
+			);
+			name = Subclasses;
+			sourceTree = "<group>";
+		};
+		3ECD099D1E9BD2AC00BF9627 /* TypeConformers */ = {
+			isa = PBXGroup;
+			children = (
+				3ECD09991E9BCEDC00BF9627 /* TMTime.swift */,
+			);
+			name = TypeConformers;
+			sourceTree = "<group>";
+		};
+		3ECD099E1E9BD2CB00BF9627 /* Superclass */ = {
+			isa = PBXGroup;
+			children = (
+				3ECD09971E9BB39C00BF9627 /* TimeManagement.swift */,
+			);
+			name = Superclass;
+			sourceTree = "<group>";
+		};
+		3ECD099F1E9BFF1B00BF9627 /* Selection */ = {
+			isa = PBXGroup;
+			children = (
+				3ECD09A01E9BFF3000BF9627 /* Selection.swift */,
+			);
+			name = Selection;
 			sourceTree = "<group>";
 		};
 		3EE0115F1E560D0300743914 /* EventTableView */ = {
@@ -324,6 +373,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3ECD099A1E9BCEDC00BF9627 /* TMTime.swift in Sources */,
+				3ECD09981E9BB39C00BF9627 /* TimeManagement.swift in Sources */,
 				3E36D4F41E342139008FF54B /* CalendarView.swift in Sources */,
 				3EA80D521E2BEC9300FD87C3 /* AppDelegate.swift in Sources */,
 				3E2D7B791E6715E600A0170D /* EventEditorViewController.swift in Sources */,
@@ -336,6 +387,7 @@
 				3E7140431E46844C00D51B17 /* dayViewUIVViewController.swift in Sources */,
 				3E36D4F61E34318C008FF54B /* CalendarViewCell.swift in Sources */,
 				3EE011611E560D3800743914 /* EventTableView.swift in Sources */,
+				3ECD09A11E9BFF3000BF9627 /* Selection.swift in Sources */,
 				3E6BCC511E5479DD00369E7D /* SettingsViewController.swift in Sources */,
 				3E21053A1E5B56C400E78840 /* EventsTableViewCell.swift in Sources */,
 				3E61FE641E5239AF003D796C /* dayViewDecoration.swift in Sources */,
@@ -488,7 +540,7 @@
 				INFOPLIST_FILE = HyzeCalendarForWWDC/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = net.hyze.insightmind.HyzeCalendar;
+				PRODUCT_BUNDLE_IDENTIFIER = net.insightmind.hyze.HyzeCalendar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -508,7 +560,7 @@
 				INFOPLIST_FILE = HyzeCalendarForWWDC/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = net.hyze.insightmind.HyzeCalendar;
+				PRODUCT_BUNDLE_IDENTIFIER = net.insightmind.hyze.HyzeCalendar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

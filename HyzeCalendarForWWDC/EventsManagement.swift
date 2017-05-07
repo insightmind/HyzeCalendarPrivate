@@ -9,6 +9,7 @@
 import Foundation
 import EventKit
 
+
 // Basic class for EventKit implementation and functionality
 class EventManagement {
     
@@ -16,7 +17,7 @@ class EventManagement {
     let EMEventStore: EKEventStore!
     
     //function to convert startTime and endTime from events to an Array of Array of Ints for the EventView
-    ///Convert an the startTime and endTime of event in ArrayOfEvents to ArrayOfIntArray
+    ///Convert the startTime and endTime of event in ArrayOfEvents to ArrayOfIntArray
     /// - parameter events : array of Events by EventKit
     func convertEventsToTimeArray(_ events: [EKEvent]) -> [[Int]] {
         
@@ -38,21 +39,21 @@ class EventManagement {
             } else {
                 var tip = 1
                 
-                let startHour = mainCalendar.component(.hour, from: event.startDate)
-                let startMinute = mainCalendar.component(.minute, from: event.startDate)
+                let startHour = TMCalendar.component(.hour, from: event.startDate)
+                let startMinute = TMCalendar.component(.minute, from: event.startDate)
                 var startTime = (startHour * 60) + startMinute
                 
-                let endHour = mainCalendar.component(.hour, from: event.endDate)
-                let endMinute = mainCalendar.component(.minute, from: event.endDate)
+                let endHour = TMCalendar.component(.hour, from: event.endDate)
+                let endMinute = TMCalendar.component(.minute, from: event.endDate)
                 var endTime = (endHour * 60) + endMinute
                 
-                let moreDays = mainCalendar.compare(event.startDate, to: event.endDate, toUnitGranularity: .day)
+                let moreDays = TMCalendar.compare(event.startDate, to: event.endDate, toUnitGranularity: .day)
                 
                 if moreDays == .orderedAscending {
-                    if mainCalendar.compare(event.startDate, to: selectedDay, toUnitGranularity: .day) == .orderedSame {
+                    if TMCalendar.compare(event.startDate, to: HSelection.selectedTime.conformToDate(), toUnitGranularity: .day) == .orderedSame {
                         startTime = (startHour * 60) + startMinute
                         endTime = 1440
-                    } else if mainCalendar.compare(event.endDate, to: selectedDay, toUnitGranularity: .day) == .orderedSame {
+                    } else if TMCalendar.compare(event.endDate, to: HSelection.selectedTime.conformToDate(), toUnitGranularity: .day) == .orderedSame {
                         startTime = 0
                         endTime = (endHour * 60) + endMinute
                     } else {
@@ -78,7 +79,7 @@ class EventManagement {
     }
     
     func getEvents(for date: Date) -> [EKEvent] {
-        let cdate = mainCalendar.date(era: mainCalendar.component(.era, from: date), year: mainCalendar.component(.year, from: date), month: mainCalendar.component(.month, from: date), day: mainCalendar.component(.day, from: date), hour: 0, minute: 0, second: 0, nanosecond: 0)!
+        let cdate = TMCalendar.date(era: TMCalendar.component(.era, from: date), year: TMCalendar.component(.year, from: date), month: TMCalendar.component(.month, from: date), day: TMCalendar.component(.day, from: date), hour: 0, minute: 0, second: 0, nanosecond: 0)!
         let predicate = EMEventStore.predicateForEvents(withStart: cdate, end: cdate.addingTimeInterval(86399), calendars: nil)
         let events = EMEventStore.events(matching: predicate)
         if informationMode {
@@ -133,7 +134,9 @@ class EventManagement {
     }
     
     init() {
-        EMEventStore = EKEventStore()
+        
+        self.EMEventStore = EKEventStore()
+        
         askForPermission()
     }
 }

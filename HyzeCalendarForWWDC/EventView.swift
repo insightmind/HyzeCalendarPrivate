@@ -100,7 +100,7 @@ class EventView: UIButton {
         case .magic:
             break
         }
-	
+        
         animation.fillMode = kCAFillModeForwards
         animation.isRemovedOnCompletion = false
         

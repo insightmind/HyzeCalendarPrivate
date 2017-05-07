@@ -6,7 +6,6 @@
 //  Copyright © 2017 Niklas Bülow. All rights reserved.
 //
 
-
 import UIKit
 import EventKit
 
@@ -43,7 +42,7 @@ class EventTableView: UITableView, UITableViewDataSource, UITableViewDelegate{
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tableView.register(EventsTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         prevEventsCount = events.count
-        events = EManagement.getEvents(for: selectedDay)
+        events = EManagement.getEvents(for: HSelection.selectedTime.conformToDate())
         if events.count < 3 {
             tableView.isScrollEnabled = false
         } else {
@@ -55,24 +54,24 @@ class EventTableView: UITableView, UITableViewDataSource, UITableViewDelegate{
     func updateEvents() {
 
         self.prevEventsCount = self.events.count + 1
-        self.events = EManagement.getEvents(for: selectedDay)
+        self.events = EManagement.getEvents(for: HSelection.selectedTime.conformToDate())
     }
     
     func reloadView() {
         
         selectedEventsTableViewCellIndexPath = nil
         
-        calculateColorsForEventsOnSelectedDay(numberOfEvents: EManagement.getEvents(for: selectedDay).count)
+        calculateColorsForEventsOnSelectedDay(numberOfEvents: EManagement.getEvents(for: HSelection.selectedTime.conformToDate()).count)
         self.beginUpdates()
 
         self.prevEventsCount = self.numberOfRows(inSection: 0)
-        self.events = EManagement.getEvents(for: selectedDay)
+        self.events = EManagement.getEvents(for: HSelection.selectedTime.conformToDate())
         var delEventsChangeAt = [IndexPath]()
         for i in 0..<prevEventsCount {
             delEventsChangeAt.append(IndexPath(row: i, section: 0))
         }
         self.deleteRows(at: delEventsChangeAt, with: .fade)
-        self.events = EManagement.getEvents(for: selectedDay)
+        self.events = EManagement.getEvents(for: HSelection.selectedTime.conformToDate())
         var addEventsChangeAt = [IndexPath]()
         for i in 0..<events.count {
             addEventsChangeAt.append(IndexPath(row: i, section: 0))

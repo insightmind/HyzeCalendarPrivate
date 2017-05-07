@@ -92,7 +92,7 @@ class dayView: UIView {
             self.willRemoveSubview(i)
             i.removeFromSuperview()
         }
-        eventsOnDate = EManagement.convertEventsToTimeArray(EManagement.getEvents(for: selectedDay))
+        eventsOnDate = EManagement.convertEventsToTimeArray(EManagement.getEvents(for: HSelection.selectedTime.conformToDate()))
         addEventsSubViews()
         setUpDayViewCenterButton()
         if loaded {
@@ -121,13 +121,13 @@ class dayView: UIView {
             }
             deci.backgroundColor = UIColor.clear
             if darkMode {
-                if isSelectedDayToday {
+                if TMCalendar.isDateInToday(HSelection.selectedTime.conformToDate()) {
                     deci.sendColorProperties(CALENDARWHITE)
                 } else {
                     deci.sendColorProperties(CALENDARGREY)
                 }
             } else {
-                if isSelectedDayToday {
+                if TMCalendar.isDateInToday(HSelection.selectedTime.conformToDate()) {
                     deci.sendColorProperties(CALENDARGREY)
                 } else {
                     deci.sendColorProperties(CALENDARWHITE)
@@ -179,13 +179,13 @@ class dayView: UIView {
     
     func toggleIsTodayLabelColoring(_ label: UILabel) {
         if darkMode {
-            if isSelectedDayToday{
+            if TMCalendar.isDateInToday(HSelection.selectedTime.conformToDate()){
                 label.textColor = CALENDARWHITE
             } else {
                 label.textColor = CALENDARGREY
             }
         } else {
-            if isSelectedDayToday{
+            if TMCalendar.isDateInToday(HSelection.selectedTime.conformToDate()){
                 label.textColor = CALENDARGREY
             } else {
                 label.textColor = CALENDARWHITE
@@ -202,7 +202,7 @@ class dayView: UIView {
             width: 2 * self.dayViewCenterButton.bounds.width / 4,
             height: self.dayViewCenterButton.bounds.height / 10)
         self.topLabel.font = UIFont(descriptor: self.topLabel.font.fontDescriptor, size: self.topLabel.bounds.height)
-        self.topLabel.text = monthName[selectedCellMonthInt]
+        self.topLabel.text = monthName[HSelection.selectedTime.dayID]
         self.dayViewCenterButton.addSubview(topLabel)
     }
     
@@ -214,7 +214,7 @@ class dayView: UIView {
             width:  2 * self.dayViewCenterButton.bounds.width / 4,
             height: self.dayViewCenterButton.bounds.height / 4)
         self.midLabel.font = UIFont(descriptor: self.midLabel.font.fontDescriptor, size: self.midLabel.bounds.height)
-        self.midLabel.text = selectedCellDayString
+        self.midLabel.text = String(HSelection.selectedTime.dayID)
         self.dayViewCenterButton.addSubview(midLabel)
     }
     
@@ -226,7 +226,7 @@ class dayView: UIView {
             width: 2 * self.dayViewCenterButton.bounds.width / 4,
             height: self.dayViewCenterButton.bounds.height / 10)
         self.botLabel.font = UIFont(descriptor: self.botLabel.font.fontDescriptor, size: self.botLabel.bounds.height)
-        self.botLabel.text = String(mainCalendar.component(.year, from: selectedDay))
+        self.botLabel.text = String(TMCalendar.component(.year, from: HSelection.selectedTime.conformToDate()))
         self.dayViewCenterButton.addSubview(botLabel)
     }
     
@@ -257,7 +257,7 @@ class dayView: UIView {
                 viewID = viewID + 1
             }
         }
-        if isSelectedDayToday == true {
+        if TMCalendar.isDateInToday(HSelection.selectedTime.conformToDate()) == true {
             let watchhand = EventView(frame: self.bounds, carcWidth: 50, hourRotation: true)
             watchhand.sendTimeProperties(start: timeNowRadiant(), end: timeNowRadiant() + 10)
             watchhand.sendColorProperties(UIColor.red)
