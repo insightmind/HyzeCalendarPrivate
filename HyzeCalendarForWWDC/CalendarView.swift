@@ -162,7 +162,7 @@ class CalendarView:UICollectionView, UICollectionViewDataSource, UICollectionVie
 		
 		let timeConform = TMTime(IndexPath(item: indexPath.item, section: indexPath.section + 1))
         
-        if ((indexPath.item) < timeConform.dayOffset) || ((indexPath.item) > (timeConform.monthRange + timeConform.dayOffset)){
+        if timeConform.dayOffID < 1 || timeConform.dayOffID > timeConform.monthRange {
             ccell.isHidden = true
             ccell.label.text = "NIM"
             

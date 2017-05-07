@@ -25,32 +25,17 @@ struct TMTime {
 	
 	//MARK: Initializers
 	
-	init(month: Int, day: Int) {
-		self.monthID = month
-		self.dayID = day
-		
-		let date = TimeManagement.convertToDate(IndexPath(item: day, section: month))
-		self.firstDay = TimeManagement.calculateFirstDayInMonth(of: date)!
-		self.dayOffset = TMCalendar.component(.weekday, from: self.firstDay)
-		self.dayOffID = self.dayID - self.dayOffset
-		
-		self.monthRange = TMCalendar.range(of: .day, in: .month, for: self.firstDay).length
-		
-		if informationMode {
-			print("init(month: Int, day: Int) \(month), \(day): \(monthID), \(dayID), \(firstDay), \(dayOffset), \(dayOffID), \(monthRange)")
-		}
-	}
-	
 	init(_ indexPath: IndexPath) {
 		self.monthID = indexPath.section
 		self.dayID = indexPath.item
 		
-		let date = TimeManagement.convertToDate(indexPath)
-		self.firstDay = TimeManagement.calculateFirstDayInMonth(of: date)!
+		self.firstDay = TimeManagement.calculateFirstDayInMonth(of: indexPath)!
+		
 		self.dayOffset = TMCalendar.component(.weekday, from: self.firstDay)
 		self.dayOffID = self.dayID - self.dayOffset
 		
 		self.monthRange = TMCalendar.range(of: .day, in: .month, for: self.firstDay).length
+		
 		if informationMode {
 			print("init(_ indexPath: IndexPath) \(indexPath): \(monthID), \(dayID), \(firstDay), \(dayOffset), \(dayOffID), \(monthRange)")
 		}
@@ -77,5 +62,7 @@ struct TMTime {
 		
 		return TimeManagement.convertToDate(indexPath, itemOffset: 0, sectionOffset: 0)
 	}
+	
+	//MARK: Functions
 	
 }
