@@ -21,7 +21,6 @@
 		3EA80D521E2BEC9300FD87C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA80D511E2BEC9300FD87C3 /* AppDelegate.swift */; };
 		3EA80D591E2BEC9300FD87C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EA80D581E2BEC9300FD87C3 /* Assets.xcassets */; };
 		3EA80D5C1E2BEC9300FD87C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EA80D5A1E2BEC9300FD87C3 /* LaunchScreen.storyboard */; };
-		3EA80D671E2BEC9300FD87C3 /* HyzeCalendarForWWDCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA80D661E2BEC9300FD87C3 /* HyzeCalendarForWWDCTests.swift */; };
 		3ECD09981E9BB39C00BF9627 /* TimeManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECD09971E9BB39C00BF9627 /* TimeManagement.swift */; };
 		3ECD099A1E9BCEDC00BF9627 /* TMTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECD09991E9BCEDC00BF9627 /* TMTime.swift */; };
 		3ECD09A11E9BFF3000BF9627 /* Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECD09A01E9BFF3000BF9627 /* Selection.swift */; };
@@ -54,14 +53,12 @@
 		3E6BCC501E5479DD00369E7D /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		3E7140421E46844C00D51B17 /* dayViewUIVViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dayViewUIVViewController.swift; sourceTree = "<group>"; };
 		3E7DD5721E4679FA001E1D0B /* EventView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
-		3EA80D4E1E2BEC9300FD87C3 /* HyzeCalendarForWWDC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HyzeCalendarForWWDC.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3EA80D4E1E2BEC9300FD87C3 /* HyzeCalendarForWWDC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = HyzeCalendarForWWDC.app; path = "/Users/redfleet/Documents/gitrep/HyzeCalendarPrivate/build/Debug-iphoneos/HyzeCalendarForWWDC.app"; sourceTree = "<absolute>"; };
 		3EA80D511E2BEC9300FD87C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3EA80D581E2BEC9300FD87C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3EA80D5B1E2BEC9300FD87C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3EA80D5D1E2BEC9300FD87C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3EA80D621E2BEC9300FD87C3 /* HyzeCalendarForWWDCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HyzeCalendarForWWDCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3EA80D661E2BEC9300FD87C3 /* HyzeCalendarForWWDCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyzeCalendarForWWDCTests.swift; sourceTree = "<group>"; };
-		3EA80D681E2BEC9300FD87C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3EA80D621E2BEC9300FD87C3 /* HyzeCalendarForWWDCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = HyzeCalendarForWWDCTests.xctest; path = "/Users/redfleet/Documents/gitrep/HyzeCalendarPrivate/build/Debug-iphoneos/HyzeCalendarForWWDCTests.xctest"; sourceTree = "<absolute>"; };
 		3ECD09971E9BB39C00BF9627 /* TimeManagement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeManagement.swift; sourceTree = "<group>"; };
 		3ECD09991E9BCEDC00BF9627 /* TMTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMTime.swift; sourceTree = "<group>"; };
 		3ECD09A01E9BFF3000BF9627 /* Selection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Selection.swift; sourceTree = "<group>"; };
@@ -103,18 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				3EA80D501E2BEC9300FD87C3 /* HyzeCalendarForWWDC */,
-				3EA80D651E2BEC9300FD87C3 /* HyzeCalendarForWWDCTests */,
-				3EA80D4F1E2BEC9300FD87C3 /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		3EA80D4F1E2BEC9300FD87C3 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				3EA80D4E1E2BEC9300FD87C3 /* HyzeCalendarForWWDC.app */,
-				3EA80D621E2BEC9300FD87C3 /* HyzeCalendarForWWDCTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		3EA80D501E2BEC9300FD87C3 /* HyzeCalendarForWWDC */ = {
@@ -130,15 +116,6 @@
 				3EE1E5AC1E48D48C00379576 /* GlobalAccessProperties.swift */,
 			);
 			path = HyzeCalendarForWWDC;
-			sourceTree = "<group>";
-		};
-		3EA80D651E2BEC9300FD87C3 /* HyzeCalendarForWWDCTests */ = {
-			isa = PBXGroup;
-			children = (
-				3EA80D661E2BEC9300FD87C3 /* HyzeCalendarForWWDCTests.swift */,
-				3EA80D681E2BEC9300FD87C3 /* Info.plist */,
-			);
-			path = HyzeCalendarForWWDCTests;
 			sourceTree = "<group>";
 		};
 		3EC8A3871E621C0C0018B646 /* EventEditor */ = {
@@ -322,7 +299,7 @@
 				Base,
 			);
 			mainGroup = 3EA80D451E2BEC9300FD87C3;
-			productRefGroup = 3EA80D4F1E2BEC9300FD87C3 /* Products */;
+			productRefGroup = 3EA80D451E2BEC9300FD87C3;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -399,7 +376,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3EA80D671E2BEC9300FD87C3 /* HyzeCalendarForWWDCTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

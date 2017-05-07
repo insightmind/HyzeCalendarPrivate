@@ -38,7 +38,7 @@ class ViewController: UIViewController {
         
         
         if TMCalendar.isDateInToday(HSelection.selectedTime.conformToDate()) != true {
-            if calendarview.visibleMonth == HTimeManagement.TMToday.conformToIndexPath().section {
+            if HSelection.currentSection == HTimeManagement.TMToday.conformToIndexPath().section {
                 if informationMode {
                     print("jumpToToday todaysIndexPath:\(HTimeManagement.TMToday.conformToIndexPath())")
                 }
@@ -86,9 +86,9 @@ class ViewController: UIViewController {
     }
 
     func updateSelectedDayIcon(){
-        if calendarview.visibleMonth < HSelection.selectedTime.conformToIndexPath().section {
+        if HSelection.currentSection < HSelection.selectedTime.monthID {
             selectedDayButton.image = #imageLiteral(resourceName: "ic_keyboard_arrow_down")
-        } else if calendarview.visibleMonth > HSelection.selectedTime.conformToIndexPath().section {
+        } else if HSelection.currentSection > HSelection.selectedTime.monthID {
             selectedDayButton.image = #imageLiteral(resourceName: "ic_keyboard_arrow_up")
         } else {
             selectedDayButton.image = #imageLiteral(resourceName: "ic_keyboard_arrow_right")
@@ -105,7 +105,7 @@ class ViewController: UIViewController {
         }
         if darkModeTemp != darkMode {
             eventTableView.reloadData()
-            calendarview.reloadSections(IndexSet(integer: calendarview.visibleMonth))
+            calendarview.reloadSections(IndexSet(integer: HSelection.currentSection))
             darkModeTemp = darkMode
         } else if isAMPMTemp != isAMPM || eventsChange == true {
             eventTableView.reloadData()

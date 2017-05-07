@@ -33,8 +33,6 @@ class CalendarView:UICollectionView, UICollectionViewDataSource, UICollectionVie
     
     var times = 0
     
-    var visibleMonth : Int = -2
-    
     //MARK: Functions
     
     //MARK: DataSourceFunctions
@@ -293,7 +291,7 @@ extension CalendarView{
     }
     
     func updateUntilComplet(completion: (_ success: Bool) -> Void, offset: Int, collectionView: CalendarView) {
-        collectionView.visibleMonth = collectionView.visibleMonth + offset
+        HSelection.currentSection += offset
         completion(true)
     }
     
@@ -303,7 +301,7 @@ extension CalendarView{
             (success) -> Void in
             if success {
                 collectionView.allowsSelection = false
-                collectionView.scrollToItem(at: IndexPath(item: 0, section: collectionView.visibleMonth), at: .top, animated: animated)
+                collectionView.scrollToItem(at: IndexPath(item: 0, section: HSelection.currentSection), at: .top, animated: animated)
                 collectionView.allowsSelection = true
             }
         }, offset: offset, collectionView: collectionView)
