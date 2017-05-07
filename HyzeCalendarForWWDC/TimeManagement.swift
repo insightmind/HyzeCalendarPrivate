@@ -21,7 +21,7 @@ class TimeManagement {
 		self.TMFuture = Date.distantFuture
     }
     
-	class func convertToDate(_ indexPath: IndexPath, itemOffset: Int = 0, sectionOffset: Int = 0) -> Date {
+	class func convertToDate(_ indexPath: IndexPath, itemOffset: Int = 1, sectionOffset: Int = 1) -> Date {
         let convDate = Date.distantPast
         guard let d = TMCalendar.date(byAdding: .month, value: indexPath.section + sectionOffset, to: convDate, options: .matchFirst) else {
             if failureMode {
@@ -55,6 +55,14 @@ class TimeManagement {
 		let fdate = TMCalendar.date(bySettingUnit: .day, value: 1, of: date, options: .matchFirst)
 		if informationMode {
 			print("calculateFirstDayInMonth \(date): \(String(describing: fdate))")
+		}
+		return fdate
+	}
+	
+	class func calculateFirstDayInMonth(of indexPath: IndexPath) -> Date?{
+		let fdate = TimeManagement.convertToDate(IndexPath(item: 1, section: indexPath.section))
+		if informationMode {
+			print("calculateFirstDayInMonth \(indexPath): \(String(describing: fdate))")
 		}
 		return fdate
 	}
