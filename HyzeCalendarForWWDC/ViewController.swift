@@ -73,12 +73,14 @@ class ViewController: UIViewController {
     }
 
     @IBAction func scrollDown(_ sender: UISwipeGestureRecognizer) {
-        calendarview.scrollToNextSectionbyOffset(calendarview, animated: true, offset: 1)
+		HSelection.currentSection += 1
+		updateScrolling(animated: true)
         navigationBar.title = TimeManagement.getMonthName(TimeManagement.calculateFirstDayInMonth(of: Date())!)
         updateSelectedDayIcon()
     }
     @IBAction func scrollUp(_ sender: UISwipeGestureRecognizer) {
-        calendarview.scrollToNextSectionbyOffset(calendarview, animated: true, offset: -1)
+		HSelection.currentSection -= 1
+        updateScrolling(animated: true)
         navigationBar.title = TimeManagement.getMonthName(TimeManagement.calculateFirstDayInMonth(of: Date())!)
         updateSelectedDayIcon()
     }
@@ -119,9 +121,11 @@ class ViewController: UIViewController {
         darkModeTemp = darkMode
 		HSelection.selectedTime = TMTime(date: Date())
         navigationBar.title = TimeManagement.getMonthName(HSelection.selectedTime.conformToDate())
-        
-        calendarview.scrollToNextSection(calendarview, monthIndex: HSelection.selectedTime.monthID, animated: false)
-        
+		
+		calendarview.scrollsToTop = false
+		
+		HSelection.currentSection = HSelection.selectedTime.monthID
+		
         calendarview.backgroundColor = UIColor.clear
     }
 
@@ -142,5 +146,11 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+	
+	//MARK: Function
+	
+	func updateScrolling(animated: Bool) {
+		calendarview.scrollToNextSection(calendarview, monthIndex: HSelection.currentSection, animated: animated)
+	}
 }
 
