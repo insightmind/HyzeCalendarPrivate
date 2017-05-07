@@ -43,8 +43,8 @@ class TimeManagement {
 	
 	class func convertToIndexPath(_ date: Date, calendar: NSCalendar) -> IndexPath {
 		var indexPath = IndexPath(item: 0, section: 0)
-		indexPath.section = calendar.components(.month, from: Date.distantPast, to: date, options: .matchFirst).month! - 1
-		indexPath.item = calendar.component(.day, from: date) - 1
+		indexPath.section = calendar.components(.month, from: Date.distantPast, to: date, options: .matchFirst).month!
+		indexPath.item = calendar.component(.day, from: date)
 		if informationMode {
 			print("convertToIndexPath \(date), \(calendar): \(indexPath)")
 		}

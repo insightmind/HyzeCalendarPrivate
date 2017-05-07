@@ -32,7 +32,7 @@ struct TMTime {
 		self.firstDay = TimeManagement.calculateFirstDayInMonth(of: indexPath)!
 		
 		self.dayOffset = TMCalendar.component(.weekday, from: self.firstDay)
-		self.dayOffID = self.dayID - self.dayOffset
+		self.dayOffID = self.dayID - self.dayOffset + 1
 		
 		self.monthRange = TMCalendar.range(of: .day, in: .month, for: self.firstDay).length
 		
@@ -42,7 +42,7 @@ struct TMTime {
 	}
 	
 	init(date: Date) {
-		self.init(TimeManagement.convertToIndexPath(date, calendar: NSCalendar(calendarIdentifier: .gregorian)!))
+		self.init(TimeManagement.convertToIndexPath(date, calendar: TMCalendar))
 	}
 	
 	//MARK: Conformers

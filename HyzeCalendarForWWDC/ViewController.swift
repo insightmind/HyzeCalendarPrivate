@@ -120,24 +120,9 @@ class ViewController: UIViewController {
 		HSelection.selectedTime = TMTime(date: Date())
         navigationBar.title = TimeManagement.getMonthName(HSelection.selectedTime.conformToDate())
         
-        calendarview.layoutIfNeeded()
-        calendarview.layoutSubviews()
-        
-        eventTableView.layoutIfNeeded()
-        eventTableView.layoutSubviews()
-        eventTableView.reloadView()
-        
-        calendarview.scrollsToTop = false
-        
-        calendarview.scrollToNextSection(calendarview, monthIndex: HSelection.selectedTime.conformToIndexPath().section, animated: false)
+        calendarview.scrollToNextSection(calendarview, monthIndex: HSelection.selectedTime.monthID, animated: false)
         
         calendarview.backgroundColor = UIColor.clear
-        
-        if load == 1 {
-            calendarview.reloadData()
-            eventTableView.reloadData()
-            load = 2
-        }
     }
 
     func updateDaysOfWeek(color: UIColor) {

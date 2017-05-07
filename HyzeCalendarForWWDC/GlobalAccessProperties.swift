@@ -9,9 +9,9 @@
 import Foundation
 import UIKit
 
-let informationMode = true
-let debugMode = true
-let failureMode = true
+let informationMode = false
+let debugMode = false
+let failureMode = false
 
 var darkMode: Bool = UserDefaults.standard.bool(forKey: "DarkMode")
 
