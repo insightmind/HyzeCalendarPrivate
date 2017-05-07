@@ -48,7 +48,7 @@ class CalendarView:UICollectionView, UICollectionViewDataSource, UICollectionVie
         
         collectionView.layoutSubviews()
         
-        let number = TMCalendar.components(.month, from: HTimeManagement.TMPast, to: HTimeManagement.TMFuture, options: .matchLast).month!
+        let number = TMCalendar.components(.month, from: TMPast, to: TMFuture, options: .matchLast).month!
         
         //delete for release
         if debugMode {
@@ -293,18 +293,6 @@ extension CalendarView{
     func updateUntilComplet(completion: (_ success: Bool) -> Void, offset: Int, collectionView: CalendarView) {
         HSelection.currentSection += offset
         completion(true)
-    }
-    
-    func scrollToNextSectionbyOffset(_ collectionView: CalendarView, animated: Bool, offset: Int){
-        
-        updateUntilComplet(completion: {
-            (success) -> Void in
-            if success {
-                collectionView.allowsSelection = false
-                collectionView.scrollToItem(at: IndexPath(item: 0, section: HSelection.currentSection), at: .top, animated: animated)
-                collectionView.allowsSelection = true
-            }
-        }, offset: offset, collectionView: collectionView)
     }
     
 }

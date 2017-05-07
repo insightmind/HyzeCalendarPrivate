@@ -75,13 +75,11 @@ class ViewController: UIViewController {
     @IBAction func scrollDown(_ sender: UISwipeGestureRecognizer) {
 		HSelection.currentSection += 1
 		updateScrolling(animated: true)
-        navigationBar.title = TimeManagement.getMonthName(TimeManagement.calculateFirstDayInMonth(of: Date())!)
         updateSelectedDayIcon()
     }
     @IBAction func scrollUp(_ sender: UISwipeGestureRecognizer) {
 		HSelection.currentSection -= 1
         updateScrolling(animated: true)
-        navigationBar.title = TimeManagement.getMonthName(TimeManagement.calculateFirstDayInMonth(of: Date())!)
         updateSelectedDayIcon()
     }
 
@@ -127,6 +125,11 @@ class ViewController: UIViewController {
 		HSelection.currentSection = HSelection.selectedTime.monthID
 		
         calendarview.backgroundColor = UIColor.clear
+		
+		calendarview.layoutIfNeeded()
+		calendarview.layoutSubviews()
+		
+		calendarview.reloadData()
     }
 
     func updateDaysOfWeek(color: UIColor) {
@@ -151,6 +154,9 @@ class ViewController: UIViewController {
 	
 	func updateScrolling(animated: Bool) {
 		calendarview.scrollToNextSection(calendarview, monthIndex: HSelection.currentSection, animated: animated)
+		let indexPath = IndexPath(item: 1, section: HSelection.currentSection)
+		let date = TimeManagement.convertToDate(indexPath)
+		navigationBar.title = TimeManagement.getMonthName(date)
 	}
 }
 
