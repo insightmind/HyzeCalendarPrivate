@@ -11,18 +11,10 @@ import EventKit
 
 class TimeManagement {
 	
-	let TMPast: Date
-	let TMFuture: Date
 	var TMToday = TMTime.init(date: Date())
-	
     
-	init() {
-		self.TMPast = Date.distantPast
-		self.TMFuture = Date.distantFuture
-    }
-    
-	class func convertToDate(_ indexPath: IndexPath, itemOffset: Int = 0, sectionOffset: Int = 0) -> Date {
-        let convDate = Date.distantPast
+	class func convertToDate(_ indexPath: IndexPath, itemOffset: Int = 1, sectionOffset: Int = 1) -> Date {
+        let convDate = TMPast
         guard let d = TMCalendar.date(byAdding: .month, value: indexPath.section + sectionOffset, to: convDate, options: .matchFirst) else {
             if failureMode {
                 print("[FAILURE] Could not convert indexPath to Date")
@@ -43,7 +35,7 @@ class TimeManagement {
 	
 	class func convertToIndexPath(_ date: Date, calendar: NSCalendar) -> IndexPath {
 		var indexPath = IndexPath(item: 0, section: 0)
-		indexPath.section = calendar.components(.month, from: Date.distantPast, to: date, options: .matchFirst).month!
+		indexPath.section = calendar.components(.month, from: TMPast, to: date, options: .matchFirst).month!
 		indexPath.item = calendar.component(.day, from: date)
 		if informationMode {
 			print("convertToIndexPath \(date), \(calendar): \(indexPath)")
@@ -55,6 +47,14 @@ class TimeManagement {
 		let fdate = TMCalendar.date(bySettingUnit: .day, value: 1, of: date, options: .matchFirst)
 		if informationMode {
 			print("calculateFirstDayInMonth \(date): \(String(describing: fdate))")
+		}
+		return fdate
+	}
+	
+	class func calculateFirstDayInMonth(of indexPath: IndexPath) -> Date?{
+		let fdate = TimeManagement.convertToDate(IndexPath(item: 1, section: indexPath.section))
+		if informationMode {
+			print("calculateFirstDayInMonth \(indexPath): \(String(describing: fdate))")
 		}
 		return fdate
 	}

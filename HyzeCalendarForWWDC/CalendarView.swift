@@ -33,8 +33,6 @@ class CalendarView:UICollectionView, UICollectionViewDataSource, UICollectionVie
     
     var times = 0
     
-    var visibleMonth : Int = -2
-    
     //MARK: Functions
     
     //MARK: DataSourceFunctions
@@ -50,7 +48,7 @@ class CalendarView:UICollectionView, UICollectionViewDataSource, UICollectionVie
         
         collectionView.layoutSubviews()
         
-        let number = TMCalendar.components(.month, from: HTimeManagement.TMPast, to: HTimeManagement.TMFuture, options: .matchLast).month!
+        let number = TMCalendar.components(.month, from: TMPast, to: TMFuture, options: .matchLast).month!
         
         //delete for release
         if debugMode {
@@ -162,7 +160,7 @@ class CalendarView:UICollectionView, UICollectionViewDataSource, UICollectionVie
 		
 		let timeConform = TMTime(IndexPath(item: indexPath.item, section: indexPath.section + 1))
         
-        if ((indexPath.item) < timeConform.dayOffset) || ((indexPath.item) > (timeConform.monthRange + timeConform.dayOffset)){
+        if timeConform.dayOffID < 1 || timeConform.dayOffID > timeConform.monthRange {
             ccell.isHidden = true
             ccell.label.text = "NIM"
             
@@ -293,20 +291,8 @@ extension CalendarView{
     }
     
     func updateUntilComplet(completion: (_ success: Bool) -> Void, offset: Int, collectionView: CalendarView) {
-        collectionView.visibleMonth = collectionView.visibleMonth + offset
+        HSelection.currentSection += offset
         completion(true)
-    }
-    
-    func scrollToNextSectionbyOffset(_ collectionView: CalendarView, animated: Bool, offset: Int){
-        
-        updateUntilComplet(completion: {
-            (success) -> Void in
-            if success {
-                collectionView.allowsSelection = false
-                collectionView.scrollToItem(at: IndexPath(item: 0, section: collectionView.visibleMonth), at: .top, animated: animated)
-                collectionView.allowsSelection = true
-            }
-        }, offset: offset, collectionView: collectionView)
     }
     
 }

@@ -38,7 +38,7 @@ class ViewController: UIViewController {
         
         
         if TMCalendar.isDateInToday(HSelection.selectedTime.conformToDate()) != true {
-            if calendarview.visibleMonth == HTimeManagement.TMToday.conformToIndexPath().section {
+            if HSelection.currentSection == HTimeManagement.TMToday.conformToIndexPath().section {
                 if informationMode {
                     print("jumpToToday todaysIndexPath:\(HTimeManagement.TMToday.conformToIndexPath())")
                 }
@@ -73,20 +73,20 @@ class ViewController: UIViewController {
     }
 
     @IBAction func scrollDown(_ sender: UISwipeGestureRecognizer) {
-        calendarview.scrollToNextSectionbyOffset(calendarview, animated: true, offset: 1)
-        navigationBar.title = TimeManagement.getMonthName(TimeManagement.calculateFirstDayInMonth(of: Date())!)
+		HSelection.currentSection += 1
+		updateScrolling(animated: true)
         updateSelectedDayIcon()
     }
     @IBAction func scrollUp(_ sender: UISwipeGestureRecognizer) {
-        calendarview.scrollToNextSectionbyOffset(calendarview, animated: true, offset: -1)
-        navigationBar.title = TimeManagement.getMonthName(TimeManagement.calculateFirstDayInMonth(of: Date())!)
+		HSelection.currentSection -= 1
+        updateScrolling(animated: true)
         updateSelectedDayIcon()
     }
 
     func updateSelectedDayIcon(){
-        if calendarview.visibleMonth < HSelection.selectedTime.conformToIndexPath().section {
+        if HSelection.currentSection < HSelection.selectedTime.monthID {
             selectedDayButton.image = #imageLiteral(resourceName: "ic_keyboard_arrow_down")
-        } else if calendarview.visibleMonth > HSelection.selectedTime.conformToIndexPath().section {
+        } else if HSelection.currentSection > HSelection.selectedTime.monthID {
             selectedDayButton.image = #imageLiteral(resourceName: "ic_keyboard_arrow_up")
         } else {
             selectedDayButton.image = #imageLiteral(resourceName: "ic_keyboard_arrow_right")
@@ -103,7 +103,7 @@ class ViewController: UIViewController {
         }
         if darkModeTemp != darkMode {
             eventTableView.reloadData()
-            calendarview.reloadSections(IndexSet(integer: calendarview.visibleMonth))
+            calendarview.reloadSections(IndexSet(integer: HSelection.currentSection))
             darkModeTemp = darkMode
         } else if isAMPMTemp != isAMPM || eventsChange == true {
             eventTableView.reloadData()
@@ -119,25 +119,17 @@ class ViewController: UIViewController {
         darkModeTemp = darkMode
 		HSelection.selectedTime = TMTime(date: Date())
         navigationBar.title = TimeManagement.getMonthName(HSelection.selectedTime.conformToDate())
-        
-        calendarview.layoutIfNeeded()
-        calendarview.layoutSubviews()
-        
-        eventTableView.layoutIfNeeded()
-        eventTableView.layoutSubviews()
-        eventTableView.reloadView()
-        
-        calendarview.scrollsToTop = false
-        
-        calendarview.scrollToNextSection(calendarview, monthIndex: HSelection.selectedTime.conformToIndexPath().section, animated: false)
-        
+		
+		calendarview.scrollsToTop = false
+		
+		HSelection.currentSection = HSelection.selectedTime.monthID
+		
         calendarview.backgroundColor = UIColor.clear
-        
-        if load == 1 {
-            calendarview.reloadData()
-            eventTableView.reloadData()
-            load = 2
-        }
+		
+		calendarview.layoutIfNeeded()
+		calendarview.layoutSubviews()
+		
+		calendarview.reloadData()
     }
 
     func updateDaysOfWeek(color: UIColor) {
@@ -157,5 +149,14 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+	
+	//MARK: Function
+	
+	func updateScrolling(animated: Bool) {
+		calendarview.scrollToNextSection(calendarview, monthIndex: HSelection.currentSection, animated: animated)
+		let indexPath = IndexPath(item: 1, section: HSelection.currentSection)
+		let date = TimeManagement.convertToDate(indexPath)
+		navigationBar.title = TimeManagement.getMonthName(date)
+	}
 }
 
