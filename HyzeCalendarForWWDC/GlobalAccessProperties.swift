@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-let informationMode = false
+let informationMode = true
 let debugMode = false
 let failureMode = false
 
@@ -23,6 +23,9 @@ let TMCalendar = NSCalendar(identifier: .gregorian)!
 let HTimeManagement = TimeManagement()
 let EManagement = EventManagement()
 var HSelection = Selection()
+
+let TMPast = Date.init(timeIntervalSince1970: 0)
+let TMFuture = Date.init(timeInterval: 3153600000, since: TMPast)
 
 var loaded = true
 var hourDecorationPosition = [[CGFloat]]()
