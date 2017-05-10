@@ -42,7 +42,7 @@ class ViewController: UIViewController {
                 if informationMode {
                     print("jumpToToday todaysIndexPath:\(HTimeManagement.TMToday.conformToIndexPath())")
                 }
-                guard let todaysCell = calendarview.cellForItem(at: HTimeManagement.TMToday.conformToIndexPath()) as? CalendarViewCell else {
+                guard let todaysCell = calendarview.cellForItem(at: HTimeManagement.TMToday.conformToIndexPath()) as? CalendarViewDayCollectionViewCell else {
                     if failureMode {
                         print("[FAILURE] There is no cell for today")
                     }

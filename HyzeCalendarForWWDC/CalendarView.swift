@@ -10,6 +10,7 @@ import UIKit
 import Foundation
 
 class CalendarView:UICollectionView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
+	
     @IBOutlet weak var eventTableView: EventTableView!
     
     @IBOutlet weak var selectedDayButton: UIBarButtonItem!
@@ -40,7 +41,7 @@ class CalendarView:UICollectionView, UICollectionViewDataSource, UICollectionVie
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
-        collectionView.register(CalendarViewCell.self, forCellWithReuseIdentifier: cellReusableID)
+        collectionView.register(CalendarViewDayCollectionViewCell.self, forCellWithReuseIdentifier: cellReusableID)
         
         let bounds = collectionView.bounds
         let sizeA = (bounds.size.width - 25) / 7
@@ -81,7 +82,7 @@ class CalendarView:UICollectionView, UICollectionViewDataSource, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         //Create cell
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReusableID, for: indexPath) as! CalendarViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReusableID, for: indexPath) as! CalendarViewDayCollectionViewCell
 
 		let isToday = TMCalendar.isDateInToday(TimeManagement.convertToDate(indexPath))
         
@@ -136,7 +137,7 @@ class CalendarView:UICollectionView, UICollectionViewDataSource, UICollectionVie
         let isToday = TMCalendar.isDateInToday(TimeManagement.convertToDate(indexPath, itemOffset: 1, sectionOffset: 1))
 
         //Create cell to access its components
-        guard let cell = collectionView.cellForItem(at: indexPath) as? CalendarViewCell else {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? CalendarViewDayCollectionViewCell else {
             if failureMode {
                 print("[FAILURE] SELECTING CELL WHICH DOES NOT EXIST!")
             }
@@ -153,7 +154,7 @@ class CalendarView:UICollectionView, UICollectionViewDataSource, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
-        guard let ccell = cell as? CalendarViewCell else {
+        guard let ccell = cell as? CalendarViewDayCollectionViewCell else {
             print("[FAILURE] Displayed Cell does not conform to the requirements of the custom CVCell")
             return
         }
@@ -193,7 +194,7 @@ class CalendarView:UICollectionView, UICollectionViewDataSource, UICollectionVie
 
 extension CalendarView{
     
-    func visualSelectCell(_ cell: CalendarViewCell, isToday: Bool) {
+    func visualSelectCell(_ cell: CalendarViewDayCollectionViewCell, isToday: Bool) {
         
         let content = cell.contentView
         let label = cell.label
@@ -240,7 +241,7 @@ extension CalendarView{
 		let isToday = TMCalendar.isDateInToday(TimeManagement.convertToDate(indexPath, itemOffset: 1, sectionOffset: 1))
         
         //Create cell to access its components
-        guard let cell = collectionView.cellForItem(at: IndexPath(item: indexPath.item, section: indexPath.section)) as? CalendarViewCell else {
+        guard let cell = collectionView.cellForItem(at: IndexPath(item: indexPath.item, section: indexPath.section)) as? CalendarViewDayCollectionViewCell else {
             if failureMode {
                 print("[FAILURE] FOUND NO CELL TO VISUALLY DESELECT!")
             }
