@@ -48,8 +48,8 @@ class ViewController: UIViewController {
                     }
                     return
                 }
-                calendarview.visualDeselectCell(calendarview)
-                calendarview.visualSelectCell(todaysCell, isToday: true)
+//                calendarview.visualDeselectCell(calendarview)
+//                calendarview.visualSelectCell(todaysCell, isToday: true)
                 HSelection.selectedTime = HTimeManagement.TMToday
             
             } else {

@@ -6,6 +6,8 @@
 //  Copyright © 2017 Niklas Bülow. All rights reserved.
 //
 
+//TODO: Convert to Controller
+
 import UIKit
 import Foundation
 
@@ -50,9 +52,11 @@ class CalendarView:UICollectionView, UICollectionViewDataSource, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		
 		collectionView.register(CalendarViewYearCollectionViewCell.self, forCellWithReuseIdentifier: cellReusableID)
+		collectionView.dataSource = self
+		collectionView.allowsSelection = false
 		
 		let sizeA = collectionView.bounds.size.width - 25
-		cellSize = CGSize(width: sizeA , height: sizeA)
+		cellSize = CGSize(width: sizeA , height: sizeA * 12)
 
         let number = TMCalendar.components(.year, from: TMPast, to: TMFuture, options: .matchLast).year!
         
@@ -65,24 +69,12 @@ class CalendarView:UICollectionView, UICollectionViewDataSource, UICollectionVie
         
         //Create cell
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReusableID, for: indexPath) as! CalendarViewYearCollectionViewCell
-
+		
+		
+		
+		cell.initialize()
+		
 		return cell
-    }
-    
-    
-    //Tells the delegate that the item at the specified index path was selected.
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-	}
-    
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-		
-    }
-    
-    //Tells the delegate that the item at the specified path was deselected.
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-		
-        
     }
     
     
@@ -98,14 +90,6 @@ class CalendarView:UICollectionView, UICollectionViewDataSource, UICollectionVie
 
 
 extension CalendarView{
-    
-    func visualSelectCell(_ cell: CalendarViewDayCollectionViewCell, isToday: Bool) {
-
-	}
-    
-    func visualDeselectCell(_ collectionView: UICollectionView){
-
-    }
     
     func scrollToNextSection(_ collectionView: CalendarView, monthIndex: Int, animated: Bool){
         

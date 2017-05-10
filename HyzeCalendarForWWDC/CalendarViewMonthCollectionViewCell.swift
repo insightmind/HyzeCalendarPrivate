@@ -9,19 +9,10 @@
 import UIKit
 
 class CalendarViewMonthCollectionViewCell: UICollectionViewCell {
-	lazy var collectionView: CalendarViewYear = {
-		let cv = CalendarViewYear()
-		return cv
-	}()
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		self.contentMode = .center
 		self.backgroundColor = UIColor.randomColor()
-		self.collectionView.frame = self.bounds
-		//let dayCellView = dayView(frame: self.bounds)
-		self.contentView.layer.cornerRadius = self.bounds.width / 2
-		//self.addSubview(dayCellView)
 	}
 	
 	required init?(coder aDecoder: NSCoder) {

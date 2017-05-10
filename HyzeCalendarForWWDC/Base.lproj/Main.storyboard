@@ -135,16 +135,7 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="dayCell" id="nha-Fw-9dr" customClass="CalendarViewYearCollectionViewCell" customModule="HyzeCalendarForWWDC" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="53" height="53"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="53" height="53"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </view>
-                                    </collectionViewCell>
-                                </cells>
+                                <cells/>
                                 <connections>
                                     <outlet property="dataSource" destination="4HA-DO-8bO" id="Tc4-ja-9dG"/>
                                     <outlet property="delegate" destination="4HA-DO-8bO" id="fB2-xR-Zf3"/>

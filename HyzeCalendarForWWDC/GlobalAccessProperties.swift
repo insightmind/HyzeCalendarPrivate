@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-let informationMode = true
+let informationMode = false
 let debugMode = false
 let failureMode = false
 

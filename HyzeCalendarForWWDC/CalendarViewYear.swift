@@ -16,7 +16,9 @@ class CalendarViewYear: UICollectionView, UICollectionViewDataSource, UICollecti
 	let reuseIdentifier = "monthcell"
 	
 	override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
-		super.init(frame: frame, collectionViewLayout: layout)
+		super.init(frame: frame, collectionViewLayout: UICollectionViewLayout())
+		dataSource = self
+		delegate = self
 		self.backgroundColor = UIColor.clear
 	}
 	
