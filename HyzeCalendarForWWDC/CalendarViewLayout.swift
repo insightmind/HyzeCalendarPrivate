@@ -10,7 +10,7 @@ import UIKit
 
 class CalendarViewFlowLayout: UICollectionViewFlowLayout{
     // constant for minimum Spacing in CollectionView
-    let minimumSpacing:CGFloat = 0
+    let minimumSpacing:CGFloat = 2
     
     override init() {
         super.init()

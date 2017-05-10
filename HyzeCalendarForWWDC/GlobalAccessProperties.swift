@@ -24,9 +24,8 @@ let HTimeManagement = TimeManagement()
 let EManagement = EventManagement()
 var HSelection = Selection()
 
-let TMPast = Date.init(timeIntervalSince1970: 0)
-let TMFuture = Date.init(timeInterval: 3153600000, since: TMPast)
-
+let TMPast = Date.distantPast
+let TMFuture = Date.distantFuture
 var loaded = true
 var hourDecorationPosition = [[CGFloat]]()
 

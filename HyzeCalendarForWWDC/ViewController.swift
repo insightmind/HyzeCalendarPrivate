@@ -74,12 +74,12 @@ class ViewController: UIViewController {
 
     @IBAction func scrollDown(_ sender: UISwipeGestureRecognizer) {
 		HSelection.currentSection += 1
-		updateScrolling(animated: true)
+		//updateScrolling(animated: true)
         updateSelectedDayIcon()
     }
     @IBAction func scrollUp(_ sender: UISwipeGestureRecognizer) {
 		HSelection.currentSection -= 1
-        updateScrolling(animated: true)
+        //updateScrolling(animated: true)
         updateSelectedDayIcon()
     }
 
@@ -120,7 +120,7 @@ class ViewController: UIViewController {
 		HSelection.selectedTime = TMTime(date: Date())
         navigationBar.title = TimeManagement.getMonthName(HSelection.selectedTime.conformToDate())
 		
-		calendarview.scrollsToTop = false
+		//calendarview.scrollsToTop = false
 		
 		HSelection.currentSection = HSelection.selectedTime.monthID
 		
