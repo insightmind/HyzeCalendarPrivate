@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E0AF0571ECBA7E500E16D40 /* gears.json in Resources */ = {isa = PBXBuildFile; fileRef = 3E0AF0561ECBA7E500E16D40 /* gears.json */; };
 		3E1B95251E3FAD9D009EB5C9 /* dayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1B95241E3FAD9D009EB5C9 /* dayView.swift */; };
 		3E21053A1E5B56C400E78840 /* EventsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2105391E5B56C400E78840 /* EventsTableViewCell.swift */; };
 		3E2D7B791E6715E600A0170D /* EventEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2D7B781E6715E600A0170D /* EventEditorViewController.swift */; };
@@ -32,6 +33,8 @@
 		3EF096B01E3FDC9F0011E726 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF096AF1E3FDC9F0011E726 /* ViewController.swift */; };
 		3EFA24DD1E2BF1D200BC6DD5 /* CalendarViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFA24DC1E2BF1D200BC6DD5 /* CalendarViewFlowLayout.swift */; };
 		3EFE5F491E41310A004E75F9 /* dayMainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFE5F481E41310A004E75F9 /* dayMainButton.swift */; };
+		6BF73C510818F4FCE8C0FE62 /* Pods_HyzeCalendarForWWDC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0543519CD94155692068AECD /* Pods_HyzeCalendarForWWDC.framework */; };
+		F9A8AA88D3890C73E6A551F7 /* Pods_HyzeCalendarForWWDCTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6E538150D09439B5F1437B1 /* Pods_HyzeCalendarForWWDCTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0543519CD94155692068AECD /* Pods_HyzeCalendarForWWDC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HyzeCalendarForWWDC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E0AF0561ECBA7E500E16D40 /* gears.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gears.json; sourceTree = "<group>"; };
 		3E1B95241E3FAD9D009EB5C9 /* dayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dayView.swift; sourceTree = "<group>"; };
 		3E2105391E5B56C400E78840 /* EventsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsTableViewCell.swift; sourceTree = "<group>"; };
 		3E2D7B781E6715E600A0170D /* EventEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventEditorViewController.swift; sourceTree = "<group>"; };
@@ -73,6 +78,11 @@
 		3EF096AF1E3FDC9F0011E726 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3EFA24DC1E2BF1D200BC6DD5 /* CalendarViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewFlowLayout.swift; sourceTree = "<group>"; };
 		3EFE5F481E41310A004E75F9 /* dayMainButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dayMainButton.swift; sourceTree = "<group>"; };
+		5B7CCA386E0CEFCE5EB6A7B1 /* Pods-HyzeCalendarForWWDCTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HyzeCalendarForWWDCTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HyzeCalendarForWWDCTests/Pods-HyzeCalendarForWWDCTests.release.xcconfig"; sourceTree = "<group>"; };
+		8312D5277559EBB8434DD42D /* Pods-HyzeCalendarForWWDCTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HyzeCalendarForWWDCTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HyzeCalendarForWWDCTests/Pods-HyzeCalendarForWWDCTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A902C2E0FC262D2AFB4B7AAE /* Pods-HyzeCalendarForWWDC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HyzeCalendarForWWDC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HyzeCalendarForWWDC/Pods-HyzeCalendarForWWDC.debug.xcconfig"; sourceTree = "<group>"; };
+		B7D48C56D966FAEF5BAB3832 /* Pods-HyzeCalendarForWWDC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HyzeCalendarForWWDC.release.xcconfig"; path = "Pods/Target Support Files/Pods-HyzeCalendarForWWDC/Pods-HyzeCalendarForWWDC.release.xcconfig"; sourceTree = "<group>"; };
+		C6E538150D09439B5F1437B1 /* Pods_HyzeCalendarForWWDCTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HyzeCalendarForWWDCTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BF73C510818F4FCE8C0FE62 /* Pods_HyzeCalendarForWWDC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9A8AA88D3890C73E6A551F7 /* Pods_HyzeCalendarForWWDCTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,6 +138,8 @@
 				3EA80D501E2BEC9300FD87C3 /* HyzeCalendarForWWDC */,
 				3E533BC01EC36185000CEF5F /* HyzeCalendarForWWDC.app */,
 				3E533BC11EC36185000CEF5F /* HyzeCalendarForWWDCTests.xctest */,
+				8DEEC10548147B5BB05834B0 /* Pods */,
+				9DC3F2A1220328F82C5C7270 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -242,9 +256,30 @@
 		3EE519EC1E54C20A00074CDC /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				3E0AF0561ECBA7E500E16D40 /* gears.json */,
 				3E6BCC501E5479DD00369E7D /* SettingsViewController.swift */,
 			);
 			name = Settings;
+			sourceTree = "<group>";
+		};
+		8DEEC10548147B5BB05834B0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A902C2E0FC262D2AFB4B7AAE /* Pods-HyzeCalendarForWWDC.debug.xcconfig */,
+				B7D48C56D966FAEF5BAB3832 /* Pods-HyzeCalendarForWWDC.release.xcconfig */,
+				8312D5277559EBB8434DD42D /* Pods-HyzeCalendarForWWDCTests.debug.xcconfig */,
+				5B7CCA386E0CEFCE5EB6A7B1 /* Pods-HyzeCalendarForWWDCTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		9DC3F2A1220328F82C5C7270 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0543519CD94155692068AECD /* Pods_HyzeCalendarForWWDC.framework */,
+				C6E538150D09439B5F1437B1 /* Pods_HyzeCalendarForWWDCTests.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,10 +289,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3EA80D6B1E2BEC9300FD87C3 /* Build configuration list for PBXNativeTarget "HyzeCalendarForWWDC" */;
 			buildPhases = (
+				6BB2C9620EF62B3C85F24CD6 /* [CP] Check Pods Manifest.lock */,
 				3EA80D4A1E2BEC9300FD87C3 /* Sources */,
 				3EA80D4B1E2BEC9300FD87C3 /* Frameworks */,
 				3EA80D4C1E2BEC9300FD87C3 /* Resources */,
 				3ED2E4F61E437D6C001F8480 /* ShellScript */,
+				5C80AF4A0F75F6543E071909 /* [CP] Embed Pods Frameworks */,
+				B0EA12AD4389739A02B2105F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -272,9 +310,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3EA80D6E1E2BEC9300FD87C3 /* Build configuration list for PBXNativeTarget "HyzeCalendarForWWDCTests" */;
 			buildPhases = (
+				BEFCC7F68FC5A6675D26E6A3 /* [CP] Check Pods Manifest.lock */,
 				3EA80D5E1E2BEC9300FD87C3 /* Sources */,
 				3EA80D5F1E2BEC9300FD87C3 /* Frameworks */,
 				3EA80D601E2BEC9300FD87C3 /* Resources */,
+				79F040201DC0868F158847FF /* [CP] Embed Pods Frameworks */,
+				EB0F1A35A47ADC33C0EA009B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -343,6 +384,7 @@
 			files = (
 				3E68B5C91E3A886D00AE103F /* Main.storyboard in Resources */,
 				3EA80D5C1E2BEC9300FD87C3 /* LaunchScreen.storyboard in Resources */,
+				3E0AF0571ECBA7E500E16D40 /* gears.json in Resources */,
 				3EA80D591E2BEC9300FD87C3 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -369,6 +411,96 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
+		};
+		5C80AF4A0F75F6543E071909 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HyzeCalendarForWWDC/Pods-HyzeCalendarForWWDC-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6BB2C9620EF62B3C85F24CD6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		79F040201DC0868F158847FF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HyzeCalendarForWWDCTests/Pods-HyzeCalendarForWWDCTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B0EA12AD4389739A02B2105F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HyzeCalendarForWWDC/Pods-HyzeCalendarForWWDC-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BEFCC7F68FC5A6675D26E6A3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		EB0F1A35A47ADC33C0EA009B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HyzeCalendarForWWDCTests/Pods-HyzeCalendarForWWDCTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -537,6 +669,7 @@
 		};
 		3EA80D6C1E2BEC9300FD87C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A902C2E0FC262D2AFB4B7AAE /* Pods-HyzeCalendarForWWDC.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
@@ -557,6 +690,7 @@
 		};
 		3EA80D6D1E2BEC9300FD87C3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B7D48C56D966FAEF5BAB3832 /* Pods-HyzeCalendarForWWDC.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
@@ -577,6 +711,7 @@
 		};
 		3EA80D6F1E2BEC9300FD87C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8312D5277559EBB8434DD42D /* Pods-HyzeCalendarForWWDCTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -592,6 +727,7 @@
 		};
 		3EA80D701E2BEC9300FD87C3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B7CCA386E0CEFCE5EB6A7B1 /* Pods-HyzeCalendarForWWDCTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
