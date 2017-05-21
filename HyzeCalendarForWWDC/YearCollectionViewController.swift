@@ -10,10 +10,9 @@ import UIKit
 
 private let reuseIdentifier = "monthCell"
 
-class CalendarViewYearCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-
-	//Constant for Size of Cells and Header
-	var cellSize: CGSize?
+class YearCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+	
+	internal var yearID: Int
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,10 +21,9 @@ class CalendarViewYearCollectionViewController: UICollectionViewController, UICo
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(CalendarViewMonthCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        self.collectionView!.register(MonthCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 		self.collectionView!.isScrollEnabled = false
 		self.collectionView!.allowsSelection = false
-		self.collectionView!.dataSource = self
 		// Do any additional setup after loading the view.
     }
 
@@ -33,6 +31,16 @@ class CalendarViewYearCollectionViewController: UICollectionViewController, UICo
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+	
+	init(collectionViewLayout layout: UICollectionViewLayout, IDofYearCell ID: Int) {
+		self.yearID = ID
+		super.init(collectionViewLayout: layout)
+		debugPrint(yearID)
+	}
+	
+	required init?(coder aDecoder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
 
     /*
     // MARK: - Navigation
@@ -61,7 +69,7 @@ class CalendarViewYearCollectionViewController: UICollectionViewController, UICo
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CalendarViewMonthCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MonthCollectionViewCell
     
         // Configure the cell
     
@@ -69,8 +77,9 @@ class CalendarViewYearCollectionViewController: UICollectionViewController, UICo
     }
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-		let aSize = self.view.bounds.width - 25
-		let size = CGSize(width: aSize, height: aSize)
+		let width = self.view.bounds.width
+		let height = self.view.bounds.height / 12
+		let size = CGSize(width: width, height: height)
 		return size
 	}
 

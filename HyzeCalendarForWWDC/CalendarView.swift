@@ -11,7 +11,7 @@
 import UIKit
 import Foundation
 
-class CalendarView:UICollectionView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
+class CalendarView: UICollectionViewController, UICollectionViewDelegateFlowLayout{
 	
     @IBOutlet weak var eventTableView: EventTableView!
     
@@ -38,18 +38,22 @@ class CalendarView:UICollectionView, UICollectionViewDataSource, UICollectionVie
     //MARK: Functions
     
     //MARK: DataSourceFunctions
-    
-    override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
-        let layoutT = UICollectionViewLayout()
-        super.init(frame: frame, collectionViewLayout: layoutT)
-    }
+//    
+//    override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
+//        let layoutT = UICollectionViewLayout()
+//        super.init(frame: frame, collectionViewLayout: layoutT)
+//    }
+	
+	override init(collectionViewLayout layout: UICollectionViewLayout) {
+		super.init(collectionViewLayout: layout)
+	}
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
     //Asks your data source object for the number of items in the specified section
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		
 		collectionView.register(CalendarViewYearCollectionViewCell.self, forCellWithReuseIdentifier: cellReusableID)
 		collectionView.dataSource = self
@@ -65,14 +69,10 @@ class CalendarView:UICollectionView, UICollectionViewDataSource, UICollectionVie
     
 	
     // Asks your data source object for the cell that corresponds to the specified item in the collection view
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         //Create cell
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReusableID, for: indexPath) as! CalendarViewYearCollectionViewCell
-		
-		
-		
-		cell.initialize()
 		
 		return cell
     }
@@ -91,13 +91,13 @@ class CalendarView:UICollectionView, UICollectionViewDataSource, UICollectionVie
 
 extension CalendarView{
     
-    func scrollToNextSection(_ collectionView: CalendarView, monthIndex: Int, animated: Bool){
-        
-        collectionView.allowsSelection = false
-        collectionView.scrollToItem(at: IndexPath(item: 0, section: monthIndex), at: .top, animated: animated)
-        collectionView.allowsSelection = true
-    }
-    
+//    func scrollToNextSection(_ collectionView: CalendarView, monthIndex: Int, animated: Bool){
+//        
+//        collectionView.allowsSelection = false
+//        collectionView.scrollToItem(at: IndexPath(item: 0, section: monthIndex), at: .top, animated: animated)
+//        collectionView.allowsSelection = true
+//    }
+//    
     func updateUntilComplet(completion: (_ success: Bool) -> Void, offset: Int, collectionView: CalendarView) {
         HSelection.currentSection += offset
         completion(true)

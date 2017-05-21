@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CalendarViewMonthCollectionViewCell: UICollectionViewCell {
+class MonthCollectionViewCell: UICollectionViewCell {
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)

@@ -69,14 +69,6 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-		let animationView = LOTAnimationView(name: "gears")
-		animationView?.frame = CGRect(x: 0, y: 0, width: 250, height: 250)
-		animationView?.center = self.view.center
-		animationView?.contentMode = .scaleAspectFill
-		animationView?.loopAnimation = true
-		self.view.addSubview(animationView!)
-		self.view.sendSubview(toBack: animationView!)
-		animationView!.play()
         // Do any additional setup after loading the view.
     }
 

@@ -14,9 +14,7 @@ class ViewController: UIViewController {
     var load = 1
     var darkModeTemp: Bool!
     var isAMPMTemp: Bool!
-
-    @IBOutlet weak var calendarViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var calendarview: CalendarView!
+	
     @IBOutlet weak var navigationBar: UINavigationItem!
     @IBOutlet weak var selectedDayButton: UIBarButtonItem!
     @IBOutlet weak var eventTableView: EventTableView!
@@ -42,14 +40,6 @@ class ViewController: UIViewController {
                 if informationMode {
                     print("jumpToToday todaysIndexPath:\(HTimeManagement.TMToday.conformToIndexPath())")
                 }
-                guard let todaysCell = calendarview.cellForItem(at: HTimeManagement.TMToday.conformToIndexPath()) as? CalendarViewDayCollectionViewCell else {
-                    if failureMode {
-                        print("[FAILURE] There is no cell for today")
-                    }
-                    return
-                }
-//                calendarview.visualDeselectCell(calendarview)
-//                calendarview.visualSelectCell(todaysCell, isToday: true)
                 HSelection.selectedTime = HTimeManagement.TMToday
             
             } else {
@@ -58,28 +48,20 @@ class ViewController: UIViewController {
             eventTableView.reloadView()
         }
         navigationBar.title = TimeManagement.getMonthName(HSelection.selectedTime.conformToDate())
-        
-        calendarview.scrollToNextSection(calendarview, monthIndex: HSelection.selectedTime.conformToIndexPath().section, animated: true)
-        
         updateSelectedDayIcon()
     }
     
     @IBAction func jumpToSelected(_ sender: UIBarButtonItem) {
         navigationBar.title = TimeManagement.getMonthName(HSelection.selectedTime.conformToDate())
-        
-        calendarview.scrollToNextSection(calendarview, monthIndex: HSelection.selectedTime.conformToIndexPath().section, animated: true)
-        
         updateSelectedDayIcon()
     }
 
     @IBAction func scrollDown(_ sender: UISwipeGestureRecognizer) {
 		HSelection.currentSection += 1
-		//updateScrolling(animated: true)
         updateSelectedDayIcon()
     }
     @IBAction func scrollUp(_ sender: UISwipeGestureRecognizer) {
 		HSelection.currentSection -= 1
-        //updateScrolling(animated: true)
         updateSelectedDayIcon()
     }
 
@@ -102,12 +84,8 @@ class ViewController: UIViewController {
             updateDaysOfWeek(color: CALENDARGREY)
         }
         if darkModeTemp != darkMode {
-            eventTableView.reloadData()
-            calendarview.reloadSections(IndexSet(integer: HSelection.currentSection))
             darkModeTemp = darkMode
         } else if isAMPMTemp != isAMPM || eventsChange == true {
-            eventTableView.reloadData()
-            eventTableView.reloadView()
             eventsChange = false
         }
     }
@@ -120,16 +98,7 @@ class ViewController: UIViewController {
 		HSelection.selectedTime = TMTime(date: Date())
         navigationBar.title = TimeManagement.getMonthName(HSelection.selectedTime.conformToDate())
 		
-		//calendarview.scrollsToTop = false
-		
 		HSelection.currentSection = HSelection.selectedTime.monthID
-		
-        calendarview.backgroundColor = UIColor.clear
-		
-		calendarview.layoutIfNeeded()
-		calendarview.layoutSubviews()
-		
-		calendarview.reloadData()
     }
 
     func updateDaysOfWeek(color: UIColor) {
@@ -153,7 +122,7 @@ class ViewController: UIViewController {
 	//MARK: Function
 	
 	func updateScrolling(animated: Bool) {
-		calendarview.scrollToNextSection(calendarview, monthIndex: HSelection.currentSection, animated: animated)
+//		calendarview.scrollToNextSection(calendarview, monthIndex: HSelection.currentSection, animated: animated)
 		let indexPath = IndexPath(item: 1, section: HSelection.currentSection)
 		let date = TimeManagement.convertToDate(indexPath)
 		navigationBar.title = TimeManagement.getMonthName(date)

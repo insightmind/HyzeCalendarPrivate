@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CalendarViewDayCollectionViewCell: UICollectionViewCell {
+class DayCollectionViewCell: UICollectionViewCell {
 	lazy var label: UILabel = {
 		let lbl = UILabel()
 		lbl.textAlignment = .center

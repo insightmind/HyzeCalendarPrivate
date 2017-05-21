@@ -8,21 +8,22 @@
 
 import UIKit
 
-class CalendarViewYearCollectionViewCell: UICollectionViewCell {
-	
+class YearCollectionViewCell: UICollectionViewCell {
 
+	var controller: YearCollectionViewController?
 
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-	}
-	
-	func initialize() {
-		let collectionView = CalendarViewYearCollectionViewController(collectionViewLayout: CalendarViewFlowLayout())
-		collectionView.view.frame = self.bounds
-		self.addSubview(collectionView.view)
+		self.backgroundColor = UIColor.randomColor()
+		
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
+	}
+	
+	override func prepareForReuse() {
+		controller?.removeFromParentViewController()
+		controller = nil
 	}
 }
