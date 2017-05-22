@@ -21,7 +21,6 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
         // Register cell classes
         self.collectionView!.register(YearCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         // Do any additional setup after loading the view.
-		self.collectionView!.collectionViewLayout = CalendarViewFlowLayout()
 		self.collectionView!.allowsSelection = false
     }
 
@@ -75,9 +74,18 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 		
 		let width = self.collectionView!.bounds.size.width
-		let cellSize = CGSize(width: width, height: width * 12)
+		let height = self.collectionView!.bounds.size.height * 12
+		let cellSize = CGSize(width: width, height: height)
 		
 		return cellSize
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+		return 0
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+		return 0
 	}
 
     // MARK: UICollectionViewDelegate

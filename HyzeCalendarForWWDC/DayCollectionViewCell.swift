@@ -11,6 +11,7 @@ import UIKit
 class DayCollectionViewCell: UICollectionViewCell {
 	lazy var label: UILabel = {
 		let lbl = UILabel()
+		lbl.text = "TEST"
 		lbl.textAlignment = .center
 		return lbl
 	}()
@@ -18,7 +19,6 @@ class DayCollectionViewCell: UICollectionViewCell {
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		self.contentMode = .center
-		self.backgroundColor = UIColor.clear
 		self.label.contentMode = .center
 		self.label.frame = self.bounds
 		//let dayCellView = dayView(frame: self.bounds)
@@ -32,7 +32,8 @@ class DayCollectionViewCell: UICollectionViewCell {
 	}
 	
 	override func prepareForReuse() {
-		self.label.textColor = UIColor.clear
-		self.contentView.backgroundColor = UIColor.clear
+		for i in self.subviews {
+			i.removeFromSuperview()
+		}
 	}
 }

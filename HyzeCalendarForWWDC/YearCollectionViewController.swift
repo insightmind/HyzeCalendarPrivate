@@ -38,6 +38,10 @@ class YearCollectionViewController: UICollectionViewController, UICollectionView
 		debugPrint(yearID)
 	}
 	
+	deinit {
+		debugPrint("YearDeleted")
+	}
+	
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
@@ -56,7 +60,7 @@ class YearCollectionViewController: UICollectionViewController, UICollectionView
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
 		
-		collectionView.backgroundColor = UIColor.randomColor()
+		collectionView.backgroundColor = UIColor.clear
 		
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -72,7 +76,15 @@ class YearCollectionViewController: UICollectionViewController, UICollectionView
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MonthCollectionViewCell
     
         // Configure the cell
-    
+		if cell.controller == nil {
+			let newController = MonthCollectionViewController(collectionViewLayout: CalendarViewFlowLayout(), idOfYear: self.yearID, idOfMonth: indexPath.item)
+			self.addChildViewController(newController)
+			newController.view.frame = cell.bounds
+			cell.addSubview(newController.view)
+			newController.didMove(toParentViewController: self)
+			cell.controller = newController
+		}
+		
         return cell
     }
 	

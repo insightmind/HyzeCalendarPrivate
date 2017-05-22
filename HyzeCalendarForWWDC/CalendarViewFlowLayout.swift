@@ -16,12 +16,12 @@ class CalendarViewFlowLayout: UICollectionViewFlowLayout{
         super.init()
 
         self.minimumLineSpacing = minimumSpacing
-        self.minimumInteritemSpacing = minimumInteritemSpacing
+        self.minimumInteritemSpacing = minimumSpacing
     }
 	
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.minimumLineSpacing = minimumSpacing
-        self.minimumInteritemSpacing = minimumInteritemSpacing
+        self.minimumInteritemSpacing = minimumSpacing
     }
 }

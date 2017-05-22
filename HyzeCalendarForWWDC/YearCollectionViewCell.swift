@@ -14,7 +14,7 @@ class YearCollectionViewCell: UICollectionViewCell {
 
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		self.backgroundColor = UIColor.randomColor()
+		self.backgroundColor = UIColor.clear
 		
 	}
 	
@@ -23,7 +23,10 @@ class YearCollectionViewCell: UICollectionViewCell {
 	}
 	
 	override func prepareForReuse() {
-		controller?.removeFromParentViewController()
+		controller!.removeFromParentViewController()
+		for i in self.subviews {
+			i.removeFromSuperview()
+		}
 		controller = nil
 	}
 }
