@@ -9,6 +9,11 @@
 import UIKit
 import CoreGraphics
 
+enum ScrollDirection{
+	case up
+	case down
+}
+
 class ViewController: UIViewController {
     
     var load = 1
@@ -33,46 +38,22 @@ class ViewController: UIViewController {
     
     
     @IBAction func jumpToToday(_ sender: UIBarButtonItem) {
-        
-        
-        if TMCalendar.isDateInToday(HSelection.selectedTime.conformToDate()) != true {
-            if HSelection.currentSection == HTimeManagement.TMToday.conformToIndexPath().section {
-                if informationMode {
-                    print("jumpToToday todaysIndexPath:\(HTimeManagement.TMToday.conformToIndexPath())")
-                }
-                HSelection.selectedTime = HTimeManagement.TMToday
-            
-            } else {
-                HSelection.selectedTime = HTimeManagement.TMToday
-            }
-            eventTableView.reloadView()
-        }
-        navigationBar.title = TimeManagement.getMonthName(HSelection.selectedTime.conformToDate())
-        updateSelectedDayIcon()
+
     }
     
     @IBAction func jumpToSelected(_ sender: UIBarButtonItem) {
-        navigationBar.title = TimeManagement.getMonthName(HSelection.selectedTime.conformToDate())
-        updateSelectedDayIcon()
+		
     }
 
     @IBAction func scrollDown(_ sender: UISwipeGestureRecognizer) {
-		HSelection.currentSection += 1
-        updateSelectedDayIcon()
+
     }
     @IBAction func scrollUp(_ sender: UISwipeGestureRecognizer) {
-		HSelection.currentSection -= 1
-        updateSelectedDayIcon()
+
     }
 
     func updateSelectedDayIcon(){
-        if HSelection.currentSection < HSelection.selectedTime.monthID {
-            selectedDayButton.image = #imageLiteral(resourceName: "ic_keyboard_arrow_down")
-        } else if HSelection.currentSection > HSelection.selectedTime.monthID {
-            selectedDayButton.image = #imageLiteral(resourceName: "ic_keyboard_arrow_up")
-        } else {
-            selectedDayButton.image = #imageLiteral(resourceName: "ic_keyboard_arrow_right")
-        }
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -98,7 +79,6 @@ class ViewController: UIViewController {
 		HSelection.selectedTime = TMTime(date: Date())
         navigationBar.title = TimeManagement.getMonthName(HSelection.selectedTime.conformToDate())
 		
-		HSelection.currentSection = HSelection.selectedTime.monthID
     }
 
     func updateDaysOfWeek(color: UIColor) {
@@ -121,11 +101,12 @@ class ViewController: UIViewController {
 	
 	//MARK: Function
 	
-	func updateScrolling(animated: Bool) {
-//		calendarview.scrollToNextSection(calendarview, monthIndex: HSelection.currentSection, animated: animated)
-		let indexPath = IndexPath(item: 1, section: HSelection.currentSection)
-		let date = TimeManagement.convertToDate(indexPath)
-		navigationBar.title = TimeManagement.getMonthName(date)
+	func scrollToSection(yearID: Int, monthID: Int) {
+		
+	}
+	
+	func scrollToSection(direction: ScrollDirection) {
+		
 	}
 }
 

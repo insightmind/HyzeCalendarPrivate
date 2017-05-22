@@ -60,7 +60,7 @@ class TimeManagement {
 	}
 	
 	class func getMonthName(_ monthDate: Date) -> String {
-        let prestr = monthName[TMCalendar.component(.month, from: monthDate) - 1]
+        let prestr = monthName[TMCalendar.component(.month, from: monthDate)]
         let poststr = String(TMCalendar.component(.year, from: monthDate))
         let str = "\(prestr) \(poststr)"
 		if informationMode {

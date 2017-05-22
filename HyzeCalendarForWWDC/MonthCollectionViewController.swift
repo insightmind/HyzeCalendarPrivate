@@ -40,7 +40,6 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
 		self.monthID = monthID
 		super.init(collectionViewLayout: layout)
 		self.collectionView?.backgroundColor = UIColor.clear
-		debugPrint("\(self.yearID):\(self.monthID)")
 	}
 	
 	required init?(coder aDecoder: NSCoder) {

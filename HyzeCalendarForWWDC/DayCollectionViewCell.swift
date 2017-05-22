@@ -9,9 +9,11 @@
 import UIKit
 
 class DayCollectionViewCell: UICollectionViewCell {
+	
 	lazy var label: UILabel = {
 		let lbl = UILabel()
-		lbl.text = "TEST"
+		lbl.text = "0"
+		lbl.textColor = CALENDARWHITE
 		lbl.textAlignment = .center
 		return lbl
 	}()

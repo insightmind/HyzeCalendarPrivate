@@ -35,11 +35,6 @@ class YearCollectionViewController: UICollectionViewController, UICollectionView
 	init(collectionViewLayout layout: UICollectionViewLayout, IDofYearCell ID: Int) {
 		self.yearID = ID
 		super.init(collectionViewLayout: layout)
-		debugPrint(yearID)
-	}
-	
-	deinit {
-		debugPrint("YearDeleted")
 	}
 	
 	required init?(coder aDecoder: NSCoder) {

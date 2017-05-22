@@ -10,6 +10,7 @@ import Foundation
 
 struct Selection {
 	var selectedTime = TMTime(date: Date())
-	var currentSection = 0
+	var currentYearID: Int = 0
+	var currentMonthID: Int = 0
 	
 }
