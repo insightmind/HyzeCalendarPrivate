@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="4in-gb-opo">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -16,11 +20,11 @@
                         <viewControllerLayoutGuide type="bottom" id="n78-f7-hAW"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="PfB-zh-Sgo">
-                        <rect key="frame" x="0.0" y="44" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="44" width="320" height="524"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NeF-Az-v1m" customClass="dayView" customModule="HyzeCalendarForWWDC" customModuleProvider="target">
-                                <rect key="frame" x="75" y="40" width="225" height="225"/>
+                                <rect key="frame" x="47.5" y="40" width="225" height="225"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="225" id="CzV-EV-qyi"/>
@@ -28,7 +32,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qet-3Z-dfx" customClass="EventTableView" customModule="HyzeCalendarForWWDC" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="305" width="375" height="274"/>
+                                <rect key="frame" x="0.0" y="305" width="320" height="175"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -37,10 +41,10 @@
                                 <color key="sectionIndexTrackingBackgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Events" id="MZw-of-dJN" customClass="EventsTableViewCell" customModule="HyzeCalendarForWWDC" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MZw-of-dJN" id="MG7-Ke-Eap">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -51,7 +55,7 @@
                                 </connections>
                             </tableView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z9O-L3-LpW">
-                                <rect key="frame" x="0.0" y="579" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="480" width="320" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <items>
                                     <barButtonItem title="EDIT" id="Q3u-zm-CiR">
@@ -92,7 +96,6 @@
                         <color key="tintColor" red="0.25061571598052979" green="0.25083461403846741" blue="0.25064963102340698" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" red="0.93814986944198608" green="0.51639610528945923" blue="0.2135617733001709" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </simulatedNavigationBarMetrics>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4_7.fullscreen"/>
                     <connections>
                         <outlet property="day" destination="NeF-Az-v1m" id="RBp-N6-QbW"/>
                     </connections>
@@ -111,15 +114,15 @@
                         <viewControllerLayoutGuide type="bottom" id="AY9-Ry-ahx"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Rdh-tp-9Cc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dJ8-vd-dFf">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                                 <color key="backgroundColor" red="0.9381498694" green="0.51639610530000002" blue="0.21356177330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vom-94-dII">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                                 <color key="barTintColor" red="0.9381498694" green="0.51639610530000002" blue="0.21356177330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textAttributes key="titleTextAttributes">
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -144,7 +147,7 @@
                                 </items>
                             </navigationBar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="Bqb-Qr-ykm">
-                                <rect key="frame" x="16" y="72" width="343" height="60"/>
+                                <rect key="frame" x="16" y="72" width="288" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="Q4Y-bw-SgI"/>
                                 </constraints>
@@ -153,7 +156,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="5Ie-7X-wQd">
-                                <rect key="frame" x="0.0" y="185" width="375" height="170"/>
+                                <rect key="frame" x="0.0" y="185" width="320" height="170"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="170" id="xMa-Pw-88f"/>
                                 </constraints>
@@ -162,7 +165,7 @@
                                 </date>
                             </datePicker>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="RbN-Be-Leo">
-                                <rect key="frame" x="0.0" y="398" width="375" height="170"/>
+                                <rect key="frame" x="0.0" y="398" width="320" height="170"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="170" id="mWd-wX-lY8"/>
                                 </constraints>

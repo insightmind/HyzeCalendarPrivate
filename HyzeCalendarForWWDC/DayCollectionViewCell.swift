@@ -23,24 +23,11 @@ class DayCollectionViewCell: UICollectionViewCell {
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		if !configured {
-			self.contentMode = .center
-			//let dayCellView = dayView(frame: self.bounds)
-			self.contentView.layer.cornerRadius = self.bounds.width / 2
-			//self.addSubview(dayCellView)
-			self.configured = true
-		}
-	}
-	
-	required init?(coder aDecoder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
-	}
-	
-	func configureCellDesign() {
-		
-	}
-	
-	func configureLabel() {
+		self.contentMode = .center
+		//let dayCellView = dayView(frame: self.bounds)
+		self.contentView.layer.cornerRadius = self.bounds.width / 2
+		//self.addSubview(dayCellView)
+		self.configured = true
 		if self.label == nil {
 			self.lbl.contentMode = .center
 			self.lbl.frame = self.bounds
@@ -49,6 +36,9 @@ class DayCollectionViewCell: UICollectionViewCell {
 		} else {
 			self.label!.text = ""
 		}
-		
+	}
+	
+	required init?(coder aDecoder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
 	}
 }

@@ -24,7 +24,12 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
         // Register cell classes
         self.collectionView!.register(DayCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 		self.collectionView!.isScrollEnabled = false
+		self.automaticallyAdjustsScrollViewInsets = true
+		self.collectionView?.autoresizesSubviews = true
+		self.title = "MonthCollectionViewController"
         // Do any additional setup after loading the view.
+		
+		collectionViewLayout.invalidateLayout()
     }
 
     override func didReceiveMemoryWarning() {
@@ -71,24 +76,22 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
     
         // Configure the cell
 		cell.contentView.backgroundColor = CALENDARGREY
-		cell.configureCellDesign()
-		cell.configureLabel()
     
         return cell
     }
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-		let width = self.collectionView!.bounds.width / CGFloat(_daysInWeek)
-		let size = CGSize(width: width, height: width)
+		let width = collectionView.bounds.width / CGFloat(_daysInWeek)
+		let size = CGSize(width: width - 2, height: width - 2)
 		return size
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-		return 0
+		return 2
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-		return 0
+		return 2
 	}
 
     // MARK: UICollectionViewDelegate

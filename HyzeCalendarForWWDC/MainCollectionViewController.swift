@@ -10,7 +10,16 @@ import UIKit
 
 private let reuseIdentifier = "MonthCell"
 
+
+
 class MainCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+	
+	@IBAction func scrollUp(_ sender: UISwipeGestureRecognizer) {
+		self.scrollToSection(direction: ScrollDirection.up, animated: true)
+	}
+	@IBAction func scrollDown(_ sender: UISwipeGestureRecognizer) {
+		self.scrollToSection(direction: ScrollDirection.down, animated: true)
+	}
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,9 +31,9 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
         self.collectionView!.register(MonthCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         // Do any additional setup after loading the view.
 		self.collectionView!.allowsSelection = false
-		self.automaticallyAdjustsScrollViewInsets = false
+		
     }
-
+	
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -74,19 +83,63 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
     }
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-		let width = self.collectionView!.bounds.size.width
+		let width = UIScreen.main.bounds.width - 12
 		let cellSize = CGSize(width: width, height: width / 7 * 6)
 		
 		return cellSize
 		
 	}
 	
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+		return UIEdgeInsets.zero
+	}
+	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-		return 0
+		return 5
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
 		return 0
+	}
+	
+	func scrollToSection(direction: ScrollDirection, animated anim: Bool = false) {
+		
+		let tmonthID = HSelection.currentMonthID
+		let tyearID = HSelection.currentYearID
+		
+		switch direction {
+		case .up:
+			if tmonthID == 0 {
+				if tyearID == 0 {
+					break
+				} else {
+					self.scrollToSection(yearID: tyearID - 1, monthID: 11, animated: anim)
+				}
+			} else {
+				self.scrollToSection(yearID: tyearID, monthID: tmonthID - 1, animated: anim)
+			}
+		case .down:
+			if tmonthID == 11 {
+				if tyearID == 3999 {
+					break
+				} else {
+					self.scrollToSection(yearID: tyearID + 1, monthID: 0, animated: anim)
+				}
+			} else {
+				self.scrollToSection(yearID: tyearID, monthID: tmonthID + 1, animated: anim)
+			}
+		}
+	}
+	
+	func scrollToSection(yearID: Int, monthID: Int, animated anim: Bool = false) {
+		
+		let indexPath = IndexPath(item: monthID, section: yearID)
+		
+		HSelection.currentMonthID = monthID
+		HSelection.currentYearID = yearID
+		
+		self.collectionView!.scrollToItem(at: indexPath, at: .centeredVertically, animated: anim)
+		
 	}
 
     // MARK: UICollectionViewDelegate
@@ -124,6 +177,6 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 
 extension MainCollectionViewController {
 	
-
+	
 	
 }

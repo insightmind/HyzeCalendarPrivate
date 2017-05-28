@@ -9,7 +9,7 @@
 import UIKit
 import CoreGraphics
 
-enum ScrollDirection{
+public enum ScrollDirection {
 	case up
 	case down
 }
@@ -22,6 +22,7 @@ class ViewController: UIViewController {
 	
 	var calendarViewController: MainCollectionViewController? = nil
 	
+	@IBOutlet weak var calendarView: UIView!
     @IBOutlet weak var navigationBar: UINavigationItem!
     @IBOutlet weak var selectedDayButton: UIBarButtonItem!
     @IBOutlet weak var eventTableView: EventTableView!
@@ -40,18 +41,14 @@ class ViewController: UIViewController {
     
     
     @IBAction func jumpToToday(_ sender: UIBarButtonItem) {
-
+		let date = Date()
+		let year = TMCalendar.component(.year, from: date)
+		let month = TMCalendar.component(.month, from: date)
+		scrollToSection(yearID: year, monthID: month, animated: true)
     }
     
     @IBAction func jumpToSelected(_ sender: UIBarButtonItem) {
 		
-    }
-
-    @IBAction func scrollDown(_ sender: UISwipeGestureRecognizer) {
-
-    }
-    @IBAction func scrollUp(_ sender: UISwipeGestureRecognizer) {
-
     }
 
     func updateSelectedDayIcon(){
@@ -76,15 +73,23 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+		self.view.layoutIfNeeded()
 		
         darkModeTemp = darkMode
-		HSelection.selectedTime = TMTime(date: Date())
-        navigationBar.title = TimeManagement.getMonthName(HSelection.selectedTime.conformToDate())
+        navigationBar.title = TimeManagement.getMonthName(Date())
 		
 		
 		let date = Date()
-		let year = TMCalendar.components(.year, from: TMPast, to: date, options: .matchLast).year!
+		let year = TMCalendar.component(.year, from: date)
 		let month = TMCalendar.component(.month, from: date)
+		
+		
+		for i in childViewControllers {
+			if i.title == "CalendarView" {
+				self.calendarViewController = i as? MainCollectionViewController
+			}
+		}
+		
 		scrollToSection(yearID: year, monthID: month)
 		
     }
@@ -111,22 +116,42 @@ class ViewController: UIViewController {
 	
 	func scrollToSection(yearID: Int, monthID: Int, animated anim: Bool = false) {
 		
-		for i in childViewControllers {
-			if i.title == "CalendarView" {
-				self.calendarViewController = i as? MainCollectionViewController
-			}
-		}
-		
 		let indexPath = IndexPath(item: monthID, section: yearID)
 		
-		calendarViewController?.collectionView!.reloadInputViews()
+		HSelection.currentMonthID = monthID
+		HSelection.currentYearID = yearID
 		
-		calendarViewController?.collectionView!.scrollToItem(at: indexPath, at: .top, animated: anim)
+		calendarViewController?.collectionView!.scrollToItem(at: indexPath, at: .centeredVertically, animated: anim)
 		
 	}
 	
-	func scrollToSection(direction: ScrollDirection) {
+	func scrollToSection(direction: ScrollDirection, animated anim: Bool = false) {
 		
+		let monthID = HSelection.currentMonthID
+		let yearID = HSelection.currentYearID
+		
+		switch direction {
+		case .up:
+			if monthID == 0 {
+				if yearID == 0 {
+					break
+				} else {
+					scrollToSection(yearID: yearID - 1, monthID: 11, animated: anim)
+				}
+			} else {
+				scrollToSection(yearID: yearID, monthID: monthID - 1, animated: anim)
+			}
+		case .down:
+			if monthID == 11 {
+				if yearID == 3999 {
+					break
+				} else {
+					scrollToSection(yearID: yearID + 1, monthID: 0, animated: anim)
+				}
+			} else {
+				scrollToSection(yearID: yearID, monthID: monthID + 1, animated: anim)
+			}
+		}
 	}
 }
 

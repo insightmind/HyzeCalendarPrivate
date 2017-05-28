@@ -15,7 +15,7 @@ class MonthCollectionViewCell: UICollectionViewCell {
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		self.backgroundColor = UIColor.randomColor()
+		self.backgroundColor = CALENDARWHITE
 	}
 	
 	required init?(coder aDecoder: NSCoder) {

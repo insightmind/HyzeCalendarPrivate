@@ -23,4 +23,8 @@ class CalendarViewFlowLayout: UICollectionViewFlowLayout{
         self.minimumLineSpacing = minimumSpacing
         self.minimumInteritemSpacing = minimumSpacing
     }
+	override func prepare() {
+		invalidateLayout()
+		super.prepare()
+	}
 }
