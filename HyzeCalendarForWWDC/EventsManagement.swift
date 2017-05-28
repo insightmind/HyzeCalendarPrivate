@@ -50,10 +50,10 @@ class EventManagement {
                 let moreDays = TMCalendar.compare(event.startDate, to: event.endDate, toUnitGranularity: .day)
                 
                 if moreDays == .orderedAscending {
-                    if TMCalendar.compare(event.startDate, to: HSelection.selectedTime.conformToDate(), toUnitGranularity: .day) == .orderedSame {
+                    if TMCalendar.compare(event.startDate, to: TimeManagement.convertToDate(yearID: HSelection.selectedYearID, monthID: HSelection.selectedDayID, dayID: HSelection.selectedDayID), toUnitGranularity: .day) == .orderedSame {
                         startTime = (startHour * 60) + startMinute
                         endTime = 1440
-                    } else if TMCalendar.compare(event.endDate, to: HSelection.selectedTime.conformToDate(), toUnitGranularity: .day) == .orderedSame {
+                    } else if TMCalendar.compare(event.endDate, to: TimeManagement.convertToDate(yearID: HSelection.selectedYearID, monthID: HSelection.selectedDayID, dayID: HSelection.selectedDayID), toUnitGranularity: .day) == .orderedSame {
                         startTime = 0
                         endTime = (endHour * 60) + endMinute
                     } else {

@@ -19,7 +19,15 @@ let CALENDARWHITE = UIColor.white
 let CALENDARGREY = UIColor.init(red: 0.251, green: 0.251, blue: 0.251, alpha: 1)
 let CALENDARORANGE = UIColor.orange
 
-let TMCalendar = NSCalendar(identifier: .gregorian)!
+var TMCalendar: NSCalendar = {
+	let c = NSCalendar(identifier: .gregorian)!
+	
+	c.timeZone = NSTimeZone.system
+	
+	return c
+}()
+
+
 let HTimeManagement = TimeManagement()
 let EManagement = EventManagement()
 var HSelection = Selection()

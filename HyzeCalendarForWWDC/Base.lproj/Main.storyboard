@@ -90,7 +90,7 @@
                                 <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="center" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationWidth="0.0" reuseIdentifier="Events" rowHeight="50" id="dRc-1V-GLg" customClass="EventsTableViewCell" customModule="HyzeCalendarForWWDC" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="321" height="50"/>
+                                        <rect key="frame" x="0.0" y="28" width="320" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dRc-1V-GLg" id="6xq-Qc-5SA" customClass="EventsTableViewCell" customModule="HyzeCalendarForWWDC" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="49.5"/>
@@ -262,8 +262,8 @@
         <scene sceneID="IWj-aY-DO5">
             <objects>
                 <collectionViewController title="CalendarView" clearsSelectionOnViewWillAppear="NO" id="otY-kj-Xhj" customClass="MainCollectionViewController" customModule="HyzeCalendarForWWDC" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" misplaced="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="7Dr-qB-5C2">
-                        <rect key="frame" x="0.0" y="0.0" width="308" height="264"/>
+                    <collectionView key="view" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="7Dr-qB-5C2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -281,6 +281,8 @@
                         </connections>
                     </collectionView>
                     <nil key="simulatedStatusBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="480"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KiN-gU-Ijd" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="down" id="0tF-EL-58K">

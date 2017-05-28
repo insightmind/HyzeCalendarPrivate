@@ -31,6 +31,9 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
         self.collectionView!.register(MonthCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         // Do any additional setup after loading the view.
 		self.collectionView!.allowsSelection = false
+		self.collectionView!.isScrollEnabled = false
+		
+		self.collectionView?.backgroundColor = UIColor.clear
 		
     }
 	
@@ -67,6 +70,8 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MonthCollectionViewCell
+		
+		
 		
         // Configure the cell
 		if cell.controller == nil {

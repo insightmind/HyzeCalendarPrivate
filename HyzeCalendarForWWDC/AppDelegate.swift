@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         defaults.register(defaults: ["IsAMPM" : false])
         
         calculateColorsForEventsOnSelectedDay(numberOfEvents: EManagement.getEvents(for: Date()).count)
-        
+		
         return true
     }
 

@@ -16,7 +16,12 @@ class DayCollectionViewCell: UICollectionViewCell {
 	lazy var lbl: UILabel = {
 		let lbl = UILabel()
 		lbl.text = "0"
-		lbl.textColor = CALENDARWHITE
+		if darkMode {
+			lbl.textColor = CALENDARWHITE
+		} else {
+			lbl.textColor = CALENDARGREY
+		}
+		
 		lbl.textAlignment = .center
 		return lbl
 	}()

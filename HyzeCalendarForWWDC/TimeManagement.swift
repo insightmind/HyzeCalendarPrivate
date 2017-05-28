@@ -11,56 +11,39 @@ import EventKit
 
 class TimeManagement {
 	
-	var TMToday = TMTime.init(date: Date())
+	var TMToday = Date()
     
-	class func convertToDate(_ indexPath: IndexPath, itemOffset: Int = 1, sectionOffset: Int = 1) -> Date {
-        let convDate = TMPast
-        guard let d = TMCalendar.date(byAdding: .month, value: indexPath.section + sectionOffset, to: convDate, options: .matchFirst) else {
-            if failureMode {
-                print("[FAILURE] Could not convert indexPath to Date")
-            }
-            return Date()
-        }
-        guard let date = TMCalendar.date(byAdding: .day, value: indexPath.item + itemOffset, to: d, options: .matchFirst) else {
-            if failureMode {
-                print("[FAILURE] Could not convert indexPath to Date")
-            }
-            return Date()
-        }
-		if informationMode {
-			print("convertToDate \(indexPath), \(itemOffset), \(sectionOffset): \(date)")
+	class func convertToDate(yearID: Int, monthID: Int, dayID: Int) -> Date {
+		guard let yearDate = TMCalendar.date(byAdding: .year, value: yearID - 1, to: TMPast, options: .matchStrictly) else {
+			return TMPast
+		}
+		guard let monthDate = TMCalendar.date(byAdding: .month, value: monthID, to: yearDate, options: .matchStrictly) else {
+			return yearDate
+		}
+		guard let date = TMCalendar.date(byAdding: .day, value: dayID, to: monthDate, options: .matchStrictly) else {
+			return monthDate
 		}
         return date
     }
 	
-	class func convertToIndexPath(_ date: Date, calendar: NSCalendar) -> IndexPath {
-		var indexPath = IndexPath(item: 0, section: 0)
-		indexPath.section = calendar.components(.month, from: TMPast, to: date, options: .matchFirst).month!
-		indexPath.item = calendar.component(.day, from: date)
-		if informationMode {
-			print("convertToIndexPath \(date), \(calendar): \(indexPath)")
-		}
-		return indexPath
+	class func calculateFirstDayInMonth(yearID: Int, monthID: Int) -> Date{
+		let date = TimeManagement.convertToDate(yearID: yearID, monthID: monthID, dayID: 1)
+		var components = TMCalendar.components([.year, .month], from: date)
+		components.day = 2
+		let startOfMonth = TMCalendar.date(from: components)!
+		print(date)
+		print(startOfMonth)
+		return startOfMonth
 	}
 	
-	class func calculateFirstDayInMonth(of date: Date) -> Date?{
-		let fdate = TMCalendar.date(bySettingUnit: .day, value: 1, of: date, options: .matchFirst)
-		if informationMode {
-			print("calculateFirstDayInMonth \(date): \(String(describing: fdate))")
-		}
-		return fdate
-	}
 	
-	class func calculateFirstDayInMonth(of indexPath: IndexPath) -> Date?{
-		let fdate = TimeManagement.convertToDate(IndexPath(item: 1, section: indexPath.section))
-		if informationMode {
-			print("calculateFirstDayInMonth \(indexPath): \(String(describing: fdate))")
-		}
-		return fdate
+	class func calculateFirstWeekDayOfMonth(yearID: Int, monthID: Int) -> Int {
+		let date = calculateFirstDayInMonth(yearID: yearID, monthID: monthID)
+		return TMCalendar.component(.weekday, from: date)
 	}
 	
 	class func getMonthName(_ monthDate: Date) -> String {
-        let prestr = monthName[TMCalendar.component(.month, from: monthDate)]
+        let prestr = monthName[TMCalendar.component(.month, from: monthDate) - 1]
         let poststr = String(TMCalendar.component(.year, from: monthDate))
         let str = "\(prestr) \(poststr)"
 		if informationMode {
@@ -68,4 +51,10 @@ class TimeManagement {
 		}
         return str
     }
+	
+	class func calculateDaysInMonth(yearID: Int, monthID: Int) -> Int {
+		let date = calculateFirstDayInMonth(yearID: yearID, monthID: monthID)
+		let numOfDaysInMonth = TMCalendar.range(of: .day, in: .month, for: date).length
+		return numOfDaysInMonth
+	}
 }

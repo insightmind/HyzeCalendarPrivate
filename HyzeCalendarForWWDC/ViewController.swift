@@ -80,9 +80,9 @@ class ViewController: UIViewController {
 		
 		
 		let date = Date()
-		let year = TMCalendar.component(.year, from: date)
-		let month = TMCalendar.component(.month, from: date)
-		
+		HSelection.selectedYearID = TMCalendar.component(.year, from: date)
+		HSelection.selectedMonthID = TMCalendar.component(.month, from: date)
+		HSelection.selectedDayID = TMCalendar.component(.day, from: date)
 		
 		for i in childViewControllers {
 			if i.title == "CalendarView" {
@@ -90,7 +90,7 @@ class ViewController: UIViewController {
 			}
 		}
 		
-		scrollToSection(yearID: year, monthID: month)
+		scrollToSection(yearID: HSelection.selectedYearID, monthID: HSelection.selectedMonthID)
 		
     }
 
