@@ -20,6 +20,8 @@ class ViewController: UIViewController {
     var darkModeTemp: Bool!
     var isAMPMTemp: Bool!
 	
+	var calendarViewController: MainCollectionViewController? = nil
+	
     @IBOutlet weak var navigationBar: UINavigationItem!
     @IBOutlet weak var selectedDayButton: UIBarButtonItem!
     @IBOutlet weak var eventTableView: EventTableView!
@@ -74,10 +76,16 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
+		
         darkModeTemp = darkMode
 		HSelection.selectedTime = TMTime(date: Date())
         navigationBar.title = TimeManagement.getMonthName(HSelection.selectedTime.conformToDate())
+		
+		
+		let date = Date()
+		let year = TMCalendar.components(.year, from: TMPast, to: date, options: .matchLast).year!
+		let month = TMCalendar.component(.month, from: date)
+		scrollToSection(yearID: year, monthID: month)
 		
     }
 
@@ -101,7 +109,19 @@ class ViewController: UIViewController {
 	
 	//MARK: Function
 	
-	func scrollToSection(yearID: Int, monthID: Int) {
+	func scrollToSection(yearID: Int, monthID: Int, animated anim: Bool = false) {
+		
+		for i in childViewControllers {
+			if i.title == "CalendarView" {
+				self.calendarViewController = i as? MainCollectionViewController
+			}
+		}
+		
+		let indexPath = IndexPath(item: monthID, section: yearID)
+		
+		calendarViewController?.collectionView!.reloadInputViews()
+		
+		calendarViewController?.collectionView!.scrollToItem(at: indexPath, at: .top, animated: anim)
 		
 	}
 	

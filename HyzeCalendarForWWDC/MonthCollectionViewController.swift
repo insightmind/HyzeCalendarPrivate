@@ -8,7 +8,7 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
+private let reuseIdentifier = "DayCell"
 
 class MonthCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 	
@@ -17,12 +17,9 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
 	
 	let _weeksInMonth = 6
 	let _daysInWeek = 7
-
+	
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
         self.collectionView!.register(DayCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
@@ -39,7 +36,7 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
 		self.yearID = yearID
 		self.monthID = monthID
 		super.init(collectionViewLayout: layout)
-		self.collectionView?.backgroundColor = UIColor.clear
+		self.collectionView?.backgroundColor = CALENDARWHITE
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
@@ -66,7 +63,7 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return _weeksInMonth * _daysInWeek
+        return _daysInWeek * _weeksInMonth
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -74,22 +71,24 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
     
         // Configure the cell
 		cell.contentView.backgroundColor = CALENDARGREY
+		cell.configureCellDesign()
+		cell.configureLabel()
     
         return cell
     }
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-		let width = self.collectionView!.frame.width / CGFloat(_daysInWeek)
-		let size = CGSize(width: width - 2, height: width - 2)
+		let width = self.collectionView!.bounds.width / CGFloat(_daysInWeek)
+		let size = CGSize(width: width, height: width)
 		return size
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-		return 2
+		return 0
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-		return 2
+		return 0
 	}
 
     // MARK: UICollectionViewDelegate
@@ -101,12 +100,13 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
     }
     */
 
-    /*
-    // Uncomment this method to specify if the specified item should be selected
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         return true
     }
-    */
+	
+	override func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
+		return true
+	}
 
     /*
     // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
@@ -122,5 +122,5 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
     
     }
     */
-
+	
 }

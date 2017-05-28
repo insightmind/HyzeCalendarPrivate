@@ -10,7 +10,10 @@ import UIKit
 
 class DayCollectionViewCell: UICollectionViewCell {
 	
-	lazy var label: UILabel = {
+	var label: UILabel?
+	var configured: Bool = false
+	
+	lazy var lbl: UILabel = {
 		let lbl = UILabel()
 		lbl.text = "0"
 		lbl.textColor = CALENDARWHITE
@@ -20,22 +23,32 @@ class DayCollectionViewCell: UICollectionViewCell {
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		self.contentMode = .center
-		self.label.contentMode = .center
-		self.label.frame = self.bounds
-		//let dayCellView = dayView(frame: self.bounds)
-		self.contentView.layer.cornerRadius = self.bounds.width / 2
-		//self.addSubview(dayCellView)
-		self.addSubview(label)
+		if !configured {
+			self.contentMode = .center
+			//let dayCellView = dayView(frame: self.bounds)
+			self.contentView.layer.cornerRadius = self.bounds.width / 2
+			//self.addSubview(dayCellView)
+			self.configured = true
+		}
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
-		super.init(coder: aDecoder)
+		fatalError("init(coder:) has not been implemented")
 	}
 	
-	override func prepareForReuse() {
-		for i in self.subviews {
-			i.removeFromSuperview()
+	func configureCellDesign() {
+		
+	}
+	
+	func configureLabel() {
+		if self.label == nil {
+			self.lbl.contentMode = .center
+			self.lbl.frame = self.bounds
+			self.addSubview(lbl)
+			self.label = lbl
+		} else {
+			self.label!.text = ""
 		}
+		
 	}
 }

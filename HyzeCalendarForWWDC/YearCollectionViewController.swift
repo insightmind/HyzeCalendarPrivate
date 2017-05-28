@@ -8,7 +8,7 @@
 
 import UIKit
 
-private let reuseIdentifier = "monthCell"
+private let reuseIdentifier = "MonthCell"
 
 class YearCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 	
@@ -24,6 +24,7 @@ class YearCollectionViewController: UICollectionViewController, UICollectionView
         self.collectionView!.register(MonthCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 		self.collectionView!.isScrollEnabled = false
 		self.collectionView!.allowsSelection = false
+		self.collectionView!.isPrefetchingEnabled = false
 		// Do any additional setup after loading the view.
     }
 

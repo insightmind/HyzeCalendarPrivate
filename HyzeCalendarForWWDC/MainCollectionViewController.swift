@@ -8,7 +8,7 @@
 
 import UIKit
 
-private let reuseIdentifier = "YearCell"
+private let reuseIdentifier = "MonthCell"
 
 class MainCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 	
@@ -19,9 +19,10 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(YearCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        self.collectionView!.register(MonthCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         // Do any additional setup after loading the view.
 		self.collectionView!.allowsSelection = false
+		self.automaticallyAdjustsScrollViewInsets = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,41 +44,41 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 	
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+		let years = TMCalendar.components(.year, from: TMPast, to: TMFuture, options: .matchLast).year!
+		
+        return years
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
 		
-		let numOfYears = TMCalendar.components(.year, from: TMPast, to: TMFuture, options: .matchLast).year!
-		
-        return numOfYears
+        return 12
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! YearCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MonthCollectionViewCell
 		
         // Configure the cell
 		if cell.controller == nil {
-			let newController = YearCollectionViewController(collectionViewLayout: CalendarViewFlowLayout(), IDofYearCell: indexPath.item)
+			let newController = MonthCollectionViewController(collectionViewLayout: CalendarViewFlowLayout(), idOfYear: indexPath.section, idOfMonth: indexPath.item)
 			self.addChildViewController(newController)
 			newController.view.frame = cell.bounds
+			newController.view.tag = 69
 			cell.addSubview(newController.view)
 			newController.didMove(toParentViewController: self)
 			cell.controller = newController
 		}
-    
+		
         return cell
     }
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-		
 		let width = self.collectionView!.bounds.size.width
-		let height = self.collectionView!.bounds.size.height * 12
-		let cellSize = CGSize(width: width, height: height)
+		let cellSize = CGSize(width: width, height: width / 7 * 6)
 		
 		return cellSize
+		
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -119,4 +120,10 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
     }
     */
 
+}
+
+extension MainCollectionViewController {
+	
+
+	
 }

@@ -14,7 +14,6 @@ class CalendarViewFlowLayout: UICollectionViewFlowLayout{
 	
     override init() {
         super.init()
-
         self.minimumLineSpacing = minimumSpacing
         self.minimumInteritemSpacing = minimumSpacing
     }

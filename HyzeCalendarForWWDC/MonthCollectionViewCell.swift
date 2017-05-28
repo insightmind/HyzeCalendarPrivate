@@ -12,9 +12,10 @@ class MonthCollectionViewCell: UICollectionViewCell {
 	
 	var controller: MonthCollectionViewController?
 	
+	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		self.backgroundColor = UIColor.clear
+		self.backgroundColor = UIColor.randomColor()
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
@@ -23,9 +24,7 @@ class MonthCollectionViewCell: UICollectionViewCell {
 	
 	override func prepareForReuse() {
 		controller!.removeFromParentViewController()
-		for i in self.subviews {
-			i.removeFromSuperview()
-		}
+		self.viewWithTag(69)?.removeFromSuperview()
 		controller = nil
 	}
 }
