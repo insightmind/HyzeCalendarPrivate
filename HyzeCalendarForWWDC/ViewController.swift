@@ -44,6 +44,8 @@ class ViewController: UIViewController {
 		let date = Date()
 		let year = TMCalendar.component(.year, from: date)
 		let month = TMCalendar.component(.month, from: date)
+		print(year)
+		print(month)
 		scrollToSection(yearID: year, monthID: month, animated: true)
     }
     

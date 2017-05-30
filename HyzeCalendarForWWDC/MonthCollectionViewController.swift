@@ -157,6 +157,9 @@ extension MonthCollectionViewController {
 			return false
 		}
 		cell.isSelected = true
+		
+		print("\(indexPath): | \(TimeManagement.convertToDate(yearID: yearID, monthID: monthID, dayID: indexPath.item))")
+		
 		return true
 	}
 	

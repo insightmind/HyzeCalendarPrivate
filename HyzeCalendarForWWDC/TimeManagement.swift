@@ -14,26 +14,15 @@ class TimeManagement {
 	var TMToday = Date()
     
 	class func convertToDate(yearID: Int, monthID: Int, dayID: Int) -> Date {
-		guard let yearDate = TMCalendar.date(byAdding: .year, value: yearID - 1, to: TMPast, options: .matchStrictly) else {
-			return TMPast
-		}
-		guard let monthDate = TMCalendar.date(byAdding: .month, value: monthID, to: yearDate, options: .matchStrictly) else {
-			return yearDate
-		}
-		guard let date = TMCalendar.date(byAdding: .day, value: dayID, to: monthDate, options: .matchStrictly) else {
-			return monthDate
-		}
+		let components = DateComponents(calendar: Calendar.current, timeZone: TimeZone.init(abbreviation: "UTC"), year: yearID, month: monthID + 1, day: dayID + 1)
+		let date = TMCalendar.date(from: components)!
+		print("CONVERTTODATE: \(yearID):\(monthID)+1:\(dayID)+1|\(date)")
         return date
     }
 	
 	class func calculateFirstDayInMonth(yearID: Int, monthID: Int) -> Date{
-		let date = TimeManagement.convertToDate(yearID: yearID, monthID: monthID, dayID: 1)
-		var components = TMCalendar.components([.year, .month], from: date)
-		components.day = 2
-		let startOfMonth = TMCalendar.date(from: components)!
-		print(date)
-		print(startOfMonth)
-		return startOfMonth
+		let date = convertToDate(yearID: yearID, monthID: monthID, dayID: 0)
+		return date
 	}
 	
 	
