@@ -23,7 +23,7 @@ class ViewController: UIViewController {
 	var calendarViewController: MainCollectionViewController? = nil
 	
 	@IBOutlet weak var calendarView: UIView!
-    @IBOutlet weak var navigationBar: UINavigationItem!
+    @IBOutlet public weak var navigationBar: UINavigationItem!
     @IBOutlet weak var selectedDayButton: UIBarButtonItem!
     @IBOutlet weak var eventTableView: EventTableView!
     @IBOutlet weak var toolbar: UIToolbar!
@@ -81,10 +81,11 @@ class ViewController: UIViewController {
         navigationBar.title = TimeManagement.getMonthName(Date())
 		
 		
-		let date = Date()
-		HSelection.selectedYearID = TMCalendar.component(.year, from: date)
-		HSelection.selectedMonthID = TMCalendar.component(.month, from: date)
-		HSelection.selectedDayID = TMCalendar.component(.day, from: date)
+		
+		setTodaysProperties()
+		HSelection.selectedYearID = HSelection.todaysYearID
+		HSelection.selectedMonthID = HSelection.todaysMonthID
+		HSelection.selectedDayID = HSelection.todaysDayID
 		
 		for i in childViewControllers {
 			if i.title == "CalendarView" {
@@ -95,6 +96,13 @@ class ViewController: UIViewController {
 		scrollToSection(yearID: HSelection.selectedYearID, monthID: HSelection.selectedMonthID)
 		
     }
+	
+	func setTodaysProperties() {
+		let date = Date()
+		HSelection.todaysYearID = TMCalendar.component(.year, from: date)
+		HSelection.todaysMonthID = TMCalendar.component(.month, from: date) - 1
+		HSelection.todaysDayID = TMCalendar.component(.day, from: date)
+	}
 
     func updateDaysOfWeek(color: UIColor) {
         FirstDayOfWeek.textColor = color
@@ -125,6 +133,14 @@ class ViewController: UIViewController {
 		
 		calendarViewController?.collectionView!.scrollToItem(at: indexPath, at: .centeredVertically, animated: anim)
 		
+		self.setMonthName()
+		
+	}
+	
+	func setMonthName() {
+		let date = TimeManagement.calculateFirstDayInMonth(yearID: HSelection.currentYearID, monthID: HSelection.currentMonthID)
+		let name = TimeManagement.getMonthName(date)
+		navigationBar.title = name
 	}
 	
 	func scrollToSection(direction: ScrollDirection, animated anim: Bool = false) {
@@ -154,6 +170,7 @@ class ViewController: UIViewController {
 				scrollToSection(yearID: yearID, monthID: monthID + 1, animated: anim)
 			}
 		}
+		self.setMonthName()
 	}
 }
 

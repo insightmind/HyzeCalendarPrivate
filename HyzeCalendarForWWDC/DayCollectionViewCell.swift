@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class DayCollectionViewCell: UICollectionViewCell {
 	
 	var label: UILabel?
@@ -40,6 +41,39 @@ class DayCollectionViewCell: UICollectionViewCell {
 			self.label = lbl
 		} else {
 			self.label!.text = ""
+		}
+	}
+	
+	func setCellDesign(isToday: Bool, isSelected: Bool) {
+		self.isSelected = isSelected
+		if isSelected {
+			contentView.backgroundColor = CALENDARORANGE
+			if isToday {
+				label?.textColor = CALENDARORANGE
+			} else {
+				if darkMode {
+					label?.textColor = CALENDARWHITE
+				} else {
+					label?.textColor = CALENDARGREY
+				}
+			}
+		} else {
+			if isToday {
+				label?.textColor = CALENDARORANGE
+				if darkMode {
+					contentView.backgroundColor = CALENDARGREY
+				} else {
+					contentView.backgroundColor = CALENDARWHITE
+				}
+			} else {
+				if darkMode {
+					contentView.backgroundColor = CALENDARGREY
+					label?.textColor = CALENDARWHITE
+				} else {
+					contentView.backgroundColor = CALENDARWHITE
+					label?.textColor = CALENDARGREY
+				}
+			}
 		}
 	}
 	

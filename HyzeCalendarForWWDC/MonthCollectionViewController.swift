@@ -46,6 +46,7 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
 		self.monthID = monthID
 		self.daysInMonth = TimeManagement.calculateDaysInMonth(yearID: yearID, monthID: monthID)
 		self.firstDayInMonth = TimeManagement.calculateFirstWeekDayOfMonth(yearID: yearID, monthID: monthID)
+		print("love \(firstDayInMonth) \(daysInMonth) : \(yearID) : \(monthID)")
 		super.init(collectionViewLayout: layout)
 		self.collectionView?.backgroundColor = UIColor.clear
 	}
@@ -80,31 +81,17 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! DayCollectionViewCell
 		
-		if indexPath.item - firstDayInMonth < 1 || indexPath.item - firstDayInMonth > daysInMonth{
+		let item = calculateConformedItem(indexPath)
+		
+		if item < 1 || item > daysInMonth{
 			cell.isHidden = true
 		} else {
-			cell.label?.text = String(indexPath.item - firstDayInMonth)
+			cell.label?.text = String(item)
 		}
-    
-        // Configure the cell
-		if HSelection.selectedYearID == yearID && HSelection.selectedMonthID == monthID - 1 && HSelection.selectedDayID == indexPath.item - firstDayInMonth {
-			if darkMode {
-				cell.contentView.backgroundColor = CALENDARWHITE
-				cell.label?.textColor = CALENDARGREY
-			} else {
-				cell.contentView.backgroundColor = CALENDARGREY
-				cell.label?.textColor = CALENDARWHITE
-			}
-			
-		} else {
-			if darkMode {
-				cell.contentView.backgroundColor = CALENDARGREY
-				cell.label?.textColor = CALENDARWHITE
-			} else {
-				cell.contentView.backgroundColor = CALENDARWHITE
-				cell.label?.textColor = CALENDARGREY
-			}
-		}
+		
+		let isToday = TimeManagement.isToday(yearID: yearID, monthID: monthID, dayID: item)
+		let isSelected = TimeManagement.isSelected(yearID: yearID, monthID: monthID, dayID: item)
+		cell.setCellDesign(isToday: isToday, isSelected: isSelected)
     
         return cell
     }
@@ -121,6 +108,10 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
 		return 2
+	}
+	
+	func calculateConformedItem(_ indexPath: IndexPath) -> Int {
+		return indexPath.item - firstDayInMonth
 	}
 
     // MARK: UICollectionViewDelegate
@@ -152,11 +143,23 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
 extension MonthCollectionViewController {
 	
 	override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-		guard let cell = collectionView.cellForItem(at: indexPath) else {
+		guard let cell = collectionView.cellForItem(at: indexPath) as? DayCollectionViewCell else {
 			print("Could not select Cell")
 			return false
 		}
-		cell.isSelected = true
+		
+		let _ = self.collectionView(collectionView, shouldDeselectItemAt: IndexPath(item: HSelection.selectedDayID, section: 0))
+		
+		let item = calculateConformedItem(indexPath)
+		
+		let isSelected = true
+		let isToday = TimeManagement.isToday(yearID: yearID, monthID: monthID, dayID: item)
+		
+		HSelection.selectedDayID = item
+		HSelection.selectedMonthID = monthID
+		HSelection.selectedYearID = yearID
+		
+		cell.setCellDesign(isToday: isToday, isSelected: isSelected)
 		
 		print("\(indexPath): | \(TimeManagement.convertToDate(yearID: yearID, monthID: monthID, dayID: indexPath.item))")
 		
@@ -164,11 +167,18 @@ extension MonthCollectionViewController {
 	}
 	
 	override func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
-		guard let cell = collectionView.cellForItem(at: indexPath) else {
+		guard let cell = collectionView.cellForItem(at: indexPath) as? DayCollectionViewCell else {
 			print("Could not deselect Cell")
 			return false
 		}
-		cell.isSelected = false
+		
+		let item = calculateConformedItem(indexPath)
+		
+		let isSelected = false
+		let isToday = TimeManagement.isToday(yearID: yearID, monthID: monthID, dayID: item)
+		
+		cell.setCellDesign(isToday: isToday, isSelected: isSelected)
+		
 		return true
 	}
 }
