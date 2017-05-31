@@ -134,6 +134,17 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 				self.scrollToSection(yearID: tyearID, monthID: tmonthID + 1, animated: anim)
 			}
 		}
+		setMonthName()
+	}
+	func setMonthName() {
+		let date = TimeManagement.calculateFirstDayInMonth(yearID: HSelection.currentYearID, monthID: HSelection.currentMonthID)
+		let name = TimeManagement.getMonthName(date)
+		
+		guard let parent = self.parent as? ViewController else {
+			fatalError()
+		}
+		
+		parent.navigationBar.title = name
 	}
 	
 	func scrollToSection(yearID: Int, monthID: Int, animated anim: Bool = false) {
@@ -144,8 +155,9 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 		HSelection.currentYearID = yearID
 		
 		self.collectionView!.scrollToItem(at: indexPath, at: .centeredVertically, animated: anim)
-		
+		setMonthName()
 	}
+	
 
     // MARK: UICollectionViewDelegate
 

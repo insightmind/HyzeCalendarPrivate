@@ -16,4 +16,9 @@ struct Selection {
 	
 	var currentYearID: Int = 0
 	var currentMonthID: Int = 0
+	
+	var todaysYearID: Int = 0
+	var todaysMonthID: Int = 0
+	var todaysDayID: Int = 0
+	
 }

@@ -28,7 +28,7 @@ class TimeManagement {
 	
 	class func calculateFirstWeekDayOfMonth(yearID: Int, monthID: Int) -> Int {
 		let date = calculateFirstDayInMonth(yearID: yearID, monthID: monthID)
-		return TMCalendar.component(.weekday, from: date)
+		return TMCalendar.component(.weekday, from: date) - 2
 	}
 	
 	class func getMonthName(_ monthDate: Date) -> String {
@@ -45,5 +45,21 @@ class TimeManagement {
 		let date = calculateFirstDayInMonth(yearID: yearID, monthID: monthID)
 		let numOfDaysInMonth = TMCalendar.range(of: .day, in: .month, for: date).length
 		return numOfDaysInMonth
+	}
+	
+	class func isToday(yearID: Int, monthID: Int, dayID: Int) -> Bool {
+		if yearID == HSelection.todaysYearID && monthID == HSelection.todaysMonthID && dayID == HSelection.todaysYearID {
+			return true
+		} else {
+			return false
+		}
+	}
+	
+	class func isSelected(yearID: Int, monthID: Int, dayID: Int) -> Bool {
+		if yearID == HSelection.selectedYearID && monthID == HSelection.selectedMonthID && dayID == HSelection.selectedDayID {
+			return true
+		} else {
+			return false
+		}
 	}
 }
