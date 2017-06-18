@@ -6,16 +6,64 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HyzeCalendarForWWDC/ViewController.swift"
-            timestampString = "515869881.835219"
+            filePath = "HyzeCalendarForWWDC/CalendarViewYear.swift"
+            timestampString = "516126948.852181"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "init(frame:collectionViewLayout:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HyzeCalendarForWWDC.CalendarViewYear.init (frame : __C.CGRect, collectionViewLayout : __ObjC.UICollectionViewLayout) -&gt; HyzeCalendarForWWDC.CalendarViewYear"
+                  moduleName = "HyzeCalendarForWWDC"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/redfleet/Documents/gitrep/HyzeCalendarPrivate/HyzeCalendarForWWDC/CalendarViewYear.swift"
+                  timestampString = "516126969.722638"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "110">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HyzeCalendarForWWDC.CalendarViewYear.__allocating_init (frame : __C.CGRect, collectionViewLayout : __ObjC.UICollectionViewLayout) -&gt; HyzeCalendarForWWDC.CalendarViewYear"
+                  moduleName = "HyzeCalendarForWWDC"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/redfleet/Documents/gitrep/HyzeCalendarPrivate/HyzeCalendarForWWDC/CalendarViewYear.swift"
+                  timestampString = "516126969.723794"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "27">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HyzeCalendarForWWDC/CalendarViewYear.swift"
+            timestampString = "516127364.309095"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

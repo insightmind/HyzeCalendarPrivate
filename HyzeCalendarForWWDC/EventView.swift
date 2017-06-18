@@ -20,6 +20,7 @@ class EventView: UIButton {
     var arcWidth: CGFloat = 25
     var allowHourRotation: Bool = false
     var allowShadow = true
+    var isEvent = false
     var animatedState: EventAnimationType = .load
     
     var shapeLayer = CAShapeLayer()
@@ -32,9 +33,6 @@ class EventView: UIButton {
         
         let startAngle = calculateAngle(for: startTime)
         let endAngle = calculateAngle(for: endTime)
-        
-
-        
         let path = UIBezierPath(arcCenter: tcenter, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
         
         path.usesEvenOddFillRule = true
@@ -45,21 +43,18 @@ class EventView: UIButton {
         shapeLayer.strokeColor = coloring.cgColor
         shapeLayer.fillColor = UIColor.clear.cgColor
         shapeLayer.lineWidth = path.lineWidth
+        if isEvent {
+            shapeLayer.lineCap = kCALineCapRound
+        }
         shapeLayer.position = CGPoint(x: 0, y: 0)
         shapeLayer.opacity = 1
         
         self.layer.addSublayer(shapeLayer)
-        
-
-        
-        
     }
     
     func calculateAngle(for minute: CGFloat) -> CGFloat {
         return ((minute * PI)/720) + ((3*PI)/2)
     }
-    
-    
     
     init(frame: CGRect = CGRect(), carcWidth: CGFloat , addShadow: Bool = false, hourRotation: Bool = false) {
         super.init(frame: frame)
@@ -74,7 +69,6 @@ class EventView: UIButton {
         }
     }
 
-    
     func animate(_ animationType: EventAnimationType = .reload, duration: TimeInterval = 0.5) {
         
         let animation = CABasicAnimation(keyPath: "lineWidth")
@@ -83,10 +77,10 @@ class EventView: UIButton {
         switch animationType {
         case .select:
             animation.fromValue = arcWidth
-            animation.toValue = arcWidth + 15.0
+            animation.toValue = arcWidth + 3.5
             break
         case .deselect:
-            animation.fromValue = arcWidth + 15.0
+            animation.fromValue = arcWidth + 3.5
             animation.toValue = arcWidth
             break
         case .add:

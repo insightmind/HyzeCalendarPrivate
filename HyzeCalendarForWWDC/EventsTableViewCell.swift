@@ -19,13 +19,14 @@ class EventsTableViewCell: UITableViewCell {
     
     lazy var inheritanceBar: UIView = {
         let vw = UIView()
+        vw.layer.cornerRadius = 1
         return vw
     }()
     
     lazy var titleLabel: UILabel = {
         let lbl = UILabel()
         lbl.baselineAdjustment = .alignCenters
-        lbl.font.withSize(10)
+        lbl.font = UIFont.systemFont(ofSize: 16)
         lbl.numberOfLines = 2
         if darkMode {
             lbl.textColor = CALENDARWHITE
@@ -114,9 +115,9 @@ class EventsTableViewCell: UITableViewCell {
         
         self.contentView.bounds = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44)
 
-        self.inheritanceBar.frame = CGRect(x: 0, y: 0, width: 5, height: 44)
+        self.inheritanceBar.frame = CGRect(x: 5, y: 2, width: 2, height: 40)
         
-        self.titleLabel.frame = CGRect(x: 10, y: 0, width: 1 * contentView.bounds.width / 2 - 7, height: contentView.bounds.height)
+        self.titleLabel.frame = CGRect(x: 15, y: 0, width: 1 * contentView.bounds.width / 2 - 7, height: contentView.bounds.height)
         
         self.startLabel.frame = CGRect(x: titleLabel.bounds.width + 10, y: 0, width: contentView.bounds.width / 2 - 7, height: contentView.bounds.height / 2 - 1)
         
@@ -140,7 +141,7 @@ class EventsTableViewCell: UITableViewCell {
     }
     
     override func prepareForReuse() {
-        self.inheritanceBar.bounds = CGRect(x: 0, y: 0, width: 5, height: 44)
+        self.inheritanceBar.bounds = CGRect(x: 5, y: 2, width: 2, height: 40)
     }
 
 }

@@ -9,26 +9,38 @@
 import Foundation
 import UIKit
 
-let informationMode = true
+let informationMode = false
 let debugMode = false
 let failureMode = false
 
+var needsDesignUpdate: Bool = false
+
 var darkMode: Bool = UserDefaults.standard.bool(forKey: "DarkMode")
+var showLinesInCalendarView: Bool = UserDefaults.standard.bool(forKey: "showLinesInCalendarView")
 
 let CALENDARWHITE = UIColor.white
 let CALENDARGREY = UIColor.init(red: 0.251, green: 0.251, blue: 0.251, alpha: 1)
 let CALENDARORANGE = UIColor.orange
 
-let TMCalendar = NSCalendar(identifier: .gregorian)!
+var TMCalendar: NSCalendar = {
+	let c = NSCalendar(identifier: .gregorian)!
+	
+	c.timeZone = NSTimeZone.system
+	
+	return c
+}()
+
+
 let HTimeManagement = TimeManagement()
 let EManagement = EventManagement()
 var HSelection = Selection()
 
-let TMPast = Date.init(timeIntervalSince1970: 0)
-let TMFuture = Date.init(timeInterval: 3153600000, since: TMPast)
-
+let TMPast = Date.distantPast
+let TMFuture = Date.distantFuture
 var loaded = true
 var hourDecorationPosition = [[CGFloat]]()
+
+var eventsTableView: EventTableView?
 
 let PI = CGFloat.pi
 

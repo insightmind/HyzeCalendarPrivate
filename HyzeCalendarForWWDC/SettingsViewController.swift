@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Lottie
 
 class SettingsViewController: UIViewController {
     
@@ -14,6 +15,20 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var darkModeSwitch: UISwitch!
     @IBOutlet weak var hours24Label: UILabel!
     @IBOutlet weak var hours24Switch: UISwitch!
+    @IBOutlet weak var showLinesSwitch: UISwitch!
+    @IBOutlet weak var showLines: UILabel!
+    
+    @IBAction func toggleShowLinesInCalendarView(_ sender: UISwitch) {
+        let defaults = UserDefaults.standard
+        if showLinesInCalendarView {
+            showLinesInCalendarView = false
+        } else {
+            showLinesInCalendarView = true
+        }
+        needsDesignUpdate = true
+        defaults.set(showLinesInCalendarView, forKey: "showLinesInCalendarView")
+        defaults.synchronize()
+    }
 
     @IBAction func toggleDarkMode(_ sender: UISwitch) {
         let defaults = UserDefaults.standard
@@ -22,14 +37,17 @@ class SettingsViewController: UIViewController {
         } else {
             darkMode = true
         }
+        needsDesignUpdate = true
         defaults.set(darkMode, forKey: "DarkMode")
         defaults.synchronize()
         
         if darkMode{
+            showLines.textColor = CALENDARWHITE
             hours24Label.textColor = CALENDARWHITE
             darkModeLabel.textColor = CALENDARWHITE
             view.backgroundColor = CALENDARGREY
         } else {
+            showLines.textColor = CALENDARWHITE
             hours24Label.textColor = CALENDARGREY
             darkModeLabel.textColor = CALENDARGREY
             view.backgroundColor = CALENDARWHITE
@@ -39,11 +57,13 @@ class SettingsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         if darkMode {
             darkModeSwitch.isOn = true
+            showLines.textColor = CALENDARWHITE
             hours24Label.textColor = CALENDARWHITE
             darkModeLabel.textColor = CALENDARWHITE
             view.backgroundColor = CALENDARGREY
         } else {
             darkModeSwitch.isOn = false
+            showLines.textColor = CALENDARGREY
             hours24Label.textColor = CALENDARGREY
             darkModeLabel.textColor = CALENDARGREY
             view.backgroundColor = CALENDARWHITE
@@ -52,6 +72,11 @@ class SettingsViewController: UIViewController {
             hours24Switch.isOn = false
         } else {
             hours24Switch.isOn = true
+        }
+        if showLinesInCalendarView {
+            showLinesSwitch.isOn = true
+        } else {
+            showLinesSwitch.isOn = false
         }
     }
 
@@ -68,7 +93,6 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 
