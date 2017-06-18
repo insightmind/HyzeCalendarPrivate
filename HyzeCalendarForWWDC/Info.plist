@@ -23,7 +23,11 @@
 	<key>CFBundleShortVersionString</key>
 	<string>0.3.9</string>
 	<key>CFBundleVersion</key>
+<<<<<<< develop
 	<string>1097</string>
+=======
+	<string>1098</string>
+>>>>>>> again upload of wwdc17 week updates
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCalendarsUsageDescription</key>
