@@ -10,8 +10,6 @@ import UIKit
 
 private let reuseIdentifier = "MonthCell"
 
-
-
 class MainCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 	
 	@IBAction func scrollUp(_ sender: UISwipeGestureRecognizer) {
@@ -32,6 +30,7 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
         // Do any additional setup after loading the view.
 		self.collectionView!.allowsSelection = false
 		self.collectionView!.isScrollEnabled = false
+        self.collectionView!.isPrefetchingEnabled = false
 		
 		self.collectionView?.backgroundColor = UIColor.clear
 		
@@ -75,7 +74,7 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 		
         // Configure the cell
 		if cell.controller == nil {
-			let newController = MonthCollectionViewController(collectionViewLayout: CalendarViewFlowLayout(), idOfYear: indexPath.section, idOfMonth: indexPath.item)
+			let newController = MonthCollectionViewController(collectionViewLayout: CalendarViewFlowLayout(), idOfYear: indexPath.section, idOfMonth: indexPath.item - 1)
 			self.addChildViewController(newController)
 			newController.view.frame = cell.bounds
 			newController.view.tag = 69
@@ -86,7 +85,14 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 		
         return cell
     }
-	
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if needsDesignUpdate {
+            self.collectionView!.reloadData()
+            needsDesignUpdate = false
+        }
+    }
+    
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 		let width = UIScreen.main.bounds.width - 12
 		let cellSize = CGSize(width: width, height: width / 7 * 6)
@@ -156,6 +162,14 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 		
 		self.collectionView!.scrollToItem(at: indexPath, at: .centeredVertically, animated: anim)
 		setMonthName()
+        let superViewController = UIApplication.shared.keyWindow?.rootViewController
+        var mainViewController: ViewController
+        for i in (superViewController?.childViewControllers)! {
+            if i.title == "MonthView" {
+                mainViewController = i as! ViewController
+                mainViewController.updateSelectedDayIcon()
+            }
+        }
 	}
 	
 
@@ -190,10 +204,4 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
     }
     */
 
-}
-
-extension MainCollectionViewController {
-	
-	
-	
 }

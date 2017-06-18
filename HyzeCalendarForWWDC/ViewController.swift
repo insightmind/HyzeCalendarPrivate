@@ -41,20 +41,28 @@ class ViewController: UIViewController {
     
     
     @IBAction func jumpToToday(_ sender: UIBarButtonItem) {
-		let date = Date()
-		let year = TMCalendar.component(.year, from: date)
-		let month = TMCalendar.component(.month, from: date)
-		print(year)
-		print(month)
-		scrollToSection(yearID: year, monthID: month, animated: true)
+        let (yearID, monthID, _) = HSelection.todaysDayCellIndex
+		scrollToSection(yearID: yearID, monthID: monthID + 1, animated: true)
     }
     
     @IBAction func jumpToSelected(_ sender: UIBarButtonItem) {
-		
+        let (yearID, monthID, _ ) = HSelection.selectedDayCellIndex
+        scrollToSection(yearID: yearID, monthID: monthID + 1, animated: true)
     }
 
     func updateSelectedDayIcon(){
-
+        let (yearID, monthID, _ ) = HSelection.selectedDayCellIndex
+        if yearID > HSelection.currentYearID || monthID > HSelection.currentMonthID - 1 {
+            selectedDayButton.image = #imageLiteral(resourceName: "ic_keyboard_arrow_down")
+        } else if yearID < HSelection.currentYearID || monthID < HSelection.currentMonthID - 1 {
+            selectedDayButton.image = #imageLiteral(resourceName: "ic_keyboard_arrow_up")
+        } else {
+            selectedDayButton.image = #imageLiteral(resourceName: "ic_keyboard_arrow_right")
+        }
+    }
+    
+    func reloadEventTableView() {
+        eventTableView.reloadView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,6 +78,7 @@ class ViewController: UIViewController {
         } else if isAMPMTemp != isAMPM || eventsChange == true {
             eventsChange = false
         }
+        eventTableView.reloadView()
     }
     
     override func viewDidLoad() {
@@ -80,27 +89,24 @@ class ViewController: UIViewController {
         darkModeTemp = darkMode
         navigationBar.title = TimeManagement.getMonthName(Date())
 		
-		
-		
 		setTodaysProperties()
-		HSelection.selectedYearID = HSelection.todaysYearID
-		HSelection.selectedMonthID = HSelection.todaysMonthID
-		HSelection.selectedDayID = HSelection.todaysDayID
 		
 		for i in childViewControllers {
 			if i.title == "CalendarView" {
 				self.calendarViewController = i as? MainCollectionViewController
 			}
 		}
+        
+        let (selectedYearID, selectedMonthID, _) = HSelection.selectedDayCellIndex
 		
-		scrollToSection(yearID: HSelection.selectedYearID, monthID: HSelection.selectedMonthID)
+		scrollToSection(yearID: selectedYearID, monthID: selectedMonthID + 1)
 		
     }
 	
 	func setTodaysProperties() {
 		let date = Date()
 		HSelection.todaysYearID = TMCalendar.component(.year, from: date)
-		HSelection.todaysMonthID = TMCalendar.component(.month, from: date) - 1
+		HSelection.todaysMonthID = TMCalendar.component(.month, from: date)
 		HSelection.todaysDayID = TMCalendar.component(.day, from: date)
 	}
 
@@ -134,6 +140,7 @@ class ViewController: UIViewController {
 		calendarViewController?.collectionView!.scrollToItem(at: indexPath, at: .centeredVertically, animated: anim)
 		
 		self.setMonthName()
+        updateSelectedDayIcon()
 		
 	}
 	

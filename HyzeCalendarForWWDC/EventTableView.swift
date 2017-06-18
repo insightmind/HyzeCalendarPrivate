@@ -33,7 +33,7 @@ class EventTableView: UITableView, UITableViewDataSource, UITableViewDelegate{
         
         eventCell.selectionStyle = .none
 
-        eventCell.sendProperties(event.title, from: event.startDate, to: event.endDate, color: eventsColorsOnSelectedDate[indexPath.row], inherit: nil, isAllDay: event.isAllDay)
+        eventCell.sendProperties(event.title, from: event.startDate, to: event.endDate, color: CALENDARORANGE, inherit: nil, isAllDay: event.isAllDay)
         
         return eventCell
     }
@@ -42,7 +42,12 @@ class EventTableView: UITableView, UITableViewDataSource, UITableViewDelegate{
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tableView.register(EventsTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         prevEventsCount = events.count
-        events = EManagement.getEvents(for: TimeManagement.convertToDate(yearID: HSelection.selectedYearID, monthID: HSelection.selectedDayID, dayID: HSelection.selectedDayID))
+        let (selectedYearID, selectedMonthID, indexPath) = HSelection.selectedDayCellIndex
+        
+        guard let selectedIndexPath = indexPath else {
+            return 0
+        }
+        events = EManagement.getEvents(for: TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item))
         if events.count < 3 {
             tableView.isScrollEnabled = false
         } else {
@@ -52,34 +57,42 @@ class EventTableView: UITableView, UITableViewDataSource, UITableViewDelegate{
     }
     
     func updateEvents() {
-
+        let (selectedYearID, selectedMonthID, indexPath) = HSelection.selectedDayCellIndex
+        
+        guard let selectedIndexPath = indexPath else {
+            return
+        }
         self.prevEventsCount = self.events.count + 1
-        self.events = EManagement.getEvents(for: TimeManagement.convertToDate(yearID: HSelection.selectedYearID, monthID: HSelection.selectedDayID, dayID: HSelection.selectedDayID))
+        self.events = EManagement.getEvents(for: TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item))
     }
     
     func reloadView() {
         
         selectedEventsTableViewCellIndexPath = nil
         
-        calculateColorsForEventsOnSelectedDay(numberOfEvents: EManagement.getEvents(for: TimeManagement.convertToDate(yearID: HSelection.selectedYearID, monthID: HSelection.selectedDayID, dayID: HSelection.selectedDayID)).count)
+        let (selectedYearID, selectedMonthID, indexPath) = HSelection.selectedDayCellIndex
+        guard let selectedIndexPath = indexPath else {
+            fatalError()
+        }
+        
+        calculateColorsForEventsOnSelectedDay(numberOfEvents: EManagement.getEvents(for: TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item)).count)
         self.beginUpdates()
 
         self.prevEventsCount = self.numberOfRows(inSection: 0)
-        self.events = EManagement.getEvents(for: TimeManagement.convertToDate(yearID: HSelection.selectedYearID, monthID: HSelection.selectedDayID, dayID: HSelection.selectedDayID))
+        self.events = EManagement.getEvents(for: TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item))
         var delEventsChangeAt = [IndexPath]()
         for i in 0..<prevEventsCount {
             delEventsChangeAt.append(IndexPath(row: i, section: 0))
         }
         self.deleteRows(at: delEventsChangeAt, with: .fade)
-        self.events = EManagement.getEvents(for: TimeManagement.convertToDate(yearID: HSelection.selectedYearID, monthID: HSelection.selectedDayID, dayID: HSelection.selectedDayID))
+        self.events = EManagement.getEvents(for: TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item))
         var addEventsChangeAt = [IndexPath]()
         for i in 0..<events.count {
             addEventsChangeAt.append(IndexPath(row: i, section: 0))
         }
-        self.insertRows(at: addEventsChangeAt, with: .top)
+        self.insertRows(at: addEventsChangeAt, with: .fade)
         
         self.endUpdates()
-        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -92,8 +105,7 @@ class EventTableView: UITableView, UITableViewDataSource, UITableViewDelegate{
         }
         
         if indexPath == selectedEventsTableViewCellIndexPath {
-            visuallyDeSelect(row, indexPath: indexPath)
-            selectedEventsTableViewCellIndexPath = nil
+            return
         }
         if selectedEventsTableViewCellIndexPath != nil {
             var access = true
@@ -131,12 +143,14 @@ class EventTableView: UITableView, UITableViewDataSource, UITableViewDelegate{
                 renDayView?.selectEventView(indexPath.row, duration: duration)
             }
         }
+        let otherOption = row.inheritanceBar.bounds.width * 4
         
-        let fullWidth = row.contentView.bounds.width * 2
-        
-        UIView.animate(withDuration: duration, delay: 0, options: [.curveEaseIn], animations: {
-            row.inheritanceBar.bounds = CGRect(x: 0, y: 0, width: fullWidth, height: 44)
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .curveEaseOut, animations: {
+            row.inheritanceBar.bounds = CGRect(x: 5, y: 2, width: otherOption, height: 40)
+            row.inheritanceBar.layer.cornerRadius = otherOption / 3
         }, completion: nil)
+        
+        row.contentView.backgroundColor = CALENDARORANGE.withAlphaComponent(0.15)
     }
     
     func visuallyDeSelect(_ row: EventsTableViewCell, duration: TimeInterval = 0.2, indexPath: IndexPath) {
@@ -148,14 +162,17 @@ class EventTableView: UITableView, UITableViewDataSource, UITableViewDelegate{
         }
         
         UIView.animate(withDuration: duration, delay: 0, options: [.curveEaseOut], animations: {
-            row.inheritanceBar.bounds = CGRect(x: 0, y: 0, width: 5, height: 44)
+            row.inheritanceBar.bounds = CGRect(x: 5, y: 2, width: 2, height: 40)
+            row.inheritanceBar.layer.cornerRadius = 0
         }, completion: nil)
+        
+        row.contentView.backgroundColor = UIColor.clear
     }
     
     override init(frame: CGRect, style: UITableViewStyle) {
         super.init(frame: frame, style: style)
+        eventsTableView = self
         updateEvents()
-
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -13,7 +13,10 @@ let informationMode = false
 let debugMode = false
 let failureMode = false
 
+var needsDesignUpdate: Bool = false
+
 var darkMode: Bool = UserDefaults.standard.bool(forKey: "DarkMode")
+var showLinesInCalendarView: Bool = UserDefaults.standard.bool(forKey: "showLinesInCalendarView")
 
 let CALENDARWHITE = UIColor.white
 let CALENDARGREY = UIColor.init(red: 0.251, green: 0.251, blue: 0.251, alpha: 1)
@@ -36,6 +39,8 @@ let TMPast = Date.distantPast
 let TMFuture = Date.distantFuture
 var loaded = true
 var hourDecorationPosition = [[CGFloat]]()
+
+var eventsTableView: EventTableView?
 
 let PI = CGFloat.pi
 
