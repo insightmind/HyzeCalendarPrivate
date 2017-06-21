@@ -29,9 +29,9 @@ class EventsTableViewCell: UITableViewCell {
         lbl.font = UIFont.systemFont(ofSize: 16)
         lbl.numberOfLines = 2
         if darkMode {
-            lbl.textColor = CALENDARWHITE
+            lbl.textColor = calendarWhite
         } else {
-            lbl.textColor = CALENDARWHITE
+            lbl.textColor = calendarWhite
         }
         return lbl
     }()
@@ -59,7 +59,7 @@ class EventsTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func sendProperties(_ title: String = "unknown", from: Date, to: Date, color: UIColor = CALENDARORANGE, inherit: EKEvent? = nil, isAllDay: Bool) {
+    func sendProperties(_ title: String = "unknown", from: Date, to: Date, color: UIColor = calendarOrange, inherit: EKEvent? = nil, isAllDay: Bool) {
         self.title = title
         
         if isAllDay {
@@ -104,9 +104,9 @@ class EventsTableViewCell: UITableViewCell {
         endLabel.textColor = UIColor.white
         
         if darkMode {
-            titleLabel.textColor = CALENDARWHITE
+            titleLabel.textColor = calendarWhite
         } else {
-            titleLabel.textColor = CALENDARWHITE
+            titleLabel.textColor = calendarWhite
         }
         
     }

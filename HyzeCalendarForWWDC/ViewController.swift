@@ -67,11 +67,15 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         if darkMode{
-            view.backgroundColor = CALENDARGREY
-			updateDaysOfWeek(color: CALENDARGREY, weekendColor: CALENDARGREEN)
+            view.backgroundColor = calendarGrey
+			updateDaysOfWeek(color: calendarWhite, weekendColor: calendarGreen)
+			navigationController?.navigationBar.backgroundColor = calendarGrey
+			toolbar.backgroundColor = calendarGrey
         } else {
-            view.backgroundColor = CALENDARWHITE
-			updateDaysOfWeek(color: CALENDARGREY, weekendColor: CALENDARGREEN)
+            view.backgroundColor = calendarWhite
+			updateDaysOfWeek(color: calendarGrey, weekendColor: calendarGreen)
+			navigationController?.navigationBar.backgroundColor = calendarWhite
+			toolbar.backgroundColor = calendarWhite
         }
         if darkModeTemp != darkMode {
             darkModeTemp = darkMode

@@ -169,6 +169,7 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
 			HSelection.selectedIsOnWeekend = isOnWeekend
             self.collectionView!.selectItem(at: indexPath, animated: false, scrollPosition: .init(rawValue: 0))
             cell.isSelected = true
+			cell.layer.shadowOpacity = 0.5
         } else {
             cell.isSelected = false
         }
@@ -244,7 +245,7 @@ extension MonthCollectionViewController {
 		cell.layer.shadowPath = UIBezierPath(rect: CGRect.zero).cgPath
         cell.contentView.bounds = CGRect.zero
         cell.contentView.layer.cornerRadius = 0
-		cell.contentView.backgroundColor = darkMode ? CALENDARGREY : CALENDARWHITE
+		cell.contentView.backgroundColor = darkMode ? calendarGrey : calendarWhite
         UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
 			cell.setCellDesign(isToday: isToday, isSelected: isSelected, isOnWeekend: isOnWeekend)
             cell.contentView.layer.cornerRadius = prevSize.width / 2

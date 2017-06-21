@@ -148,6 +148,7 @@
                         <outlet property="darkModeSwitch" destination="ch3-yP-HBf" id="5vV-Oi-brz"/>
                         <outlet property="hours24Label" destination="gCR-EK-lTb" id="j0Q-gl-J7z"/>
                         <outlet property="hours24Switch" destination="dKj-t4-vYH" id="qI3-Yg-b2Q"/>
+                        <outlet property="isMondayLabel" destination="yXk-i4-L5J" id="hwZ-GM-5q4"/>
                         <outlet property="isMondaySwitch" destination="GMq-Nm-MAa" id="YhH-L6-Bou"/>
                         <outlet property="showLines" destination="IOT-Z3-e4r" id="8Ys-Sw-Tit"/>
                         <outlet property="showLinesSwitch" destination="gje-M3-h6H" id="REf-LM-8nM"/>

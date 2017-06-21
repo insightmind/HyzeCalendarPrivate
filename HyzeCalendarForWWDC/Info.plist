@@ -30,6 +30,7 @@
 	<key>CFBundleVersion</key>
 <<<<<<< develop
 <<<<<<< develop
+<<<<<<< develop
 	<string>1097</string>
 =======
 	<string>1098</string>
@@ -37,6 +38,9 @@
 =======
 	<string>1167</string>
 >>>>>>> New CalendarViewDesign
+=======
+	<string>1177</string>
+>>>>>>> some small design fixes
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCalendarsUsageDescription</key>
