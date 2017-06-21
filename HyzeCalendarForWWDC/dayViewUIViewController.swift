@@ -11,7 +11,10 @@ import UIKit
 class dayViewUIVViewController: UIViewController {
 
     @IBOutlet weak var day: dayView!
-    
+	@IBOutlet weak var addButton: UIBarButtonItem!
+	@IBOutlet weak var toolbar: UIToolbar!
+	@IBOutlet weak var editButton: UIBarButtonItem!
+	
     override func viewDidLoad() {
         super.viewDidLoad()
         setdarkMode()
@@ -30,11 +33,24 @@ class dayViewUIVViewController: UIViewController {
     
     func setdarkMode(){
         if darkMode {
+			toolbar.barTintColor = calendarWhite
+			editButton.tintColor = calendarGrey
             view.backgroundColor = calendarGrey
+			navigationController?.navigationBar.tintColor = calendarWhite
+			addButton.tintColor = calendarWhite
         } else {
+			toolbar.barTintColor = calendarGrey
+			editButton.tintColor = calendarWhite
             view.backgroundColor = calendarWhite
+			navigationController?.navigationBar.tintColor = calendarGrey
+			addButton.tintColor = calendarGrey
         }
-        day.dayViewCenterButton.backgroundColor = calendarOrange
+		if HSelection.selectedIsOnWeekend! {
+			day.dayViewCenterButton.backgroundColor = calendarGreen
+		} else {
+			day.dayViewCenterButton.backgroundColor = calendarBlue
+		}
+		
     }
     
     @IBAction func unwindToRed(segue: UIStoryboardSegue) {

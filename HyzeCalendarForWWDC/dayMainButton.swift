@@ -23,12 +23,6 @@ class dayMainButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.layer.shadowOpacity = 0
-        /*
-        self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOffset = CGSize(width: 0, height: 0)
-        self.layer.shadowOpacity = 0.7
-        self.layer.shadowRadius = 3
-        */
     }
     
     required init?(coder aDecoder: NSCoder) {

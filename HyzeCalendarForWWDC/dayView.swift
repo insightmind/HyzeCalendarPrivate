@@ -88,6 +88,11 @@ class dayView: UIView {
     
     func setUp() {
         self.backgroundColor = UIColor.clear
+		
+		layer.shadowColor = UIColor.black.cgColor
+		layer.shadowOffset = CGSize(width: 0.0, height: 2.5)
+		layer.shadowOpacity = 0.5
+		
         for i in self.subviews {
             self.willRemoveSubview(i)
             i.removeFromSuperview()
@@ -208,6 +213,7 @@ class dayView: UIView {
                 label.textColor = calendarWhite
             }
         }
+		label.textColor = calendarWhite
 
     }
     

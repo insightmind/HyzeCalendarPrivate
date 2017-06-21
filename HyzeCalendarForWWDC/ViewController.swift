@@ -69,13 +69,31 @@ class ViewController: UIViewController {
         if darkMode{
             view.backgroundColor = calendarGrey
 			updateDaysOfWeek(color: calendarWhite, weekendColor: calendarGreen)
-			navigationController?.navigationBar.backgroundColor = calendarGrey
-			toolbar.backgroundColor = calendarGrey
+			navigationController?.navigationBar.barTintColor = calendarGrey
+			navigationController?.navigationBar.titleTextAttributes![NSForegroundColorAttributeName] = calendarWhite
+			navigationBar.backBarButtonItem?.tintColor = calendarGrey
+			navigationBar.leftBarButtonItem?.tintColor = calendarWhite
+			navigationBar.rightBarButtonItem?.tintColor = calendarWhite
+			toolbar.barTintColor = calendarWhite
+			if toolbar.items != nil {
+				for i in toolbar.items! {
+					i.tintColor = calendarGrey
+				}
+			}
         } else {
             view.backgroundColor = calendarWhite
 			updateDaysOfWeek(color: calendarGrey, weekendColor: calendarGreen)
-			navigationController?.navigationBar.backgroundColor = calendarWhite
-			toolbar.backgroundColor = calendarWhite
+			navigationController?.navigationBar.barTintColor = calendarWhite
+			navigationController?.navigationBar.titleTextAttributes![NSForegroundColorAttributeName] = calendarGrey
+			navigationBar.backBarButtonItem?.tintColor = calendarGrey
+			navigationBar.leftBarButtonItem?.tintColor = calendarGrey
+			navigationBar.rightBarButtonItem?.tintColor = calendarGrey
+			toolbar.barTintColor = calendarGrey
+			if toolbar.items != nil {
+				for i in toolbar.items! {
+					i.tintColor = calendarWhite
+				}
+			}
         }
         if darkModeTemp != darkMode {
             darkModeTemp = darkMode
@@ -104,7 +122,6 @@ class ViewController: UIViewController {
         let (selectedYearID, selectedMonthID, _) = HSelection.selectedDayCellIndex
 		
 		scrollToSection(yearID: selectedYearID, monthID: selectedMonthID + 1)
-		
     }
 	
 	func setTodaysProperties() {

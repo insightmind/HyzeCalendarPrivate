@@ -51,8 +51,10 @@ class EventsTableViewCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.setEditing(true, animated: false)
-        self.backgroundColor = UIColor.clear
+		self.backgroundColor = UIColor.clear
         self.addSubviews()
+		self.contentView.bounds.insetBy(dx: 5, dy: 5)
+		self.contentView.layer.cornerRadius = 10
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -95,7 +97,7 @@ class EventsTableViewCell: UITableViewCell {
         
         self.accessoryType = .none
         
-        self.inheritanceBar.backgroundColor = self.color
+        self.inheritanceBar.backgroundColor = calendarWhite
         self.titleLabel.text = self.title
         self.startLabel.text = self.start
         self.endLabel.text = self.end
@@ -142,7 +144,6 @@ class EventsTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         self.inheritanceBar.bounds = CGRect(x: 5, y: 2, width: 2, height: 40)
-		self.contentView.backgroundColor = UIColor.clear
     }
 
 }
