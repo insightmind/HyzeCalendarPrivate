@@ -134,15 +134,15 @@ class dayView: UIView {
             
             if darkMode {
                 if TMCalendar.isDateInToday(TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item)) {
-                    deci.sendColorProperties(CALENDARWHITE)
+                    deci.sendColorProperties(calendarWhite)
                 } else {
-                    deci.sendColorProperties(CALENDARGREY)
+                    deci.sendColorProperties(calendarGrey)
                 }
             } else {
                 if TMCalendar.isDateInToday(TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item)) {
-                    deci.sendColorProperties(CALENDARGREY)
+                    deci.sendColorProperties(calendarGrey)
                 } else {
-                    deci.sendColorProperties(CALENDARWHITE)
+                    deci.sendColorProperties(calendarWhite)
                 }
             }
             self.hourDecoration.append(deci)
@@ -197,15 +197,15 @@ class dayView: UIView {
         }
         if darkMode {
             if TMCalendar.isDateInToday(TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item)){
-                label.textColor = CALENDARWHITE
+                label.textColor = calendarWhite
             } else {
-                label.textColor = CALENDARGREY
+                label.textColor = calendarGrey
             }
         } else {
             if TMCalendar.isDateInToday(TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item)){
-                label.textColor = CALENDARGREY
+                label.textColor = calendarGrey
             } else {
-                label.textColor = CALENDARWHITE
+                label.textColor = calendarWhite
             }
         }
 
@@ -288,7 +288,7 @@ class dayView: UIView {
                 let event = EventView(frame: eventInset , carcWidth: 5, addShadow: false)
                 event.sendTimeProperties(start: e[1], end: e[2])
                 event.isEvent = true
-                event.sendColorProperties(CALENDARORANGE)
+                event.sendColorProperties(calendarOrange)
                 events.append(event)
                 self.addSubview(event)
             }

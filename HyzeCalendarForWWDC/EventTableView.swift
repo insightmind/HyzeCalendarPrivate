@@ -32,7 +32,7 @@ class EventTableView: UITableView, UITableViewDataSource, UITableViewDelegate{
         }
         eventCell.selectionStyle = .none
 
-        eventCell.sendProperties(event.title, from: event.startDate, to: event.endDate, color: CALENDARORANGE, inherit: nil, isAllDay: event.isAllDay)
+        eventCell.sendProperties(event.title, from: event.startDate, to: event.endDate, color: calendarOrange, inherit: nil, isAllDay: event.isAllDay)
         
         return eventCell
     }
@@ -64,9 +64,9 @@ class EventTableView: UITableView, UITableViewDataSource, UITableViewDelegate{
         self.prevEventsCount = self.events.count + 1
         self.events = EManagement.getEvents(for: TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item))
 		if HSelection.selectedIsOnWeekend! {
-			self.backgroundColor = CALENDARGREEN
+			self.backgroundColor = calendarGreen
 		} else {
-			self.backgroundColor = CALENDARBLUE
+			self.backgroundColor = calendarBlue
 		}
     }
     
@@ -154,7 +154,7 @@ class EventTableView: UITableView, UITableViewDataSource, UITableViewDelegate{
             row.inheritanceBar.layer.cornerRadius = otherOption / 3
         }, completion: nil)
         
-        row.contentView.backgroundColor = CALENDARORANGE.withAlphaComponent(0.15)
+        row.contentView.backgroundColor = calendarOrange.withAlphaComponent(0.15)
     }
     
     func visuallyDeSelect(_ row: EventsTableViewCell, duration: TimeInterval = 0.2, indexPath: IndexPath) {

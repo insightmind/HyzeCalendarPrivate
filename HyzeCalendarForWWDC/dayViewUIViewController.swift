@@ -30,11 +30,11 @@ class dayViewUIVViewController: UIViewController {
     
     func setdarkMode(){
         if darkMode {
-            view.backgroundColor = CALENDARGREY
+            view.backgroundColor = calendarGrey
         } else {
-            view.backgroundColor = CALENDARWHITE
+            view.backgroundColor = calendarWhite
         }
-        day.dayViewCenterButton.backgroundColor = CALENDARORANGE
+        day.dayViewCenterButton.backgroundColor = calendarOrange
     }
     
     @IBAction func unwindToRed(segue: UIStoryboardSegue) {
