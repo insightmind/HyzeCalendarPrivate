@@ -52,6 +52,9 @@ class EventTableView: UITableView, UITableViewDataSource, UITableViewDelegate{
         } else {
             tableView.isScrollEnabled = true
         }
+		self.contentInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+		
+		self.layer.cornerRadius = 20
         return events.count
     }
     
@@ -63,10 +66,13 @@ class EventTableView: UITableView, UITableViewDataSource, UITableViewDelegate{
         }
         self.prevEventsCount = self.events.count + 1
         self.events = EManagement.getEvents(for: TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item))
-		if HSelection.selectedIsOnWeekend! {
-			self.backgroundColor = calendarGreen
-		} else {
-			self.backgroundColor = calendarBlue
+		UIView.animate(withDuration: 0.2) {
+			if HSelection.selectedIsOnWeekend! {
+				self.backgroundColor = calendarGreen
+			} else {
+				self.backgroundColor = calendarBlue
+				
+			}
 		}
     }
     
@@ -95,8 +101,16 @@ class EventTableView: UITableView, UITableViewDataSource, UITableViewDelegate{
             addEventsChangeAt.append(IndexPath(row: i, section: 0))
         }
         self.insertRows(at: addEventsChangeAt, with: .fade)
-        
         self.endUpdates()
+		
+		UIView.animate(withDuration: 0.2) {
+			if HSelection.selectedIsOnWeekend! {
+				self.backgroundColor = calendarGreen
+			} else {
+				self.backgroundColor = calendarBlue
+				
+			}
+		}
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -154,7 +168,7 @@ class EventTableView: UITableView, UITableViewDataSource, UITableViewDelegate{
             row.inheritanceBar.layer.cornerRadius = otherOption / 3
         }, completion: nil)
         
-        row.contentView.backgroundColor = calendarOrange.withAlphaComponent(0.15)
+        row.contentView.backgroundColor = calendarWhite.withAlphaComponent(0.15)
     }
     
     func visuallyDeSelect(_ row: EventsTableViewCell, duration: TimeInterval = 0.2, indexPath: IndexPath) {

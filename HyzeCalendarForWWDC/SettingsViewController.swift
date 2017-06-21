@@ -18,6 +18,8 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var showLines: UILabel!
 	@IBOutlet weak var isMondaySwitch: UISwitch!
 	@IBOutlet weak var isMondayLabel: UILabel!
+	@IBOutlet weak var saveButton: UIBarButtonItem!
+	@IBOutlet weak var navigationBar: UINavigationBar!
 	
     @IBAction func toggleShowLinesInCalendarView(_ sender: UISwitch) {
         let defaults = UserDefaults.standard
@@ -41,20 +43,27 @@ class SettingsViewController: UIViewController {
         needsDesignUpdate = true
         defaults.set(darkMode, forKey: "DarkMode")
         defaults.synchronize()
-        
-        if darkMode{
-			isMondayLabel.textColor = calendarWhite
-            showLines.textColor = calendarWhite
-            hours24Label.textColor = calendarWhite
-            darkModeLabel.textColor = calendarWhite
-            view.backgroundColor = calendarGrey
-        } else {
-			isMondayLabel.textColor = calendarGrey
-            showLines.textColor = calendarGrey
-            hours24Label.textColor = calendarGrey
-            darkModeLabel.textColor = calendarGrey
-            view.backgroundColor = calendarWhite
-        }
+		UIView.animate(withDuration: 0.4) {
+			if darkMode{
+				self.navigationBar.barTintColor = calendarGrey
+				self.navigationBar.titleTextAttributes![NSForegroundColorAttributeName] = calendarWhite
+				self.saveButton.tintColor = calendarWhite
+				self.isMondayLabel.textColor = calendarWhite
+				self.showLines.textColor = calendarWhite
+				self.hours24Label.textColor = calendarWhite
+				self.darkModeLabel.textColor = calendarWhite
+				self.view.backgroundColor = calendarGrey
+			} else {
+				self.navigationBar.barTintColor = calendarWhite
+				self.navigationBar.titleTextAttributes![NSForegroundColorAttributeName] = calendarGrey
+				self.saveButton.tintColor = calendarGrey
+				self.isMondayLabel.textColor = calendarGrey
+				self.showLines.textColor = calendarGrey
+				self.hours24Label.textColor = calendarGrey
+				self.darkModeLabel.textColor = calendarGrey
+				self.view.backgroundColor = calendarWhite
+			}
+		}
     }
     
 	@IBAction func toggleIsMondayFirstWeekDay(_ sender: UISwitch) {
@@ -70,6 +79,9 @@ class SettingsViewController: UIViewController {
 	
 	override func viewWillAppear(_ animated: Bool) {
         if darkMode {
+			navigationBar.barTintColor = calendarGrey
+			navigationBar.titleTextAttributes![NSForegroundColorAttributeName] = calendarWhite
+			saveButton.tintColor = calendarWhite
             darkModeSwitch.isOn = true
 			isMondayLabel.textColor = calendarWhite
             showLines.textColor = calendarWhite
@@ -77,6 +89,9 @@ class SettingsViewController: UIViewController {
             darkModeLabel.textColor = calendarWhite
 			view.backgroundColor = calendarGrey
         } else {
+			navigationBar.barTintColor = calendarWhite
+			navigationBar.titleTextAttributes![NSForegroundColorAttributeName] = calendarGrey
+			saveButton.tintColor = calendarGrey
 			isMondayLabel.textColor = calendarGrey
             darkModeSwitch.isOn = false
             showLines.textColor = calendarGrey

@@ -114,23 +114,6 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
 		let item = calculateConformedItem(indexPath)
         var isNotInMonth: Bool
 		
-		let superViewController = UIApplication.shared.keyWindow?.rootViewController
-		var mainViewController: ViewController
-		var longMonthConstraint: NSLayoutConstraint?
-		var shortMonthConstraint: NSLayoutConstraint?
-		for i in (superViewController?.childViewControllers)! {
-			if i.title == "MonthView" {
-				mainViewController = i as! ViewController
-				for l in mainViewController.calendarView.constraints {
-					if l.identifier == "longMonth" {
-						longMonthConstraint = l
-					} else if l.identifier == "shortMonth" {
-						shortMonthConstraint = l
-					}
-				}
-			}
-		}
-		
 		if item < 1 {
             isNotInMonth = true
             cell.label?.text = String(prevDaysInMonth + item)
@@ -240,6 +223,7 @@ extension MonthCollectionViewController {
         let isToday = TimeManagement.isToday(yearID: yearID, monthID: monthID, dayID: item)
         let configuredIndexPath = IndexPath(item: indexPath.item - firstDayInMonth, section: 0)
         HSelection.selectedDayCellIndex = (yearID, monthID, configuredIndexPath)
+		HSelection.selectedIsOnWeekend = self.isOnWeekend(for: indexPath)
         let prevSize = cell.contentView.bounds
 		let prevShadowPath = cell.layer.shadowPath
 		cell.layer.shadowPath = UIBezierPath(rect: CGRect.zero).cgPath
