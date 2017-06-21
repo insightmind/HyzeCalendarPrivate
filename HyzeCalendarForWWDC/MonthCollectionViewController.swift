@@ -113,7 +113,24 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
         
 		let item = calculateConformedItem(indexPath)
         var isNotInMonth: Bool
-        
+		
+		let superViewController = UIApplication.shared.keyWindow?.rootViewController
+		var mainViewController: ViewController
+		var longMonthConstraint: NSLayoutConstraint?
+		var shortMonthConstraint: NSLayoutConstraint?
+		for i in (superViewController?.childViewControllers)! {
+			if i.title == "MonthView" {
+				mainViewController = i as! ViewController
+				for l in mainViewController.calendarView.constraints {
+					if l.identifier == "longMonth" {
+						longMonthConstraint = l
+					} else if l.identifier == "shortMonth" {
+						shortMonthConstraint = l
+					}
+				}
+			}
+		}
+		
 		if item < 1 {
             isNotInMonth = true
             cell.label?.text = String(prevDaysInMonth + item)
@@ -122,7 +139,7 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
             if indexPath.item == 35 || !isLastRowNecessary {
                 cell.isHidden = true
                 isLastRowNecessary = false
-                return cell
+				return cell
             }
             isNotInMonth = true
             cell.label?.text = String(item - daysInMonth)
@@ -142,36 +159,14 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
 			cell.label?.text = String(item)
             isNotInMonth = false
 		}
-        let superViewController = UIApplication.shared.keyWindow?.rootViewController
-        var mainViewController: ViewController
-        var longMonthConstraint: NSLayoutConstraint?
-        var shortMonthConstraint: NSLayoutConstraint?
-        for i in (superViewController?.childViewControllers)! {
-            if i.title == "MonthView" {
-                mainViewController = i as! ViewController
-                for l in mainViewController.calendarView.constraints {
-                    if l.identifier == "longMonth" {
-                        longMonthConstraint = l
-                    } else if l.identifier == "shortMonth" {
-                        shortMonthConstraint = l
-                    }
-                }
-            }
-        }
-        if isLastRowNecessary {
-            longMonthConstraint?.isActive = true
-            shortMonthConstraint?.isActive = false
-        } else {
-            longMonthConstraint?.isActive = false
-            shortMonthConstraint?.isActive = true
-        }
-		
 		let isToday = TimeManagement.isToday(yearID: yearID, monthID: monthID, dayID: item)
 		let isSelected = TimeManagement.isSelected(yearID: yearID, monthID: monthID, dayID: item)
-		cell.setCellDesign(isToday: isToday, isSelected: isSelected, isNotInMonth: isNotInMonth)
+		let isOnWeekend = self.isOnWeekend(for: indexPath)
+		cell.setCellDesign(isToday: isToday, isSelected: isSelected, isNotInMonth: isNotInMonth, isOnWeekend: isOnWeekend)
         
         if isSelected {
             HSelection.selectedDayCellIndex = (yearID, monthID, IndexPath(item: item, section: 0))
+			HSelection.selectedIsOnWeekend = isOnWeekend
             self.collectionView!.selectItem(at: indexPath, animated: false, scrollPosition: .init(rawValue: 0))
             cell.isSelected = true
         } else {
@@ -196,7 +191,11 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
 	}
 	
 	func calculateConformedItem(_ indexPath: IndexPath) -> Int {
-		return indexPath.item - firstDayInMonth
+		if isMondayFirstWeekday {
+			return indexPath.item - firstDayInMonth + 1
+		} else {
+			return indexPath.item - firstDayInMonth
+		}
 	}
 	
 }
@@ -215,27 +214,43 @@ extension MonthCollectionViewController {
         let (yID, mID, prevIndexPath) = HSelection.selectedDayCellIndex
         
         if yID == yearID && mID == monthID {
-            guard let checkedPrevIndexPath = prevIndexPath else {
+            guard var checkedPrevIndexPath = prevIndexPath else {
                 fatalError()
             }
+			if isMondayFirstWeekday {
+				checkedPrevIndexPath = IndexPath(item: checkedPrevIndexPath.item + 1, section: checkedPrevIndexPath.section)
+			}
             self.collectionView(collectionView, didDeselectItemAt: checkedPrevIndexPath)
         }
-        
-        let item = calculateConformedItem(indexPath)
-        if prevIndexPath?.item == item {
-            return
-        }
+		
+		let isOnWeekend = self.isOnWeekend(for: indexPath)
+		let item = calculateConformedItem(indexPath)
+		
+		if isMondayFirstWeekday {
+			if (prevIndexPath?.item)! + 1 == item {
+				return
+			}
+		} else {
+			if prevIndexPath?.item == item {
+				return
+			}
+		}
         let isSelected = true
         let isToday = TimeManagement.isToday(yearID: yearID, monthID: monthID, dayID: item)
         let configuredIndexPath = IndexPath(item: indexPath.item - firstDayInMonth, section: 0)
         HSelection.selectedDayCellIndex = (yearID, monthID, configuredIndexPath)
         let prevSize = cell.contentView.bounds
+		let prevShadowPath = cell.layer.shadowPath
+		cell.layer.shadowPath = UIBezierPath(rect: CGRect.zero).cgPath
         cell.contentView.bounds = CGRect.zero
         cell.contentView.layer.cornerRadius = 0
-        UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.75, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
-            cell.setCellDesign(isToday: isToday, isSelected: isSelected)
+		cell.contentView.backgroundColor = darkMode ? CALENDARGREY : CALENDARWHITE
+        UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+			cell.setCellDesign(isToday: isToday, isSelected: isSelected, isOnWeekend: isOnWeekend)
             cell.contentView.layer.cornerRadius = prevSize.width / 2
             cell.contentView.bounds = prevSize
+			cell.layer.shadowPath = prevShadowPath
+			cell.layer.shadowOpacity = 0.5
         }, completion: nil)
     
         
@@ -255,6 +270,19 @@ extension MonthCollectionViewController {
         print("\(indexPath): | \(TimeManagement.convertToDate(yearID: yearID, monthID: monthID, dayID: indexPath.item))")
         }
     }
+	
+	func isOnWeekend(for indexPath: IndexPath) -> Bool {
+		if isMondayFirstWeekday {
+			if indexPath.item % 7 == 5 || (indexPath.item + 1) % 7 == 0 {
+				return true
+			}
+		} else {
+			if (indexPath.item + 1) % 7 == 1 || (indexPath.item + 1) % 7 == 0 {
+				return true
+			}
+		}
+		return false
+	}
     
     override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? DayCollectionViewCell else {
@@ -264,12 +292,14 @@ extension MonthCollectionViewController {
         if !cell.isSelectable {
             return
         }
+		
+		cell.contentView.backgroundColor = UIColor.clear
         
         let item = calculateConformedItem(indexPath)
-        
+        let isOnWeekend = self.isOnWeekend(for: indexPath)
         let isSelected = false
         let isToday = TimeManagement.isToday(yearID: yearID, monthID: monthID, dayID: item)
         
-        cell.setCellDesign(isToday: isToday, isSelected: isSelected)
+		cell.setCellDesign(isToday: isToday, isSelected: isSelected, isOnWeekend: isOnWeekend)
     }
 }

@@ -17,6 +17,8 @@ struct Selection {
     /// Data for the current selected Day in the MonthView
     /// (YearID: Int, MonthID: Int, indexPath in MonthView: IndexPath?)
     var selectedDayCellIndex: (Int, Int, IndexPath?)
+	
+	var selectedIsOnWeekend: Bool?
     
     /// Data for the current Day in the MonthView
     /// (YearID: Int, MonthID: Int, indexPath in MonthView: IndexPath?)
@@ -45,8 +47,10 @@ struct Selection {
         let monthID = TMCalendar.component(.month, from: date) - 1
         let dayID = TMCalendar.component(.day, from: date)
         let dayIndexPath = IndexPath(item: dayID, section: 0)
+		
         
         // Assign calculated data to the variable
+		selectedIsOnWeekend = false
         todaysDayCellIndex = (yearID, monthID, dayIndexPath)
         selectedDayCellIndex = todaysDayCellIndex
     }

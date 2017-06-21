@@ -68,10 +68,10 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         if darkMode{
             view.backgroundColor = CALENDARGREY
-            updateDaysOfWeek(color: CALENDARWHITE)
+			updateDaysOfWeek(color: CALENDARGREY, weekendColor: CALENDARGREEN)
         } else {
             view.backgroundColor = CALENDARWHITE
-            updateDaysOfWeek(color: CALENDARGREY)
+			updateDaysOfWeek(color: CALENDARGREY, weekendColor: CALENDARGREEN)
         }
         if darkModeTemp != darkMode {
             darkModeTemp = darkMode
@@ -110,14 +110,37 @@ class ViewController: UIViewController {
 		HSelection.todaysDayID = TMCalendar.component(.day, from: date)
 	}
 
-    func updateDaysOfWeek(color: UIColor) {
-        FirstDayOfWeek.textColor = color
-        SecondDayOfWeek.textColor = color
-        ThirdDayOfWeek.textColor = color
-        FourthDayOfWeek.textColor = color
-        FivthDayOfWeek.textColor = color
-        SixthDayOfWeek.textColor = color
-        SeventhDayOfWeek.textColor = color
+	func updateDaysOfWeek(color: UIColor, weekendColor: UIColor) {
+		
+		FirstDayOfWeek.textColor = color
+		SecondDayOfWeek.textColor = color
+		ThirdDayOfWeek.textColor = color
+		FourthDayOfWeek.textColor = color
+		FivthDayOfWeek.textColor = color
+		SixthDayOfWeek.textColor = color
+		SeventhDayOfWeek.textColor = color
+		
+		if isMondayFirstWeekday {
+			FirstDayOfWeek.text = "M"
+			SecondDayOfWeek.text = "T"
+			ThirdDayOfWeek.text = "W"
+			FourthDayOfWeek.text = "T"
+			FivthDayOfWeek.text = "F"
+			SixthDayOfWeek.text = "S"
+			SeventhDayOfWeek.text = "S"
+			SixthDayOfWeek.textColor = weekendColor
+			SeventhDayOfWeek.textColor = weekendColor
+		} else {
+			FirstDayOfWeek.text = "S"
+			SecondDayOfWeek.text = "M"
+			ThirdDayOfWeek.text = "T"
+			FourthDayOfWeek.text = "W"
+			FivthDayOfWeek.text = "T"
+			SixthDayOfWeek.text = "F"
+			SeventhDayOfWeek.text = "S"
+			FirstDayOfWeek.textColor = weekendColor
+			SeventhDayOfWeek.textColor = weekendColor
+		}
     }
     
     @IBAction func unwindToMonthView(segue: UIStoryboardSegue) {

@@ -24,7 +24,7 @@ class DayCollectionViewCell: UICollectionViewCell {
 		} else {
 			lbl.textColor = CALENDARGREY
 		}
-		lbl.font = UIFont.systemFont(ofSize: 18, weight: UIFontWeightSemibold)
+		lbl.font = UIFont.init(name: "Futura", size: 16)
 		lbl.textAlignment = .center
 		return lbl
 	}()
@@ -52,37 +52,42 @@ class DayCollectionViewCell: UICollectionViewCell {
 		} else {
 			self.label!.text = ""
 		}
+		let shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: bounds.width / 2)
+		layer.masksToBounds = false
+		layer.shadowColor = UIColor.black.cgColor
+		layer.shadowOffset = CGSize(width: 0.0, height: 5.0)
+		layer.shadowOpacity = 0
+		layer.shadowPath = shadowPath.cgPath
 	}
 	
-    func setCellDesign(isToday: Bool, isSelected: Bool, isNotInMonth: Bool = false) {
+	func setCellDesign(isToday: Bool, isSelected: Bool, isNotInMonth: Bool = false, isOnWeekend: Bool = false) {
 		self.isSelected = isSelected
         if isSelected {
-            contentView.backgroundColor = CALENDARORANGE
+			if isOnWeekend {
+				contentView.backgroundColor = CALENDARGREEN
+			} else {
+				contentView.backgroundColor = CALENDARBLUE
+			}
             if isToday {
                 label?.textColor = CALENDARORANGE
             } else {
                 if darkMode {
                     label?.textColor = CALENDARWHITE
                 } else {
-                    label?.textColor = CALENDARGREY
+                    label?.textColor = CALENDARWHITE
                 }
             }
         } else {
+			self.contentView.backgroundColor = UIColor.clear
+			layer.shadowOpacity = 0
             if isToday {
                 label?.textColor = CALENDARORANGE
-                if darkMode {
-                    contentView.backgroundColor = CALENDARGREY
-                } else {
-                    contentView.backgroundColor = CALENDARWHITE
-                }
             } else {
-                if darkMode {
-                    contentView.backgroundColor = CALENDARGREY
-                    label?.textColor = CALENDARWHITE
-                } else {
-                    contentView.backgroundColor = CALENDARWHITE
-                    label?.textColor = CALENDARGREY
-                }
+				if isOnWeekend {
+					label?.textColor = CALENDARGREEN
+				} else {
+					label?.textColor = CALENDARBLUE
+				}
             }
         }
         if isNotInMonth {
