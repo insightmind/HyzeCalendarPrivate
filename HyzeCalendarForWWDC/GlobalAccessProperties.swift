@@ -17,10 +17,13 @@ var needsDesignUpdate: Bool = false
 
 var darkMode: Bool = UserDefaults.standard.bool(forKey: "DarkMode")
 var showLinesInCalendarView: Bool = UserDefaults.standard.bool(forKey: "showLinesInCalendarView")
+var isMondayFirstWeekday: Bool = UserDefaults.standard.bool(forKey: "isMondayFirstWeekday")
 
 let CALENDARWHITE = UIColor.white
 let CALENDARGREY = UIColor.init(red: 0.251, green: 0.251, blue: 0.251, alpha: 1)
 let CALENDARORANGE = UIColor.orange
+let CALENDARBLUE = UIColor.init(red: 0.204, green: 0.571, blue: 0.901, alpha: 1)
+let CALENDARGREEN = UIColor.init(red: 0.415, green: 0.860, blue: 0.427, alpha: 1)
 
 var TMCalendar: NSCalendar = {
 	let c = NSCalendar(identifier: .gregorian)!

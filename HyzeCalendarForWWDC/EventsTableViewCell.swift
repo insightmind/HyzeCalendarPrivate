@@ -31,7 +31,7 @@ class EventsTableViewCell: UITableViewCell {
         if darkMode {
             lbl.textColor = CALENDARWHITE
         } else {
-            lbl.textColor = CALENDARGREY
+            lbl.textColor = CALENDARWHITE
         }
         return lbl
     }()
@@ -100,13 +100,13 @@ class EventsTableViewCell: UITableViewCell {
         self.startLabel.text = self.start
         self.endLabel.text = self.end
         
-        startLabel.textColor = UIColor.lightGray
-        endLabel.textColor = UIColor.lightGray
+        startLabel.textColor = UIColor.white
+        endLabel.textColor = UIColor.white
         
         if darkMode {
             titleLabel.textColor = CALENDARWHITE
         } else {
-            titleLabel.textColor = CALENDARGREY
+            titleLabel.textColor = CALENDARWHITE
         }
         
     }
@@ -142,6 +142,7 @@ class EventsTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         self.inheritanceBar.bounds = CGRect(x: 5, y: 2, width: 2, height: 40)
+		self.contentView.backgroundColor = UIColor.clear
     }
 
 }

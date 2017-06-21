@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9Ys-zU-rvq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.17" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9Ys-zU-rvq">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.14"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iSx-hX-3vF">
-                                <rect key="frame" x="26" y="69" width="323" height="31"/>
+                                <rect key="frame" x="26" y="89" width="323" height="31"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Darkmode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kk3-6s-xKs">
                                         <rect key="frame" x="0.0" y="0.0" width="274" height="31"/>
@@ -41,7 +41,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I8S-10-ncE">
-                                <rect key="frame" x="26" y="108" width="323" height="31"/>
+                                <rect key="frame" x="26" y="128" width="323" height="31"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24 hours" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCR-EK-lTb">
                                         <rect key="frame" x="0.0" y="0.0" width="274" height="31"/>
@@ -85,7 +85,7 @@
                                 </items>
                             </navigationBar>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PCJ-Gd-eyQ">
-                                <rect key="frame" x="26" y="147" width="323" height="31"/>
+                                <rect key="frame" x="26" y="167" width="323" height="31"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="show Lines in CalendarView" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IOT-Z3-e4r">
                                         <rect key="frame" x="0.0" y="0.0" width="274" height="31"/>
@@ -102,6 +102,24 @@
                                     </switch>
                                 </subviews>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ci4-S1-2vx">
+                                <rect key="frame" x="26" y="206" width="323" height="31"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monday firstWeekday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yXk-i4-L5J">
+                                        <rect key="frame" x="0.0" y="0.0" width="274" height="31"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="GMq-Nm-MAa">
+                                        <rect key="frame" x="274" y="0.0" width="51" height="31"/>
+                                        <color key="onTintColor" red="0.99599725009999995" green="0.50108808279999995" blue="0.14677721260000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="toggleIsMondayFirstWeekDay:" destination="9Ys-zU-rvq" eventType="valueChanged" id="VM3-pN-cjw"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -109,7 +127,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="PCJ-Gd-eyQ" secondAttribute="trailing" constant="10" id="4Bh-uo-QxJ"/>
                             <constraint firstItem="IOT-Z3-e4r" firstAttribute="top" secondItem="gCR-EK-lTb" secondAttribute="bottom" constant="8" id="ATW-fd-aLV"/>
                             <constraint firstItem="ZIN-fw-X0x" firstAttribute="leading" secondItem="JwF-B0-bp4" secondAttribute="leading" id="Ecb-9B-oiH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ci4-S1-2vx" secondAttribute="trailing" constant="10" id="HhE-Kp-7nH"/>
                             <constraint firstItem="ZIN-fw-X0x" firstAttribute="top" secondItem="JwF-B0-bp4" secondAttribute="top" id="PqS-R3-iLf"/>
+                            <constraint firstItem="ci4-S1-2vx" firstAttribute="leadingMargin" secondItem="JwF-B0-bp4" secondAttribute="leadingMargin" constant="10" id="RWP-SN-6tD"/>
                             <constraint firstAttribute="trailing" secondItem="ZIN-fw-X0x" secondAttribute="trailing" id="ZmV-OA-Gw8"/>
                             <constraint firstItem="iSx-hX-3vF" firstAttribute="leading" secondItem="JwF-B0-bp4" secondAttribute="leadingMargin" constant="10" id="bnF-dn-5rj"/>
                             <constraint firstAttribute="trailingMargin" secondItem="iSx-hX-3vF" secondAttribute="trailing" constant="10" id="eoe-Nf-PDO"/>
@@ -117,6 +137,8 @@
                             <constraint firstItem="PCJ-Gd-eyQ" firstAttribute="leading" secondItem="JwF-B0-bp4" secondAttribute="leadingMargin" constant="10" id="jbu-bd-Eyn"/>
                             <constraint firstAttribute="trailingMargin" secondItem="I8S-10-ncE" secondAttribute="trailing" constant="10" id="kIa-rn-HTx"/>
                             <constraint firstItem="iSx-hX-3vF" firstAttribute="top" secondItem="zU0-dh-AkT" secondAttribute="bottom" constant="69" id="oEl-db-Fhc"/>
+                            <constraint firstItem="ci4-S1-2vx" firstAttribute="centerX" secondItem="JwF-B0-bp4" secondAttribute="centerX" id="pQx-qX-xof"/>
+                            <constraint firstItem="ci4-S1-2vx" firstAttribute="top" secondItem="IOT-Z3-e4r" secondAttribute="bottom" constant="8" id="viN-E7-gBZ"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -126,6 +148,7 @@
                         <outlet property="darkModeSwitch" destination="ch3-yP-HBf" id="5vV-Oi-brz"/>
                         <outlet property="hours24Label" destination="gCR-EK-lTb" id="j0Q-gl-J7z"/>
                         <outlet property="hours24Switch" destination="dKj-t4-vYH" id="qI3-Yg-b2Q"/>
+                        <outlet property="isMondaySwitch" destination="GMq-Nm-MAa" id="YhH-L6-Bou"/>
                         <outlet property="showLines" destination="IOT-Z3-e4r" id="8Ys-Sw-Tit"/>
                         <outlet property="showLinesSwitch" destination="gje-M3-h6H" id="REf-LM-8nM"/>
                     </connections>

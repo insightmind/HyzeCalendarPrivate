@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Lottie
 
 class SettingsViewController: UIViewController {
     
@@ -17,7 +16,8 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var hours24Switch: UISwitch!
     @IBOutlet weak var showLinesSwitch: UISwitch!
     @IBOutlet weak var showLines: UILabel!
-    
+	@IBOutlet weak var isMondaySwitch: UISwitch!
+	
     @IBAction func toggleShowLinesInCalendarView(_ sender: UISwitch) {
         let defaults = UserDefaults.standard
         if showLinesInCalendarView {
@@ -54,7 +54,18 @@ class SettingsViewController: UIViewController {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+	@IBAction func toggleIsMondayFirstWeekDay(_ sender: UISwitch) {
+		let defaults = UserDefaults.standard
+		if isMondayFirstWeekday {
+			isMondayFirstWeekday = false
+		} else {
+			isMondayFirstWeekday = true
+		}
+		needsDesignUpdate = true
+		defaults.set(isMondayFirstWeekday, forKey: "isMondayFirstWeekday")
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
         if darkMode {
             darkModeSwitch.isOn = true
             showLines.textColor = CALENDARWHITE
@@ -78,6 +89,11 @@ class SettingsViewController: UIViewController {
         } else {
             showLinesSwitch.isOn = false
         }
+		if isMondayFirstWeekday {
+			isMondaySwitch.isOn = true
+		} else {
+			isMondaySwitch.isOn = false
+		}
     }
 
     @IBAction func toggle24Hour(_ sender: UISwitch) {

@@ -30,7 +30,6 @@ class EventTableView: UITableView, UITableViewDataSource, UITableViewDelegate{
                 visuallySelect(eventCell, duration: 0, indexPath: indexPath)
             }
         }
-        
         eventCell.selectionStyle = .none
 
         eventCell.sendProperties(event.title, from: event.startDate, to: event.endDate, color: CALENDARORANGE, inherit: nil, isAllDay: event.isAllDay)
@@ -64,6 +63,11 @@ class EventTableView: UITableView, UITableViewDataSource, UITableViewDelegate{
         }
         self.prevEventsCount = self.events.count + 1
         self.events = EManagement.getEvents(for: TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item))
+		if HSelection.selectedIsOnWeekend! {
+			self.backgroundColor = CALENDARGREEN
+		} else {
+			self.backgroundColor = CALENDARBLUE
+		}
     }
     
     func reloadView() {
@@ -173,6 +177,7 @@ class EventTableView: UITableView, UITableViewDataSource, UITableViewDelegate{
         super.init(frame: frame, style: style)
         eventsTableView = self
         updateEvents()
+		self.layer.cornerRadius = 20
     }
     
     required init?(coder aDecoder: NSCoder) {
