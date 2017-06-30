@@ -33,14 +33,14 @@ class dayViewUIVViewController: UIViewController {
     
     func setdarkMode(){
         if darkMode {
-			toolbar.barTintColor = calendarWhite
-			editButton.tintColor = calendarGrey
+			toolbar.barTintColor = calendarGrey
+			editButton.tintColor = calendarWhite
             view.backgroundColor = calendarGrey
 			navigationController?.navigationBar.tintColor = calendarWhite
 			addButton.tintColor = calendarWhite
         } else {
-			toolbar.barTintColor = calendarGrey
-			editButton.tintColor = calendarWhite
+			toolbar.barTintColor = calendarWhite
+			editButton.tintColor = calendarGrey
             view.backgroundColor = calendarWhite
 			navigationController?.navigationBar.tintColor = calendarGrey
 			addButton.tintColor = calendarGrey

@@ -32,6 +32,7 @@
 <<<<<<< develop
 <<<<<<< develop
 <<<<<<< develop
+<<<<<<< develop
 	<string>1097</string>
 =======
 	<string>1098</string>
@@ -45,6 +46,9 @@
 =======
 	<string>1231</string>
 >>>>>>> design Improvements
+=======
+	<string>1261</string>
+>>>>>>> new design improvements
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCalendarsUsageDescription</key>

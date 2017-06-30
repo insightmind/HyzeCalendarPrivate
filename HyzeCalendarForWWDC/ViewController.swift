@@ -42,6 +42,7 @@ class ViewController: UIViewController {
     
     @IBAction func jumpToToday(_ sender: UIBarButtonItem) {
         let (yearID, monthID, _) = HSelection.todaysDayCellIndex
+		HSelection.selectedDayCellIndex = HSelection.todaysDayCellIndex
 		scrollToSection(yearID: yearID, monthID: monthID + 1, animated: true)
     }
     
@@ -63,10 +64,13 @@ class ViewController: UIViewController {
     
     func reloadEventTableView() {
         eventTableView.reloadView()
-    }
+	}
+	
+
     
     override func viewWillAppear(_ animated: Bool) {
         if darkMode{
+			
             view.backgroundColor = calendarGrey
 			updateDaysOfWeek(color: calendarWhite, weekendColor: calendarGreen)
 			navigationController?.navigationBar.barTintColor = calendarGrey
@@ -74,10 +78,10 @@ class ViewController: UIViewController {
 			navigationBar.backBarButtonItem?.tintColor = calendarGrey
 			navigationBar.leftBarButtonItem?.tintColor = calendarWhite
 			navigationBar.rightBarButtonItem?.tintColor = calendarWhite
-			toolbar.barTintColor = calendarWhite
+			toolbar.barTintColor = calendarGrey
 			if toolbar.items != nil {
 				for i in toolbar.items! {
-					i.tintColor = calendarGrey
+					i.tintColor = calendarWhite
 				}
 			}
         } else {
@@ -88,10 +92,10 @@ class ViewController: UIViewController {
 			navigationBar.backBarButtonItem?.tintColor = calendarGrey
 			navigationBar.leftBarButtonItem?.tintColor = calendarGrey
 			navigationBar.rightBarButtonItem?.tintColor = calendarGrey
-			toolbar.barTintColor = calendarGrey
+			toolbar.barTintColor = calendarWhite
 			if toolbar.items != nil {
 				for i in toolbar.items! {
-					i.tintColor = calendarWhite
+					i.tintColor = calendarGrey
 				}
 			}
         }
