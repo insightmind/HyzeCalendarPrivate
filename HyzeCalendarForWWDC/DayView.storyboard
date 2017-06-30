@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.17" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="4in-gb-opo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="4in-gb-opo">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,11 +20,11 @@
                         <viewControllerLayoutGuide type="bottom" id="n78-f7-hAW"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="PfB-zh-Sgo">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="44" width="320" height="524"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NeF-Az-v1m" customClass="dayView" customModule="HyzeCalendarForWWDC" customModuleProvider="target">
-                                <rect key="frame" x="47.5" y="60" width="225" height="225"/>
+                                <rect key="frame" x="47.5" y="40" width="225" height="225"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="225" id="CzV-EV-qyi"/>
@@ -32,7 +32,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qet-3Z-dfx" customClass="EventTableView" customModule="HyzeCalendarForWWDC" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="325" width="320" height="199"/>
+                                <rect key="frame" x="0.0" y="305" width="320" height="175"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -44,7 +44,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MZw-of-dJN" id="MG7-Ke-Eap">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -55,7 +55,7 @@
                                 </connections>
                             </tableView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z9O-L3-LpW">
-                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="480" width="320" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <items>
                                     <barButtonItem title="EDIT" id="Q3u-zm-CiR">
@@ -120,13 +120,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dJ8-vd-dFf">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
-                                <color key="backgroundColor" red="0.9381498694" green="0.51639610530000002" blue="0.21356177330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
                             <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vom-94-dII">
-                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                                <color key="barTintColor" red="0.9381498694" green="0.51639610530000002" blue="0.21356177330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <textAttributes key="titleTextAttributes">
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <color key="textColor" red="0.25061571599999999" green="0.25083461400000001" blue="0.25064963099999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -134,13 +130,13 @@
                                 <items>
                                     <navigationItem title="EVENT" id="qaZ-BJ-Zr6">
                                         <barButtonItem key="leftBarButtonItem" tag="1" systemItem="cancel" id="e6S-QF-m3n">
-                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="tintColor" red="0.2036032975" green="0.57139366869999997" blue="0.90090757610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <segue destination="iUH-Ja-Jyg" kind="unwind" unwindAction="unwindToRedWithSegue:" id="7ak-WW-QKy"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" tag="2" systemItem="done" id="67J-nt-ubF">
-                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="tintColor" red="0.2036032975" green="0.57139366869999997" blue="0.90090757610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="donepressed:" destination="CPl-dw-xgF" id="dIL-Gl-QKg"/>
                                                 <segue destination="iUH-Ja-Jyg" kind="unwind" unwindAction="unwindToRedWithSegue:" id="w8m-95-naE"/>
@@ -150,7 +146,7 @@
                                 </items>
                             </navigationBar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="Bqb-Qr-ykm">
-                                <rect key="frame" x="16" y="72" width="288" height="60"/>
+                                <rect key="frame" x="16" y="52" width="288" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="Q4Y-bw-SgI"/>
                                 </constraints>
@@ -159,7 +155,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="5Ie-7X-wQd">
-                                <rect key="frame" x="0.0" y="185" width="320" height="170"/>
+                                <rect key="frame" x="0.0" y="165" width="320" height="170"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="170" id="xMa-Pw-88f"/>
                                 </constraints>
@@ -168,7 +164,7 @@
                                 </date>
                             </datePicker>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="RbN-Be-Leo">
-                                <rect key="frame" x="0.0" y="398" width="320" height="170"/>
+                                <rect key="frame" x="0.0" y="378" width="320" height="170"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="170" id="mWd-wX-lY8"/>
                                 </constraints>
@@ -177,13 +173,13 @@
                                 </date>
                             </datePicker>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="StartTime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EcA-SG-fmu">
-                                <rect key="frame" x="16" y="149" width="75" height="21"/>
+                                <rect key="frame" x="16" y="129" width="75" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EndTime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nJo-oz-7xH">
-                                <rect key="frame" x="16" y="363" width="68" height="21"/>
+                                <rect key="frame" x="16" y="343" width="68" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -194,23 +190,19 @@
                             <constraint firstAttribute="leadingMargin" secondItem="Bqb-Qr-ykm" secondAttribute="leading" id="28O-L7-t4w"/>
                             <constraint firstItem="RbN-Be-Leo" firstAttribute="leading" secondItem="Rdh-tp-9Cc" secondAttribute="leadingMargin" constant="-16" id="33I-Bg-lTz"/>
                             <constraint firstAttribute="trailingMargin" secondItem="5Ie-7X-wQd" secondAttribute="trailing" constant="-16" id="BNH-XS-ysN"/>
-                            <constraint firstItem="dJ8-vd-dFf" firstAttribute="trailing" secondItem="vom-94-dII" secondAttribute="trailing" id="Crk-4c-rL2"/>
-                            <constraint firstItem="dJ8-vd-dFf" firstAttribute="leading" secondItem="vom-94-dII" secondAttribute="leading" id="JKn-gU-n9V"/>
                             <constraint firstItem="RbN-Be-Leo" firstAttribute="top" secondItem="nJo-oz-7xH" secondAttribute="bottom" constant="14" id="KxT-iH-J61"/>
-                            <constraint firstItem="vom-94-dII" firstAttribute="bottom" secondItem="dJ8-vd-dFf" secondAttribute="bottom" id="Ot6-xy-GZN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Bqb-Qr-ykm" secondAttribute="trailing" id="Q48-UD-TF5"/>
                             <constraint firstItem="Bqb-Qr-ykm" firstAttribute="top" secondItem="Esq-Go-3wf" secondAttribute="bottom" constant="52" id="RXP-X6-0Bn"/>
-                            <constraint firstItem="dJ8-vd-dFf" firstAttribute="top" secondItem="Rdh-tp-9Cc" secondAttribute="top" id="U23-gJ-Tkb"/>
                             <constraint firstItem="EcA-SG-fmu" firstAttribute="top" secondItem="Bqb-Qr-ykm" secondAttribute="bottom" constant="17" id="W3F-NQ-NhD"/>
                             <constraint firstAttribute="trailingMargin" secondItem="RbN-Be-Leo" secondAttribute="trailing" constant="-16" id="Y0n-Jx-cUn"/>
-                            <constraint firstItem="dJ8-vd-dFf" firstAttribute="leading" secondItem="Rdh-tp-9Cc" secondAttribute="leading" id="ZDQ-SJ-scQ"/>
                             <constraint firstItem="nJo-oz-7xH" firstAttribute="top" secondItem="5Ie-7X-wQd" secondAttribute="bottom" constant="8" id="bFW-0p-zgL"/>
                             <constraint firstAttribute="leadingMargin" secondItem="nJo-oz-7xH" secondAttribute="leading" id="gMe-t3-m2Q"/>
                             <constraint firstItem="5Ie-7X-wQd" firstAttribute="top" secondItem="EcA-SG-fmu" secondAttribute="bottom" constant="15" id="jFM-sG-rQs"/>
                             <constraint firstAttribute="leadingMargin" secondItem="EcA-SG-fmu" secondAttribute="leading" id="l8T-an-hEb"/>
                             <constraint firstItem="vom-94-dII" firstAttribute="top" secondItem="Esq-Go-3wf" secondAttribute="bottom" id="q13-sn-PYv"/>
                             <constraint firstItem="5Ie-7X-wQd" firstAttribute="leading" secondItem="Rdh-tp-9Cc" secondAttribute="leadingMargin" constant="-16" id="saw-WX-wEc"/>
-                            <constraint firstAttribute="trailing" secondItem="dJ8-vd-dFf" secondAttribute="trailing" id="uAM-XR-ECU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vom-94-dII" secondAttribute="trailing" constant="-16" id="x35-iQ-A22"/>
+                            <constraint firstItem="vom-94-dII" firstAttribute="leading" secondItem="Rdh-tp-9Cc" secondAttribute="leadingMargin" constant="-16" id="xfu-bf-TBS"/>
                         </constraints>
                     </view>
                     <connections>
@@ -224,7 +216,7 @@
                 <exit id="iUH-Ja-Jyg" userLabel="Exit" sceneMemberID="exit"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0fS-fN-gpE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8028" y="-85.907046476761622"/>
+            <point key="canvasLocation" x="8250" y="-85"/>
         </scene>
         <!--UIViewController-S48-rw-GfR-->
         <scene sceneID="jkC-QW-eXG">
