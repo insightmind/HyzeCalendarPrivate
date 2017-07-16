@@ -33,6 +33,7 @@
 <<<<<<< develop
 <<<<<<< develop
 <<<<<<< develop
+<<<<<<< develop
 	<string>1097</string>
 =======
 	<string>1098</string>
@@ -49,6 +50,9 @@
 =======
 	<string>1261</string>
 >>>>>>> new design improvements
+=======
+	<string>1339</string>
+>>>>>>> added dayViewalgorithm and animation
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCalendarsUsageDescription</key>

@@ -74,7 +74,7 @@ class ViewController: UIViewController {
             view.backgroundColor = calendarGrey
 			updateDaysOfWeek(color: calendarWhite, weekendColor: calendarGreen)
 			navigationController?.navigationBar.barTintColor = calendarGrey
-			navigationController?.navigationBar.titleTextAttributes![NSForegroundColorAttributeName] = calendarWhite
+			navigationController?.navigationBar.titleTextAttributes![NSAttributedStringKey.foregroundColor.rawValue] = calendarWhite
 			navigationBar.backBarButtonItem?.tintColor = calendarGrey
 			navigationBar.leftBarButtonItem?.tintColor = calendarWhite
 			navigationBar.rightBarButtonItem?.tintColor = calendarWhite
@@ -88,7 +88,7 @@ class ViewController: UIViewController {
             view.backgroundColor = calendarWhite
 			updateDaysOfWeek(color: calendarGrey, weekendColor: calendarGreen)
 			navigationController?.navigationBar.barTintColor = calendarWhite
-			navigationController?.navigationBar.titleTextAttributes![NSForegroundColorAttributeName] = calendarGrey
+			navigationController?.navigationBar.titleTextAttributes![NSAttributedStringKey.foregroundColor.rawValue] = calendarGrey
 			navigationBar.backBarButtonItem?.tintColor = calendarGrey
 			navigationBar.leftBarButtonItem?.tintColor = calendarGrey
 			navigationBar.rightBarButtonItem?.tintColor = calendarGrey

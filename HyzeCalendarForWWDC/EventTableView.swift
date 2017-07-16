@@ -114,9 +114,6 @@ class EventTableView: UITableView, UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-
-        
         guard let row = tableView.cellForRow(at: indexPath) as? EventsTableViewCell else {
             print("Didn't found cell to highlight")
             return
@@ -154,8 +151,6 @@ class EventTableView: UITableView, UITableViewDataSource, UITableViewDelegate{
     }
     
     func visuallySelect(_ row: EventsTableViewCell, duration: TimeInterval = 0.2, indexPath: IndexPath) {
-        
-        
         if viewIsDayView {
             if renDayView != nil {
                 renDayView?.selectEventView(indexPath.row, duration: duration)
