@@ -22,38 +22,42 @@ class EventView: UIButton {
     var allowShadow = true
     var isEvent = false
     var animatedState: EventAnimationType = .load
-    
+	
     var shapeLayer = CAShapeLayer()
 
-
+	//TODO: fix layout and center issues
     override func draw(_ rect: CGRect) {
-        let tcenter = CGPoint(x: bounds.width/2, y: bounds.height/2)
-        var radius = max(bounds.width, bounds.height)
-        radius = radius/2 - radius/13
-        
-        let startAngle = calculateAngle(for: startTime)
-        let endAngle = calculateAngle(for: endTime)
-        let path = UIBezierPath(arcCenter: tcenter, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
-        
-        path.usesEvenOddFillRule = true
-        path.lineWidth = arcWidth
-        coloring.setStroke()
-        
-        shapeLayer.path = path.cgPath
+		
+		coloring.setStroke()
+		
+		var radius = max(bounds.width, bounds.height)
+		radius = radius/2 - radius/13
+		let rect = CGRect(x: bounds.width/2 , y: bounds.height / 2 , width: radius * 2, height: radius * 2)
+		shapeLayer.bounds = rect
+		shapeLayer.frame = self.frame
+        shapeLayer.path = UIBezierPath(ovalIn: rect).cgPath
+		shapeLayer.strokeStart = calculateAngle(for: 0)
+		shapeLayer.strokeEnd = calculateAngle(for: 0)
         shapeLayer.strokeColor = coloring.cgColor
         shapeLayer.fillColor = UIColor.clear.cgColor
-        shapeLayer.lineWidth = path.lineWidth
+        shapeLayer.lineWidth = arcWidth
         if isEvent {
             shapeLayer.lineCap = kCALineCapRound
         }
-        shapeLayer.position = CGPoint(x: 0, y: 0)
         shapeLayer.opacity = 1
         
         self.layer.addSublayer(shapeLayer)
     }
     
     func calculateAngle(for minute: CGFloat) -> CGFloat {
-        return ((minute * PI)/720) + ((3*PI)/2)
+		
+		var result = minute / 1440 + 0.75
+		
+		if result > 1 {
+			result -= 1
+		}
+		
+        return result
     }
     
     init(frame: CGRect = CGRect(), carcWidth: CGFloat , addShadow: Bool = false, hourRotation: Bool = false) {
@@ -70,20 +74,44 @@ class EventView: UIButton {
     }
 
     func animate(_ animationType: EventAnimationType = .reload, duration: TimeInterval = 0.5) {
-        
-        let animation = CABasicAnimation(keyPath: "lineWidth")
-        animation.duration = duration
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+		
         switch animationType {
         case .select:
+			let animation = CABasicAnimation(keyPath: "lineWidth")
+			animation.duration = duration
+			animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
             animation.fromValue = arcWidth
             animation.toValue = arcWidth + 3.5
+			animation.fillMode = kCAFillModeForwards
+			animation.isRemovedOnCompletion = false
+			shapeLayer.add(animation, forKey: "lineWidth")
             break
         case .deselect:
+			let animation = CABasicAnimation(keyPath: "lineWidth")
+			animation.duration = duration
+			animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
             animation.fromValue = arcWidth + 3.5
             animation.toValue = arcWidth
+			animation.fillMode = kCAFillModeForwards
+			animation.isRemovedOnCompletion = false
+			shapeLayer.add(animation, forKey: "lineWidth")
             break
         case .add:
+			let startAngle = calculateAngle(for: startTime)
+			let endAngle = calculateAngle(for: endTime)
+			
+			let start = CABasicAnimation(keyPath: "strokeStart")
+			start.toValue = startAngle
+			
+			let end = CABasicAnimation(keyPath: "strokeEnd")
+			end.toValue = endAngle
+			
+			let group = CAAnimationGroup()
+			group.animations = [start, end]
+			group.duration = duration
+			group.autoreverses = true
+			group.repeatCount = HUGE
+			shapeLayer.add(group, forKey: nil)
             break
         case .delete:
             break
@@ -94,11 +122,6 @@ class EventView: UIButton {
         case .magic:
             break
         }
-        
-        animation.fillMode = kCAFillModeForwards
-        animation.isRemovedOnCompletion = false
-        
-        shapeLayer.add(animation, forKey: "lineWidth")
     }
     
     required init?(coder aDecoder: NSCoder) {
