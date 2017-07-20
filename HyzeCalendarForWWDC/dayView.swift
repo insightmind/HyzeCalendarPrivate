@@ -262,37 +262,33 @@ class dayView: UIView {
         if eventsOnDate.count > 0 {
 		for layer in 0...processedEventsOnDate.count - 1 {
 			for i in processedEventsOnDate[layer] {
-				if i[0] == 0 {
-					let eventInset = self.bounds.insetBy(dx: CGFloat(-10 * layer - 5), dy: CGFloat(-10 * layer - 5))
-					let event = EventView(frame: eventInset , carcWidth: 5, addShadow: false)
+				if (i[1] <= i[2]) || i[0] == 0 {
+					let event = EventView(frame: self.bounds , carcWidth: 5)
+					event.drawLayer = layer
 					event.sendTimeProperties(start: i[1], end: i[2])
+					if i[0] == 0 {
+						event.isFullDay = true
+					}
 					event.isEvent = true
-					event.sendColorProperties(calendarOrange)
 					events.append(event)
 					self.addSubview(event)
-				}
-				if i[0] == 1 {
-					if i[1] <= i[2] {
-						let eventInset = self.bounds.insetBy(dx: CGFloat(-10 * layer - 5), dy: CGFloat(-10 * layer - 5))
-						let event = EventView(frame: eventInset, carcWidth: 5, addShadow: false)
-						event.isEvent = true
-						event.sendTimeProperties(start: i[1], end: i[2])
-						event.sendColorProperties(calendarGreen)
-						events.append(event)
-						self.addSubview(event)
-					} else {
-						fatalError("Strange NormalEvent \(layer) with negative Duration, travelling back in Time is not allowed")
-					}
+				} else {
+					fatalError("Strange NormalEvent \(layer) with negative Duration, travelling back in Time is not allowed")
 				}
 			}
 		}
 		
         }
-		
-		for eventView in events {
-			eventView.animate(.add, duration: 5)
+		if animateDayView {
+			for i in 0...events.count - 1 {
+				events[i].animate(.add, duration: 1, delay: 0.1 * Double(i))
+			}
+		} else {
+			for i in 0...events.count - 1 {
+				events[i].animate(.add, duration: 0, delay: 0)
+			}
 		}
-            
+		
         let (selectedYearID, selectedMonthID, indexPath) = HSelection.selectedDayCellIndex
 		
         guard let selectedIndexPath = indexPath else {
