@@ -34,6 +34,7 @@
 <<<<<<< develop
 <<<<<<< develop
 <<<<<<< develop
+<<<<<<< develop
 	<string>1097</string>
 =======
 	<string>1098</string>
@@ -53,6 +54,9 @@
 =======
 	<string>1339</string>
 >>>>>>> added dayViewalgorithm and animation
+=======
+	<string>1402</string>
+>>>>>>> DayViewLayoutFix + DayViewAnimation + Optimizations
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCalendarsUsageDescription</key>

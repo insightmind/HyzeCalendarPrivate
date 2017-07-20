@@ -19,7 +19,19 @@ class SettingsViewController: UIViewController {
 	@IBOutlet weak var isMondaySwitch: UISwitch!
 	@IBOutlet weak var isMondayLabel: UILabel!
 	@IBOutlet weak var settingsLabel: UILabel!
+	@IBOutlet weak var animateDayViewLabel: UILabel!
+	@IBOutlet weak var animateDayViewSwitch: UISwitch!
 	
+	@IBAction func toggleAnimateDayView(_ sender: UISwitch) {
+		let defaults = UserDefaults.standard
+		if animateDayView {
+			animateDayView = false
+		} else {
+			animateDayView = true
+		}
+		defaults.set(animateDayView, forKey: "animateDayView")
+		defaults.synchronize()
+	}
 	
     @IBAction func toggleShowLinesInCalendarView(_ sender: UISwitch) {
         let defaults = UserDefaults.standard
@@ -50,6 +62,7 @@ class SettingsViewController: UIViewController {
 				self.showLines.textColor = calendarWhite
 				self.hours24Label.textColor = calendarWhite
 				self.darkModeLabel.textColor = calendarWhite
+				self.animateDayViewLabel.textColor = calendarWhite
 				self.view.backgroundColor = calendarGrey
 			} else {
 				self.settingsLabel.textColor = calendarGrey
@@ -57,6 +70,7 @@ class SettingsViewController: UIViewController {
 				self.showLines.textColor = calendarGrey
 				self.hours24Label.textColor = calendarGrey
 				self.darkModeLabel.textColor = calendarGrey
+				self.animateDayViewLabel.textColor = calendarGrey
 				self.view.backgroundColor = calendarWhite
 			}
 		}
@@ -81,6 +95,7 @@ class SettingsViewController: UIViewController {
             showLines.textColor = calendarWhite
             hours24Label.textColor = calendarWhite
             darkModeLabel.textColor = calendarWhite
+			self.animateDayViewLabel.textColor = calendarWhite
 			view.backgroundColor = calendarGrey
         } else {
 			settingsLabel.textColor = calendarGrey
@@ -89,6 +104,7 @@ class SettingsViewController: UIViewController {
             showLines.textColor = calendarGrey
             hours24Label.textColor = calendarGrey
             darkModeLabel.textColor = calendarGrey
+			self.animateDayViewLabel.textColor = calendarGrey
             view.backgroundColor = calendarWhite
         }
         if isAMPM {
@@ -105,6 +121,11 @@ class SettingsViewController: UIViewController {
 			isMondaySwitch.isOn = true
 		} else {
 			isMondaySwitch.isOn = false
+		}
+		if animateDayView {
+			animateDayViewSwitch.isOn = true
+		} else {
+			animateDayViewSwitch.isOn = false
 		}
     }
 
