@@ -277,17 +277,17 @@ class dayView: UIView {
 				}
 			}
 		}
-		
+			if animateDayView {
+				for i in 0...events.count - 1 {
+					events[i].animate(.add, duration: 1, delay: 0.1 * Double(i))
+				}
+			} else {
+				for i in 0...events.count - 1 {
+					events[i].animate(.add, duration: 0, delay: 0)
+				}
+			}
         }
-		if animateDayView {
-			for i in 0...events.count - 1 {
-				events[i].animate(.add, duration: 1, delay: 0.1 * Double(i))
-			}
-		} else {
-			for i in 0...events.count - 1 {
-				events[i].animate(.add, duration: 0, delay: 0)
-			}
-		}
+		
 		
         let (selectedYearID, selectedMonthID, indexPath) = HSelection.selectedDayCellIndex
 		
