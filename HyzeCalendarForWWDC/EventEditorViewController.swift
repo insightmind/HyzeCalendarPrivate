@@ -15,7 +15,8 @@ class EventEditorViewController: UIViewController {
     /// Variable to check if Event should be added to the Calendar
     var addEvent: Bool = false
     
-    
+	@IBOutlet weak var divideTitle: UIView!
+	
     // MARK: - Outlets
     //All the visual Elements in the ViewController
 	
@@ -23,7 +24,7 @@ class EventEditorViewController: UIViewController {
     // MARK: - Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-
+		divideTitle.layer.cornerRadius = divideTitle.frame.height / 2
         // Do any additional setup after loading the view.
     }
 
