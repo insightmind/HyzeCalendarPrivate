@@ -36,6 +36,7 @@
 <<<<<<< develop
 <<<<<<< develop
 <<<<<<< develop
+<<<<<<< develop
 	<string>1097</string>
 =======
 	<string>1098</string>
@@ -61,6 +62,9 @@
 =======
 	<string>1421</string>
 >>>>>>> new design for EventEditor
+=======
+	<string>1430</string>
+>>>>>>> eventEditor improvements
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCalendarsUsageDescription</key>

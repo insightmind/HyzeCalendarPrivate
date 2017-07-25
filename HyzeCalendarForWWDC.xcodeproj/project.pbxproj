@@ -10,6 +10,7 @@
 		3E1B95251E3FAD9D009EB5C9 /* dayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1B95241E3FAD9D009EB5C9 /* dayView.swift */; };
 		3E21053A1E5B56C400E78840 /* EventsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2105391E5B56C400E78840 /* EventsTableViewCell.swift */; };
 		3E2D7B791E6715E600A0170D /* EventEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2D7B781E6715E600A0170D /* EventEditorViewController.swift */; };
+		3E3AEDF81F23BFEF00792B11 /* setTimePopopverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3AEDF71F23BFEF00792B11 /* setTimePopopverViewController.swift */; };
 		3E4A9B291E4BB4C0009E45EF /* EventsManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4A9B281E4BB4C0009E45EF /* EventsManagement.swift */; };
 		3E533BC51EC36440000CEF5F /* MonthCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E533BC41EC36440000CEF5F /* MonthCollectionViewCell.swift */; };
 		3E533BC71EC364BC000CEF5F /* DayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E533BC61EC364BC000CEF5F /* DayCollectionViewCell.swift */; };
@@ -49,6 +50,7 @@
 		3E2105391E5B56C400E78840 /* EventsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsTableViewCell.swift; sourceTree = "<group>"; };
 		3E27B6001EFAF3CE00B084AF /* HyzeCalendarForWWDCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HyzeCalendarForWWDCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E2D7B781E6715E600A0170D /* EventEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventEditorViewController.swift; sourceTree = "<group>"; };
+		3E3AEDF71F23BFEF00792B11 /* setTimePopopverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = setTimePopopverViewController.swift; sourceTree = "<group>"; };
 		3E4A9B281E4BB4C0009E45EF /* EventsManagement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = EventsManagement.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		3E533BC01EC36185000CEF5F /* HyzeCalendarForWWDC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HyzeCalendarForWWDC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E533BC41EC36440000CEF5F /* MonthCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				3E2D7B781E6715E600A0170D /* EventEditorViewController.swift */,
+				3E3AEDF71F23BFEF00792B11 /* setTimePopopverViewController.swift */,
 			);
 			name = EventEditor;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 				3E533BC51EC36440000CEF5F /* MonthCollectionViewCell.swift in Sources */,
 				3EFA24DD1E2BF1D200BC6DD5 /* CalendarViewFlowLayout.swift in Sources */,
 				3EE1E5AD1E48D48C00379576 /* GlobalAccessProperties.swift in Sources */,
+				3E3AEDF81F23BFEF00792B11 /* setTimePopopverViewController.swift in Sources */,
 				3E533BC71EC364BC000CEF5F /* DayCollectionViewCell.swift in Sources */,
 				3E7DD5731E4679FA001E1D0B /* EventView.swift in Sources */,
 				3EF096B01E3FDC9F0011E726 /* ViewController.swift in Sources */,
