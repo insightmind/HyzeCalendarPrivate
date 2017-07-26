@@ -14,17 +14,20 @@ class EventEditorViewController: UIViewController {
     // MARK: - Variables
     /// Variable to check if Event should be added to the Calendar
     var addEvent: Bool = false
-    
-	@IBOutlet weak var divideTitle: UIView!
 	
     // MARK: - Outlets
     //All the visual Elements in the ViewController
 	
+	@IBAction func cancel(_ sender: UIButton) {
+		self.dismiss(animated: true, completion: nil)
+	}
 	
-    // MARK: - Functions
+	@IBAction func save(_ sender: UIButton) {
+		self.dismiss(animated: true, completion: nil)
+	}
+	// MARK: - Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-		divideTitle.layer.cornerRadius = divideTitle.frame.height / 2
         // Do any additional setup after loading the view.
     }
 

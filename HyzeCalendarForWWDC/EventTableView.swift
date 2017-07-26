@@ -38,7 +38,8 @@ class EventTableView: UITableView, UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+		
+        tableView.contentInset = UIEdgeInsets(top: 15, left: 0, bottom: 0, right: 0)
         tableView.register(EventsTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         prevEventsCount = events.count
         let (selectedYearID, selectedMonthID, indexPath) = HSelection.selectedDayCellIndex
@@ -59,6 +60,10 @@ class EventTableView: UITableView, UITableViewDataSource, UITableViewDelegate{
     }
     
     func updateEvents() {
+		
+		self.layer.cornerRadius = 20
+		self.layer.masksToBounds = true
+		
         let (selectedYearID, selectedMonthID, indexPath) = HSelection.selectedDayCellIndex
         
         guard let selectedIndexPath = indexPath else {
@@ -186,7 +191,6 @@ class EventTableView: UITableView, UITableViewDataSource, UITableViewDelegate{
         super.init(frame: frame, style: style)
         eventsTableView = self
         updateEvents()
-		self.layer.cornerRadius = 20
     }
     
     required init?(coder aDecoder: NSCoder) {
