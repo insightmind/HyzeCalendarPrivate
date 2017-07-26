@@ -39,6 +39,7 @@
 <<<<<<< develop
 <<<<<<< develop
 <<<<<<< develop
+<<<<<<< develop
 	<string>1097</string>
 =======
 	<string>1098</string>
@@ -73,6 +74,9 @@
 =======
 	<string>1518</string>
 >>>>>>> new build
+=======
+	<string>1519</string>
+>>>>>>> changed color of daySelection["starts at"]
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCalendarsUsageDescription</key>
