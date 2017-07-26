@@ -11,6 +11,7 @@ import UIKit
 class setTimePopopverViewController: UIViewController {
 
 	@IBOutlet var popover: UIView!
+	@IBOutlet weak var blurLayer: UIVisualEffectView!
 	
 	@IBAction func cancel(_ sender: UIButton) {
 		self.dismiss(animated: true, completion: nil)
@@ -19,7 +20,7 @@ class setTimePopopverViewController: UIViewController {
 	override func viewDidLoad() {
         super.viewDidLoad()
 		
-		popover.layer.cornerRadius = 10
+		popover.layer.cornerRadius = 20
 		popover.layer.masksToBounds = true
 
         // Do any additional setup after loading the view.
