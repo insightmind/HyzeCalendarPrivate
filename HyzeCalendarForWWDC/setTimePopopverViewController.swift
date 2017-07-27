@@ -13,6 +13,7 @@ class setTimePopopverViewController: UIViewController {
 	@IBOutlet var popover: UIView!
 	@IBOutlet weak var blurLayer: UIVisualEffectView!
 	
+	@IBOutlet weak var datePicker: UIDatePicker!
 	@IBAction func cancel(_ sender: UIButton) {
 		self.dismiss(animated: true, completion: nil)
 	}

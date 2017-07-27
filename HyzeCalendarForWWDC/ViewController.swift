@@ -28,7 +28,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var eventTableView: EventTableView!
     @IBOutlet weak var toolbar: UIToolbar!
 
-    //Outlets of DaysOfWeek
+	//Outlets of DaysOfWeek
     @IBOutlet weak var FirstDayOfWeek: UILabel!
     @IBOutlet weak var SecondDayOfWeek: UILabel!
     @IBOutlet weak var ThirdDayOfWeek: UILabel!
@@ -36,9 +36,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var FivthDayOfWeek: UILabel!
     @IBOutlet weak var SixthDayOfWeek: UILabel!
     @IBOutlet weak var SeventhDayOfWeek: UILabel!
-    let daysOfWeek: [UILabel]? = nil
+	@IBOutlet weak var eventTableViewTopLayoutConstraint: NSLayoutConstraint!
+	let daysOfWeek: [UILabel]? = nil
 
-    
+	@IBOutlet weak var daysOfWeekBackgroundView: UIView!
+	@IBOutlet weak var eventTableViewTopLayoutConstraintWithoutLastRow: NSLayoutConstraint!
+	
     
     @IBAction func jumpToToday(_ sender: UIBarButtonItem) {
         let (yearID, monthID, _) = HSelection.todaysDayCellIndex
@@ -69,9 +72,10 @@ class ViewController: UIViewController {
 
     
     override func viewWillAppear(_ animated: Bool) {
+		self.calendarView.layer.masksToBounds = false
         if darkMode{
-			
             view.backgroundColor = calendarGrey
+			daysOfWeekBackgroundView.backgroundColor = calendarGrey
 			updateDaysOfWeek(color: calendarWhite, weekendColor: calendarGreen)
 			navigationController?.navigationBar.barTintColor = calendarGrey
 			navigationController?.navigationBar.titleTextAttributes![NSForegroundColorAttributeName] = calendarWhite
@@ -86,6 +90,7 @@ class ViewController: UIViewController {
 			}
         } else {
             view.backgroundColor = calendarWhite
+			daysOfWeekBackgroundView.backgroundColor = calendarWhite
 			updateDaysOfWeek(color: calendarGrey, weekendColor: calendarGreen)
 			navigationController?.navigationBar.barTintColor = calendarWhite
 			navigationController?.navigationBar.titleTextAttributes![NSForegroundColorAttributeName] = calendarGrey

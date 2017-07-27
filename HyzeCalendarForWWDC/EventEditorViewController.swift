@@ -17,7 +17,11 @@ class EventEditorViewController: UIViewController {
 	
     // MARK: - Outlets
     //All the visual Elements in the ViewController
+	@IBOutlet weak var blurEffectView: UIVisualEffectView!
 	
+	@IBOutlet weak var startsEndSelectionButton: UIView!
+	
+	@IBOutlet weak var newEventTextField: UITextField!
 	@IBAction func cancel(_ sender: UIButton) {
 		self.dismiss(animated: true, completion: nil)
 	}
@@ -29,6 +33,14 @@ class EventEditorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+		
+		if darkMode {
+			newEventTextField.textColor = calendarWhite
+			blurEffectView.effect = UIBlurEffect(style: .dark)
+		} else {
+			blurEffectView.effect = UIBlurEffect(style: .light)
+			newEventTextField.textColor = calendarGrey
+		}
     }
 
     override func didReceiveMemoryWarning() {

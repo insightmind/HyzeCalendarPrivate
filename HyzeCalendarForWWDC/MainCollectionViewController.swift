@@ -31,6 +31,7 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 		self.collectionView!.allowsSelection = false
 		self.collectionView!.isScrollEnabled = false
         self.collectionView!.isPrefetchingEnabled = false
+		self.collectionView?.layer.masksToBounds = false
 		
 		self.collectionView?.backgroundColor = UIColor.clear
 		

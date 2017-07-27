@@ -79,6 +79,7 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
         }
 		super.init(collectionViewLayout: layout)
 		self.collectionView?.backgroundColor = UIColor.clear
+		self.collectionView?.layer.masksToBounds = false
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
@@ -122,6 +123,19 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
             if indexPath.item == 35 || !isLastRowNecessary {
                 cell.isHidden = true
                 isLastRowNecessary = false
+				if indexPath.item == 35{
+					let superViewController = UIApplication.shared.keyWindow?.rootViewController
+					var mainViewController: ViewController
+					for i in (superViewController?.childViewControllers)! {
+						if i.title == "MonthView" {
+							mainViewController = i as! ViewController
+							UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+								mainViewController.eventTableViewTopLayoutConstraint.constant = -((collectionView.bounds.width / CGFloat(self._daysInWeek)) - 2)
+								mainViewController.view.layoutIfNeeded()
+							}, completion: nil)
+						}
+					}
+				}
 				return cell
             }
             isNotInMonth = true
@@ -156,6 +170,19 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
         } else {
             cell.isSelected = false
         }
+		if indexPath.item == 35{
+			let superViewController = UIApplication.shared.keyWindow?.rootViewController
+			var mainViewController: ViewController
+			for i in (superViewController?.childViewControllers)! {
+				if i.title == "MonthView" {
+					mainViewController = i as! ViewController
+					UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+						mainViewController.eventTableViewTopLayoutConstraint.constant = 0
+						mainViewController.view.layoutIfNeeded()
+					}, completion: nil)
+				}
+			}
+		}
         
         return cell
     }

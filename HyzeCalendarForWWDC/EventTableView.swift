@@ -39,7 +39,7 @@ class EventTableView: UITableView, UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		
-        tableView.contentInset = UIEdgeInsets(top: 15, left: 0, bottom: 0, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: 15, left: 0, bottom: 25, right: 0)
         tableView.register(EventsTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         prevEventsCount = events.count
         let (selectedYearID, selectedMonthID, indexPath) = HSelection.selectedDayCellIndex
@@ -63,6 +63,9 @@ class EventTableView: UITableView, UITableViewDataSource, UITableViewDelegate{
 		
 		self.layer.cornerRadius = 20
 		self.layer.masksToBounds = true
+		self.layer.shadowColor = UIColor.black.cgColor
+		self.layer.shadowOffset = CGSize(width: 0.0, height: -5)
+		self.layer.shadowOpacity = 0.5
 		
         let (selectedYearID, selectedMonthID, indexPath) = HSelection.selectedDayCellIndex
         
