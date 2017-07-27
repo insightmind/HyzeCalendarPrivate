@@ -40,6 +40,7 @@
 <<<<<<< develop
 <<<<<<< develop
 <<<<<<< develop
+<<<<<<< develop
 	<string>1097</string>
 =======
 	<string>1098</string>
@@ -77,6 +78,9 @@
 =======
 	<string>1519</string>
 >>>>>>> changed color of daySelection["starts at"]
+=======
+	<string>1564</string>
+>>>>>>> enhanced blurEffect, new eventsTableAnimation
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCalendarsUsageDescription</key>
