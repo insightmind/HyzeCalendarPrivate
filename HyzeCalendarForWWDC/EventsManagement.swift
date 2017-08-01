@@ -50,10 +50,16 @@ class EventManagement {
                 let moreDays = TMCalendar.compare(event.startDate, to: event.endDate, toUnitGranularity: .day)
                 
                 if moreDays == .orderedAscending {
-                    if TMCalendar.compare(event.startDate, to: HSelection.selectedTime.conformToDate(), toUnitGranularity: .day) == .orderedSame {
+                    let (selectedYearID, selectedMonthID, indexPath) = HSelection.selectedDayCellIndex
+                    
+                    guard let selectedIndexPath = indexPath else {
+                        fatalError()
+                    }
+                    
+                    if TMCalendar.compare(event.startDate, to: TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item), toUnitGranularity: .day) == .orderedSame {
                         startTime = (startHour * 60) + startMinute
                         endTime = 1440
-                    } else if TMCalendar.compare(event.endDate, to: HSelection.selectedTime.conformToDate(), toUnitGranularity: .day) == .orderedSame {
+                    } else if TMCalendar.compare(event.endDate, to: TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item), toUnitGranularity: .day) == .orderedSame {
                         startTime = 0
                         endTime = (endHour * 60) + endMinute
                     } else {
@@ -114,14 +120,14 @@ class EventManagement {
         }
     }
     
-    func addEvent(title: String = "NoEventTitle", from startDate: Date, to endDate: Date) {
+	func addEvent(_ informations: EventEditorEventInformations) {
         let event = EKEvent(eventStore: EManagement.EMEventStore)
-        event.title = title
+        event.title = informations.title
         event.calendar = EManagement.EMEventStore.defaultCalendarForNewEvents
-        if startDate < endDate {
-            event.startDate = startDate
-            event.endDate = endDate
-            event.isAllDay = false
+        if informations.startDate < informations.endDate {
+            event.startDate = informations.startDate
+            event.endDate = informations.endDate
+            event.isAllDay = informations.isAllDay
         }
         do {
             try EMEventStore.save(event, span: .thisEvent, commit: true)

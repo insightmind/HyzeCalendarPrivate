@@ -1,5 +1,5 @@
 //
-//  EventsTableViewCell.swift
+//  ETViewCell.swift
 //  HyzeCalendarForWWDC
 //
 //  Created by redfleet on 2/16/17.
@@ -9,7 +9,7 @@
 import UIKit
 import EventKit
 
-class EventsTableViewCell: UITableViewCell {
+class ETViewCell: UITableViewCell {
     
     var title: String?
     var start: String!
@@ -19,18 +19,19 @@ class EventsTableViewCell: UITableViewCell {
     
     lazy var inheritanceBar: UIView = {
         let vw = UIView()
+        vw.layer.cornerRadius = 1
         return vw
     }()
     
     lazy var titleLabel: UILabel = {
         let lbl = UILabel()
         lbl.baselineAdjustment = .alignCenters
-        lbl.font.withSize(10)
+        lbl.font = UIFont.systemFont(ofSize: 16)
         lbl.numberOfLines = 2
         if darkMode {
-            lbl.textColor = CALENDARWHITE
+            lbl.textColor = calendarWhite
         } else {
-            lbl.textColor = CALENDARGREY
+            lbl.textColor = calendarWhite
         }
         return lbl
     }()
@@ -50,15 +51,17 @@ class EventsTableViewCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.setEditing(true, animated: false)
-        self.backgroundColor = UIColor.clear
+		self.backgroundColor = UIColor.clear
         self.addSubviews()
+		self.contentView.bounds.insetBy(dx: 5, dy: 5)
+		self.contentView.layer.cornerRadius = 10
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func sendProperties(_ title: String = "unknown", from: Date, to: Date, color: UIColor = CALENDARORANGE, inherit: EKEvent? = nil, isAllDay: Bool) {
+    func sendProperties(_ title: String = "unknown", from: Date, to: Date, color: UIColor = calendarOrange, inherit: EKEvent? = nil, isAllDay: Bool) {
         self.title = title
         
         if isAllDay {
@@ -84,7 +87,7 @@ class EventsTableViewCell: UITableViewCell {
         self.color = color
         self.superEvent = inherit
         if informationMode {
-            print("[INFORMATION] \n EventsTableViewCell \n title:       \(title),\n startDate:   \(start ?? "noStartDate"),\n endDate:     \(end ?? "noEndDate"),\n color:       \(color),\n inheritFrom: \(String(describing: superEvent)) \n")
+            print("[INFORMATION] \n ETViewCell \n title:       \(title),\n startDate:   \(start ?? "noStartDate"),\n endDate:     \(end ?? "noEndDate"),\n color:       \(color),\n inheritFrom: \(String(describing: superEvent)) \n")
         }
         
         loadInformation()
@@ -94,18 +97,18 @@ class EventsTableViewCell: UITableViewCell {
         
         self.accessoryType = .none
         
-        self.inheritanceBar.backgroundColor = self.color
+        self.inheritanceBar.backgroundColor = calendarWhite
         self.titleLabel.text = self.title
         self.startLabel.text = self.start
         self.endLabel.text = self.end
         
-        startLabel.textColor = UIColor.lightGray
-        endLabel.textColor = UIColor.lightGray
+        startLabel.textColor = UIColor.white
+        endLabel.textColor = UIColor.white
         
         if darkMode {
-            titleLabel.textColor = CALENDARWHITE
+            titleLabel.textColor = calendarWhite
         } else {
-            titleLabel.textColor = CALENDARGREY
+            titleLabel.textColor = calendarWhite
         }
         
     }
@@ -114,9 +117,9 @@ class EventsTableViewCell: UITableViewCell {
         
         self.contentView.bounds = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44)
 
-        self.inheritanceBar.frame = CGRect(x: 0, y: 0, width: 5, height: 44)
+        self.inheritanceBar.frame = CGRect(x: 5, y: 2, width: 2, height: 40)
         
-        self.titleLabel.frame = CGRect(x: 10, y: 0, width: 1 * contentView.bounds.width / 2 - 7, height: contentView.bounds.height)
+        self.titleLabel.frame = CGRect(x: 15, y: 0, width: 1 * contentView.bounds.width / 2 - 7, height: contentView.bounds.height)
         
         self.startLabel.frame = CGRect(x: titleLabel.bounds.width + 10, y: 0, width: contentView.bounds.width / 2 - 7, height: contentView.bounds.height / 2 - 1)
         
@@ -140,7 +143,7 @@ class EventsTableViewCell: UITableViewCell {
     }
     
     override func prepareForReuse() {
-        self.inheritanceBar.bounds = CGRect(x: 0, y: 0, width: 5, height: 44)
+        self.inheritanceBar.bounds = CGRect(x: 5, y: 2, width: 2, height: 40)
     }
 
 }

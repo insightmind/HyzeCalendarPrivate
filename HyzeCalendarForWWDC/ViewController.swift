@@ -9,20 +9,26 @@
 import UIKit
 import CoreGraphics
 
+public enum ScrollDirection {
+	case up
+	case down
+}
+
 class ViewController: UIViewController {
     
     var load = 1
     var darkModeTemp: Bool!
     var isAMPMTemp: Bool!
-
-    @IBOutlet weak var calendarViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var calendarview: CalendarView!
-    @IBOutlet weak var navigationBar: UINavigationItem!
+	
+	var calendarViewController: MainCollectionViewController? = nil
+	
+	@IBOutlet weak var calendarView: UIView!
+    @IBOutlet public weak var navigationBar: UINavigationItem!
     @IBOutlet weak var selectedDayButton: UIBarButtonItem!
-    @IBOutlet weak var eventTableView: EventTableView!
+    @IBOutlet weak var ETView: ETView!
     @IBOutlet weak var toolbar: UIToolbar!
 
-    //Outlets of DaysOfWeek
+	//Outlets of DaysOfWeek
     @IBOutlet weak var FirstDayOfWeek: UILabel!
     @IBOutlet weak var SecondDayOfWeek: UILabel!
     @IBOutlet weak var ThirdDayOfWeek: UILabel!
@@ -30,116 +36,141 @@ class ViewController: UIViewController {
     @IBOutlet weak var FivthDayOfWeek: UILabel!
     @IBOutlet weak var SixthDayOfWeek: UILabel!
     @IBOutlet weak var SeventhDayOfWeek: UILabel!
-    let daysOfWeek: [UILabel]? = nil
+	@IBOutlet weak var ETViewTopLayoutConstraint: NSLayoutConstraint!
+	let daysOfWeek: [UILabel]? = nil
 
-    
+	@IBOutlet weak var daysOfWeekBackgroundView: UIView!
+	@IBOutlet weak var ETViewTopLayoutConstraintWithoutLastRow: NSLayoutConstraint!
+	
     
     @IBAction func jumpToToday(_ sender: UIBarButtonItem) {
-        
-        
-        if TMCalendar.isDateInToday(HSelection.selectedTime.conformToDate()) != true {
-            if HSelection.currentSection == HTimeManagement.TMToday.conformToIndexPath().section {
-                if informationMode {
-                    print("jumpToToday todaysIndexPath:\(HTimeManagement.TMToday.conformToIndexPath())")
-                }
-                guard let todaysCell = calendarview.cellForItem(at: HTimeManagement.TMToday.conformToIndexPath()) as? CalendarViewCell else {
-                    if failureMode {
-                        print("[FAILURE] There is no cell for today")
-                    }
-                    return
-                }
-                calendarview.visualDeselectCell(calendarview)
-                calendarview.visualSelectCell(todaysCell, isToday: true)
-                HSelection.selectedTime = HTimeManagement.TMToday
-            
-            } else {
-                HSelection.selectedTime = HTimeManagement.TMToday
-            }
-            eventTableView.reloadView()
-        }
-        navigationBar.title = TimeManagement.getMonthName(HSelection.selectedTime.conformToDate())
-        
-        calendarview.scrollToNextSection(calendarview, monthIndex: HSelection.selectedTime.conformToIndexPath().section, animated: true)
-        
-        updateSelectedDayIcon()
+        let (yearID, monthID, _) = HSelection.todaysDayCellIndex
+		HSelection.selectedDayCellIndex = HSelection.todaysDayCellIndex
+		scrollToSection(yearID: yearID, monthID: monthID + 1, animated: true)
     }
     
     @IBAction func jumpToSelected(_ sender: UIBarButtonItem) {
-        navigationBar.title = TimeManagement.getMonthName(HSelection.selectedTime.conformToDate())
-        
-        calendarview.scrollToNextSection(calendarview, monthIndex: HSelection.selectedTime.conformToIndexPath().section, animated: true)
-        
-        updateSelectedDayIcon()
-    }
-
-    @IBAction func scrollDown(_ sender: UISwipeGestureRecognizer) {
-		HSelection.currentSection += 1
-		updateScrolling(animated: true)
-        updateSelectedDayIcon()
-    }
-    @IBAction func scrollUp(_ sender: UISwipeGestureRecognizer) {
-		HSelection.currentSection -= 1
-        updateScrolling(animated: true)
-        updateSelectedDayIcon()
+        let (yearID, monthID, _ ) = HSelection.selectedDayCellIndex
+        scrollToSection(yearID: yearID, monthID: monthID + 1, animated: true)
     }
 
     func updateSelectedDayIcon(){
-        if HSelection.currentSection < HSelection.selectedTime.monthID {
+        let (yearID, monthID, _ ) = HSelection.selectedDayCellIndex
+        if yearID > HSelection.currentYearID || monthID > HSelection.currentMonthID - 1 {
             selectedDayButton.image = #imageLiteral(resourceName: "ic_keyboard_arrow_down")
-        } else if HSelection.currentSection > HSelection.selectedTime.monthID {
+        } else if yearID < HSelection.currentYearID || monthID < HSelection.currentMonthID - 1 {
             selectedDayButton.image = #imageLiteral(resourceName: "ic_keyboard_arrow_up")
         } else {
             selectedDayButton.image = #imageLiteral(resourceName: "ic_keyboard_arrow_right")
         }
     }
     
+    func reloadETView() {
+        ETView.reloadView()
+	}
+	
+
+    
     override func viewWillAppear(_ animated: Bool) {
+		self.calendarView.layer.masksToBounds = false
         if darkMode{
-            view.backgroundColor = CALENDARGREY
-            updateDaysOfWeek(color: CALENDARWHITE)
+            view.backgroundColor = calendarGrey
+			daysOfWeekBackgroundView.backgroundColor = calendarGrey
+			updateDaysOfWeek(color: calendarWhite, weekendColor: calendarGreen)
+			navigationController?.navigationBar.barTintColor = calendarGrey
+			navigationController?.navigationBar.titleTextAttributes![NSForegroundColorAttributeName] = calendarWhite
+			navigationBar.backBarButtonItem?.tintColor = calendarGrey
+			navigationBar.leftBarButtonItem?.tintColor = calendarWhite
+			navigationBar.rightBarButtonItem?.tintColor = calendarWhite
+			toolbar.barTintColor = calendarGrey
+			if toolbar.items != nil {
+				for i in toolbar.items! {
+					i.tintColor = calendarWhite
+				}
+			}
         } else {
-            view.backgroundColor = CALENDARWHITE
-            updateDaysOfWeek(color: CALENDARGREY)
+            view.backgroundColor = calendarWhite
+			daysOfWeekBackgroundView.backgroundColor = calendarWhite
+			updateDaysOfWeek(color: calendarGrey, weekendColor: calendarGreen)
+			navigationController?.navigationBar.barTintColor = calendarWhite
+			navigationController?.navigationBar.titleTextAttributes![NSForegroundColorAttributeName] = calendarGrey
+			navigationBar.backBarButtonItem?.tintColor = calendarGrey
+			navigationBar.leftBarButtonItem?.tintColor = calendarGrey
+			navigationBar.rightBarButtonItem?.tintColor = calendarGrey
+			toolbar.barTintColor = calendarWhite
+			if toolbar.items != nil {
+				for i in toolbar.items! {
+					i.tintColor = calendarGrey
+				}
+			}
         }
         if darkModeTemp != darkMode {
-            eventTableView.reloadData()
-            calendarview.reloadSections(IndexSet(integer: HSelection.currentSection))
             darkModeTemp = darkMode
         } else if isAMPMTemp != isAMPM || eventsChange == true {
-            eventTableView.reloadData()
-            eventTableView.reloadView()
             eventsChange = false
         }
+        ETView.reloadView()
     }
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
+		self.view.layoutIfNeeded()
+		
         darkModeTemp = darkMode
-		HSelection.selectedTime = TMTime(date: Date())
-        navigationBar.title = TimeManagement.getMonthName(HSelection.selectedTime.conformToDate())
+        navigationBar.title = TimeManagement.getMonthName(Date())
 		
-		calendarview.scrollsToTop = false
+		setTodaysProperties()
 		
-		HSelection.currentSection = HSelection.selectedTime.monthID
+		for i in childViewControllers {
+			if i.title == "CalendarView" {
+				self.calendarViewController = i as? MainCollectionViewController
+			}
+		}
+        
+        let (selectedYearID, selectedMonthID, _) = HSelection.selectedDayCellIndex
 		
-        calendarview.backgroundColor = UIColor.clear
-		
-		calendarview.layoutIfNeeded()
-		calendarview.layoutSubviews()
-		
-		calendarview.reloadData()
+		scrollToSection(yearID: selectedYearID, monthID: selectedMonthID - 1)
     }
+	
+	func setTodaysProperties() {
+		let date = Date()
+		HSelection.todaysYearID = TMCalendar.component(.year, from: date)
+		HSelection.todaysMonthID = TMCalendar.component(.month, from: date)
+		HSelection.todaysDayID = TMCalendar.component(.day, from: date)
+	}
 
-    func updateDaysOfWeek(color: UIColor) {
-        FirstDayOfWeek.textColor = color
-        SecondDayOfWeek.textColor = color
-        ThirdDayOfWeek.textColor = color
-        FourthDayOfWeek.textColor = color
-        FivthDayOfWeek.textColor = color
-        SixthDayOfWeek.textColor = color
-        SeventhDayOfWeek.textColor = color
+	func updateDaysOfWeek(color: UIColor, weekendColor: UIColor) {
+		
+		FirstDayOfWeek.textColor = color
+		SecondDayOfWeek.textColor = color
+		ThirdDayOfWeek.textColor = color
+		FourthDayOfWeek.textColor = color
+		FivthDayOfWeek.textColor = color
+		SixthDayOfWeek.textColor = color
+		SeventhDayOfWeek.textColor = color
+		
+		if isMondayFirstWeekday {
+			FirstDayOfWeek.text = "M"
+			SecondDayOfWeek.text = "T"
+			ThirdDayOfWeek.text = "W"
+			FourthDayOfWeek.text = "T"
+			FivthDayOfWeek.text = "F"
+			SixthDayOfWeek.text = "S"
+			SeventhDayOfWeek.text = "S"
+			SixthDayOfWeek.textColor = weekendColor
+			SeventhDayOfWeek.textColor = weekendColor
+		} else {
+			FirstDayOfWeek.text = "S"
+			SecondDayOfWeek.text = "M"
+			ThirdDayOfWeek.text = "T"
+			FourthDayOfWeek.text = "W"
+			FivthDayOfWeek.text = "T"
+			SixthDayOfWeek.text = "F"
+			SeventhDayOfWeek.text = "S"
+			FirstDayOfWeek.textColor = weekendColor
+			SeventhDayOfWeek.textColor = weekendColor
+		}
     }
     
     @IBAction func unwindToMonthView(segue: UIStoryboardSegue) {
@@ -152,11 +183,54 @@ class ViewController: UIViewController {
 	
 	//MARK: Function
 	
-	func updateScrolling(animated: Bool) {
-		calendarview.scrollToNextSection(calendarview, monthIndex: HSelection.currentSection, animated: animated)
-		let indexPath = IndexPath(item: 1, section: HSelection.currentSection)
-		let date = TimeManagement.convertToDate(indexPath)
-		navigationBar.title = TimeManagement.getMonthName(date)
+	func scrollToSection(yearID: Int, monthID: Int, animated anim: Bool = false) {
+		
+		let indexPath = IndexPath(item: monthID, section: yearID)
+		
+		HSelection.currentMonthID = monthID + 1
+		HSelection.currentYearID = yearID
+		
+		calendarViewController?.collectionView!.scrollToItem(at: indexPath, at: .centeredVertically, animated: anim)
+		
+		self.setMonthName()
+        updateSelectedDayIcon()
+		
+	}
+	
+	func setMonthName() {
+		let date = TimeManagement.calculateFirstDayInMonth(yearID: HSelection.currentYearID, monthID: HSelection.currentMonthID)
+		let name = TimeManagement.getMonthName(date)
+		navigationBar.title = name
+	}
+	
+	func scrollToSection(direction: ScrollDirection, animated anim: Bool = false) {
+		
+		let monthID = HSelection.currentMonthID - 1
+		let yearID = HSelection.currentYearID
+		
+		switch direction {
+		case .up:
+			if monthID == 0 {
+				if yearID == 0 {
+					break
+				} else {
+					scrollToSection(yearID: yearID - 1, monthID: 11, animated: anim)
+				}
+			} else {
+				scrollToSection(yearID: yearID, monthID: monthID - 1, animated: anim)
+			}
+		case .down:
+			if monthID == 11 {
+				if yearID == 3999 {
+					break
+				} else {
+					scrollToSection(yearID: yearID + 1, monthID: 0, animated: anim)
+				}
+			} else {
+				scrollToSection(yearID: yearID, monthID: monthID + 1, animated: anim)
+			}
+		}
+		self.setMonthName()
 	}
 }
 

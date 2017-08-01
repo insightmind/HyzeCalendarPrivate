@@ -1,5 +1,5 @@
 //
-//  dayViewUIVViewController.swift
+//  dayViewUIViewController.swift
 //  HyzeCalendarForWWDC
 //
 //  Created by redfleet on 2/1/17.
@@ -11,7 +11,10 @@ import UIKit
 class dayViewUIVViewController: UIViewController {
 
     @IBOutlet weak var day: dayView!
-    
+	@IBOutlet weak var addButton: UIBarButtonItem!
+	@IBOutlet weak var toolbar: UIToolbar!
+	@IBOutlet weak var editButton: UIBarButtonItem!
+	
     override func viewDidLoad() {
         super.viewDidLoad()
         setdarkMode()
@@ -22,6 +25,11 @@ class dayViewUIVViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+	
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		//day.addEventsSubViews()
+	}
     
     override func viewDidDisappear(_ animated: Bool) {
         viewIsDayView = true
@@ -30,11 +38,24 @@ class dayViewUIVViewController: UIViewController {
     
     func setdarkMode(){
         if darkMode {
-            view.backgroundColor = CALENDARGREY
+			toolbar.barTintColor = calendarGrey
+			editButton.tintColor = calendarWhite
+            view.backgroundColor = calendarGrey
+			navigationController?.navigationBar.tintColor = calendarWhite
+			addButton.tintColor = calendarWhite
         } else {
-            view.backgroundColor = CALENDARWHITE
+			toolbar.barTintColor = calendarWhite
+			editButton.tintColor = calendarGrey
+            view.backgroundColor = calendarWhite
+			navigationController?.navigationBar.tintColor = calendarGrey
+			addButton.tintColor = calendarGrey
         }
-        day.dayViewCenterButton.backgroundColor = CALENDARORANGE
+		if HSelection.selectedIsOnWeekend! {
+			day.dayViewCenterButton.backgroundColor = calendarGreen
+		} else {
+			day.dayViewCenterButton.backgroundColor = calendarBlue
+		}
+		
     }
     
     @IBAction func unwindToRed(segue: UIStoryboardSegue) {
