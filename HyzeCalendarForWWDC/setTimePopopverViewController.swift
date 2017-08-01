@@ -21,6 +21,8 @@ class setTimePopopverViewController: UIViewController {
 	override func viewDidLoad() {
         super.viewDidLoad()
 		
+		self.modalTransitionStyle = .coverVertical
+		self.modalPresentationStyle = .overCurrentContext
 		popover.layer.cornerRadius = 20
 		popover.layer.masksToBounds = true
 

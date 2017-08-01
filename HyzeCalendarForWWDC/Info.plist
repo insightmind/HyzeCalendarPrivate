@@ -44,6 +44,7 @@
 <<<<<<< develop
 <<<<<<< develop
 <<<<<<< develop
+<<<<<<< develop
 	<string>1097</string>
 =======
 	<string>1098</string>
@@ -93,6 +94,9 @@
 =======
 	<string>1654</string>
 >>>>>>> added EventEditorTableView + DateSelectionTableViewCell
+=======
+	<string>1661</string>
+>>>>>>> Enhancements
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCalendarsUsageDescription</key>
