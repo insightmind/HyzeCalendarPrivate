@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9Ys-zU-rvq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13168.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9Ys-zU-rvq">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13147.4"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,17 +23,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iSx-hX-3vF">
-                                <rect key="frame" x="26" y="69" width="323" height="31"/>
+                                <rect key="frame" x="26" y="88.5" width="323" height="31"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Darkmode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kk3-6s-xKs">
                                         <rect key="frame" x="0.0" y="0.0" width="274" height="31"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ch3-yP-HBf">
                                         <rect key="frame" x="274" y="0.0" width="51" height="31"/>
-                                        <color key="onTintColor" red="0.99599725009999995" green="0.50108808279999995" blue="0.14677721260000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="onTintColor" red="0.2036032975" green="0.57139366869999997" blue="0.90090757610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <action selector="toggleDarkMode:" destination="9Ys-zU-rvq" eventType="valueChanged" id="nJv-rp-GeC"/>
                                         </connections>
@@ -41,63 +43,98 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I8S-10-ncE">
-                                <rect key="frame" x="26" y="108" width="323" height="31"/>
+                                <rect key="frame" x="26" y="127.5" width="323" height="31"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24 hours" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCR-EK-lTb">
                                         <rect key="frame" x="0.0" y="0.0" width="274" height="31"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="dKj-t4-vYH">
                                         <rect key="frame" x="274" y="0.0" width="51" height="31"/>
-                                        <color key="onTintColor" red="0.99599725009999995" green="0.50108808279999995" blue="0.14677721260000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="onTintColor" red="0.2036032975" green="0.57139366869999997" blue="0.90090757610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <action selector="toggle24Hour:" destination="9Ys-zU-rvq" eventType="valueChanged" id="y9f-fy-9Dt"/>
                                         </connections>
                                     </switch>
                                 </subviews>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZIN-fw-X0x">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
-                                <color key="backgroundColor" red="0.9381498694" green="0.51639610530000002" blue="0.21356177330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="3lg-jY-0mY"/>
-                                </constraints>
-                            </view>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KV4-nC-dDe">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="barTintColor" red="0.9381498694" green="0.51639610530000002" blue="0.21356177330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                    <color key="textColor" red="0.25061571599999999" green="0.25083461400000001" blue="0.25064963099999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem title="SETTINGS" id="F3R-Th-mcV">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Ona-1f-nm0">
-                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <connections>
-                                                <segue destination="Fx7-HU-1et" kind="unwind" unwindAction="unwindToMonthViewWithSegue:" id="PJg-f5-7gg"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PCJ-Gd-eyQ">
-                                <rect key="frame" x="26" y="147" width="323" height="31"/>
+                                <rect key="frame" x="26" y="166.5" width="323" height="31"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="show Lines in CalendarView" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IOT-Z3-e4r">
                                         <rect key="frame" x="0.0" y="0.0" width="274" height="31"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="gje-M3-h6H">
                                         <rect key="frame" x="274" y="0.0" width="51" height="31"/>
-                                        <color key="onTintColor" red="0.99599725009999995" green="0.50108808279999995" blue="0.14677721260000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="onTintColor" red="0.2036032975" green="0.57139366869999997" blue="0.90090757610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <action selector="toggleShowLinesInCalendarView:" destination="9Ys-zU-rvq" eventType="valueChanged" id="kYa-Dt-rNh"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ci4-S1-2vx">
+                                <rect key="frame" x="26" y="205.5" width="323" height="31"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monday firstWeekday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yXk-i4-L5J">
+                                        <rect key="frame" x="0.0" y="0.0" width="274" height="31"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="GMq-Nm-MAa">
+                                        <rect key="frame" x="274" y="0.0" width="51" height="31"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="onTintColor" red="0.2036032975" green="0.57139366869999997" blue="0.90090757610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="toggleIsMondayFirstWeekDay:" destination="9Ys-zU-rvq" eventType="valueChanged" id="VM3-pN-cjw"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SETTINGS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ExF-LV-Yrz">
+                                <rect key="frame" x="26" y="31" width="155" height="38.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="njq-LW-myP">
+                                <rect key="frame" x="206" y="32" width="153" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" red="0.2036032975" green="0.57139366869999997" blue="0.90090757610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="iAu-Qy-el5" kind="unwind" unwindAction="unwindToMonthViewWithSegue:" id="8DO-03-qrZ"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FUa-qk-O5b">
+                                <rect key="frame" x="26" y="244.5" width="324" height="31"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="animate DayView" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bf1-hS-ee0">
+                                        <rect key="frame" x="0.0" y="0.0" width="275" height="31"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Wze-8G-gOP">
+                                        <rect key="frame" x="275" y="0.0" width="51" height="31"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="onTintColor" red="0.2036032975" green="0.57139366869999997" blue="0.90090757610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="toggleAnimateDayView:" destination="9Ys-zU-rvq" eventType="valueChanged" id="7h3-J1-Zey"/>
                                         </connections>
                                     </switch>
                                 </subviews>
@@ -105,35 +142,51 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="I8S-10-ncE" firstAttribute="top" secondItem="iSx-hX-3vF" secondAttribute="bottom" constant="8" id="28Z-qL-AyG"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="PCJ-Gd-eyQ" secondAttribute="trailing" constant="10" id="4Bh-uo-QxJ"/>
-                            <constraint firstItem="IOT-Z3-e4r" firstAttribute="top" secondItem="gCR-EK-lTb" secondAttribute="bottom" constant="8" id="ATW-fd-aLV"/>
-                            <constraint firstItem="ZIN-fw-X0x" firstAttribute="leading" secondItem="JwF-B0-bp4" secondAttribute="leading" id="Ecb-9B-oiH"/>
-                            <constraint firstItem="ZIN-fw-X0x" firstAttribute="top" secondItem="JwF-B0-bp4" secondAttribute="top" id="PqS-R3-iLf"/>
-                            <constraint firstAttribute="trailing" secondItem="ZIN-fw-X0x" secondAttribute="trailing" id="ZmV-OA-Gw8"/>
-                            <constraint firstItem="iSx-hX-3vF" firstAttribute="leading" secondItem="JwF-B0-bp4" secondAttribute="leadingMargin" constant="10" id="bnF-dn-5rj"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="iSx-hX-3vF" secondAttribute="trailing" constant="10" id="eoe-Nf-PDO"/>
-                            <constraint firstItem="I8S-10-ncE" firstAttribute="leading" secondItem="JwF-B0-bp4" secondAttribute="leadingMargin" constant="10" id="hU7-Dz-CX9"/>
-                            <constraint firstItem="PCJ-Gd-eyQ" firstAttribute="leading" secondItem="JwF-B0-bp4" secondAttribute="leadingMargin" constant="10" id="jbu-bd-Eyn"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="I8S-10-ncE" secondAttribute="trailing" constant="10" id="kIa-rn-HTx"/>
-                            <constraint firstItem="iSx-hX-3vF" firstAttribute="top" secondItem="zU0-dh-AkT" secondAttribute="bottom" constant="69" id="oEl-db-Fhc"/>
+                            <constraint firstItem="njq-LW-myP" firstAttribute="trailing" secondItem="JwF-B0-bp4" secondAttribute="trailingMargin" id="9dW-sG-e3B"/>
+                            <constraint firstItem="ci4-S1-2vx" firstAttribute="centerX" secondItem="FUa-qk-O5b" secondAttribute="centerX" id="BQK-8s-YSj"/>
+                            <constraint firstAttribute="trailing" secondItem="FUa-qk-O5b" secondAttribute="trailing" constant="25" id="CRV-ca-7UY"/>
+                            <constraint firstItem="iSx-hX-3vF" firstAttribute="leading" secondItem="I8S-10-ncE" secondAttribute="leading" id="K45-KA-QEN"/>
+                            <constraint firstAttribute="trailing" secondItem="ci4-S1-2vx" secondAttribute="trailing" constant="26" id="PFL-G8-7DO"/>
+                            <constraint firstItem="njq-LW-myP" firstAttribute="leading" secondItem="ExF-LV-Yrz" secondAttribute="trailing" constant="25" id="SSA-ua-vWA"/>
+                            <constraint firstAttribute="trailing" secondItem="I8S-10-ncE" secondAttribute="trailing" constant="26" id="UES-tl-iYk"/>
+                            <constraint firstItem="ci4-S1-2vx" firstAttribute="top" secondItem="PCJ-Gd-eyQ" secondAttribute="bottom" constant="8" symbolic="YES" id="VGe-oF-wgI"/>
+                            <constraint firstItem="ExF-LV-Yrz" firstAttribute="leading" secondItem="JwF-B0-bp4" secondAttribute="leadingMargin" constant="10" id="Xi7-gu-9Ey"/>
+                            <constraint firstItem="FUa-qk-O5b" firstAttribute="top" secondItem="ci4-S1-2vx" secondAttribute="bottom" constant="8" symbolic="YES" id="Zr4-ca-hrK"/>
+                            <constraint firstItem="njq-LW-myP" firstAttribute="top" secondItem="zU0-dh-AkT" secondAttribute="bottom" constant="12" id="arM-eK-D5s"/>
+                            <constraint firstItem="PCJ-Gd-eyQ" firstAttribute="trailing" secondItem="ci4-S1-2vx" secondAttribute="trailing" id="avo-uq-Us5"/>
+                            <constraint firstItem="I8S-10-ncE" firstAttribute="trailing" secondItem="PCJ-Gd-eyQ" secondAttribute="trailing" id="cqW-fV-Bsk"/>
+                            <constraint firstItem="iSx-hX-3vF" firstAttribute="trailing" secondItem="I8S-10-ncE" secondAttribute="trailing" id="eMO-T6-SZ8"/>
+                            <constraint firstItem="ExF-LV-Yrz" firstAttribute="top" secondItem="zU0-dh-AkT" secondAttribute="bottom" constant="11" id="klX-Sv-dn6"/>
+                            <constraint firstItem="I8S-10-ncE" firstAttribute="top" secondItem="iSx-hX-3vF" secondAttribute="bottom" constant="8" symbolic="YES" id="r17-nX-zEJ"/>
+                            <constraint firstItem="PCJ-Gd-eyQ" firstAttribute="top" secondItem="I8S-10-ncE" secondAttribute="bottom" constant="8" symbolic="YES" id="v2A-Eu-rYA"/>
+                            <constraint firstAttribute="trailing" secondItem="iSx-hX-3vF" secondAttribute="trailing" constant="26" id="v2S-Fb-qXo"/>
+                            <constraint firstItem="ci4-S1-2vx" firstAttribute="leading" secondItem="FUa-qk-O5b" secondAttribute="leading" id="v2s-ed-IwR"/>
+                            <constraint firstItem="ExF-LV-Yrz" firstAttribute="leading" secondItem="iSx-hX-3vF" secondAttribute="leading" id="v4u-7u-kRi"/>
+                            <constraint firstItem="iSx-hX-3vF" firstAttribute="top" secondItem="ExF-LV-Yrz" secondAttribute="bottom" constant="19" id="w61-99-bH4"/>
+                            <constraint firstItem="PCJ-Gd-eyQ" firstAttribute="leading" secondItem="ci4-S1-2vx" secondAttribute="leading" id="xMD-Pi-GWb"/>
+                            <constraint firstItem="I8S-10-ncE" firstAttribute="leading" secondItem="PCJ-Gd-eyQ" secondAttribute="leading" id="xTv-xk-yfA"/>
+                            <constraint firstAttribute="trailing" secondItem="PCJ-Gd-eyQ" secondAttribute="trailing" constant="26" id="xwM-ea-hVh"/>
                         </constraints>
                     </view>
-                    <nil key="simulatedStatusBarMetrics"/>
                     <splitViewDetailSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="animateDayViewLabel" destination="bf1-hS-ee0" id="3BO-gT-dkJ"/>
+                        <outlet property="animateDayViewSwitch" destination="Wze-8G-gOP" id="mdt-ri-RAv"/>
                         <outlet property="darkModeLabel" destination="Kk3-6s-xKs" id="VFm-M8-74s"/>
                         <outlet property="darkModeSwitch" destination="ch3-yP-HBf" id="5vV-Oi-brz"/>
                         <outlet property="hours24Label" destination="gCR-EK-lTb" id="j0Q-gl-J7z"/>
                         <outlet property="hours24Switch" destination="dKj-t4-vYH" id="qI3-Yg-b2Q"/>
+                        <outlet property="isMondayLabel" destination="yXk-i4-L5J" id="hwZ-GM-5q4"/>
+                        <outlet property="isMondaySwitch" destination="GMq-Nm-MAa" id="YhH-L6-Bou"/>
+                        <outlet property="settingsLabel" destination="ExF-LV-Yrz" id="Jxh-aW-uNT"/>
                         <outlet property="showLines" destination="IOT-Z3-e4r" id="8Ys-Sw-Tit"/>
                         <outlet property="showLinesSwitch" destination="gje-M3-h6H" id="REf-LM-8nM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mMu-JZ-P9O" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="Fx7-HU-1et" userLabel="Exit" sceneMemberID="exit"/>
+                <exit id="iAu-Qy-el5" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="7161" y="-751"/>
+            <point key="canvasLocation" x="7160.8000000000002" y="-751.57421289355329"/>
         </scene>
     </scenes>
 </document>

@@ -20,11 +20,11 @@ class DayCollectionViewCell: UICollectionViewCell {
 		let lbl = UILabel()
 		lbl.text = "0"
 		if darkMode {
-			lbl.textColor = CALENDARWHITE
+			lbl.textColor = calendarWhite
 		} else {
-			lbl.textColor = CALENDARGREY
+			lbl.textColor = calendarGrey
 		}
-		lbl.font = UIFont.systemFont(ofSize: 18, weight: UIFontWeightSemibold)
+		lbl.font = UIFont.init(name: "Futura", size: 16)
 		lbl.textAlignment = .center
 		return lbl
 	}()
@@ -39,8 +39,20 @@ class DayCollectionViewCell: UICollectionViewCell {
         return vw
     }()
 	
-	override init(frame: CGRect) {
-		super.init(frame: frame)
+	fileprivate func setUpShadow() {
+		let shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: bounds.width / 2)
+		layer.masksToBounds = false
+		layer.shadowColor = UIColor.black.cgColor
+		layer.shadowOffset = CGSize(width: 0.0, height: 2.5)
+		if isSelected {
+			layer.shadowOpacity = 0.5
+		} else {
+			layer.shadowOpacity = 0
+		}
+		layer.shadowPath = shadowPath.cgPath
+	}
+	
+	fileprivate func setUpContentView() {
 		self.contentMode = .center
 		self.contentView.layer.cornerRadius = self.bounds.width / 2
 		self.configured = true
@@ -54,35 +66,40 @@ class DayCollectionViewCell: UICollectionViewCell {
 		}
 	}
 	
-    func setCellDesign(isToday: Bool, isSelected: Bool, isNotInMonth: Bool = false) {
+	override init(frame: CGRect) {
+		super.init(frame: frame)
+		setUpContentView()
+		setUpShadow()
+	}
+	
+	func setCellDesign(isToday: Bool, isSelected: Bool, isNotInMonth: Bool = false, isOnWeekend: Bool = false) {
 		self.isSelected = isSelected
         if isSelected {
-            contentView.backgroundColor = CALENDARORANGE
+			if isOnWeekend {
+				contentView.backgroundColor = calendarGreen
+			} else {
+				contentView.backgroundColor = calendarBlue
+			}
             if isToday {
-                label?.textColor = CALENDARORANGE
+                label?.textColor = calendarOrange
             } else {
                 if darkMode {
-                    label?.textColor = CALENDARWHITE
+                    label?.textColor = calendarWhite
                 } else {
-                    label?.textColor = CALENDARGREY
+                    label?.textColor = calendarWhite
                 }
             }
         } else {
+			self.contentView.backgroundColor = UIColor.clear
+			layer.shadowOpacity = 0
             if isToday {
-                label?.textColor = CALENDARORANGE
-                if darkMode {
-                    contentView.backgroundColor = CALENDARGREY
-                } else {
-                    contentView.backgroundColor = CALENDARWHITE
-                }
+                label?.textColor = calendarOrange
             } else {
-                if darkMode {
-                    contentView.backgroundColor = CALENDARGREY
-                    label?.textColor = CALENDARWHITE
-                } else {
-                    contentView.backgroundColor = CALENDARWHITE
-                    label?.textColor = CALENDARGREY
-                }
+				if isOnWeekend {
+					label?.textColor = calendarGreen
+				} else {
+					label?.textColor = calendarBlue
+				}
             }
         }
         if isNotInMonth {

@@ -73,6 +73,7 @@ class dayView: UIView {
     //in MIN 24*60 = 1440 min per Day
     var eventsOnDate: [[Int]]!
     var events = [EventView]()
+	var processedEventsOnDate: [[[Int]]]!
     
     var date: Date?
     
@@ -88,6 +89,11 @@ class dayView: UIView {
     
     func setUp() {
         self.backgroundColor = UIColor.clear
+		
+		layer.shadowColor = UIColor.black.cgColor
+		layer.shadowOffset = CGSize(width: 0.0, height: 2.5)
+		layer.shadowOpacity = 0.5
+		
         for i in self.subviews {
             self.willRemoveSubview(i)
             i.removeFromSuperview()
@@ -98,6 +104,7 @@ class dayView: UIView {
             fatalError()
         }
         eventsOnDate = EManagement.convertEventsToTimeArray(EManagement.getEvents(for: TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item)))
+		processedEventsOnDate = prepareEventSubViewLayout()
         addEventsSubViews()
         setUpDayViewCenterButton()
         if loaded {
@@ -107,49 +114,6 @@ class dayView: UIView {
             loaded = false
         }
         setUpHourLabels()
-        //setUpDayViewDecoration()
-    }
-    
-    func setUpDayViewDecoration(){
-        for i in 0...23 {
-            let deci: dayViewDecoration
-            if i == 0 || i%6 == 0 {
-                deci = dayViewDecoration.init(frame: self.dayViewCenterButton.bounds, arc: 10, inset: 10)
-            } else if i%3 == 0{
-                deci = dayViewDecoration.init(frame: self.dayViewCenterButton.bounds, arc: 7.5, inset: 10)
-            } else {
-                deci = dayViewDecoration.init(frame: self.dayViewCenterButton.bounds, arc: 5, inset: 10)
-            }
-            deci.sendIntProperties(start: i * 60)
-            if i%1 != 0 {
-                deci.isHidden = true
-            }
-            deci.backgroundColor = UIColor.clear
-            
-            let (selectedYearID, selectedMonthID, indexPath) = HSelection.selectedDayCellIndex
-            
-            guard let selectedIndexPath = indexPath else {
-                fatalError()
-            }
-            
-            if darkMode {
-                if TMCalendar.isDateInToday(TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item)) {
-                    deci.sendColorProperties(CALENDARWHITE)
-                } else {
-                    deci.sendColorProperties(CALENDARGREY)
-                }
-            } else {
-                if TMCalendar.isDateInToday(TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item)) {
-                    deci.sendColorProperties(CALENDARGREY)
-                } else {
-                    deci.sendColorProperties(CALENDARWHITE)
-                }
-            }
-            self.hourDecoration.append(deci)
-        }
-        for i in 0..<hourDecoration.count {
-            self.dayViewCenterButton.addSubview(hourDecoration[i])
-        }
     }
     
     func calculateHourLabelPosition(_ hour: CGFloat) -> [CGFloat]{
@@ -197,17 +161,18 @@ class dayView: UIView {
         }
         if darkMode {
             if TMCalendar.isDateInToday(TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item)){
-                label.textColor = CALENDARWHITE
+                label.textColor = calendarWhite
             } else {
-                label.textColor = CALENDARGREY
+                label.textColor = calendarGrey
             }
         } else {
             if TMCalendar.isDateInToday(TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item)){
-                label.textColor = CALENDARGREY
+                label.textColor = calendarGrey
             } else {
-                label.textColor = CALENDARWHITE
+                label.textColor = calendarWhite
             }
         }
+		label.textColor = calendarWhite
 
     }
     
@@ -219,8 +184,8 @@ class dayView: UIView {
             width: 2 * self.dayViewCenterButton.bounds.width / 4,
             height: self.dayViewCenterButton.bounds.height / 10)
         self.topLabel.font = UIFont.boldSystemFont(ofSize: self.topLabel.bounds.height)
-        let (_, selectedMonthID, _) = HSelection.selectedDayCellIndex
-        self.topLabel.text = monthName[selectedMonthID]
+        let (selectedYearID , selectedMonthID, _) = HSelection.selectedDayCellIndex
+		self.topLabel.text = TimeManagement.getMonthName(TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID - 1, dayID: 1), withYear: false)
         self.dayViewCenterButton.addSubview(topLabel)
     }
     
@@ -253,63 +218,79 @@ class dayView: UIView {
         self.botLabel.text = String(selectedYearID)
         self.dayViewCenterButton.addSubview(botLabel)
     }
-    
-    
-    // TODO: Finish algorithm, so it sets the layer of the event incremental or decremental, based on its overlapping with other Events
-    func prepareEventSubViewLayout() -> [([Int],Int)] {
-        let firstEventLayoutData = (eventsOnDate[0], 0)
-        var processedLayoutData : [([Int],Int)] = [firstEventLayoutData]
-        if eventsOnDate.count < 2 {
-            return processedLayoutData
-        }
-        for i in 1...(eventsOnDate.count - 1) {
-            let (e0, prevLayer) = processedLayoutData[i-1]
-            let e1 = eventsOnDate[i]
-            var eventLayoutData: ([Int], Int)
-            //If startTime of event1 is smaller than endTime of event0
-            if e0[2] > e1[1] && e0[1] < e1[2] {
-                eventLayoutData = (e1, prevLayer + 1)
-            } else {
-                
-                eventLayoutData = (e1, 0)
-            }
-            processedLayoutData.append(eventLayoutData)
-        }
-        return processedLayoutData
-    }
+	
+	func prepareEventSubViewLayout() -> [[[Int]]] {
+		var events = eventsOnDate ?? []
+		if events.isEmpty {
+			return [events]
+		}
+		let firstEvent = events[0]
+		events.remove(at: 0)
+		var processedLayoutData: [[[Int]]] = [[firstEvent]]
+		if events.isEmpty {
+			return processedLayoutData
+		}
+		for event in events {
+			var newLayer = false
+			for layer in 0...processedLayoutData.count - 1 {
+				var fitsInLayer = false
+				for processedEvent in processedLayoutData[layer] {
+					if processedEvent[0] == 0 {
+						fitsInLayer = false
+						break
+					} else if processedEvent[2] + 10 > event[1] && processedEvent[1] - 10 < event[2]{
+						fitsInLayer = false
+						break
+					}
+					fitsInLayer = true
+				}
+				if fitsInLayer {
+					processedLayoutData[layer].append(event)
+					break
+				} else if layer == processedLayoutData.count - 1 {
+					newLayer = true
+				}
+			}
+			if newLayer {
+				processedLayoutData.append([event])
+			}
+		}
+		return processedLayoutData
+	}
     
     func addEventsSubViews(){
         if eventsOnDate.count > 0 {
-        let processedEventsOnDate = prepareEventSubViewLayout()
-        for i in processedEventsOnDate {
-            let (e, viewID) = i
-            if e[0] == 0 {
-                let eventInset = self.bounds.insetBy(dx: CGFloat(-10 * viewID - 5), dy: CGFloat(-10 * viewID - 5))
-                let event = EventView(frame: eventInset , carcWidth: 5, addShadow: false)
-                event.sendTimeProperties(start: e[1], end: e[2])
-                event.isEvent = true
-                event.sendColorProperties(CALENDARORANGE)
-                events.append(event)
-                self.addSubview(event)
-            }
-            if e[0] == 1 {
-                if e[1] <= e[2] {
-                    let eventInset = self.bounds.insetBy(dx: CGFloat(-10 * viewID - 5), dy: CGFloat(-10 * viewID - 5))
-                    let event = EventView(frame: eventInset, carcWidth: 5, addShadow: false)
-                    event.isEvent = true
-                    event.sendTimeProperties(start: e[1], end: e[2])
-                    event.sendColorProperties(eventsColorsOnSelectedDate[viewID])
-                    events.append(event)
-                    self.addSubview(event)
-                } else {
-                    fatalError("Strange NormalEvent \(viewID) with negative Duration, travelling back in Time is not allowed")
-                }
-            }
+		for layer in 0...processedEventsOnDate.count - 1 {
+			for i in processedEventsOnDate[layer] {
+				if (i[1] <= i[2]) || i[0] == 0 {
+					let event = EventView(frame: self.bounds , carcWidth: 5)
+					event.drawLayer = layer
+					event.sendTimeProperties(start: i[1], end: i[2])
+					if i[0] == 0 {
+						event.isFullDay = true
+					}
+					event.isEvent = true
+					events.append(event)
+					self.addSubview(event)
+				} else {
+					fatalError("Strange NormalEvent \(layer) with negative Duration, travelling back in Time is not allowed")
+				}
+			}
+		}
+			if animateDayView {
+				for i in 0...events.count - 1 {
+					events[i].animate(.add, duration: 1, delay: 0.1 * Double(i))
+				}
+			} else {
+				for i in 0...events.count - 1 {
+					events[i].animate(.add, duration: 0, delay: 0)
+				}
+			}
         }
-        }
-            
+		
+		
         let (selectedYearID, selectedMonthID, indexPath) = HSelection.selectedDayCellIndex
-        
+		
         guard let selectedIndexPath = indexPath else {
             fatalError()
         }

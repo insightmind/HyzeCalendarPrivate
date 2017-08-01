@@ -25,10 +25,10 @@ class ViewController: UIViewController {
 	@IBOutlet weak var calendarView: UIView!
     @IBOutlet public weak var navigationBar: UINavigationItem!
     @IBOutlet weak var selectedDayButton: UIBarButtonItem!
-    @IBOutlet weak var eventTableView: EventTableView!
+    @IBOutlet weak var ETView: ETView!
     @IBOutlet weak var toolbar: UIToolbar!
 
-    //Outlets of DaysOfWeek
+	//Outlets of DaysOfWeek
     @IBOutlet weak var FirstDayOfWeek: UILabel!
     @IBOutlet weak var SecondDayOfWeek: UILabel!
     @IBOutlet weak var ThirdDayOfWeek: UILabel!
@@ -36,12 +36,16 @@ class ViewController: UIViewController {
     @IBOutlet weak var FivthDayOfWeek: UILabel!
     @IBOutlet weak var SixthDayOfWeek: UILabel!
     @IBOutlet weak var SeventhDayOfWeek: UILabel!
-    let daysOfWeek: [UILabel]? = nil
+	@IBOutlet weak var ETViewTopLayoutConstraint: NSLayoutConstraint!
+	let daysOfWeek: [UILabel]? = nil
 
-    
+	@IBOutlet weak var daysOfWeekBackgroundView: UIView!
+	@IBOutlet weak var ETViewTopLayoutConstraintWithoutLastRow: NSLayoutConstraint!
+	
     
     @IBAction func jumpToToday(_ sender: UIBarButtonItem) {
         let (yearID, monthID, _) = HSelection.todaysDayCellIndex
+		HSelection.selectedDayCellIndex = HSelection.todaysDayCellIndex
 		scrollToSection(yearID: yearID, monthID: monthID + 1, animated: true)
     }
     
@@ -61,24 +65,51 @@ class ViewController: UIViewController {
         }
     }
     
-    func reloadEventTableView() {
-        eventTableView.reloadView()
-    }
+    func reloadETView() {
+        ETView.reloadView()
+	}
+	
+
     
     override func viewWillAppear(_ animated: Bool) {
+		self.calendarView.layer.masksToBounds = false
         if darkMode{
-            view.backgroundColor = CALENDARGREY
-            updateDaysOfWeek(color: CALENDARWHITE)
+            view.backgroundColor = calendarGrey
+			daysOfWeekBackgroundView.backgroundColor = calendarGrey
+			updateDaysOfWeek(color: calendarWhite, weekendColor: calendarGreen)
+			navigationController?.navigationBar.barTintColor = calendarGrey
+			navigationController?.navigationBar.titleTextAttributes![NSForegroundColorAttributeName] = calendarWhite
+			navigationBar.backBarButtonItem?.tintColor = calendarGrey
+			navigationBar.leftBarButtonItem?.tintColor = calendarWhite
+			navigationBar.rightBarButtonItem?.tintColor = calendarWhite
+			toolbar.barTintColor = calendarGrey
+			if toolbar.items != nil {
+				for i in toolbar.items! {
+					i.tintColor = calendarWhite
+				}
+			}
         } else {
-            view.backgroundColor = CALENDARWHITE
-            updateDaysOfWeek(color: CALENDARGREY)
+            view.backgroundColor = calendarWhite
+			daysOfWeekBackgroundView.backgroundColor = calendarWhite
+			updateDaysOfWeek(color: calendarGrey, weekendColor: calendarGreen)
+			navigationController?.navigationBar.barTintColor = calendarWhite
+			navigationController?.navigationBar.titleTextAttributes![NSForegroundColorAttributeName] = calendarGrey
+			navigationBar.backBarButtonItem?.tintColor = calendarGrey
+			navigationBar.leftBarButtonItem?.tintColor = calendarGrey
+			navigationBar.rightBarButtonItem?.tintColor = calendarGrey
+			toolbar.barTintColor = calendarWhite
+			if toolbar.items != nil {
+				for i in toolbar.items! {
+					i.tintColor = calendarGrey
+				}
+			}
         }
         if darkModeTemp != darkMode {
             darkModeTemp = darkMode
         } else if isAMPMTemp != isAMPM || eventsChange == true {
             eventsChange = false
         }
-        eventTableView.reloadView()
+        ETView.reloadView()
     }
     
     override func viewDidLoad() {
@@ -99,8 +130,7 @@ class ViewController: UIViewController {
         
         let (selectedYearID, selectedMonthID, _) = HSelection.selectedDayCellIndex
 		
-		scrollToSection(yearID: selectedYearID, monthID: selectedMonthID + 1)
-		
+		scrollToSection(yearID: selectedYearID, monthID: selectedMonthID - 1)
     }
 	
 	func setTodaysProperties() {
@@ -110,14 +140,37 @@ class ViewController: UIViewController {
 		HSelection.todaysDayID = TMCalendar.component(.day, from: date)
 	}
 
-    func updateDaysOfWeek(color: UIColor) {
-        FirstDayOfWeek.textColor = color
-        SecondDayOfWeek.textColor = color
-        ThirdDayOfWeek.textColor = color
-        FourthDayOfWeek.textColor = color
-        FivthDayOfWeek.textColor = color
-        SixthDayOfWeek.textColor = color
-        SeventhDayOfWeek.textColor = color
+	func updateDaysOfWeek(color: UIColor, weekendColor: UIColor) {
+		
+		FirstDayOfWeek.textColor = color
+		SecondDayOfWeek.textColor = color
+		ThirdDayOfWeek.textColor = color
+		FourthDayOfWeek.textColor = color
+		FivthDayOfWeek.textColor = color
+		SixthDayOfWeek.textColor = color
+		SeventhDayOfWeek.textColor = color
+		
+		if isMondayFirstWeekday {
+			FirstDayOfWeek.text = "M"
+			SecondDayOfWeek.text = "T"
+			ThirdDayOfWeek.text = "W"
+			FourthDayOfWeek.text = "T"
+			FivthDayOfWeek.text = "F"
+			SixthDayOfWeek.text = "S"
+			SeventhDayOfWeek.text = "S"
+			SixthDayOfWeek.textColor = weekendColor
+			SeventhDayOfWeek.textColor = weekendColor
+		} else {
+			FirstDayOfWeek.text = "S"
+			SecondDayOfWeek.text = "M"
+			ThirdDayOfWeek.text = "T"
+			FourthDayOfWeek.text = "W"
+			FivthDayOfWeek.text = "T"
+			SixthDayOfWeek.text = "F"
+			SeventhDayOfWeek.text = "S"
+			FirstDayOfWeek.textColor = weekendColor
+			SeventhDayOfWeek.textColor = weekendColor
+		}
     }
     
     @IBAction func unwindToMonthView(segue: UIStoryboardSegue) {
@@ -134,7 +187,7 @@ class ViewController: UIViewController {
 		
 		let indexPath = IndexPath(item: monthID, section: yearID)
 		
-		HSelection.currentMonthID = monthID
+		HSelection.currentMonthID = monthID + 1
 		HSelection.currentYearID = yearID
 		
 		calendarViewController?.collectionView!.scrollToItem(at: indexPath, at: .centeredVertically, animated: anim)
@@ -152,7 +205,7 @@ class ViewController: UIViewController {
 	
 	func scrollToSection(direction: ScrollDirection, animated anim: Bool = false) {
 		
-		let monthID = HSelection.currentMonthID
+		let monthID = HSelection.currentMonthID - 1
 		let yearID = HSelection.currentYearID
 		
 		switch direction {

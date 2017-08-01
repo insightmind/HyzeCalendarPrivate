@@ -17,10 +17,16 @@ var needsDesignUpdate: Bool = false
 
 var darkMode: Bool = UserDefaults.standard.bool(forKey: "DarkMode")
 var showLinesInCalendarView: Bool = UserDefaults.standard.bool(forKey: "showLinesInCalendarView")
+var isMondayFirstWeekday: Bool = UserDefaults.standard.bool(forKey: "isMondayFirstWeekday")
+var animateDayView: Bool = UserDefaults.standard.bool(forKey: "animateDayView")
 
-let CALENDARWHITE = UIColor.white
-let CALENDARGREY = UIColor.init(red: 0.251, green: 0.251, blue: 0.251, alpha: 1)
-let CALENDARORANGE = UIColor.orange
+let calendarWhite = UIColor.white
+let calendarGrey = UIColor.init(red: 0.251, green: 0.251, blue: 0.251, alpha: 1)
+let calendarOrange = UIColor.orange
+let calendarBlue = UIColor.init(red: 0.204, green: 0.571, blue: 0.901, alpha: 1)
+let calendarGreen = UIColor.init(red: 0.415, green: 0.860, blue: 0.427, alpha: 1)
+let calendarRed = UIColor.init(red: 0.929, green: 0.263, blue: 0.216, alpha: 1)
+// 237,67,55
 
 var TMCalendar: NSCalendar = {
 	let c = NSCalendar(identifier: .gregorian)!
@@ -40,13 +46,11 @@ let TMFuture = Date.distantFuture
 var loaded = true
 var hourDecorationPosition = [[CGFloat]]()
 
-var eventsTableView: EventTableView?
-
 let PI = CGFloat.pi
 
 var isAMPM : Bool = UserDefaults.standard.bool(forKey: "IsAMPM")
 
-var eventsColorsOnSelectedDate: [UIColor] = [CALENDARGREY]
+var eventsColorsOnSelectedDate: [UIColor] = [calendarGrey]
 
 func calculateColorsForEventsOnSelectedDay (numberOfEvents : Int) {
     eventsColorsOnSelectedDate = []
@@ -56,7 +60,9 @@ func calculateColorsForEventsOnSelectedDay (numberOfEvents : Int) {
     }
 }
 
-var selectedEventsTableViewCellIndexPath: IndexPath?
+var selectedETViewCellIndexPath: IndexPath?
+
+var GlobalETView: ETView!
 
 //Declare all Names of Months in a year
 let monthName: [String] = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]

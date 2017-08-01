@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string>
+	<string>en_US</string>
 	<key>CFBundleDisplayName</key>
 	<string>Hyze</string>
 	<key>CFBundleExecutable</key>
@@ -16,14 +16,91 @@
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>de</string>
+		<string>en</string>
+	</array>
 	<key>CFBundleName</key>
 	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.3.9</string>
+	<string>0.4</string>
 	<key>CFBundleVersion</key>
+<<<<<<< develop
+<<<<<<< develop
+<<<<<<< develop
+<<<<<<< develop
+<<<<<<< develop
+<<<<<<< develop
+<<<<<<< develop
+<<<<<<< develop
+<<<<<<< develop
+<<<<<<< develop
+<<<<<<< develop
+<<<<<<< develop
+<<<<<<< develop
+<<<<<<< develop
+<<<<<<< develop
+<<<<<<< develop
+<<<<<<< develop
+<<<<<<< develop
 	<string>1097</string>
+=======
+	<string>1098</string>
+>>>>>>> again upload of wwdc17 week updates
+=======
+	<string>1167</string>
+>>>>>>> New CalendarViewDesign
+=======
+	<string>1177</string>
+>>>>>>> some small design fixes
+=======
+	<string>1231</string>
+>>>>>>> design Improvements
+=======
+	<string>1261</string>
+>>>>>>> new design improvements
+=======
+	<string>1339</string>
+>>>>>>> added dayViewalgorithm and animation
+=======
+	<string>1402</string>
+>>>>>>> DayViewLayoutFix + DayViewAnimation + Optimizations
+=======
+	<string>1421</string>
+>>>>>>> new design for EventEditor
+=======
+	<string>1430</string>
+>>>>>>> eventEditor improvements
+=======
+	<string>1517</string>
+>>>>>>> New design improvements
+=======
+	<string>1518</string>
+>>>>>>> new build
+=======
+	<string>1519</string>
+>>>>>>> changed color of daySelection["starts at"]
+=======
+	<string>1564</string>
+>>>>>>> enhanced blurEffect, new eventsTableAnimation
+=======
+	<string>1647</string>
+>>>>>>> fixed CalendarView bug
+=======
+	<string>1648</string>
+>>>>>>> update last commit
+=======
+	<string>1654</string>
+>>>>>>> added EventEditorTableView + DateSelectionTableViewCell
+=======
+	<string>1661</string>
+>>>>>>> Enhancements
+=======
+	<string>1754</string>
+>>>>>>> fully finished DateSelectionTableViewCell
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCalendarsUsageDescription</key>

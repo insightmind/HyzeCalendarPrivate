@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Lottie
 
 class SettingsViewController: UIViewController {
     
@@ -17,7 +16,23 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var hours24Switch: UISwitch!
     @IBOutlet weak var showLinesSwitch: UISwitch!
     @IBOutlet weak var showLines: UILabel!
-    
+	@IBOutlet weak var isMondaySwitch: UISwitch!
+	@IBOutlet weak var isMondayLabel: UILabel!
+	@IBOutlet weak var settingsLabel: UILabel!
+	@IBOutlet weak var animateDayViewLabel: UILabel!
+	@IBOutlet weak var animateDayViewSwitch: UISwitch!
+	
+	@IBAction func toggleAnimateDayView(_ sender: UISwitch) {
+		let defaults = UserDefaults.standard
+		if animateDayView {
+			animateDayView = false
+		} else {
+			animateDayView = true
+		}
+		defaults.set(animateDayView, forKey: "animateDayView")
+		defaults.synchronize()
+	}
+	
     @IBAction func toggleShowLinesInCalendarView(_ sender: UISwitch) {
         let defaults = UserDefaults.standard
         if showLinesInCalendarView {
@@ -40,33 +55,57 @@ class SettingsViewController: UIViewController {
         needsDesignUpdate = true
         defaults.set(darkMode, forKey: "DarkMode")
         defaults.synchronize()
-        
-        if darkMode{
-            showLines.textColor = CALENDARWHITE
-            hours24Label.textColor = CALENDARWHITE
-            darkModeLabel.textColor = CALENDARWHITE
-            view.backgroundColor = CALENDARGREY
-        } else {
-            showLines.textColor = CALENDARWHITE
-            hours24Label.textColor = CALENDARGREY
-            darkModeLabel.textColor = CALENDARGREY
-            view.backgroundColor = CALENDARWHITE
-        }
+		UIView.animate(withDuration: 0.4) {
+			if darkMode{
+				self.settingsLabel.textColor = calendarWhite
+				self.isMondayLabel.textColor = calendarWhite
+				self.showLines.textColor = calendarWhite
+				self.hours24Label.textColor = calendarWhite
+				self.darkModeLabel.textColor = calendarWhite
+				self.animateDayViewLabel.textColor = calendarWhite
+				self.view.backgroundColor = calendarGrey
+			} else {
+				self.settingsLabel.textColor = calendarGrey
+				self.isMondayLabel.textColor = calendarGrey
+				self.showLines.textColor = calendarGrey
+				self.hours24Label.textColor = calendarGrey
+				self.darkModeLabel.textColor = calendarGrey
+				self.animateDayViewLabel.textColor = calendarGrey
+				self.view.backgroundColor = calendarWhite
+			}
+		}
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+	@IBAction func toggleIsMondayFirstWeekDay(_ sender: UISwitch) {
+		let defaults = UserDefaults.standard
+		if isMondayFirstWeekday {
+			isMondayFirstWeekday = false
+		} else {
+			isMondayFirstWeekday = true
+		}
+		needsDesignUpdate = true
+		defaults.set(isMondayFirstWeekday, forKey: "isMondayFirstWeekday")
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
         if darkMode {
+			settingsLabel.textColor = calendarWhite
             darkModeSwitch.isOn = true
-            showLines.textColor = CALENDARWHITE
-            hours24Label.textColor = CALENDARWHITE
-            darkModeLabel.textColor = CALENDARWHITE
-            view.backgroundColor = CALENDARGREY
+			isMondayLabel.textColor = calendarWhite
+            showLines.textColor = calendarWhite
+            hours24Label.textColor = calendarWhite
+            darkModeLabel.textColor = calendarWhite
+			self.animateDayViewLabel.textColor = calendarWhite
+			view.backgroundColor = calendarGrey
         } else {
+			settingsLabel.textColor = calendarGrey
+			isMondayLabel.textColor = calendarGrey
             darkModeSwitch.isOn = false
-            showLines.textColor = CALENDARGREY
-            hours24Label.textColor = CALENDARGREY
-            darkModeLabel.textColor = CALENDARGREY
-            view.backgroundColor = CALENDARWHITE
+            showLines.textColor = calendarGrey
+            hours24Label.textColor = calendarGrey
+            darkModeLabel.textColor = calendarGrey
+			self.animateDayViewLabel.textColor = calendarGrey
+            view.backgroundColor = calendarWhite
         }
         if isAMPM {
             hours24Switch.isOn = false
@@ -78,6 +117,16 @@ class SettingsViewController: UIViewController {
         } else {
             showLinesSwitch.isOn = false
         }
+		if isMondayFirstWeekday {
+			isMondaySwitch.isOn = true
+		} else {
+			isMondaySwitch.isOn = false
+		}
+		if animateDayView {
+			animateDayViewSwitch.isOn = true
+		} else {
+			animateDayViewSwitch.isOn = false
+		}
     }
 
     @IBAction func toggle24Hour(_ sender: UISwitch) {

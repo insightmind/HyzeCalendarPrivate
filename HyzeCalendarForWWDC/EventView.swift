@@ -19,71 +19,106 @@ class EventView: UIButton {
     var coloring: UIColor = UIColor.green
     var arcWidth: CGFloat = 25
     var allowHourRotation: Bool = false
-    var allowShadow = true
     var isEvent = false
+	var drawLayer = 0
+	var isFullDay = false
     var animatedState: EventAnimationType = .load
-    
+	
     var shapeLayer = CAShapeLayer()
 
-
+	//TODO: fix layout and center issues
     override func draw(_ rect: CGRect) {
-        let tcenter = CGPoint(x: bounds.width/2, y: bounds.height/2)
-        var radius = max(bounds.width, bounds.height)
-        radius = radius/2 - radius/13
-        
-        let startAngle = calculateAngle(for: startTime)
-        let endAngle = calculateAngle(for: endTime)
-        let path = UIBezierPath(arcCenter: tcenter, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
-        
-        path.usesEvenOddFillRule = true
-        path.lineWidth = arcWidth
-        coloring.setStroke()
-        
-        shapeLayer.path = path.cgPath
-        shapeLayer.strokeColor = coloring.cgColor
-        shapeLayer.fillColor = UIColor.clear.cgColor
-        shapeLayer.lineWidth = path.lineWidth
-        if isEvent {
-            shapeLayer.lineCap = kCALineCapRound
-        }
-        shapeLayer.position = CGPoint(x: 0, y: 0)
-        shapeLayer.opacity = 1
+		
+		coloring.setStroke()
+		let rect = CGRect(x: bounds.width/2 , y: bounds.height/2 , width: bounds.width, height: bounds.height)
+		shapeLayer.transform = CATransform3DMakeScale(0.9 + (CGFloat(drawLayer) * 0.1), 0.9 + (CGFloat(drawLayer) * 0.1), 0)
+		shapeLayer.bounds = rect
+		shapeLayer.frame = self.frame
+        shapeLayer.path = UIBezierPath(ovalIn: rect).cgPath
+		
+		if !isFullDay {
+			shapeLayer.strokeStart = calculateAngle(for: 0)
+			shapeLayer.strokeEnd = calculateAngle(for: 0)
+			shapeLayer.opacity = 0
+		}
+		
+		shapeLayer.strokeColor = coloring.cgColor
+		shapeLayer.fillColor = UIColor.clear.cgColor
+		if isEvent {
+			shapeLayer.lineCap = kCALineCapRound
+		}
+		
+		shapeLayer.lineWidth = arcWidth / (1 + (CGFloat(drawLayer) * 0.1))
         
         self.layer.addSublayer(shapeLayer)
+		
+		shapeLayer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
     }
     
     func calculateAngle(for minute: CGFloat) -> CGFloat {
-        return ((minute * PI)/720) + ((3*PI)/2)
+		
+		var result = minute / 1440 + 0.75
+		
+		if result > 1 {
+			result -= 1
+		}
+		
+        return result
     }
     
-    init(frame: CGRect = CGRect(), carcWidth: CGFloat , addShadow: Bool = false, hourRotation: Bool = false) {
+    init(frame: CGRect = CGRect(), carcWidth: CGFloat, hourRotation: Bool = false) {
         super.init(frame: frame)
         self.allowHourRotation = hourRotation
         arcWidth = carcWidth
-        self.allowShadow = addShadow
-        if allowShadow {
-            self.layer.shadowColor = UIColor.black.cgColor
-            self.layer.shadowOffset = CGSize(width: 0, height: 0)
-            self.layer.shadowOpacity = 1
-            self.layer.shadowRadius = 2
-        }
     }
 
-    func animate(_ animationType: EventAnimationType = .reload, duration: TimeInterval = 0.5) {
-        
-        let animation = CABasicAnimation(keyPath: "lineWidth")
-        animation.duration = duration
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+	func animate(_ animationType: EventAnimationType = .reload, duration: TimeInterval = 0.5, delay: TimeInterval = 0) {
+		
         switch animationType {
         case .select:
-            animation.fromValue = arcWidth
-            animation.toValue = arcWidth + 3.5
+			let animation = CABasicAnimation(keyPath: "lineWidth")
+			animation.duration = duration
+			animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+            animation.fromValue = arcWidth / (1 + (CGFloat(drawLayer) * 0.1))
+            animation.toValue = (arcWidth + 3.5) / (1 + (CGFloat(drawLayer) * 0.1))
+			animation.fillMode = kCAFillModeForwards
+			animation.isRemovedOnCompletion = false
+			shapeLayer.add(animation, forKey: "lineWidth")
             break
         case .deselect:
-            animation.fromValue = arcWidth + 3.5
-            animation.toValue = arcWidth
+			let animation = CABasicAnimation(keyPath: "lineWidth")
+			animation.duration = duration
+			animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+            animation.fromValue = (arcWidth + 3.5) / (1 + (CGFloat(drawLayer) * 0.1))
+            animation.toValue = arcWidth / (1 + (CGFloat(drawLayer) * 0.1))
+			animation.fillMode = kCAFillModeForwards
+			animation.isRemovedOnCompletion = false
+			shapeLayer.add(animation, forKey: "lineWidth")
             break
         case .add:
+			if isFullDay {
+				return
+			}
+			let startAngle = calculateAngle(for: startTime)
+			let endAngle = calculateAngle(for: endTime)
+			
+			let start = CABasicAnimation(keyPath: "strokeStart")
+			start.toValue = startAngle
+			
+			let end = CABasicAnimation(keyPath: "strokeEnd")
+			end.toValue = endAngle
+			
+			let opacity = CABasicAnimation(keyPath: "opacity")
+			opacity.toValue = 1
+			
+			let group = CAAnimationGroup()
+			group.beginTime = CACurrentMediaTime() + delay
+			group.animations = [start, end, opacity]
+			group.duration = duration
+			group.fillMode = kCAFillModeForwards
+			group.isRemovedOnCompletion = false
+			group.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+			shapeLayer.add(group, forKey: nil)
             break
         case .delete:
             break
@@ -94,11 +129,6 @@ class EventView: UIButton {
         case .magic:
             break
         }
-        
-        animation.fillMode = kCAFillModeForwards
-        animation.isRemovedOnCompletion = false
-        
-        shapeLayer.add(animation, forKey: "lineWidth")
     }
     
     required init?(coder aDecoder: NSCoder) {
