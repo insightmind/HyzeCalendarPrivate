@@ -130,7 +130,7 @@ class ViewController: UIViewController {
         
         let (selectedYearID, selectedMonthID, _) = HSelection.selectedDayCellIndex
 		
-		scrollToSection(yearID: selectedYearID, monthID: selectedMonthID + 1)
+		scrollToSection(yearID: selectedYearID, monthID: selectedMonthID - 1)
     }
 	
 	func setTodaysProperties() {
@@ -187,7 +187,7 @@ class ViewController: UIViewController {
 		
 		let indexPath = IndexPath(item: monthID, section: yearID)
 		
-		HSelection.currentMonthID = monthID
+		HSelection.currentMonthID = monthID + 1
 		HSelection.currentYearID = yearID
 		
 		calendarViewController?.collectionView!.scrollToItem(at: indexPath, at: .centeredVertically, animated: anim)
@@ -205,7 +205,7 @@ class ViewController: UIViewController {
 	
 	func scrollToSection(direction: ScrollDirection, animated anim: Bool = false) {
 		
-		let monthID = HSelection.currentMonthID
+		let monthID = HSelection.currentMonthID - 1
 		let yearID = HSelection.currentYearID
 		
 		switch direction {

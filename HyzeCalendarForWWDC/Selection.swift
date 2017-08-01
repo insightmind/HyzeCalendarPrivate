@@ -44,7 +44,7 @@ struct Selection {
         //Calculation of basic data
         let date = Date()
         let yearID = TMCalendar.component(.year, from: date)
-        let monthID = TMCalendar.component(.month, from: date) - 1
+        let monthID = TMCalendar.component(.month, from: date)
 		let dayID = TMCalendar.component(.day, from: date)
         let dayIndexPath = IndexPath(item: dayID, section: 0)
 		

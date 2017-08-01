@@ -36,6 +36,7 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
         // Do any additional setup after loading the view.
 		
 		self.collectionView?.allowsMultipleSelection = false
+		self.collectionView?.isPrefetchingEnabled = false
 		
 		collectionViewLayout.invalidateLayout()
     }
@@ -157,12 +158,12 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
             isNotInMonth = false
 		}
 		let isToday = TimeManagement.isToday(yearID: yearID, monthID: monthID, dayID: item)
-		let isSelected = TimeManagement.isSelected(yearID: yearID, monthID: monthID, dayID: item)
+		let isSelected = TimeManagement.isSelected(yearID: yearID, monthID: monthID + 1, dayID: item)
 		let isOnWeekend = self.isOnWeekend(for: indexPath)
 		cell.setCellDesign(isToday: isToday, isSelected: isSelected, isNotInMonth: isNotInMonth, isOnWeekend: isOnWeekend)
         
         if isSelected {
-            HSelection.selectedDayCellIndex = (yearID, monthID, IndexPath(item: item, section: 0))
+            HSelection.selectedDayCellIndex = (yearID, monthID + 1, IndexPath(item: item, section: 0))
 			HSelection.selectedIsOnWeekend = isOnWeekend
             self.collectionView!.selectItem(at: indexPath, animated: false, scrollPosition: .init(rawValue: 0))
             cell.isSelected = true
@@ -249,7 +250,7 @@ extension MonthCollectionViewController {
         let isSelected = true
         let isToday = TimeManagement.isToday(yearID: yearID, monthID: monthID, dayID: item)
         let configuredIndexPath = IndexPath(item: indexPath.item - firstDayInMonth, section: 0)
-        HSelection.selectedDayCellIndex = (yearID, monthID, configuredIndexPath)
+        HSelection.selectedDayCellIndex = (yearID, monthID + 1, configuredIndexPath)
 		HSelection.selectedIsOnWeekend = self.isOnWeekend(for: indexPath)
         let prevSize = cell.contentView.bounds
 		let prevShadowPath = cell.layer.shadowPath
@@ -257,12 +258,15 @@ extension MonthCollectionViewController {
         cell.contentView.bounds = CGRect.zero
         cell.contentView.layer.cornerRadius = 0
 		cell.contentView.backgroundColor = darkMode ? calendarGrey : calendarWhite
+		
         UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+			
 			cell.setCellDesign(isToday: isToday, isSelected: isSelected, isOnWeekend: isOnWeekend)
             cell.contentView.layer.cornerRadius = prevSize.width / 2
             cell.contentView.bounds = prevSize
 			cell.layer.shadowPath = prevShadowPath
 			cell.layer.shadowOpacity = 0.5
+			
         }, completion: nil)
     
         
