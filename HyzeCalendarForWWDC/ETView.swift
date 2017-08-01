@@ -1,5 +1,5 @@
 //
-//  EventTableView.swift
+//  ETView.swift
 //  HyzeCalendarForWWDC
 //
 //  Created by redfleet on 2/16/17.
@@ -9,7 +9,7 @@
 import UIKit
 import EventKit
 
-class EventTableView: UITableView, UITableViewDataSource, UITableViewDelegate{
+class ETView: UITableView, UITableViewDataSource, UITableViewDelegate{
     
     @IBOutlet weak var superViewController: ViewController!
     
