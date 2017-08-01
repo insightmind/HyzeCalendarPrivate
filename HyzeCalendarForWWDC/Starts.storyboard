@@ -122,6 +122,7 @@
                         <outlet property="blurLayer" destination="bhT-94-Gux" id="ios-ib-Kr6"/>
                         <outlet property="datePicker" destination="ARE-EV-uYF" id="A0c-N5-Obi"/>
                         <outlet property="popover" destination="ZXn-5h-2Vc" id="CC9-7X-tYq"/>
+                        <outlet property="topLabel" destination="Wya-Yz-A03" id="giG-L0-TTf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bQ5-jI-JcE" userLabel="First Responder" sceneMemberID="firstResponder"/>

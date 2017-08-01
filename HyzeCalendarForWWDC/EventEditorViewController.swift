@@ -9,19 +9,30 @@
 import UIKit
 import EventKit
 
+class EventEditorEventInformations {
+	var title: String = "Untitled Event"
+	var isAllDay: Bool = false
+	var startDate: Date = Date()
+	var endDate: Date = Date(timeIntervalSinceNow: 1800)
+	var color: UIColor = calendarWhite
+}
+
 class EventEditorViewController: UIViewController {
     
     // MARK: - Variables
     /// Variable to check if Event should be added to the Calendar
     var addEvent: Bool = false
 	
+	var eventInformations = EventEditorEventInformations()
+	
     // MARK: - Outlets
     //All the visual Elements in the ViewController
 	@IBOutlet weak var blurEffectView: UIVisualEffectView!
 	
-	@IBOutlet weak var startsEndSelectionButton: UIView!
-	
+	@IBOutlet weak var tableView: UIView!
 	@IBOutlet weak var newEventTextField: UITextField!
+	
+	// MARK: - Actions
 	@IBAction func cancel(_ sender: UIButton) {
 		self.dismiss(animated: true, completion: nil)
 	}
@@ -29,6 +40,7 @@ class EventEditorViewController: UIViewController {
 	@IBAction func save(_ sender: UIButton) {
 		self.dismiss(animated: true, completion: nil)
 	}
+	
 	// MARK: - Functions
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,11 +48,18 @@ class EventEditorViewController: UIViewController {
 		
 		if darkMode {
 			newEventTextField.textColor = calendarWhite
+			let color = calendarWhite.withAlphaComponent(0.5)
+			let str = NSAttributedString(string: "Untitled Event", attributes: [NSForegroundColorAttributeName : color])
+			newEventTextField.attributedPlaceholder = str
 			blurEffectView.effect = UIBlurEffect(style: .dark)
 		} else {
 			blurEffectView.effect = UIBlurEffect(style: .light)
+			let color = calendarGrey.withAlphaComponent(0.5)
+			let str = NSAttributedString(string: "Untitled Event", attributes: [NSForegroundColorAttributeName : color])
+			newEventTextField.attributedPlaceholder = str
 			newEventTextField.textColor = calendarGrey
 		}
+		
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,7 +68,8 @@ class EventEditorViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let sd = sender as? UIBarButtonItem else{
+		eventInformations.title = newEventTextField.text ?? "Untitled Event"
+        guard let sd = sender as? UIButton else{
             print("sender not found")
             return
         }
@@ -57,7 +77,7 @@ class EventEditorViewController: UIViewController {
             if informationMode {
             print("added Event")
             }
-            //EManagement.addEvent(title: titleTF.text ?? "NoEventTitle", from: startTimeDP.date, to: endTimeDP.date)
+            EManagement.addEvent(eventInformations)
         }
     }
     /*
@@ -69,5 +89,17 @@ class EventEditorViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+	
+	class func getEventsInformations() -> EventEditorEventInformations {
+		if let topController = UIApplication.shared.keyWindow?.rootViewController {
+			while let presentedViewController = topController.presentedViewController {
+				guard let viewController = presentedViewController as? EventEditorViewController else {
+					fatalError()
+				}
+				return viewController.eventInformations
+			}
+		}
+		return EventEditorEventInformations()
+	}
 
 }

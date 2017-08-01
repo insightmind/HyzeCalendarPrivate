@@ -120,14 +120,14 @@ class EventManagement {
         }
     }
     
-    func addEvent(title: String = "NoEventTitle", from startDate: Date, to endDate: Date) {
+	func addEvent(_ informations: EventEditorEventInformations) {
         let event = EKEvent(eventStore: EManagement.EMEventStore)
-        event.title = title
+        event.title = informations.title
         event.calendar = EManagement.EMEventStore.defaultCalendarForNewEvents
-        if startDate < endDate {
-            event.startDate = startDate
-            event.endDate = endDate
-            event.isAllDay = false
+        if informations.startDate < informations.endDate {
+            event.startDate = informations.startDate
+            event.endDate = informations.endDate
+            event.isAllDay = informations.isAllDay
         }
         do {
             try EMEventStore.save(event, span: .thisEvent, commit: true)
