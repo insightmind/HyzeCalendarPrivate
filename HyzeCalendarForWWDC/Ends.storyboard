@@ -121,6 +121,7 @@
                     <connections>
                         <outlet property="datePicker" destination="kPg-mi-MiR" id="o8F-PR-zsb"/>
                         <outlet property="popover" destination="VaJ-k3-Bef" id="1sN-zm-SpW"/>
+                        <outlet property="topLabel" destination="fvx-Ms-u6x" id="CYD-Xd-vif"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UHw-bV-cfU" userLabel="First Responder" sceneMemberID="firstResponder"/>

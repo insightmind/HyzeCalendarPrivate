@@ -20,6 +20,7 @@ struct EventEditorCellInformations {
 class EventEditorTableViewController: UITableViewController {
 	
 	let cells = [EventEditorCellInformations(cellType: .dateSelection, height: 100.0)]
+	var eventsInformations: EventEditorEventInformations!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +34,11 @@ class EventEditorTableViewController: UITableViewController {
 		self.tableView.separatorStyle = .none
 		self.tableView.allowsSelection = false
 		self.tableView.register(UINib(nibName: "DateSelectionTableViewCell", bundle: nil) ,forCellReuseIdentifier: "dateSelection")
+		
+		self.eventsInformations = EventEditorViewController.getEventsInformations()
     }
+	
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
