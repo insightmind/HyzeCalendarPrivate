@@ -8,7 +8,18 @@
 
 import UIKit
 
+enum EventEditorCellType {
+	case dateSelection
+}
+
+struct EventEditorCellInformations {
+	let cellType: EventEditorCellType
+	let height: CGFloat
+}
+
 class EventEditorTableViewController: UITableViewController {
+	
+	let cells = [EventEditorCellInformations(cellType: .dateSelection, height: 100.0)]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +29,10 @@ class EventEditorTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+		self.tableView.backgroundColor = UIColor.clear
+		self.tableView.separatorStyle = .none
+		self.tableView.allowsSelection = false
+		self.tableView.register(UINib(nibName: "DateSelectionTableViewCell", bundle: nil) ,forCellReuseIdentifier: "dateSelection")
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,23 +44,38 @@ class EventEditorTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return cells.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+		
+		let cell: UITableViewCell
+		
+		switch cells[indexPath.row].cellType {
+		case .dateSelection:
+			fallthrough
+		default:
+			cell = tableView.dequeueReusableCell(withIdentifier: "dateSelection") as! DateSelectionTableViewCell
+		}
 
         // Configure the cell...
 
         return cell
     }
-    */
+	
+	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		switch cells[indexPath.row].cellType {
+		case .dateSelection:
+			fallthrough
+		default:
+			return cells[indexPath.row].height
+		}
+	}
 
     /*
     // Override to support conditional editing of the table view.

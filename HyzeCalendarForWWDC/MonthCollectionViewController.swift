@@ -8,8 +8,6 @@
 
 import UIKit
 
-private let reuseIdentifier = "DayCell"
-
 class MonthCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 	
 	internal let yearID: Int
@@ -18,6 +16,8 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
 	internal let firstDayInMonth: Int
     internal let prevDaysInMonth: Int
     internal let futDaysInMonth: Int
+	
+	private let reuseIdentifier = "DayCell"
 	
 	let _weeksInMonth = 6
 	let _daysInWeek = 7
@@ -40,38 +40,40 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
 		
 		collectionViewLayout.invalidateLayout()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+	
+	fileprivate class func setUpPrevFutMonthDays(_ monthID: Int, _ yearID: Int) -> (prevDays: Int, futDays: Int) {
+		var prevYearID: Int
+		var prevMonthID: Int
+		var futYearID: Int
+		var futMonthID: Int
+		if monthID == 0 {
+			prevMonthID = 10
+			prevYearID = yearID - 1
+			futYearID = yearID
+			futMonthID = monthID + 1
+		} else {
+			if monthID == 11 {
+				futMonthID = 0
+				futYearID = yearID + 1
+			} else {
+				futMonthID = monthID + 1
+				futYearID = yearID
+			}
+			prevYearID = yearID
+			prevMonthID = monthID
+		}
+		let prevDays = TimeManagement.calculateDaysInMonth(yearID: prevYearID, monthID: prevMonthID )
+		let futDays = TimeManagement.calculateDaysInMonth(yearID: futYearID, monthID: futMonthID)
+		return (prevDays, futDays)
+	}
 	
 	init(collectionViewLayout layout: UICollectionViewLayout, idOfYear yearID: Int, idOfMonth monthID: Int) {
 		self.yearID = yearID
 		self.monthID = monthID
 		self.daysInMonth = TimeManagement.calculateDaysInMonth(yearID: yearID, monthID: monthID + 1)
-        var prevYearID: Int
-        var prevMonthID: Int
-        var futYearID: Int
-        var futMonthID: Int
-        if monthID == 0 {
-            prevMonthID = 10
-            prevYearID = yearID - 1
-            futYearID = yearID
-            futMonthID = monthID + 1
-        } else {
-            if monthID == 11 {
-                futMonthID = 0
-                futYearID = yearID + 1
-            } else {
-                futMonthID = monthID + 1
-                futYearID = yearID
-            }
-            prevYearID = yearID
-            prevMonthID = monthID
-        }
-        self.prevDaysInMonth = TimeManagement.calculateDaysInMonth(yearID: prevYearID, monthID: prevMonthID )
-        self.futDaysInMonth = TimeManagement.calculateDaysInMonth(yearID: futYearID, monthID: futMonthID)
+		let days = MonthCollectionViewController.setUpPrevFutMonthDays(monthID, yearID)
+		self.prevDaysInMonth = days.prevDays
+		self.futDaysInMonth = days.futDays
 		let fdim = TimeManagement.calculateFirstWeekDayOfMonth(yearID: yearID, monthID: monthID)
         if fdim == 6 {
             self.firstDayInMonth = -1

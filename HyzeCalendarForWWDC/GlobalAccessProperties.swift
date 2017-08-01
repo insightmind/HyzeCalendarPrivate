@@ -58,6 +58,10 @@ func calculateColorsForEventsOnSelectedDay (numberOfEvents : Int) {
     }
 }
 
+var selectedETViewCellIndexPath: IndexPath?
+
+var GlobalETView: ETView!
+
 //Declare all Names of Months in a year
 let monthName: [String] = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
