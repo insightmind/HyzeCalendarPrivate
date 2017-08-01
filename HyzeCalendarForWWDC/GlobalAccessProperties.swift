@@ -44,8 +44,6 @@ let TMFuture = Date.distantFuture
 var loaded = true
 var hourDecorationPosition = [[CGFloat]]()
 
-var eventsTableView: EventTableView?
-
 let PI = CGFloat.pi
 
 var isAMPM : Bool = UserDefaults.standard.bool(forKey: "IsAMPM")
@@ -59,8 +57,6 @@ func calculateColorsForEventsOnSelectedDay (numberOfEvents : Int) {
         eventsColorsOnSelectedDate.append(color)
     }
 }
-
-var selectedEventsTableViewCellIndexPath: IndexPath?
 
 //Declare all Names of Months in a year
 let monthName: [String] = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]

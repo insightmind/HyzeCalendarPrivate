@@ -59,7 +59,7 @@
                                     <segue destination="otY-kj-Xhj" kind="embed" id="Y7m-CI-ZWN"/>
                                 </connections>
                             </containerView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="A3r-3z-TZC" customClass="EventTableView" customModule="HyzeCalendarForWWDC" customModuleProvider="target">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="A3r-3z-TZC" customClass="ETView" customModule="HyzeCalendarForWWDC" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="310" width="321" height="210"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -68,11 +68,11 @@
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="center" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationWidth="0.0" reuseIdentifier="Events" rowHeight="50" id="dRc-1V-GLg" customClass="EventsTableViewCell" customModule="HyzeCalendarForWWDC" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="center" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationWidth="0.0" reuseIdentifier="Events" rowHeight="50" id="dRc-1V-GLg" customClass="ETViewCell" customModule="HyzeCalendarForWWDC" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="321" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dRc-1V-GLg" id="6xq-Qc-5SA" customClass="EventsTableViewCell" customModule="HyzeCalendarForWWDC" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="321" height="50"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dRc-1V-GLg" id="6xq-Qc-5SA" customClass="ETViewCell" customModule="HyzeCalendarForWWDC" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="321" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
@@ -188,6 +188,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="ETView" destination="A3r-3z-TZC" id="uxS-G8-rPE"/>
+                        <outlet property="ETViewTopLayoutConstraint" destination="Nyc-jh-8oy" id="Onv-rb-Am7"/>
+                        <outlet property="ETViewTopLayoutConstraintWithoutLastRow" destination="Cia-ee-nQn" id="TRp-yO-bMs"/>
                         <outlet property="FirstDayOfWeek" destination="jaR-Ro-RV5" id="b4S-fq-9OY"/>
                         <outlet property="FivthDayOfWeek" destination="lT4-B6-PZM" id="3jv-9O-2q9"/>
                         <outlet property="FourthDayOfWeek" destination="IoA-eM-tge" id="QEh-Re-zWg"/>
@@ -197,9 +200,6 @@
                         <outlet property="ThirdDayOfWeek" destination="x4j-ij-qFV" id="Kmy-px-Cmm"/>
                         <outlet property="calendarView" destination="Q51-W6-Rno" id="d1v-af-Ml0"/>
                         <outlet property="daysOfWeekBackgroundView" destination="3te-8G-WxE" id="Mox-gF-4eU"/>
-                        <outlet property="eventTableView" destination="A3r-3z-TZC" id="uxS-G8-rPE"/>
-                        <outlet property="eventTableViewTopLayoutConstraint" destination="Nyc-jh-8oy" id="Onv-rb-Am7"/>
-                        <outlet property="eventTableViewTopLayoutConstraintWithoutLastRow" destination="Cia-ee-nQn" id="TRp-yO-bMs"/>
                         <outlet property="navigationBar" destination="rOZ-nb-EdF" id="jOZ-ZR-T5Y"/>
                         <outlet property="selectedDayButton" destination="qfA-NM-elO" id="6hv-jW-2U6"/>
                         <outlet property="toolbar" destination="GCF-0K-sLN" id="shS-kT-3Hn"/>
@@ -208,7 +208,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rjf-B2-uV1" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="4HA-DO-8bO" userLabel="CalendarDataSource"/>
                 <tapGestureRecognizer id="Fad-Le-bA1"/>
-                <customObject id="bfJ-oq-r0X" customClass="EventTableView" customModule="HyzeCalendarForWWDC" customModuleProvider="target">
+                <customObject id="bfJ-oq-r0X" customClass="ETView" customModule="HyzeCalendarForWWDC" customModuleProvider="target">
                     <connections>
                         <outlet property="dataSource" destination="A3r-3z-TZC" id="BQP-ho-5lV"/>
                         <outlet property="delegate" destination="A3r-3z-TZC" id="LiZ-BX-rER"/>

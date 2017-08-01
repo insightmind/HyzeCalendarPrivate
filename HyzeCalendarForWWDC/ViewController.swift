@@ -25,7 +25,7 @@ class ViewController: UIViewController {
 	@IBOutlet weak var calendarView: UIView!
     @IBOutlet public weak var navigationBar: UINavigationItem!
     @IBOutlet weak var selectedDayButton: UIBarButtonItem!
-    @IBOutlet weak var eventTableView: EventTableView!
+    @IBOutlet weak var ETView: ETView!
     @IBOutlet weak var toolbar: UIToolbar!
 
 	//Outlets of DaysOfWeek
@@ -36,11 +36,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var FivthDayOfWeek: UILabel!
     @IBOutlet weak var SixthDayOfWeek: UILabel!
     @IBOutlet weak var SeventhDayOfWeek: UILabel!
-	@IBOutlet weak var eventTableViewTopLayoutConstraint: NSLayoutConstraint!
+	@IBOutlet weak var ETViewTopLayoutConstraint: NSLayoutConstraint!
 	let daysOfWeek: [UILabel]? = nil
 
 	@IBOutlet weak var daysOfWeekBackgroundView: UIView!
-	@IBOutlet weak var eventTableViewTopLayoutConstraintWithoutLastRow: NSLayoutConstraint!
+	@IBOutlet weak var ETViewTopLayoutConstraintWithoutLastRow: NSLayoutConstraint!
 	
     
     @IBAction func jumpToToday(_ sender: UIBarButtonItem) {
@@ -65,8 +65,8 @@ class ViewController: UIViewController {
         }
     }
     
-    func reloadEventTableView() {
-        eventTableView.reloadView()
+    func reloadETView() {
+        ETView.reloadView()
 	}
 	
 
@@ -109,7 +109,7 @@ class ViewController: UIViewController {
         } else if isAMPMTemp != isAMPM || eventsChange == true {
             eventsChange = false
         }
-        eventTableView.reloadView()
+        ETView.reloadView()
     }
     
     override func viewDidLoad() {

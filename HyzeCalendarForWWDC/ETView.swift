@@ -20,12 +20,12 @@ class ETView: UITableView, UITableViewDataSource, UITableViewDelegate{
     var prevEventsCount: Int = 1
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let eventCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! EventsTableViewCell
+        let eventCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! ETViewCell
         
         let event = events[indexPath.row]
         
-        if selectedEventsTableViewCellIndexPath != nil {
-            if selectedEventsTableViewCellIndexPath == indexPath {
+        if selectedETViewCellIndexPath != nil {
+            if selectedETViewCellIndexPath == indexPath {
                 eventCell.isSelected = true
                 visuallySelect(eventCell, duration: 0, indexPath: indexPath)
             }
@@ -40,7 +40,7 @@ class ETView: UITableView, UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		
         tableView.contentInset = UIEdgeInsets(top: 15, left: 0, bottom: 25, right: 0)
-        tableView.register(EventsTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+        tableView.register(ETViewCell.self, forCellReuseIdentifier: cellIdentifier)
         prevEventsCount = events.count
         let (selectedYearID, selectedMonthID, indexPath) = HSelection.selectedDayCellIndex
         
@@ -86,7 +86,7 @@ class ETView: UITableView, UITableViewDataSource, UITableViewDelegate{
     
     func reloadView() {
         
-        selectedEventsTableViewCellIndexPath = nil
+        selectedETViewCellIndexPath = nil
         
         let (selectedYearID, selectedMonthID, indexPath) = HSelection.selectedDayCellIndex
         guard let selectedIndexPath = indexPath else {
@@ -122,20 +122,20 @@ class ETView: UITableView, UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let row = tableView.cellForRow(at: indexPath) as? EventsTableViewCell else {
+        guard let row = tableView.cellForRow(at: indexPath) as? ETViewCell else {
             print("Didn't found cell to highlight")
             return
         }
         
-        if indexPath == selectedEventsTableViewCellIndexPath {
+        if indexPath == selectedETViewCellIndexPath {
             return
         }
-        if selectedEventsTableViewCellIndexPath != nil {
+        if selectedETViewCellIndexPath != nil {
             var access = true
-            let prevRow = tableView.cellForRow(at: selectedEventsTableViewCellIndexPath!) as? EventsTableViewCell
+            let prevRow = tableView.cellForRow(at: selectedETViewCellIndexPath!) as? ETViewCell
             if prevRow == nil{
                 print("Didn't found cell to unhighlight")
-                selectedEventsTableViewCellIndexPath = nil
+                selectedETViewCellIndexPath = nil
                 access = false
             }
             if access {
@@ -144,13 +144,13 @@ class ETView: UITableView, UITableViewDataSource, UITableViewDelegate{
 
         }
 
-        selectedEventsTableViewCellIndexPath = indexPath
+        selectedETViewCellIndexPath = indexPath
         visuallySelect(row, indexPath: indexPath)
 
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        guard let row = tableView.cellForRow(at: indexPath) as? EventsTableViewCell else {
+        guard let row = tableView.cellForRow(at: indexPath) as? ETViewCell else {
             print("Didn't found cell to unhighlight")
             return
         }
@@ -158,7 +158,7 @@ class ETView: UITableView, UITableViewDataSource, UITableViewDelegate{
         visuallyDeSelect(row, indexPath: indexPath)
     }
     
-    func visuallySelect(_ row: EventsTableViewCell, duration: TimeInterval = 0.2, indexPath: IndexPath) {
+    func visuallySelect(_ row: ETViewCell, duration: TimeInterval = 0.2, indexPath: IndexPath) {
         if viewIsDayView {
             if renDayView != nil {
                 renDayView?.selectEventView(indexPath.row, duration: duration)
@@ -174,7 +174,7 @@ class ETView: UITableView, UITableViewDataSource, UITableViewDelegate{
         row.contentView.backgroundColor = calendarWhite.withAlphaComponent(0.15)
     }
     
-    func visuallyDeSelect(_ row: EventsTableViewCell, duration: TimeInterval = 0.2, indexPath: IndexPath) {
+    func visuallyDeSelect(_ row: ETViewCell, duration: TimeInterval = 0.2, indexPath: IndexPath) {
         
         if viewIsDayView {
             if renDayView != nil {
@@ -192,7 +192,7 @@ class ETView: UITableView, UITableViewDataSource, UITableViewDelegate{
     
     override init(frame: CGRect, style: UITableViewStyle) {
         super.init(frame: frame, style: style)
-        eventsTableView = self
+        ETView = self
         updateEvents()
     }
     
