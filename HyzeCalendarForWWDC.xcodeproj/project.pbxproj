@@ -14,6 +14,8 @@
 		3E47BD2C1F30E7E900E0646C /* EventEditorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E47BD2B1F30E7E900E0646C /* EventEditorTableViewController.swift */; };
 		3E47BD311F30EE0200E0646C /* DateSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E47BD2F1F30EE0200E0646C /* DateSelectionTableViewCell.swift */; };
 		3E47BD321F30EE0200E0646C /* DateSelectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E47BD301F30EE0200E0646C /* DateSelectionTableViewCell.xib */; };
+		3E47BD341F30FCF700E0646C /* Starts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E47BD331F30FCF700E0646C /* Starts.storyboard */; };
+		3E47BD361F30FD0D00E0646C /* Ends.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E47BD351F30FD0D00E0646C /* Ends.storyboard */; };
 		3E4A9B291E4BB4C0009E45EF /* EventsManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4A9B281E4BB4C0009E45EF /* EventsManagement.swift */; };
 		3E533BC51EC36440000CEF5F /* MonthCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E533BC41EC36440000CEF5F /* MonthCollectionViewCell.swift */; };
 		3E533BC71EC364BC000CEF5F /* DayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E533BC61EC364BC000CEF5F /* DayCollectionViewCell.swift */; };
@@ -57,6 +59,8 @@
 		3E47BD2B1F30E7E900E0646C /* EventEditorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEditorTableViewController.swift; sourceTree = "<group>"; };
 		3E47BD2F1F30EE0200E0646C /* DateSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectionTableViewCell.swift; sourceTree = "<group>"; };
 		3E47BD301F30EE0200E0646C /* DateSelectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateSelectionTableViewCell.xib; sourceTree = "<group>"; };
+		3E47BD331F30FCF700E0646C /* Starts.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Starts.storyboard; sourceTree = "<group>"; };
+		3E47BD351F30FD0D00E0646C /* Ends.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Ends.storyboard; sourceTree = "<group>"; };
 		3E4A9B281E4BB4C0009E45EF /* EventsManagement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = EventsManagement.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		3E533BC01EC36185000CEF5F /* HyzeCalendarForWWDC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HyzeCalendarForWWDC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E533BC41EC36440000CEF5F /* MonthCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -179,6 +183,8 @@
 				3EA80D5A1E2BEC9300FD87C3 /* LaunchScreen.storyboard */,
 				3E68B5C71E3A886D00AE103F /* Main.storyboard */,
 				3EA8EE2B1ED219B8000D6EF2 /* DayView.storyboard */,
+				3E47BD351F30FD0D00E0646C /* Ends.storyboard */,
+				3E47BD331F30FCF700E0646C /* Starts.storyboard */,
 				3EA8EE281ED21989000D6EF2 /* Settings.storyboard */,
 			);
 			name = Storyboards;
@@ -392,11 +398,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E47BD361F30FD0D00E0646C /* Ends.storyboard in Resources */,
 				3E68B5C91E3A886D00AE103F /* Main.storyboard in Resources */,
 				3EA80D5C1E2BEC9300FD87C3 /* LaunchScreen.storyboard in Resources */,
 				3E47BD321F30EE0200E0646C /* DateSelectionTableViewCell.xib in Resources */,
 				3EA80D591E2BEC9300FD87C3 /* Assets.xcassets in Resources */,
 				3EA8EE2C1ED219B8000D6EF2 /* DayView.storyboard in Resources */,
+				3E47BD341F30FCF700E0646C /* Starts.storyboard in Resources */,
 				3EA8EE2A1ED21989000D6EF2 /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

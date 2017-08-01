@@ -16,7 +16,35 @@ class DateSelectionTableViewCell: UITableViewCell {
 	@IBOutlet var startDateLabels: [UILabel]!
 	@IBOutlet var endDateLabels: [UILabel]!
 	
-    override func awakeFromNib() {
+	@IBAction func startDateTap(_ sender: UIButton) {
+		if var topController = UIApplication.shared.keyWindow?.rootViewController {
+			while let presentedViewController = topController.presentedViewController {
+				topController = presentedViewController
+			}
+			let storyBoard = UIStoryboard(name: "Starts", bundle: nil)
+			guard let startDateViewController = storyBoard.instantiateInitialViewController() else {
+				return
+			}
+			startDateViewController.modalTransitionStyle = .coverVertical
+			topController.present(startDateViewController, animated: true, completion: nil)
+		}
+	}
+	
+	@IBAction func endDateTap(_ sender: UIButton) {
+		if var topController = UIApplication.shared.keyWindow?.rootViewController {
+			while let presentedViewController = topController.presentedViewController {
+				topController = presentedViewController
+			}
+			let storyBoard = UIStoryboard(name: "Ends", bundle: nil)
+			guard let endDateViewController = storyBoard.instantiateInitialViewController() else {
+				return
+			}
+			endDateViewController.modalTransitionStyle = .coverVertical
+			topController.present(endDateViewController, animated: true, completion: nil)
+		}
+	}
+	
+	override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
 		

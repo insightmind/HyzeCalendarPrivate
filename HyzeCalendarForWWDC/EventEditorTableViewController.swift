@@ -54,18 +54,16 @@ class EventEditorTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
-		let cell: UITableViewCell
 		
 		switch cells[indexPath.row].cellType {
 		case .dateSelection:
 			fallthrough
 		default:
-			cell = tableView.dequeueReusableCell(withIdentifier: "dateSelection") as! DateSelectionTableViewCell
+			let cell = tableView.dequeueReusableCell(withIdentifier: "dateSelection") as! DateSelectionTableViewCell
+			// Configure the cell...
+			return cell
+			
 		}
-
-        // Configure the cell...
-
-        return cell
     }
 	
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
