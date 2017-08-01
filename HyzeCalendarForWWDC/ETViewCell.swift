@@ -1,5 +1,5 @@
 //
-//  EventsTableViewCell.swift
+//  ETViewCell.swift
 //  HyzeCalendarForWWDC
 //
 //  Created by redfleet on 2/16/17.
@@ -9,7 +9,7 @@
 import UIKit
 import EventKit
 
-class EventsTableViewCell: UITableViewCell {
+class ETViewCell: UITableViewCell {
     
     var title: String?
     var start: String!
@@ -87,7 +87,7 @@ class EventsTableViewCell: UITableViewCell {
         self.color = color
         self.superEvent = inherit
         if informationMode {
-            print("[INFORMATION] \n EventsTableViewCell \n title:       \(title),\n startDate:   \(start ?? "noStartDate"),\n endDate:     \(end ?? "noEndDate"),\n color:       \(color),\n inheritFrom: \(String(describing: superEvent)) \n")
+            print("[INFORMATION] \n ETViewCell \n title:       \(title),\n startDate:   \(start ?? "noStartDate"),\n endDate:     \(end ?? "noEndDate"),\n color:       \(color),\n inheritFrom: \(String(describing: superEvent)) \n")
         }
         
         loadInformation()

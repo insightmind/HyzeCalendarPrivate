@@ -110,7 +110,25 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
         return _daysInWeek * _weeksInMonth
     }
 
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+	fileprivate func updateETViewHeight(_ collectionView: UICollectionView, isExpanded: Bool) {
+		let superViewController = UIApplication.shared.keyWindow?.rootViewController
+		var mainViewController: ViewController
+		for i in (superViewController?.childViewControllers)! {
+			if i.title == "MonthView" {
+				mainViewController = i as! ViewController
+				UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+					if isExpanded {
+						mainViewController.ETViewTopLayoutConstraint.constant = -((collectionView.bounds.width / CGFloat(self._daysInWeek)) - 2)
+					} else {
+						mainViewController.ETViewTopLayoutConstraint.constant = 0
+					}
+					mainViewController.view.layoutIfNeeded()
+				}, completion: nil)
+			}
+		}
+	}
+	
+	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! DayCollectionViewCell
         
 		let item = calculateConformedItem(indexPath)
@@ -121,22 +139,9 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
             cell.label?.text = String(prevDaysInMonth + item)
             cell.isSelectable = false
         } else if item > daysInMonth {
-            if indexPath.item == 35 || !isLastRowNecessary {
+            if indexPath.item == 35 {
                 cell.isHidden = true
-                isLastRowNecessary = false
-				if indexPath.item == 35{
-					let superViewController = UIApplication.shared.keyWindow?.rootViewController
-					var mainViewController: ViewController
-					for i in (superViewController?.childViewControllers)! {
-						if i.title == "MonthView" {
-							mainViewController = i as! ViewController
-							UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
-								mainViewController.eventTableViewTopLayoutConstraint.constant = -((collectionView.bounds.width / CGFloat(self._daysInWeek)) - 2)
-								mainViewController.view.layoutIfNeeded()
-							}, completion: nil)
-						}
-					}
-				}
+				updateETViewHeight(collectionView, isExpanded: true)
 				return cell
             }
             isNotInMonth = true
@@ -172,17 +177,7 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
             cell.isSelected = false
         }
 		if indexPath.item == 35{
-			let superViewController = UIApplication.shared.keyWindow?.rootViewController
-			var mainViewController: ViewController
-			for i in (superViewController?.childViewControllers)! {
-				if i.title == "MonthView" {
-					mainViewController = i as! ViewController
-					UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
-						mainViewController.eventTableViewTopLayoutConstraint.constant = 0
-						mainViewController.view.layoutIfNeeded()
-					}, completion: nil)
-				}
-			}
+			updateETViewHeight(collectionView, isExpanded: false)
 		}
         
         return cell
@@ -214,7 +209,19 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
 
 extension MonthCollectionViewController {
     
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+	fileprivate func forceETViewReload() {
+		let superViewController = UIApplication.shared.keyWindow?.rootViewController
+		var mainViewController: ViewController
+		for i in (superViewController?.childViewControllers)! {
+			if i.title == "MonthView" {
+				mainViewController = i as! ViewController
+				mainViewController.reloadETView()
+				mainViewController.updateSelectedDayIcon()
+			}
+		}
+	}
+	
+	override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? DayCollectionViewCell else {
             print("Could not select Cell")
             return
@@ -270,15 +277,7 @@ extension MonthCollectionViewController {
         }, completion: nil)
     
         
-        let superViewController = UIApplication.shared.keyWindow?.rootViewController
-        var mainViewController: ViewController
-        for i in (superViewController?.childViewControllers)! {
-            if i.title == "MonthView" {
-                mainViewController = i as! ViewController
-                mainViewController.reloadEventTableView()
-                mainViewController.updateSelectedDayIcon()
-            }
-        }
+		forceETViewReload()
         
         cell.isSelected = true
         
