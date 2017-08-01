@@ -41,6 +41,7 @@
 <<<<<<< develop
 <<<<<<< develop
 <<<<<<< develop
+<<<<<<< develop
 	<string>1097</string>
 =======
 	<string>1098</string>
@@ -81,6 +82,9 @@
 =======
 	<string>1564</string>
 >>>>>>> enhanced blurEffect, new eventsTableAnimation
+=======
+	<string>1647</string>
+>>>>>>> fixed CalendarView bug
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCalendarsUsageDescription</key>

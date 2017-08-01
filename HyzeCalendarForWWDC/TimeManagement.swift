@@ -25,14 +25,15 @@ class TimeManagement {
 	class func convertToDate(yearID: Int, monthID: Int, dayID: Int) -> Date {
         
         // Creating DateComponents of the given IDs, incrementing monthID by 1 because Month begins in CalendarView by 0
-		let components = DateComponents(calendar: Calendar.current, timeZone: TimeZone.autoupdatingCurrent, year: yearID, month: monthID + 1, day: dayID)
-        
+		let components = DateComponents(calendar: Calendar.current, timeZone: TimeZone.init(identifier: "GMT"), year: yearID, month: monthID, day: dayID)
+		
+		
         // Creating date based of the calculated components
 		let date = TMCalendar.date(from: components)!
         
         // Output informations
         if informationMode {
-            print("CONVERTTODATE: \(yearID):\(monthID)+1:\(dayID)+1|\(date)")
+            print("CONVERTTODATE: \(yearID):\(monthID):\(dayID)|\(date)")
         }
         
         //Return calculated date
@@ -47,8 +48,8 @@ class TimeManagement {
     /// - Returns: first day in given month
 	class func calculateFirstDayInMonth(yearID: Int, monthID: Int) -> Date{
         
-        // Calculate the date by converting the IDs and by setting the dayID to 0
-		let date = convertToDate(yearID: yearID, monthID: monthID, dayID: 0)
+        // Calculate the date by converting the IDs and by setting the dayID to 1
+		let date = convertToDate(yearID: yearID, monthID: monthID, dayID: 1)
         
         // Return calculated date
 		return date
@@ -74,16 +75,26 @@ class TimeManagement {
     ///
     /// - Parameter monthDate: Any date in the month
     /// - Returns: name of the month and year as string
-	class func getMonthName(_ monthDate: Date) -> String {
+	class func getMonthName(_ monthDate: Date, withYear: Bool = true) -> String {
+		
+		//get the Index of the month
+		let month = TMCalendar.component(.month, from: monthDate) - 1
         
-        // Get the monthName by getting the MonthComponent of the given date and decrement it by 1 so JAN == 0
-        let prestr = monthName[TMCalendar.component(.month, from: monthDate) - 1]
-        
-        // Get the yearName by getting the YearComponent of the given date
-        let poststr = String(TMCalendar.component(.year, from: monthDate))
-        
-        // Add both strings to one
-        let str = "\(prestr) \(poststr)"
+        // Get the monthName with the Index of the month
+        let prestr = monthName[month]
+		
+		// Add both strings to one
+		let str: String
+		
+		if withYear {
+			// Get the yearName by getting the YearComponent of the given date
+			let poststr = String(TMCalendar.component(.year, from: monthDate))
+			
+			str = "\(prestr) \(poststr)"
+			
+		} else {
+			str = prestr
+		}
         
         // Output information
 		if informationMode {
@@ -113,7 +124,7 @@ class TimeManagement {
 	}
 	
 	class func isToday(yearID: Int, monthID: Int, dayID: Int) -> Bool {
-		if yearID == HSelection.todaysYearID && monthID == HSelection.todaysMonthID && dayID == HSelection.todaysYearID {
+		if yearID == HSelection.todaysYearID && monthID == HSelection.todaysMonthID - 1 && dayID == HSelection.todaysYearID {
 			return true
 		} else {
 			return false

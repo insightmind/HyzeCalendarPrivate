@@ -184,8 +184,8 @@ class dayView: UIView {
             width: 2 * self.dayViewCenterButton.bounds.width / 4,
             height: self.dayViewCenterButton.bounds.height / 10)
         self.topLabel.font = UIFont.boldSystemFont(ofSize: self.topLabel.bounds.height)
-        let (_, selectedMonthID, _) = HSelection.selectedDayCellIndex
-        self.topLabel.text = monthName[selectedMonthID]
+        let (selectedYearID , selectedMonthID, _) = HSelection.selectedDayCellIndex
+		self.topLabel.text = TimeManagement.getMonthName(TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID - 1, dayID: 1), withYear: false)
         self.dayViewCenterButton.addSubview(topLabel)
     }
     

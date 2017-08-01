@@ -75,7 +75,7 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 		
         // Configure the cell
 		if cell.controller == nil {
-			let newController = MonthCollectionViewController(collectionViewLayout: CalendarViewFlowLayout(), idOfYear: indexPath.section, idOfMonth: indexPath.item - 1)
+			let newController = MonthCollectionViewController(collectionViewLayout: CalendarViewFlowLayout(), idOfYear: indexPath.section, idOfMonth: indexPath.item)
 			self.addChildViewController(newController)
 			newController.view.frame = cell.bounds
 			newController.view.tag = 69
@@ -116,7 +116,7 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 	
 	func scrollToSection(direction: ScrollDirection, animated anim: Bool = false) {
 		
-		let tmonthID = HSelection.currentMonthID
+		let tmonthID = HSelection.currentMonthID - 1
 		let tyearID = HSelection.currentYearID
 		
 		switch direction {
@@ -158,7 +158,7 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 		
 		let indexPath = IndexPath(item: monthID, section: yearID)
 		
-		HSelection.currentMonthID = monthID
+		HSelection.currentMonthID = monthID + 1
 		HSelection.currentYearID = yearID
 		
 		self.collectionView!.scrollToItem(at: indexPath, at: .centeredVertically, animated: anim)
