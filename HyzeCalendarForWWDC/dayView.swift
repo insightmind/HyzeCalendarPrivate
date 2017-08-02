@@ -71,9 +71,9 @@ class dayView: UIView {
     
     
     //in MIN 24*60 = 1440 min per Day
-    var eventsOnDate: [[Int]]!
+	var eventsOnDate: [String: [Int]]?
     var events = [EventView]()
-	var processedEventsOnDate: [[[Int]]]!
+	var processedEventsOnDate: [[String:[Int]]]!
     
     var date: Date?
     
@@ -219,54 +219,55 @@ class dayView: UIView {
         self.dayViewCenterButton.addSubview(botLabel)
     }
 	
-	func prepareEventSubViewLayout() -> [[[Int]]] {
-		var events = eventsOnDate ?? []
+	func prepareEventSubViewLayout() -> [[String: [Int]]] {
+		let events = eventsOnDate ?? [String: [Int]]()
 		if events.isEmpty {
 			return [events]
 		}
-		let firstEvent = events[0]
-		events.remove(at: 0)
-		var processedLayoutData: [[[Int]]] = [[firstEvent]]
-		if events.isEmpty {
-			return processedLayoutData
-		}
-		for event in events {
+		var processedLayoutData: [[String: [Int]]] = [[String: [Int]]]()
+		mainLoop: for event in events {
+			if processedLayoutData.isEmpty {
+				processedLayoutData.append([event.key: event.value])
+				if events.count == 1 {
+					return processedLayoutData
+				}
+			}
 			var newLayer = false
 			for layer in 0...processedLayoutData.count - 1 {
 				var fitsInLayer = false
 				for processedEvent in processedLayoutData[layer] {
-					if processedEvent[0] == 0 {
+					if processedEvent.value[0] == 0 {
 						fitsInLayer = false
 						break
-					} else if processedEvent[2] + 10 > event[1] && processedEvent[1] - 10 < event[2]{
+					} else if processedEvent.value[2] + 10 > event.value[1] && processedEvent.value[1] - 10 < event.value[2]{
 						fitsInLayer = false
 						break
 					}
 					fitsInLayer = true
 				}
 				if fitsInLayer {
-					processedLayoutData[layer].append(event)
+					processedLayoutData[layer][event.key] = event.value
 					break
 				} else if layer == processedLayoutData.count - 1 {
 					newLayer = true
 				}
 			}
 			if newLayer {
-				processedLayoutData.append([event])
+				processedLayoutData.append([event.key: event.value])
 			}
 		}
 		return processedLayoutData
 	}
     
     func addEventsSubViews(){
-        if eventsOnDate.count > 0 {
+		if eventsOnDate!.count > 0 {
 		for layer in 0...processedEventsOnDate.count - 1 {
 			for i in processedEventsOnDate[layer] {
-				if (i[1] <= i[2]) || i[0] == 0 {
-					let event = EventView(frame: self.bounds , carcWidth: 5)
+				if (i.value[1] <= i.value[2]) || i.value[0] == 0 {
+					let event = EventView(frame: self.bounds , carcWidth: 5, eventIdentifier: i.key)
 					event.drawLayer = layer
-					event.sendTimeProperties(start: i[1], end: i[2])
-					if i[0] == 0 {
+					event.sendTimeProperties(start: i.value[1], end: i.value[2])
+					if i.value[0] == 0 {
 						event.isFullDay = true
 					}
 					event.isEvent = true
@@ -301,14 +302,27 @@ class dayView: UIView {
             self.addSubview(watchhand)
         }
     }
+	
+	func getEventView(with eventIdentifier: String!) -> EventView? {
+		for eventView in events {
+			if eventView.eventIdentifier == eventIdentifier {
+				return eventView
+			}
+		}
+		return nil
+	}
     
-    func selectEventView(_ index: Int, duration: TimeInterval = 0.2) {
-        let eventView = events[index]
+    func selectEventView(with stringIdentifier: String!, duration: TimeInterval = 0.2) {
+		guard let eventView = getEventView(with: stringIdentifier) else {
+			return
+		}
         eventView.animate(.select, duration: duration)
     }
     
-    func deselectEventView(_ index: Int, duration: TimeInterval = 0.2) {
-        let eventView = events[index]
+    func deselectEventView(with stringIdentifier: String!, duration: TimeInterval = 0.2) {
+		guard let eventView = getEventView(with: stringIdentifier) else {
+			return
+		}
         eventView.animate(.deselect, duration: duration)
     }
 
@@ -319,6 +333,6 @@ class dayView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        eventsOnDate = [[Int]]()
+		eventsOnDate = [String: [Int]]()
     }
 }

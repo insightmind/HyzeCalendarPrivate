@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E067E0D1F31FA92003601FA /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E067E0C1F31FA92003601FA /* Default-568h@2x.png */; };
 		3E1B95251E3FAD9D009EB5C9 /* dayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1B95241E3FAD9D009EB5C9 /* dayView.swift */; };
 		3E21053A1E5B56C400E78840 /* ETViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2105391E5B56C400E78840 /* ETViewCell.swift */; };
 		3E2D7B791E6715E600A0170D /* EventEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2D7B781E6715E600A0170D /* EventEditorViewController.swift */; };
@@ -51,6 +52,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3E067E0C1F31FA92003601FA /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		3E067E0E1F31FB9B003601FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E1B95241E3FAD9D009EB5C9 /* dayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = dayView.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		3E2105391E5B56C400E78840 /* ETViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ETViewCell.swift; sourceTree = "<group>"; };
 		3E27B6001EFAF3CE00B084AF /* HyzeCalendarForWWDCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HyzeCalendarForWWDCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,7 +76,6 @@
 		3EA80D511E2BEC9300FD87C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3EA80D581E2BEC9300FD87C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3EA80D5B1E2BEC9300FD87C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		3EA80D5D1E2BEC9300FD87C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3EA8EE291ED21989000D6EF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
 		3EA8EE2B1ED219B8000D6EF2 /* DayView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DayView.storyboard; sourceTree = "<group>"; };
 		3EA8EE2D1ED21BCA000D6EF2 /* MainCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCollectionViewController.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 		3EA80D451E2BEC9300FD87C3 = {
 			isa = PBXGroup;
 			children = (
+				3E067E0C1F31FA92003601FA /* Default-568h@2x.png */,
 				3EA80D501E2BEC9300FD87C3 /* HyzeCalendarForWWDC */,
 				3E533BC01EC36185000CEF5F /* HyzeCalendarForWWDC.app */,
 				3E27B6001EFAF3CE00B084AF /* HyzeCalendarForWWDCTests.xctest */,
@@ -171,7 +174,7 @@
 				3EA80D511E2BEC9300FD87C3 /* AppDelegate.swift */,
 				3EA80D581E2BEC9300FD87C3 /* Assets.xcassets */,
 				3EA8EE251ED21919000D6EF2 /* Storyboards */,
-				3EA80D5D1E2BEC9300FD87C3 /* Info.plist */,
+				3E067E0E1F31FB9B003601FA /* Info.plist */,
 				3EE1E5AC1E48D48C00379576 /* GlobalAccessProperties.swift */,
 			);
 			path = HyzeCalendarForWWDC;
@@ -400,6 +403,7 @@
 			files = (
 				3E47BD361F30FD0D00E0646C /* Ends.storyboard in Resources */,
 				3E68B5C91E3A886D00AE103F /* Main.storyboard in Resources */,
+				3E067E0D1F31FA92003601FA /* Default-568h@2x.png in Resources */,
 				3EA80D5C1E2BEC9300FD87C3 /* LaunchScreen.storyboard in Resources */,
 				3E47BD321F30EE0200E0646C /* DateSelectionTableViewCell.xib in Resources */,
 				3EA80D591E2BEC9300FD87C3 /* Assets.xcassets in Resources */,

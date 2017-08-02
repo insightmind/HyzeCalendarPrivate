@@ -32,7 +32,7 @@ class ETView: UITableView, UITableViewDataSource, UITableViewDelegate{
         }
         eventCell.selectionStyle = .none
 
-        eventCell.sendProperties(event.title, from: event.startDate, to: event.endDate, color: calendarOrange, inherit: nil, isAllDay: event.isAllDay)
+		eventCell.sendProperties(event.title, from: event.startDate, to: event.endDate, color: calendarOrange, inherit: nil, isAllDay: event.isAllDay, eventIdentifier: event.eventIdentifier)
         
         return eventCell
     }
@@ -161,7 +161,7 @@ class ETView: UITableView, UITableViewDataSource, UITableViewDelegate{
     func visuallySelect(_ row: ETViewCell, duration: TimeInterval = 0.2, indexPath: IndexPath) {
         if viewIsDayView {
             if renDayView != nil {
-                renDayView?.selectEventView(indexPath.row, duration: duration)
+                renDayView?.selectEventView(with: row.eventIdentifier, duration: duration)
             }
         }
         let otherOption = row.inheritanceBar.bounds.width * 4
@@ -178,7 +178,7 @@ class ETView: UITableView, UITableViewDataSource, UITableViewDelegate{
         
         if viewIsDayView {
             if renDayView != nil {
-                renDayView?.deselectEventView(indexPath.row, duration: duration)
+				renDayView?.deselectEventView(with: row.eventIdentifier, duration: duration)
             }
         }
         

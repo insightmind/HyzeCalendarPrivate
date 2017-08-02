@@ -23,6 +23,7 @@ class EventView: UIButton {
 	var drawLayer = 0
 	var isFullDay = false
     var animatedState: EventAnimationType = .load
+	let eventIdentifier: String!
 	
     var shapeLayer = CAShapeLayer()
 
@@ -66,7 +67,8 @@ class EventView: UIButton {
         return result
     }
     
-    init(frame: CGRect = CGRect(), carcWidth: CGFloat, hourRotation: Bool = false) {
+	init(frame: CGRect = CGRect(), carcWidth: CGFloat, hourRotation: Bool = false, eventIdentifier: String! = "") {
+		self.eventIdentifier = eventIdentifier
         super.init(frame: frame)
         self.allowHourRotation = hourRotation
         arcWidth = carcWidth

@@ -19,10 +19,10 @@ class EventManagement {
     //function to convert startTime and endTime from events to an Array of Array of Ints for the EventView
     ///Convert the startTime and endTime of event in ArrayOfEvents to ArrayOfIntArray
     /// - parameter events : array of Events by EventKit
-    func convertEventsToTimeArray(_ events: [EKEvent]) -> [[Int]] {
+	func convertEventsToTimeArray(_ events: [EKEvent]) -> [String: [Int]] {
         
-        //create temporary variable of Array of Array of Int
-        var eventTimes: [[Int]] = [[Int]]()
+        //create temporary variable of Dictionary of Array of Int with the eventIdentifier as key
+		var eventTimes: [String:[Int]] = [String:[Int]]()
         
         //for every event in the eventsArray
         for event in events {
@@ -79,7 +79,7 @@ class EventManagement {
                 
                 eventTime = [tip,startTime,endTime]
             }
-            eventTimes.append(eventTime)
+			eventTimes[event.eventIdentifier] = eventTime
         }
         return eventTimes
     }

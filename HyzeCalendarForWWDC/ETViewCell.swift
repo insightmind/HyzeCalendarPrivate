@@ -16,6 +16,7 @@ class ETViewCell: UITableViewCell {
     var end: String!
     var color: UIColor = UIColor.yellow
     var superEvent: EKEvent?
+	var eventIdentifier: String! = ""
     
     lazy var inheritanceBar: UIView = {
         let vw = UIView()
@@ -48,7 +49,7 @@ class ETViewCell: UITableViewCell {
         return lbl
     }()
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+	override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.setEditing(true, animated: false)
 		self.backgroundColor = UIColor.clear
@@ -61,8 +62,9 @@ class ETViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func sendProperties(_ title: String = "unknown", from: Date, to: Date, color: UIColor = calendarOrange, inherit: EKEvent? = nil, isAllDay: Bool) {
+	func sendProperties(_ title: String = "unknown", from: Date, to: Date, color: UIColor = calendarOrange, inherit: EKEvent? = nil, isAllDay: Bool, eventIdentifier: String!) {
         self.title = title
+		self.eventIdentifier = eventIdentifier
         
         if isAllDay {
             self.start = "full day"
