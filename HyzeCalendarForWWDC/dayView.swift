@@ -225,35 +225,41 @@ class dayView: UIView {
 			return [events]
 		}
 		var processedLayoutData: [[String: [Int]]] = [[String: [Int]]]()
-		mainLoop: for event in events {
+		for event in events {
+			var newLayer = false
 			if processedLayoutData.isEmpty {
 				processedLayoutData.append([event.key: event.value])
-				if events.count == 1 {
+				if events.count <= 1 {
 					return processedLayoutData
 				}
-			}
-			var newLayer = false
-			for layer in 0...processedLayoutData.count - 1 {
-				var fitsInLayer = false
-				for processedEvent in processedLayoutData[layer] {
-					if processedEvent.value[0] == 0 {
-						fitsInLayer = false
-						break
-					} else if processedEvent.value[2] + 10 > event.value[1] && processedEvent.value[1] - 10 < event.value[2]{
-						fitsInLayer = false
-						break
+			} else if event.value[0] == 0 {
+				let newLayer = [event.key: event.value]
+				processedLayoutData.insert(newLayer, at: 0)
+			
+			
+			} else {
+				for layer in 0...processedLayoutData.count - 1 {
+					var fitsInLayer = false
+					for processedEvent in processedLayoutData[layer] {
+						if processedEvent.value[0] == 0 {
+							fitsInLayer = false
+							break
+						} else if processedEvent.value[2] + 10 > event.value[1] && processedEvent.value[1] - 10 < event.value[2]{
+							fitsInLayer = false
+							break
+						}
+						fitsInLayer = true
 					}
-					fitsInLayer = true
+					if fitsInLayer {
+						processedLayoutData[layer][event.key] = event.value
+						break
+					} else if layer == processedLayoutData.count - 1 {
+						newLayer = true
+					}
 				}
-				if fitsInLayer {
-					processedLayoutData[layer][event.key] = event.value
-					break
-				} else if layer == processedLayoutData.count - 1 {
-					newLayer = true
+				if newLayer {
+					processedLayoutData.append([event.key: event.value])
 				}
-			}
-			if newLayer {
-				processedLayoutData.append([event.key: event.value])
 			}
 		}
 		return processedLayoutData
