@@ -56,7 +56,7 @@
 		3E067E0E1F31FB9B003601FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E1B95241E3FAD9D009EB5C9 /* dayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = dayView.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		3E2105391E5B56C400E78840 /* ETViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ETViewCell.swift; sourceTree = "<group>"; };
-		3E27B6001EFAF3CE00B084AF /* HyzeCalendarForWWDCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HyzeCalendarForWWDCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E27B6001EFAF3CE00B084AF /* HyzeCalendarForWWDCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = HyzeCalendarForWWDCTests.xctest; path = "/Users/redfleet/Documents/Documents - redfleet’s iMac/gitrep/HyzeCalendarPrivate/build/Debug-iphoneos/HyzeCalendarForWWDCTests.xctest"; sourceTree = "<absolute>"; };
 		3E2D7B781E6715E600A0170D /* EventEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventEditorViewController.swift; sourceTree = "<group>"; };
 		3E3AEDF71F23BFEF00792B11 /* setTimePopopverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = setTimePopopverViewController.swift; sourceTree = "<group>"; };
 		3E47BD2B1F30E7E900E0646C /* EventEditorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEditorTableViewController.swift; sourceTree = "<group>"; };
@@ -160,7 +160,6 @@
 				3E067E0C1F31FA92003601FA /* Default-568h@2x.png */,
 				3EA80D501E2BEC9300FD87C3 /* HyzeCalendarForWWDC */,
 				3E533BC01EC36185000CEF5F /* HyzeCalendarForWWDC.app */,
-				3E27B6001EFAF3CE00B084AF /* HyzeCalendarForWWDCTests.xctest */,
 			);
 			sourceTree = "<group>";
 		};

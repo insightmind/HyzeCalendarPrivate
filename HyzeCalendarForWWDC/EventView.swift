@@ -27,44 +27,46 @@ class EventView: UIButton {
 	
     var shapeLayer = CAShapeLayer()
 
-	//TODO: fix layout and center issues
     override func draw(_ rect: CGRect) {
 		
-		coloring.setStroke()
-		let rect = CGRect(x: bounds.width/2 , y: bounds.height/2 , width: bounds.width, height: bounds.height)
-		shapeLayer.transform = CATransform3DMakeScale(0.9 + (CGFloat(drawLayer) * 0.1), 0.9 + (CGFloat(drawLayer) * 0.1), 0)
-		shapeLayer.bounds = rect
-		shapeLayer.frame = self.frame
-        shapeLayer.path = UIBezierPath(ovalIn: rect).cgPath
-		
-		if !isFullDay {
-			shapeLayer.strokeStart = calculateAngle(for: 0)
-			shapeLayer.strokeEnd = calculateAngle(for: 0)
-			shapeLayer.opacity = 0
+		let tcenter = CGPoint(x: bounds.width/2, y: bounds.height/2)
+		var radius = max(bounds.width, bounds.height)
+		if isEvent {
+			radius = 1
+		} else {
+			radius = radius/2 - radius/17 + (9 * CGFloat(drawLayer))
 		}
 		
+		let startAngle = calculateAngle(for: startTime)
+		let endAngle = calculateAngle(for: endTime)
+		
+		
+		
+		let path = UIBezierPath(arcCenter: tcenter, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
+		
+		path.usesEvenOddFillRule = true
+		path.lineWidth = arcWidth
+		coloring.setStroke()
+		
+		shapeLayer.path = path.cgPath
 		shapeLayer.strokeColor = coloring.cgColor
 		shapeLayer.fillColor = UIColor.clear.cgColor
+		shapeLayer.lineWidth = path.lineWidth
+		shapeLayer.position = CGPoint(x: 0, y: 0)
+		shapeLayer.opacity = 1
+		
 		if isEvent {
 			shapeLayer.lineCap = kCALineCapRound
 		}
 		
-		shapeLayer.lineWidth = arcWidth / (1 + (CGFloat(drawLayer) * 0.1))
-        
-        self.layer.addSublayer(shapeLayer)
-		
-		shapeLayer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+		self.layer.addSublayer(shapeLayer)
+		shapeLayer.opacity = 0
     }
     
     func calculateAngle(for minute: CGFloat) -> CGFloat {
 		
-		var result = minute / 1440 + 0.75
-		
-		if result > 1 {
-			result -= 1
-		}
-		
-        return result
+		return ((minute * PI)/720) + ((3*PI)/2)
+
     }
     
 	init(frame: CGRect = CGRect(), carcWidth: CGFloat, hourRotation: Bool = false, eventIdentifier: String! = "") {
@@ -86,7 +88,6 @@ class EventView: UIButton {
 			animation.fillMode = kCAFillModeForwards
 			animation.isRemovedOnCompletion = false
 			shapeLayer.add(animation, forKey: "lineWidth")
-            break
         case .deselect:
 			let animation = CABasicAnimation(keyPath: "lineWidth")
 			animation.duration = duration
@@ -96,9 +97,42 @@ class EventView: UIButton {
 			animation.fillMode = kCAFillModeForwards
 			animation.isRemovedOnCompletion = false
 			shapeLayer.add(animation, forKey: "lineWidth")
-            break
         case .add:
-			if isFullDay {
+			//**NEW**//
+			
+			let pathAnim = CABasicAnimation(keyPath: "path")
+			let tcenter = CGPoint(x: bounds.width/2, y: bounds.height/2)
+			var radius = max(bounds.width, bounds.height)
+			radius = radius/2 - radius/17 + (9 * CGFloat(drawLayer))
+			
+			let startAngle = calculateAngle(for: startTime)
+			let endAngle = calculateAngle(for: endTime)
+			
+			let path = UIBezierPath(arcCenter: tcenter, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
+			
+			path.usesEvenOddFillRule = true
+			path.lineWidth = arcWidth
+			
+			pathAnim.toValue = path.cgPath
+			
+			let opacity = CABasicAnimation(keyPath: "opacity")
+			opacity.toValue = 1
+			
+			let group = CAAnimationGroup()
+			group.beginTime = CACurrentMediaTime() + delay
+			group.animations = [pathAnim, opacity]
+			group.duration = duration
+			group.fillMode = kCAFillModeForwards
+			group.isRemovedOnCompletion = false
+			group.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+			shapeLayer.add(group, forKey: nil)
+			
+			
+			break
+
+			//**END**//
+			
+			/*if isFullDay {
 				return
 			}
 			let startAngle = calculateAngle(for: startTime)
@@ -120,7 +154,7 @@ class EventView: UIButton {
 			group.fillMode = kCAFillModeForwards
 			group.isRemovedOnCompletion = false
 			group.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-			shapeLayer.add(group, forKey: nil)
+			shapeLayer.add(group, forKey: nil)*/
             break
         case .delete:
             break

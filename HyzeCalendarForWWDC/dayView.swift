@@ -235,8 +235,6 @@ class dayView: UIView {
 			} else if event.value[0] == 0 {
 				let newLayer = [event.key: event.value]
 				processedLayoutData.insert(newLayer, at: 0)
-			
-			
 			} else {
 				for layer in 0...processedLayoutData.count - 1 {
 					var fitsInLayer = false
@@ -285,8 +283,11 @@ class dayView: UIView {
 			}
 		}
 			if animateDayView {
-				for i in 0...events.count - 1 {
-					events[i].animate(.add, duration: 1, delay: 0.1 * Double(i))
+				var i = events.count - 1
+				while i >= 0 {
+					let delay = events.count - 1 - i
+					events[i].animate(.add, duration: 1, delay: 0.1 * Double(delay))
+					i -= 1
 				}
 			} else {
 				for i in 0...events.count - 1 {
@@ -302,8 +303,8 @@ class dayView: UIView {
             fatalError()
         }
         if TMCalendar.isDateInToday(TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item)) == true {
-            let watchhand = EventView(frame: self.bounds, carcWidth: 50, hourRotation: true)
-            watchhand.sendTimeProperties(start: timeNowRadiant(), end: timeNowRadiant() + 10)
+            let watchhand = EventView(frame: self.bounds, carcWidth: 70, hourRotation: true)
+            watchhand.sendTimeProperties(start: timeNowRadiant() - 5, end: timeNowRadiant() + 5)
             watchhand.sendColorProperties(UIColor.red)
             self.addSubview(watchhand)
         }
