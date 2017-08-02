@@ -43,7 +43,6 @@ class ETView: UITableView, UITableViewDataSource, UITableViewDelegate{
         tableView.register(ETViewCell.self, forCellReuseIdentifier: cellIdentifier)
         prevEventsCount = events.count
         let (selectedYearID, selectedMonthID, indexPath) = HSelection.selectedDayCellIndex
-        
         guard let selectedIndexPath = indexPath else {
             return 0
         }

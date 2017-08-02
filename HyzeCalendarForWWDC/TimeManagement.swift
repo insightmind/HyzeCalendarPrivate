@@ -22,10 +22,10 @@ class TimeManagement {
     ///   - monthID: monthID of the date in the CalendarView
     ///   - dayID: dayID of the date in the CalendarView
     /// - Returns: Date from the given Input
-	class func convertToDate(yearID: Int, monthID: Int, dayID: Int) -> Date {
+	class func convertToDate(yearID: Int, monthID: Int, dayID: Int, timeZone: TimeZone = TimeZone.autoupdatingCurrent) -> Date {
         
         // Creating DateComponents of the given IDs, incrementing monthID by 1 because Month begins in CalendarView by 0
-		let components = DateComponents(calendar: Calendar.current, timeZone: TimeZone.init(identifier: "GMT"), year: yearID, month: monthID, day: dayID)
+		let components = DateComponents(calendar: Calendar.current, timeZone: timeZone, year: yearID, month: monthID, day: dayID)
 		
 		
         // Creating date based of the calculated components
@@ -49,7 +49,7 @@ class TimeManagement {
 	class func calculateFirstDayInMonth(yearID: Int, monthID: Int) -> Date{
         
         // Calculate the date by converting the IDs and by setting the dayID to 1
-		let date = convertToDate(yearID: yearID, monthID: monthID, dayID: 1)
+		let date = convertToDate(yearID: yearID, monthID: monthID, dayID: 1, timeZone: TimeZone.init(identifier: "GMT")!)
         
         // Return calculated date
 		return date

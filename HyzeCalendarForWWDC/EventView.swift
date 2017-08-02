@@ -126,9 +126,6 @@ class EventView: UIButton {
 			group.isRemovedOnCompletion = false
 			group.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
 			shapeLayer.add(group, forKey: nil)
-			
-			
-			break
 
 			//**END**//
 			
@@ -155,7 +152,7 @@ class EventView: UIButton {
 			group.isRemovedOnCompletion = false
 			group.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
 			shapeLayer.add(group, forKey: nil)*/
-            break
+			
         case .delete:
             break
         case .load:
