@@ -13,13 +13,13 @@
         <!--Ends-->
         <scene sceneID="Coh-HZ-Rxw">
             <objects>
-                <viewController title="Ends" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="mre-lw-BzR" customClass="setTimePopopverViewController" customModule="HyzeCalendarForWWDC" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Ends" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="mre-lw-BzR" customClass="SetTimePopoverViewController" customModule="HyzeCalendarForWWDC" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ubA-SS-jlO"/>
                         <viewControllerLayoutGuide type="bottom" id="xq8-n8-wLx"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="f9V-Ji-4Zw">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5aV-7d-kLN">

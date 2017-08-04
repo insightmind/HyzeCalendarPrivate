@@ -1,5 +1,5 @@
 //
-//  setTimePopopverViewController.swift
+//  SetTimePopoverViewController.swift
 //  HyzeCalendarForWWDC
 //
 //  Created by redfleet on 7/22/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class setTimePopopverViewController: UIViewController {
+class SetTimePopoverViewController: UIViewController {
 	
 	var eventInformations: EventEditorEventInformations!
 

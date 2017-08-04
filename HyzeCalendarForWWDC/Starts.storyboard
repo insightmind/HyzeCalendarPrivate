@@ -13,7 +13,7 @@
         <!--Starts-->
         <scene sceneID="NOM-48-dmy">
             <objects>
-                <viewController title="Starts" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="u63-qo-H13" customClass="setTimePopopverViewController" customModule="HyzeCalendarForWWDC" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Starts" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="u63-qo-H13" customClass="SetTimePopoverViewController" customModule="HyzeCalendarForWWDC" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bei-bs-o9h"/>
                         <viewControllerLayoutGuide type="bottom" id="a2n-6u-ekP"/>
