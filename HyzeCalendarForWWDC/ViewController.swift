@@ -185,15 +185,7 @@ class ViewController: UIViewController {
 	
 	func scrollToSection(yearID: Int, monthID: Int, animated anim: Bool = false) {
 		
-		let indexPath = IndexPath(item: monthID, section: yearID)
-		
-		HSelection.currentMonthID = monthID + 1
-		HSelection.currentYearID = yearID
-		
-		calendarViewController?.collectionView!.scrollToItem(at: indexPath, at: .centeredVertically, animated: anim)
-		
-		self.setMonthName()
-        updateSelectedDayIcon()
+		calendarViewController?.scrollToSection(yearID: yearID, monthID: monthID, animated: anim)
 		
 	}
 	

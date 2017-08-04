@@ -107,34 +107,12 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
         // #warning Incomplete implementation, return the number of items
         return _daysInWeek * _weeksInMonth
     }
-
-	fileprivate func updateETViewHeight(_ collectionView: UICollectionView, isExpanded: Bool) {
-		let superViewController = UIApplication.shared.keyWindow?.rootViewController
-		var mainViewController: ViewController
-		for i in (superViewController?.childViewControllers)! {
-			if i.title == "MonthView" {
-				mainViewController = i as! ViewController
-				UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
-					if isExpanded {
-						mainViewController.ETViewTopLayoutConstraint.constant = -((collectionView.bounds.width / CGFloat(self._daysInWeek)) - 2)
-					} else {
-						mainViewController.ETViewTopLayoutConstraint.constant = 0
-					}
-					mainViewController.view.layoutIfNeeded()
-				}, completion: nil)
-			}
-		}
-	}
-	// TODO: - FIX STRANGE SHIFTING
+	
 	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! DayCollectionViewCell
         
 		let item = calculateConformedItem(indexPath)
         var isNotInMonth: Bool
-		
-		if item == 1 {
-			switch (day: )
-		}
 		if item < 1{
             isNotInMonth = true
             cell.label?.text = String(prevDaysInMonth + item)

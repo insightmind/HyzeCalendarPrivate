@@ -161,6 +161,16 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 		HSelection.currentMonthID = monthID + 1
 		HSelection.currentYearID = yearID
 		
+		let daysInMonth = TimeManagement.calculateDaysInMonth(yearID: HSelection.currentYearID, monthID: HSelection.currentMonthID)
+		
+		let weekDay = TimeManagement.calculateFirstWeekDayOfMonth(yearID: HSelection.currentYearID, monthID: HSelection.currentMonthID)
+		
+		if weekDay + daysInMonth > 36 {
+			updateETViewHeight(self.collectionView!, isExpanded: false)
+		} else {
+			updateETViewHeight(self.collectionView!, isExpanded: true)
+		}
+		
 		self.collectionView!.scrollToItem(at: indexPath, at: .centeredVertically, animated: anim)
 		setMonthName()
         let superViewController = UIApplication.shared.keyWindow?.rootViewController
@@ -171,6 +181,24 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
                 mainViewController.updateSelectedDayIcon()
             }
         }
+	}
+	
+ func updateETViewHeight(_ collectionView: UICollectionView, isExpanded: Bool) {
+		let superViewController = UIApplication.shared.keyWindow?.rootViewController
+		var mainViewController: ViewController
+		for i in (superViewController?.childViewControllers)! {
+			if i.title == "MonthView" {
+				mainViewController = i as! ViewController
+				UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+					if isExpanded {
+						mainViewController.ETViewTopLayoutConstraint.constant = -((collectionView.bounds.width / 7) - 2)
+					} else {
+						mainViewController.ETViewTopLayoutConstraint.constant = 0
+					}
+					mainViewController.view.layoutIfNeeded()
+				}, completion: nil)
+			}
+		}
 	}
 	
 
