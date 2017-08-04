@@ -26,13 +26,10 @@ let calendarOrange = UIColor.orange
 let calendarBlue = UIColor.init(red: 0.204, green: 0.571, blue: 0.901, alpha: 1)
 let calendarGreen = UIColor.init(red: 0.415, green: 0.860, blue: 0.427, alpha: 1)
 let calendarRed = UIColor.init(red: 0.929, green: 0.263, blue: 0.216, alpha: 1)
-// 237,67,55
 
 var TMCalendar: NSCalendar = {
 	let c = NSCalendar(identifier: .gregorian)!
-	
 	c.timeZone = NSTimeZone.system
-	
 	return c
 }()
 

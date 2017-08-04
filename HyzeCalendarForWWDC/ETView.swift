@@ -91,18 +91,21 @@ class ETView: UITableView, UITableViewDataSource, UITableViewDelegate{
         guard let selectedIndexPath = indexPath else {
             fatalError()
         }
-        
-        calculateColorsForEventsOnSelectedDay(numberOfEvents: EManagement.getEvents(for: TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item)).count)
+		
+		let convertedDate = TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item)
+		let localEvents = EManagement.getEvents(for: convertedDate)
+		
+        calculateColorsForEventsOnSelectedDay(numberOfEvents: localEvents.count)
         self.beginUpdates()
 
         self.prevEventsCount = self.numberOfRows(inSection: 0)
-        self.events = EManagement.getEvents(for: TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item))
+        self.events = localEvents
         var delEventsChangeAt = [IndexPath]()
         for i in 0..<prevEventsCount {
             delEventsChangeAt.append(IndexPath(row: i, section: 0))
         }
         self.deleteRows(at: delEventsChangeAt, with: .fade)
-        self.events = EManagement.getEvents(for: TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item))
+        self.events = localEvents
         var addEventsChangeAt = [IndexPath]()
         for i in 0..<events.count {
             addEventsChangeAt.append(IndexPath(row: i, section: 0))

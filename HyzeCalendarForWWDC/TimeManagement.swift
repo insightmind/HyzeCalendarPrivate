@@ -49,7 +49,7 @@ class TimeManagement {
 	class func calculateFirstDayInMonth(yearID: Int, monthID: Int) -> Date{
         
         // Calculate the date by converting the IDs and by setting the dayID to 1
-		let date = convertToDate(yearID: yearID, monthID: monthID, dayID: 1, timeZone: TimeZone.init(identifier: "GMT")!)
+		let date = convertToDate(yearID: yearID, monthID: monthID, dayID: 1, timeZone: TimeZone.init(abbreviation: "GMT")!)
         
         // Return calculated date
 		return date
@@ -68,7 +68,7 @@ class TimeManagement {
 		let date = calculateFirstDayInMonth(yearID: yearID, monthID: monthID)
         
         // return the weekdayComponent of the firstDay and decrement it by 1 so Mon == 0
-		return TMCalendar.component(.weekday, from: date) - 1
+		return TMCalendar.component(.weekday, from: date)
 	}
     
     /// Get the MonthName + YearName of the given date

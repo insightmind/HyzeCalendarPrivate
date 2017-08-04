@@ -74,12 +74,8 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
 		let days = MonthCollectionViewController.setUpPrevFutMonthDays(monthID, yearID)
 		self.prevDaysInMonth = days.prevDays
 		self.futDaysInMonth = days.futDays
-		let fdim = TimeManagement.calculateFirstWeekDayOfMonth(yearID: yearID, monthID: monthID)
-        if fdim == 6 {
-            self.firstDayInMonth = -1
-        } else {
-            self.firstDayInMonth = fdim
-        }
+		let fdim = TimeManagement.calculateFirstWeekDayOfMonth(yearID: yearID, monthID: monthID + 1)
+		self.firstDayInMonth = fdim - 1
 		super.init(collectionViewLayout: layout)
 		self.collectionView?.backgroundColor = UIColor.clear
 		self.collectionView?.layer.masksToBounds = false
@@ -129,23 +125,21 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
 			}
 		}
 	}
-	
+	// TODO: - FIX STRANGE SHIFTING
 	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! DayCollectionViewCell
         
 		let item = calculateConformedItem(indexPath)
         var isNotInMonth: Bool
 		
-		if item < 1 {
+		if item == 1 {
+			switch (day: )
+		}
+		if item < 1{
             isNotInMonth = true
             cell.label?.text = String(prevDaysInMonth + item)
             cell.isSelectable = false
         } else if item > daysInMonth {
-            if indexPath.item == 35 {
-                cell.isHidden = true
-				updateETViewHeight(collectionView, isExpanded: true)
-				return cell
-            }
             isNotInMonth = true
             cell.label?.text = String(item - daysInMonth)
             cell.isSelectable = false
@@ -178,9 +172,7 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
         } else {
             cell.isSelected = false
         }
-		if indexPath.item == 35{
-			updateETViewHeight(collectionView, isExpanded: false)
-		}
+
         
         return cell
     }
@@ -200,11 +192,18 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
 	}
 	
 	func calculateConformedItem(_ indexPath: IndexPath) -> Int {
+		//**NEW**//
+		
+		return indexPath.item - firstDayInMonth + 1
+		
+		
+		//**END**//
+		/*
 		if isMondayFirstWeekday {
 			return indexPath.item - firstDayInMonth + 1
 		} else {
 			return indexPath.item - firstDayInMonth
-		}
+		}*/
 	}
 	
 }
@@ -258,7 +257,7 @@ extension MonthCollectionViewController {
 		}
         let isSelected = true
         let isToday = TimeManagement.isToday(yearID: yearID, monthID: monthID, dayID: item)
-        let configuredIndexPath = IndexPath(item: indexPath.item - firstDayInMonth, section: 0)
+        let configuredIndexPath = IndexPath(item: indexPath.item - firstDayInMonth + 1 , section: 0)
         HSelection.selectedDayCellIndex = (yearID, monthID + 1, configuredIndexPath)
 		HSelection.selectedIsOnWeekend = self.isOnWeekend(for: indexPath)
         let prevSize = cell.contentView.bounds

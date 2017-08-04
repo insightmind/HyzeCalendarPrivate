@@ -80,6 +80,7 @@ class EventView: UIButton {
 		
         switch animationType {
         case .select:
+			
 			let animation = CABasicAnimation(keyPath: "lineWidth")
 			animation.duration = duration
 			animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
@@ -88,7 +89,9 @@ class EventView: UIButton {
 			animation.fillMode = kCAFillModeForwards
 			animation.isRemovedOnCompletion = false
 			shapeLayer.add(animation, forKey: "lineWidth")
+			
         case .deselect:
+			
 			let animation = CABasicAnimation(keyPath: "lineWidth")
 			animation.duration = duration
 			animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
@@ -97,8 +100,8 @@ class EventView: UIButton {
 			animation.fillMode = kCAFillModeForwards
 			animation.isRemovedOnCompletion = false
 			shapeLayer.add(animation, forKey: "lineWidth")
+			
         case .add:
-			//**NEW**//
 			
 			let pathAnim = CABasicAnimation(keyPath: "path")
 			let tcenter = CGPoint(x: bounds.width/2, y: bounds.height/2)
@@ -126,32 +129,6 @@ class EventView: UIButton {
 			group.isRemovedOnCompletion = false
 			group.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
 			shapeLayer.add(group, forKey: nil)
-
-			//**END**//
-			
-			/*if isFullDay {
-				return
-			}
-			let startAngle = calculateAngle(for: startTime)
-			let endAngle = calculateAngle(for: endTime)
-			
-			let start = CABasicAnimation(keyPath: "strokeStart")
-			start.toValue = startAngle
-			
-			let end = CABasicAnimation(keyPath: "strokeEnd")
-			end.toValue = endAngle
-			
-			let opacity = CABasicAnimation(keyPath: "opacity")
-			opacity.toValue = 1
-			
-			let group = CAAnimationGroup()
-			group.beginTime = CACurrentMediaTime() + delay
-			group.animations = [start, end, opacity]
-			group.duration = duration
-			group.fillMode = kCAFillModeForwards
-			group.isRemovedOnCompletion = false
-			group.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-			shapeLayer.add(group, forKey: nil)*/
 			
         case .delete:
             break

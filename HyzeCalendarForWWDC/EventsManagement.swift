@@ -85,11 +85,10 @@ class EventManagement {
     }
     
     func getEvents(for date: Date) -> [EKEvent] {
-        let cdate = TMCalendar.date(era: TMCalendar.component(.era, from: date), year: TMCalendar.component(.year, from: date), month: TMCalendar.component(.month, from: date), day: TMCalendar.component(.day, from: date), hour: 0, minute: 0, second: 0, nanosecond: 0)!
-        let predicate = EMEventStore.predicateForEvents(withStart: cdate, end: cdate.addingTimeInterval(86399), calendars: nil)
+		let predicate = EMEventStore.predicateForEvents(withStart: date, end: date.addingTimeInterval(86399), calendars: nil)
         let events = EMEventStore.events(matching: predicate)
         if informationMode {
-            print("[INFORMATION] Events from \(cdate) to \(cdate.addingTimeInterval(86339))")
+			print("[INFORMATION] Events from \(date) to \(date.addingTimeInterval(86339))")
             print("[INFORMATION] Predicate for Events: \(predicate)")
             print("[INFORMATION] Events: \(events)")
             
