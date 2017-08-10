@@ -170,18 +170,12 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
 	}
 	
 	func calculateConformedItem(_ indexPath: IndexPath) -> Int {
-		//**NEW**//
-		
-		return indexPath.item - firstDayInMonth + 1
-		
-		
-		//**END**//
-		/*
-		if isMondayFirstWeekday {
-			return indexPath.item - firstDayInMonth + 1
-		} else {
-			return indexPath.item - firstDayInMonth
-		}*/
+		var conform = firstDayInMonth - HSelection.weekDayStart.rawValue
+		if conform < 0 {
+			conform += 7
+		}
+		let item = indexPath.item - conform + 1
+		return item
 	}
 	
 }
@@ -199,7 +193,8 @@ extension MonthCollectionViewController {
 			}
 		}
 	}
-	
+
+	//TODO: [BUG] automatically deselects Cells out of Range
 	override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? DayCollectionViewCell else {
             print("Could not select Cell")
@@ -215,47 +210,36 @@ extension MonthCollectionViewController {
             guard var checkedPrevIndexPath = prevIndexPath else {
                 fatalError()
             }
-			if isMondayFirstWeekday {
-				checkedPrevIndexPath = IndexPath(item: checkedPrevIndexPath.item + 1, section: checkedPrevIndexPath.section)
-			}
+			checkedPrevIndexPath = IndexPath(item: checkedPrevIndexPath.item + HSelection.weekDayStart.rawValue, section: checkedPrevIndexPath.section)
             self.collectionView(collectionView, didDeselectItemAt: checkedPrevIndexPath)
         }
 		
 		let isOnWeekend = self.isOnWeekend(for: indexPath)
 		let item = calculateConformedItem(indexPath)
 		
-		if isMondayFirstWeekday {
-			if (prevIndexPath?.item)! + 1 == item {
-				return
-			}
-		} else {
-			if prevIndexPath?.item == item {
-				return
-			}
-		}
         let isSelected = true
         let isToday = TimeManagement.isToday(yearID: yearID, monthID: monthID, dayID: item)
-        let configuredIndexPath = IndexPath(item: indexPath.item - firstDayInMonth + 1 , section: 0)
-        HSelection.selectedDayCellIndex = (yearID, monthID + 1, configuredIndexPath)
+        let configuredIndexPath = IndexPath(item: calculateConformedItem(indexPath) , section: 0)
+		if prevIndexPath?.item == configuredIndexPath.item && yID == yearID && mID - 1 == monthID{
+			return
+		}
+		HSelection.selectedDayCellIndex = (self.yearID, self.monthID + 1, configuredIndexPath)
 		HSelection.selectedIsOnWeekend = self.isOnWeekend(for: indexPath)
-        let prevSize = cell.contentView.bounds
+		let prevSize = cell.contentView.bounds
 		let prevShadowPath = cell.layer.shadowPath
 		cell.layer.shadowPath = UIBezierPath(rect: CGRect.zero).cgPath
-        cell.contentView.bounds = CGRect.zero
-        cell.contentView.layer.cornerRadius = 0
+		cell.contentView.bounds = CGRect.zero
+		cell.contentView.layer.cornerRadius = 0
 		cell.contentView.backgroundColor = darkMode ? calendarGrey : calendarWhite
-		
-        UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
-			
+		UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+				
 			cell.setCellDesign(isToday: isToday, isSelected: isSelected, isOnWeekend: isOnWeekend)
-            cell.contentView.layer.cornerRadius = prevSize.width / 2
-            cell.contentView.bounds = prevSize
+			cell.contentView.layer.cornerRadius = prevSize.width / 2
+			cell.contentView.bounds = prevSize
 			cell.layer.shadowPath = prevShadowPath
 			cell.layer.shadowOpacity = 0.5
-			
-        }, completion: nil)
-    
-        
+				
+		}, completion: nil)
 		forceETViewReload()
         
         cell.isSelected = true
@@ -266,14 +250,16 @@ extension MonthCollectionViewController {
     }
 	
 	func isOnWeekend(for indexPath: IndexPath) -> Bool {
-		if isMondayFirstWeekday {
-			if indexPath.item % 7 == 5 || (indexPath.item + 1) % 7 == 0 {
-				return true
-			}
-		} else {
-			if (indexPath.item + 1) % 7 == 1 || (indexPath.item + 1) % 7 == 0 {
-				return true
-			}
+		var sundaySolution = 1 - HSelection.weekDayStart.rawValue
+		if sundaySolution < 0 {
+			sundaySolution += 7
+		}
+		var saturdaySolution = 0 - HSelection.weekDayStart.rawValue
+		if saturdaySolution < 0 {
+			saturdaySolution += 7
+		}
+		if (indexPath.item + 1) % 7 == sundaySolution || (indexPath.item + 1) % 7 == saturdaySolution {
+			return true
 		}
 		return false
 	}

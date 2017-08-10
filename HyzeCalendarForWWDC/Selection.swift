@@ -9,6 +9,17 @@
 //MARK: - Imports
 import Foundation
 
+enum WeekDay: Int {
+	case sunday = 0
+	case monday = 1
+	case tuesday = 2
+	case wednesday = 3
+	case thursday = 4
+	case friday = 5
+	case saturday = 6
+}
+
+
 //MARK: -
 /// Basic struct for selected Items, mainly for global access
 struct Selection {
@@ -18,6 +29,7 @@ struct Selection {
     /// (YearID: Int, MonthID: Int, indexPath in MonthView: IndexPath?)
     var selectedDayCellIndex: (Int, Int, IndexPath?)
 	
+	/// information if the selected Day is at weekend
 	var selectedIsOnWeekend: Bool?
     
     /// Data for the current Day in the MonthView
@@ -36,6 +48,8 @@ struct Selection {
 	var todaysMonthID: Int = 0
     /// used to get the dayID of today in TimeManagement
 	var todaysDayID: Int = 0
+	/// used to set the first weekDay of the calendarView: Default is Sunday => Week starts at sunday
+	var weekDayStart: WeekDay = WeekDay.sunday
     
     //MARK: - Initializer
     /// Initializer to set the data of the selection at the start of the app to the data provided by Date()
@@ -48,6 +62,8 @@ struct Selection {
 		let dayID = TMCalendar.component(.day, from: date)
         let dayIndexPath = IndexPath(item: dayID, section: 0)
 		
+		// Get safely UserDefault for firstWeekDayOfWeek
+		weekDayStart = WeekDay(rawValue: UserDefaults.standard.integer(forKey: "firstWeekDayOfWeek")) ?? WeekDay.sunday
         
         // Assign calculated data to the variable
 		selectedIsOnWeekend = false

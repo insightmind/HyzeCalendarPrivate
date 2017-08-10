@@ -21,8 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         defaults.register(defaults: ["DarkMode" : true])
         defaults.register(defaults: ["IsAMPM" : false])
         defaults.register(defaults: ["showLinesInCalendarView" : true])
-		defaults.register(defaults: ["isMondayFirstWeekday" : false])
 		defaults.register(defaults: ["animateDayView" : true])
+		defaults.register(defaults: ["firstWeekDayOfWeek" : WeekDay.monday.rawValue])
         
         calculateColorsForEventsOnSelectedDay(numberOfEvents: EManagement.getEvents(for: Date()).count)
 		

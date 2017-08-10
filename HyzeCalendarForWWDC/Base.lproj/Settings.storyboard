@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13168.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9Ys-zU-rvq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9Ys-zU-rvq">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13147.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13156.2"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iSx-hX-3vF">
-                                <rect key="frame" x="26" y="88.5" width="323" height="31"/>
+                                <rect key="frame" x="26" y="132.5" width="323" height="31"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Darkmode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kk3-6s-xKs">
                                         <rect key="frame" x="0.0" y="0.0" width="274" height="31"/>
@@ -43,7 +43,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I8S-10-ncE">
-                                <rect key="frame" x="26" y="127.5" width="323" height="31"/>
+                                <rect key="frame" x="26" y="171.5" width="323" height="31"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24 hours" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCR-EK-lTb">
                                         <rect key="frame" x="0.0" y="0.0" width="274" height="31"/>
@@ -63,7 +63,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PCJ-Gd-eyQ">
-                                <rect key="frame" x="26" y="166.5" width="323" height="31"/>
+                                <rect key="frame" x="26" y="210.5" width="323" height="31"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="show Lines in CalendarView" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IOT-Z3-e4r">
                                         <rect key="frame" x="0.0" y="0.0" width="274" height="31"/>
@@ -83,34 +83,34 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ci4-S1-2vx">
-                                <rect key="frame" x="26" y="205.5" width="323" height="31"/>
+                                <rect key="frame" x="26" y="249.5" width="323" height="28"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monday firstWeekday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yXk-i4-L5J">
-                                        <rect key="frame" x="0.0" y="0.0" width="274" height="31"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="GMq-Nm-MAa">
-                                        <rect key="frame" x="274" y="0.0" width="51" height="31"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <color key="onTintColor" red="0.2036032975" green="0.57139366869999997" blue="0.90090757610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="RXg-d7-KfR">
+                                        <rect key="frame" x="0.0" y="0.0" width="323" height="29"/>
+                                        <segments>
+                                            <segment title="SUN"/>
+                                            <segment title="MON"/>
+                                            <segment title="TUE"/>
+                                            <segment title="WED"/>
+                                            <segment title="THU"/>
+                                            <segment title="FRI"/>
+                                            <segment title="SAT"/>
+                                        </segments>
                                         <connections>
-                                            <action selector="toggleIsMondayFirstWeekDay:" destination="9Ys-zU-rvq" eventType="valueChanged" id="VM3-pN-cjw"/>
+                                            <action selector="toggleWeekDayStart:" destination="9Ys-zU-rvq" eventType="valueChanged" id="fmU-HG-XXx"/>
                                         </connections>
-                                    </switch>
+                                    </segmentedControl>
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SETTINGS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ExF-LV-Yrz">
-                                <rect key="frame" x="26" y="31" width="155" height="38.5"/>
+                                <rect key="frame" x="26" y="75" width="155" height="38.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="njq-LW-myP">
-                                <rect key="frame" x="206" y="32" width="153" height="30"/>
+                                <rect key="frame" x="206" y="76" width="153" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Save">
                                     <color key="titleColor" red="0.2036032975" green="0.57139366869999997" blue="0.90090757610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -120,7 +120,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FUa-qk-O5b">
-                                <rect key="frame" x="26" y="244.5" width="324" height="31"/>
+                                <rect key="frame" x="26" y="285.5" width="324" height="31"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="animate DayView" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bf1-hS-ee0">
                                         <rect key="frame" x="0.0" y="0.0" width="275" height="31"/>
@@ -176,17 +176,16 @@
                         <outlet property="darkModeSwitch" destination="ch3-yP-HBf" id="5vV-Oi-brz"/>
                         <outlet property="hours24Label" destination="gCR-EK-lTb" id="j0Q-gl-J7z"/>
                         <outlet property="hours24Switch" destination="dKj-t4-vYH" id="qI3-Yg-b2Q"/>
-                        <outlet property="isMondayLabel" destination="yXk-i4-L5J" id="hwZ-GM-5q4"/>
-                        <outlet property="isMondaySwitch" destination="GMq-Nm-MAa" id="YhH-L6-Bou"/>
                         <outlet property="settingsLabel" destination="ExF-LV-Yrz" id="Jxh-aW-uNT"/>
                         <outlet property="showLines" destination="IOT-Z3-e4r" id="8Ys-Sw-Tit"/>
                         <outlet property="showLinesSwitch" destination="gje-M3-h6H" id="REf-LM-8nM"/>
+                        <outlet property="startWeekDaySegmentedControl" destination="RXg-d7-KfR" id="52H-h1-oDE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mMu-JZ-P9O" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="iAu-Qy-el5" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="7160.8000000000002" y="-751.57421289355329"/>
+            <point key="canvasLocation" x="7169" y="-749"/>
         </scene>
     </scenes>
 </document>

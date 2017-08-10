@@ -163,9 +163,14 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 		
 		let daysInMonth = TimeManagement.calculateDaysInMonth(yearID: HSelection.currentYearID, monthID: HSelection.currentMonthID)
 		
-		let weekDay = TimeManagement.calculateFirstWeekDayOfMonth(yearID: HSelection.currentYearID, monthID: HSelection.currentMonthID)
+		let firstWeekDayOfMonth = TimeManagement.calculateFirstWeekDayOfMonth(yearID: HSelection.currentYearID, monthID: HSelection.currentMonthID)
 		
-		if weekDay + daysInMonth > 36 {
+		var conform = (firstWeekDayOfMonth + HSelection.weekDayStart.rawValue)
+		if conform > 6 {
+			conform -= 7
+		}
+		
+		if conform + daysInMonth > 36 {
 			updateETViewHeight(self.collectionView!, isExpanded: false)
 		} else {
 			updateETViewHeight(self.collectionView!, isExpanded: true)

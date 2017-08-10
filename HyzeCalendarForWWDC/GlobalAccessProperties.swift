@@ -17,7 +17,6 @@ var needsDesignUpdate: Bool = false
 
 var darkMode: Bool = UserDefaults.standard.bool(forKey: "DarkMode")
 var showLinesInCalendarView: Bool = UserDefaults.standard.bool(forKey: "showLinesInCalendarView")
-var isMondayFirstWeekday: Bool = UserDefaults.standard.bool(forKey: "isMondayFirstWeekday")
 var animateDayView: Bool = UserDefaults.standard.bool(forKey: "animateDayView")
 
 let calendarWhite = UIColor.white

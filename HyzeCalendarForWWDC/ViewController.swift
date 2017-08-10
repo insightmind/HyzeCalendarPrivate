@@ -37,7 +37,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var SixthDayOfWeek: UILabel!
     @IBOutlet weak var SeventhDayOfWeek: UILabel!
 	@IBOutlet weak var ETViewTopLayoutConstraint: NSLayoutConstraint!
-	let daysOfWeek: [UILabel]? = nil
+	
+	var daysOfWeek: [WeekDay: UILabel] = [:]
 
 	@IBOutlet weak var daysOfWeekBackgroundView: UIView!
 	@IBOutlet weak var ETViewTopLayoutConstraintWithoutLastRow: NSLayoutConstraint!
@@ -72,6 +73,7 @@ class ViewController: UIViewController {
 
     
     override func viewWillAppear(_ animated: Bool) {
+		
 		self.calendarView.layer.masksToBounds = false
         if darkMode{
             view.backgroundColor = calendarGrey
@@ -142,46 +144,60 @@ class ViewController: UIViewController {
 
 	func updateDaysOfWeek(color: UIColor, weekendColor: UIColor) {
 		
-		FirstDayOfWeek.textColor = color
-		SecondDayOfWeek.textColor = color
-		ThirdDayOfWeek.textColor = color
-		FourthDayOfWeek.textColor = color
-		FivthDayOfWeek.textColor = color
-		SixthDayOfWeek.textColor = color
-		SeventhDayOfWeek.textColor = color
+		let unconfiguredDaysOfWeek = [FirstDayOfWeek,
+		                              SecondDayOfWeek,
+		                              ThirdDayOfWeek,
+		                              FourthDayOfWeek,
+		                              FivthDayOfWeek,
+		                              SixthDayOfWeek,
+		                              SeventhDayOfWeek]
 		
-		if isMondayFirstWeekday {
-			FirstDayOfWeek.text = "M"
-			SecondDayOfWeek.text = "T"
-			ThirdDayOfWeek.text = "W"
-			FourthDayOfWeek.text = "T"
-			FivthDayOfWeek.text = "F"
-			SixthDayOfWeek.text = "S"
-			SeventhDayOfWeek.text = "S"
-			SixthDayOfWeek.textColor = weekendColor
-			SeventhDayOfWeek.textColor = weekendColor
-		} else {
-			FirstDayOfWeek.text = "S"
-			SecondDayOfWeek.text = "M"
-			ThirdDayOfWeek.text = "T"
-			FourthDayOfWeek.text = "W"
-			FivthDayOfWeek.text = "T"
-			SixthDayOfWeek.text = "F"
-			SeventhDayOfWeek.text = "S"
-			FirstDayOfWeek.textColor = weekendColor
-			SeventhDayOfWeek.textColor = weekendColor
+		var state = HSelection.weekDayStart
+		
+		for i in unconfiguredDaysOfWeek {
+			
+			daysOfWeek[state] = i
+			
+			if state.rawValue != 6 {
+				state = WeekDay(rawValue: state.rawValue + 1)!
+			} else {
+				state = WeekDay.sunday
+			}
+			
 		}
+		
+		for i in daysOfWeek {
+			switch i.key {
+			case .sunday:
+				i.value.text = "S"
+				i.value.textColor = weekendColor
+			case .monday:
+				i.value.text = "M"
+				i.value.textColor = color
+			case .tuesday:
+				i.value.text = "T"
+				i.value.textColor = color
+			case .wednesday:
+				i.value.text = "W"
+				i.value.textColor = color
+			case .thursday:
+				i.value.text = "T"
+				i.value.textColor = color
+			case .friday:
+				i.value.text = "F"
+				i.value.textColor = color
+			case .saturday:
+				i.value.text = "S"
+				i.value.textColor = weekendColor
+			}
+		}
+		
     }
     
     @IBAction func unwindToMonthView(segue: UIStoryboardSegue) {
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 	
-	//MARK: Function
+	//MARK: - Function
 	
 	func scrollToSection(yearID: Int, monthID: Int, animated anim: Bool = false) {
 		

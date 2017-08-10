@@ -38,6 +38,11 @@ class EventEditorViewController: UIViewController {
 	}
 	
 	@IBAction func save(_ sender: UIButton) {
+		eventInformations.title = newEventTextField.text ?? "Untitled Event"
+		if informationMode {
+			print("added Event")
+		}
+		EManagement.addEvent(eventInformations)
 		self.dismiss(animated: true, completion: nil)
 	}
 	
@@ -68,17 +73,7 @@ class EventEditorViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		eventInformations.title = newEventTextField.text ?? "Untitled Event"
-        guard let sd = sender as? UIButton else{
-            print("sender not found")
-            return
-        }
-        if sd.tag == 2 {
-            if informationMode {
-            print("added Event")
-            }
-            EManagement.addEvent(eventInformations)
-        }
+		
     }
     /*
     // MARK: - Navigation

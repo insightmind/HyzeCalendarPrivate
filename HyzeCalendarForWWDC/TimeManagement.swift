@@ -123,24 +123,55 @@ class TimeManagement {
 		return numOfDaysInMonth
 	}
 	
+	
+	
+	/// Checks if the given Cell or Date is the same as the todaysDate
+	///
+	/// - Parameters:
+	///   - yearID: yearID of the comparable Date or Cell
+	///   - monthID: monthID of the comparable Date or Cell
+	///   - dayID: dayID of the comparable Date or Cell
+	/// - Returns: a boolean indicating if both dates are the same
 	class func isToday(yearID: Int, monthID: Int, dayID: Int) -> Bool {
-		if yearID == HSelection.todaysYearID && monthID == HSelection.todaysMonthID - 1 && dayID == HSelection.todaysYearID {
-			return true
-		} else {
-			return false
-		}
+		
+		let todaysDay = (HSelection.todaysDayID, HSelection.todaysMonthID - 1, HSelection.todaysYearID)
+		let compareDay = (dayID, monthID, dayID)
+		
+		return TimeManagement.isEqual(todaysDay, compareDay)
+		
 	}
 	
+	/// Checks if Cell is same as selectedCell
+	///
+	/// - Parameters:
+	///   - yearID: yearID of the comparable Date or Cell
+	///   - monthID: monthID of the comparable Date or Cell
+	///   - dayID: dayID of the comparable Date or Cell
+	/// - Returns: a boolean indicating if both cells are the same
 	class func isSelected(yearID: Int, monthID: Int, dayID: Int) -> Bool {
         let (selectedYearID, selectedMonthID, indexPath) = HSelection.selectedDayCellIndex
-        
         guard let selectedIndexPath = indexPath else {
             return false
         }
-		if yearID == selectedYearID && monthID == selectedMonthID && dayID == selectedIndexPath.item {
+		let selectedDay = (selectedIndexPath.item, selectedMonthID, selectedYearID)
+		let compareDay = (dayID, monthID, dayID)
+		
+		return TimeManagement.isEqual(selectedDay, compareDay)
+	}
+	
+	/// Checks if two Cells or Dates are equal
+	///
+	/// - Parameters:
+	///   - firstDay: tuple of firstDay (dayID, monthID, yearID)
+	///   - secondDay: tuple of secondDay (dayID, monthID, yearID)
+	/// - Returns: a boolean indicating of both Cells or Dates are equal
+	class func isEqual(_ firstDay: (Int, Int, Int),_ secondDay: (Int, Int, Int)) -> Bool {
+		
+		if firstDay == secondDay {
 			return true
 		} else {
 			return false
 		}
+		
 	}
 }

@@ -16,11 +16,10 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var hours24Switch: UISwitch!
     @IBOutlet weak var showLinesSwitch: UISwitch!
     @IBOutlet weak var showLines: UILabel!
-	@IBOutlet weak var isMondaySwitch: UISwitch!
-	@IBOutlet weak var isMondayLabel: UILabel!
 	@IBOutlet weak var settingsLabel: UILabel!
 	@IBOutlet weak var animateDayViewLabel: UILabel!
 	@IBOutlet weak var animateDayViewSwitch: UISwitch!
+	@IBOutlet weak var startWeekDaySegmentedControl: UISegmentedControl!
 	
 	@IBAction func toggleAnimateDayView(_ sender: UISwitch) {
 		let defaults = UserDefaults.standard
@@ -58,7 +57,6 @@ class SettingsViewController: UIViewController {
 		UIView.animate(withDuration: 0.4) {
 			if darkMode{
 				self.settingsLabel.textColor = calendarWhite
-				self.isMondayLabel.textColor = calendarWhite
 				self.showLines.textColor = calendarWhite
 				self.hours24Label.textColor = calendarWhite
 				self.darkModeLabel.textColor = calendarWhite
@@ -66,7 +64,6 @@ class SettingsViewController: UIViewController {
 				self.view.backgroundColor = calendarGrey
 			} else {
 				self.settingsLabel.textColor = calendarGrey
-				self.isMondayLabel.textColor = calendarGrey
 				self.showLines.textColor = calendarGrey
 				self.hours24Label.textColor = calendarGrey
 				self.darkModeLabel.textColor = calendarGrey
@@ -75,23 +72,20 @@ class SettingsViewController: UIViewController {
 			}
 		}
     }
-    
-	@IBAction func toggleIsMondayFirstWeekDay(_ sender: UISwitch) {
+	
+	@IBAction func toggleWeekDayStart(_ sender: UISegmentedControl) {
+		HSelection.weekDayStart = WeekDay(rawValue: sender.selectedSegmentIndex)!
 		let defaults = UserDefaults.standard
-		if isMondayFirstWeekday {
-			isMondayFirstWeekday = false
-		} else {
-			isMondayFirstWeekday = true
-		}
+		defaults.set(HSelection.weekDayStart.rawValue, forKey: "firstWeekDayOfWeek")
+		defaults.synchronize()
 		needsDesignUpdate = true
-		defaults.set(isMondayFirstWeekday, forKey: "isMondayFirstWeekday")
 	}
+	
 	
 	override func viewWillAppear(_ animated: Bool) {
         if darkMode {
 			settingsLabel.textColor = calendarWhite
             darkModeSwitch.isOn = true
-			isMondayLabel.textColor = calendarWhite
             showLines.textColor = calendarWhite
             hours24Label.textColor = calendarWhite
             darkModeLabel.textColor = calendarWhite
@@ -99,7 +93,6 @@ class SettingsViewController: UIViewController {
 			view.backgroundColor = calendarGrey
         } else {
 			settingsLabel.textColor = calendarGrey
-			isMondayLabel.textColor = calendarGrey
             darkModeSwitch.isOn = false
             showLines.textColor = calendarGrey
             hours24Label.textColor = calendarGrey
@@ -117,11 +110,7 @@ class SettingsViewController: UIViewController {
         } else {
             showLinesSwitch.isOn = false
         }
-		if isMondayFirstWeekday {
-			isMondaySwitch.isOn = true
-		} else {
-			isMondaySwitch.isOn = false
-		}
+		startWeekDaySegmentedControl.selectedSegmentIndex = HSelection.weekDayStart.rawValue
 		if animateDayView {
 			animateDayViewSwitch.isOn = true
 		} else {
