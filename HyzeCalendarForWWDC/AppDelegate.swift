@@ -18,9 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         let defaults = UserDefaults.standard
-        defaults.register(defaults: ["DarkMode" : true])
+        defaults.register(defaults: ["DarkMode" : false])
         defaults.register(defaults: ["IsAMPM" : false])
-        defaults.register(defaults: ["showLinesInCalendarView" : true])
+        defaults.register(defaults: ["showLinesInCalendarView" : false])
 		defaults.register(defaults: ["animateDayView" : true])
 		defaults.register(defaults: ["firstWeekDayOfWeek" : WeekDay.monday.rawValue])
         

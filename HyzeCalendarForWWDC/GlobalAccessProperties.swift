@@ -23,6 +23,7 @@ let calendarWhite = UIColor.white
 let calendarGrey = UIColor.init(red: 0.251, green: 0.251, blue: 0.251, alpha: 1)
 let calendarOrange = UIColor.orange
 let calendarBlue = UIColor.init(red: 0.204, green: 0.571, blue: 0.901, alpha: 1)
+let calendarLightBlue = UIColor.init(red: 0.219, green: 0.629, blue: 1, alpha: 1)
 let calendarGreen = UIColor.init(red: 0.415, green: 0.860, blue: 0.427, alpha: 1)
 let calendarRed = UIColor.init(red: 0.929, green: 0.263, blue: 0.216, alpha: 1)
 

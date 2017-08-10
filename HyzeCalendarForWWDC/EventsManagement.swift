@@ -127,7 +127,9 @@ class EventManagement {
             event.startDate = informations.startDate
             event.endDate = informations.endDate
             event.isAllDay = informations.isAllDay
-        }
+		} else {
+			return
+		}
         do {
             try EMEventStore.save(event, span: .thisEvent, commit: true)
             eventsChange = true

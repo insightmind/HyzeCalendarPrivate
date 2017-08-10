@@ -71,6 +71,21 @@ class EventEditorTableViewController: UITableViewController {
 		}
     }
 	
+	func reloadCell(_ cellType: EventEditorCellType, onlyInformations: Bool) {
+		for i in 0..<cells.count {
+			if cells[i].cellType == cellType {
+				switch cellType {
+				case .dateSelection:
+					let cell = self.tableView.cellForRow(at: IndexPath(row: i, section: 0)) as! DateSelectionTableViewCell
+					if onlyInformations {
+						cell.reloadInformations()
+					}
+				}
+				
+			}
+		}
+	}
+	
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		switch cells[indexPath.row].cellType {
 		case .dateSelection:

@@ -69,6 +69,7 @@ class DateSelectionTableViewCell: UITableViewCell {
 		toggleIsAllDaySwitchFont()
 		self.layoutIfNeeded()
 	}
+	
 	@IBAction func toggleAllDay(_ sender: UIButton) {
 		UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
 			self.eventInformations.isAllDay = !self.eventInformations.isAllDay
@@ -76,12 +77,12 @@ class DateSelectionTableViewCell: UITableViewCell {
 		}, completion: nil)
 	}
 
-	@IBAction func startButtonTap(_ sender: UIButton) {
+	fileprivate func presentDateSelectionPopover() {
 		if var topController = UIApplication.shared.keyWindow?.rootViewController {
 			while let presentedViewController = topController.presentedViewController {
 				topController = presentedViewController
 			}
-			let storyBoard = UIStoryboard(name: "Starts", bundle: nil)
+			let storyBoard = UIStoryboard(name: "DateSelection", bundle: nil)
 			guard let startDateViewController = storyBoard.instantiateInitialViewController() else {
 				return
 			}
@@ -90,24 +91,31 @@ class DateSelectionTableViewCell: UITableViewCell {
 		}
 	}
 	
+	@IBAction func startButtonTap(_ sender: UIButton) {
+		eventInformations.dateSelectionPopoverState = .startDate
+		presentDateSelectionPopover()
+	}
+	
 	@IBAction func endTap(_ sender: UIButton) {
-		if var topController = UIApplication.shared.keyWindow?.rootViewController {
-			while let presentedViewController = topController.presentedViewController {
-				topController = presentedViewController
-			}
-			let storyBoard = UIStoryboard(name: "Ends", bundle: nil)
-			guard let endDateViewController = storyBoard.instantiateInitialViewController() else {
-				return
-			}
-			endDateViewController.modalTransitionStyle = .coverVertical
-			topController.present(endDateViewController, animated: true, completion: nil)
-		}
+		eventInformations.dateSelectionPopoverState = .endDate
+		presentDateSelectionPopover()
 	}
 	
 	
-	func setUpDateLabel() {
+	func setUpDateLabel(animated: Bool) {
 		let hourFormatter = DateFormatter()
-		hourFormatter.dateFormat = "HH:mm"
+		if isAMPM {
+			hourFormatter.dateFormat = "HH:mm a"
+		} else {
+			hourFormatter.dateFormat = "HH:mm"
+		}
+		let duration = animated ? 0.3 : 0
+		UIView.animate(withDuration: duration / 2, delay: 0, options: .curveEaseInOut, animations: {
+			self.startDateHourLabel.textColor = UIColor.clear
+			self.startDateDayLabel.textColor = UIColor.clear
+			self.endDateHourLabel.textColor = UIColor.clear
+			self.endDateHourLabel.textColor = UIColor.clear
+		}, completion: nil)
 
 		startDateHourLabel.text = hourFormatter.string(from: eventInformations.startDate)
 		endDateHourLabel.text = hourFormatter.string(from: eventInformations.endDate)
@@ -117,6 +125,13 @@ class DateSelectionTableViewCell: UITableViewCell {
 		
 		startDateDayLabel.text = dayFormatter.string(from: eventInformations.startDate)
 		endDateDayLabel.text = dayFormatter.string(from: eventInformations.endDate)
+		
+		UIView.animate(withDuration: duration / 2, delay: 0, options: .curveEaseInOut, animations: {
+			self.startDateHourLabel.textColor = calendarWhite
+			self.startDateDayLabel.textColor = calendarWhite
+			self.endDateHourLabel.textColor = calendarWhite
+			self.endDateHourLabel.textColor = calendarWhite
+		}, completion: nil)
 	}
 	
 	override func awakeFromNib() {
@@ -149,6 +164,10 @@ class DateSelectionTableViewCell: UITableViewCell {
 		mainView.layer.cornerRadius = mainView.frame.height / 2
 		mainView.layer.masksToBounds = true
 		
-		setUpDateLabel()
+		setUpDateLabel(animated: false)
     }
+	
+	func reloadInformations() {
+		setUpDateLabel(animated: true)
+	}
 }

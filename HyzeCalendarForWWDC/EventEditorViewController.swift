@@ -9,12 +9,20 @@
 import UIKit
 import EventKit
 
+enum DateSpecification {
+	case startDate
+	case endDate
+}
+
 class EventEditorEventInformations {
 	var title: String = "Untitled Event"
 	var isAllDay: Bool = false
 	var startDate: Date = Date()
 	var endDate: Date = Date(timeIntervalSinceNow: 1800)
 	var color: UIColor = calendarWhite
+	
+	//NOT IMPORTANT FOR EVENTCREATION
+	var dateSelectionPopoverState: DateSpecification = .startDate
 }
 
 class EventEditorViewController: UIViewController {
@@ -22,7 +30,7 @@ class EventEditorViewController: UIViewController {
     // MARK: - Variables
     /// Variable to check if Event should be added to the Calendar
     var addEvent: Bool = false
-	
+	var tableViewController: EventEditorTableViewController?
 	var eventInformations = EventEditorEventInformations()
 	
     // MARK: - Outlets
@@ -38,7 +46,12 @@ class EventEditorViewController: UIViewController {
 	}
 	
 	@IBAction func save(_ sender: UIButton) {
-		eventInformations.title = newEventTextField.text ?? "Untitled Event"
+		if newEventTextField.text == "" {
+			eventInformations.title = "Untitled Event"
+		} else {
+			eventInformations.title = newEventTextField.text!
+		}
+		
 		if informationMode {
 			print("added Event")
 		}
@@ -73,7 +86,9 @@ class EventEditorViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		
+		if (segue.identifier == "embed") {
+			tableViewController = (segue.destination as! EventEditorTableViewController)
+		}
     }
     /*
     // MARK: - Navigation
@@ -96,5 +111,12 @@ class EventEditorViewController: UIViewController {
 		}
 		return EventEditorEventInformations()
 	}
-
+	
+	func reloadTableViewCells(_ cellType: EventEditorCellType, onlyInformations: Bool){
+	
+	guard let checkedTableViewController = tableViewController else {
+		fatalError()
+	}
+	checkedTableViewController.reloadCell(cellType, onlyInformations: onlyInformations)
+	}
 }

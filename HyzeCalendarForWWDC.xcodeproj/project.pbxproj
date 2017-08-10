@@ -15,8 +15,6 @@
 		3E47BD2C1F30E7E900E0646C /* EventEditorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E47BD2B1F30E7E900E0646C /* EventEditorTableViewController.swift */; };
 		3E47BD311F30EE0200E0646C /* DateSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E47BD2F1F30EE0200E0646C /* DateSelectionTableViewCell.swift */; };
 		3E47BD321F30EE0200E0646C /* DateSelectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E47BD301F30EE0200E0646C /* DateSelectionTableViewCell.xib */; };
-		3E47BD341F30FCF700E0646C /* Starts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E47BD331F30FCF700E0646C /* Starts.storyboard */; };
-		3E47BD361F30FD0D00E0646C /* Ends.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E47BD351F30FD0D00E0646C /* Ends.storyboard */; };
 		3E4A9B291E4BB4C0009E45EF /* EventsManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4A9B281E4BB4C0009E45EF /* EventsManagement.swift */; };
 		3E533BC51EC36440000CEF5F /* MonthCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E533BC41EC36440000CEF5F /* MonthCollectionViewCell.swift */; };
 		3E533BC71EC364BC000CEF5F /* DayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E533BC61EC364BC000CEF5F /* DayCollectionViewCell.swift */; };
@@ -32,6 +30,7 @@
 		3EA8EE2C1ED219B8000D6EF2 /* DayView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EA8EE2B1ED219B8000D6EF2 /* DayView.storyboard */; };
 		3EA8EE2E1ED21BCA000D6EF2 /* MainCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA8EE2D1ED21BCA000D6EF2 /* MainCollectionViewController.swift */; };
 		3EA8EE311ED2350E000D6EF2 /* MonthCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA8EE301ED2350E000D6EF2 /* MonthCollectionViewController.swift */; };
+		3EBEC8E21F3D048100052C93 /* DateSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EBEC8E11F3D03F700052C93 /* DateSelection.storyboard */; };
 		3ECD09981E9BB39C00BF9627 /* TimeManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECD09971E9BB39C00BF9627 /* TimeManagement.swift */; };
 		3ECD09A11E9BFF3000BF9627 /* Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECD09A01E9BFF3000BF9627 /* Selection.swift */; };
 		3EE011611E560D3800743914 /* ETView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE011601E560D3800743914 /* ETView.swift */; };
@@ -61,8 +60,6 @@
 		3E47BD2B1F30E7E900E0646C /* EventEditorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEditorTableViewController.swift; sourceTree = "<group>"; };
 		3E47BD2F1F30EE0200E0646C /* DateSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectionTableViewCell.swift; sourceTree = "<group>"; };
 		3E47BD301F30EE0200E0646C /* DateSelectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateSelectionTableViewCell.xib; sourceTree = "<group>"; };
-		3E47BD331F30FCF700E0646C /* Starts.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Starts.storyboard; sourceTree = "<group>"; };
-		3E47BD351F30FD0D00E0646C /* Ends.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Ends.storyboard; sourceTree = "<group>"; };
 		3E4A9B281E4BB4C0009E45EF /* EventsManagement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = EventsManagement.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		3E533BC01EC36185000CEF5F /* HyzeCalendarForWWDC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HyzeCalendarForWWDC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E533BC41EC36440000CEF5F /* MonthCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -80,6 +77,7 @@
 		3EA8EE2B1ED219B8000D6EF2 /* DayView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DayView.storyboard; sourceTree = "<group>"; };
 		3EA8EE2D1ED21BCA000D6EF2 /* MainCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCollectionViewController.swift; sourceTree = "<group>"; };
 		3EA8EE301ED2350E000D6EF2 /* MonthCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthCollectionViewController.swift; sourceTree = "<group>"; };
+		3EBEC8E11F3D03F700052C93 /* DateSelection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DateSelection.storyboard; sourceTree = "<group>"; };
 		3EC617B71EF86CDC00BB03B6 /* HyzeCalendarForWWDC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HyzeCalendarForWWDC.entitlements; sourceTree = "<group>"; };
 		3ECD09971E9BB39C00BF9627 /* TimeManagement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeManagement.swift; sourceTree = "<group>"; };
 		3ECD09A01E9BFF3000BF9627 /* Selection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Selection.swift; sourceTree = "<group>"; };
@@ -120,8 +118,7 @@
 		3E47BD2E1F30EDDC00E0646C /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				3E47BD2F1F30EE0200E0646C /* DateSelectionTableViewCell.swift */,
-				3E47BD301F30EE0200E0646C /* DateSelectionTableViewCell.xib */,
+				3EA269211F3CF2330021BB56 /* DateSelection */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -152,6 +149,16 @@
 				3E533BC41EC36440000CEF5F /* MonthCollectionViewCell.swift */,
 			);
 			name = YearToMonths;
+			sourceTree = "<group>";
+		};
+		3EA269211F3CF2330021BB56 /* DateSelection */ = {
+			isa = PBXGroup;
+			children = (
+				3E3AEDF71F23BFEF00792B11 /* SetTimePopoverViewController.swift */,
+				3E47BD2F1F30EE0200E0646C /* DateSelectionTableViewCell.swift */,
+				3E47BD301F30EE0200E0646C /* DateSelectionTableViewCell.xib */,
+			);
+			name = DateSelection;
 			sourceTree = "<group>";
 		};
 		3EA80D451E2BEC9300FD87C3 = {
@@ -185,9 +192,8 @@
 			children = (
 				3EA80D5A1E2BEC9300FD87C3 /* LaunchScreen.storyboard */,
 				3E68B5C71E3A886D00AE103F /* Main.storyboard */,
+				3EBEC8E11F3D03F700052C93 /* DateSelection.storyboard */,
 				3EA8EE2B1ED219B8000D6EF2 /* DayView.storyboard */,
-				3E47BD351F30FD0D00E0646C /* Ends.storyboard */,
-				3E47BD331F30FCF700E0646C /* Starts.storyboard */,
 				3EA8EE281ED21989000D6EF2 /* Settings.storyboard */,
 			);
 			name = Storyboards;
@@ -215,7 +221,6 @@
 			children = (
 				3E47BD2D1F30EDCE00E0646C /* EventEditorTable */,
 				3E2D7B781E6715E600A0170D /* EventEditorViewController.swift */,
-				3E3AEDF71F23BFEF00792B11 /* SetTimePopoverViewController.swift */,
 			);
 			name = EventEditor;
 			sourceTree = "<group>";
@@ -401,14 +406,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3E47BD361F30FD0D00E0646C /* Ends.storyboard in Resources */,
 				3E68B5C91E3A886D00AE103F /* Main.storyboard in Resources */,
 				3E067E0D1F31FA92003601FA /* Default-568h@2x.png in Resources */,
 				3EA80D5C1E2BEC9300FD87C3 /* LaunchScreen.storyboard in Resources */,
+				3EBEC8E21F3D048100052C93 /* DateSelection.storyboard in Resources */,
 				3E47BD321F30EE0200E0646C /* DateSelectionTableViewCell.xib in Resources */,
 				3EA80D591E2BEC9300FD87C3 /* Assets.xcassets in Resources */,
 				3EA8EE2C1ED219B8000D6EF2 /* DayView.storyboard in Resources */,
-				3E47BD341F30FCF700E0646C /* Starts.storyboard in Resources */,
 				3EA8EE2A1ED21989000D6EF2 /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
