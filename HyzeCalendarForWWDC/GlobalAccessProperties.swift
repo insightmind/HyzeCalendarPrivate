@@ -19,13 +19,13 @@ var darkMode: Bool = UserDefaults.standard.bool(forKey: "DarkMode")
 var showLinesInCalendarView: Bool = UserDefaults.standard.bool(forKey: "showLinesInCalendarView")
 var animateDayView: Bool = UserDefaults.standard.bool(forKey: "animateDayView")
 
-let calendarWhite = UIColor.white
-let calendarGrey = UIColor.init(red: 0.251, green: 0.251, blue: 0.251, alpha: 1)
-let calendarOrange = UIColor.orange
-let calendarBlue = UIColor.init(red: 0.204, green: 0.571, blue: 0.901, alpha: 1)
-let calendarLightBlue = UIColor.init(red: 0.219, green: 0.629, blue: 1, alpha: 1)
-let calendarGreen = UIColor.init(red: 0.415, green: 0.860, blue: 0.427, alpha: 1)
-let calendarRed = UIColor.init(red: 0.929, green: 0.263, blue: 0.216, alpha: 1)
+//let calendarWhite = UIColor.white
+//let calendarGrey = UIColor.init(red: 0.251, green: 0.251, blue: 0.251, alpha: 1)
+//let calendarOrange = UIColor.orange
+//let calendarBlue = UIColor.init(red: 0.204, green: 0.571, blue: 0.901, alpha: 1)
+//let calendarLightBlue = UIColor.init(red: 0.219, green: 0.629, blue: 1, alpha: 1)
+//let calendarGreen = UIColor.init(red: 0.415, green: 0.860, blue: 0.427, alpha: 1)
+//let calendarRed = UIColor.init(red: 0.929, green: 0.263, blue: 0.216, alpha: 1)
 
 var TMCalendar: NSCalendar = {
 	let c = NSCalendar(identifier: .gregorian)!
@@ -47,7 +47,7 @@ let PI = CGFloat.pi
 
 var isAMPM : Bool = UserDefaults.standard.bool(forKey: "IsAMPM")
 
-var eventsColorsOnSelectedDate: [UIColor] = [calendarGrey]
+var eventsColorsOnSelectedDate: [UIColor] = [Theme.calendarGrey]
 
 func calculateColorsForEventsOnSelectedDay (numberOfEvents : Int) {
     eventsColorsOnSelectedDate = []
@@ -68,7 +68,7 @@ var eventsChange: Bool = false
 
 var viewIsDayView: Bool = false
 
-var renDayView: dayView? = nil
+var renDayView: DayView? = nil
 
 extension CGFloat {
     static func random() -> CGFloat {
@@ -76,10 +76,12 @@ extension CGFloat {
     }
 }
 
-func timeNowRadiant() -> Int {
-    let hour = TMCalendar.component(.hour, from: Date())
-    let minute = TMCalendar.component(.minute, from: Date())
-    return ( (hour * 60) + minute )
+func timeRadiant(_ date: Date) -> CGFloat {
+    let hour = TMCalendar.component(.hour, from: date)
+    let minute = TMCalendar.component(.minute, from: date)
+	let timeInMinute = CGFloat((hour * 60) + minute )
+	let angle = ((timeInMinute * PI)/720)
+    return angle
 }
 
 extension UIColor {
@@ -89,4 +91,16 @@ extension UIColor {
                        blue:  .random(),
                        alpha: 1.0)
     }
+}
+
+extension UIViewController {
+	func hideKeyboardWhenTappedAround() {
+		let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+		tap.cancelsTouchesInView = false
+		view.addGestureRecognizer(tap)
+	}
+	
+	@objc func dismissKeyboard() {
+		view.endEditing(true)
+	}
 }

@@ -14,7 +14,7 @@
         <!--Day ViewUIV View Controller-->
         <scene sceneID="XXD-uG-pqP">
             <objects>
-                <viewController id="4in-gb-opo" customClass="dayViewUIVViewController" customModule="HyzeCalendarForWWDC" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="4in-gb-opo" customClass="DayViewUIVViewController" customModule="HyzeCalendarForWWDC" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Nza-hy-l1u"/>
                         <viewControllerLayoutGuide type="bottom" id="n78-f7-hAW"/>
@@ -23,7 +23,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NeF-Az-v1m" customClass="dayView" customModule="HyzeCalendarForWWDC" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NeF-Az-v1m" customClass="DayView" customModule="HyzeCalendarForWWDC" customModuleProvider="target">
                                 <rect key="frame" x="75" y="40" width="225" height="225"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -87,7 +87,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="mpO-EJ-ORb">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="CPl-dw-xgF" kind="presentation" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="hO6-c1-sZp"/>
+                                <segue destination="CPl-dw-xgF" kind="presentation" identifier="" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="hO6-c1-sZp"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

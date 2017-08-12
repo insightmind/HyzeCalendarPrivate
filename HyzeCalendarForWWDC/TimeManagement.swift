@@ -134,10 +134,10 @@ class TimeManagement {
 	/// - Returns: a boolean indicating if both dates are the same
 	class func isToday(yearID: Int, monthID: Int, dayID: Int) -> Bool {
 		
-		let todaysDay = (HSelection.todaysDayID, HSelection.todaysMonthID - 1, HSelection.todaysYearID)
-		let compareDay = (dayID, monthID, dayID)
+		let todaysDay = (HSelection.todaysDayID, HSelection.todaysMonthID, HSelection.todaysYearID)
+		let compareDay = (dayID, monthID, yearID)
 		
-		return TimeManagement.isEqual(todaysDay, compareDay)
+		return todaysDay == compareDay
 		
 	}
 	
@@ -154,24 +154,8 @@ class TimeManagement {
             return false
         }
 		let selectedDay = (selectedIndexPath.item, selectedMonthID, selectedYearID)
-		let compareDay = (dayID, monthID, dayID)
+		let compareDay = (dayID, monthID, yearID)
 		
-		return TimeManagement.isEqual(selectedDay, compareDay)
-	}
-	
-	/// Checks if two Cells or Dates are equal
-	///
-	/// - Parameters:
-	///   - firstDay: tuple of firstDay (dayID, monthID, yearID)
-	///   - secondDay: tuple of secondDay (dayID, monthID, yearID)
-	/// - Returns: a boolean indicating of both Cells or Dates are equal
-	class func isEqual(_ firstDay: (Int, Int, Int),_ secondDay: (Int, Int, Int)) -> Bool {
-		
-		if firstDay == secondDay {
-			return true
-		} else {
-			return false
-		}
-		
+		return selectedDay == compareDay
 	}
 }

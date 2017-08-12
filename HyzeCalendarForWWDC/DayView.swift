@@ -8,7 +8,7 @@
 
 import UIKit
 
-class dayView: UIView {
+class DayView: UIView {
     
     let dayCenterButtonSpacing: CGFloat = 20
     
@@ -66,7 +66,7 @@ class dayView: UIView {
         return lbl
     }()
     
-    var hourDecoration = [dayViewDecoration]()
+    var hourDecoration = [DayViewDecoration]()
 
     
     
@@ -78,14 +78,21 @@ class dayView: UIView {
     var date: Date?
     
     
-    lazy var dayViewCenterButton: dayMainButton = {
-        let centerbutton = dayMainButton()
+    lazy var dayViewCenterButton: DayMainButton = {
+        let centerbutton = DayMainButton()
         return centerbutton
     }()
     
     func setDate(forDate: Date){
         date = forDate
     }
+	
+	func reloadData() {
+		for i in subviews {
+			i.removeFromSuperview()
+		}
+		setUp()
+	}
     
     func setUp() {
         self.backgroundColor = UIColor.clear
@@ -161,18 +168,18 @@ class dayView: UIView {
         }
         if darkMode {
             if TMCalendar.isDateInToday(TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item)){
-                label.textColor = calendarWhite
+                label.textColor = Theme.calendarWhite
             } else {
-                label.textColor = calendarGrey
+                label.textColor = Theme.calendarGrey
             }
         } else {
             if TMCalendar.isDateInToday(TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item)){
-                label.textColor = calendarGrey
+                label.textColor = Theme.calendarGrey
             } else {
-                label.textColor = calendarWhite
+                label.textColor = Theme.calendarWhite
             }
         }
-		label.textColor = calendarWhite
+		label.textColor = Theme.calendarWhite
 
     }
     
@@ -302,11 +309,34 @@ class dayView: UIView {
         guard let selectedIndexPath = indexPath else {
             fatalError()
         }
-        if TMCalendar.isDateInToday(TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item)) == true {
-            let watchhand = EventView(frame: self.bounds, carcWidth: 70, hourRotation: true)
-            watchhand.sendTimeProperties(start: timeNowRadiant() - 5, end: timeNowRadiant() + 5)
+        if TMCalendar.isDateInToday(TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID , dayID: selectedIndexPath.item)){
+            let watchhand = EventView(frame: self.bounds, carcWidth: 40, hourRotation: true)
+            watchhand.sendTimeProperties(start:  -5, end: 5)
             watchhand.sendColorProperties(UIColor.red)
             self.addSubview(watchhand)
+			let now = Date()
+			let components = TMCalendar.components(in: TimeZone.autoupdatingCurrent, from: now)
+			let nextDay = TimeManagement.convertToDate(yearID: components.year!, monthID: components.month!, dayID: components.day! + 1)
+			let duration = nextDay.timeIntervalSince(now)
+			watchhand.transform = CGAffineTransform(rotationAngle: timeRadiant(now))
+			let fullRotation = 2*PI
+
+			UIView.animateKeyframes(withDuration: duration, delay: 0, options: UIViewKeyframeAnimationOptions(rawValue: 3 << 16), animations: {
+				
+				UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1/3, animations: {
+					watchhand.transform = CGAffineTransform(rotationAngle: 1/3 * fullRotation)
+				})
+				UIView.addKeyframe(withRelativeStartTime: 1/3, relativeDuration: 1/3, animations: {
+					watchhand.transform = CGAffineTransform(rotationAngle: 2/3 * fullRotation)
+				})
+				UIView.addKeyframe(withRelativeStartTime: 2/3, relativeDuration: 1/3, animations: {
+					watchhand.transform = CGAffineTransform(rotationAngle: 3/3 * fullRotation)
+				})
+				
+			}, completion: { (_) in
+				watchhand.removeFromSuperview()
+			})
+			
         }
     }
 	

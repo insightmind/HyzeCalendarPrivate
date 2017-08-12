@@ -23,6 +23,7 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
 	let _daysInWeek = 7
     
     var isLastRowNecessary: Bool = true
+	var forcedCellSelection: Bool = false
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -136,12 +137,13 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
 			cell.label?.text = String(item)
             isNotInMonth = false
 		}
-		let isToday = TimeManagement.isToday(yearID: yearID, monthID: monthID, dayID: item)
+		let isToday = TimeManagement.isToday(yearID: yearID, monthID: monthID + 1, dayID: item)
 		let isSelected = TimeManagement.isSelected(yearID: yearID, monthID: monthID + 1, dayID: item)
 		let isOnWeekend = self.isOnWeekend(for: indexPath)
 		cell.setCellDesign(isToday: isToday, isSelected: isSelected, isNotInMonth: isNotInMonth, isOnWeekend: isOnWeekend)
         
         if isSelected {
+			self.forcedCellSelection = true
             HSelection.selectedDayCellIndex = (yearID, monthID + 1, IndexPath(item: item, section: 0))
 			HSelection.selectedIsOnWeekend = isOnWeekend
             self.collectionView!.selectItem(at: indexPath, animated: false, scrollPosition: .init(rawValue: 0))
@@ -188,7 +190,7 @@ extension MonthCollectionViewController {
 		for i in (superViewController?.childViewControllers)! {
 			if i.title == "MonthView" {
 				mainViewController = i as! ViewController
-				mainViewController.reloadETView()
+				mainViewController.ETView.reloadView()
 				mainViewController.updateSelectedDayIcon()
 			}
 		}
@@ -206,7 +208,7 @@ extension MonthCollectionViewController {
         
         let (yID, mID, prevIndexPath) = HSelection.selectedDayCellIndex
         
-        if yID == yearID && mID == monthID {
+        if yID == yearID && mID == monthID && !forcedCellSelection{
             guard var checkedPrevIndexPath = prevIndexPath else {
                 fatalError()
             }
@@ -218,9 +220,9 @@ extension MonthCollectionViewController {
 		let item = calculateConformedItem(indexPath)
 		
         let isSelected = true
-        let isToday = TimeManagement.isToday(yearID: yearID, monthID: monthID, dayID: item)
+        let isToday = TimeManagement.isToday(yearID: yearID, monthID: monthID + 1, dayID: item)
         let configuredIndexPath = IndexPath(item: calculateConformedItem(indexPath) , section: 0)
-		if prevIndexPath?.item == configuredIndexPath.item && yID == yearID && mID - 1 == monthID{
+		if prevIndexPath?.item == configuredIndexPath.item && yID == yearID && mID - 1 == monthID && !forcedCellSelection{
 			return
 		}
 		HSelection.selectedDayCellIndex = (self.yearID, self.monthID + 1, configuredIndexPath)
@@ -230,7 +232,7 @@ extension MonthCollectionViewController {
 		cell.layer.shadowPath = UIBezierPath(rect: CGRect.zero).cgPath
 		cell.contentView.bounds = CGRect.zero
 		cell.contentView.layer.cornerRadius = 0
-		cell.contentView.backgroundColor = darkMode ? calendarGrey : calendarWhite
+		cell.contentView.backgroundColor = darkMode ? Theme.calendarGrey : Theme.calendarWhite
 		UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
 				
 			cell.setCellDesign(isToday: isToday, isSelected: isSelected, isOnWeekend: isOnWeekend)
@@ -247,6 +249,8 @@ extension MonthCollectionViewController {
         if informationMode {
         print("\(indexPath): | \(TimeManagement.convertToDate(yearID: yearID, monthID: monthID, dayID: indexPath.item))")
         }
+		
+		forcedCellSelection = false
     }
 	
 	func isOnWeekend(for indexPath: IndexPath) -> Bool {
@@ -278,7 +282,7 @@ extension MonthCollectionViewController {
         let item = calculateConformedItem(indexPath)
         let isOnWeekend = self.isOnWeekend(for: indexPath)
         let isSelected = false
-        let isToday = TimeManagement.isToday(yearID: yearID, monthID: monthID, dayID: item)
+        let isToday = TimeManagement.isToday(yearID: yearID, monthID: monthID + 1, dayID: item)
         
 		cell.setCellDesign(isToday: isToday, isSelected: isSelected, isOnWeekend: isOnWeekend)
     }

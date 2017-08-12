@@ -65,44 +65,37 @@ class ViewController: UIViewController {
             selectedDayButton.image = #imageLiteral(resourceName: "ic_keyboard_arrow_right")
         }
     }
-    
-    func reloadETView() {
-        ETView.reloadView()
-	}
 	
-
-    
     override func viewWillAppear(_ animated: Bool) {
-		
 		self.calendarView.layer.masksToBounds = false
         if darkMode{
-            view.backgroundColor = calendarGrey
-			daysOfWeekBackgroundView.backgroundColor = calendarGrey
-			updateDaysOfWeek(color: calendarWhite, weekendColor: calendarGreen)
-			navigationController?.navigationBar.barTintColor = calendarGrey
-			navigationController?.navigationBar.titleTextAttributes![NSForegroundColorAttributeName] = calendarWhite
-			navigationBar.backBarButtonItem?.tintColor = calendarGrey
-			navigationBar.leftBarButtonItem?.tintColor = calendarWhite
-			navigationBar.rightBarButtonItem?.tintColor = calendarWhite
-			toolbar.barTintColor = calendarGrey
+            view.backgroundColor = Theme.calendarGrey
+			daysOfWeekBackgroundView.backgroundColor = Theme.calendarGrey
+			updateDaysOfWeek(color: Theme.calendarWhite, weekendColor: Theme.calendarGreen)
+			navigationController?.navigationBar.barTintColor = Theme.calendarGrey
+			navigationController?.navigationBar.titleTextAttributes![NSAttributedStringKey.foregroundColor] = Theme.calendarWhite
+			navigationBar.backBarButtonItem?.tintColor = Theme.calendarGrey
+			navigationBar.leftBarButtonItem?.tintColor = Theme.calendarWhite
+			navigationBar.rightBarButtonItem?.tintColor = Theme.calendarWhite
+			toolbar.barTintColor = Theme.calendarGrey
 			if toolbar.items != nil {
 				for i in toolbar.items! {
-					i.tintColor = calendarWhite
+					i.tintColor = Theme.calendarWhite
 				}
 			}
         } else {
-            view.backgroundColor = calendarWhite
-			daysOfWeekBackgroundView.backgroundColor = calendarWhite
-			updateDaysOfWeek(color: calendarGrey, weekendColor: calendarGreen)
-			navigationController?.navigationBar.barTintColor = calendarWhite
-			navigationController?.navigationBar.titleTextAttributes![NSForegroundColorAttributeName] = calendarGrey
-			navigationBar.backBarButtonItem?.tintColor = calendarGrey
-			navigationBar.leftBarButtonItem?.tintColor = calendarGrey
-			navigationBar.rightBarButtonItem?.tintColor = calendarGrey
-			toolbar.barTintColor = calendarWhite
+            view.backgroundColor = Theme.calendarWhite
+			daysOfWeekBackgroundView.backgroundColor = Theme.calendarWhite
+			updateDaysOfWeek(color: Theme.calendarGrey, weekendColor: Theme.calendarGreen)
+			navigationController?.navigationBar.barTintColor = Theme.calendarWhite
+			navigationController?.navigationBar.titleTextAttributes![NSAttributedStringKey.foregroundColor] = Theme.calendarGrey
+			navigationBar.backBarButtonItem?.tintColor = Theme.calendarGrey
+			navigationBar.leftBarButtonItem?.tintColor = Theme.calendarGrey
+			navigationBar.rightBarButtonItem?.tintColor = Theme.calendarGrey
+			toolbar.barTintColor = Theme.calendarWhite
 			if toolbar.items != nil {
 				for i in toolbar.items! {
-					i.tintColor = calendarGrey
+					i.tintColor = Theme.calendarGrey
 				}
 			}
         }

@@ -22,6 +22,10 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
     override func viewDidLoad() {
         super.viewDidLoad()
 		
+		if EManagement.askForPermission() {
+			self.collectionView!.reloadData()
+		}
+		
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -92,6 +96,7 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
             self.collectionView!.reloadData()
             needsDesignUpdate = false
         }
+		self.calculateETViewUpdate()
     }
     
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -154,19 +159,14 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 		parent.navigationBar.title = name
 	}
 	
-	func scrollToSection(yearID: Int, monthID: Int, animated anim: Bool = false) {
-		
-		let indexPath = IndexPath(item: monthID, section: yearID)
-		
-		HSelection.currentMonthID = monthID + 1
-		HSelection.currentYearID = yearID
+	fileprivate func calculateETViewUpdate() {
 		
 		let daysInMonth = TimeManagement.calculateDaysInMonth(yearID: HSelection.currentYearID, monthID: HSelection.currentMonthID)
 		
 		let firstWeekDayOfMonth = TimeManagement.calculateFirstWeekDayOfMonth(yearID: HSelection.currentYearID, monthID: HSelection.currentMonthID)
 		
 		var conform = (firstWeekDayOfMonth + HSelection.weekDayStart.rawValue)
-		if conform > 6 {
+		if conform > 7 {
 			conform -= 7
 		}
 		
@@ -175,6 +175,16 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 		} else {
 			updateETViewHeight(self.collectionView!, isExpanded: true)
 		}
+	}
+	
+	func scrollToSection(yearID: Int, monthID: Int, animated anim: Bool = false) {
+		
+		let indexPath = IndexPath(item: monthID, section: yearID)
+		
+		HSelection.currentMonthID = monthID + 1
+		HSelection.currentYearID = yearID
+		
+		calculateETViewUpdate()
 		
 		self.collectionView!.scrollToItem(at: indexPath, at: .centeredVertically, animated: anim)
 		setMonthName()
@@ -205,37 +215,5 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 			}
 		}
 	}
-	
-
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
 
 }

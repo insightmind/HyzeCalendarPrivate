@@ -49,18 +49,22 @@ class EventView: UIButton {
 		coloring.setStroke()
 		
 		shapeLayer.path = path.cgPath
-		shapeLayer.strokeColor = coloring.cgColor
-		shapeLayer.fillColor = UIColor.clear.cgColor
-		shapeLayer.lineWidth = path.lineWidth
-		shapeLayer.position = CGPoint(x: 0, y: 0)
-		shapeLayer.opacity = 1
-		
 		if isEvent {
+			shapeLayer.strokeColor = coloring.cgColor
+			shapeLayer.fillColor = UIColor.clear.cgColor
+			shapeLayer.opacity = 0
 			shapeLayer.lineCap = kCALineCapRound
+		} else {
+			shapeLayer.strokeColor = coloring.cgColor
+			shapeLayer.fillColor = coloring.cgColor
+			shapeLayer.opacity = 1
 		}
 		
+		shapeLayer.lineWidth = path.lineWidth
+		shapeLayer.position = CGPoint(x: 0, y: 0)
+		
 		self.layer.addSublayer(shapeLayer)
-		shapeLayer.opacity = 0
+
     }
     
     func calculateAngle(for minute: CGFloat) -> CGFloat {
@@ -84,19 +88,17 @@ class EventView: UIButton {
 			let animation = CABasicAnimation(keyPath: "lineWidth")
 			animation.duration = duration
 			animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-            animation.fromValue = arcWidth / (1 + (CGFloat(drawLayer) * 0.1))
-            animation.toValue = (arcWidth + 3.5) / (1 + (CGFloat(drawLayer) * 0.1))
+            animation.toValue = (arcWidth + 3.5)
 			animation.fillMode = kCAFillModeForwards
 			animation.isRemovedOnCompletion = false
 			shapeLayer.add(animation, forKey: "lineWidth")
 			
         case .deselect:
-			
+	
 			let animation = CABasicAnimation(keyPath: "lineWidth")
 			animation.duration = duration
 			animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-            animation.fromValue = (arcWidth + 3.5) / (1 + (CGFloat(drawLayer) * 0.1))
-            animation.toValue = arcWidth / (1 + (CGFloat(drawLayer) * 0.1))
+            animation.toValue = arcWidth
 			animation.fillMode = kCAFillModeForwards
 			animation.isRemovedOnCompletion = false
 			shapeLayer.add(animation, forKey: "lineWidth")

@@ -96,27 +96,18 @@ class EventManagement {
         return events
     }
     
-    func askForPermission(){
+    func askForPermission() -> Bool {
+		var status = false
         if EKEventStore.authorizationStatus(for: .event) ==  EKAuthorizationStatus.authorized {
         } else {
             EMEventStore.requestAccess(to: .event, completion: {
                 (accessGranted: Bool, error: Error?) in
-                
                 if accessGranted == true {
-                    DispatchQueue.main.async(execute: {
-                        if informationMode {
-                            print("[INFORMATION] allowed Request for CalendarAccess")
-                        }
-                    })
-                } else {
-                    DispatchQueue.main.async(execute: {
-                        if informationMode {
-                            print("[INFORMATION] denied Request for CalendarAccess")
-                        }
-                    })
+                    status = true
                 }
             })
         }
+		return status
     }
     
 	func addEvent(_ informations: EventEditorEventInformations) {
@@ -141,9 +132,6 @@ class EventManagement {
     }
     
     init() {
-        
         self.EMEventStore = EKEventStore()
-        
-        askForPermission()
     }
 }

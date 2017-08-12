@@ -80,13 +80,13 @@ class SetTimePopoverViewController: UIViewController {
 		switch forState {
 		case .startDate:
 			UIView.animate(withDuration: duration, delay: 0, options: .curveEaseInOut, animations: {
-				self.startsButton.backgroundColor = calendarLightBlue
-				self.endsButton.backgroundColor = calendarBlue
+				self.startsButton.backgroundColor = Theme.calendarLightBlue
+				self.endsButton.backgroundColor = Theme.calendarBlue
 			}, completion: nil)
 		case .endDate:
 			UIView.animate(withDuration: duration, delay: 0, options: .curveEaseInOut, animations: {
-				self.endsButton.backgroundColor = calendarLightBlue
-				self.startsButton.backgroundColor = calendarBlue
+				self.endsButton.backgroundColor = Theme.calendarLightBlue
+				self.startsButton.backgroundColor = Theme.calendarBlue
 			}, completion: nil)
 		}
 		updateYearLabel(duration)
@@ -99,7 +99,7 @@ class SetTimePopoverViewController: UIViewController {
 		}, completion: nil)
 		yearLabel.text = String(TMCalendar.component(.year, from: dates[currentState]!))
 		UIView.animate(withDuration: duration / 2, delay: 0, options: .curveEaseInOut, animations: {
-			self.yearLabel.textColor = calendarWhite
+			self.yearLabel.textColor = Theme.calendarWhite
 		}, completion: nil)
 	}
 

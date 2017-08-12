@@ -20,9 +20,9 @@ class DayCollectionViewCell: UICollectionViewCell {
 		let lbl = UILabel()
 		lbl.text = "0"
 		if darkMode {
-			lbl.textColor = calendarWhite
+			lbl.textColor = Theme.calendarWhite
 		} else {
-			lbl.textColor = calendarGrey
+			lbl.textColor = Theme.calendarGrey
 		}
 		lbl.font = UIFont.init(name: "Futura", size: 16)
 		lbl.textAlignment = .center
@@ -76,29 +76,24 @@ class DayCollectionViewCell: UICollectionViewCell {
 		self.isSelected = isSelected
         if isSelected {
 			if isOnWeekend {
-				contentView.backgroundColor = calendarGreen
+				contentView.backgroundColor = Theme.calendarGreen
 			} else {
-				contentView.backgroundColor = calendarBlue
+				contentView.backgroundColor = Theme.calendarBlue
 			}
             if isToday {
-                label?.textColor = calendarOrange
-            } else {
-                if darkMode {
-                    label?.textColor = calendarWhite
-                } else {
-                    label?.textColor = calendarWhite
-                }
+                contentView.backgroundColor = Theme.calendarRed
             }
+			label?.textColor = Theme.calendarWhite
         } else {
 			self.contentView.backgroundColor = UIColor.clear
 			layer.shadowOpacity = 0
             if isToday {
-                label?.textColor = calendarOrange
+                label?.textColor = Theme.calendarRed
             } else {
 				if isOnWeekend {
-					label?.textColor = calendarGreen
+					label?.textColor = Theme.calendarGreen
 				} else {
-					label?.textColor = calendarBlue
+					label?.textColor = Theme.calendarBlue
 				}
             }
         }

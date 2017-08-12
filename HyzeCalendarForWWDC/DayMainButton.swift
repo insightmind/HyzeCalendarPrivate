@@ -8,7 +8,7 @@
 
 import UIKit
 
-class dayMainButton: UIButton {
+class DayMainButton: UIButton {
 
     /*
     // Only override draw() if you perform custom drawing.

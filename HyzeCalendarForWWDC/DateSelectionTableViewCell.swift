@@ -60,11 +60,11 @@ class DateSelectionTableViewCell: UITableViewCell {
 		if self.eventInformations.isAllDay {
 			NSLayoutConstraint.deactivate(self.isNotAllDayConstraints)
 			NSLayoutConstraint.activate(self.isAllDayConstraints)
-			self.allDaySwitch.backgroundColor = calendarGreen
+			self.allDaySwitch.backgroundColor = Theme.calendarGreen
 		} else {
 			NSLayoutConstraint.deactivate(self.isAllDayConstraints)
 			NSLayoutConstraint.activate(self.isNotAllDayConstraints)
-			self.allDaySwitch.backgroundColor = calendarRed
+			self.allDaySwitch.backgroundColor = Theme.calendarRed
 		}
 		toggleIsAllDaySwitchFont()
 		self.layoutIfNeeded()
@@ -127,10 +127,10 @@ class DateSelectionTableViewCell: UITableViewCell {
 		endDateDayLabel.text = dayFormatter.string(from: eventInformations.endDate)
 		
 		UIView.animate(withDuration: duration / 2, delay: 0, options: .curveEaseInOut, animations: {
-			self.startDateHourLabel.textColor = calendarWhite
-			self.startDateDayLabel.textColor = calendarWhite
-			self.endDateHourLabel.textColor = calendarWhite
-			self.endDateHourLabel.textColor = calendarWhite
+			self.startDateHourLabel.textColor = Theme.calendarWhite
+			self.startDateDayLabel.textColor = Theme.calendarWhite
+			self.endDateHourLabel.textColor = Theme.calendarWhite
+			self.endDateHourLabel.textColor = Theme.calendarWhite
 		}, completion: nil)
 	}
 	
@@ -156,11 +156,11 @@ class DateSelectionTableViewCell: UITableViewCell {
 		self.backgroundColor = UIColor.clear
 		
 		allDaySwitch.layer.cornerRadius = allDaySwitch.frame.height / 2
-		allDaySwitch.tintColor = calendarWhite
+		allDaySwitch.tintColor = Theme.calendarWhite
 		setAllDaySwitchDesign()
 		toggleIsAllDaySwitchFont()
 		
-		mainView.backgroundColor = calendarBlue
+		mainView.backgroundColor = Theme.calendarBlue
 		mainView.layer.cornerRadius = mainView.frame.height / 2
 		mainView.layer.masksToBounds = true
 		

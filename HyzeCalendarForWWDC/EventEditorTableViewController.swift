@@ -35,7 +35,10 @@ class EventEditorTableViewController: UITableViewController {
 		self.tableView.allowsSelection = false
 		self.tableView.register(UINib(nibName: "DateSelectionTableViewCell", bundle: nil) ,forCellReuseIdentifier: "dateSelection")
 		
+		
 		self.eventsInformations = EventEditorViewController.getEventsInformations()
+		
+		hideKeyboardWhenTappedAround()
     }
 	
 

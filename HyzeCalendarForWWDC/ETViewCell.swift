@@ -30,9 +30,9 @@ class ETViewCell: UITableViewCell {
         lbl.font = UIFont.systemFont(ofSize: 16)
         lbl.numberOfLines = 2
         if darkMode {
-            lbl.textColor = calendarWhite
+            lbl.textColor = Theme.calendarWhite
         } else {
-            lbl.textColor = calendarWhite
+            lbl.textColor = Theme.calendarWhite
         }
         return lbl
     }()
@@ -62,7 +62,7 @@ class ETViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-	func sendProperties(_ title: String = "unknown", from: Date, to: Date, color: UIColor = calendarOrange, inherit: EKEvent? = nil, isAllDay: Bool, eventIdentifier: String!) {
+	func sendProperties(_ title: String = "unknown", from: Date, to: Date, color: UIColor = Theme.calendarOrange, inherit: EKEvent? = nil, isAllDay: Bool, eventIdentifier: String!) {
         self.title = title
 		self.eventIdentifier = eventIdentifier
         
@@ -99,7 +99,7 @@ class ETViewCell: UITableViewCell {
         
         self.accessoryType = .none
         
-        self.inheritanceBar.backgroundColor = calendarWhite
+        self.inheritanceBar.backgroundColor = Theme.calendarWhite
         self.titleLabel.text = self.title
         self.startLabel.text = self.start
         self.endLabel.text = self.end
@@ -108,9 +108,9 @@ class ETViewCell: UITableViewCell {
         endLabel.textColor = UIColor.white
         
         if darkMode {
-            titleLabel.textColor = calendarWhite
+            titleLabel.textColor = Theme.calendarWhite
         } else {
-            titleLabel.textColor = calendarWhite
+            titleLabel.textColor = Theme.calendarWhite
         }
         
     }

@@ -56,19 +56,19 @@ class SettingsViewController: UIViewController {
         defaults.synchronize()
 		UIView.animate(withDuration: 0.4) {
 			if darkMode{
-				self.settingsLabel.textColor = calendarWhite
-				self.showLines.textColor = calendarWhite
-				self.hours24Label.textColor = calendarWhite
-				self.darkModeLabel.textColor = calendarWhite
-				self.animateDayViewLabel.textColor = calendarWhite
-				self.view.backgroundColor = calendarGrey
+				self.settingsLabel.textColor = Theme.calendarWhite
+				self.showLines.textColor = Theme.calendarWhite
+				self.hours24Label.textColor = Theme.calendarWhite
+				self.darkModeLabel.textColor = Theme.calendarWhite
+				self.animateDayViewLabel.textColor = Theme.calendarWhite
+				self.view.backgroundColor = Theme.calendarGrey
 			} else {
-				self.settingsLabel.textColor = calendarGrey
-				self.showLines.textColor = calendarGrey
-				self.hours24Label.textColor = calendarGrey
-				self.darkModeLabel.textColor = calendarGrey
-				self.animateDayViewLabel.textColor = calendarGrey
-				self.view.backgroundColor = calendarWhite
+				self.settingsLabel.textColor = Theme.calendarGrey
+				self.showLines.textColor = Theme.calendarGrey
+				self.hours24Label.textColor = Theme.calendarGrey
+				self.darkModeLabel.textColor = Theme.calendarGrey
+				self.animateDayViewLabel.textColor = Theme.calendarGrey
+				self.view.backgroundColor = Theme.calendarWhite
 			}
 		}
     }
@@ -84,21 +84,21 @@ class SettingsViewController: UIViewController {
 	
 	override func viewWillAppear(_ animated: Bool) {
         if darkMode {
-			settingsLabel.textColor = calendarWhite
+			settingsLabel.textColor = Theme.calendarWhite
             darkModeSwitch.isOn = true
-            showLines.textColor = calendarWhite
-            hours24Label.textColor = calendarWhite
-            darkModeLabel.textColor = calendarWhite
-			self.animateDayViewLabel.textColor = calendarWhite
-			view.backgroundColor = calendarGrey
+            showLines.textColor = Theme.calendarWhite
+            hours24Label.textColor = Theme.calendarWhite
+            darkModeLabel.textColor = Theme.calendarWhite
+			self.animateDayViewLabel.textColor = Theme.calendarWhite
+			view.backgroundColor = Theme.calendarGrey
         } else {
-			settingsLabel.textColor = calendarGrey
+			settingsLabel.textColor = Theme.calendarGrey
             darkModeSwitch.isOn = false
-            showLines.textColor = calendarGrey
-            hours24Label.textColor = calendarGrey
-            darkModeLabel.textColor = calendarGrey
-			self.animateDayViewLabel.textColor = calendarGrey
-            view.backgroundColor = calendarWhite
+            showLines.textColor = Theme.calendarGrey
+            hours24Label.textColor = Theme.calendarGrey
+            darkModeLabel.textColor = Theme.calendarGrey
+			self.animateDayViewLabel.textColor = Theme.calendarGrey
+            view.backgroundColor = Theme.calendarWhite
         }
         if isAMPM {
             hours24Switch.isOn = false

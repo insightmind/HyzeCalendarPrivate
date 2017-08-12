@@ -19,13 +19,13 @@ class EventEditorEventInformations {
 	var isAllDay: Bool = false
 	var startDate: Date = Date()
 	var endDate: Date = Date(timeIntervalSinceNow: 1800)
-	var color: UIColor = calendarWhite
+	var color: UIColor = Theme.calendarWhite
 	
 	//NOT IMPORTANT FOR EVENTCREATION
 	var dateSelectionPopoverState: DateSpecification = .startDate
 }
 
-class EventEditorViewController: UIViewController {
+class EventEditorViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Variables
     /// Variable to check if Event should be added to the Calendar
@@ -56,26 +56,37 @@ class EventEditorViewController: UIViewController {
 			print("added Event")
 		}
 		EManagement.addEvent(eventInformations)
+		
+		// TODO: - Get ViewController to reload dayView
+		if let presenter = presentingViewController as? UINavigationController {
+			print(String(describing: presenter))
+			if let dayViewController = presenter.visibleViewController as? DayViewUIVViewController {
+				dayViewController.day.reloadData()
+			}
+		}
+		
 		self.dismiss(animated: true, completion: nil)
 	}
 	
 	// MARK: - Functions
     override func viewDidLoad() {
         super.viewDidLoad()
+		hideKeyboardWhenTappedAround()
+		self.newEventTextField.delegate = self
         // Do any additional setup after loading the view.
 		
 		if darkMode {
-			newEventTextField.textColor = calendarWhite
-			let color = calendarWhite.withAlphaComponent(0.5)
-			let str = NSAttributedString(string: "Untitled Event", attributes: [NSForegroundColorAttributeName : color])
+			newEventTextField.textColor = Theme.calendarWhite
+			let color = Theme.calendarWhite.withAlphaComponent(0.5)
+			let str = NSAttributedString(string: "Untitled Event", attributes: [NSAttributedStringKey.foregroundColor : color])
 			newEventTextField.attributedPlaceholder = str
 			blurEffectView.effect = UIBlurEffect(style: .dark)
 		} else {
 			blurEffectView.effect = UIBlurEffect(style: .light)
-			let color = calendarGrey.withAlphaComponent(0.5)
-			let str = NSAttributedString(string: "Untitled Event", attributes: [NSForegroundColorAttributeName : color])
+			let color = Theme.calendarGrey.withAlphaComponent(0.5)
+			let str = NSAttributedString(string: "Untitled Event", attributes: [NSAttributedStringKey.foregroundColor : color])
 			newEventTextField.attributedPlaceholder = str
-			newEventTextField.textColor = calendarGrey
+			newEventTextField.textColor = Theme.calendarGrey
 		}
 		
     }
@@ -99,6 +110,11 @@ class EventEditorViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+	
+	func textFieldShouldReturn(_ newEventTextField: UITextField) -> Bool {
+		self.view.endEditing(true)
+		return true
+	}
 	
 	class func getEventsInformations() -> EventEditorEventInformations {
 		if let topController = UIApplication.shared.keyWindow?.rootViewController {

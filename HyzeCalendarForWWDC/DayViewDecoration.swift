@@ -8,7 +8,7 @@
 
 import UIKit
 
-class dayViewDecoration: UIView {
+class DayViewDecoration: UIView {
 
     var startInt: CGFloat = 0
     var endInt: CGFloat = 5
