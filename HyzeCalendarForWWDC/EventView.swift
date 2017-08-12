@@ -16,7 +16,7 @@ class EventView: UIButton {
 
     var startTime: CGFloat = 0
     var endTime: CGFloat = 2 * PI
-    var coloring: UIColor = UIColor.green
+    var coloring: UIColor = UIColor.randomColor()
     var arcWidth: CGFloat = 25
     var allowHourRotation: Bool = false
     var isEvent = false
