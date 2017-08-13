@@ -50,13 +50,23 @@ class DayViewUIVViewController: UIViewController {
 			navigationController?.navigationBar.tintColor = Theme.calendarGrey
 			addButton.tintColor = Theme.calendarGrey
         }
-		if HSelection.selectedIsOnWeekend! {
+		if HSelection.selectedIsToday!  {
+			day.dayViewCenterButton.backgroundColor = Theme.calendarRed
+		} else if HSelection.selectedIsOnWeekend! {
 			day.dayViewCenterButton.backgroundColor = Theme.calendarGreen
 		} else {
 			day.dayViewCenterButton.backgroundColor = Theme.calendarBlue
 		}
 		
     }
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == "showEventEditor" {
+			if let eventEditor = segue.destination as? EventEditorViewController {
+				eventEditor.dayView = self
+			}
+		}
+	}
     
     @IBAction func unwindToRed(segue: UIStoryboardSegue) {
     }

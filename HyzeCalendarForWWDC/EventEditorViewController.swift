@@ -18,8 +18,9 @@ class EventEditorEventInformations {
 	var title: String = "Untitled Event"
 	var isAllDay: Bool = false
 	var startDate: Date = Date()
-	var endDate: Date = Date(timeIntervalSinceNow: 1800)
+	var endDate: Date = Date().addingTimeInterval(1800)
 	var color: UIColor = Theme.calendarWhite
+	var notes: String? = nil
 	
 	//NOT IMPORTANT FOR EVENTCREATION
 	var dateSelectionPopoverState: DateSpecification = .startDate
@@ -32,10 +33,12 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
     var addEvent: Bool = false
 	var tableViewController: EventEditorTableViewController?
 	var eventInformations = EventEditorEventInformations()
+	var dayView: DayViewUIVViewController? = nil
 	
     // MARK: - Outlets
     //All the visual Elements in the ViewController
 	@IBOutlet weak var blurEffectView: UIVisualEffectView!
+	@IBOutlet weak var blurEffectNavbarView: UIVisualEffectView!
 	
 	@IBOutlet weak var tableView: UIView!
 	@IBOutlet weak var newEventTextField: UITextField!
@@ -52,20 +55,29 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
 			eventInformations.title = newEventTextField.text!
 		}
 		
+		let notes = String(describing: self.tableViewController?.notes?.text)
+		if notes != "Your Notes..." || notes != "" {
+			eventInformations.notes = notes
+		} else {
+			eventInformations.notes = nil
+		}
+		
 		if informationMode {
 			print("added Event")
 		}
 		EManagement.addEvent(eventInformations)
 		
 		// TODO: - Get ViewController to reload dayView
-		if let presenter = presentingViewController as? UINavigationController {
-			print(String(describing: presenter))
-			if let dayViewController = presenter.visibleViewController as? DayViewUIVViewController {
-				dayViewController.day.reloadData()
-			}
-		}
+//		if let presenter = presentingViewController as? UINavigationController {
+//			print(String(describing: presenter))
+//			if let dayViewController = presenter.visibleViewController as? DayViewUIVViewController {
+//				dayViewController.day.reloadData()
+//			}
+//		}
 		
-		self.dismiss(animated: true, completion: nil)
+		self.dismiss(animated: true, completion: {
+			self.dayView?.day.reloadData()
+		})
 	}
 	
 	// MARK: - Functions
@@ -73,6 +85,7 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 		hideKeyboardWhenTappedAround()
 		self.newEventTextField.delegate = self
+		self.newEventTextField.layer.masksToBounds = false
         // Do any additional setup after loading the view.
 		
 		if darkMode {
@@ -81,15 +94,31 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
 			let str = NSAttributedString(string: "Untitled Event", attributes: [NSAttributedStringKey.foregroundColor : color])
 			newEventTextField.attributedPlaceholder = str
 			blurEffectView.effect = UIBlurEffect(style: .dark)
+			blurEffectNavbarView.effect = blurEffectView.effect
 		} else {
 			blurEffectView.effect = UIBlurEffect(style: .light)
+			blurEffectNavbarView.effect = blurEffectView.effect
 			let color = Theme.calendarGrey.withAlphaComponent(0.5)
 			let str = NSAttributedString(string: "Untitled Event", attributes: [NSAttributedStringKey.foregroundColor : color])
 			newEventTextField.attributedPlaceholder = str
 			newEventTextField.textColor = Theme.calendarGrey
 		}
 		
+		setEventInformationDates()
     }
+	
+	func setEventInformationDates() {
+		let (year, month, indexPath) = HSelection.selectedDayCellIndex
+		guard let day = indexPath else {
+			return
+		}
+		let date = TimeManagement.convertToDate(yearID: year, monthID: month, dayID: day.item)
+		let now = TMCalendar.components(in: TimeZone.autoupdatingCurrent, from: Date())
+		
+		eventInformations.startDate = TMCalendar.date(bySettingHour: now.hour!, minute: now.minute!, second: now.second!, of: date, options: .matchFirst)!
+		eventInformations.endDate = eventInformations.startDate.addingTimeInterval(1800)
+		
+	}
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

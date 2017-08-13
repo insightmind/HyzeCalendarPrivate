@@ -39,7 +39,7 @@ class ETView: UITableView, UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		
-        tableView.contentInset = UIEdgeInsets(top: 15, left: 0, bottom: 25, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: 30, left: 0, bottom: 30, right: 0)
         tableView.register(ETViewCell.self, forCellReuseIdentifier: cellIdentifier)
         prevEventsCount = events.count
         let (selectedYearID, selectedMonthID, indexPath) = HSelection.selectedDayCellIndex
@@ -59,12 +59,10 @@ class ETView: UITableView, UITableViewDataSource, UITableViewDelegate{
     }
     
     func updateEvents() {
+		self.setDesign()
 		
-		self.layer.cornerRadius = 20
-		self.layer.masksToBounds = true
-		self.layer.shadowColor = UIColor.black.cgColor
-		self.layer.shadowOffset = CGSize(width: 0.0, height: -5)
-		self.layer.shadowOpacity = 0.5
+		layer.cornerRadius = 20
+		layer.masksToBounds = true
 		
         let (selectedYearID, selectedMonthID, indexPath) = HSelection.selectedDayCellIndex
         
@@ -73,14 +71,6 @@ class ETView: UITableView, UITableViewDataSource, UITableViewDelegate{
         }
         self.prevEventsCount = self.events.count + 1
         self.events = EManagement.getEvents(for: TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item))
-		UIView.animate(withDuration: 0.2) {
-			if HSelection.selectedIsOnWeekend! {
-				self.backgroundColor = Theme.calendarGreen
-			} else {
-				self.backgroundColor = Theme.calendarBlue
-				
-			}
-		}
     }
     
     func reloadView() {
@@ -112,16 +102,22 @@ class ETView: UITableView, UITableViewDataSource, UITableViewDelegate{
         }
         self.insertRows(at: addEventsChangeAt, with: .fade)
         self.endUpdates()
+		self.setDesign()
 		
+		
+    }
+	
+	func setDesign() {
 		UIView.animate(withDuration: 0.2) {
-			if HSelection.selectedIsOnWeekend! {
+			if HSelection.selectedIsToday!  {
+				self.backgroundColor = Theme.calendarRed
+			} else if HSelection.selectedIsOnWeekend! {
 				self.backgroundColor = Theme.calendarGreen
 			} else {
 				self.backgroundColor = Theme.calendarBlue
-				
 			}
 		}
-    }
+	}
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let row = tableView.cellForRow(at: indexPath) as? ETViewCell else {

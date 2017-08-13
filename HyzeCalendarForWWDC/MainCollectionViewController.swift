@@ -165,15 +165,17 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 		
 		let firstWeekDayOfMonth = TimeManagement.calculateFirstWeekDayOfMonth(yearID: HSelection.currentYearID, monthID: HSelection.currentMonthID)
 		
-		var conform = (firstWeekDayOfMonth + HSelection.weekDayStart.rawValue)
-		if conform > 7 {
-			conform -= 7
+		var conform = (firstWeekDayOfMonth - HSelection.weekDayStart.rawValue)
+		if conform < 1 {
+			conform += 7
 		}
 		
 		if conform + daysInMonth > 36 {
-			updateETViewHeight(self.collectionView!, isExpanded: false)
+			updateETViewHeight(self.collectionView!, isExpandedByRows: 0)
+		} else if conform + daysInMonth > 29 {
+			updateETViewHeight(self.collectionView!, isExpandedByRows: 1)
 		} else {
-			updateETViewHeight(self.collectionView!, isExpanded: true)
+			updateETViewHeight(self.collectionView!, isExpandedByRows: 2)
 		}
 	}
 	
@@ -198,15 +200,15 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
         }
 	}
 	
- func updateETViewHeight(_ collectionView: UICollectionView, isExpanded: Bool) {
+ func updateETViewHeight(_ collectionView: UICollectionView, isExpandedByRows: CGFloat) {
 		let superViewController = UIApplication.shared.keyWindow?.rootViewController
 		var mainViewController: ViewController
 		for i in (superViewController?.childViewControllers)! {
 			if i.title == "MonthView" {
 				mainViewController = i as! ViewController
 				UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
-					if isExpanded {
-						mainViewController.ETViewTopLayoutConstraint.constant = -((collectionView.bounds.width / 7) - 2)
+					if isExpandedByRows > 0 {
+						mainViewController.ETViewTopLayoutConstraint.constant = -(isExpandedByRows * ((collectionView.bounds.width / 7) - 2))
 					} else {
 						mainViewController.ETViewTopLayoutConstraint.constant = 0
 					}

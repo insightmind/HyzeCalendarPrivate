@@ -310,16 +310,17 @@ class DayView: UIView {
             fatalError()
         }
         if TMCalendar.isDateInToday(TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID , dayID: selectedIndexPath.item)){
-            let watchhand = EventView(frame: self.bounds, carcWidth: 40, hourRotation: true)
+            let watchhand = EventView(frame: self.bounds, carcWidth: 50, hourRotation: true)
             watchhand.sendTimeProperties(start:  -5, end: 5)
-            watchhand.sendColorProperties(UIColor.red)
+			watchhand.sendColorProperties(darkMode ? Theme.calendarWhite : Theme.calendarGrey)
             self.addSubview(watchhand)
 			let now = Date()
 			let components = TMCalendar.components(in: TimeZone.autoupdatingCurrent, from: now)
 			let nextDay = TimeManagement.convertToDate(yearID: components.year!, monthID: components.month!, dayID: components.day! + 1)
 			let duration = nextDay.timeIntervalSince(now)
-			watchhand.transform = CGAffineTransform(rotationAngle: timeRadiant(now))
-			let fullRotation = 2*PI
+			let nowRadiant = TimeManagement.timeRadiant(now)
+			watchhand.transform = CGAffineTransform(rotationAngle: nowRadiant )
+			let fullRotation = 2*PI - TimeManagement.timeRadiant(now)
 
 			UIView.animateKeyframes(withDuration: duration, delay: 0, options: UIViewKeyframeAnimationOptions(rawValue: 3 << 16), animations: {
 				

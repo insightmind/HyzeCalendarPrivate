@@ -87,7 +87,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="mpO-EJ-ORb">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="CPl-dw-xgF" kind="presentation" identifier="" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="hO6-c1-sZp"/>
+                                <segue destination="CPl-dw-xgF" kind="presentation" identifier="showEventEditor" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="hO6-c1-sZp"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -147,16 +147,42 @@
                                 <blurEffect style="extraLight"/>
                             </visualEffectView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Mp-VE-c89">
-                                <rect key="frame" x="0.0" y="114" width="375" height="553"/>
+                                <rect key="frame" x="0.0" y="3" width="375" height="664"/>
                                 <connections>
                                     <segue destination="Ehi-tk-gaE" kind="embed" identifier="embed" id="Cdl-qJ-GlG"/>
                                 </connections>
                             </containerView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OvM-tT-AXz">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="123"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Dkn-J6-nHi">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="123"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8jl-H2-mcO">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="123"/>
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="nN2-AS-zWK">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="123"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            </view>
+                                            <vibrancyEffect>
+                                                <blurEffect style="light"/>
+                                            </vibrancyEffect>
+                                        </visualEffectView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="8jl-H2-mcO" firstAttribute="top" secondItem="Dkn-J6-nHi" secondAttribute="top" id="CSD-0W-xUb"/>
+                                        <constraint firstAttribute="trailing" secondItem="8jl-H2-mcO" secondAttribute="trailing" id="Dlk-Jw-c08"/>
+                                        <constraint firstItem="8jl-H2-mcO" firstAttribute="leading" secondItem="Dkn-J6-nHi" secondAttribute="leading" id="DyV-bF-AFj"/>
+                                        <constraint firstAttribute="bottom" secondItem="8jl-H2-mcO" secondAttribute="bottom" id="P4o-Om-9iD"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="NEW EVENT" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fmZ-f3-9fn">
-                                <rect key="frame" x="16" y="76" width="343" height="30"/>
+                                <rect key="frame" x="16" y="76" width="343" height="35"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Rap-H5-OsS"/>
+                                    <constraint firstAttribute="height" constant="35" id="Rap-H5-OsS"/>
                                 </constraints>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
@@ -195,7 +221,9 @@
                             <constraint firstItem="UdT-j9-cxD" firstAttribute="top" secondItem="Esq-Go-3wf" secondAttribute="bottom" constant="8" symbolic="YES" id="BhU-ZX-M1O"/>
                             <constraint firstAttribute="trailing" secondItem="Dcw-VL-8Yh" secondAttribute="trailing" id="C8k-83-47k"/>
                             <constraint firstItem="Dcw-VL-8Yh" firstAttribute="top" secondItem="Rdh-tp-9Cc" secondAttribute="top" id="CBa-ml-Kao"/>
-                            <constraint firstItem="4Mp-VE-c89" firstAttribute="top" secondItem="fmZ-f3-9fn" secondAttribute="bottom" constant="8" symbolic="YES" id="FYl-6j-wvL"/>
+                            <constraint firstItem="OvM-tT-AXz" firstAttribute="top" secondItem="Rdh-tp-9Cc" secondAttribute="top" id="DLl-27-8ft"/>
+                            <constraint firstItem="4Mp-VE-c89" firstAttribute="top" secondItem="fmZ-f3-9fn" secondAttribute="bottom" constant="-108" id="FYl-6j-wvL"/>
+                            <constraint firstAttribute="trailing" secondItem="OvM-tT-AXz" secondAttribute="trailing" id="Fo2-Cd-NgJ"/>
                             <constraint firstItem="UdT-j9-cxD" firstAttribute="leading" secondItem="Rdh-tp-9Cc" secondAttribute="leadingMargin" id="Lot-A8-pNV"/>
                             <constraint firstItem="Dcw-VL-8Yh" firstAttribute="bottom" secondItem="AY9-Ry-ahx" secondAttribute="top" id="PuT-2y-unu"/>
                             <constraint firstAttribute="trailingMargin" secondItem="j08-VV-qd0" secondAttribute="trailing" constant="-9" id="Qg8-sg-Ek0"/>
@@ -203,12 +231,15 @@
                             <constraint firstItem="fmZ-f3-9fn" firstAttribute="centerX" secondItem="4Mp-VE-c89" secondAttribute="centerX" id="Z1f-vq-qZo"/>
                             <constraint firstItem="fmZ-f3-9fn" firstAttribute="top" secondItem="UdT-j9-cxD" secondAttribute="bottom" constant="18" id="aXC-bD-rdA"/>
                             <constraint firstItem="4Mp-VE-c89" firstAttribute="bottom" secondItem="AY9-Ry-ahx" secondAttribute="top" id="be4-iY-97W"/>
+                            <constraint firstItem="4Mp-VE-c89" firstAttribute="top" secondItem="OvM-tT-AXz" secondAttribute="bottom" constant="-120" id="cWm-2l-HzX"/>
                             <constraint firstItem="UdT-j9-cxD" firstAttribute="leading" secondItem="fmZ-f3-9fn" secondAttribute="leading" id="hRh-Nj-GRf"/>
                             <constraint firstItem="Dcw-VL-8Yh" firstAttribute="leading" secondItem="4Mp-VE-c89" secondAttribute="leading" id="l8a-Mf-wey"/>
                             <constraint firstItem="Dcw-VL-8Yh" firstAttribute="trailing" secondItem="4Mp-VE-c89" secondAttribute="trailing" id="mgd-YK-RiC"/>
+                            <constraint firstItem="OvM-tT-AXz" firstAttribute="leading" secondItem="Rdh-tp-9Cc" secondAttribute="leading" id="nwa-Uk-vQ8"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="blurEffectNavbarView" destination="OvM-tT-AXz" id="SNx-gX-AUo"/>
                         <outlet property="blurEffectView" destination="Dcw-VL-8Yh" id="SeW-jZ-tg2"/>
                         <outlet property="newEventTextField" destination="fmZ-f3-9fn" id="g2Q-P6-isb"/>
                         <outlet property="tableView" destination="4Mp-VE-c89" id="zXy-hS-t35"/>
@@ -225,7 +256,7 @@
             <objects>
                 <tableViewController id="Ehi-tk-gaE" customClass="EventEditorTableViewController" customModule="HyzeCalendarForWWDC" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="NPS-Od-36P">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="553"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="664"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <connections>

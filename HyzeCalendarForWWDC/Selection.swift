@@ -31,6 +31,9 @@ struct Selection {
 	
 	/// information if the selected Day is at weekend
 	var selectedIsOnWeekend: Bool?
+	
+	/// information if the selected Day is today
+	var selectedIsToday: Bool? = true
     
     /// Data for the current Day in the MonthView
     /// (YearID: Int, MonthID: Int, indexPath in MonthView: IndexPath?)

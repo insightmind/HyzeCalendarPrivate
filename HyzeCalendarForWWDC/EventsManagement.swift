@@ -118,6 +118,7 @@ class EventManagement {
             event.startDate = informations.startDate
             event.endDate = informations.endDate
             event.isAllDay = informations.isAllDay
+			event.notes = informations.notes
 		} else {
 			return
 		}

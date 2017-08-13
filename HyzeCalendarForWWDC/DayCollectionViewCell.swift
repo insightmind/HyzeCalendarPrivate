@@ -42,10 +42,11 @@ class DayCollectionViewCell: UICollectionViewCell {
 	fileprivate func setUpShadow() {
 		let shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: bounds.width / 2)
 		layer.masksToBounds = false
-		layer.shadowColor = UIColor.black.cgColor
-		layer.shadowOffset = CGSize(width: 0.0, height: 2.5)
+		layer.shadowColor = self.contentView.backgroundColor?.cgColor
+		layer.shadowRadius = 5
+		layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
 		if isSelected {
-			layer.shadowOpacity = 0.5
+			layer.shadowOpacity = 1
 		} else {
 			layer.shadowOpacity = 0
 		}
@@ -75,6 +76,7 @@ class DayCollectionViewCell: UICollectionViewCell {
 	func setCellDesign(isToday: Bool, isSelected: Bool, isNotInMonth: Bool = false, isOnWeekend: Bool = false) {
 		self.isSelected = isSelected
         if isSelected {
+			layer.shadowOpacity = 0.85
 			if isOnWeekend {
 				contentView.backgroundColor = Theme.calendarGreen
 			} else {
@@ -100,6 +102,7 @@ class DayCollectionViewCell: UICollectionViewCell {
         if isNotInMonth {
             label?.textColor = label?.textColor.withAlphaComponent(0.3)
         }
+		layer.shadowColor = self.contentView.backgroundColor?.cgColor
 	}
 	
 	required init?(coder aDecoder: NSCoder) {

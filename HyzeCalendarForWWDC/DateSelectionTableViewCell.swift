@@ -74,6 +74,7 @@ class DateSelectionTableViewCell: UITableViewCell {
 		UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
 			self.eventInformations.isAllDay = !self.eventInformations.isAllDay
 			self.setAllDaySwitchDesign()
+			self.allDaySwitch.layer.cornerRadius = self.allDaySwitch.frame.height / 2
 		}, completion: nil)
 	}
 
@@ -162,7 +163,8 @@ class DateSelectionTableViewCell: UITableViewCell {
 		
 		mainView.backgroundColor = Theme.calendarBlue
 		mainView.layer.cornerRadius = mainView.frame.height / 2
-		mainView.layer.masksToBounds = true
+		mainView.layer.masksToBounds = false
+		
 		
 		setUpDateLabel(animated: false)
     }

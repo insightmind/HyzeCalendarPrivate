@@ -76,14 +76,6 @@ extension CGFloat {
     }
 }
 
-func timeRadiant(_ date: Date) -> CGFloat {
-    let hour = TMCalendar.component(.hour, from: date)
-    let minute = TMCalendar.component(.minute, from: date)
-	let timeInMinute = CGFloat((hour * 60) + minute )
-	let angle = ((timeInMinute * PI)/720)
-    return angle
-}
-
 extension UIColor {
     static func randomColor() -> UIColor {
         return UIColor(red:   .random(),

@@ -10,6 +10,7 @@ import UIKit
 
 enum EventEditorCellType {
 	case dateSelection
+	case notes
 }
 
 struct EventEditorCellInformations {
@@ -19,8 +20,11 @@ struct EventEditorCellInformations {
 
 class EventEditorTableViewController: UITableViewController {
 	
-	let cells = [EventEditorCellInformations(cellType: .dateSelection, height: 100.0)]
+	let cells = [EventEditorCellInformations(cellType: .dateSelection, height: 100.0),
+				 EventEditorCellInformations(cellType: .notes, height: 170.0)]
 	var eventsInformations: EventEditorEventInformations!
+	
+	var notes: UITextView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +38,7 @@ class EventEditorTableViewController: UITableViewController {
 		self.tableView.separatorStyle = .none
 		self.tableView.allowsSelection = false
 		self.tableView.register(UINib(nibName: "DateSelectionTableViewCell", bundle: nil) ,forCellReuseIdentifier: "dateSelection")
+		self.tableView.register(UINib(nibName: "NotesTableViewCell", bundle: nil) ,forCellReuseIdentifier: "notes")
 		
 		
 		self.eventsInformations = EventEditorViewController.getEventsInformations()
@@ -52,6 +57,7 @@ class EventEditorTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
+		tableView.contentInset = UIEdgeInsets(top: 108, left: 0, bottom: 108, right: 0)
         return 1
     }
 
@@ -65,13 +71,14 @@ class EventEditorTableViewController: UITableViewController {
 		
 		switch cells[indexPath.row].cellType {
 		case .dateSelection:
-			fallthrough
-		default:
 			let cell = tableView.dequeueReusableCell(withIdentifier: "dateSelection") as! DateSelectionTableViewCell
-			// Configure the cell...
 			return cell
-			
+		case .notes:
+			let cell = tableView.dequeueReusableCell(withIdentifier: "notes") as! NotesTableViewCell
+			self.notes = cell.textView
+			return cell
 		}
+		
     }
 	
 	func reloadCell(_ cellType: EventEditorCellType, onlyInformations: Bool) {
@@ -83,6 +90,8 @@ class EventEditorTableViewController: UITableViewController {
 					if onlyInformations {
 						cell.reloadInformations()
 					}
+				default:
+					return
 				}
 				
 			}

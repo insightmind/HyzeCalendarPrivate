@@ -137,7 +137,7 @@ class ViewController: UIViewController {
 
 	func updateDaysOfWeek(color: UIColor, weekendColor: UIColor) {
 		
-		let unconfiguredDaysOfWeek = [FirstDayOfWeek,
+		let unconfiguredDaysOfWeek: [UILabel] = [FirstDayOfWeek,
 		                              SecondDayOfWeek,
 		                              ThirdDayOfWeek,
 		                              FourthDayOfWeek,
