@@ -43,6 +43,26 @@
       language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "3EDC11121F41059500E0B250"
+               BuildableName = "HyzeCalendarForWWDCUITests.xctest"
+               BlueprintName = "HyzeCalendarForWWDCUITests"
+               ReferencedContainer = "container:HyzeCalendarForWWDC.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "3EDC11231F41084B00E0B250"
+               BuildableName = "SnapshotHyzeCalendarForWWDCUITests.xctest"
+               BlueprintName = "SnapshotHyzeCalendarForWWDCUITests"
+               ReferencedContainer = "container:HyzeCalendarForWWDC.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

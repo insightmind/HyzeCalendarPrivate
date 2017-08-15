@@ -18,6 +18,7 @@ var needsDesignUpdate: Bool = false
 var darkMode: Bool = UserDefaults.standard.bool(forKey: "DarkMode")
 var showLinesInCalendarView: Bool = UserDefaults.standard.bool(forKey: "showLinesInCalendarView")
 var animateDayView: Bool = UserDefaults.standard.bool(forKey: "animateDayView")
+var isEEshowDetail: Bool = false
 
 //let calendarWhite = UIColor.white
 //let calendarGrey = UIColor.init(red: 0.251, green: 0.251, blue: 0.251, alpha: 1)
@@ -47,7 +48,7 @@ let PI = CGFloat.pi
 
 var isAMPM : Bool = UserDefaults.standard.bool(forKey: "IsAMPM")
 
-var eventsColorsOnSelectedDate: [UIColor] = [Theme.calendarGrey]
+var eventsColorsOnSelectedDate: [UIColor] = [Color.grey]
 
 func calculateColorsForEventsOnSelectedDay (numberOfEvents : Int) {
     eventsColorsOnSelectedDate = []

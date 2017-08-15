@@ -60,17 +60,30 @@ class DateSelectionTableViewCell: UITableViewCell {
 		if self.eventInformations.isAllDay {
 			NSLayoutConstraint.deactivate(self.isNotAllDayConstraints)
 			NSLayoutConstraint.activate(self.isAllDayConstraints)
-			self.allDaySwitch.backgroundColor = Theme.calendarGreen
+			self.allDaySwitch.backgroundColor = Color.green
 		} else {
 			NSLayoutConstraint.deactivate(self.isAllDayConstraints)
 			NSLayoutConstraint.activate(self.isNotAllDayConstraints)
-			self.allDaySwitch.backgroundColor = Theme.calendarRed
+			self.allDaySwitch.backgroundColor = Color.red
 		}
+		
+		//TODO: not working
+		if eventInformations.state == .showDetail {
+			if !eventInformations.isAllDay {
+				self.allDaySwitch.backgroundColor = UIColor.clear
+				self.allDaySwitch.tintColor = UIColor.clear
+				self.allDaySwitch.isEnabled = false
+			}
+		}
+		
 		toggleIsAllDaySwitchFont()
 		self.layoutIfNeeded()
 	}
 	
 	@IBAction func toggleAllDay(_ sender: UIButton) {
+		if eventInformations.state == .showDetail {
+			return
+		}
 		UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
 			self.eventInformations.isAllDay = !self.eventInformations.isAllDay
 			self.setAllDaySwitchDesign()
@@ -93,11 +106,17 @@ class DateSelectionTableViewCell: UITableViewCell {
 	}
 	
 	@IBAction func startButtonTap(_ sender: UIButton) {
+		if eventInformations.state == .showDetail {
+			return
+		}
 		eventInformations.dateSelectionPopoverState = .startDate
 		presentDateSelectionPopover()
 	}
 	
 	@IBAction func endTap(_ sender: UIButton) {
+		if eventInformations.state == .showDetail {
+			return
+		}
 		eventInformations.dateSelectionPopoverState = .endDate
 		presentDateSelectionPopover()
 	}
@@ -105,11 +124,16 @@ class DateSelectionTableViewCell: UITableViewCell {
 	
 	func setUpDateLabel(animated: Bool) {
 		let hourFormatter = DateFormatter()
+		
 		if isAMPM {
-			hourFormatter.dateFormat = "HH:mm a"
+			hourFormatter.locale = Locale(identifier:  "en_US")
 		} else {
-			hourFormatter.dateFormat = "HH:mm"
+			hourFormatter.locale = Locale(identifier:  "de_DE")
 		}
+		
+		hourFormatter.timeStyle = .short
+		hourFormatter.dateStyle = .none
+		
 		let duration = animated ? 0.3 : 0
 		UIView.animate(withDuration: duration / 2, delay: 0, options: .curveEaseInOut, animations: {
 			self.startDateHourLabel.textColor = UIColor.clear
@@ -122,22 +146,43 @@ class DateSelectionTableViewCell: UITableViewCell {
 		endDateHourLabel.text = hourFormatter.string(from: eventInformations.endDate)
 		
 		let dayFormatter = DateFormatter()
-		dayFormatter.dateFormat = "dd.MM.yyyy"
+		
+		if isAMPM {
+			dayFormatter.locale = Locale(identifier:  "en_US")
+		} else {
+			dayFormatter.locale = Locale(identifier:  "de_DE")
+		}
+		
+		dayFormatter.dateStyle = .short
+		dayFormatter.timeStyle = .none
+		
+		UIView.animate(withDuration: duration / 2, delay: 0, options: .curveEaseInOut, animations: {
+			self.startDateHourLabel.textColor = UIColor.clear
+			self.startDateDayLabel.textColor = UIColor.clear
+			self.endDateHourLabel.textColor = UIColor.clear
+			self.endDateHourLabel.textColor = UIColor.clear
+		}, completion: nil)
 		
 		startDateDayLabel.text = dayFormatter.string(from: eventInformations.startDate)
 		endDateDayLabel.text = dayFormatter.string(from: eventInformations.endDate)
 		
 		UIView.animate(withDuration: duration / 2, delay: 0, options: .curveEaseInOut, animations: {
-			self.startDateHourLabel.textColor = Theme.calendarWhite
-			self.startDateDayLabel.textColor = Theme.calendarWhite
-			self.endDateHourLabel.textColor = Theme.calendarWhite
-			self.endDateHourLabel.textColor = Theme.calendarWhite
+			self.startDateHourLabel.textColor = Color.white
+			self.startDateDayLabel.textColor = Color.white
+			self.endDateHourLabel.textColor = Color.white
+			self.endDateHourLabel.textColor = Color.white
 		}, completion: nil)
 	}
 	
 	override func awakeFromNib() {
 		
 		self.eventInformations = EventEditorViewController.getEventsInformations()
+		
+		if eventInformations.state == .showDetail {
+			allDaySwitch.isUserInteractionEnabled = false
+			startDateView.isUserInteractionEnabled = false
+			endDateView.isUserInteractionEnabled = false
+		}
 		
 		previousIsAllDaySwitchFontStyle = UIFont.boldSystemFont(ofSize: 30) 
 		
@@ -157,11 +202,11 @@ class DateSelectionTableViewCell: UITableViewCell {
 		self.backgroundColor = UIColor.clear
 		
 		allDaySwitch.layer.cornerRadius = allDaySwitch.frame.height / 2
-		allDaySwitch.tintColor = Theme.calendarWhite
+		allDaySwitch.tintColor = Color.white
 		setAllDaySwitchDesign()
 		toggleIsAllDaySwitchFont()
 		
-		mainView.backgroundColor = Theme.calendarBlue
+		mainView.backgroundColor = Color.blue
 		mainView.layer.cornerRadius = mainView.frame.height / 2
 		mainView.layer.masksToBounds = false
 		

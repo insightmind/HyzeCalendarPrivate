@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import EventKit
 
 class DayView: UIView {
     
     let dayCenterButtonSpacing: CGFloat = 20
+	var selectedEventIdentifier: String?
     
     lazy var topLabel: UILabel = {
         let lbl = UILabel()
@@ -87,15 +89,17 @@ class DayView: UIView {
         date = forDate
     }
 	
-	func reloadData() {
-		for i in subviews {
-			i.removeFromSuperview()
+	func reloadData(animated: Bool = true) {
+		
+		for i in events {
+			i.animate(.delete, duration: animated ? 0.3 : 0, delay: 0)
 		}
 		setUp()
 	}
     
     func setUp() {
-        self.backgroundColor = UIColor.clear
+		
+		self.backgroundColor = UIColor.clear
 		
 		layer.shadowColor = UIColor.black.cgColor
 		layer.shadowOffset = CGSize(width: 0.0, height: 2.5)
@@ -168,18 +172,18 @@ class DayView: UIView {
         }
         if darkMode {
             if TMCalendar.isDateInToday(TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item)){
-                label.textColor = Theme.calendarWhite
+                label.textColor = Color.white
             } else {
-                label.textColor = Theme.calendarGrey
+                label.textColor = Color.grey
             }
         } else {
             if TMCalendar.isDateInToday(TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item)){
-                label.textColor = Theme.calendarGrey
+                label.textColor = Color.grey
             } else {
-                label.textColor = Theme.calendarWhite
+                label.textColor = Color.white
             }
         }
-		label.textColor = Theme.calendarWhite
+		label.textColor = Color.white
 
     }
     
@@ -189,8 +193,8 @@ class DayView: UIView {
             x: self.dayViewCenterButton.bounds.width / 4,
             y: 2.75 * self.dayViewCenterButton.bounds.height / 10,
             width: 2 * self.dayViewCenterButton.bounds.width / 4,
-            height: self.dayViewCenterButton.bounds.height / 10)
-        self.topLabel.font = UIFont.boldSystemFont(ofSize: self.topLabel.bounds.height)
+            height: self.dayViewCenterButton.bounds.height / 10 + 3)
+        self.topLabel.font = UIFont.boldSystemFont(ofSize: self.topLabel.bounds.height - 2)
         let (selectedYearID , selectedMonthID, _) = HSelection.selectedDayCellIndex
 		self.topLabel.text = TimeManagement.getMonthName(TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: 1), withYear: false)
         self.dayViewCenterButton.addSubview(topLabel)
@@ -203,13 +207,26 @@ class DayView: UIView {
             y: 3.75 * self.dayViewCenterButton.bounds.height / 10,
             width:  2 * self.dayViewCenterButton.bounds.width / 4,
             height: self.dayViewCenterButton.bounds.height / 4)
-        self.midLabel.font = UIFont.boldSystemFont(ofSize: self.midLabel.bounds.height)
+        self.midLabel.font = UIFont.boldSystemFont(ofSize: self.midLabel.bounds.height - 5)
         let (_, _, indexPath) = HSelection.selectedDayCellIndex
         
         guard let selectedIndexPath = indexPath else {
             fatalError()
         }
-        self.midLabel.text = String(selectedIndexPath.item)
+		var text = ""
+		
+		switch selectedIndexPath.item {
+		case 1:
+			text = "1st"
+		case 2:
+			text = "2nd"
+		case 3:
+			text = "3rd"
+		default:
+			text = "\(selectedIndexPath.item)th"
+		}
+		
+        self.midLabel.text = text
         self.dayViewCenterButton.addSubview(midLabel)
     }
     
@@ -278,6 +295,7 @@ class DayView: UIView {
 					let event = EventView(frame: self.bounds , carcWidth: 5, eventIdentifier: i.key)
 					event.drawLayer = layer
 					event.sendTimeProperties(start: i.value[1], end: i.value[2])
+					event.sendColorProperties(EManagement.getCalendarColor(eventIdentifier: event.eventIdentifier) ?? UIColor.randomColor())
 					if i.value[0] == 0 {
 						event.isFullDay = true
 					}
@@ -312,15 +330,15 @@ class DayView: UIView {
         if TMCalendar.isDateInToday(TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID , dayID: selectedIndexPath.item)){
             let watchhand = EventView(frame: self.bounds, carcWidth: 50, hourRotation: true)
             watchhand.sendTimeProperties(start:  -5, end: 5)
-			watchhand.sendColorProperties(darkMode ? Theme.calendarWhite : Theme.calendarGrey)
+			watchhand.sendColorProperties(darkMode ? Color.white : Color.grey)
             self.addSubview(watchhand)
 			let now = Date()
 			let components = TMCalendar.components(in: TimeZone.autoupdatingCurrent, from: now)
 			let nextDay = TimeManagement.convertToDate(yearID: components.year!, monthID: components.month!, dayID: components.day! + 1)
 			let duration = nextDay.timeIntervalSince(now)
 			let nowRadiant = TimeManagement.timeRadiant(now)
-			watchhand.transform = CGAffineTransform(rotationAngle: nowRadiant )
-			let fullRotation = 2*PI - TimeManagement.timeRadiant(now)
+			watchhand.transform = CGAffineTransform(rotationAngle: nowRadiant)
+			let fullRotation = ((1440 * PI)/720) - TimeManagement.timeRadiant(now)
 
 			UIView.animateKeyframes(withDuration: duration, delay: 0, options: UIViewKeyframeAnimationOptions(rawValue: 3 << 16), animations: {
 				
@@ -351,10 +369,16 @@ class DayView: UIView {
 	}
     
     func selectEventView(with stringIdentifier: String!, duration: TimeInterval = 0.2) {
+		
+		self.deselectEventView(with: selectedEventIdentifier)
+		
+		selectedEventIdentifier = stringIdentifier
+		
 		guard let eventView = getEventView(with: stringIdentifier) else {
 			return
 		}
         eventView.animate(.select, duration: duration)
+		
     }
     
     func deselectEventView(with stringIdentifier: String!, duration: TimeInterval = 0.2) {

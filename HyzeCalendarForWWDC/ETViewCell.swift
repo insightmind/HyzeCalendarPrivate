@@ -17,6 +17,7 @@ class ETViewCell: UITableViewCell {
     var color: UIColor = UIColor.yellow
     var superEvent: EKEvent?
 	var eventIdentifier: String! = ""
+	var dayView: DayView? = nil
     
     lazy var inheritanceBar: UIView = {
         let vw = UIView()
@@ -30,9 +31,9 @@ class ETViewCell: UITableViewCell {
         lbl.font = UIFont.systemFont(ofSize: 16)
         lbl.numberOfLines = 2
         if darkMode {
-            lbl.textColor = Theme.calendarWhite
+            lbl.textColor = Color.white
         } else {
-            lbl.textColor = Theme.calendarWhite
+            lbl.textColor = Color.white
         }
         return lbl
     }()
@@ -62,7 +63,7 @@ class ETViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-	func sendProperties(_ title: String = "unknown", from: Date, to: Date, color: UIColor = Theme.calendarOrange, inherit: EKEvent? = nil, isAllDay: Bool, eventIdentifier: String!) {
+	func sendProperties(_ title: String = "unknown", from: Date, to: Date, color: UIColor = Color.orange, inherit: EKEvent? = nil, isAllDay: Bool, eventIdentifier: String!) {
         self.title = title
 		self.eventIdentifier = eventIdentifier
         
@@ -86,6 +87,14 @@ class ETViewCell: UITableViewCell {
             self.start = "\(dateformatter.string(from: from))"
             self.end = "\(dateformatter.string(from: to))"
         }
+		
+		if isSelected {
+			let otherOption = CGFloat(8)
+			self.inheritanceBar.bounds = CGRect(x: 25, y: 2, width: otherOption, height: 40)
+			self.inheritanceBar.layer.cornerRadius = otherOption / 3
+			self.contentView.backgroundColor = Color.white.withAlphaComponent(0.15)
+		}
+		
         self.color = color
         self.superEvent = inherit
         if informationMode {
@@ -99,7 +108,7 @@ class ETViewCell: UITableViewCell {
         
         self.accessoryType = .none
         
-        self.inheritanceBar.backgroundColor = Theme.calendarWhite
+        self.inheritanceBar.backgroundColor = EManagement.getCalendarColor(eventIdentifier: eventIdentifier) ?? Color.white
         self.titleLabel.text = self.title
         self.startLabel.text = self.start
         self.endLabel.text = self.end
@@ -108,9 +117,9 @@ class ETViewCell: UITableViewCell {
         endLabel.textColor = UIColor.white
         
         if darkMode {
-            titleLabel.textColor = Theme.calendarWhite
+            titleLabel.textColor = Color.white
         } else {
-            titleLabel.textColor = Theme.calendarWhite
+            titleLabel.textColor = Color.white
         }
         
     }
@@ -146,6 +155,7 @@ class ETViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         self.inheritanceBar.bounds = CGRect(x: 5, y: 2, width: 2, height: 40)
+		self.contentView.backgroundColor = UIColor.clear
     }
 
 }

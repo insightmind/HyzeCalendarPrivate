@@ -230,6 +230,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COMING SOON" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x9C-MF-V4n">
+                                <rect key="frame" x="99.5" y="274" width="121" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygW-cW-Mcx">
                                 <rect key="frame" x="140" y="320" width="40" height="30"/>
                                 <state key="normal" title="BACK"/>
@@ -237,12 +243,6 @@
                                     <segue destination="lzF-rb-nlD" kind="unwind" unwindAction="unwindToRedWithSegue:" id="2Bo-XP-zbz"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COMING SOON" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x9C-MF-V4n">
-                                <rect key="frame" x="99.5" y="274" width="121" height="20"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -256,7 +256,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Puk-xb-wlI" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="lzF-rb-nlD" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="8368.359375" y="772.68661971830966"/>
+            <point key="canvasLocation" x="7247" y="-43"/>
         </scene>
         <!--MainNavigation-->
         <scene sceneID="Z3t-l8-PvS">
@@ -325,7 +325,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="7971" y="-973"/>
+            <point key="canvasLocation" x="8138" y="-973"/>
         </scene>
         <!--Settings-->
         <scene sceneID="dfx-2M-lMU">

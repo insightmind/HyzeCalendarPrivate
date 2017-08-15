@@ -69,33 +69,33 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
 		self.calendarView.layer.masksToBounds = false
         if darkMode{
-            view.backgroundColor = Theme.calendarGrey
-			daysOfWeekBackgroundView.backgroundColor = Theme.calendarGrey
-			updateDaysOfWeek(color: Theme.calendarWhite, weekendColor: Theme.calendarGreen)
-			navigationController?.navigationBar.barTintColor = Theme.calendarGrey
-			navigationController?.navigationBar.titleTextAttributes![NSAttributedStringKey.foregroundColor] = Theme.calendarWhite
-			navigationBar.backBarButtonItem?.tintColor = Theme.calendarGrey
-			navigationBar.leftBarButtonItem?.tintColor = Theme.calendarWhite
-			navigationBar.rightBarButtonItem?.tintColor = Theme.calendarWhite
-			toolbar.barTintColor = Theme.calendarGrey
+            view.backgroundColor = Color.grey
+			daysOfWeekBackgroundView.backgroundColor = Color.grey
+			updateDaysOfWeek(color: Color.white, weekendColor: Color.green)
+			navigationController?.navigationBar.barTintColor = Color.grey
+			navigationController?.navigationBar.titleTextAttributes![NSAttributedStringKey.foregroundColor] = Color.white
+			navigationBar.backBarButtonItem?.tintColor = Color.grey
+			navigationBar.leftBarButtonItem?.tintColor = Color.white
+			navigationBar.rightBarButtonItem?.tintColor = Color.white
+			toolbar.barTintColor = Color.grey
 			if toolbar.items != nil {
 				for i in toolbar.items! {
-					i.tintColor = Theme.calendarWhite
+					i.tintColor = Color.white
 				}
 			}
         } else {
-            view.backgroundColor = Theme.calendarWhite
-			daysOfWeekBackgroundView.backgroundColor = Theme.calendarWhite
-			updateDaysOfWeek(color: Theme.calendarGrey, weekendColor: Theme.calendarGreen)
-			navigationController?.navigationBar.barTintColor = Theme.calendarWhite
-			navigationController?.navigationBar.titleTextAttributes![NSAttributedStringKey.foregroundColor] = Theme.calendarGrey
-			navigationBar.backBarButtonItem?.tintColor = Theme.calendarGrey
-			navigationBar.leftBarButtonItem?.tintColor = Theme.calendarGrey
-			navigationBar.rightBarButtonItem?.tintColor = Theme.calendarGrey
-			toolbar.barTintColor = Theme.calendarWhite
+            view.backgroundColor = Color.white
+			daysOfWeekBackgroundView.backgroundColor = Color.white
+			updateDaysOfWeek(color: Color.grey, weekendColor: Color.green)
+			navigationController?.navigationBar.barTintColor = Color.white
+			navigationController?.navigationBar.titleTextAttributes![NSAttributedStringKey.foregroundColor] = Color.grey
+			navigationBar.backBarButtonItem?.tintColor = Color.grey
+			navigationBar.leftBarButtonItem?.tintColor = Color.grey
+			navigationBar.rightBarButtonItem?.tintColor = Color.grey
+			toolbar.barTintColor = Color.white
 			if toolbar.items != nil {
 				for i in toolbar.items! {
-					i.tintColor = Theme.calendarGrey
+					i.tintColor = Color.grey
 				}
 			}
         }

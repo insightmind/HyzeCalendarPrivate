@@ -139,12 +139,34 @@
                                     </switch>
                                 </subviews>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jAq-qH-V6P">
+                                <rect key="frame" x="26" y="321.5" width="324" height="31"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="enable EE.showDetail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ci4-5J-3Lq">
+                                        <rect key="frame" x="0.0" y="0.0" width="275" height="31"/>
+                                        <color key="backgroundColor" red="0.065588932028570746" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="0.0" blue="0.028078071964937834" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Hh7-oZ-wNX">
+                                        <rect key="frame" x="275" y="0.0" width="51" height="31"/>
+                                        <color key="backgroundColor" red="0.065588932030000005" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="onTintColor" red="1" green="0.0" blue="0.028078071959999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="toggleEEShowDetail:" destination="9Ys-zU-rvq" eventType="valueChanged" id="Gfw-Dg-SUQ"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="jAq-qH-V6P" firstAttribute="top" secondItem="FUa-qk-O5b" secondAttribute="bottom" constant="5" id="8Gf-9V-p72"/>
                             <constraint firstItem="njq-LW-myP" firstAttribute="trailing" secondItem="JwF-B0-bp4" secondAttribute="trailingMargin" id="9dW-sG-e3B"/>
                             <constraint firstItem="ci4-S1-2vx" firstAttribute="centerX" secondItem="FUa-qk-O5b" secondAttribute="centerX" id="BQK-8s-YSj"/>
                             <constraint firstAttribute="trailing" secondItem="FUa-qk-O5b" secondAttribute="trailing" constant="25" id="CRV-ca-7UY"/>
+                            <constraint firstItem="jAq-qH-V6P" firstAttribute="leading" secondItem="JwF-B0-bp4" secondAttribute="leading" constant="26" id="JIB-R6-Ux5"/>
                             <constraint firstItem="iSx-hX-3vF" firstAttribute="leading" secondItem="I8S-10-ncE" secondAttribute="leading" id="K45-KA-QEN"/>
                             <constraint firstAttribute="trailing" secondItem="ci4-S1-2vx" secondAttribute="trailing" constant="26" id="PFL-G8-7DO"/>
                             <constraint firstItem="njq-LW-myP" firstAttribute="leading" secondItem="ExF-LV-Yrz" secondAttribute="trailing" constant="25" id="SSA-ua-vWA"/>
@@ -157,6 +179,7 @@
                             <constraint firstItem="I8S-10-ncE" firstAttribute="trailing" secondItem="PCJ-Gd-eyQ" secondAttribute="trailing" id="cqW-fV-Bsk"/>
                             <constraint firstItem="iSx-hX-3vF" firstAttribute="trailing" secondItem="I8S-10-ncE" secondAttribute="trailing" id="eMO-T6-SZ8"/>
                             <constraint firstItem="ExF-LV-Yrz" firstAttribute="top" secondItem="zU0-dh-AkT" secondAttribute="bottom" constant="11" id="klX-Sv-dn6"/>
+                            <constraint firstAttribute="trailing" secondItem="jAq-qH-V6P" secondAttribute="trailing" constant="25" id="nqk-bw-dx5"/>
                             <constraint firstItem="I8S-10-ncE" firstAttribute="top" secondItem="iSx-hX-3vF" secondAttribute="bottom" constant="8" symbolic="YES" id="r17-nX-zEJ"/>
                             <constraint firstItem="PCJ-Gd-eyQ" firstAttribute="top" secondItem="I8S-10-ncE" secondAttribute="bottom" constant="8" symbolic="YES" id="v2A-Eu-rYA"/>
                             <constraint firstAttribute="trailing" secondItem="iSx-hX-3vF" secondAttribute="trailing" constant="26" id="v2S-Fb-qXo"/>
@@ -170,6 +193,7 @@
                     </view>
                     <splitViewDetailSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="EEshowDetail" destination="Hh7-oZ-wNX" id="l8H-96-r3m"/>
                         <outlet property="animateDayViewLabel" destination="bf1-hS-ee0" id="3BO-gT-dkJ"/>
                         <outlet property="animateDayViewSwitch" destination="Wze-8G-gOP" id="mdt-ri-RAv"/>
                         <outlet property="darkModeLabel" destination="Kk3-6s-xKs" id="VFm-M8-74s"/>

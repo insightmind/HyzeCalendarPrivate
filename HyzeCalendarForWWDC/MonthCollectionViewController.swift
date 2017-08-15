@@ -233,7 +233,7 @@ extension MonthCollectionViewController {
 		cell.layer.shadowPath = UIBezierPath(rect: CGRect.zero).cgPath
 		cell.contentView.bounds = CGRect.zero
 		cell.contentView.layer.cornerRadius = 0
-		cell.contentView.backgroundColor = darkMode ? Theme.calendarGrey : Theme.calendarWhite
+		cell.contentView.backgroundColor = darkMode ? Color.grey : Color.white
 		UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
 			
 			cell.setCellDesign(isToday: isToday, isSelected: isSelected, isOnWeekend: isOnWeekend)

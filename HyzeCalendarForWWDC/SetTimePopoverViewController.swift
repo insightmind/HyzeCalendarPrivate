@@ -27,13 +27,25 @@ class SetTimePopoverViewController: UIViewController {
 	}
 	
 	@IBAction func save(_ sender: UIButton) {
-		eventInformations.startDate = dates[.startDate]!
-		eventInformations.endDate = dates[.endDate]!
-		if let presenter = presentingViewController as? EventEditorViewController {
-			presenter.reloadTableViewCells(.dateSelection, onlyInformations: true)
-		}
 		
-		self.dismiss(animated: true, completion: nil)
+		if TMCalendar.compare(dates[.startDate]!, to: dates[.endDate]!, toUnitGranularity: .minute) == ComparisonResult.orderedDescending {
+			self.yearLabel.text = "Starts must be before Ends!"
+			UIView.animate(withDuration: 0.7, animations: {
+				self.startsButton.backgroundColor = Color.red
+				self.endsButton.backgroundColor = Color.red
+			}, completion: { (_) in
+				self.didSelect(forState: self.currentState, animated: true, duration: 0.7)
+			})
+			
+		} else {
+			eventInformations.startDate = dates[.startDate]!
+			eventInformations.endDate = dates[.endDate]!
+			if let presenter = presentingViewController as? EventEditorViewController {
+				presenter.reloadTableViewCells(.dateSelection, onlyInformations: true)
+			}
+			
+			self.dismiss(animated: true, completion: nil)
+		}
 	}
 	
 	@IBAction func setStartsPage(_ sender: UIButton) {
@@ -45,7 +57,7 @@ class SetTimePopoverViewController: UIViewController {
 	
 	@IBAction func changeDate(_ sender: UIDatePicker) {
 		dates[currentState] = sender.date
-		updateYearLabel(0)
+		yearLabel.text = String(TMCalendar.component(.year, from: dates[currentState]!))
 	}
 	
 	override func viewDidLoad() {
@@ -72,51 +84,35 @@ class SetTimePopoverViewController: UIViewController {
 		popover.layer.masksToBounds = true
 
         // Do any additional setup after loading the view.
+		
     }
 	
-	func didSelect(forState: DateSpecification, animated isAnimated: Bool) {
-		let duration = isAnimated ? 0.3 : 0
+	func didSelect(forState: DateSpecification, animated isAnimated: Bool, duration: TimeInterval = 0.3) {
+		let time = isAnimated ? duration : 0
 		currentState = forState
 		switch forState {
 		case .startDate:
-			UIView.animate(withDuration: duration, delay: 0, options: .curveEaseInOut, animations: {
-				self.startsButton.backgroundColor = Theme.calendarLightBlue
-				self.endsButton.backgroundColor = Theme.calendarBlue
-			}, completion: nil)
+			UIView.animate(withDuration: time, delay: 0, options: .curveEaseInOut, animations: {
+				self.startsButton.backgroundColor = Color.lightBlue
+				self.endsButton.backgroundColor = Color.blue
+			}, completion: { (_) in
+				self.yearLabel.text = String(TMCalendar.component(.year, from: self.dates[self.currentState]!))
+			})
 		case .endDate:
-			UIView.animate(withDuration: duration, delay: 0, options: .curveEaseInOut, animations: {
-				self.endsButton.backgroundColor = Theme.calendarLightBlue
-				self.startsButton.backgroundColor = Theme.calendarBlue
-			}, completion: nil)
+			UIView.animate(withDuration: time, delay: 0, options: .curveEaseInOut, animations: {
+				self.endsButton.backgroundColor = Color.lightBlue
+				self.startsButton.backgroundColor = Color.blue
+			}, completion: { (_) in
+				self.yearLabel.text = String(TMCalendar.component(.year, from: self.dates[self.currentState]!))
+			})
 		}
-		updateYearLabel(duration)
+		
 		datePicker.setDate(dates[currentState]!, animated: isAnimated)
-	}
-	
-	func updateYearLabel(_ duration: Double) {
-		UIView.animate(withDuration: duration / 2, delay: 0, options: .curveEaseInOut, animations: {
-			self.yearLabel.textColor = UIColor.clear
-		}, completion: nil)
-		yearLabel.text = String(TMCalendar.component(.year, from: dates[currentState]!))
-		UIView.animate(withDuration: duration / 2, delay: 0, options: .curveEaseInOut, animations: {
-			self.yearLabel.textColor = Theme.calendarWhite
-		}, completion: nil)
 	}
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

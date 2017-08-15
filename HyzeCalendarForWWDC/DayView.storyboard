@@ -26,6 +26,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NeF-Az-v1m" customClass="DayView" customModule="HyzeCalendarForWWDC" customModuleProvider="target">
                                 <rect key="frame" x="75" y="40" width="225" height="225"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="225" id="CzV-EV-qyi"/>
                                     <constraint firstAttribute="width" secondItem="NeF-Az-v1m" secondAttribute="height" multiplier="1:1" id="on8-ep-cWk"/>
@@ -44,7 +45,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MZw-of-dJN" id="MG7-Ke-Eap">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -67,20 +68,40 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="barTintColor" red="1" green="0.42054718870000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </toolbar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DCD-IK-MQs">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="305"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="cbs-bN-xwi" appends="YES" id="WcA-QW-LfW"/>
+                                    <outletCollection property="gestureRecognizers" destination="e3r-qf-M7u" appends="YES" id="fxf-TQ-5kq"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="NeF-Az-v1m" firstAttribute="centerX" secondItem="PfB-zh-Sgo" secondAttribute="centerX" id="4ML-am-oUn"/>
                             <constraint firstItem="qet-3Z-dfx" firstAttribute="leading" secondItem="PfB-zh-Sgo" secondAttribute="leadingMargin" constant="-16" id="74b-Kr-gma"/>
+                            <constraint firstAttribute="trailing" secondItem="DCD-IK-MQs" secondAttribute="trailing" id="BQm-Az-hLj"/>
+                            <constraint firstItem="NeF-Az-v1m" firstAttribute="centerX" secondItem="PfB-zh-Sgo" secondAttribute="centerX" id="CqK-hg-WbP"/>
+                            <constraint firstAttribute="leading" secondItem="NeF-Az-v1m" secondAttribute="trailing" constant="75" id="EZW-M9-z2l"/>
                             <constraint firstItem="z9O-L3-LpW" firstAttribute="leading" secondItem="PfB-zh-Sgo" secondAttribute="leading" id="GU5-0v-sWG"/>
+                            <constraint firstItem="qet-3Z-dfx" firstAttribute="top" secondItem="DCD-IK-MQs" secondAttribute="bottom" id="MGD-CQ-ip3"/>
                             <constraint firstAttribute="trailing" secondItem="z9O-L3-LpW" secondAttribute="trailing" id="Mlr-mI-gdS"/>
                             <constraint firstItem="z9O-L3-LpW" firstAttribute="bottom" secondItem="n78-f7-hAW" secondAttribute="top" id="Qtc-Oj-JxX"/>
+                            <constraint firstItem="NeF-Az-v1m" firstAttribute="leading" secondItem="PfB-zh-Sgo" secondAttribute="trailing" constant="75" id="SSG-s2-gxn"/>
+                            <constraint firstItem="DCD-IK-MQs" firstAttribute="leading" secondItem="PfB-zh-Sgo" secondAttribute="leading" id="Vfi-4f-vhq"/>
+                            <constraint firstItem="DCD-IK-MQs" firstAttribute="top" secondItem="Nza-hy-l1u" secondAttribute="bottom" id="aSd-0w-jBh"/>
                             <constraint firstItem="z9O-L3-LpW" firstAttribute="top" secondItem="qet-3Z-dfx" secondAttribute="bottom" constant="-60" id="gCh-UT-77I"/>
                             <constraint firstAttribute="trailingMargin" secondItem="qet-3Z-dfx" secondAttribute="trailing" constant="-16" id="grD-IX-Ges"/>
                             <constraint firstItem="NeF-Az-v1m" firstAttribute="top" secondItem="Nza-hy-l1u" secondAttribute="bottom" constant="40" id="kOe-vh-yfQ"/>
                             <constraint firstItem="n78-f7-hAW" firstAttribute="top" secondItem="z9O-L3-LpW" secondAttribute="bottom" id="q9X-io-fC8"/>
                             <constraint firstItem="qet-3Z-dfx" firstAttribute="top" secondItem="NeF-Az-v1m" secondAttribute="bottom" constant="40" id="w3I-Hw-b1Z"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="EZW-M9-z2l"/>
+                                <exclude reference="SSG-s2-gxn"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" tag="1" systemItem="more" id="kJ7-Jn-DGx"/>
                     <navigationItem key="navigationItem" id="9bw-Ll-QIt">
@@ -97,21 +118,37 @@
                         <color key="barTintColor" red="0.93814986944198608" green="0.51639610528945923" blue="0.2135617733001709" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </simulatedNavigationBarMetrics>
                     <connections>
+                        <outlet property="LeftSwipeRecognizer" destination="e3r-qf-M7u" id="faR-hg-uZl"/>
+                        <outlet property="RightSwipeRecognizer" destination="cbs-bN-xwi" id="Sgi-kz-Ryd"/>
                         <outlet property="addButton" destination="mpO-EJ-ORb" id="gLy-8d-ZcI"/>
                         <outlet property="day" destination="NeF-Az-v1m" id="RBp-N6-QbW"/>
+                        <outlet property="dayViewLeft" destination="EZW-M9-z2l" id="0eV-BC-LI2"/>
+                        <outlet property="dayViewNormal" destination="CqK-hg-WbP" id="vGp-iu-jjc"/>
+                        <outlet property="dayViewRight" destination="SSG-s2-gxn" id="OnY-ej-3Ne"/>
                         <outlet property="editButton" destination="Q3u-zm-CiR" id="W1I-uF-ziI"/>
+                        <outlet property="eventTableView" destination="qet-3Z-dfx" id="9it-wW-K6x"/>
                         <outlet property="toolbar" destination="z9O-L3-LpW" id="3OK-qT-vtO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9tn-v4-F0a" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="nyN-5R-T2a" customClass="ETView" customModule="HyzeCalendarForWWDC" customModuleProvider="target"/>
+                <swipeGestureRecognizer direction="right" id="cbs-bN-xwi">
+                    <connections>
+                        <action selector="swipeRight:" destination="4in-gb-opo" id="sCL-DH-rNe"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="e3r-qf-M7u">
+                    <connections>
+                        <action selector="swipeLeft:" destination="4in-gb-opo" id="8QP-O3-8hI"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="7140" y="-84.107946026986511"/>
+            <point key="canvasLocation" x="7140" y="-109"/>
         </scene>
-        <!--Event Editor View Controller-->
+        <!--eventEditor-->
         <scene sceneID="jfK-W9-XJB">
             <objects>
-                <viewController id="CPl-dw-xgF" customClass="EventEditorViewController" customModule="HyzeCalendarForWWDC" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="eventEditor" id="CPl-dw-xgF" customClass="EventEditorViewController" customModule="HyzeCalendarForWWDC" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Esq-Go-3wf"/>
                         <viewControllerLayoutGuide type="bottom" id="AY9-Ry-ahx"/>
@@ -122,13 +159,13 @@
                         <subviews>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dcw-VL-8Yh">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="IQ9-0U-0qH">
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="IQ9-0U-0qH">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VZE-Mz-WFL">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="1Xu-XP-T9N">
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="1Xu-XP-T9N">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             </view>
@@ -154,13 +191,13 @@
                             </containerView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OvM-tT-AXz">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="123"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Dkn-J6-nHi">
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Dkn-J6-nHi">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="123"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8jl-H2-mcO">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="123"/>
-                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="nN2-AS-zWK">
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="nN2-AS-zWK">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="123"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             </view>
@@ -242,6 +279,7 @@
                         <outlet property="blurEffectNavbarView" destination="OvM-tT-AXz" id="SNx-gX-AUo"/>
                         <outlet property="blurEffectView" destination="Dcw-VL-8Yh" id="SeW-jZ-tg2"/>
                         <outlet property="newEventTextField" destination="fmZ-f3-9fn" id="g2Q-P6-isb"/>
+                        <outlet property="saveButton" destination="j08-VV-qd0" id="UA4-Ln-Svx"/>
                         <outlet property="tableView" destination="4Mp-VE-c89" id="zXy-hS-t35"/>
                     </connections>
                 </viewController>
@@ -255,7 +293,7 @@
         <scene sceneID="1Hd-kH-Cab">
             <objects>
                 <tableViewController id="Ehi-tk-gaE" customClass="EventEditorTableViewController" customModule="HyzeCalendarForWWDC" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="NPS-Od-36P">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="NPS-Od-36P">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="664"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -275,7 +313,7 @@
                 <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="UIViewController-S48-rw-GfR" id="Vrz-5e-BI9" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kEw-n4-kOJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7141" y="658"/>
+            <point key="canvasLocation" x="7140" y="410"/>
         </scene>
     </scenes>
 </document>

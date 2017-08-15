@@ -23,7 +23,7 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
         super.viewDidLoad()
 		
 		if EManagement.askForPermission() {
-			self.collectionView!.reloadData()
+			self.reloadCalendarView()
 		}
 		
         // Uncomment the following line to preserve selection between presentations
@@ -45,16 +45,6 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     // MARK: UICollectionViewDataSource
 	
@@ -93,11 +83,17 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
     
     override func viewWillAppear(_ animated: Bool) {
         if needsDesignUpdate {
-            self.collectionView!.reloadData()
+            reloadCalendarView()
             needsDesignUpdate = false
         }
 		self.calculateETViewUpdate()
     }
+	
+	func reloadCalendarView() {
+		self.collectionView!.reloadData()
+		let (yearID, monthID, _ ) = HSelection.selectedDayCellIndex
+		scrollToSection(yearID: yearID, monthID: monthID - 1, animated: false)
+	}
     
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 		let width = UIScreen.main.bounds.width - 12

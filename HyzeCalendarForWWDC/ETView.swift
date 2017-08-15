@@ -31,13 +31,16 @@ class ETView: UITableView, UITableViewDataSource, UITableViewDelegate{
             }
         }
         eventCell.selectionStyle = .none
+		
 
-		eventCell.sendProperties(event.title, from: event.startDate, to: event.endDate, color: Theme.calendarOrange, inherit: nil, isAllDay: event.isAllDay, eventIdentifier: event.eventIdentifier)
+		eventCell.sendProperties(event.title, from: event.startDate, to: event.endDate, color: Color.orange, inherit: nil, isAllDay: event.isAllDay, eventIdentifier: event.eventIdentifier)
         
         return eventCell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		
+		tableView.allowsMultipleSelection = false
 		
         tableView.contentInset = UIEdgeInsets(top: 30, left: 0, bottom: 30, right: 0)
         tableView.register(ETViewCell.self, forCellReuseIdentifier: cellIdentifier)
@@ -110,11 +113,11 @@ class ETView: UITableView, UITableViewDataSource, UITableViewDelegate{
 	func setDesign() {
 		UIView.animate(withDuration: 0.2) {
 			if HSelection.selectedIsToday!  {
-				self.backgroundColor = Theme.calendarRed
+				self.backgroundColor = Color.red
 			} else if HSelection.selectedIsOnWeekend! {
-				self.backgroundColor = Theme.calendarGreen
+				self.backgroundColor = Color.green
 			} else {
-				self.backgroundColor = Theme.calendarBlue
+				self.backgroundColor = Color.blue
 			}
 		}
 	}
@@ -126,7 +129,7 @@ class ETView: UITableView, UITableViewDataSource, UITableViewDelegate{
         }
         
         if indexPath == selectedETViewCellIndexPath {
-            return
+			return
         }
         if selectedETViewCellIndexPath != nil {
             var access = true
@@ -162,30 +165,24 @@ class ETView: UITableView, UITableViewDataSource, UITableViewDelegate{
                 renDayView?.selectEventView(with: row.eventIdentifier, duration: duration)
             }
         }
-        let otherOption = row.inheritanceBar.bounds.width * 4
+		let otherOption = row.inheritanceBar.bounds.width * 4
         
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .curveEaseOut, animations: {
-            row.inheritanceBar.bounds = CGRect(x: 5, y: 2, width: otherOption, height: 40)
+            row.inheritanceBar.bounds = CGRect(x: 25, y: 2, width: otherOption, height: 40)
             row.inheritanceBar.layer.cornerRadius = otherOption / 3
+			row.contentView.backgroundColor = Color.white.withAlphaComponent(0.15)
         }, completion: nil)
-        
-        row.contentView.backgroundColor = Theme.calendarWhite.withAlphaComponent(0.15)
+		row.isSelected = true
     }
     
     func visuallyDeSelect(_ row: ETViewCell, duration: TimeInterval = 0.2, indexPath: IndexPath) {
         
-        if viewIsDayView {
-            if renDayView != nil {
-				renDayView?.deselectEventView(with: row.eventIdentifier, duration: duration)
-            }
-        }
-        
         UIView.animate(withDuration: duration, delay: 0, options: [.curveEaseOut], animations: {
             row.inheritanceBar.bounds = CGRect(x: 5, y: 2, width: 2, height: 40)
             row.inheritanceBar.layer.cornerRadius = 0
+			row.contentView.backgroundColor = UIColor.clear
         }, completion: nil)
-        
-        row.contentView.backgroundColor = UIColor.clear
+		row.isSelected = false
     }
     
     override init(frame: CGRect, style: UITableViewStyle) {

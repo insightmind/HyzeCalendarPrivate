@@ -20,6 +20,7 @@ class SettingsViewController: UIViewController {
 	@IBOutlet weak var animateDayViewLabel: UILabel!
 	@IBOutlet weak var animateDayViewSwitch: UISwitch!
 	@IBOutlet weak var startWeekDaySegmentedControl: UISegmentedControl!
+	@IBOutlet weak var EEshowDetail: UISwitch!
 	
 	@IBAction func toggleAnimateDayView(_ sender: UISwitch) {
 		let defaults = UserDefaults.standard
@@ -32,7 +33,17 @@ class SettingsViewController: UIViewController {
 		defaults.synchronize()
 	}
 	
-    @IBAction func toggleShowLinesInCalendarView(_ sender: UISwitch) {
+	@IBAction func toggleEEShowDetail(_ sender: UISwitch) {
+		
+		if isEEshowDetail {
+			isEEshowDetail = false
+		} else {
+			isEEshowDetail = true
+		}
+		
+	}
+	
+	@IBAction func toggleShowLinesInCalendarView(_ sender: UISwitch) {
         let defaults = UserDefaults.standard
         if showLinesInCalendarView {
             showLinesInCalendarView = false
@@ -56,19 +67,19 @@ class SettingsViewController: UIViewController {
         defaults.synchronize()
 		UIView.animate(withDuration: 0.4) {
 			if darkMode{
-				self.settingsLabel.textColor = Theme.calendarWhite
-				self.showLines.textColor = Theme.calendarWhite
-				self.hours24Label.textColor = Theme.calendarWhite
-				self.darkModeLabel.textColor = Theme.calendarWhite
-				self.animateDayViewLabel.textColor = Theme.calendarWhite
-				self.view.backgroundColor = Theme.calendarGrey
+				self.settingsLabel.textColor = Color.white
+				self.showLines.textColor = Color.white
+				self.hours24Label.textColor = Color.white
+				self.darkModeLabel.textColor = Color.white
+				self.animateDayViewLabel.textColor = Color.white
+				self.view.backgroundColor = Color.grey
 			} else {
-				self.settingsLabel.textColor = Theme.calendarGrey
-				self.showLines.textColor = Theme.calendarGrey
-				self.hours24Label.textColor = Theme.calendarGrey
-				self.darkModeLabel.textColor = Theme.calendarGrey
-				self.animateDayViewLabel.textColor = Theme.calendarGrey
-				self.view.backgroundColor = Theme.calendarWhite
+				self.settingsLabel.textColor = Color.grey
+				self.showLines.textColor = Color.grey
+				self.hours24Label.textColor = Color.grey
+				self.darkModeLabel.textColor = Color.grey
+				self.animateDayViewLabel.textColor = Color.grey
+				self.view.backgroundColor = Color.white
 			}
 		}
     }
@@ -84,21 +95,21 @@ class SettingsViewController: UIViewController {
 	
 	override func viewWillAppear(_ animated: Bool) {
         if darkMode {
-			settingsLabel.textColor = Theme.calendarWhite
+			settingsLabel.textColor = Color.white
             darkModeSwitch.isOn = true
-            showLines.textColor = Theme.calendarWhite
-            hours24Label.textColor = Theme.calendarWhite
-            darkModeLabel.textColor = Theme.calendarWhite
-			self.animateDayViewLabel.textColor = Theme.calendarWhite
-			view.backgroundColor = Theme.calendarGrey
+            showLines.textColor = Color.white
+            hours24Label.textColor = Color.white
+            darkModeLabel.textColor = Color.white
+			self.animateDayViewLabel.textColor = Color.white
+			view.backgroundColor = Color.grey
         } else {
-			settingsLabel.textColor = Theme.calendarGrey
+			settingsLabel.textColor = Color.grey
             darkModeSwitch.isOn = false
-            showLines.textColor = Theme.calendarGrey
-            hours24Label.textColor = Theme.calendarGrey
-            darkModeLabel.textColor = Theme.calendarGrey
-			self.animateDayViewLabel.textColor = Theme.calendarGrey
-            view.backgroundColor = Theme.calendarWhite
+            showLines.textColor = Color.grey
+            hours24Label.textColor = Color.grey
+            darkModeLabel.textColor = Color.grey
+			self.animateDayViewLabel.textColor = Color.grey
+            view.backgroundColor = Color.white
         }
         if isAMPM {
             hours24Switch.isOn = false
@@ -115,6 +126,11 @@ class SettingsViewController: UIViewController {
 			animateDayViewSwitch.isOn = true
 		} else {
 			animateDayViewSwitch.isOn = false
+		}
+		if isEEshowDetail {
+			EEshowDetail.isOn = true
+		} else {
+			EEshowDetail.isOn = false
 		}
     }
 
