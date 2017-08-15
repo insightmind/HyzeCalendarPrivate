@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class EventEditorEventInformations {
 	var title: String = "Untitled Event"
@@ -15,6 +16,7 @@ class EventEditorEventInformations {
 	var endDate: Date = Date().addingTimeInterval(1800)
 	var color: UIColor = Color.white
 	var notes: String? = nil
+	var eventIdentifier: String? = nil
 	
 	//NOT IMPORTANT FOR EVENTCREATION
 	var dateSelectionPopoverState: DateSpecification = .startDate

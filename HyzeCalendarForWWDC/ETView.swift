@@ -144,6 +144,11 @@ class ETView: UITableView, UITableViewDataSource, UITableViewDelegate{
             }
 
         }
+		
+		guard let informations = EManagement.convertToEventEditorEventInformations(eventIdentifier: row.eventIdentifier, state: .showDetail) else {
+			return
+		}
+		EManagement.eventInformation = informations
 
         selectedETViewCellIndexPath = indexPath
         visuallySelect(row, indexPath: indexPath)

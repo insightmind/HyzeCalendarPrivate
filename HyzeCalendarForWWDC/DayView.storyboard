@@ -45,7 +45,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MZw-of-dJN" id="MG7-Ke-Eap">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -278,9 +278,9 @@
                     <connections>
                         <outlet property="blurEffectNavbarView" destination="OvM-tT-AXz" id="SNx-gX-AUo"/>
                         <outlet property="blurEffectView" destination="Dcw-VL-8Yh" id="SeW-jZ-tg2"/>
-                        <outlet property="newEventTextField" destination="fmZ-f3-9fn" id="g2Q-P6-isb"/>
                         <outlet property="saveButton" destination="j08-VV-qd0" id="UA4-Ln-Svx"/>
                         <outlet property="tableView" destination="4Mp-VE-c89" id="zXy-hS-t35"/>
+                        <outlet property="titleTextField" destination="fmZ-f3-9fn" id="g2Q-P6-isb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0fS-fN-gpE" userLabel="First Responder" sceneMemberID="firstResponder"/>

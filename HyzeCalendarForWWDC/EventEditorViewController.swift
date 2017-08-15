@@ -15,10 +15,8 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
     /// Variable to check if Event should be added to the Calendar
     var addEvent: Bool = false
 	var tableViewController: EventEditorTableViewController?
-	var eventInformations = EventEditorEventInformations()
+	var eventInformations = EManagement.eventInformation
 	var dayView: DayViewUIVViewController? = nil
-	var isOldEvent: Bool = false
-	var oldEventIdentifier: String? = nil
 	
     // MARK: - Outlets
     //All the visual Elements in the ViewController
@@ -27,7 +25,7 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
 	@IBOutlet weak var saveButton: UIButton!
 	
 	@IBOutlet weak var tableView: UIView!
-	@IBOutlet weak var newEventTextField: UITextField!
+	@IBOutlet weak var titleTextField: UITextField!
 	
 	// MARK: - Actions
 	@IBAction func cancel(_ sender: UIButton) {
@@ -39,7 +37,7 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
 	}
 	
 	fileprivate func saveTitle() {
-		if newEventTextField.text == "" {
+		if titleTextField.text == "" {
 			let alert = UIAlertController(title: "Your event has no title!", message: "Are you sure you want to save this Event as \"Untitled Event\" ", preferredStyle: .alert)
 			let agree = UIAlertAction(title: "Save", style: .default, handler: { action in
 				self.eventInformations.title = "Untitled Event"
@@ -52,7 +50,7 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
 			alert.addAction(agree)
 			present(alert, animated: true, completion: nil)
 		} else {
-			eventInformations.title = newEventTextField.text!
+			eventInformations.title = titleTextField.text!
 			saveToEventInformations()
 		}
 	}
@@ -74,29 +72,27 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
 	// MARK: - Functions
 	fileprivate func generalViewDidLoad() {
 		hideKeyboardWhenTappedAround()
-		self.newEventTextField.delegate = self
-		self.newEventTextField.layer.masksToBounds = false
+		self.titleTextField.delegate = self
+		self.titleTextField.layer.masksToBounds = false
 		if darkMode {
-			newEventTextField.textColor = Color.white
+			titleTextField.textColor = Color.white
 			blurEffectView.effect = UIBlurEffect(style: .dark)
 			blurEffectNavbarView.effect = blurEffectView.effect
 		} else {
 			blurEffectView.effect = UIBlurEffect(style: .light)
 			blurEffectNavbarView.effect = blurEffectView.effect
-			newEventTextField.textColor = Color.grey
+			titleTextField.textColor = Color.grey
 		}
 		setEventInformationDates()
 	}
 	
 	override func viewDidLoad() {
-        super.viewDidLoad()
-		
-		
-        // Do any additional setup after loading the view.
-		
-		if isOldEvent {
+		super.viewDidLoad()
+		eventInformations = EManagement.eventInformation
+		switch eventInformations.state {
+		case .showDetail:
 			showDetailViewDidLoad()
-		} else {
+		case .create:
 			createViewDidLoad()
 		}
 		generalViewDidLoad()
@@ -122,7 +118,7 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if (segue.identifier == "embed") {
-			tableViewController = (segue.destination as! EventEditorTableViewController)
+			
 		}
     }
     /*
@@ -138,18 +134,6 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
 	func textFieldShouldReturn(_ newEventTextField: UITextField) -> Bool {
 		self.view.endEditing(true)
 		return true
-	}
-	
-	class func getEventsInformations() -> EventEditorEventInformations {
-		if let topController = UIApplication.shared.keyWindow?.rootViewController {
-			while let presentedViewController = topController.presentedViewController {
-				guard let viewController = presentedViewController as? EventEditorViewController else {
-					fatalError()
-				}
-				return viewController.eventInformations
-			}
-		}
-		return EventEditorEventInformations()
 	}
 	
 	func reloadTableViewCells(_ cellType: EventEditorCellType, onlyInformations: Bool){

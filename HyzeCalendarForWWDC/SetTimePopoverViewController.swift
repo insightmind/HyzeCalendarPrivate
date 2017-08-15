@@ -63,7 +63,7 @@ class SetTimePopoverViewController: UIViewController {
 	override func viewDidLoad() {
         super.viewDidLoad()
 		
-		self.eventInformations = EventEditorViewController.getEventsInformations()
+		self.eventInformations = EManagement.eventInformation
 		
 		dates = [.startDate: eventInformations.startDate,
 		         .endDate: eventInformations.endDate]

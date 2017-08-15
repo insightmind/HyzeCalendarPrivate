@@ -24,7 +24,7 @@ class NotesTableViewCell: UITableViewCell, UITextViewDelegate {
 		
 		textView.delegate = self
 		
-		self.eventInformations = EventEditorViewController.getEventsInformations()
+		self.eventInformations = EManagement.eventInformation
 		self.backgroundColor = UIColor.clear
 		
 		self.labelView.backgroundColor = Color.blue

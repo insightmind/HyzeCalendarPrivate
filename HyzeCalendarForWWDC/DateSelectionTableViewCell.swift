@@ -17,7 +17,7 @@ class DateSelectionTableViewCell: UITableViewCell {
 	var startDateGestureRecognizer: UITapGestureRecognizer!
 	var endDateGestureRecognizer: UITapGestureRecognizer!
 	
-	var previousIsAllDaySwitchFontStyle: UIFont!
+
 	
 	var isAllDayConstraints: [NSLayoutConstraint]!
 	var isNotAllDayConstraints: [NSLayoutConstraint]!
@@ -29,6 +29,9 @@ class DateSelectionTableViewCell: UITableViewCell {
 	@IBOutlet weak var startDateView: UIButton!
 	@IBOutlet weak var endDateView: UIButton!
 	@IBOutlet weak var allDaySwitch: UIButton!
+	
+	var selectedIsAllDaySwitchFontStyle = UIFont.boldSystemFont(ofSize: 30)
+	var deselectedIsAllDaySwitchFontStyle: UIFont!
 	
 	// MARK: - DateLabels
 	@IBOutlet weak var startDateHourLabel: UILabel!
@@ -50,13 +53,16 @@ class DateSelectionTableViewCell: UITableViewCell {
 	@IBOutlet weak var isNotAllDayAspectConstraint: NSLayoutConstraint!
 
 	// - MARK: Actions
-	fileprivate func toggleIsAllDaySwitchFont() {
-		let prevFont = self.allDaySwitch.titleLabel?.font
-		self.allDaySwitch.titleLabel?.font = self.previousIsAllDaySwitchFontStyle
-		self.previousIsAllDaySwitchFontStyle = prevFont
+	fileprivate func setIsAllDaySwitchFont(_ isAllDay: Bool) {
+		if isAllDay {
+			self.allDaySwitch.titleLabel?.font = self.selectedIsAllDaySwitchFontStyle
+		} else {
+			self.allDaySwitch.titleLabel?.font = self.deselectedIsAllDaySwitchFontStyle
+		}
 	}
 	
-	fileprivate func setAllDaySwitchDesign() {
+    func setAllDaySwitchDesign() {
+		allDaySwitch.tintColor = Color.white
 		if self.eventInformations.isAllDay {
 			NSLayoutConstraint.deactivate(self.isNotAllDayConstraints)
 			NSLayoutConstraint.activate(self.isAllDayConstraints)
@@ -65,19 +71,15 @@ class DateSelectionTableViewCell: UITableViewCell {
 			NSLayoutConstraint.deactivate(self.isAllDayConstraints)
 			NSLayoutConstraint.activate(self.isNotAllDayConstraints)
 			self.allDaySwitch.backgroundColor = Color.red
-		}
-		
-		//TODO: not working
-		if eventInformations.state == .showDetail {
-			if !eventInformations.isAllDay {
+			if eventInformations.state == .showDetail {
 				self.allDaySwitch.backgroundColor = UIColor.clear
 				self.allDaySwitch.tintColor = UIColor.clear
 				self.allDaySwitch.isEnabled = false
 			}
 		}
-		
-		toggleIsAllDaySwitchFont()
+		setIsAllDaySwitchFont(self.eventInformations.isAllDay)
 		self.layoutIfNeeded()
+		self.allDaySwitch.layer.cornerRadius = self.allDaySwitch.frame.height / 2
 	}
 	
 	@IBAction func toggleAllDay(_ sender: UIButton) {
@@ -87,7 +89,6 @@ class DateSelectionTableViewCell: UITableViewCell {
 		UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
 			self.eventInformations.isAllDay = !self.eventInformations.isAllDay
 			self.setAllDaySwitchDesign()
-			self.allDaySwitch.layer.cornerRadius = self.allDaySwitch.frame.height / 2
 		}, completion: nil)
 	}
 
@@ -176,15 +177,7 @@ class DateSelectionTableViewCell: UITableViewCell {
 	
 	override func awakeFromNib() {
 		
-		self.eventInformations = EventEditorViewController.getEventsInformations()
-		
-		if eventInformations.state == .showDetail {
-			allDaySwitch.isUserInteractionEnabled = false
-			startDateView.isUserInteractionEnabled = false
-			endDateView.isUserInteractionEnabled = false
-		}
-		
-		previousIsAllDaySwitchFontStyle = UIFont.boldSystemFont(ofSize: 30) 
+		self.eventInformations = EManagement.eventInformation
 		
 		self.isAllDayConstraints = [isAllDayTopConstraint,
 									isAllDayBottomConstraint,
@@ -197,22 +190,23 @@ class DateSelectionTableViewCell: UITableViewCell {
 									   isNotAllDayBottomConstraint]
 		
         super.awakeFromNib()
-        // Initialization code
 		
+		if eventInformations.state == .showDetail {
+			allDaySwitch.isUserInteractionEnabled = false
+			startDateView.isUserInteractionEnabled = false
+			endDateView.isUserInteractionEnabled = false
+		}
+    }
+	
+	override func layoutSubviews() {
 		self.backgroundColor = UIColor.clear
-		
-		allDaySwitch.layer.cornerRadius = allDaySwitch.frame.height / 2
-		allDaySwitch.tintColor = Color.white
-		setAllDaySwitchDesign()
-		toggleIsAllDaySwitchFont()
-		
 		mainView.backgroundColor = Color.blue
 		mainView.layer.cornerRadius = mainView.frame.height / 2
 		mainView.layer.masksToBounds = false
-		
-		
+		self.deselectedIsAllDaySwitchFontStyle = allDaySwitch.titleLabel?.font
+		setAllDaySwitchDesign()
 		setUpDateLabel(animated: false)
-    }
+	}
 	
 	func reloadInformations() {
 		setUpDateLabel(animated: true)

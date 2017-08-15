@@ -38,16 +38,12 @@ class EventEditorTableViewController: UITableViewController {
 		self.tableView.register(UINib(nibName: "DateSelectionTableViewCell", bundle: nil) ,forCellReuseIdentifier: "dateSelection")
 		self.tableView.register(UINib(nibName: "NotesTableViewCell", bundle: nil) ,forCellReuseIdentifier: "notes")
 		
-		self.eventsInformations = EventEditorViewController.getEventsInformations()
+		self.eventsInformations = EManagement.eventInformation
 		
 		switch eventsInformations.state {
 		case .showDetail:
 			if eventsInformations.notes == "" || eventsInformations.notes == nil {
-				for i in 0..<cells.count {
-					if cells[i].cellType == .notes {
-						cells.remove(at: i)
-					}
-				}
+				cells.remove(at: 1)
 			}
 		default:
 			break
@@ -55,6 +51,10 @@ class EventEditorTableViewController: UITableViewController {
 		
 		hideKeyboardWhenTappedAround()
     }
+	
+	override func viewWillAppear(_ animated: Bool) {
+		self.tableView.reloadData()
+	}
 	
 
 
@@ -73,6 +73,7 @@ class EventEditorTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+		
         return cells.count
     }
 
@@ -80,9 +81,11 @@ class EventEditorTableViewController: UITableViewController {
 		switch cells[indexPath.row].cellType {
 		case .dateSelection:
 			let cell = tableView.dequeueReusableCell(withIdentifier: "dateSelection") as! DateSelectionTableViewCell
+			cell.eventInformations = self.eventsInformations
 			return cell
 		case .notes:
 			let cell = tableView.dequeueReusableCell(withIdentifier: "notes") as! NotesTableViewCell
+			cell.eventInformations = self.eventsInformations
 			return cell
 		}
 		

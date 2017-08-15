@@ -35,14 +35,15 @@ class DayViewUIVViewController: UIViewController {
         renDayView = day
         day.setUp()
 
-
+		
         // Do any additional setup after loading the view.
+		
+		if isEEshowDetail {
+			addButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: addButton.action)
+		} else {
+			addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: addButton.action)
+		}
     }
-	
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(animated)
-		//day.addEventsSubViews()
-	}
     
     override func viewDidDisappear(_ animated: Bool) {
         viewIsDayView = true
@@ -76,18 +77,13 @@ class DayViewUIVViewController: UIViewController {
 		
 		
     }
-	
+	//TODO: change if segues work again
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "showEventEditor" {
 			if let eventEditor = segue.destination as? EventEditorViewController {
-				if isEEshowDetail {
-					eventEditor.dayView = self
-					eventEditor.isOldEvent = true
-					eventEditor.oldEventIdentifier = day.selectedEventIdentifier
-				} else {
-					eventEditor.dayView = self
-					eventEditor.isOldEvent = false
-					eventEditor.oldEventIdentifier = nil
+				eventEditor.dayView = self
+				if !isEEshowDetail {
+					EManagement.eventInformation = EventEditorEventInformations()
 				}
 			}
 			// TODO: When Storyboard Segue works again

@@ -12,8 +12,17 @@ import UIKit
 extension EventEditorViewController {
 	
 	func showDetailViewDidLoad () {
-		self.newEventTextField.text = eventInformations.title
-		self.newEventTextField.isUserInteractionEnabled = false
+		showDetailSetUpTitleTextField()
+		showDetailSetUpSaveButton()
+	}
+	
+	func showDetailSetUpTitleTextField() {
+		self.titleTextField.text = eventInformations.title
+		self.titleTextField.isUserInteractionEnabled = false
+	}
+	
+	func showDetailSetUpSaveButton() {
+		saveButton.setTitle("Edit", for: .normal)
 	}
 	
 }

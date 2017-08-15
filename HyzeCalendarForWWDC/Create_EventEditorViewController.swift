@@ -14,7 +14,7 @@ extension EventEditorViewController {
 	func createViewDidLoad () {
 		let color = Color.white.withAlphaComponent(0.5)
 		let str = NSAttributedString(string: "Untitled Event", attributes: [NSAttributedStringKey.foregroundColor : color])
-		newEventTextField.attributedPlaceholder = str
+		titleTextField.attributedPlaceholder = str
 	}
 	
 }

@@ -13,6 +13,8 @@ import UIKit
 
 // Basic class for EventKit implementation and functionality
 class EventManagement {
+	
+	var eventInformation = EventEditorEventInformations()
     
     //initialize EKEventStore for EventKit usage
     let EMEventStore: EKEventStore!
@@ -130,6 +132,7 @@ class EventManagement {
             print("Event could not be added")
             eventsChange = false
         }
+		self.eventInformation = EventEditorEventInformations()
 
     }
 	
@@ -137,10 +140,10 @@ class EventManagement {
 		guard let event = EMEventStore.event(withIdentifier: eventIdentifier) else {
 			return nil
 		}
-		guard let cColor = event.calendar.cgColor else {
-			return nil
-		}
-		return UIColor(cgColor: cColor)
+//		guard let cColor = event.calendar.cgColor else {
+//			return nil
+//		}
+		return UIColor(cgColor: event.calendar.cgColor)
 	}
 	
 	func convertToEventEditorEventInformations(eventIdentifier: String, state: EventEditorState) -> EventEditorEventInformations? {
@@ -155,6 +158,7 @@ class EventManagement {
 		informations.isAllDay = event.isAllDay
 		informations.title = event.title
 		informations.notes = event.notes
+		informations.eventIdentifier = eventIdentifier
 		
 		print(informations)
 		
