@@ -110,7 +110,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-		self.view.layoutIfNeeded()
+//		self.view.layoutIfNeeded()
+		
+		let calendar = EManagement.getHyzeCalendar()
+		if calendar == nil {
+			EManagement.createCalendar()
+		}
 		
         darkModeTemp = darkMode
         navigationBar.title = TimeManagement.getMonthName(Date())

@@ -18,6 +18,8 @@ class EventManagement {
     
     //initialize EKEventStore for EventKit usage
     let EMEventStore: EKEventStore!
+	var EMCalendar: EKCalendar? = nil
+	let userDefaultCalendarIdentifier: String = "LocalHyzeCalendarIdentifier"
     
     //function to convert startTime and endTime from events to an Array of Array of Ints for the EventView
     ///Convert the startTime and endTime of event in ArrayOfEvents to ArrayOfIntArray
@@ -116,7 +118,7 @@ class EventManagement {
 	func addEvent(_ informations: EventEditorEventInformations) {
         let event = EKEvent(eventStore: EManagement.EMEventStore)
         event.title = informations.title
-        event.calendar = EManagement.EMEventStore.defaultCalendarForNewEvents
+        event.calendar = getHyzeCalendar() ?? EMEventStore.defaultCalendarForNewEvents
         if informations.startDate < informations.endDate {
             event.startDate = informations.startDate
             event.endDate = informations.endDate
@@ -140,9 +142,6 @@ class EventManagement {
 		guard let event = EMEventStore.event(withIdentifier: eventIdentifier) else {
 			return nil
 		}
-//		guard let cColor = event.calendar.cgColor else {
-//			return nil
-//		}
 		return UIColor(cgColor: event.calendar.cgColor)
 	}
 	
@@ -163,6 +162,54 @@ class EventManagement {
 		print(informations)
 		
 		return informations
+	}
+	
+	func getHyzeCalendar() -> EKCalendar? {
+		guard let calendarIdentifier = UserDefaults.standard.string(forKey: userDefaultCalendarIdentifier) else{
+			return nil
+		}
+		guard let calendar = EMEventStore.calendar(withIdentifier: calendarIdentifier) else {
+			return nil
+		}
+		calendar.cgColor = Color.red.cgColor
+		EMCalendar = calendar
+		return calendar
+	}
+	
+	func createCalendar() {
+		var newCalendar = EKCalendar(for: .event, eventStore: self.EMEventStore)
+		newCalendar.title = "HYZE Calendar"
+		
+		let sourcesInEventStore = self.EMEventStore.sources
+		
+		newCalendar.cgColor = Color.red.cgColor
+		
+		let iCloudFilteredSources = sourcesInEventStore.filter{ $0.sourceType == .calDAV }
+		
+		if let iCloudSource = iCloudFilteredSources.first {
+			newCalendar.source = iCloudSource
+		} else {
+			print("Could not add a iCloud Calendar, checking now for local Calendar")
+			let localFilteredSources = sourcesInEventStore.filter { $0.sourceType == .local }
+			if let localSource = localFilteredSources.first {
+				newCalendar.source = localSource
+			} else {
+				print("Could not add local Calendar, will now use standard Calendar for events")
+				guard let calendar = self.EMEventStore.defaultCalendarForNewEvents else {
+					print("There is no standard Calendar")
+					fatalError()
+				}
+				newCalendar = calendar
+			}
+		}
+		do {
+			try self.EMEventStore.saveCalendar(newCalendar, commit: true)
+			UserDefaults.standard.set(newCalendar.calendarIdentifier, forKey: self.userDefaultCalendarIdentifier)
+			self.EMCalendar = newCalendar
+		} catch {
+			fatalError()
+		}
+
 	}
     
     init() {

@@ -23,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         defaults.register(defaults: ["showLinesInCalendarView" : false])
 		defaults.register(defaults: ["animateDayView" : true])
 		defaults.register(defaults: ["firstWeekDayOfWeek" : WeekDay.monday.rawValue])
-		
         return true
     }
 
