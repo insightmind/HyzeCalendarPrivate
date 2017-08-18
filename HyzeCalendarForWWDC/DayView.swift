@@ -43,7 +43,7 @@ class DayView: UIView {
                     str = String(12)
                     //str = "\(str)am"
                 } else {
-                    str = String(0)
+                    str = String(24)
                 }
             } else if i > 12 {
                 if isAMPM {

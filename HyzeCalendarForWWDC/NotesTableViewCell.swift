@@ -8,9 +8,11 @@
 
 import UIKit
 
-class NotesTableViewCell: UITableViewCell, UITextViewDelegate {
+class NotesTableViewCell: UITableViewCell, UITextViewDelegate, EventEditorCell {
 	
 	var eventInformations: EventEditorEventInformations!
+	
+	
 	let placeholderText: String = "Your Notes..."
 	
 	@IBOutlet weak var mainView: UIView!
@@ -18,6 +20,7 @@ class NotesTableViewCell: UITableViewCell, UITextViewDelegate {
 	@IBOutlet weak var labelView: UIView!
 	@IBOutlet weak var label: UILabel!
 	@IBOutlet weak var topView: UIView!
+	@IBOutlet weak var shadowView: UIView!
 	
 	override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,8 +30,8 @@ class NotesTableViewCell: UITableViewCell, UITextViewDelegate {
 		self.eventInformations = EManagement.eventInformation
 		self.backgroundColor = UIColor.clear
 		
-		self.labelView.backgroundColor = Color.blue
-		self.mainView.backgroundColor = Color.lightBlue
+		self.labelView.backgroundColor = Color.lightBlue
+		self.mainView.backgroundColor = Color.blue
 		
 		self.topView.layer.cornerRadius = self.labelView.bounds.height / 2
 		self.topView.layer.masksToBounds = true
@@ -36,6 +39,7 @@ class NotesTableViewCell: UITableViewCell, UITextViewDelegate {
 		self.textView.textColor = Color.white.withAlphaComponent(0.7)
 		self.textView.text = eventInformations.notes ?? placeholderText
 		self.label.textColor = Color.white
+		self.shadowView.backgroundColor = UIColor.clear
 		
 		if eventInformations.state == .showDetail {
 			self.textView.isUserInteractionEnabled = false

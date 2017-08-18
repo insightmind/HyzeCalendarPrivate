@@ -8,9 +8,10 @@
 
 import UIKit
 
-enum EventEditorCellType {
-	case dateSelection
-	case notes
+enum EventEditorCellType: String {
+	case dateSelection = "dateSelection"
+	case notes = "notes"
+	case calendar = "calendar"
 }
 
 struct EventEditorCellInformations {
@@ -21,6 +22,7 @@ struct EventEditorCellInformations {
 class EventEditorTableViewController: UITableViewController {
 	
 	var cells: [EventEditorCellInformations] = [EventEditorCellInformations(cellType: .dateSelection, height: 100.0),
+	                                            EventEditorCellInformations(cellType: .calendar, height: 100.0),
 	                                            EventEditorCellInformations(cellType: .notes, height: 170.0)]
 	var eventsInformations: EventEditorEventInformations!
 
@@ -35,15 +37,20 @@ class EventEditorTableViewController: UITableViewController {
 		self.tableView.backgroundColor = UIColor.clear
 		self.tableView.separatorStyle = .none
 		self.tableView.allowsSelection = false
-		self.tableView.register(UINib(nibName: "DateSelectionTableViewCell", bundle: nil) ,forCellReuseIdentifier: "dateSelection")
-		self.tableView.register(UINib(nibName: "NotesTableViewCell", bundle: nil) ,forCellReuseIdentifier: "notes")
+		self.tableView.register(UINib(nibName: "DateSelectionTableViewCell", bundle: nil) ,forCellReuseIdentifier: EventEditorCellType.dateSelection.rawValue)
+		self.tableView.register(UINib(nibName: "NotesTableViewCell", bundle: nil) ,forCellReuseIdentifier: EventEditorCellType.notes.rawValue)
+		self.tableView.register(UINib(nibName: "SelectCalendarTableViewCell", bundle: nil), forCellReuseIdentifier: EventEditorCellType.calendar.rawValue)
 		
 		self.eventsInformations = EManagement.eventInformation
 		
 		switch eventsInformations.state {
 		case .showDetail:
 			if eventsInformations.notes == "" || eventsInformations.notes == nil {
-				cells.remove(at: 1)
+				for i in 0..<cells.count {
+					if cells[i].cellType == .notes {
+						cells.remove(at: i)
+					}
+				}
 			}
 		default:
 			break
@@ -80,12 +87,13 @@ class EventEditorTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		switch cells[indexPath.row].cellType {
 		case .dateSelection:
-			let cell = tableView.dequeueReusableCell(withIdentifier: "dateSelection") as! DateSelectionTableViewCell
-			cell.eventInformations = self.eventsInformations
+			let cell = tableView.dequeueReusableCell(withIdentifier: EventEditorCellType.dateSelection.rawValue) as! DateSelectionTableViewCell
 			return cell
 		case .notes:
-			let cell = tableView.dequeueReusableCell(withIdentifier: "notes") as! NotesTableViewCell
-			cell.eventInformations = self.eventsInformations
+			let cell = tableView.dequeueReusableCell(withIdentifier: EventEditorCellType.notes.rawValue) as! NotesTableViewCell
+			return cell
+		case .calendar:
+			let cell = tableView.dequeueReusableCell(withIdentifier: EventEditorCellType.calendar.rawValue) as! SelectCalendarTableViewCell
 			return cell
 		}
 		
@@ -109,12 +117,7 @@ class EventEditorTableViewController: UITableViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		switch cells[indexPath.row].cellType {
-		case .dateSelection:
-			fallthrough
-		default:
-			return cells[indexPath.row].height
-		}
+		return cells[indexPath.row].height
 	}
 
 }

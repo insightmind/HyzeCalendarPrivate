@@ -56,13 +56,11 @@ class DayViewUIVViewController: UIViewController {
 			editButton.tintColor = Color.white
             view.backgroundColor = Color.grey
 			navigationController?.navigationBar.tintColor = Color.white
-			addButton.tintColor = Color.white
         } else {
 			toolbar.barTintColor = Color.white
 			editButton.tintColor = Color.grey
             view.backgroundColor = Color.white
 			navigationController?.navigationBar.tintColor = Color.grey
-			addButton.tintColor = Color.grey
         }
 		
 		UIView.animate(withDuration: animated ? 0.7 : 0, animations: {

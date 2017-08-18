@@ -118,7 +118,7 @@ class EventManagement {
 	func addEvent(_ informations: EventEditorEventInformations) {
         let event = EKEvent(eventStore: EManagement.EMEventStore)
         event.title = informations.title
-        event.calendar = getHyzeCalendar() ?? EMEventStore.defaultCalendarForNewEvents
+        event.calendar = informations.calendar ?? getHyzeCalendar()
         if informations.startDate < informations.endDate {
             event.startDate = informations.startDate
             event.endDate = informations.endDate
@@ -146,9 +146,11 @@ class EventManagement {
 	}
 	
 	func convertToEventEditorEventInformations(eventIdentifier: String, state: EventEditorState) -> EventEditorEventInformations? {
+		
 		guard let event = EMEventStore.event(withIdentifier: eventIdentifier) else {
 			return nil
 		}
+		
 		let informations = EventEditorEventInformations()
 		
 		informations.state = state
@@ -158,6 +160,7 @@ class EventManagement {
 		informations.title = event.title
 		informations.notes = event.notes
 		informations.eventIdentifier = eventIdentifier
+		informations.calendar = event.calendar
 		
 		print(informations)
 		

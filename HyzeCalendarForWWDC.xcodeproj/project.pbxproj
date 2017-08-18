@@ -20,6 +20,16 @@
 		3E533BC71EC364BC000CEF5F /* DayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E533BC61EC364BC000CEF5F /* DayCollectionViewCell.swift */; };
 		3E59BDA31F432E1600BDCF25 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E59BDA21F432E1600BDCF25 /* UIViewExtension.swift */; };
 		3E61FE641E5239AF003D796C /* DayViewDecoration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E61FE631E5239AF003D796C /* DayViewDecoration.swift */; };
+		3E6285431F4471B900301A42 /* CGFloatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6285421F4471B900301A42 /* CGFloatExtension.swift */; };
+		3E6285451F4471E800301A42 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6285441F4471E800301A42 /* UIColorExtension.swift */; };
+		3E6285471F44720400301A42 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6285461F44720400301A42 /* UIViewControllerExtension.swift */; };
+		3E62854A1F44797900301A42 /* SelectCalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6285481F44797900301A42 /* SelectCalendarTableViewCell.swift */; };
+		3E62854B1F44797900301A42 /* SelectCalendarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E6285491F44797900301A42 /* SelectCalendarTableViewCell.xib */; };
+		3E62854D1F447E3200301A42 /* EventEditorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E62854C1F447E3200301A42 /* EventEditorCell.swift */; };
+		3E68188A1F46FB6300E8D7BC /* SelectCalendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E6818891F46FB6300E8D7BC /* SelectCalendar.storyboard */; };
+		3E68188D1F46FED600E8D7BC /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E68188B1F46FED600E8D7BC /* CalendarTableViewCell.swift */; };
+		3E68188E1F46FED600E8D7BC /* CalendarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E68188C1F46FED600E8D7BC /* CalendarTableViewCell.xib */; };
+		3E6818901F46FFFC00E8D7BC /* CalendarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E68188F1F46FFFC00E8D7BC /* CalendarTableViewController.swift */; };
 		3E68B5C91E3A886D00AE103F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E68B5C71E3A886D00AE103F /* Main.storyboard */; };
 		3E6BCC511E5479DD00369E7D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6BCC501E5479DD00369E7D /* SettingsViewController.swift */; };
 		3E7140431E46844C00D51B17 /* DayViewUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7140421E46844C00D51B17 /* DayViewUIViewController.swift */; };
@@ -46,6 +56,7 @@
 		3EE1E5AD1E48D48C00379576 /* GlobalAccessProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E5AC1E48D48C00379576 /* GlobalAccessProperties.swift */; };
 		3EF096B01E3FDC9F0011E726 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF096AF1E3FDC9F0011E726 /* ViewController.swift */; };
 		3EFA24DD1E2BF1D200BC6DD5 /* CalendarViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFA24DC1E2BF1D200BC6DD5 /* CalendarViewFlowLayout.swift */; };
+		3EFBD3621F47025800DB0E7D /* SetCalendarPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFBD3611F47025800DB0E7D /* SetCalendarPopoverViewController.swift */; };
 		3EFE5F491E41310A004E75F9 /* DayMainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFE5F481E41310A004E75F9 /* DayMainButton.swift */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +76,16 @@
 		3E533BC61EC364BC000CEF5F /* DayCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayCollectionViewCell.swift; sourceTree = "<group>"; };
 		3E59BDA21F432E1600BDCF25 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		3E61FE631E5239AF003D796C /* DayViewDecoration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayViewDecoration.swift; sourceTree = "<group>"; };
+		3E6285421F4471B900301A42 /* CGFloatExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGFloatExtension.swift; sourceTree = "<group>"; };
+		3E6285441F4471E800301A42 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		3E6285461F44720400301A42 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		3E6285481F44797900301A42 /* SelectCalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCalendarTableViewCell.swift; sourceTree = "<group>"; };
+		3E6285491F44797900301A42 /* SelectCalendarTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectCalendarTableViewCell.xib; sourceTree = "<group>"; };
+		3E62854C1F447E3200301A42 /* EventEditorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEditorCell.swift; sourceTree = "<group>"; };
+		3E6818891F46FB6300E8D7BC /* SelectCalendar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectCalendar.storyboard; sourceTree = "<group>"; };
+		3E68188B1F46FED600E8D7BC /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
+		3E68188C1F46FED600E8D7BC /* CalendarTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarTableViewCell.xib; sourceTree = "<group>"; };
+		3E68188F1F46FFFC00E8D7BC /* CalendarTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewController.swift; sourceTree = "<group>"; };
 		3E68B5C81E3A886D00AE103F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3E6BCC501E5479DD00369E7D /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		3E7140421E46844C00D51B17 /* DayViewUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayViewUIViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +113,7 @@
 		3EE1E5AC1E48D48C00379576 /* GlobalAccessProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalAccessProperties.swift; sourceTree = "<group>"; };
 		3EF096AF1E3FDC9F0011E726 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3EFA24DC1E2BF1D200BC6DD5 /* CalendarViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewFlowLayout.swift; sourceTree = "<group>"; };
+		3EFBD3611F47025800DB0E7D /* SetCalendarPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCalendarPopoverViewController.swift; sourceTree = "<group>"; };
 		3EFE5F481E41310A004E75F9 /* DayMainButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayMainButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -118,6 +140,7 @@
 		3E47BD2E1F30EDDC00E0646C /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				3E62854C1F447E3200301A42 /* EventEditorCell.swift */,
 				3E8B90A31F433CAA000F8449 /* Recurrence */,
 				3E8B90A21F433CA3000F8449 /* Calendar */,
 				3E8B90A11F433C9D000F8449 /* Location */,
@@ -162,6 +185,9 @@
 			isa = PBXGroup;
 			children = (
 				3E59BDA21F432E1600BDCF25 /* UIViewExtension.swift */,
+				3E6285421F4471B900301A42 /* CGFloatExtension.swift */,
+				3E6285441F4471E800301A42 /* UIColorExtension.swift */,
+				3E6285461F44720400301A42 /* UIViewControllerExtension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -200,6 +226,13 @@
 		3E8B90A21F433CA3000F8449 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				3E6285481F44797900301A42 /* SelectCalendarTableViewCell.swift */,
+				3E6285491F44797900301A42 /* SelectCalendarTableViewCell.xib */,
+				3EFBD3611F47025800DB0E7D /* SetCalendarPopoverViewController.swift */,
+				3E68188F1F46FFFC00E8D7BC /* CalendarTableViewController.swift */,
+				3E68188B1F46FED600E8D7BC /* CalendarTableViewCell.swift */,
+				3E68188C1F46FED600E8D7BC /* CalendarTableViewCell.xib */,
+				3E6818891F46FB6300E8D7BC /* SelectCalendar.storyboard */,
 			);
 			name = Calendar;
 			sourceTree = "<group>";
@@ -468,8 +501,11 @@
 				3E47BD321F30EE0200E0646C /* DateSelectionTableViewCell.xib in Resources */,
 				3EA80D591E2BEC9300FD87C3 /* Assets.xcassets in Resources */,
 				3EA8EE2C1ED219B8000D6EF2 /* DayView.storyboard in Resources */,
+				3E68188E1F46FED600E8D7BC /* CalendarTableViewCell.xib in Resources */,
 				3EA8EE2A1ED21989000D6EF2 /* Settings.storyboard in Resources */,
+				3E68188A1F46FB6300E8D7BC /* SelectCalendar.storyboard in Resources */,
 				3EDC110C1F40E1B400E0B250 /* NotesTableViewCell.xib in Resources */,
+				3E62854B1F44797900301A42 /* SelectCalendarTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,26 +536,34 @@
 				3EA80D521E2BEC9300FD87C3 /* AppDelegate.swift in Sources */,
 				3EA8EE311ED2350E000D6EF2 /* MonthCollectionViewController.swift in Sources */,
 				3E2D7B791E6715E600A0170D /* EventEditorViewController.swift in Sources */,
+				3E6285471F44720400301A42 /* UIViewControllerExtension.swift in Sources */,
 				3E4A9B291E4BB4C0009E45EF /* EventsManagement.swift in Sources */,
 				3ED0F0DC1F437310001A12A8 /* EventEditorEventInformations.swift in Sources */,
 				3ED0F0DA1F4372E4001A12A8 /* EventEditorState.swift in Sources */,
 				3ED0F0D41F4371AB001A12A8 /* Create_EventEditorViewController.swift in Sources */,
+				3E6285451F4471E800301A42 /* UIColorExtension.swift in Sources */,
 				3EA8EE2E1ED21BCA000D6EF2 /* MainCollectionViewController.swift in Sources */,
 				3E533BC51EC36440000CEF5F /* MonthCollectionViewCell.swift in Sources */,
 				3E47BD2C1F30E7E900E0646C /* EventEditorTableViewController.swift in Sources */,
 				3EFA24DD1E2BF1D200BC6DD5 /* CalendarViewFlowLayout.swift in Sources */,
 				3EAD342B1F3E44CF00174FF7 /* Design.swift in Sources */,
 				3EE1E5AD1E48D48C00379576 /* GlobalAccessProperties.swift in Sources */,
+				3E6285431F4471B900301A42 /* CGFloatExtension.swift in Sources */,
 				3E3AEDF81F23BFEF00792B11 /* SetTimePopoverViewController.swift in Sources */,
 				3ED0F0D81F4372CD001A12A8 /* DateSpecification.swift in Sources */,
+				3EFBD3621F47025800DB0E7D /* SetCalendarPopoverViewController.swift in Sources */,
+				3E62854D1F447E3200301A42 /* EventEditorCell.swift in Sources */,
 				3E533BC71EC364BC000CEF5F /* DayCollectionViewCell.swift in Sources */,
+				3E62854A1F44797900301A42 /* SelectCalendarTableViewCell.swift in Sources */,
 				3E7DD5731E4679FA001E1D0B /* EventView.swift in Sources */,
 				3E47BD311F30EE0200E0646C /* DateSelectionTableViewCell.swift in Sources */,
 				3EF096B01E3FDC9F0011E726 /* ViewController.swift in Sources */,
+				3E6818901F46FFFC00E8D7BC /* CalendarTableViewController.swift in Sources */,
 				3EFE5F491E41310A004E75F9 /* DayMainButton.swift in Sources */,
 				3EDC110B1F40E1B400E0B250 /* NotesTableViewCell.swift in Sources */,
 				3E7140431E46844C00D51B17 /* DayViewUIViewController.swift in Sources */,
 				3ED0F0D61F4371C5001A12A8 /* ShowDetail_EventEditorViewController.swift in Sources */,
+				3E68188D1F46FED600E8D7BC /* CalendarTableViewCell.swift in Sources */,
 				3EE011611E560D3800743914 /* ETView.swift in Sources */,
 				3ECD09A11E9BFF3000BF9627 /* Selection.swift in Sources */,
 				3E6BCC511E5479DD00369E7D /* SettingsViewController.swift in Sources */,

@@ -8,11 +8,12 @@
 
 import UIKit
 
-class DateSelectionTableViewCell: UITableViewCell {
-
-	// - MARK: Variables
+class DateSelectionTableViewCell: UITableViewCell, EventEditorCell {
 	
 	var eventInformations: EventEditorEventInformations!
+	
+
+	// - MARK: Variables
 	
 	var startDateGestureRecognizer: UITapGestureRecognizer!
 	var endDateGestureRecognizer: UITapGestureRecognizer!
@@ -64,10 +65,15 @@ class DateSelectionTableViewCell: UITableViewCell {
     func setAllDaySwitchDesign() {
 		allDaySwitch.tintColor = Color.white
 		if self.eventInformations.isAllDay {
+			self.allDaySwitch.layer.shadowOpacity = 0
 			NSLayoutConstraint.deactivate(self.isNotAllDayConstraints)
 			NSLayoutConstraint.activate(self.isAllDayConstraints)
 			self.allDaySwitch.backgroundColor = Color.green
 		} else {
+			self.allDaySwitch.layer.shadowOpacity = 0.8
+			if eventInformations.state == .showDetail {
+				self.allDaySwitch.layer.shadowOpacity = 0
+			}
 			NSLayoutConstraint.deactivate(self.isAllDayConstraints)
 			NSLayoutConstraint.activate(self.isNotAllDayConstraints)
 			self.allDaySwitch.backgroundColor = Color.red
@@ -79,7 +85,7 @@ class DateSelectionTableViewCell: UITableViewCell {
 		}
 		setIsAllDaySwitchFont(self.eventInformations.isAllDay)
 		self.layoutIfNeeded()
-		self.allDaySwitch.layer.cornerRadius = self.allDaySwitch.frame.height / 2
+		self.allDaySwitch.layer.cornerRadius = self.allDaySwitch.bounds.height / 2
 	}
 	
 	@IBAction func toggleAllDay(_ sender: UIButton) {
@@ -196,15 +202,25 @@ class DateSelectionTableViewCell: UITableViewCell {
 			startDateView.isUserInteractionEnabled = false
 			endDateView.isUserInteractionEnabled = false
 		}
+		
     }
 	
 	override func layoutSubviews() {
 		self.backgroundColor = UIColor.clear
 		mainView.backgroundColor = Color.blue
 		mainView.layer.cornerRadius = mainView.frame.height / 2
-		mainView.layer.masksToBounds = false
+		
 		self.deselectedIsAllDaySwitchFontStyle = allDaySwitch.titleLabel?.font
+		
+		self.allDaySwitch.layer.cornerRadius = self.allDaySwitch.bounds.height / 2
+		self.allDaySwitch.layer.shadowPath = UIBezierPath(roundedRect: allDaySwitch.bounds, cornerRadius: allDaySwitch.layer.cornerRadius).cgPath
+		self.allDaySwitch.layer.shadowColor = Color.red.cgColor
+		self.allDaySwitch.layer.shadowRadius = 5
+		self.allDaySwitch.layer.shadowOffset = CGSize(width: 1, height: 3)
+		
+
 		setAllDaySwitchDesign()
+		
 		setUpDateLabel(animated: false)
 	}
 	

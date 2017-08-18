@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import EventKit
 
 class EventEditorEventInformations {
 	var title: String = "Untitled Event"
@@ -17,6 +18,8 @@ class EventEditorEventInformations {
 	var color: UIColor = Color.white
 	var notes: String? = nil
 	var eventIdentifier: String? = nil
+	var calendar: EKCalendar? = nil
+	
 	
 	//NOT IMPORTANT FOR EVENTCREATION
 	var dateSelectionPopoverState: DateSpecification = .startDate

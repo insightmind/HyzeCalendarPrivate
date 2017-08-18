@@ -58,6 +58,9 @@ class SetTimePopoverViewController: UIViewController {
 	@IBAction func changeDate(_ sender: UIDatePicker) {
 		dates[currentState] = sender.date
 		yearLabel.text = String(TMCalendar.component(.year, from: dates[currentState]!))
+		if currentState == .startDate {
+			dates[.endDate] = dates[.startDate]?.addingTimeInterval(1800)
+		}
 	}
 	
 	override func viewDidLoad() {
