@@ -12,6 +12,7 @@ enum EventEditorCellType: String {
 	case dateSelection = "dateSelection"
 	case notes = "notes"
 	case calendar = "calendar"
+	case remove = "remove"
 }
 
 struct EventEditorCellInformations {
@@ -40,6 +41,7 @@ class EventEditorTableViewController: UITableViewController {
 		self.tableView.register(UINib(nibName: "DateSelectionTableViewCell", bundle: nil) ,forCellReuseIdentifier: EventEditorCellType.dateSelection.rawValue)
 		self.tableView.register(UINib(nibName: "NotesTableViewCell", bundle: nil) ,forCellReuseIdentifier: EventEditorCellType.notes.rawValue)
 		self.tableView.register(UINib(nibName: "SelectCalendarTableViewCell", bundle: nil), forCellReuseIdentifier: EventEditorCellType.calendar.rawValue)
+		self.tableView.register(UINib(nibName: "RemoveTableViewCell", bundle: nil), forCellReuseIdentifier: EventEditorCellType.remove.rawValue)
 		
 		self.eventsInformations = EManagement.eventInformation
 		eventsInformations.eventEditorTableViewController = self
@@ -85,6 +87,9 @@ class EventEditorTableViewController: UITableViewController {
 		case .calendar:
 			let cell = tableView.dequeueReusableCell(withIdentifier: EventEditorCellType.calendar.rawValue) as! SelectCalendarTableViewCell
 			return cell
+		case .remove:
+			let cell = tableView.dequeueReusableCell(withIdentifier: EventEditorCellType.remove.rawValue) as! RemoveTableViewCell
+			return cell
 		}
 		
     }
@@ -122,15 +127,23 @@ class EventEditorTableViewController: UITableViewController {
 		         EventEditorCellInformations(cellType: .notes, height: 170.0)]
 		switch eventsInformations.state {
 		case .showDetail:
-			if eventsInformations.notes == "" || eventsInformations.notes == nil {
 				for i in 0..<cells.count {
-					if cells[i].cellType == .notes {
+					switch cells[i].cellType {
+					case .notes:
+						if eventsInformations.notes == "" || eventsInformations.notes == nil {
+							cells.remove(at: i)
+						}
+					case .remove:
 						cells.remove(at: i)
+					default:
+						break
 					}
 				}
+		case .create:
+			if eventsInformations.eventIdentifier != nil {
+				let cell = EventEditorCellInformations(cellType: .remove, height: 80.0)
+				cells.append(cell)
 			}
-		default:
-			break
 		}
 	}
 

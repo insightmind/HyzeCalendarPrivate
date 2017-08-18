@@ -29,4 +29,5 @@ class EventEditorEventInformations {
 	var state: EventEditorState = .create
 	var setCalendarPopoverViewController: SetCalendarPopoverViewController?
 	var eventEditorTableViewController: EventEditorTableViewController?
+	var eventEditor: EventEditorViewController?
 }

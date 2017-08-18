@@ -263,6 +263,25 @@ class EventManagement {
 		informations.setCalendarPopoverViewController = of.setCalendarPopoverViewController
 		return informations
 	}
+	
+	func deleteEvent(_ informations: EventEditorEventInformations) {
+		guard let identifier = informations.eventIdentifier else {
+			print("Could not remove event")
+			return
+		}
+		guard let event = EMEventStore.event(withIdentifier: identifier) else {
+			print("Could not remove event")
+			return
+		}
+		do {
+			try EMEventStore.remove(event, span: .thisEvent)
+			eventsChange = true
+		} catch {
+			print("Could not remove event")
+			eventsChange = false
+		}
+		self.eventInformation = EventEditorEventInformations()
+	}
     
     init() {
         self.EMEventStore = EKEventStore()

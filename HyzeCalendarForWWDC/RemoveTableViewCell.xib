@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13156.2"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="KGk-i7-Jjw" customClass="RemoveTableViewCell" customModule="HyzeCalendarForWWDC" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="296" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="296" height="79.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kC5-qY-TGi">
+                        <rect key="frame" x="8" y="8" width="280" height="64"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7nj-3M-Qm4">
+                                <rect key="frame" x="0.0" y="0.0" width="280" height="64"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="32"/>
+                                <state key="normal" title="Remove">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="remove:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="AbI-P8-HgA"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.0" blue="0.0093617555430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="7nj-3M-Qm4" firstAttribute="leading" secondItem="kC5-qY-TGi" secondAttribute="leading" id="6cN-sa-1yM"/>
+                            <constraint firstAttribute="trailing" secondItem="7nj-3M-Qm4" secondAttribute="trailing" id="WgP-UA-oyP"/>
+                            <constraint firstItem="7nj-3M-Qm4" firstAttribute="top" secondItem="kC5-qY-TGi" secondAttribute="top" id="fIU-mD-2G4"/>
+                            <constraint firstAttribute="bottom" secondItem="7nj-3M-Qm4" secondAttribute="bottom" id="jYZ-qV-C4I"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="kC5-qY-TGi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="Cly-xv-T9R"/>
+                    <constraint firstAttribute="bottom" secondItem="kC5-qY-TGi" secondAttribute="bottom" constant="8" id="DKU-q7-nbm"/>
+                    <constraint firstItem="kC5-qY-TGi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Grt-g8-zA4"/>
+                    <constraint firstAttribute="trailing" secondItem="kC5-qY-TGi" secondAttribute="trailing" constant="8" id="MEA-mV-lVV"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="mainView" destination="kC5-qY-TGi" id="qSU-VT-1Wq"/>
+                <outlet property="removeButton" destination="7nj-3M-Qm4" id="zD6-gb-PHJ"/>
+            </connections>
+            <point key="canvasLocation" x="37" y="70"/>
+        </tableViewCell>
+    </objects>
+</document>

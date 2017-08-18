@@ -96,7 +96,11 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
 		} else {
 			EManagement.addEvent(eventInformations)
 		}
-		
+		EManagement.eventInformation.state = .showDetail
+		endEditingWithReload()
+	}
+	
+	func endEditingWithReload() {
 		self.dismiss(animated: true, completion: {
 			self.dayView?.day.reloadData()
 			self.dayView?.eventTableView.reloadView()
@@ -123,6 +127,7 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		eventInformations = EManagement.eventInformation
+		eventInformations.eventEditor = self
 		switch eventInformations.state {
 		case .showDetail:
 			showDetailViewDidLoad()
