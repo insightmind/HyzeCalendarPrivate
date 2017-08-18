@@ -23,6 +23,9 @@ class CalendarTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
 		
+		self.tableView.allowsSelection = false
+		self.tableView.separatorStyle = .none
+		
 		let nib = UINib(nibName: "CalendarTableViewCell", bundle: nil)
 		
 		self.tableView!.register(nib, forCellReuseIdentifier: reuseIdentifier)
@@ -51,6 +54,8 @@ class CalendarTableViewController: UITableViewController {
 		let calendar = calendars[indexPath.item]
 		cell.colorView.backgroundColor = UIColor(cgColor: calendar.cgColor)
 		cell.titleLabel.text = calendar.title
+		cell.colorView.layer.shadowColor = cell.colorView.backgroundColor?.cgColor
+		cell.calendar = calendar
 
         return cell
     }

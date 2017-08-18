@@ -92,7 +92,11 @@ class SelectCalendarTableViewCell: UITableViewCell, EventEditorCell {
 		}
     }
 
-	
+	func reloadInfomations() {
+		if let calendar = eventInformations.calendar {
+			selectedCalendarLabel.text = calendar.title
+		}
+	}
 	
 	
     override func setSelected(_ selected: Bool, animated: Bool) {

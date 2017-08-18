@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QMf-tc-ZG1">
-                                <rect key="frame" x="0.0" y="292" width="375" height="405"/>
+                                <rect key="frame" x="0.0" y="204" width="375" height="493"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calendar" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XGC-8K-cqp">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="63"/>
@@ -32,38 +32,22 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yGX-Nb-KeT">
-                                        <rect key="frame" x="0.0" y="63" width="375" height="266"/>
+                                        <rect key="frame" x="0.0" y="63" width="375" height="400"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="400" id="Smd-Kc-Hky"/>
+                                        </constraints>
                                         <connections>
-                                            <segue destination="Fuh-9e-yVm" kind="embed" id="CSn-9A-w7j"/>
+                                            <segue destination="Fuh-9e-yVm" kind="embed" identifier="embed" id="CSn-9A-w7j"/>
                                         </connections>
                                     </containerView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="roy-22-SL8">
-                                        <rect key="frame" x="8" y="337" width="48" height="30"/>
-                                        <state key="normal" title="Cancel"/>
-                                        <connections>
-                                            <action selector="cancel:" destination="wqB-9H-Own" eventType="touchUpInside" id="ZC9-Q9-YMz"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bVH-wr-TvF">
-                                        <rect key="frame" x="333" y="337" width="34" height="30"/>
-                                        <state key="normal" title="Save"/>
-                                        <connections>
-                                            <action selector="save:" destination="wqB-9H-Own" eventType="touchUpInside" id="oMZ-MY-94t"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="yGX-Nb-KeT" firstAttribute="top" secondItem="XGC-8K-cqp" secondAttribute="bottom" id="3sH-7y-UXE"/>
-                                    <constraint firstAttribute="bottom" secondItem="roy-22-SL8" secondAttribute="bottom" constant="38" id="5uD-8z-wgl"/>
-                                    <constraint firstItem="roy-22-SL8" firstAttribute="top" secondItem="yGX-Nb-KeT" secondAttribute="bottom" constant="8" id="7IX-aN-ZrA"/>
-                                    <constraint firstItem="bVH-wr-TvF" firstAttribute="top" secondItem="yGX-Nb-KeT" secondAttribute="bottom" constant="8" id="Gp4-qz-Suf"/>
+                                    <constraint firstAttribute="bottom" secondItem="yGX-Nb-KeT" secondAttribute="bottom" constant="30" id="G7V-mc-IoV"/>
                                     <constraint firstAttribute="trailing" secondItem="XGC-8K-cqp" secondAttribute="trailing" id="RXI-cU-7t8"/>
                                     <constraint firstAttribute="trailing" secondItem="yGX-Nb-KeT" secondAttribute="trailing" id="eTf-rD-QSr"/>
-                                    <constraint firstAttribute="bottom" secondItem="bVH-wr-TvF" secondAttribute="bottom" constant="38" id="ej5-Oq-bo9"/>
-                                    <constraint firstAttribute="trailing" secondItem="bVH-wr-TvF" secondAttribute="trailing" constant="8" id="iu7-Du-0ql"/>
                                     <constraint firstItem="yGX-Nb-KeT" firstAttribute="leading" secondItem="QMf-tc-ZG1" secondAttribute="leading" id="jlf-ce-O0h"/>
-                                    <constraint firstItem="roy-22-SL8" firstAttribute="leading" secondItem="QMf-tc-ZG1" secondAttribute="leading" constant="8" id="nrQ-Ep-mo4"/>
                                     <constraint firstItem="XGC-8K-cqp" firstAttribute="leading" secondItem="QMf-tc-ZG1" secondAttribute="leading" id="oOn-hH-5hB"/>
                                     <constraint firstItem="XGC-8K-cqp" firstAttribute="top" secondItem="QMf-tc-ZG1" secondAttribute="top" id="y8d-z2-d86"/>
                                 </constraints>
@@ -71,7 +55,6 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="QMf-tc-ZG1" firstAttribute="top" secondItem="z67-Pk-KkB" secondAttribute="top" constant="272" id="5jF-gS-Ia2"/>
                             <constraint firstItem="QMf-tc-ZG1" firstAttribute="trailing" secondItem="z67-Pk-KkB" secondAttribute="trailing" id="Cxm-78-c9I"/>
                             <constraint firstItem="QMf-tc-ZG1" firstAttribute="leading" secondItem="z67-Pk-KkB" secondAttribute="leading" id="Ukf-89-IOQ"/>
                             <constraint firstItem="QMf-tc-ZG1" firstAttribute="bottom" secondItem="z67-Pk-KkB" secondAttribute="bottom" constant="30" id="vYE-uE-Aaq"/>
@@ -91,7 +74,7 @@
             <objects>
                 <tableViewController id="Fuh-9e-yVm" customClass="CalendarTableViewController" customModule="HyzeCalendarForWWDC" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="esS-5b-hkM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="266"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>

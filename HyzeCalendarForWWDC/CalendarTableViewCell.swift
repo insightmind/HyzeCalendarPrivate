@@ -7,12 +7,18 @@
 //
 
 import UIKit
+import EventKit
 
 class CalendarTableViewCell: UITableViewCell {
 
 	@IBOutlet weak var mainView: UIView!
 	@IBOutlet weak var titleLabel: UILabel!
 	@IBOutlet weak var colorView: UIView!
+	@IBOutlet weak var selectButton: UIView!
+	@IBOutlet weak var arrowButton: UIButton!
+	
+	var eventInformation = EManagement.eventInformation
+	var calendar: EKCalendar? = nil
 	
 	override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,9 +29,39 @@ class CalendarTableViewCell: UITableViewCell {
 		self.colorView.layer.shadowOffset = CGSize(width: 1, height: 3)
 		self.colorView.layer.shadowOpacity = 0.8
 		
-		self.mainView.backgroundColor = Color.blue
+		self.setUpSelectButton()
+		
+		self.mainView.backgroundColor = Color.white
+		self.titleLabel.textColor = Color.blue
     }
 
+	@IBAction func setCalendar(_ sender: UIButton) {
+		if let viewController = eventInformation.setCalendarPopoverViewController {
+			if let presenter = viewController.presentingViewController as? EventEditorViewController {
+				presenter.reloadTableViewCells(.calendar, onlyInformations: true)
+			}
+			viewController.dismiss(animated: true, completion: {
+				self.eventInformation.calendar = self.calendar
+			})
+		} else {
+			fatalError()
+		}
+	}
+	
+	fileprivate func setUpSelectButton() {
+		self.selectButton.layer.cornerRadius = self.selectButton.bounds.width / 2
+		self.selectButton.backgroundColor = Color.red
+		let image = #imageLiteral(resourceName: "ic_done").withRenderingMode(.alwaysTemplate)
+		self.arrowButton.setImage(image, for: .normal)
+		self.arrowButton.tintColor = Color.white
+		
+		self.selectButton.layer.shadowPath = UIBezierPath(roundedRect: selectButton.bounds, cornerRadius: selectButton.bounds.width / 2).cgPath
+		self.selectButton.layer.shadowColor = self.selectButton.backgroundColor?.cgColor
+		self.selectButton.layer.shadowRadius = 5
+		self.selectButton.layer.shadowOffset = CGSize(width: 1, height: 3)
+		self.selectButton.layer.shadowOpacity = 0.8
+	}
+	
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

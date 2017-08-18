@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13156.2"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,7 +24,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="55.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="selectedCalendar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sDU-5P-olt">
-                                <rect key="frame" x="31" y="8" width="281" height="40"/>
+                                <rect key="frame" x="31" y="8" width="233" height="40"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -35,16 +36,41 @@
                                     <constraint firstAttribute="width" constant="15" id="QPX-oZ-vMD"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yIb-nu-IlD">
+                                <rect key="frame" x="272" y="8" width="39.5" height="39.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0rd-oD-tur">
+                                        <rect key="frame" x="0.0" y="0.0" width="39.5" height="39.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <state key="normal" image="ic_keyboard_arrow_right"/>
+                                        <connections>
+                                            <action selector="setCalendar:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="RoL-h6-uhE"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="0rd-oD-tur" secondAttribute="trailing" id="4hd-v4-n75"/>
+                                    <constraint firstAttribute="bottom" secondItem="0rd-oD-tur" secondAttribute="bottom" id="9r3-mC-YVL"/>
+                                    <constraint firstAttribute="width" secondItem="yIb-nu-IlD" secondAttribute="height" multiplier="1:1" id="O2u-as-xMc"/>
+                                    <constraint firstAttribute="trailing" secondItem="0rd-oD-tur" secondAttribute="trailing" id="dFA-fZ-Fd2"/>
+                                    <constraint firstItem="0rd-oD-tur" firstAttribute="leading" secondItem="yIb-nu-IlD" secondAttribute="leading" id="kn2-qT-Z1T"/>
+                                    <constraint firstItem="0rd-oD-tur" firstAttribute="top" secondItem="yIb-nu-IlD" secondAttribute="top" id="vTN-kO-vah"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.31620826569999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="lTb-ns-LrY" secondAttribute="bottom" constant="7.5" id="87z-Mw-frj"/>
                             <constraint firstItem="sDU-5P-olt" firstAttribute="top" secondItem="n2J-u2-88J" secondAttribute="top" constant="8" id="ISj-AE-33g"/>
-                            <constraint firstAttribute="trailing" secondItem="sDU-5P-olt" secondAttribute="trailing" constant="8" id="M1E-jn-hDc"/>
+                            <constraint firstItem="yIb-nu-IlD" firstAttribute="top" secondItem="n2J-u2-88J" secondAttribute="top" constant="8" id="UUb-dq-t3J"/>
                             <constraint firstAttribute="bottom" secondItem="sDU-5P-olt" secondAttribute="bottom" constant="8" id="Up8-6G-bMw"/>
+                            <constraint firstAttribute="bottom" secondItem="yIb-nu-IlD" secondAttribute="bottom" constant="8" id="c9n-nv-jUd"/>
                             <constraint firstItem="sDU-5P-olt" firstAttribute="leading" secondItem="lTb-ns-LrY" secondAttribute="trailing" constant="8" id="f1S-w9-Iav"/>
                             <constraint firstItem="lTb-ns-LrY" firstAttribute="leading" secondItem="n2J-u2-88J" secondAttribute="leading" constant="8" id="jJq-0P-Dpt"/>
                             <constraint firstItem="lTb-ns-LrY" firstAttribute="top" secondItem="n2J-u2-88J" secondAttribute="top" constant="8" id="o4u-Bc-eJQ"/>
+                            <constraint firstAttribute="trailing" secondItem="yIb-nu-IlD" secondAttribute="trailing" constant="8" id="vOZ-ip-2Oc"/>
+                            <constraint firstItem="yIb-nu-IlD" firstAttribute="leading" secondItem="sDU-5P-olt" secondAttribute="trailing" constant="8" id="wJZ-UJ-kn5"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -57,11 +83,16 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="arrowButton" destination="0rd-oD-tur" id="kXT-nb-ymT"/>
                 <outlet property="colorView" destination="lTb-ns-LrY" id="QX5-e5-NG6"/>
                 <outlet property="mainView" destination="n2J-u2-88J" id="h49-pr-qSW"/>
+                <outlet property="selectButton" destination="yIb-nu-IlD" id="aLo-fV-ruI"/>
                 <outlet property="titleLabel" destination="sDU-5P-olt" id="Eoh-Nm-Lll"/>
             </connections>
             <point key="canvasLocation" x="25" y="58"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="ic_keyboard_arrow_right" width="24" height="24"/>
+    </resources>
 </document>

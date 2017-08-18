@@ -108,6 +108,11 @@ class EventEditorTableViewController: UITableViewController {
 					if onlyInformations {
 						cell.reloadInformations()
 					}
+				case .calendar:
+					let cell = self.tableView.cellForRow(at: IndexPath(row: i, section: 0)) as! SelectCalendarTableViewCell
+					if onlyInformations {
+						cell.reloadInfomations()
+					}
 				default:
 					return
 				}

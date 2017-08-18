@@ -24,4 +24,5 @@ class EventEditorEventInformations {
 	//NOT IMPORTANT FOR EVENTCREATION
 	var dateSelectionPopoverState: DateSpecification = .startDate
 	var state: EventEditorState = .create
+	var setCalendarPopoverViewController: SetCalendarPopoverViewController?
 }
