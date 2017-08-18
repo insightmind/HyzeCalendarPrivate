@@ -10,6 +10,7 @@ import UIKit
 
 class SelectCalendarTableViewCell: UITableViewCell, EventEditorCell {
 	
+	
 	@IBOutlet weak var mainView: UIView!
 	@IBOutlet weak var labelView: UIView!
 	@IBOutlet weak var headerLabel: UILabel!
@@ -92,9 +93,22 @@ class SelectCalendarTableViewCell: UITableViewCell, EventEditorCell {
 		}
     }
 
-	func reloadInfomations() {
+	func reloadInformations() {
+		
+		UIView.animate(withDuration: 0.3, animations: {
+			switch self.eventInformations.state {
+			case .create:
+				self.selectButton.isHidden = false
+			case .showDetail:
+				self.selectButton.isHidden = true
+			}
+		})
+		
+		
 		if let calendar = eventInformations.calendar {
 			selectedCalendarLabel.text = calendar.title
+			calendarColorView.backgroundColor = UIColor(cgColor: calendar.cgColor)
+			calendarColorView.layer.shadowColor = calendarColorView.backgroundColor?.cgColor
 		}
 	}
 	

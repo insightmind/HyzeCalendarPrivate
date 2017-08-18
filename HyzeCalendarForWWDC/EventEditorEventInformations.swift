@@ -17,9 +17,12 @@ class EventEditorEventInformations {
 	var endDate: Date = Date().addingTimeInterval(1800)
 	var color: UIColor = Color.white
 	var notes: String? = nil
-	var eventIdentifier: String? = nil
 	var calendar: EKCalendar? = nil
 	
+	
+	//only important for EventEditing not creation
+	
+	var eventIdentifier: String? = nil
 	
 	//NOT IMPORTANT FOR EVENTCREATION
 	var dateSelectionPopoverState: DateSpecification = .startDate

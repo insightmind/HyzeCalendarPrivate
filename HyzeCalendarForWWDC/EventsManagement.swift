@@ -114,17 +114,36 @@ class EventManagement {
         }
 		return status
     }
+	
+	func createEvent(from: EventEditorEventInformations) -> EKEvent? {
+		
+		var event: EKEvent
+		
+		if let identifier = eventInformation.eventIdentifier {
+			guard let checkedEvent = EMEventStore.event(withIdentifier: identifier) else {
+				return nil
+			}
+			event = checkedEvent
+		} else {
+			event = EKEvent(eventStore: EManagement.EMEventStore)
+		}
+		
+		event.title = from.title
+		event.calendar = from.calendar ?? getHyzeCalendar()
+		if from.startDate < from.endDate {
+			event.startDate = from.startDate
+			event.endDate = from.endDate
+			event.isAllDay = from.isAllDay
+			event.notes = from.notes
+		} else {
+			return nil
+		}
+		return event
+	}
     
 	func addEvent(_ informations: EventEditorEventInformations) {
-        let event = EKEvent(eventStore: EManagement.EMEventStore)
-        event.title = informations.title
-        event.calendar = informations.calendar ?? getHyzeCalendar()
-        if informations.startDate < informations.endDate {
-            event.startDate = informations.startDate
-            event.endDate = informations.endDate
-            event.isAllDay = informations.isAllDay
-			event.notes = informations.notes
-		} else {
+		guard let event = createEvent(from: informations) else {
+			print("Event could not be added")
 			return
 		}
         do {
@@ -161,8 +180,6 @@ class EventManagement {
 		informations.notes = event.notes
 		informations.eventIdentifier = eventIdentifier
 		informations.calendar = event.calendar
-		
-		print(informations)
 		
 		return informations
 	}
@@ -213,6 +230,38 @@ class EventManagement {
 			fatalError()
 		}
 
+	}
+	
+	func updateEvent(_ informations: EventEditorEventInformations) {
+		guard let event = createEvent(from: informations) else {
+			print("Event could not be updated")
+			return
+		}
+		do {
+			try EMEventStore.save(event, span: .thisEvent)
+			eventsChange = true
+		} catch {
+			print("Event could not be updated")
+			eventsChange = false
+		}
+		self.eventInformation = informations
+	}
+	
+	func returnCopy(of: EventEditorEventInformations) -> EventEditorEventInformations {
+		let informations = EventEditorEventInformations()
+		informations.title = of.title
+		informations.isAllDay = of.isAllDay
+		informations.startDate = of.startDate
+		informations.endDate = of.endDate
+		informations.color = of.color
+		informations.notes = of.notes
+		informations.calendar = of.calendar
+		informations.eventIdentifier = of.eventIdentifier
+		informations.state = of.state
+		informations.dateSelectionPopoverState = of.dateSelectionPopoverState
+		informations.eventEditorTableViewController = of.eventEditorTableViewController
+		informations.setCalendarPopoverViewController = of.setCalendarPopoverViewController
+		return informations
 	}
     
     init() {

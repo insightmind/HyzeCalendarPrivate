@@ -159,16 +159,37 @@
                                     </switch>
                                 </subviews>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="8e5-L1-Bhw">
+                                <rect key="frame" x="26" y="360" width="323" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ycH-Xv-RAq">
+                                        <rect key="frame" x="0.0" y="0.0" width="161.5" height="30"/>
+                                        <state key="normal" title="Default Calendar"/>
+                                        <connections>
+                                            <action selector="setDefaultCalendar:" destination="9Ys-zU-rvq" eventType="touchUpInside" id="tla-Yw-xJy"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="g37-SZ-W1R">
+                                        <rect key="frame" x="161.5" y="0.0" width="161.5" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="8e5-L1-Bhw" firstAttribute="leading" secondItem="JwF-B0-bp4" secondAttribute="leadingMargin" constant="10" id="6yx-VG-tHh"/>
                             <constraint firstItem="jAq-qH-V6P" firstAttribute="top" secondItem="FUa-qk-O5b" secondAttribute="bottom" constant="5" id="8Gf-9V-p72"/>
                             <constraint firstItem="njq-LW-myP" firstAttribute="trailing" secondItem="JwF-B0-bp4" secondAttribute="trailingMargin" id="9dW-sG-e3B"/>
                             <constraint firstItem="ci4-S1-2vx" firstAttribute="centerX" secondItem="FUa-qk-O5b" secondAttribute="centerX" id="BQK-8s-YSj"/>
                             <constraint firstAttribute="trailing" secondItem="FUa-qk-O5b" secondAttribute="trailing" constant="25" id="CRV-ca-7UY"/>
                             <constraint firstItem="jAq-qH-V6P" firstAttribute="leading" secondItem="JwF-B0-bp4" secondAttribute="leading" constant="26" id="JIB-R6-Ux5"/>
                             <constraint firstItem="iSx-hX-3vF" firstAttribute="leading" secondItem="I8S-10-ncE" secondAttribute="leading" id="K45-KA-QEN"/>
+                            <constraint firstAttribute="trailing" secondItem="8e5-L1-Bhw" secondAttribute="trailing" constant="26" id="Mrn-T8-Zmb"/>
                             <constraint firstAttribute="trailing" secondItem="ci4-S1-2vx" secondAttribute="trailing" constant="26" id="PFL-G8-7DO"/>
+                            <constraint firstItem="8e5-L1-Bhw" firstAttribute="top" secondItem="jAq-qH-V6P" secondAttribute="bottom" constant="7.5" id="R1E-MX-CSJ"/>
                             <constraint firstItem="njq-LW-myP" firstAttribute="leading" secondItem="ExF-LV-Yrz" secondAttribute="trailing" constant="25" id="SSA-ua-vWA"/>
                             <constraint firstAttribute="trailing" secondItem="I8S-10-ncE" secondAttribute="trailing" constant="26" id="UES-tl-iYk"/>
                             <constraint firstItem="ci4-S1-2vx" firstAttribute="top" secondItem="PCJ-Gd-eyQ" secondAttribute="bottom" constant="8" symbolic="YES" id="VGe-oF-wgI"/>
@@ -198,6 +219,7 @@
                         <outlet property="animateDayViewSwitch" destination="Wze-8G-gOP" id="mdt-ri-RAv"/>
                         <outlet property="darkModeLabel" destination="Kk3-6s-xKs" id="VFm-M8-74s"/>
                         <outlet property="darkModeSwitch" destination="ch3-yP-HBf" id="5vV-Oi-brz"/>
+                        <outlet property="defaultCalendarLabel" destination="g37-SZ-W1R" id="9e1-NZ-d6c"/>
                         <outlet property="hours24Label" destination="gCR-EK-lTb" id="j0Q-gl-J7z"/>
                         <outlet property="hours24Switch" destination="dKj-t4-vYH" id="qI3-Yg-b2Q"/>
                         <outlet property="settingsLabel" destination="ExF-LV-Yrz" id="Jxh-aW-uNT"/>

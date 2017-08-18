@@ -44,18 +44,7 @@ class EventEditorTableViewController: UITableViewController {
 		self.eventsInformations = EManagement.eventInformation
 		eventsInformations.eventEditorTableViewController = self
 		
-		switch eventsInformations.state {
-		case .showDetail:
-			if eventsInformations.notes == "" || eventsInformations.notes == nil {
-				for i in 0..<cells.count {
-					if cells[i].cellType == .notes {
-						cells.remove(at: i)
-					}
-				}
-			}
-		default:
-			break
-		}
+		self.updateCellsArray()
 		
 		hideKeyboardWhenTappedAround()
     }
@@ -112,7 +101,7 @@ class EventEditorTableViewController: UITableViewController {
 				case .calendar:
 					let cell = self.tableView.cellForRow(at: IndexPath(row: i, section: 0)) as! SelectCalendarTableViewCell
 					if onlyInformations {
-						cell.reloadInfomations()
+						cell.reloadInformations()
 					}
 				default:
 					return
@@ -123,7 +112,26 @@ class EventEditorTableViewController: UITableViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		
 		return cells[indexPath.row].height
+	}
+	
+	func updateCellsArray() {
+		cells = [EventEditorCellInformations(cellType: .dateSelection, height: 100.0),
+		         EventEditorCellInformations(cellType: .calendar, height: 100.0),
+		         EventEditorCellInformations(cellType: .notes, height: 170.0)]
+		switch eventsInformations.state {
+		case .showDetail:
+			if eventsInformations.notes == "" || eventsInformations.notes == nil {
+				for i in 0..<cells.count {
+					if cells[i].cellType == .notes {
+						cells.remove(at: i)
+					}
+				}
+			}
+		default:
+			break
+		}
 	}
 
 }

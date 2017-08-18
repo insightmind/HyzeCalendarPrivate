@@ -17,4 +17,8 @@ extension EventEditorViewController {
 		titleTextField.attributedPlaceholder = str
 	}
 	
+	func createSetUpSaveButton() {
+		saveButton.setTitle("Save", for: .normal)
+	}
+	
 }

@@ -71,6 +71,7 @@ class DayViewUIVViewController: UIViewController {
 			} else {
 				self.day.dayViewCenterButton.backgroundColor = Color.blue
 			}
+			self.day.layer.shadowColor = UIColor.black.cgColor
 		})
 		
 		
@@ -82,9 +83,10 @@ class DayViewUIVViewController: UIViewController {
 				eventEditor.dayView = self
 				if !isEEshowDetail {
 					EManagement.eventInformation = EventEditorEventInformations()
+					EManagement.eventInformation.calendar = EManagement.EMCalendar ?? EManagement.getHyzeCalendar()
 				}
 			}
-			// TODO: When Storyboard Segue works again
+			// TODO: When Storyboard Segue works again, or with ETViewCellUpdate
 //		} else if segue.identifier == "showDetail" {
 //			if let eventEditor = segue.destination as? EventEditorViewController {
 //				eventEditor.dayView = self

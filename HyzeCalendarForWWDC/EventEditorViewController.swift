@@ -16,6 +16,7 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
     var addEvent: Bool = false
 	var tableViewController: EventEditorTableViewController?
 	var eventInformations = EManagement.eventInformation
+	var tempEventInformationsSave = EManagement.returnCopy(of: EManagement.eventInformation)
 	var dayView: DayViewUIVViewController? = nil
 	
     // MARK: - Outlets
@@ -29,11 +30,39 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
 	
 	// MARK: - Actions
 	@IBAction func cancel(_ sender: UIButton) {
-		self.dismiss(animated: true, completion: nil)
+		
+		if eventInformations.state == .create && eventInformations.eventIdentifier != nil {
+			eventInformations.state = .showDetail
+			EManagement.eventInformation = tempEventInformationsSave
+			titleTextField.text = eventInformations.title
+			titleTextField.isUserInteractionEnabled = false
+			self.tableViewController?.updateCellsArray()
+			self.tableViewController?.tableView.reloadSections(IndexSet(integer: 0), with: .fade)
+			reloadAllCells()
+		} else {
+			self.dismiss(animated: true, completion: nil)
+		}
+		
+	}
+	
+	fileprivate func reloadAllCells() {
+		reloadTableViewCells(.dateSelection, onlyInformations: true)
+		reloadTableViewCells(.calendar, onlyInformations: true)
+		reloadTableViewCells(.notes, onlyInformations: true)
 	}
 	
 	@IBAction func save(_ sender: UIButton) {
-		saveTitle()
+		if eventInformations.state == .create {
+			saveTitle()
+		} else {
+			eventInformations.state = .create
+			titleTextField.isUserInteractionEnabled = true
+			createSetUpSaveButton()
+			self.tableViewController?.updateCellsArray()
+			self.tableViewController?.tableView.reloadSections(IndexSet(integer: 0), with: .fade)
+			reloadAllCells()
+		}
+		
 	}
 	
 	fileprivate func saveTitle() {
@@ -61,7 +90,12 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
 		if informationMode {
 			print("added Event")
 		}
-		EManagement.addEvent(eventInformations)
+		
+		if eventInformations.eventIdentifier != nil {
+			EManagement.updateEvent(eventInformations)
+		} else {
+			EManagement.addEvent(eventInformations)
+		}
 		
 		self.dismiss(animated: true, completion: {
 			self.dayView?.day.reloadData()
@@ -99,14 +133,6 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
     }
 	
 	func setEventInformationDates() {
-		let (year, month, indexPath) = HSelection.selectedDayCellIndex
-		guard let day = indexPath else {
-			return
-		}
-		let date = TimeManagement.convertToDate(yearID: year, monthID: month, dayID: day.item)
-		let now = TMCalendar.components(in: TimeZone.autoupdatingCurrent, from: Date())
-		
-		eventInformations.startDate = TMCalendar.date(bySettingHour: now.hour!, minute: now.minute!, second: now.second!, of: date, options: .matchFirst)!
 		eventInformations.endDate = eventInformations.startDate.addingTimeInterval(1800)
 		
 	}
@@ -118,7 +144,9 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if (segue.identifier == "embed") {
-			
+			if let checkedViewController = segue.destination as? EventEditorTableViewController {
+				self.tableViewController = checkedViewController
+			}
 		}
     }
     /*

@@ -31,21 +31,33 @@ class CalendarTableViewCell: UITableViewCell {
 		
 		self.setUpSelectButton()
 		
+    }
+	
+	func setCalendarSelectionDesign() {
 		if calendar?.calendarIdentifier == eventInformation.calendar?.calendarIdentifier && eventInformation.calendar != nil {
-			self.mainView.backgroundColor = Color.blue
+			self.mainView.backgroundColor = Color.blue.withAlphaComponent(0.8)
 			self.titleLabel.textColor = Color.white
 		} else {
-			self.mainView.backgroundColor = Color.white
+			self.mainView.backgroundColor = Color.white.withAlphaComponent(0.8)
 			self.titleLabel.textColor = Color.blue
 		}
-		
-    }
+	}
 
 	@IBAction func setCalendar(_ sender: UIButton) {
 		if let viewController = eventInformation.setCalendarPopoverViewController {
 			viewController.dismiss(animated: true, completion: {
-				self.eventInformation.calendar = self.calendar
-				self.eventInformation.eventEditorTableViewController?.reloadCell(.calendar, onlyInformations: true)
+				if isSettingDefaultCalendar {
+					EManagement.EMCalendar = self.calendar
+					let userDefault = UserDefaults.standard
+					userDefault.set(EManagement.EMCalendar?.calendarIdentifier, forKey: EManagement.userDefaultCalendarIdentifier)
+					settingsView?.loadInformations()
+					isSettingDefaultCalendar = false
+					userDefault.synchronize()
+				} else {
+					self.eventInformation.calendar = self.calendar
+					self.eventInformation.eventEditorTableViewController?.reloadCell(.calendar, onlyInformations: true)
+				}
+				
 			})
 		} else {
 			fatalError()

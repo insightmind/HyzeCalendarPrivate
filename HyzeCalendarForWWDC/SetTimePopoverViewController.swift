@@ -40,10 +40,7 @@ class SetTimePopoverViewController: UIViewController {
 		} else {
 			eventInformations.startDate = dates[.startDate]!
 			eventInformations.endDate = dates[.endDate]!
-			if let presenter = presentingViewController as? EventEditorViewController {
-				presenter.reloadTableViewCells(.dateSelection, onlyInformations: true)
-			}
-			
+			eventInformations.eventEditorTableViewController?.reloadCell(.dateSelection, onlyInformations: true)
 			self.dismiss(animated: true, completion: nil)
 		}
 	}

@@ -83,9 +83,10 @@ class DateSelectionTableViewCell: UITableViewCell, EventEditorCell {
 				self.allDaySwitch.isEnabled = false
 			}
 		}
-		setIsAllDaySwitchFont(self.eventInformations.isAllDay)
 		self.layoutIfNeeded()
 		self.allDaySwitch.layer.cornerRadius = self.allDaySwitch.bounds.height / 2
+		self.allDaySwitch.layer.shadowPath = UIBezierPath(roundedRect: self.allDaySwitch.bounds, cornerRadius: self.allDaySwitch.layer.cornerRadius).cgPath
+		setIsAllDaySwitchFont(self.eventInformations.isAllDay)
 	}
 	
 	@IBAction func toggleAllDay(_ sender: UIButton) {
@@ -225,6 +226,20 @@ class DateSelectionTableViewCell: UITableViewCell, EventEditorCell {
 	}
 	
 	func reloadInformations() {
+		
+		switch eventInformations.state {
+		case .create:
+			self.allDaySwitch.isUserInteractionEnabled = true
+			self.allDaySwitch.isEnabled = true
+			self.startDateView.isUserInteractionEnabled = true
+			self.endDateView.isUserInteractionEnabled = true
+		case .showDetail:
+			self.allDaySwitch.isUserInteractionEnabled = false
+			self.startDateView.isUserInteractionEnabled = false
+			self.endDateView.isUserInteractionEnabled = false
+		}
+		
+		
 		setUpDateLabel(animated: true)
 	}
 }

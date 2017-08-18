@@ -209,6 +209,27 @@
 			name = General;
 			sourceTree = "<group>";
 		};
+		3E6F88CC1F477E1600016908 /* Additional Views */ = {
+			isa = PBXGroup;
+			children = (
+				3EFBD3611F47025800DB0E7D /* SetCalendarPopoverViewController.swift */,
+				3E68188F1F46FFFC00E8D7BC /* CalendarTableViewController.swift */,
+				3E68188B1F46FED600E8D7BC /* CalendarTableViewCell.swift */,
+				3E6818891F46FB6300E8D7BC /* SelectCalendar.storyboard */,
+				3E68188C1F46FED600E8D7BC /* CalendarTableViewCell.xib */,
+			);
+			name = "Additional Views";
+			sourceTree = "<group>";
+		};
+		3E6F88CD1F477E2F00016908 /* Additional Views */ = {
+			isa = PBXGroup;
+			children = (
+				3E3AEDF71F23BFEF00792B11 /* SetTimePopoverViewController.swift */,
+				3EBEC8E11F3D03F700052C93 /* DateSelection.storyboard */,
+			);
+			name = "Additional Views";
+			sourceTree = "<group>";
+		};
 		3E8B90A01F433C8D000F8449 /* Attendees */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,13 +247,9 @@
 		3E8B90A21F433CA3000F8449 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				3E6F88CC1F477E1600016908 /* Additional Views */,
 				3E6285481F44797900301A42 /* SelectCalendarTableViewCell.swift */,
 				3E6285491F44797900301A42 /* SelectCalendarTableViewCell.xib */,
-				3EFBD3611F47025800DB0E7D /* SetCalendarPopoverViewController.swift */,
-				3E68188F1F46FFFC00E8D7BC /* CalendarTableViewController.swift */,
-				3E68188B1F46FED600E8D7BC /* CalendarTableViewCell.swift */,
-				3E68188C1F46FED600E8D7BC /* CalendarTableViewCell.xib */,
-				3E6818891F46FB6300E8D7BC /* SelectCalendar.storyboard */,
 			);
 			name = Calendar;
 			sourceTree = "<group>";
@@ -247,8 +264,7 @@
 		3EA269211F3CF2330021BB56 /* DateSelection */ = {
 			isa = PBXGroup;
 			children = (
-				3E3AEDF71F23BFEF00792B11 /* SetTimePopoverViewController.swift */,
-				3EBEC8E11F3D03F700052C93 /* DateSelection.storyboard */,
+				3E6F88CD1F477E2F00016908 /* Additional Views */,
 				3E47BD2F1F30EE0200E0646C /* DateSelectionTableViewCell.swift */,
 				3E47BD301F30EE0200E0646C /* DateSelectionTableViewCell.xib */,
 			);
@@ -272,9 +288,9 @@
 				3E4A9B261E4BB479009E45EF /* Data */,
 				3EE1E5A91E48D3AF00379576 /* View */,
 				3EA8EE251ED21919000D6EF2 /* Storyboards */,
+				3EC617B31EF86ADC00BB03B6 /* Localizations */,
 				3EA80D581E2BEC9300FD87C3 /* Assets.xcassets */,
 				3EC617B71EF86CDC00BB03B6 /* HyzeCalendarForWWDC.entitlements */,
-				3EC617B31EF86ADC00BB03B6 /* Localizations */,
 			);
 			path = HyzeCalendarForWWDC;
 			sourceTree = "<group>";

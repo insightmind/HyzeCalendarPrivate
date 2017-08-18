@@ -9,6 +9,15 @@
 import UIKit
 
 class NotesTableViewCell: UITableViewCell, UITextViewDelegate, EventEditorCell {
+	func reloadInformations() {
+		switch eventInformations.state {
+		case .create:
+			self.textView.isUserInteractionEnabled = false
+		case .showDetail:
+			self.textView.isUserInteractionEnabled = true
+		}
+	}
+	
 	
 	var eventInformations: EventEditorEventInformations!
 	

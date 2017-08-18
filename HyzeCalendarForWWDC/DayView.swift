@@ -101,8 +101,7 @@ class DayView: UIView {
 		
 		self.backgroundColor = UIColor.clear
 		
-		layer.shadowColor = UIColor.black.cgColor
-		layer.shadowOffset = CGSize(width: 0.0, height: 2.5)
+		layer.shadowOffset = CGSize(width: 1, height: 3)
 		layer.shadowOpacity = 0.5
 		
         for i in self.subviews {
@@ -118,6 +117,7 @@ class DayView: UIView {
 		processedEventsOnDate = prepareEventSubViewLayout()
         addEventsSubViews()
         setUpDayViewCenterButton()
+		
         if loaded {
             for i in 0...23 {
                 hourDecorationPosition.append(calculateHourLabelPosition(CGFloat(i)))

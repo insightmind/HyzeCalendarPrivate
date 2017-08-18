@@ -56,6 +56,7 @@ class CalendarTableViewController: UITableViewController {
 		cell.titleLabel.text = calendar.title
 		cell.colorView.layer.shadowColor = cell.colorView.backgroundColor?.cgColor
 		cell.calendar = calendar
+		cell.setCalendarSelectionDesign()
 
         return cell
     }

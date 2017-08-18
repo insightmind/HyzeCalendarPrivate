@@ -38,6 +38,9 @@ var hourDecorationPosition = [[CGFloat]]()
 
 let PI = CGFloat.pi
 
+var isSettingDefaultCalendar = false
+var settingsView: SettingsViewController?
+
 var isAMPM : Bool = UserDefaults.standard.bool(forKey: "IsAMPM")
 
 var eventsColorsOnSelectedDate: [UIColor] = [Color.grey]

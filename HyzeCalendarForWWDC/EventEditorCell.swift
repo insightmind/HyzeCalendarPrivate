@@ -10,4 +10,7 @@ import Foundation
 
 protocol EventEditorCell {
 	var eventInformations: EventEditorEventInformations! { get set }
+	
+	func reloadInformations()
+	
 }
