@@ -31,17 +31,21 @@ class CalendarTableViewCell: UITableViewCell {
 		
 		self.setUpSelectButton()
 		
-		self.mainView.backgroundColor = Color.white
-		self.titleLabel.textColor = Color.blue
+		if calendar?.calendarIdentifier == eventInformation.calendar?.calendarIdentifier && eventInformation.calendar != nil {
+			self.mainView.backgroundColor = Color.blue
+			self.titleLabel.textColor = Color.white
+		} else {
+			self.mainView.backgroundColor = Color.white
+			self.titleLabel.textColor = Color.blue
+		}
+		
     }
 
 	@IBAction func setCalendar(_ sender: UIButton) {
 		if let viewController = eventInformation.setCalendarPopoverViewController {
-			if let presenter = viewController.presentingViewController as? EventEditorViewController {
-				presenter.reloadTableViewCells(.calendar, onlyInformations: true)
-			}
 			viewController.dismiss(animated: true, completion: {
 				self.eventInformation.calendar = self.calendar
+				self.eventInformation.eventEditorTableViewController?.reloadCell(.calendar, onlyInformations: true)
 			})
 		} else {
 			fatalError()

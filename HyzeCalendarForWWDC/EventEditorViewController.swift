@@ -138,9 +138,9 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
 	
 	func reloadTableViewCells(_ cellType: EventEditorCellType, onlyInformations: Bool){
 	
-	guard let checkedTableViewController = tableViewController else {
-		fatalError()
-	}
-	checkedTableViewController.reloadCell(cellType, onlyInformations: onlyInformations)
+		guard let checkedTableViewController = tableViewController else {
+			fatalError()
+		}
+		checkedTableViewController.reloadCell(cellType, onlyInformations: onlyInformations)
 	}
 }

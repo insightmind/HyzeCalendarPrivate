@@ -42,6 +42,7 @@ class EventEditorTableViewController: UITableViewController {
 		self.tableView.register(UINib(nibName: "SelectCalendarTableViewCell", bundle: nil), forCellReuseIdentifier: EventEditorCellType.calendar.rawValue)
 		
 		self.eventsInformations = EManagement.eventInformation
+		eventsInformations.eventEditorTableViewController = self
 		
 		switch eventsInformations.state {
 		case .showDetail:
