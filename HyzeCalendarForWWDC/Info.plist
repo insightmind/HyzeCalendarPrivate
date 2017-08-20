@@ -28,11 +28,13 @@
 	<key>CFBundleShortVersionString</key>
 	<string>0.4</string>
 	<key>CFBundleVersion</key>
-	<string>801</string>
+	<string>829</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCalendarsUsageDescription</key>
-	<string>Use calendar connected to Apple calendar</string>
+	<string>to show and edit calendar informations</string>
+	<key>NSContactsUsageDescription</key>
+	<string>to use contacts in events or add new contacts</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2017 Niklas Bülow. All rights reserved.</string>
 	<key>UILaunchStoryboardName</key>

@@ -65,28 +65,29 @@ class DateSelectionTableViewCell: UITableViewCell, EventEditorCell {
     func setAllDaySwitchDesign() {
 		allDaySwitch.tintColor = Color.white
 		if self.eventInformations.isAllDay {
+			self.allDaySwitch.isHidden = false
 			self.allDaySwitch.layer.shadowOpacity = 0
 			NSLayoutConstraint.deactivate(self.isNotAllDayConstraints)
 			NSLayoutConstraint.activate(self.isAllDayConstraints)
 			self.allDaySwitch.backgroundColor = Color.green
 		} else {
-			self.allDaySwitch.layer.shadowOpacity = 0.8
-			if eventInformations.state == .showDetail {
-				self.allDaySwitch.layer.shadowOpacity = 0
+			switch eventInformations.state {
+			case .showDetail:
+				self.allDaySwitch.isHidden = true
+			case .create:
+				self.allDaySwitch.isHidden = false
+				self.allDaySwitch.layer.shadowOpacity = 0.8
+				NSLayoutConstraint.deactivate(self.isAllDayConstraints)
+				NSLayoutConstraint.activate(self.isNotAllDayConstraints)
+				self.allDaySwitch.backgroundColor = Color.red
 			}
-			NSLayoutConstraint.deactivate(self.isAllDayConstraints)
-			NSLayoutConstraint.activate(self.isNotAllDayConstraints)
-			self.allDaySwitch.backgroundColor = Color.red
-			if eventInformations.state == .showDetail {
-				self.allDaySwitch.backgroundColor = UIColor.clear
-				self.allDaySwitch.tintColor = UIColor.clear
-				self.allDaySwitch.isEnabled = false
-			}
+			
 		}
+		setIsAllDaySwitchFont(self.eventInformations.isAllDay)
 		self.layoutIfNeeded()
 		self.allDaySwitch.layer.cornerRadius = self.allDaySwitch.bounds.height / 2
 		self.allDaySwitch.layer.shadowPath = UIBezierPath(roundedRect: self.allDaySwitch.bounds, cornerRadius: self.allDaySwitch.layer.cornerRadius).cgPath
-		setIsAllDaySwitchFont(self.eventInformations.isAllDay)
+
 	}
 	
 	@IBAction func toggleAllDay(_ sender: UIButton) {
@@ -230,7 +231,6 @@ class DateSelectionTableViewCell: UITableViewCell, EventEditorCell {
 		switch eventInformations.state {
 		case .create:
 			self.allDaySwitch.isUserInteractionEnabled = true
-			self.allDaySwitch.isEnabled = true
 			self.startDateView.isUserInteractionEnabled = true
 			self.endDateView.isUserInteractionEnabled = true
 		case .showDetail:
@@ -239,7 +239,7 @@ class DateSelectionTableViewCell: UITableViewCell, EventEditorCell {
 			self.endDateView.isUserInteractionEnabled = false
 		}
 		
-		
+		self.setIsAllDaySwitchFont(eventInformations.isAllDay)
 		setUpDateLabel(animated: true)
 	}
 }

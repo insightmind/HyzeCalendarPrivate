@@ -16,7 +16,6 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
     var addEvent: Bool = false
 	var tableViewController: EventEditorTableViewController?
 	var eventInformations = EManagement.eventInformation
-	var tempEventInformationsSave = EManagement.returnCopy(of: EManagement.eventInformation)
 	var dayView: DayViewUIVViewController? = nil
 	
     // MARK: - Outlets
@@ -32,13 +31,13 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
 	@IBAction func cancel(_ sender: UIButton) {
 		
 		if eventInformations.state == .create && eventInformations.eventIdentifier != nil {
-			eventInformations.state = .showDetail
-			EManagement.eventInformation = tempEventInformationsSave
-			titleTextField.text = eventInformations.title
-			titleTextField.isUserInteractionEnabled = false
+			let correctInformationsForEvent = EManagement.convertToEventEditorEventInformations(eventIdentifier: eventInformations.eventIdentifier!, state: .showDetail)
+			eventInformations.setEventInformations(correctInformationsForEvent!)
+			self.showDetailSetUpSaveButton()
+			self.titleTextField.text = self.eventInformations.title
+			self.titleTextField.isUserInteractionEnabled = false
 			self.tableViewController?.updateCellsArray()
 			self.tableViewController?.tableView.reloadSections(IndexSet(integer: 0), with: .fade)
-			reloadAllCells()
 		} else {
 			self.dismiss(animated: true, completion: nil)
 		}
@@ -139,7 +138,6 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
 	
 	func setEventInformationDates() {
 		eventInformations.endDate = eventInformations.startDate.addingTimeInterval(1800)
-		
 	}
 
     override func didReceiveMemoryWarning() {

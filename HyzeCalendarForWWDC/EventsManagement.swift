@@ -164,9 +164,14 @@ class EventManagement {
 		return UIColor(cgColor: event.calendar.cgColor)
 	}
 	
-	func convertToEventEditorEventInformations(eventIdentifier: String, state: EventEditorState) -> EventEditorEventInformations? {
+
+	
+	func convertToEventEditorEventInformations(eventIdentifier: String, state: EventEditorState, completion: (() -> Void)? = nil) -> EventEditorEventInformations? {
 		
 		guard let event = EMEventStore.event(withIdentifier: eventIdentifier) else {
+			if let complete = completion {
+				complete()
+			}
 			return nil
 		}
 		
@@ -180,6 +185,11 @@ class EventManagement {
 		informations.notes = event.notes
 		informations.eventIdentifier = eventIdentifier
 		informations.calendar = event.calendar
+		informations.participants = event.attendees
+		
+		if let complete = completion {
+			complete()
+		}
 		
 		return informations
 	}
@@ -245,23 +255,6 @@ class EventManagement {
 			eventsChange = false
 		}
 		self.eventInformation = informations
-	}
-	
-	func returnCopy(of: EventEditorEventInformations) -> EventEditorEventInformations {
-		let informations = EventEditorEventInformations()
-		informations.title = of.title
-		informations.isAllDay = of.isAllDay
-		informations.startDate = of.startDate
-		informations.endDate = of.endDate
-		informations.color = of.color
-		informations.notes = of.notes
-		informations.calendar = of.calendar
-		informations.eventIdentifier = of.eventIdentifier
-		informations.state = of.state
-		informations.dateSelectionPopoverState = of.dateSelectionPopoverState
-		informations.eventEditorTableViewController = of.eventEditorTableViewController
-		informations.setCalendarPopoverViewController = of.setCalendarPopoverViewController
-		return informations
 	}
 	
 	func deleteEvent(_ informations: EventEditorEventInformations) {

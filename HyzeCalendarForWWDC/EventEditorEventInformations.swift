@@ -10,7 +10,43 @@ import Foundation
 import UIKit
 import EventKit
 
-class EventEditorEventInformations {
+class EventEditorEventInformations: NSCopying {
+	
+	func copy(with zone: NSZone? = nil) -> Any {
+		let informations = EventEditorEventInformations()
+		informations.title = title
+		informations.isAllDay = isAllDay
+		informations.startDate = startDate
+		informations.endDate = endDate
+		informations.color = color
+		informations.notes = notes
+		informations.calendar = calendar
+		informations.eventIdentifier = eventIdentifier
+		informations.state = state
+		informations.dateSelectionPopoverState = dateSelectionPopoverState
+		informations.eventEditorTableViewController = eventEditorTableViewController
+		informations.setCalendarPopoverViewController = setCalendarPopoverViewController
+		return informations
+	}
+	
+    func setEventInformations(_ information: EventEditorEventInformations, allInformations: Bool = false) {
+		self.state = information.state
+		self.startDate = information.startDate
+		self.endDate = information.endDate
+		self.isAllDay = information.isAllDay
+		self.notes = information.notes
+		self.participants = information.participants
+		self.title = information.title
+		self.eventIdentifier = information.eventIdentifier
+		self.calendar = information.calendar
+		if allInformations {
+			dateSelectionPopoverState = information.dateSelectionPopoverState
+			setCalendarPopoverViewController = information.setCalendarPopoverViewController
+			eventEditorTableViewController = information.eventEditorTableViewController
+			eventEditor = information.eventEditor
+		}
+	}
+	
 	var title: String = "Untitled Event"
 	var isAllDay: Bool = false
 	var startDate: Date = Date()
@@ -18,6 +54,7 @@ class EventEditorEventInformations {
 	var color: UIColor = Color.white
 	var notes: String? = nil
 	var calendar: EKCalendar? = nil
+	var participants: [EKParticipant]? = nil
 	
 	
 	//only important for EventEditing not creation

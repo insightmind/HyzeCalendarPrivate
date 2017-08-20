@@ -10,6 +10,7 @@ import UIKit
 
 class NotesTableViewCell: UITableViewCell, UITextViewDelegate, EventEditorCell {
 	func reloadInformations() {
+		eventInformations = EManagement.eventInformation
 		switch eventInformations.state {
 		case .create:
 			self.textView.isUserInteractionEnabled = false

@@ -13,6 +13,7 @@ class RemoveTableViewCell: UITableViewCell, EventEditorCell {
 	var eventInformations: EventEditorEventInformations! = EManagement.eventInformation
 	
 	func reloadInformations() {
+		eventInformations = EManagement.eventInformation
 		return
 	}
 

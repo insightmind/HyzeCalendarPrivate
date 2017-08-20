@@ -10,8 +10,9 @@ import UIKit
 
 enum EventEditorCellType: String {
 	case dateSelection = "dateSelection"
-	case notes = "notes"
 	case calendar = "calendar"
+	case contacts = "contacts"
+	case notes = "notes"
 	case remove = "remove"
 }
 
@@ -24,6 +25,7 @@ class EventEditorTableViewController: UITableViewController {
 	
 	var cells: [EventEditorCellInformations] = [EventEditorCellInformations(cellType: .dateSelection, height: 100.0),
 	                                            EventEditorCellInformations(cellType: .calendar, height: 100.0),
+	                                            EventEditorCellInformations(cellType: .contacts, height: 200.0),
 	                                            EventEditorCellInformations(cellType: .notes, height: 170.0)]
 	var eventsInformations: EventEditorEventInformations!
 
@@ -42,6 +44,7 @@ class EventEditorTableViewController: UITableViewController {
 		self.tableView.register(UINib(nibName: "NotesTableViewCell", bundle: nil) ,forCellReuseIdentifier: EventEditorCellType.notes.rawValue)
 		self.tableView.register(UINib(nibName: "SelectCalendarTableViewCell", bundle: nil), forCellReuseIdentifier: EventEditorCellType.calendar.rawValue)
 		self.tableView.register(UINib(nibName: "RemoveTableViewCell", bundle: nil), forCellReuseIdentifier: EventEditorCellType.remove.rawValue)
+		self.tableView.register(UINib(nibName: "SelectContactsTableViewCell", bundle: nil), forCellReuseIdentifier: EventEditorCellType.contacts.rawValue)
 		
 		self.eventsInformations = EManagement.eventInformation
 		eventsInformations.eventEditorTableViewController = self
@@ -90,6 +93,9 @@ class EventEditorTableViewController: UITableViewController {
 		case .remove:
 			let cell = tableView.dequeueReusableCell(withIdentifier: EventEditorCellType.remove.rawValue) as! RemoveTableViewCell
 			return cell
+		case .contacts:
+			let cell = tableView.dequeueReusableCell(withIdentifier: EventEditorCellType.contacts.rawValue) as! SelectContactsTableViewCell
+			return cell
 		}
 		
     }
@@ -124,6 +130,7 @@ class EventEditorTableViewController: UITableViewController {
 	func updateCellsArray() {
 		cells = [EventEditorCellInformations(cellType: .dateSelection, height: 100.0),
 		         EventEditorCellInformations(cellType: .calendar, height: 100.0),
+		         EventEditorCellInformations(cellType: .contacts, height: 120.0),
 		         EventEditorCellInformations(cellType: .notes, height: 170.0)]
 		switch eventsInformations.state {
 		case .showDetail:

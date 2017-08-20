@@ -40,7 +40,7 @@ class SelectCalendarTableViewCell: UITableViewCell, EventEditorCell {
 	fileprivate func setUpSelectButton() {
 		self.selectButton.layer.cornerRadius = self.selectButton.bounds.width / 2
 		self.selectButton.backgroundColor = Color.red
-		let image = #imageLiteral(resourceName: "ic_keyboard_arrow_right").withRenderingMode(.alwaysTemplate)
+		let image = #imageLiteral(resourceName: "ic_edit").withRenderingMode(.alwaysTemplate)
 		self.arrowButton.setImage(image, for: .normal)
 		self.arrowButton.tintColor = Color.white
 		
@@ -94,6 +94,8 @@ class SelectCalendarTableViewCell: UITableViewCell, EventEditorCell {
     }
 
 	func reloadInformations() {
+		
+		eventInformations = EManagement.eventInformation
 		
 		UIView.animate(withDuration: 0.3, animations: {
 			switch self.eventInformations.state {
