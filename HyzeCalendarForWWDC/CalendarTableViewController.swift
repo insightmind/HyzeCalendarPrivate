@@ -28,7 +28,7 @@ class CalendarTableViewController: UITableViewController {
 		if darkMode {
 			self.tableView.backgroundColor = Color.grey.withAlphaComponent(0.3)
 		} else {
-			self.tableView.backgroundColor = UIColor.clear
+			self.tableView.backgroundColor = UIColor.white.withAlphaComponent(0.5)
 		}
 		
 		

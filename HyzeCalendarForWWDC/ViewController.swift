@@ -114,7 +114,7 @@ class ViewController: UIViewController {
 		
 		let calendar = EManagement.getHyzeCalendar()
 		if calendar == nil {
-			EManagement.createCalendar()
+			//EManagement.createCalendar()
 		}
 		
         darkModeTemp = darkMode
