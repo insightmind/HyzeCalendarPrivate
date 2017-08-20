@@ -11,7 +11,7 @@ import EventKit
 
 class CalendarTableViewController: UITableViewController {
 	
-	let calendars: [EKCalendar] = EManagement.EMEventStore.calendars(for: .event)
+	var calendars: [EKCalendar] = EManagement.EMEventStore.calendars(for: .event)
 	let reuseIdentifier = "calendar"
 
     override func viewDidLoad() {
@@ -25,10 +25,26 @@ class CalendarTableViewController: UITableViewController {
 		
 		self.tableView.allowsSelection = false
 		self.tableView.separatorStyle = .none
+		if darkMode {
+			self.tableView.backgroundColor = Color.grey.withAlphaComponent(0.3)
+		} else {
+			self.tableView.backgroundColor = UIColor.clear
+		}
+		
 		
 		let nib = UINib(nibName: "CalendarTableViewCell", bundle: nil)
 		
 		self.tableView!.register(nib, forCellReuseIdentifier: reuseIdentifier)
+		self.tableView!.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
+		
+		for i in 0..<calendars.count {
+			let calendar = calendars[i]
+			let eventInformation = EManagement.eventInformation
+			if calendar.calendarIdentifier == eventInformation.calendar?.calendarIdentifier && eventInformation.calendar != nil{
+				let removed = calendars.remove(at: i)
+				calendars.insert(removed, at: 0)
+			}
+		}
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,6 +72,7 @@ class CalendarTableViewController: UITableViewController {
 		cell.titleLabel.text = calendar.title
 		cell.colorView.layer.shadowColor = cell.colorView.backgroundColor?.cgColor
 		cell.calendar = calendar
+		cell.backgroundColor = UIColor.clear
 		cell.setCalendarSelectionDesign()
 
         return cell

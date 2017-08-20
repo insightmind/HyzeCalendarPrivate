@@ -12,7 +12,15 @@ import UIKit
 extension EventEditorViewController {
 	
 	func createViewDidLoad () {
-		let color = Color.white.withAlphaComponent(0.5)
+		
+		var color: UIColor
+		
+		if darkMode {
+			color = Color.white.withAlphaComponent(0.5)
+		} else {
+			color = Color.grey.withAlphaComponent(0.5)
+		}
+		
 		let str = NSAttributedString(string: "Untitled Event", attributes: [NSAttributedStringKey.foregroundColor : color])
 		titleTextField.attributedPlaceholder = str
 	}

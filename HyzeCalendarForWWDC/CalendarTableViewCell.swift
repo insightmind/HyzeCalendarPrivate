@@ -34,13 +34,19 @@ class CalendarTableViewCell: UITableViewCell {
     }
 	
 	func setCalendarSelectionDesign() {
+		
 		if calendar?.calendarIdentifier == eventInformation.calendar?.calendarIdentifier && eventInformation.calendar != nil {
 			self.mainView.backgroundColor = Color.blue.withAlphaComponent(0.8)
 			self.titleLabel.textColor = Color.white
 		} else {
-			self.mainView.backgroundColor = Color.white.withAlphaComponent(0.8)
-			self.titleLabel.textColor = Color.blue
+			self.mainView.backgroundColor = UIColor.clear
+			if darkMode {
+				self.titleLabel.textColor = Color.white
+			} else {
+				self.titleLabel.textColor = Color.blue
+			}
 		}
+		
 	}
 
 	@IBAction func setCalendar(_ sender: UIButton) {
