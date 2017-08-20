@@ -60,7 +60,7 @@
                                 </connections>
                             </containerView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="A3r-3z-TZC" customClass="ETView" customModule="HyzeCalendarForWWDC" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="310" width="321" height="210"/>
+                                <rect key="frame" x="0.0" y="310" width="320" height="210"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -69,10 +69,10 @@
                                 <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="center" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationWidth="0.0" reuseIdentifier="Events" rowHeight="50" id="dRc-1V-GLg" customClass="ETViewCell" customModule="HyzeCalendarForWWDC" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="321" height="50"/>
+                                        <rect key="frame" x="0.0" y="28" width="320" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dRc-1V-GLg" id="6xq-Qc-5SA" customClass="ETViewCell" customModule="HyzeCalendarForWWDC" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="321" height="49.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
@@ -150,14 +150,14 @@
                         <constraints>
                             <constraint firstItem="3te-8G-WxE" firstAttribute="leading" secondItem="GCF-0K-sLN" secondAttribute="leading" id="24F-UQ-amp"/>
                             <constraint firstItem="GCF-0K-sLN" firstAttribute="top" secondItem="A3r-3z-TZC" secondAttribute="bottom" constant="-60" id="6iX-e0-5Xm"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="A3r-3z-TZC" secondAttribute="trailing" constant="-16.5" id="B1f-95-KNW"/>
+                            <constraint firstAttribute="trailing" secondItem="A3r-3z-TZC" secondAttribute="trailing" id="B1f-95-KNW"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Q51-W6-Rno" secondAttribute="trailing" constant="-15" id="CQf-0T-GLf"/>
                             <constraint firstItem="A3r-3z-TZC" firstAttribute="top" secondItem="Q51-W6-Rno" secondAttribute="bottom" id="Cia-ee-nQn"/>
                             <constraint firstAttribute="trailingMargin" secondItem="tSU-Yg-gF9" secondAttribute="trailing" constant="-10" id="Gjb-pd-cmm"/>
                             <constraint firstItem="GCF-0K-sLN" firstAttribute="leading" secondItem="8SE-NO-vxc" secondAttribute="leadingMargin" constant="-16" id="HZk-7A-M4U"/>
                             <constraint firstItem="Q51-W6-Rno" firstAttribute="top" secondItem="3te-8G-WxE" secondAttribute="bottom" id="MmH-cE-7dk"/>
                             <constraint firstItem="A3r-3z-TZC" firstAttribute="top" secondItem="Q51-W6-Rno" secondAttribute="bottom" id="Nyc-jh-8oy"/>
-                            <constraint firstItem="A3r-3z-TZC" firstAttribute="leading" secondItem="8SE-NO-vxc" secondAttribute="leadingMargin" constant="-16" id="S6x-58-iKD"/>
+                            <constraint firstItem="A3r-3z-TZC" firstAttribute="leading" secondItem="8SE-NO-vxc" secondAttribute="leading" id="S6x-58-iKD"/>
                             <constraint firstItem="tSU-Yg-gF9" firstAttribute="leading" secondItem="8SE-NO-vxc" secondAttribute="leadingMargin" constant="-10" id="VIc-hw-RAV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="GCF-0K-sLN" secondAttribute="trailing" constant="-16.5" id="VVp-ya-oYa"/>
                             <constraint firstItem="3te-8G-WxE" firstAttribute="top" secondItem="mt5-rK-ae8" secondAttribute="bottom" id="Vhc-WV-bs1"/>

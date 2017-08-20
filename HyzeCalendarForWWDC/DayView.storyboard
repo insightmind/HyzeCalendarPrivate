@@ -79,7 +79,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="qet-3Z-dfx" firstAttribute="leading" secondItem="PfB-zh-Sgo" secondAttribute="leadingMargin" constant="-16" id="74b-Kr-gma"/>
+                            <constraint firstItem="qet-3Z-dfx" firstAttribute="leading" secondItem="PfB-zh-Sgo" secondAttribute="leading" id="74b-Kr-gma"/>
                             <constraint firstAttribute="trailing" secondItem="DCD-IK-MQs" secondAttribute="trailing" id="BQm-Az-hLj"/>
                             <constraint firstItem="NeF-Az-v1m" firstAttribute="centerX" secondItem="PfB-zh-Sgo" secondAttribute="centerX" id="CqK-hg-WbP"/>
                             <constraint firstAttribute="leading" secondItem="NeF-Az-v1m" secondAttribute="trailing" constant="75" id="EZW-M9-z2l"/>
@@ -91,7 +91,7 @@
                             <constraint firstItem="DCD-IK-MQs" firstAttribute="leading" secondItem="PfB-zh-Sgo" secondAttribute="leading" id="Vfi-4f-vhq"/>
                             <constraint firstItem="DCD-IK-MQs" firstAttribute="top" secondItem="Nza-hy-l1u" secondAttribute="bottom" id="aSd-0w-jBh"/>
                             <constraint firstItem="z9O-L3-LpW" firstAttribute="top" secondItem="qet-3Z-dfx" secondAttribute="bottom" constant="-60" id="gCh-UT-77I"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="qet-3Z-dfx" secondAttribute="trailing" constant="-16" id="grD-IX-Ges"/>
+                            <constraint firstAttribute="trailing" secondItem="qet-3Z-dfx" secondAttribute="trailing" id="grD-IX-Ges"/>
                             <constraint firstItem="NeF-Az-v1m" firstAttribute="top" secondItem="Nza-hy-l1u" secondAttribute="bottom" constant="40" id="kOe-vh-yfQ"/>
                             <constraint firstItem="n78-f7-hAW" firstAttribute="top" secondItem="z9O-L3-LpW" secondAttribute="bottom" id="q9X-io-fC8"/>
                             <constraint firstItem="qet-3Z-dfx" firstAttribute="top" secondItem="NeF-Az-v1m" secondAttribute="bottom" constant="40" id="w3I-Hw-b1Z"/>
