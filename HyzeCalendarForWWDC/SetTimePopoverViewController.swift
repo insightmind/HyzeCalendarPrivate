@@ -56,7 +56,9 @@ class SetTimePopoverViewController: UIViewController {
 		dates[currentState] = sender.date
 		yearLabel.text = String(TMCalendar.component(.year, from: dates[currentState]!))
 		if currentState == .startDate {
-			dates[.endDate] = dates[.startDate]?.addingTimeInterval(1800)
+			if TMCalendar.compare(dates[.startDate]!, to: dates[.endDate]!, toUnitGranularity: .minute) == .orderedDescending {
+				dates[.endDate] = dates[.startDate]?.addingTimeInterval(1800)
+			}
 		}
 	}
 	

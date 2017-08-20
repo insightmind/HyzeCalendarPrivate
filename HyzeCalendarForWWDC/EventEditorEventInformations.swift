@@ -50,7 +50,7 @@ class EventEditorEventInformations: NSCopying {
 	var title: String = "Untitled Event"
 	var isAllDay: Bool = false
 	var startDate: Date = Date()
-	var endDate: Date = Date().addingTimeInterval(1800)
+	var endDate: Date = Date(timeIntervalSinceNow: -10)
 	var color: UIColor = Color.white
 	var notes: String? = nil
 	var calendar: EKCalendar? = nil

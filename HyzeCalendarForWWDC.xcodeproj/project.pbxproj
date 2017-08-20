@@ -11,6 +11,9 @@
 		3E1B95251E3FAD9D009EB5C9 /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1B95241E3FAD9D009EB5C9 /* DayView.swift */; };
 		3E21053A1E5B56C400E78840 /* ETViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2105391E5B56C400E78840 /* ETViewCell.swift */; };
 		3E2D7B791E6715E600A0170D /* EventEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2D7B781E6715E600A0170D /* EventEditorViewController.swift */; };
+		3E36FEFE1F4A41A100EAC9CC /* SelectContactsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E36FEFD1F4A41A100EAC9CC /* SelectContactsTableView.swift */; };
+		3E36FF011F4A423700EAC9CC /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E36FEFF1F4A423700EAC9CC /* ContactTableViewCell.swift */; };
+		3E36FF021F4A423700EAC9CC /* ContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E36FF001F4A423700EAC9CC /* ContactTableViewCell.xib */; };
 		3E3AEDF81F23BFEF00792B11 /* SetTimePopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3AEDF71F23BFEF00792B11 /* SetTimePopoverViewController.swift */; };
 		3E47BD2C1F30E7E900E0646C /* EventEditorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E47BD2B1F30E7E900E0646C /* EventEditorTableViewController.swift */; };
 		3E47BD311F30EE0200E0646C /* DateSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E47BD2F1F30EE0200E0646C /* DateSelectionTableViewCell.swift */; };
@@ -70,6 +73,9 @@
 		3E1B95241E3FAD9D009EB5C9 /* DayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DayView.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		3E2105391E5B56C400E78840 /* ETViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ETViewCell.swift; sourceTree = "<group>"; };
 		3E2D7B781E6715E600A0170D /* EventEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventEditorViewController.swift; sourceTree = "<group>"; };
+		3E36FEFD1F4A41A100EAC9CC /* SelectContactsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectContactsTableView.swift; sourceTree = "<group>"; };
+		3E36FEFF1F4A423700EAC9CC /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
+		3E36FF001F4A423700EAC9CC /* ContactTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactTableViewCell.xib; sourceTree = "<group>"; };
 		3E3AEDF71F23BFEF00792B11 /* SetTimePopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTimePopoverViewController.swift; sourceTree = "<group>"; };
 		3E47BD2B1F30E7E900E0646C /* EventEditorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEditorTableViewController.swift; sourceTree = "<group>"; };
 		3E47BD2F1F30EE0200E0646C /* DateSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectionTableViewCell.swift; sourceTree = "<group>"; };
@@ -136,6 +142,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E36FEFC1F4A403700EAC9CC /* Additional Views */ = {
+			isa = PBXGroup;
+			children = (
+				3E36FEFD1F4A41A100EAC9CC /* SelectContactsTableView.swift */,
+				3E36FEFF1F4A423700EAC9CC /* ContactTableViewCell.swift */,
+				3E36FF001F4A423700EAC9CC /* ContactTableViewCell.xib */,
+			);
+			name = "Additional Views";
+			sourceTree = "<group>";
+		};
 		3E47BD2D1F30EDCE00E0646C /* EventEditorTable */ = {
 			isa = PBXGroup;
 			children = (
@@ -242,6 +258,7 @@
 		3E8B90A01F433C8D000F8449 /* Attendees */ = {
 			isa = PBXGroup;
 			children = (
+				3E36FEFC1F4A403700EAC9CC /* Additional Views */,
 				3EA727541F49F0560041B398 /* SelectContactsTableViewCell.swift */,
 				3EA727551F49F0560041B398 /* SelectContactsTableViewCell.xib */,
 			);
@@ -533,6 +550,7 @@
 				3E68B5C91E3A886D00AE103F /* Main.storyboard in Resources */,
 				3E067E0D1F31FA92003601FA /* Default-568h@2x.png in Resources */,
 				3EA80D5C1E2BEC9300FD87C3 /* LaunchScreen.storyboard in Resources */,
+				3E36FF021F4A423700EAC9CC /* ContactTableViewCell.xib in Resources */,
 				3EBEC8E21F3D048100052C93 /* DateSelection.storyboard in Resources */,
 				3EE5426E1F479FCC00B230FF /* RemoveTableViewCell.xib in Resources */,
 				3E47BD321F30EE0200E0646C /* DateSelectionTableViewCell.xib in Resources */,
@@ -574,6 +592,7 @@
 				3EA80D521E2BEC9300FD87C3 /* AppDelegate.swift in Sources */,
 				3EA8EE311ED2350E000D6EF2 /* MonthCollectionViewController.swift in Sources */,
 				3E2D7B791E6715E600A0170D /* EventEditorViewController.swift in Sources */,
+				3E36FEFE1F4A41A100EAC9CC /* SelectContactsTableView.swift in Sources */,
 				3E6285471F44720400301A42 /* UIViewControllerExtension.swift in Sources */,
 				3EE5426D1F479FCC00B230FF /* RemoveTableViewCell.swift in Sources */,
 				3E4A9B291E4BB4C0009E45EF /* EventsManagement.swift in Sources */,
@@ -595,6 +614,7 @@
 				3E533BC71EC364BC000CEF5F /* DayCollectionViewCell.swift in Sources */,
 				3E62854A1F44797900301A42 /* SelectCalendarTableViewCell.swift in Sources */,
 				3E7DD5731E4679FA001E1D0B /* EventView.swift in Sources */,
+				3E36FF011F4A423700EAC9CC /* ContactTableViewCell.swift in Sources */,
 				3E47BD311F30EE0200E0646C /* DateSelectionTableViewCell.swift in Sources */,
 				3EF096B01E3FDC9F0011E726 /* ViewController.swift in Sources */,
 				3EA727561F49F0560041B398 /* SelectContactsTableViewCell.swift in Sources */,

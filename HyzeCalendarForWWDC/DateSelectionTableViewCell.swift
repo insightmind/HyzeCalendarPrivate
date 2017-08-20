@@ -238,8 +238,6 @@ class DateSelectionTableViewCell: UITableViewCell, EventEditorCell {
 			self.startDateView.isUserInteractionEnabled = false
 			self.endDateView.isUserInteractionEnabled = false
 		}
-		
-		self.setIsAllDaySwitchFont(eventInformations.isAllDay)
 		setUpDateLabel(animated: true)
 	}
 }

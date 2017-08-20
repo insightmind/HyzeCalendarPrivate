@@ -23,20 +23,11 @@ struct EventEditorCellInformations {
 
 class EventEditorTableViewController: UITableViewController {
 	
-	var cells: [EventEditorCellInformations] = [EventEditorCellInformations(cellType: .dateSelection, height: 100.0),
-	                                            EventEditorCellInformations(cellType: .calendar, height: 100.0),
-	                                            EventEditorCellInformations(cellType: .contacts, height: 200.0),
-	                                            EventEditorCellInformations(cellType: .notes, height: 170.0)]
+	var cells: [EventEditorCellInformations] = []
 	var eventsInformations: EventEditorEventInformations!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
 		self.tableView.backgroundColor = UIColor.clear
 		self.tableView.separatorStyle = .none
 		self.tableView.allowsSelection = false
@@ -124,34 +115,61 @@ class EventEditorTableViewController: UITableViewController {
 	
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		
+		if cells[indexPath.row].cellType == .contacts {
+			return calculateContactsCellHeight()
+		}
+		
 		return cells[indexPath.row].height
 	}
 	
 	func updateCellsArray() {
 		cells = [EventEditorCellInformations(cellType: .dateSelection, height: 100.0),
 		         EventEditorCellInformations(cellType: .calendar, height: 100.0),
-		         EventEditorCellInformations(cellType: .contacts, height: 120.0),
+		         EventEditorCellInformations(cellType: .contacts, height: 155.0),
 		         EventEditorCellInformations(cellType: .notes, height: 170.0)]
 		switch eventsInformations.state {
 		case .showDetail:
-				for i in 0..<cells.count {
-					switch cells[i].cellType {
-					case .notes:
-						if eventsInformations.notes == "" || eventsInformations.notes == nil {
-							cells.remove(at: i)
-						}
-					case .remove:
-						cells.remove(at: i)
-					default:
-						break
-					}
+			if eventsInformations.notes == "" || eventsInformations.notes == nil {
+				removeCell(for: .notes)
+			}
+			removeCell(for: .remove)
+			if let attendees = eventsInformations.participants {
+				if attendees.isEmpty {
+					removeCell(for: .contacts)
 				}
+			} else {
+				removeCell(for: .contacts)
+			}
 		case .create:
 			if eventsInformations.eventIdentifier != nil {
 				let cell = EventEditorCellInformations(cellType: .remove, height: 80.0)
 				cells.append(cell)
 			}
 		}
+	}
+	
+	func removeCell(for type: EventEditorCellType) {
+		for i in 0..<cells.count {
+			if cells[i].cellType == type {
+				cells.remove(at: i)
+			}
+		}
+	}
+	
+	func calculateContactsCellHeight() -> CGFloat{
+		
+		let normalHeight: CGFloat = 100
+		
+		var calculatedHeight = normalHeight
+		
+		if let count = eventsInformations.participants?.count {
+			if count > 2 {
+				calculatedHeight += 55
+			}
+		}
+		
+		
+		return calculatedHeight
 	}
 
 }

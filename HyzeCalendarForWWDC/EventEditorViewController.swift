@@ -120,7 +120,6 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
 			blurEffectNavbarView.effect = blurEffectView.effect
 			titleTextField.textColor = Color.grey
 		}
-		setEventInformationDates()
 	}
 	
 	override func viewDidLoad() {
@@ -135,10 +134,6 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
 		}
 		generalViewDidLoad()
     }
-	
-	func setEventInformationDates() {
-		eventInformations.endDate = eventInformations.startDate.addingTimeInterval(1800)
-	}
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
