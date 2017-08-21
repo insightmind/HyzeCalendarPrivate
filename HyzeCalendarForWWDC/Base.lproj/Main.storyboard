@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="s5a-M1-ico">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="s5a-M1-ico">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13156.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -218,46 +218,6 @@
             </objects>
             <point key="canvasLocation" x="7178" y="-972"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="2V8-Ql-YnC">
-            <objects>
-                <viewController storyboardIdentifier="UIViewController-S48-rw-GfR" id="S48-rw-GfR" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="vOe-f8-43i"/>
-                        <viewControllerLayoutGuide type="bottom" id="4cu-SK-2e4"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="cVj-ny-VHf">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COMING SOON" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x9C-MF-V4n">
-                                <rect key="frame" x="99.5" y="274" width="121" height="20"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygW-cW-Mcx">
-                                <rect key="frame" x="140" y="320" width="40" height="30"/>
-                                <state key="normal" title="BACK"/>
-                                <connections>
-                                    <segue destination="lzF-rb-nlD" kind="unwind" unwindAction="unwindToRedWithSegue:" id="2Bo-XP-zbz"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="ygW-cW-Mcx" firstAttribute="top" secondItem="x9C-MF-V4n" secondAttribute="bottom" constant="26" id="Fh5-pI-WWR"/>
-                            <constraint firstItem="x9C-MF-V4n" firstAttribute="centerY" secondItem="cVj-ny-VHf" secondAttribute="centerY" id="XHq-Ag-pZ0"/>
-                            <constraint firstItem="ygW-cW-Mcx" firstAttribute="centerX" secondItem="cVj-ny-VHf" secondAttribute="centerX" id="ijY-mz-ZRO"/>
-                            <constraint firstItem="x9C-MF-V4n" firstAttribute="centerX" secondItem="cVj-ny-VHf" secondAttribute="centerX" id="v8k-zX-NoL"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Puk-xb-wlI" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="lzF-rb-nlD" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="7247" y="-43"/>
-        </scene>
         <!--MainNavigation-->
         <scene sceneID="Z3t-l8-PvS">
             <objects>
@@ -325,7 +285,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="8138" y="-973"/>
+            <point key="canvasLocation" x="8018" y="-973"/>
         </scene>
         <!--Settings-->
         <scene sceneID="dfx-2M-lMU">
@@ -335,7 +295,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zbz-6b-Pts" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7248" y="-409"/>
+            <point key="canvasLocation" x="6955" y="-463"/>
         </scene>
         <!--DayView-->
         <scene sceneID="hUz-J4-nzN">
@@ -345,7 +305,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A6E-tI-X8b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7849.21875" y="-516.69014084507035"/>
+            <point key="canvasLocation" x="7398" y="-463"/>
         </scene>
     </scenes>
     <resources>

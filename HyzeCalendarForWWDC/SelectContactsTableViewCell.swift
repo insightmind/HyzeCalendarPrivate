@@ -80,21 +80,17 @@ class SelectContactsTableViewCell: UITableViewCell, EventEditorCell {
 		
 		self.setUpAddButton()
 		
-		var mainViewHeight: CGFloat = 0.0
 		let defaultCellHeight: CGFloat = 55
 		
 		switch eventInformations.state {
 		case .create:
 			topContactViewHeightConstraint.constant = defaultCellHeight
 			topContactView.isHidden = false
-			mainViewHeight += topContactViewHeightConstraint.constant
 			if let count = eventInformations.participants?.count {
 				if count > 2 {
-					mainViewHeight += 3 * defaultCellHeight
-					bottomViewHeightConstraint.constant = defaultCellHeight - 1
+					bottomViewHeightConstraint.constant = defaultCellHeight
 					bottomView.isHidden = false
 				} else {
-					mainViewHeight += defaultCellHeight * CGFloat(count)
 					bottomViewHeightConstraint.constant = 0
 					bottomView.isHidden = true
 				}
@@ -107,11 +103,9 @@ class SelectContactsTableViewCell: UITableViewCell, EventEditorCell {
 			topContactView.isHidden = true
 			if let count = eventInformations.participants?.count {
 				if count > 3 {
-					mainViewHeight += 4 * defaultCellHeight
-					bottomViewHeightConstraint.constant = defaultCellHeight - 1
+					bottomViewHeightConstraint.constant = defaultCellHeight
 					bottomView.isHidden = false
 				} else {
-					mainViewHeight += defaultCellHeight * CGFloat(count)
 					bottomViewHeightConstraint.constant = 0
 					bottomView.isHidden = true
 				}
@@ -120,7 +114,6 @@ class SelectContactsTableViewCell: UITableViewCell, EventEditorCell {
 				bottomView.isHidden = true
 			}
 		}
-		mainViewHeightConstraint.constant = mainViewHeight
 		layoutSubviews()
     }
 

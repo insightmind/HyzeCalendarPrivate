@@ -17,8 +17,6 @@ class DayViewUIVViewController: UIViewController {
 
     @IBOutlet weak var day: DayView!
 	@IBOutlet weak var addButton: UIBarButtonItem!
-	@IBOutlet weak var toolbar: UIToolbar!
-	@IBOutlet weak var editButton: UIBarButtonItem!
 	@IBOutlet var LeftSwipeRecognizer: UISwipeGestureRecognizer!
 	@IBOutlet var RightSwipeRecognizer: UISwipeGestureRecognizer!
 	@IBOutlet weak var eventTableView: ETView!
@@ -46,14 +44,10 @@ class DayViewUIVViewController: UIViewController {
     
 	func setDesign(animated: Bool = false) {
         if darkMode {
-			toolbar.barTintColor = Color.grey
-			editButton.tintColor = Color.white
             view.backgroundColor = Color.grey
 			navigationController?.navigationBar.tintColor = Color.white
 			addButton.tintColor = Color.white
         } else {
-			toolbar.barTintColor = Color.white
-			editButton.tintColor = Color.grey
             view.backgroundColor = Color.white
 			navigationController?.navigationBar.tintColor = Color.grey
 			addButton.tintColor = Color.grey

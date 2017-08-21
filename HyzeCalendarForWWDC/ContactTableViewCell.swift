@@ -18,6 +18,7 @@ class ContactTableViewCell: UITableViewCell {
 	@IBOutlet weak var contactImageView: UIImageView!
 	@IBOutlet weak var contactDeleteView: UIView!
 	@IBOutlet weak var contactDeleteButton: UIButton!
+	@IBOutlet weak var mainView: UIView!
 	
 	fileprivate func setUpContactDeleteButton() {
 		self.contactDeleteView.layer.cornerRadius = self.contactDeleteView.bounds.width / 2
@@ -34,13 +35,17 @@ class ContactTableViewCell: UITableViewCell {
 	}
 	
 	fileprivate func setUpContactImageView() {
+		self.contactView.layer.cornerRadius = self.contactView.bounds.width / 2
+		self.contactView.backgroundColor = Color.red
+		self.contactView.layer.shadowPath = UIBezierPath(roundedRect: contactImageView.bounds, cornerRadius: contactImageView.bounds.width / 2).cgPath
+		self.contactView.layer.shadowColor = self.contactView.backgroundColor?.cgColor
+		self.contactView.layer.shadowRadius = 5
+		self.contactView.layer.shadowOffset = CGSize(width: 1, height: 3)
+		self.contactView.layer.shadowOpacity = 0.8
+		let image = #imageLiteral(resourceName: "ic_account_circle").withRenderingMode(.alwaysTemplate)
+		self.contactImageView.image = image
+		self.contactImageView.tintColor = Color.white
 		self.contactImageView.layer.cornerRadius = self.contactImageView.bounds.width / 2
-		self.contactImageView.backgroundColor = Color.red
-		self.contactImageView.layer.shadowPath = UIBezierPath(roundedRect: contactImageView.bounds, cornerRadius: contactImageView.bounds.width / 2).cgPath
-		self.contactImageView.layer.shadowColor = self.contactImageView.backgroundColor?.cgColor
-		self.contactImageView.layer.shadowRadius = 5
-		self.contactImageView.layer.shadowOffset = CGSize(width: 1, height: 3)
-		self.contactImageView.layer.shadowOpacity = 0.8
 	}
 	
     override func awakeFromNib() {
@@ -48,6 +53,7 @@ class ContactTableViewCell: UITableViewCell {
         // Initialization code
 		
 		self.backgroundColor = UIColor.clear
+		self.mainView.backgroundColor = UIColor.clear
 		
 		self.contactLabel.textColor = Color.white
 		
