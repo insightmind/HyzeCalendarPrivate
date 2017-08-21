@@ -91,7 +91,7 @@ class SelectContactsTableViewCell: UITableViewCell, EventEditorCell {
 			if let count = eventInformations.participants?.count {
 				if count > 2 {
 					mainViewHeight += 3 * defaultCellHeight
-					bottomViewHeightConstraint.constant = defaultCellHeight
+					bottomViewHeightConstraint.constant = defaultCellHeight - 1
 					bottomView.isHidden = false
 				} else {
 					mainViewHeight += defaultCellHeight * CGFloat(count)
@@ -108,7 +108,7 @@ class SelectContactsTableViewCell: UITableViewCell, EventEditorCell {
 			if let count = eventInformations.participants?.count {
 				if count > 3 {
 					mainViewHeight += 4 * defaultCellHeight
-					bottomViewHeightConstraint.constant = defaultCellHeight
+					bottomViewHeightConstraint.constant = defaultCellHeight - 1
 					bottomView.isHidden = false
 				} else {
 					mainViewHeight += defaultCellHeight * CGFloat(count)

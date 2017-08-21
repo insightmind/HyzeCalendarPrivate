@@ -151,7 +151,11 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
 	
 	func setDates(by duration: TimeInterval = 1800) {
 		if eventInformations.eventIdentifier == nil {
-			eventInformations.startDate = Date()
+			let (year, month, dayIndexPath) = HSelection.selectedDayCellIndex
+			guard let checkedIndexPath = dayIndexPath else {
+				return
+			}
+			eventInformations.startDate = TimeManagement.convertToDate(yearID: year, monthID: month, dayID: checkedIndexPath.item)
 			eventInformations.endDate = eventInformations.startDate.addingTimeInterval(duration)
 		}
 	}

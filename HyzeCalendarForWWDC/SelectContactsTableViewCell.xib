@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13156.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -87,7 +87,7 @@
                                             <constraint firstAttribute="bottom" secondItem="TxB-G9-Wi1" secondAttribute="bottom" constant="8" id="4bn-79-fji"/>
                                             <constraint firstAttribute="trailing" secondItem="tw3-Dz-Ezx" secondAttribute="trailing" constant="8" id="Hfd-mi-FFT"/>
                                             <constraint firstItem="TxB-G9-Wi1" firstAttribute="leading" secondItem="Fc3-YZ-Hem" secondAttribute="leading" constant="8" id="IiA-HW-j73"/>
-                                            <constraint firstAttribute="height" constant="55" id="JWg-6k-OWX"/>
+                                            <constraint firstAttribute="height" constant="55" identifier="top" id="JWg-6k-OWX"/>
                                             <constraint firstAttribute="bottom" secondItem="tw3-Dz-Ezx" secondAttribute="bottom" constant="8" id="Jpw-Tb-xu2"/>
                                             <constraint firstItem="TxB-G9-Wi1" firstAttribute="top" secondItem="Fc3-YZ-Hem" secondAttribute="top" constant="8" id="d1z-mI-nw7"/>
                                             <constraint firstItem="tw3-Dz-Ezx" firstAttribute="top" secondItem="Fc3-YZ-Hem" secondAttribute="top" constant="8" id="eDc-Jo-5Cc"/>
@@ -95,10 +95,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L5y-kK-UzY">
-                                        <rect key="frame" x="0.0" y="56" width="280" height="55"/>
+                                        <rect key="frame" x="0.0" y="57" width="280" height="54"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bpX-0l-Z1d">
-                                                <rect key="frame" x="121" y="8.5" width="39.5" height="39.5"/>
+                                                <rect key="frame" x="121" y="8" width="39.5" height="39.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ePh-2u-3QF">
                                                         <rect key="frame" x="0.0" y="0.0" width="39.5" height="39.5"/>
@@ -125,7 +125,7 @@
                                         <constraints>
                                             <constraint firstItem="bpX-0l-Z1d" firstAttribute="centerY" secondItem="L5y-kK-UzY" secondAttribute="centerY" id="DNC-5K-tLM"/>
                                             <constraint firstItem="bpX-0l-Z1d" firstAttribute="centerX" secondItem="L5y-kK-UzY" secondAttribute="centerX" id="h6X-4C-JRy"/>
-                                            <constraint firstAttribute="height" constant="55" id="x7v-zD-YSs"/>
+                                            <constraint firstAttribute="height" priority="250" constant="54" identifier="bottom" id="x7v-zD-YSs"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -140,7 +140,7 @@
                                     <constraint firstItem="Fc3-YZ-Hem" firstAttribute="leading" secondItem="S6k-aA-kgC" secondAttribute="leading" id="d7H-9R-go1"/>
                                     <constraint firstItem="Ler-3N-QZB" firstAttribute="leading" secondItem="S6k-aA-kgC" secondAttribute="leading" id="hqH-xU-gKJ"/>
                                     <constraint firstAttribute="trailing" secondItem="Fc3-YZ-Hem" secondAttribute="trailing" id="lVn-c7-UFs"/>
-                                    <constraint firstAttribute="height" constant="110" id="mWe-GN-BkQ"/>
+                                    <constraint firstAttribute="height" priority="750" constant="110" identifier="main" id="mWe-GN-BkQ"/>
                                     <constraint firstItem="Fc3-YZ-Hem" firstAttribute="top" secondItem="S6k-aA-kgC" secondAttribute="top" id="pRC-u0-off"/>
                                 </constraints>
                             </view>
