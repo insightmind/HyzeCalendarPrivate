@@ -24,6 +24,13 @@ struct EventEditorCellInformations {
 class EventEditorTableViewController: UITableViewController {
 	
 	var cells: [EventEditorCellInformations] = []
+	
+	let dateSelectionCell = EventEditorCellInformations(cellType: .dateSelection, height: 100.0)
+	let calendarCell = EventEditorCellInformations(cellType: .calendar, height: 100.0)
+	let contactsCell = EventEditorCellInformations(cellType: .contacts, height: 155.0)
+	let notesCell = EventEditorCellInformations(cellType: .notes, height: 170.0)
+	let removeCell = EventEditorCellInformations(cellType: .remove, height: 80.0)
+	
 	var eventsInformations: EventEditorEventInformations!
 
     override func viewDidLoad() {
@@ -123,35 +130,24 @@ class EventEditorTableViewController: UITableViewController {
 	}
 	
 	func updateCellsArray() {
-		cells = [EventEditorCellInformations(cellType: .dateSelection, height: 100.0),
-		         EventEditorCellInformations(cellType: .calendar, height: 100.0),
-		         EventEditorCellInformations(cellType: .contacts, height: 155.0),
-		         EventEditorCellInformations(cellType: .notes, height: 170.0)]
+		cells = []
+		cells.append(dateSelectionCell)
+		cells.append(calendarCell)
 		switch eventsInformations.state {
 		case .showDetail:
-			if eventsInformations.notes == "" || eventsInformations.notes == nil {
-				removeCell(for: .notes)
-			}
-			removeCell(for: .remove)
 			if let attendees = eventsInformations.participants {
-				if attendees.isEmpty {
-					removeCell(for: .contacts)
+				if !attendees.isEmpty {
+					cells.append(contactsCell)
 				}
-			} else {
-				removeCell(for: .contacts)
+			}
+			if eventsInformations.notes != "" && eventsInformations.notes != nil {
+				cells.append(notesCell)
 			}
 		case .create:
+			cells.append(contactsCell)
+			cells.append(notesCell)
 			if eventsInformations.eventIdentifier != nil {
-				let cell = EventEditorCellInformations(cellType: .remove, height: 80.0)
-				cells.append(cell)
-			}
-		}
-	}
-	
-	func removeCell(for type: EventEditorCellType) {
-		for i in 0..<cells.count {
-			if cells[i].cellType == type {
-				cells.remove(at: i)
+				cells.append(removeCell)
 			}
 		}
 	}

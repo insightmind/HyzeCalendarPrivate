@@ -31,8 +31,8 @@ class DateSelectionTableViewCell: UITableViewCell, EventEditorCell {
 	@IBOutlet weak var endDateView: UIButton!
 	@IBOutlet weak var allDaySwitch: UIButton!
 	
-	var selectedIsAllDaySwitchFontStyle = UIFont.boldSystemFont(ofSize: 30)
-	var deselectedIsAllDaySwitchFontStyle: UIFont!
+	let selectedIsAllDaySwitchFontStyle = UIFont.boldSystemFont(ofSize: 30)
+	let deselectedIsAllDaySwitchFontStyle = UIFont.systemFont(ofSize: 20)
 	
 	// MARK: - DateLabels
 	@IBOutlet weak var startDateHourLabel: UILabel!
@@ -70,6 +70,7 @@ class DateSelectionTableViewCell: UITableViewCell, EventEditorCell {
 			NSLayoutConstraint.deactivate(self.isNotAllDayConstraints)
 			NSLayoutConstraint.activate(self.isAllDayConstraints)
 			self.allDaySwitch.backgroundColor = Color.green
+			setIsAllDaySwitchFont(true)
 		} else {
 			switch eventInformations.state {
 			case .showDetail:
@@ -81,9 +82,8 @@ class DateSelectionTableViewCell: UITableViewCell, EventEditorCell {
 				NSLayoutConstraint.activate(self.isNotAllDayConstraints)
 				self.allDaySwitch.backgroundColor = Color.red
 			}
-			
+			setIsAllDaySwitchFont(false)
 		}
-		setIsAllDaySwitchFont(self.eventInformations.isAllDay)
 		self.layoutIfNeeded()
 		self.allDaySwitch.layer.cornerRadius = self.allDaySwitch.bounds.height / 2
 		self.allDaySwitch.layer.shadowPath = UIBezierPath(roundedRect: self.allDaySwitch.bounds, cornerRadius: self.allDaySwitch.layer.cornerRadius).cgPath
@@ -211,8 +211,6 @@ class DateSelectionTableViewCell: UITableViewCell, EventEditorCell {
 		self.backgroundColor = UIColor.clear
 		mainView.backgroundColor = Color.blue
 		mainView.layer.cornerRadius = mainView.frame.height / 2
-		
-		self.deselectedIsAllDaySwitchFontStyle = allDaySwitch.titleLabel?.font
 		
 		self.allDaySwitch.layer.cornerRadius = self.allDaySwitch.bounds.height / 2
 		self.allDaySwitch.layer.shadowPath = UIBezierPath(roundedRect: allDaySwitch.bounds, cornerRadius: allDaySwitch.layer.cornerRadius).cgPath
