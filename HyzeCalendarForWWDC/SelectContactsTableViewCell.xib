@@ -140,6 +140,7 @@
                                     <constraint firstItem="Fc3-YZ-Hem" firstAttribute="leading" secondItem="S6k-aA-kgC" secondAttribute="leading" id="d7H-9R-go1"/>
                                     <constraint firstItem="Ler-3N-QZB" firstAttribute="leading" secondItem="S6k-aA-kgC" secondAttribute="leading" id="hqH-xU-gKJ"/>
                                     <constraint firstAttribute="trailing" secondItem="Fc3-YZ-Hem" secondAttribute="trailing" id="lVn-c7-UFs"/>
+                                    <constraint firstAttribute="height" constant="110" id="mWe-GN-BkQ"/>
                                     <constraint firstItem="Fc3-YZ-Hem" firstAttribute="top" secondItem="S6k-aA-kgC" secondAttribute="top" id="pRC-u0-off"/>
                                 </constraints>
                             </view>
@@ -169,9 +170,11 @@
                 <outlet property="addContactLabel" destination="TxB-G9-Wi1" id="V4W-dR-s11"/>
                 <outlet property="bottomView" destination="L5y-kK-UzY" id="WyT-68-Mpq"/>
                 <outlet property="bottomViewHeightConstraint" destination="x7v-zD-YSs" id="zHT-HT-jOc"/>
+                <outlet property="contactsTableView" destination="Ler-3N-QZB" id="y72-7R-2CC"/>
                 <outlet property="labelView" destination="DGz-YR-n4u" id="TYB-E2-HgI"/>
                 <outlet property="labelViewTitle" destination="Dfp-dt-AGU" id="fMe-xs-yMq"/>
                 <outlet property="mainView" destination="S6k-aA-kgC" id="SjL-9d-lYC"/>
+                <outlet property="mainViewHeightConstraint" destination="mWe-GN-BkQ" id="aMN-7Z-WGx"/>
                 <outlet property="realAddButton" destination="bie-gG-YNy" id="7z0-F6-ZDs"/>
                 <outlet property="showContactsButton" destination="ePh-2u-3QF" id="rEn-ih-M47"/>
                 <outlet property="showContactsView" destination="bpX-0l-Z1d" id="pzg-p0-LPO"/>

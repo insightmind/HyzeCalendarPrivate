@@ -27,9 +27,9 @@ class SelectContactsTableViewCell: UITableViewCell, EventEditorCell {
 	@IBOutlet weak var showContactsButton: UIButton!
 	@IBOutlet weak var showContactsView: UIView!
 	@IBOutlet weak var bottomView: UIView!
-	@IBOutlet weak var contactsViewContainer: UIView!
-	@IBOutlet weak var contactsViewContainerHeightConstraint: NSLayoutConstraint!
+	@IBOutlet weak var contactsTableView: SelectContactsTableView!
 	
+	@IBOutlet weak var mainViewHeightConstraint: NSLayoutConstraint!
 	@IBOutlet weak var topContactViewHeightConstraint: NSLayoutConstraint!
 	@IBOutlet weak var bottomViewHeightConstraint: NSLayoutConstraint!
 	
@@ -80,22 +80,47 @@ class SelectContactsTableViewCell: UITableViewCell, EventEditorCell {
 		
 		self.setUpAddButton()
 		
-		if eventInformations.participants == nil {
-			bottomViewHeightConstraint.constant = 0
-			bottomView.isHidden = true
-		} else {
-			bottomViewHeightConstraint.constant = 55
-			bottomView.isHidden = false
-			self.setUpShowContactsButton()
-		}
+		var mainViewHeight: CGFloat = 0.0
+		let defaultCellHeight: CGFloat = 55
 		
-		if eventInformations.state == .showDetail {
+		switch eventInformations.state {
+		case .create:
+			topContactViewHeightConstraint.constant = defaultCellHeight
+			topContactView.isHidden = false
+			mainViewHeight += topContactViewHeightConstraint.constant
+			if let count = eventInformations.participants?.count {
+				if count > 2 {
+					mainViewHeight += 3 * defaultCellHeight
+					bottomViewHeightConstraint.constant = defaultCellHeight
+					bottomView.isHidden = false
+				} else {
+					mainViewHeight += defaultCellHeight * CGFloat(count)
+					bottomViewHeightConstraint.constant = 0
+					bottomView.isHidden = true
+				}
+			} else {
+				bottomViewHeightConstraint.constant = 0
+				bottomView.isHidden = true
+			}
+		case .showDetail:
 			topContactViewHeightConstraint.constant = 0
 			topContactView.isHidden = true
-		} else {
-			topContactViewHeightConstraint.constant = 55
-			topContactView.isHidden = false
+			if let count = eventInformations.participants?.count {
+				if count > 3 {
+					mainViewHeight += 4 * defaultCellHeight
+					bottomViewHeightConstraint.constant = defaultCellHeight
+					bottomView.isHidden = false
+				} else {
+					mainViewHeight += defaultCellHeight * CGFloat(count)
+					bottomViewHeightConstraint.constant = 0
+					bottomView.isHidden = true
+				}
+			} else {
+				bottomViewHeightConstraint.constant = 0
+				bottomView.isHidden = true
+			}
 		}
+		mainViewHeightConstraint.constant = mainViewHeight
 		layoutSubviews()
     }
 

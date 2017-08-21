@@ -126,6 +126,7 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
 		super.viewDidLoad()
 		eventInformations = EManagement.eventInformation
 		eventInformations.eventEditor = self
+		setDates()
 		switch eventInformations.state {
 		case .showDetail:
 			showDetailViewDidLoad()
@@ -147,15 +148,13 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
 			}
 		}
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+	
+	func setDates(by duration: TimeInterval = 1800) {
+		if eventInformations.eventIdentifier == nil {
+			eventInformations.startDate = Date()
+			eventInformations.endDate = eventInformations.startDate.addingTimeInterval(duration)
+		}
+	}
 	
 	func textFieldShouldReturn(_ newEventTextField: UITextField) -> Bool {
 		self.view.endEditing(true)

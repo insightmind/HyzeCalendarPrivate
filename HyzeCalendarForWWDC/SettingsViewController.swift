@@ -20,7 +20,6 @@ class SettingsViewController: UIViewController {
 	@IBOutlet weak var animateDayViewLabel: UILabel!
 	@IBOutlet weak var animateDayViewSwitch: UISwitch!
 	@IBOutlet weak var startWeekDaySegmentedControl: UISegmentedControl!
-	@IBOutlet weak var EEshowDetail: UISwitch!
 	@IBOutlet weak var defaultCalendarLabel: UILabel!
 	
 	@IBAction func toggleAnimateDayView(_ sender: UISwitch) {
@@ -32,16 +31,6 @@ class SettingsViewController: UIViewController {
 		}
 		defaults.set(animateDayView, forKey: "animateDayView")
 		defaults.synchronize()
-	}
-	
-	@IBAction func toggleEEShowDetail(_ sender: UISwitch) {
-		
-		if isEEshowDetail {
-			isEEshowDetail = false
-		} else {
-			isEEshowDetail = true
-		}
-		
 	}
 	
 	@IBAction func toggleShowLinesInCalendarView(_ sender: UISwitch) {
@@ -113,11 +102,6 @@ class SettingsViewController: UIViewController {
 		} else {
 			animateDayViewSwitch.isOn = false
 		}
-		if isEEshowDetail {
-			EEshowDetail.isOn = true
-		} else {
-			EEshowDetail.isOn = false
-		}
 		self.defaultCalendarLabel.text = EManagement.EMCalendar?.title
 	}
 	
@@ -180,16 +164,5 @@ class SettingsViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

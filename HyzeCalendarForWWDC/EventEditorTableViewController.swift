@@ -154,18 +154,36 @@ class EventEditorTableViewController: UITableViewController {
 	
 	func calculateContactsCellHeight() -> CGFloat{
 		
-		let normalHeight: CGFloat = 100
-		
+		let normalHeight: CGFloat = 45
+		let defaultCellHeight: CGFloat = 55
 		var calculatedHeight = normalHeight
 		
-		if let count = eventsInformations.participants?.count {
-			if count > 2 {
-				calculatedHeight += 55
+		switch eventsInformations.state {
+		case .create:
+			calculatedHeight += defaultCellHeight
+			if let count = eventsInformations.participants?.count {
+				if count > 2 {
+					calculatedHeight += 4 * defaultCellHeight
+				} else {
+					calculatedHeight += defaultCellHeight * CGFloat(count)
+				}
+			}
+		case .showDetail:
+			if let count = eventsInformations.participants?.count {
+				calculatedHeight += defaultCellHeight * CGFloat(count)
+				if count > 3 {
+					calculatedHeight += 4 * defaultCellHeight
+				} else {
+					calculatedHeight += defaultCellHeight * CGFloat(count)
+				}
 			}
 		}
 		
-		
 		return calculatedHeight
+	}
+	
+	func updateContactsCellHeight(for cell: SelectContactsTableViewCell) {
+		
 	}
 
 }

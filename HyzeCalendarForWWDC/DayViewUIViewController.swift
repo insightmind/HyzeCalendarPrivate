@@ -77,18 +77,13 @@ class DayViewUIVViewController: UIViewController {
 		if segue.identifier == "showEventEditor" {
 			if let eventEditor = segue.destination as? EventEditorViewController {
 				eventEditor.dayView = self
-				if !isEEshowDetail {
-					EManagement.eventInformation = EventEditorEventInformations()
-					EManagement.eventInformation.calendar = EManagement.EMCalendar ?? EManagement.getHyzeCalendar()
-				}
+				EManagement.eventInformation = EventEditorEventInformations()
+				EManagement.eventInformation.calendar = EManagement.EMCalendar ?? EManagement.getHyzeCalendar()
 			}
-			// TODO: When Storyboard Segue works again, or with ETViewCellUpdate
-//		} else if segue.identifier == "showDetail" {
-//			if let eventEditor = segue.destination as? EventEditorViewController {
-//				eventEditor.dayView = self
-//				eventEditor.isOldEvent = true
-//				eventEditor.oldEventIdentifier = day.selectedEventIdentifier
-//			}
+		} else if segue.identifier == "showDetail" {
+			if let eventEditor = segue.destination as? EventEditorViewController {
+				eventEditor.dayView = self
+			}
 		}
 	}
     

@@ -31,10 +31,19 @@
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W7I-pO-rwy">
                                 <rect key="frame" x="8" y="8" width="40" height="40"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="20w-ke-HzR">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="20w-ke-HzR" secondAttribute="trailing" id="7Lf-xt-29v"/>
+                                    <constraint firstItem="20w-ke-HzR" firstAttribute="top" secondItem="W7I-pO-rwy" secondAttribute="top" id="dSE-ee-FVx"/>
                                     <constraint firstAttribute="width" secondItem="W7I-pO-rwy" secondAttribute="height" multiplier="1:1" id="uBA-xh-1Kd"/>
                                     <constraint firstAttribute="height" constant="40" id="uY7-Bw-bc8"/>
+                                    <constraint firstItem="20w-ke-HzR" firstAttribute="leading" secondItem="W7I-pO-rwy" secondAttribute="leading" id="wCo-hv-HWq"/>
+                                    <constraint firstAttribute="bottom" secondItem="20w-ke-HzR" secondAttribute="bottom" id="y7u-sC-LPC"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wdb-uN-Wxb">
@@ -80,6 +89,13 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="contactDeleteButton" destination="jYM-V6-pCl" id="78J-wm-BT2"/>
+                <outlet property="contactDeleteView" destination="wdb-uN-Wxb" id="gfJ-zp-u30"/>
+                <outlet property="contactImageView" destination="20w-ke-HzR" id="qE2-cE-gp1"/>
+                <outlet property="contactLabel" destination="AdR-tP-qBX" id="gn0-pE-7RE"/>
+                <outlet property="contactView" destination="W7I-pO-rwy" id="9Ed-PH-ytZ"/>
+            </connections>
             <point key="canvasLocation" x="25" y="58"/>
         </tableViewCell>
     </objects>

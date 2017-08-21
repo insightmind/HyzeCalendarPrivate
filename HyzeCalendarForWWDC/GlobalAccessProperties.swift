@@ -18,7 +18,6 @@ var needsDesignUpdate: Bool = false
 var darkMode: Bool = UserDefaults.standard.bool(forKey: "DarkMode")
 var showLinesInCalendarView: Bool = UserDefaults.standard.bool(forKey: "showLinesInCalendarView")
 var animateDayView: Bool = UserDefaults.standard.bool(forKey: "animateDayView")
-var isEEshowDetail: Bool = false
 
 var TMCalendar: NSCalendar = {
 	let c = NSCalendar(identifier: .gregorian)!
