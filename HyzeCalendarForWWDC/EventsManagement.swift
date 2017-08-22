@@ -119,7 +119,7 @@ class EventManagement {
 		
 		var event: EKEvent
 		
-		if let identifier = eventInformation.eventIdentifier {
+		if let identifier = from.eventIdentifier {
 			guard let checkedEvent = EMEventStore.event(withIdentifier: identifier) else {
 				return nil
 			}
@@ -127,18 +127,21 @@ class EventManagement {
 		} else {
 			event = EKEvent(eventStore: EManagement.EMEventStore)
 		}
-		
-		event.title = from.title
-		event.calendar = from.calendar ?? getHyzeCalendar()
-		if from.startDate < from.endDate {
+		if from.startDate < from.endDate && isUserAdmin(of: event) {
+			event.title = from.title
+			event.calendar = from.calendar ?? getHyzeCalendar()
 			event.startDate = from.startDate
 			event.endDate = from.endDate
 			event.isAllDay = from.isAllDay
 			event.notes = from.notes
 			
 			var attendees = [EKParticipant]()
+			
 			if let participants = from.participants {
 				for i in 0..<participants.count {
+					if participants[i].isCurrentUser && participants[i].participantRole == .chair {
+						continue
+					}
 					var email = participants[i].url.absoluteString
 					let range = email.startIndex...email.index(email.startIndex, offsetBy: 6)
 					email.removeSubrange(range)
@@ -147,8 +150,8 @@ class EventManagement {
 					}
 				}
 			}
+
 			event.setValue(attendees, forKey: "attendees")
-			
 		} else {
 			return nil
 		}
@@ -210,12 +213,26 @@ class EventManagement {
 		informations.eventIdentifier = eventIdentifier
 		informations.calendar = event.calendar
 		informations.participants = event.attendees
+		informations.isUserAdmin = isUserAdmin(of: event)
+		
 		
 		if let complete = completion {
 			complete()
 		}
 		
 		return informations
+	}
+	
+	func isUserAdmin(of event: EKEvent) -> Bool {
+		guard let attendees = event.attendees else {
+			return false
+		}
+		for i in attendees {
+			if i.isCurrentUser && i.participantRole == .chair {
+				return true
+			}
+		}
+		return false
 	}
 	
 	func getHyzeCalendar() -> EKCalendar? {
@@ -272,7 +289,7 @@ class EventManagement {
 			return
 		}
 		do {
-			try EMEventStore.save(event, span: .thisEvent)
+			try! EMEventStore.save(event, span: .thisEvent)
 			eventsChange = true
 		} catch {
 			print("Event could not be updated")
