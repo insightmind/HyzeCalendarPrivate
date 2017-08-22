@@ -30,6 +30,7 @@
 		3E62854B1F44797900301A42 /* SelectCalendarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E6285491F44797900301A42 /* SelectCalendarTableViewCell.xib */; };
 		3E62854D1F447E3200301A42 /* EventEditorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E62854C1F447E3200301A42 /* EventEditorCell.swift */; };
 		3E65607E1F4CC3E700C241BE /* EKEventExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E65607D1F4CC3E700C241BE /* EKEventExtension.swift */; };
+		3E6560831F4CCBDF00C241BE /* SetContacts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E6560821F4CCBDF00C241BE /* SetContacts.storyboard */; };
 		3E68188A1F46FB6300E8D7BC /* SelectCalendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E6818891F46FB6300E8D7BC /* SelectCalendar.storyboard */; };
 		3E68188D1F46FED600E8D7BC /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E68188B1F46FED600E8D7BC /* CalendarTableViewCell.swift */; };
 		3E68188E1F46FED600E8D7BC /* CalendarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E68188C1F46FED600E8D7BC /* CalendarTableViewCell.xib */; };
@@ -95,6 +96,7 @@
 		3E6285491F44797900301A42 /* SelectCalendarTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectCalendarTableViewCell.xib; sourceTree = "<group>"; };
 		3E62854C1F447E3200301A42 /* EventEditorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEditorCell.swift; sourceTree = "<group>"; };
 		3E65607D1F4CC3E700C241BE /* EKEventExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKEventExtension.swift; sourceTree = "<group>"; };
+		3E6560821F4CCBDF00C241BE /* SetContacts.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SetContacts.storyboard; sourceTree = "<group>"; };
 		3E6818891F46FB6300E8D7BC /* SelectCalendar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectCalendar.storyboard; sourceTree = "<group>"; };
 		3E68188B1F46FED600E8D7BC /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
 		3E68188C1F46FED600E8D7BC /* CalendarTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarTableViewCell.xib; sourceTree = "<group>"; };
@@ -149,9 +151,8 @@
 		3E36FEFC1F4A403700EAC9CC /* Additional Views */ = {
 			isa = PBXGroup;
 			children = (
-				3E36FEFD1F4A41A100EAC9CC /* SelectContactsTableView.swift */,
-				3E36FEFF1F4A423700EAC9CC /* ContactTableViewCell.swift */,
-				3E36FF001F4A423700EAC9CC /* ContactTableViewCell.xib */,
+				3E6560811F4CCBBB00C241BE /* Popover */,
+				3E65607F1F4CCB9200C241BE /* For Cell */,
 			);
 			name = "Additional Views";
 			sourceTree = "<group>";
@@ -239,7 +240,17 @@
 			name = General;
 			sourceTree = "<group>";
 		};
-		3E6F88CC1F477E1600016908 /* Additional Views */ = {
+		3E65607F1F4CCB9200C241BE /* For Cell */ = {
+			isa = PBXGroup;
+			children = (
+				3E36FEFD1F4A41A100EAC9CC /* SelectContactsTableView.swift */,
+				3E36FEFF1F4A423700EAC9CC /* ContactTableViewCell.swift */,
+				3E36FF001F4A423700EAC9CC /* ContactTableViewCell.xib */,
+			);
+			name = "For Cell";
+			sourceTree = "<group>";
+		};
+		3E6560801F4CCBA300C241BE /* Popover */ = {
 			isa = PBXGroup;
 			children = (
 				3EFBD3611F47025800DB0E7D /* SetCalendarPopoverViewController.swift */,
@@ -247,6 +258,22 @@
 				3E68188B1F46FED600E8D7BC /* CalendarTableViewCell.swift */,
 				3E6818891F46FB6300E8D7BC /* SelectCalendar.storyboard */,
 				3E68188C1F46FED600E8D7BC /* CalendarTableViewCell.xib */,
+			);
+			name = Popover;
+			sourceTree = "<group>";
+		};
+		3E6560811F4CCBBB00C241BE /* Popover */ = {
+			isa = PBXGroup;
+			children = (
+				3E6560821F4CCBDF00C241BE /* SetContacts.storyboard */,
+			);
+			name = Popover;
+			sourceTree = "<group>";
+		};
+		3E6F88CC1F477E1600016908 /* Additional Views */ = {
+			isa = PBXGroup;
+			children = (
+				3E6560801F4CCBA300C241BE /* Popover */,
 			);
 			name = "Additional Views";
 			sourceTree = "<group>";
@@ -563,6 +590,7 @@
 				3EA80D591E2BEC9300FD87C3 /* Assets.xcassets in Resources */,
 				3EA8EE2C1ED219B8000D6EF2 /* DayView.storyboard in Resources */,
 				3EA727571F49F0560041B398 /* SelectContactsTableViewCell.xib in Resources */,
+				3E6560831F4CCBDF00C241BE /* SetContacts.storyboard in Resources */,
 				3E68188E1F46FED600E8D7BC /* CalendarTableViewCell.xib in Resources */,
 				3EA8EE2A1ED21989000D6EF2 /* Settings.storyboard in Resources */,
 				3E68188A1F46FB6300E8D7BC /* SelectCalendar.storyboard in Resources */,

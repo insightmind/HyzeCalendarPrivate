@@ -38,7 +38,11 @@ class SelectContactsTableViewCell: UITableViewCell, EventEditorCell {
 	@IBOutlet weak var bottomViewHeightConstraint: NSLayoutConstraint!
 	
 	@IBAction func addContact(_ sender: UIButton) {
-		
+		let storyboard = UIStoryboard(name: "SetContacts", bundle: nil)
+		guard let viewController = storyboard.instantiateInitialViewController() else {
+			return
+		}
+		eventInformations.eventEditor?.present(viewController, animated: true, completion: nil)
 	}
 	
 	@IBAction func toggleAllContacts(_ sender: UIButton) {

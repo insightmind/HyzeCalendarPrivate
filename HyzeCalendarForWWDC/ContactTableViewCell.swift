@@ -14,6 +14,7 @@ class ContactTableViewCell: UITableViewCell {
 	
 	var contact: EKParticipant?
 	var tableView: SelectContactsTableView?
+	var isAdded: Bool = false
 
 	@IBOutlet weak var contactLabel: UILabel!
 	@IBOutlet weak var contactView: UIView!
@@ -23,17 +24,23 @@ class ContactTableViewCell: UITableViewCell {
 	@IBOutlet weak var mainView: UIView!
 	
 	@IBAction func deleteContact(_ sender: UIButton) {
-		guard let checkedTableView = tableView else {
-			return
+		if isAdded {
+			guard let checkedTableView = tableView else {
+				return
+			}
+			checkedTableView.deleteParticipant(contact!)
 		}
-		
-		checkedTableView.deleteParticipant(contact!)
 	}
 	
 	fileprivate func setUpContactDeleteButton() {
 		self.contactDeleteView.layer.cornerRadius = self.contactDeleteView.bounds.width / 2
 		self.contactDeleteView.backgroundColor = Color.red
-		let image = #imageLiteral(resourceName: "ic_remove").withRenderingMode(.alwaysTemplate)
+		var image: UIImage
+		if isAdded {
+			image = #imageLiteral(resourceName: "ic_remove").withRenderingMode(.alwaysTemplate)
+		} else {
+			image = #imageLiteral(resourceName: "ic_person_add").withRenderingMode(.alwaysTemplate)
+		}
 		self.contactDeleteButton.setImage(image, for: .normal)
 		self.contactDeleteButton.tintColor = Color.white
 		
@@ -82,6 +89,9 @@ class ContactTableViewCell: UITableViewCell {
 		guard let checkedContact = contact else {
 			return
 		}
+		self.isAdded = true
+		let image = #imageLiteral(resourceName: "ic_remove").withRenderingMode(.alwaysTemplate)
+		self.contactDeleteButton.setImage(image, for: .normal)
 		if let realContact = CManagement.getContact(for: checkedContact.contactPredicate) {
 			self.contactLabel.text = "\(realContact.familyName), \(realContact.givenName)"
 			if let data = realContact.imageData {
