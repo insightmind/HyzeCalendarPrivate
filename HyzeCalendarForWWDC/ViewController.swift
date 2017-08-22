@@ -110,11 +110,14 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-//		self.view.layoutIfNeeded()
+		
+		if CManagement.askForPermission() {
+			print("Contacts access granted")
+		}
 		
 		let calendar = EManagement.getHyzeCalendar()
 		if calendar == nil {
-			//EManagement.createCalendar()
+			EManagement.createCalendar()
 		}
 		
         darkModeTemp = darkMode

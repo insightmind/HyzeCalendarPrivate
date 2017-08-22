@@ -37,6 +37,7 @@
 		3E6BCC511E5479DD00369E7D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6BCC501E5479DD00369E7D /* SettingsViewController.swift */; };
 		3E7140431E46844C00D51B17 /* DayViewUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7140421E46844C00D51B17 /* DayViewUIViewController.swift */; };
 		3E7DD5731E4679FA001E1D0B /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7DD5721E4679FA001E1D0B /* EventView.swift */; };
+		3EA6E4751F4C7C1F003E9341 /* ContactsManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA6E4741F4C7C1F003E9341 /* ContactsManagement.swift */; };
 		3EA727561F49F0560041B398 /* SelectContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA727541F49F0560041B398 /* SelectContactsTableViewCell.swift */; };
 		3EA727571F49F0560041B398 /* SelectContactsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EA727551F49F0560041B398 /* SelectContactsTableViewCell.xib */; };
 		3EA80D521E2BEC9300FD87C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA80D511E2BEC9300FD87C3 /* AppDelegate.swift */; };
@@ -100,6 +101,7 @@
 		3E6BCC501E5479DD00369E7D /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		3E7140421E46844C00D51B17 /* DayViewUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayViewUIViewController.swift; sourceTree = "<group>"; };
 		3E7DD5721E4679FA001E1D0B /* EventView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
+		3EA6E4741F4C7C1F003E9341 /* ContactsManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsManagement.swift; sourceTree = "<group>"; };
 		3EA727541F49F0560041B398 /* SelectContactsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectContactsTableViewCell.swift; sourceTree = "<group>"; };
 		3EA727551F49F0560041B398 /* SelectContactsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectContactsTableViewCell.xib; sourceTree = "<group>"; };
 		3EA80D511E2BEC9300FD87C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -367,6 +369,7 @@
 				3ECD09971E9BB39C00BF9627 /* TimeManagement.swift */,
 				3E4A9B281E4BB4C0009E45EF /* EventsManagement.swift */,
 				3ED0F0DB1F437310001A12A8 /* EventEditorEventInformations.swift */,
+				3EA6E4741F4C7C1F003E9341 /* ContactsManagement.swift */,
 			);
 			name = TimeManagement;
 			sourceTree = "<group>";
@@ -595,6 +598,7 @@
 				3E36FEFE1F4A41A100EAC9CC /* SelectContactsTableView.swift in Sources */,
 				3E6285471F44720400301A42 /* UIViewControllerExtension.swift in Sources */,
 				3EE5426D1F479FCC00B230FF /* RemoveTableViewCell.swift in Sources */,
+				3EA6E4751F4C7C1F003E9341 /* ContactsManagement.swift in Sources */,
 				3E4A9B291E4BB4C0009E45EF /* EventsManagement.swift in Sources */,
 				3ED0F0DC1F437310001A12A8 /* EventEditorEventInformations.swift in Sources */,
 				3ED0F0DA1F4372E4001A12A8 /* EventEditorState.swift in Sources */,

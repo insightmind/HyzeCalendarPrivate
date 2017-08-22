@@ -28,6 +28,7 @@ var TMCalendar: NSCalendar = {
 
 let HTimeManagement = TimeManagement()
 let EManagement = EventManagement()
+let CManagement = ContactsManagement()
 var HSelection = Selection()
 
 let TMPast = Date.distantPast

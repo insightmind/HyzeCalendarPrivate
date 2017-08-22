@@ -8,6 +8,7 @@
 
 import UIKit
 import EventKit
+import Contacts
 
 class ContactTableViewCell: UITableViewCell {
 	
@@ -66,7 +67,22 @@ class ContactTableViewCell: UITableViewCell {
 	
 	func setContact(_ participant: EKParticipant) {
 		self.contact = participant
-		self.contactLabel.text = contact?.name
+		print(participant)
+		guard let checkedContact = contact else {
+			return
+		}
+		if let realContact = CManagement.getContact(for: checkedContact.contactPredicate) {
+			self.contactLabel.text = "\(realContact.familyName), \(realContact.givenName)"
+			if let data = realContact.imageData {
+				let image = UIImage(data: data)
+				self.contactImageView.image = image
+			}
+		} else {
+			var email = checkedContact.url.absoluteString
+			let range = email.startIndex...email.index(email.startIndex, offsetBy: 6)
+			email.removeSubrange(range)
+			self.contactLabel.text = email
+		}
 	}
 
     override func setSelected(_ selected: Bool, animated: Bool) {

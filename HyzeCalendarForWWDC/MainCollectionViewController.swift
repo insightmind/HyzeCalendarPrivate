@@ -24,6 +24,7 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 		
 		if EManagement.askForPermission() {
 			self.reloadCalendarView()
+			GlobalETView.reloadView()
 		}
 		
         // Uncomment the following line to preserve selection between presentations
