@@ -46,6 +46,8 @@ class ContactTableViewCell: UITableViewCell {
 		let image = #imageLiteral(resourceName: "ic_account_circle").withRenderingMode(.alwaysTemplate)
 		self.contactImageView.image = image
 		self.contactImageView.tintColor = Color.white
+		self.contactImageView.layer.masksToBounds = true
+		self.contactImageView.contentMode = .scaleAspectFill
 		self.contactImageView.layer.cornerRadius = self.contactImageView.bounds.width / 2
 	}
 	
