@@ -127,7 +127,7 @@ class EventManagement {
 		} else {
 			event = EKEvent(eventStore: EManagement.EMEventStore)
 		}
-		if from.startDate < from.endDate && isUserAdmin(of: event) {
+		if from.startDate < from.endDate && !from.isReadOnly {
 			event.title = from.title
 			event.calendar = from.calendar ?? getHyzeCalendar()
 			event.startDate = from.startDate
@@ -213,7 +213,7 @@ class EventManagement {
 		informations.eventIdentifier = eventIdentifier
 		informations.calendar = event.calendar
 		informations.participants = event.attendees
-		informations.isUserAdmin = isUserAdmin(of: event)
+		informations.isReadOnly = event.isReadOnly()
 		
 		
 		if let complete = completion {
@@ -221,18 +221,6 @@ class EventManagement {
 		}
 		
 		return informations
-	}
-	
-	func isUserAdmin(of event: EKEvent) -> Bool {
-		guard let attendees = event.attendees else {
-			return false
-		}
-		for i in attendees {
-			if i.isCurrentUser && i.participantRole == .chair {
-				return true
-			}
-		}
-		return false
 	}
 	
 	func getHyzeCalendar() -> EKCalendar? {
@@ -283,19 +271,22 @@ class EventManagement {
 
 	}
 	
-	func updateEvent(_ informations: EventEditorEventInformations) {
+	func updateEvent(_ informations: EventEditorEventInformations) -> Bool {
 		guard let event = createEvent(from: informations) else {
 			print("Event could not be updated")
-			return
+			return false
 		}
 		do {
-			try! EMEventStore.save(event, span: .thisEvent)
+			try EMEventStore.save(event, span: .thisEvent)
 			eventsChange = true
+			self.eventInformation = informations
+			return true
 		} catch {
 			print("Event could not be updated")
 			eventsChange = false
+			return false
 		}
-		self.eventInformation = informations
+		
 	}
 	
 	func deleteEvent(_ informations: EventEditorEventInformations) {

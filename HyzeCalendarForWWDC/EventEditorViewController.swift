@@ -91,12 +91,20 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
 		}
 		
 		if eventInformations.eventIdentifier != nil {
-			EManagement.updateEvent(eventInformations)
+			if !EManagement.updateEvent(eventInformations) {
+				let alert = UIAlertController(title: "Save failed", message: "Could not save the event. Make sure you are allowed to change the event!", preferredStyle: .alert)
+				let ok = UIAlertAction(title: "Continue", style: .cancel, handler: { action in
+					EManagement.eventInformation.state = .showDetail
+					self.endEditingWithReload()
+				})
+				alert.addAction(ok)
+				self.present(alert, animated: true, completion: nil)
+			}
 		} else {
 			EManagement.addEvent(eventInformations)
+			EManagement.eventInformation.state = .showDetail
+			endEditingWithReload()
 		}
-		EManagement.eventInformation.state = .showDetail
-		endEditingWithReload()
 	}
 	
 	func endEditingWithReload() {
