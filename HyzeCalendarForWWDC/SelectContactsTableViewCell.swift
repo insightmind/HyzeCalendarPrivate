@@ -14,6 +14,8 @@ class SelectContactsTableViewCell: UITableViewCell, EventEditorCell {
 	
 	func reloadInformations() {
 		eventInformations = EManagement.eventInformation
+		setUpLayout()
+		eventInformations.eventEditorTableViewController?.updateContactsCellHeight()
 	}
 	
 	@IBOutlet weak var topView: UIView!
@@ -28,13 +30,19 @@ class SelectContactsTableViewCell: UITableViewCell, EventEditorCell {
 	@IBOutlet weak var showContactsView: UIView!
 	@IBOutlet weak var bottomView: UIView!
 	@IBOutlet weak var contactsTableView: SelectContactsTableView!
-	
-	@IBOutlet weak var mainViewHeightConstraint: NSLayoutConstraint!
 	@IBOutlet weak var topContactViewHeightConstraint: NSLayoutConstraint!
 	@IBOutlet weak var bottomViewHeightConstraint: NSLayoutConstraint!
 	
 	@IBAction func addContact(_ sender: UIButton) {
 		
+	}
+	
+	@IBAction func toggleAllContacts(_ sender: UIButton) {
+		eventInformations.isAllContacts = !eventInformations.isAllContacts
+		eventInformations.eventEditorTableViewController?.updateContactsCellHeight()
+		UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+			self.showContactsButton.transform = CGAffineTransform(rotationAngle: self.eventInformations.isAllContacts ? PI : 2*PI)
+		}, completion: nil)
 	}
 	
 	fileprivate func setUpAddButton() {
@@ -79,6 +87,11 @@ class SelectContactsTableViewCell: UITableViewCell, EventEditorCell {
 		self.topContactView.backgroundColor = UIColor.clear
 		
 		self.setUpAddButton()
+		self.setUpShowContactsButton()
+		self.setUpLayout()
+    }
+	
+	func setUpLayout() {
 		
 		let defaultCellHeight: CGFloat = 55
 		
@@ -115,7 +128,7 @@ class SelectContactsTableViewCell: UITableViewCell, EventEditorCell {
 			}
 		}
 		layoutSubviews()
-    }
+	}
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

@@ -14,15 +14,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="155" id="KGk-i7-Jjw" customClass="SelectContactsTableViewCell" customModule="HyzeCalendarForWWDC" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="296" height="155"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="250" id="KGk-i7-Jjw" customClass="SelectContactsTableViewCell" customModule="HyzeCalendarForWWDC" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="296" height="250"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="296" height="154.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="296" height="249.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Tw-M6-dGH">
-                        <rect key="frame" x="8" y="8" width="280" height="138.5"/>
+                        <rect key="frame" x="8" y="8" width="280" height="233.5"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DGz-YR-n4u">
                                 <rect key="frame" x="0.0" y="0.0" width="280" height="28"/>
@@ -44,12 +44,8 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S6k-aA-kgC">
-                                <rect key="frame" x="0.0" y="28" width="280" height="110.5"/>
+                                <rect key="frame" x="0.0" y="28" width="280" height="205.5"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ler-3N-QZB" customClass="SelectContactsTableView" customModule="HyzeCalendarForWWDC" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="280" height="111"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fc3-YZ-Hem">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="55.5"/>
                                         <subviews>
@@ -94,8 +90,12 @@
                                             <constraint firstItem="tw3-Dz-Ezx" firstAttribute="leading" secondItem="TxB-G9-Wi1" secondAttribute="trailing" constant="8" id="pxd-Zb-2ed"/>
                                         </constraints>
                                     </view>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ler-3N-QZB" customClass="SelectContactsTableView" customModule="HyzeCalendarForWWDC" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="55" width="280" height="96.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L5y-kK-UzY">
-                                        <rect key="frame" x="0.0" y="57" width="280" height="54"/>
+                                        <rect key="frame" x="0.0" y="152" width="280" height="54"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bpX-0l-Z1d">
                                                 <rect key="frame" x="121" y="8" width="39.5" height="39.5"/>
@@ -106,13 +106,13 @@
                                                         <state key="normal" image="ic_add"/>
                                                         <connections>
                                                             <action selector="addContact:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="uaO-Qi-GZW"/>
+                                                            <action selector="toggleAllContacts:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Jo9-dI-tu6"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="bpX-0l-Z1d" secondAttribute="height" multiplier="1:1" id="3sR-Hb-dUC"/>
-                                                    <constraint firstAttribute="height" constant="39.5" id="5tp-7e-UJc"/>
                                                     <constraint firstAttribute="bottom" secondItem="ePh-2u-3QF" secondAttribute="bottom" id="BJe-fq-zeI"/>
                                                     <constraint firstAttribute="trailing" secondItem="ePh-2u-3QF" secondAttribute="trailing" id="cg6-Nq-foG"/>
                                                     <constraint firstAttribute="trailing" secondItem="ePh-2u-3QF" secondAttribute="trailing" id="ni8-Gh-mHT"/>
@@ -125,7 +125,9 @@
                                         <constraints>
                                             <constraint firstItem="bpX-0l-Z1d" firstAttribute="centerY" secondItem="L5y-kK-UzY" secondAttribute="centerY" id="DNC-5K-tLM"/>
                                             <constraint firstItem="bpX-0l-Z1d" firstAttribute="centerX" secondItem="L5y-kK-UzY" secondAttribute="centerX" id="h6X-4C-JRy"/>
-                                            <constraint firstAttribute="height" priority="250" constant="54" identifier="bottom" id="x7v-zD-YSs"/>
+                                            <constraint firstItem="bpX-0l-Z1d" firstAttribute="top" secondItem="L5y-kK-UzY" secondAttribute="top" constant="8" id="kwY-f7-4VI"/>
+                                            <constraint firstAttribute="height" constant="54" identifier="bottom" id="x7v-zD-YSs"/>
+                                            <constraint firstAttribute="bottom" secondItem="bpX-0l-Z1d" secondAttribute="bottom" constant="6.5" id="xzM-RI-cZB"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -133,8 +135,8 @@
                                 <constraints>
                                     <constraint firstItem="L5y-kK-UzY" firstAttribute="leading" secondItem="S6k-aA-kgC" secondAttribute="leading" id="4HL-Ki-s9h"/>
                                     <constraint firstAttribute="trailing" secondItem="L5y-kK-UzY" secondAttribute="trailing" id="BJ0-Mh-A2y"/>
-                                    <constraint firstItem="Ler-3N-QZB" firstAttribute="top" secondItem="S6k-aA-kgC" secondAttribute="top" id="E4G-dh-GjL"/>
-                                    <constraint firstAttribute="bottom" secondItem="Ler-3N-QZB" secondAttribute="bottom" constant="-0.5" id="Gjy-aP-nlE"/>
+                                    <constraint firstItem="Ler-3N-QZB" firstAttribute="top" secondItem="Fc3-YZ-Hem" secondAttribute="bottom" id="E4G-dh-GjL"/>
+                                    <constraint firstItem="L5y-kK-UzY" firstAttribute="top" secondItem="Ler-3N-QZB" secondAttribute="bottom" id="Gjy-aP-nlE"/>
                                     <constraint firstAttribute="trailing" secondItem="Ler-3N-QZB" secondAttribute="trailing" id="Jvk-8d-HZR"/>
                                     <constraint firstAttribute="bottom" secondItem="L5y-kK-UzY" secondAttribute="bottom" id="Ozh-kC-x8L"/>
                                     <constraint firstItem="Fc3-YZ-Hem" firstAttribute="leading" secondItem="S6k-aA-kgC" secondAttribute="leading" id="d7H-9R-go1"/>
@@ -180,7 +182,7 @@
                 <outlet property="topContactViewHeightConstraint" destination="JWg-6k-OWX" id="cyp-8G-GSM"/>
                 <outlet property="topView" destination="7Tw-M6-dGH" id="tZU-e3-zrZ"/>
             </connections>
-            <point key="canvasLocation" x="-188" y="-42.5"/>
+            <point key="canvasLocation" x="-188" y="-25"/>
         </tableViewCell>
     </objects>
     <resources>

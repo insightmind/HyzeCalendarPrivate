@@ -135,10 +135,34 @@ class EventManagement {
 			event.endDate = from.endDate
 			event.isAllDay = from.isAllDay
 			event.notes = from.notes
+			
+			var attendees = [EKParticipant]()
+			if let participants = from.participants {
+				for i in 0..<participants.count {
+					var email = participants[i].url.absoluteString
+					let range = email.startIndex...email.index(email.startIndex, offsetBy: 6)
+					email.removeSubrange(range)
+					if let participant = createParticipant(email: email) {
+						attendees.append(participant)
+					}
+				}
+			}
+			event.setValue(attendees, forKey: "attendees")
+			
 		} else {
 			return nil
 		}
 		return event
+	}
+	
+	private func createParticipant(email: String) -> EKParticipant? {
+		let clazz: AnyClass? = NSClassFromString("EKAttendee")
+		if let type = clazz as? NSObject.Type {
+			let attendee = type.init()
+			attendee.setValue(email, forKey: "emailAddress")
+			return attendee as? EKParticipant
+		}
+		return nil
 	}
     
 	func addEvent(_ informations: EventEditorEventInformations) {

@@ -13,6 +13,7 @@ import Contacts
 class ContactTableViewCell: UITableViewCell {
 	
 	var contact: EKParticipant?
+	var tableView: SelectContactsTableView?
 
 	@IBOutlet weak var contactLabel: UILabel!
 	@IBOutlet weak var contactView: UIView!
@@ -20,6 +21,14 @@ class ContactTableViewCell: UITableViewCell {
 	@IBOutlet weak var contactDeleteView: UIView!
 	@IBOutlet weak var contactDeleteButton: UIButton!
 	@IBOutlet weak var mainView: UIView!
+	
+	@IBAction func deleteContact(_ sender: UIButton) {
+		guard let checkedTableView = tableView else {
+			return
+		}
+		
+		checkedTableView.deleteParticipant(contact!)
+	}
 	
 	fileprivate func setUpContactDeleteButton() {
 		self.contactDeleteView.layer.cornerRadius = self.contactDeleteView.bounds.width / 2
@@ -41,7 +50,7 @@ class ContactTableViewCell: UITableViewCell {
 		self.contactView.layer.shadowPath = UIBezierPath(roundedRect: contactImageView.bounds, cornerRadius: contactImageView.bounds.width / 2).cgPath
 		self.contactView.layer.shadowColor = self.contactView.backgroundColor?.cgColor
 		self.contactView.layer.shadowRadius = 5
-		self.contactView.layer.shadowOffset = CGSize(width: 1, height: 3)
+		self.contactView.layer.shadowOffset = CGSize(width: 1, height: 2)
 		self.contactView.layer.shadowOpacity = 0.8
 		let image = #imageLiteral(resourceName: "ic_account_circle").withRenderingMode(.alwaysTemplate)
 		self.contactImageView.image = image
@@ -78,12 +87,14 @@ class ContactTableViewCell: UITableViewCell {
 			if let data = realContact.imageData {
 				let image = UIImage(data: data)
 				self.contactImageView.image = image
+				self.contactView.layer.shadowColor = UIColor.black.cgColor
 			}
 		} else {
 			var email = checkedContact.url.absoluteString
 			let range = email.startIndex...email.index(email.startIndex, offsetBy: 6)
 			email.removeSubrange(range)
 			self.contactLabel.text = email
+			self.contactView.layer.shadowColor = Color.red.cgColor
 		}
 	}
 

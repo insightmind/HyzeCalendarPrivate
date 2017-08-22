@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import EventKit
 
 class SelectContactsTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
 	
@@ -16,19 +17,13 @@ class SelectContactsTableView: UITableView, UITableViewDelegate, UITableViewData
 	
 	override init(frame: CGRect, style: UITableViewStyle) {
 		super.init(frame: frame, style: style)
-		
-		self.allowsSelection = false
-		
-		self.delegate = self
-		self.dataSource = self
-		
-		let cell = UINib(nibName: "ContactTableViewCell", bundle: nil)
-		self.register(cell, forCellReuseIdentifier: reuseIdentifier)
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
 		self.allowsSelection = false
+		self.layer.masksToBounds = false
+		self.isScrollEnabled = false
 		
 		self.delegate = self
 		self.dataSource = self
@@ -49,10 +44,23 @@ class SelectContactsTableView: UITableView, UITableViewDelegate, UITableViewData
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = self.dequeueReusableCell(withIdentifier: reuseIdentifier) as! ContactTableViewCell
 		cell.setContact(eventInformation.participants![indexPath.row])
+		cell.tableView = self
 		return cell
 	}
 	
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		return 56
+	}
+	
+	func deleteParticipant(_ participant: EKParticipant) {
+		if let participants = eventInformation.participants {
+			for i in 0..<participants.count {
+				if participants[i] == participant {
+					eventInformation.participants!.remove(at: i)
+					self.reloadSections(IndexSet(integer: 0), with: .none)
+					eventInformation.eventEditorTableViewController?.reloadCell(.contacts, onlyInformations: true)
+				}
+			}
+		}
 	}
 }

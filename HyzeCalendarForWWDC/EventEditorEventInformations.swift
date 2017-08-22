@@ -67,4 +67,5 @@ class EventEditorEventInformations: NSCopying {
 	var setCalendarPopoverViewController: SetCalendarPopoverViewController?
 	var eventEditorTableViewController: EventEditorTableViewController?
 	var eventEditor: EventEditorViewController?
+	var isAllContacts: Bool = false
 }

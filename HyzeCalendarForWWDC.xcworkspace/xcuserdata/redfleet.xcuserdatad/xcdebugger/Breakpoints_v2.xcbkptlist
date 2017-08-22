@@ -6,32 +6,48 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HyzeCalendarForWWDC/ContactTableViewCell.swift"
-            timestampString = "525109603.598168"
+            filePath = "HyzeCalendarForWWDC/ContactsManagement.swift"
+            timestampString = "525117591.771438"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
-            landmarkName = "setContact(_:)"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "getContact(for:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HyzeCalendarForWWDC/ContactsManagement.swift"
-            timestampString = "525109603.598965"
+            filePath = "HyzeCalendarForWWDC/SelectContactsTableViewCell.swift"
+            timestampString = "525117591.7718"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
-            landmarkName = "getContact(for:)"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "toggleAllContacts(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HyzeCalendarForWWDC/EventEditorTableViewController.swift"
+            timestampString = "525117591.771959"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
+            landmarkName = "updateContactsCellHeight()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

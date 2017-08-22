@@ -112,6 +112,11 @@ class EventEditorTableViewController: UITableViewController {
 					if onlyInformations {
 						cell.reloadInformations()
 					}
+				case .contacts:
+					let cell = self.tableView.cellForRow(at: IndexPath(row: i, section: 0)) as! SelectContactsTableViewCell
+					if onlyInformations {
+						cell.reloadInformations()
+					}
 				default:
 					return
 				}
@@ -123,7 +128,8 @@ class EventEditorTableViewController: UITableViewController {
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		
 		if cells[indexPath.row].cellType == .contacts {
-			return calculateContactsCellHeight()
+			let (calculated, full) = calculateContactsCellHeight()
+			return eventsInformations.isAllContacts ? full : calculated
 		}
 		
 		return cells[indexPath.row].height
@@ -152,26 +158,31 @@ class EventEditorTableViewController: UITableViewController {
 		}
 	}
 	
-	func calculateContactsCellHeight() -> CGFloat{
+	func calculateContactsCellHeight() -> (CGFloat, CGFloat){
 		
 		let normalHeight: CGFloat = 45
 		let defaultCellHeight: CGFloat = 55
 		var calculatedHeight = normalHeight
+		var fullHeight = normalHeight
 		
 		switch eventsInformations.state {
 		case .create:
 			calculatedHeight += defaultCellHeight
+			fullHeight += defaultCellHeight
 			if let count = eventsInformations.participants?.count {
+				fullHeight += defaultCellHeight * CGFloat(count)
 				if count > 2 {
-					calculatedHeight += 4 * defaultCellHeight
+					fullHeight += defaultCellHeight
+					calculatedHeight += 3 * defaultCellHeight
 				} else {
 					calculatedHeight += defaultCellHeight * CGFloat(count)
 				}
 			}
 		case .showDetail:
 			if let count = eventsInformations.participants?.count {
-				calculatedHeight += defaultCellHeight * CGFloat(count)
+				fullHeight += defaultCellHeight * CGFloat(count)
 				if count > 3 {
+					fullHeight += defaultCellHeight
 					calculatedHeight += 4 * defaultCellHeight
 				} else {
 					calculatedHeight += defaultCellHeight * CGFloat(count)
@@ -179,11 +190,14 @@ class EventEditorTableViewController: UITableViewController {
 			}
 		}
 		
-		return calculatedHeight
+		let heights = (calculatedHeight, fullHeight)
+		
+		return heights
 	}
 	
-	func updateContactsCellHeight(for cell: SelectContactsTableViewCell) {
-		
+	func updateContactsCellHeight() {
+		tableView.beginUpdates()
+		tableView.endUpdates()
 	}
 
 }
