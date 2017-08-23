@@ -21,6 +21,7 @@ class SetContactsPopoverViewController: UIViewController {
 	@IBOutlet weak var saveButton: UIButton!
 	
 	var searchBarViewController: SetContactsSearchViewController?
+	let eventInformation = EManagement.eventInformation
 	
 	@IBAction func cancel(_ sender: UIButton) {
 		self.dismiss(animated: true, completion: nil)
@@ -49,7 +50,11 @@ class SetContactsPopoverViewController: UIViewController {
 			}
 		}
 		
-		self.dismiss(animated: true, completion: nil)
+		eventInformation.participants = attendees
+		
+		self.dismiss(animated: true, completion: {
+			self.eventInformation.eventEditorTableViewController?.reloadCell(.contacts, onlyInformations: true)
+		})
 	}
 	
 	

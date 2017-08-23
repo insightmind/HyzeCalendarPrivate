@@ -12,6 +12,7 @@ import Contacts
 
 class ContactTableViewCell: UITableViewCell {
 	
+	let eventInformation = EManagement.eventInformation
 	var contact: CNContact?
 	var isContact: Bool = false
 	var email: String?
@@ -161,6 +162,15 @@ class ContactTableViewCell: UITableViewCell {
 			self.emailLabel.textColor = Color.blue.withAlphaComponent(0.7)
 		}
 		
+		switch eventInformation.state {
+		case .showDetail:
+			self.contactDeleteView.isHidden = true
+			self.contactDeleteButton.isUserInteractionEnabled = false
+		default:
+			self.contactDeleteView.isHidden = false
+			self.contactDeleteButton.isUserInteractionEnabled = true
+		}
+		
 		
 		
 		setUpContactDeleteButton()
@@ -225,7 +235,6 @@ class ContactTableViewCell: UITableViewCell {
 	
 	func setContact(_ participant: EKParticipant, shouldAdd: Bool = false) {
 		setIsAdded(shouldAdd)
-		
 		if let realContact = CManagement.getContact(for: participant.contactPredicate) {
 			setUp(contact: realContact)
 			self.isContact = true
@@ -233,6 +242,8 @@ class ContactTableViewCell: UITableViewCell {
 			let stringEmail = participant.url.absoluteString
 			setUp(email: stringEmail, deleteMailto: true)
 		}
+		self.contactLabel.textColor = Color.white
+		self.emailLabel.textColor = Color.white.withAlphaComponent(0.7)
 	}
 	
 	func setContact(_ contact: CNContact, shouldAdd: Bool = false) {

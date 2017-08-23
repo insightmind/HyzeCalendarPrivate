@@ -105,7 +105,6 @@
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <state key="normal" image="ic_add"/>
                                                         <connections>
-                                                            <action selector="addContact:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="uaO-Qi-GZW"/>
                                                             <action selector="toggleAllContacts:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Jo9-dI-tu6"/>
                                                         </connections>
                                                     </button>

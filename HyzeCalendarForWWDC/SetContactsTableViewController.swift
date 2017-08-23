@@ -11,6 +11,7 @@ import Contacts
 
 class SetContactsTableViewController: UITableViewController {
 	
+	let eventInformation = EManagement.eventInformation
 	var searchBar: UISearchBar?
 	var search: String = ""
 	var searchIsEmail: Bool = false
@@ -25,11 +26,8 @@ class SetContactsTableViewController: UITableViewController {
 		self.tableView.separatorStyle = .none
 		self.tableView.backgroundColor = UIColor.clear
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+		
+		
 		let nib = UINib(nibName: "ContactTableViewCell", bundle: nil)
 		self.tableView.register(nib, forCellReuseIdentifier: reuseIdentifier)
 		self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 56, right: 0)
@@ -53,9 +51,13 @@ class SetContactsTableViewController: UITableViewController {
 		case 0:
 			return addedContacts.count + addedEmails.count
 		default:
+			
 			contacts = CManagement.getContacts(name: search, isFuzzy: true, alreadyAdded: addedContacts)
 			
-			let faktor = searchIsEmail ? 1 : 0
+			var faktor = 0
+			if searchIsEmail {
+				faktor = addedEmails.contains(search) ? 0 : 1
+			}
 			
 			return contacts.count + faktor
 		}
@@ -77,7 +79,7 @@ class SetContactsTableViewController: UITableViewController {
 			}
 			
 		default:
-			if searchIsEmail {
+			if searchIsEmail && !addedEmails.contains(search) {
 				if indexPath.row == 0 {
 					cell.setEmail(email: search)
 				} else {
@@ -124,7 +126,23 @@ class SetContactsTableViewController: UITableViewController {
 	func searchDidChange(_ search: String) {
 		self.search = search
 		self.searchIsEmail = CManagement.isValidEmail(email: search)
-		self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+		self.tableView.reloadSections(IndexSet(integersIn: 0...1), with: .automatic)
+	}
+	
+	func setUpAdded() {
+		guard let participants = eventInformation.participants else {
+			return
+		}
+		for participant in participants {
+			if let contact = CManagement.getContact(for: participant.contactPredicate) {
+				addedContacts.append(contact)
+			} else {
+				var email = participant.url.absoluteString
+				let range = email.startIndex...email.index(email.startIndex, offsetBy: 6)
+				email.removeSubrange(range)
+				addedEmails.append(email)
+			}
+		}
 	}
 
     /*
