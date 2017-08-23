@@ -26,8 +26,15 @@ class SetContactsSearchViewController: UIViewController, UISearchBarDelegate {
     }
 	
 	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-		tableViewController?.searchDidChange(searchText)
+		// to limit network activity, reload half a second after last key press.
+		NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(updateSearch), object: nil)
+		self.perform(#selector(updateSearch), with: nil, afterDelay: 0.5)
 	}
+	
+	@objc func updateSearch() {
+		tableViewController?.searchDidChange(searchBar.text ?? "")
+	}
+	
 	
 	func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
 		self.view.endEditing(true)

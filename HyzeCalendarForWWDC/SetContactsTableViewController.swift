@@ -47,7 +47,13 @@ class SetContactsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
 		
+		let start = DispatchTime.now()
 		contacts = CManagement.getContacts(name: search, isFuzzy: true)
+		let end = DispatchTime.now()
+		
+		let nanoTime = end.uptimeNanoseconds - start.uptimeNanoseconds
+		let timeInterval = Double(nanoTime) / 1_000_000_000
+		print("Elapsed Time for search: \(timeInterval)")
 		
         return contacts.count
     }

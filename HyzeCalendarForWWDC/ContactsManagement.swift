@@ -68,25 +68,27 @@ class ContactsManagement {
 		if isFuzzy {
 			let request = CNContactFetchRequest(keysToFetch: keysToFetch as [CNKeyDescriptor])
 			do {
+				
 				try self.CMContactStore.enumerateContacts(with: request, usingBlock: { (contact, cursor) in
+					
 					var count = 0
 					let string = contact.givenName.lowercased() + " " + contact.familyName.lowercased()
 					for i in searchString.lowercased().characters {
 						if string.contains(i) {
 							count += 1
-							if count == searchString.characters.count {
-								contacts.append(contact)
-								break
-							}
 						} else {
 							break
 						}
 					}
-					
+					if count == searchString.characters.count {
+						contacts.append(contact)
+					}
 				})
+				
 			} catch let error {
 				print(error)
 			}
+			
 			return contacts
 			
 		} else {
@@ -99,6 +101,7 @@ class ContactsManagement {
 			}
 			return contacts
 		}
+		
 	}
 	
 	func askForPermission() -> Bool {
