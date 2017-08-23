@@ -42,7 +42,6 @@
                                     <constraint firstAttribute="trailing" secondItem="20w-ke-HzR" secondAttribute="trailing" id="7Lf-xt-29v"/>
                                     <constraint firstItem="20w-ke-HzR" firstAttribute="top" secondItem="W7I-pO-rwy" secondAttribute="top" id="dSE-ee-FVx"/>
                                     <constraint firstAttribute="width" secondItem="W7I-pO-rwy" secondAttribute="height" multiplier="1:1" id="uBA-xh-1Kd"/>
-                                    <constraint firstAttribute="height" constant="40" id="uY7-Bw-bc8"/>
                                     <constraint firstItem="20w-ke-HzR" firstAttribute="leading" secondItem="W7I-pO-rwy" secondAttribute="leading" id="wCo-hv-HWq"/>
                                     <constraint firstAttribute="bottom" secondItem="20w-ke-HzR" secondAttribute="bottom" id="y7u-sC-LPC"/>
                                 </constraints>

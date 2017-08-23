@@ -113,5 +113,12 @@ class ContactTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+	
+	override func prepareForReuse() {
+		self.contactImageView.image = nil
+		self.contactLabel.text = nil
+		self.contact = nil
+		self.contactDeleteButton.imageView?.image = nil
+	}
     
 }

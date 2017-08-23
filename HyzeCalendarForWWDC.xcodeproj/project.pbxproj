@@ -10,6 +10,7 @@
 		3E067E0D1F31FA92003601FA /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E067E0C1F31FA92003601FA /* Default-568h@2x.png */; };
 		3E1B95251E3FAD9D009EB5C9 /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1B95241E3FAD9D009EB5C9 /* DayView.swift */; };
 		3E21053A1E5B56C400E78840 /* ETViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2105391E5B56C400E78840 /* ETViewCell.swift */; };
+		3E2C6ECE1F4CD0A700E88CA1 /* SetContactsPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2C6ECD1F4CD0A700E88CA1 /* SetContactsPopoverViewController.swift */; };
 		3E2D7B791E6715E600A0170D /* EventEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2D7B781E6715E600A0170D /* EventEditorViewController.swift */; };
 		3E36FEFE1F4A41A100EAC9CC /* SelectContactsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E36FEFD1F4A41A100EAC9CC /* SelectContactsTableView.swift */; };
 		3E36FF011F4A423700EAC9CC /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E36FEFF1F4A423700EAC9CC /* ContactTableViewCell.swift */; };
@@ -65,16 +66,21 @@
 		3EE5426D1F479FCC00B230FF /* RemoveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE5426B1F479FCC00B230FF /* RemoveTableViewCell.swift */; };
 		3EE5426E1F479FCC00B230FF /* RemoveTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EE5426C1F479FCC00B230FF /* RemoveTableViewCell.xib */; };
 		3EF096B01E3FDC9F0011E726 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF096AF1E3FDC9F0011E726 /* ViewController.swift */; };
+		3EF9042C1F4CD4ED00C690C4 /* SetContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF9042B1F4CD4ED00C690C4 /* SetContactsTableViewController.swift */; };
+		3EF9042E1F4CD53D00C690C4 /* SetContactsSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF9042D1F4CD53D00C690C4 /* SetContactsSearchViewController.swift */; };
 		3EFA24DD1E2BF1D200BC6DD5 /* CalendarViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFA24DC1E2BF1D200BC6DD5 /* CalendarViewFlowLayout.swift */; };
 		3EFBD3621F47025800DB0E7D /* SetCalendarPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFBD3611F47025800DB0E7D /* SetCalendarPopoverViewController.swift */; };
 		3EFE5F491E41310A004E75F9 /* DayMainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFE5F481E41310A004E75F9 /* DayMainButton.swift */; };
+		54754F2275255EAFFCE2A627 /* Pods_HyzeCalendarForWWDC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E21A0F42434DA3DA544C82C6 /* Pods_HyzeCalendarForWWDC.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		35648DCA1721F1D49C458FA7 /* Pods-HyzeCalendarForWWDC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HyzeCalendarForWWDC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HyzeCalendarForWWDC/Pods-HyzeCalendarForWWDC.debug.xcconfig"; sourceTree = "<group>"; };
 		3E067E0C1F31FA92003601FA /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		3E067E0E1F31FB9B003601FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E1B95241E3FAD9D009EB5C9 /* DayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DayView.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		3E2105391E5B56C400E78840 /* ETViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ETViewCell.swift; sourceTree = "<group>"; };
+		3E2C6ECD1F4CD0A700E88CA1 /* SetContactsPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetContactsPopoverViewController.swift; sourceTree = "<group>"; };
 		3E2D7B781E6715E600A0170D /* EventEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventEditorViewController.swift; sourceTree = "<group>"; };
 		3E36FEFD1F4A41A100EAC9CC /* SelectContactsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectContactsTableView.swift; sourceTree = "<group>"; };
 		3E36FEFF1F4A423700EAC9CC /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
@@ -132,9 +138,13 @@
 		3EE5426B1F479FCC00B230FF /* RemoveTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveTableViewCell.swift; sourceTree = "<group>"; };
 		3EE5426C1F479FCC00B230FF /* RemoveTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RemoveTableViewCell.xib; sourceTree = "<group>"; };
 		3EF096AF1E3FDC9F0011E726 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3EF9042B1F4CD4ED00C690C4 /* SetContactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetContactsTableViewController.swift; sourceTree = "<group>"; };
+		3EF9042D1F4CD53D00C690C4 /* SetContactsSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetContactsSearchViewController.swift; sourceTree = "<group>"; };
 		3EFA24DC1E2BF1D200BC6DD5 /* CalendarViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewFlowLayout.swift; sourceTree = "<group>"; };
 		3EFBD3611F47025800DB0E7D /* SetCalendarPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCalendarPopoverViewController.swift; sourceTree = "<group>"; };
 		3EFE5F481E41310A004E75F9 /* DayMainButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayMainButton.swift; sourceTree = "<group>"; };
+		A54B9A273C54D17A1F0059A0 /* Pods-HyzeCalendarForWWDC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HyzeCalendarForWWDC.release.xcconfig"; path = "Pods/Target Support Files/Pods-HyzeCalendarForWWDC/Pods-HyzeCalendarForWWDC.release.xcconfig"; sourceTree = "<group>"; };
+		E21A0F42434DA3DA544C82C6 /* Pods_HyzeCalendarForWWDC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HyzeCalendarForWWDC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +152,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54754F2275255EAFFCE2A627 /* Pods_HyzeCalendarForWWDC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,6 +277,9 @@
 			isa = PBXGroup;
 			children = (
 				3E6560821F4CCBDF00C241BE /* SetContacts.storyboard */,
+				3E2C6ECD1F4CD0A700E88CA1 /* SetContactsPopoverViewController.swift */,
+				3EF9042B1F4CD4ED00C690C4 /* SetContactsTableViewController.swift */,
+				3EF9042D1F4CD53D00C690C4 /* SetContactsSearchViewController.swift */,
 			);
 			name = Popover;
 			sourceTree = "<group>";
@@ -337,6 +351,8 @@
 				3E067E0C1F31FA92003601FA /* Default-568h@2x.png */,
 				3EA80D501E2BEC9300FD87C3 /* HyzeCalendarForWWDC */,
 				3E533BC01EC36185000CEF5F /* HyzeCalendarForWWDC.app */,
+				F5A3A18D5E2C0916980457C4 /* Pods */,
+				D48AC8556D2AC934DB48314B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -398,8 +414,8 @@
 			children = (
 				3ECD09971E9BB39C00BF9627 /* TimeManagement.swift */,
 				3E4A9B281E4BB4C0009E45EF /* EventsManagement.swift */,
-				3ED0F0DB1F437310001A12A8 /* EventEditorEventInformations.swift */,
 				3EA6E4741F4C7C1F003E9341 /* ContactsManagement.swift */,
+				3ED0F0DB1F437310001A12A8 /* EventEditorEventInformations.swift */,
 			);
 			name = TimeManagement;
 			sourceTree = "<group>";
@@ -507,6 +523,23 @@
 			name = Remove;
 			sourceTree = "<group>";
 		};
+		D48AC8556D2AC934DB48314B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E21A0F42434DA3DA544C82C6 /* Pods_HyzeCalendarForWWDC.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F5A3A18D5E2C0916980457C4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A54B9A273C54D17A1F0059A0 /* Pods-HyzeCalendarForWWDC.release.xcconfig */,
+				35648DCA1721F1D49C458FA7 /* Pods-HyzeCalendarForWWDC.debug.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -514,10 +547,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3EA80D6B1E2BEC9300FD87C3 /* Build configuration list for PBXNativeTarget "HyzeCalendarForWWDC" */;
 			buildPhases = (
+				48392D28F6C7ACB9F3D27E4A /* [CP] Check Pods Manifest.lock */,
 				3EA80D4A1E2BEC9300FD87C3 /* Sources */,
 				3EA80D4B1E2BEC9300FD87C3 /* Frameworks */,
 				3EA80D4C1E2BEC9300FD87C3 /* Resources */,
 				3ED2E4F61E437D6C001F8480 /* ShellScript */,
+				1466B0ED80DFCA7A1E88D61F /* [CP] Embed Pods Frameworks */,
+				4A00022F362809E94E192082 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -602,6 +638,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1466B0ED80DFCA7A1E88D61F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HyzeCalendarForWWDC/Pods-HyzeCalendarForWWDC-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		3ED2E4F61E437D6C001F8480 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -615,6 +666,36 @@
 			shellPath = /bin/sh;
 			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
 		};
+		48392D28F6C7ACB9F3D27E4A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		4A00022F362809E94E192082 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HyzeCalendarForWWDC/Pods-HyzeCalendarForWWDC-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -626,6 +707,7 @@
 				3EA80D521E2BEC9300FD87C3 /* AppDelegate.swift in Sources */,
 				3EA8EE311ED2350E000D6EF2 /* MonthCollectionViewController.swift in Sources */,
 				3E2D7B791E6715E600A0170D /* EventEditorViewController.swift in Sources */,
+				3E2C6ECE1F4CD0A700E88CA1 /* SetContactsPopoverViewController.swift in Sources */,
 				3E36FEFE1F4A41A100EAC9CC /* SelectContactsTableView.swift in Sources */,
 				3E6285471F44720400301A42 /* UIViewControllerExtension.swift in Sources */,
 				3EE5426D1F479FCC00B230FF /* RemoveTableViewCell.swift in Sources */,
@@ -637,12 +719,14 @@
 				3E6285451F4471E800301A42 /* UIColorExtension.swift in Sources */,
 				3EA8EE2E1ED21BCA000D6EF2 /* MainCollectionViewController.swift in Sources */,
 				3E533BC51EC36440000CEF5F /* MonthCollectionViewCell.swift in Sources */,
+				3EF9042E1F4CD53D00C690C4 /* SetContactsSearchViewController.swift in Sources */,
 				3E47BD2C1F30E7E900E0646C /* EventEditorTableViewController.swift in Sources */,
 				3EFA24DD1E2BF1D200BC6DD5 /* CalendarViewFlowLayout.swift in Sources */,
 				3EAD342B1F3E44CF00174FF7 /* Design.swift in Sources */,
 				3EE1E5AD1E48D48C00379576 /* GlobalAccessProperties.swift in Sources */,
 				3E6285431F4471B900301A42 /* CGFloatExtension.swift in Sources */,
 				3E3AEDF81F23BFEF00792B11 /* SetTimePopoverViewController.swift in Sources */,
+				3EF9042C1F4CD4ED00C690C4 /* SetContactsTableViewController.swift in Sources */,
 				3ED0F0D81F4372CD001A12A8 /* DateSpecification.swift in Sources */,
 				3EFBD3621F47025800DB0E7D /* SetCalendarPopoverViewController.swift in Sources */,
 				3E62854D1F447E3200301A42 /* EventEditorCell.swift in Sources */,
@@ -753,6 +837,7 @@
 		};
 		3EA80D6D1E2BEC9300FD87C3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A54B9A273C54D17A1F0059A0 /* Pods-HyzeCalendarForWWDC.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_USE_OPTIMIZATION_PROFILE = NO;
@@ -806,6 +891,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -816,7 +902,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -826,6 +912,7 @@
 		};
 		3EDC11311F410C0400E0B250 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 35648DCA1721F1D49C458FA7 /* Pods-HyzeCalendarForWWDC.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_USE_OPTIMIZATION_PROFILE = NO;
