@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import EventKit
 
 class SetContactsPopoverViewController: UIViewController {
 
@@ -19,11 +20,35 @@ class SetContactsPopoverViewController: UIViewController {
 	@IBOutlet weak var cancelButton: UIButton!
 	@IBOutlet weak var saveButton: UIButton!
 	
+	var searchBarViewController: SetContactsSearchViewController?
+	
 	@IBAction func cancel(_ sender: UIButton) {
 		self.dismiss(animated: true, completion: nil)
 	}
 	
 	@IBAction func saveButton(_ sender: UIButton) {
+		guard let tableViewController = searchBarViewController?.tableViewController else {
+			return
+		}
+		let addedContacts = tableViewController.addedContacts
+		let addedEmails = tableViewController.addedEmails
+		
+		var attendees = [EKParticipant]()
+		
+		for contact in addedContacts {
+			if let email = contact.emailAddresses.first?.value {
+				if let attendee = EManagement.createParticipant(email: String(email)) {
+					attendees.append(attendee)
+				}
+			}
+		}
+		
+		for email in addedEmails {
+			if let attendee = EManagement.createParticipant(email: email) {
+				attendees.append(attendee)
+			}
+		}
+		
 		self.dismiss(animated: true, completion: nil)
 	}
 	
@@ -58,14 +83,16 @@ class SetContactsPopoverViewController: UIViewController {
     }
     
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+		if segue.identifier == "embed" {
+			if let viewController = segue.destination as? SetContactsSearchViewController {
+				self.searchBarViewController = viewController
+			}
+		}
     }
-    */
+
 
 }

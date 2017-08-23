@@ -17,6 +17,7 @@ class SetContactsTableViewController: UITableViewController {
 	let reuseIdentifier = "contactCell"
 	var contacts = [CNContact]()
 	var addedContacts = [CNContact]()
+	var addedEmails = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +32,7 @@ class SetContactsTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
 		let nib = UINib(nibName: "ContactTableViewCell", bundle: nil)
 		self.tableView.register(nib, forCellReuseIdentifier: reuseIdentifier)
-		self.tableView.contentInset = UIEdgeInsets(top: -56, left: 0, bottom: 56, right: 0)
+		self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 56, right: 0)
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,17 +44,21 @@ class SetContactsTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-		
-		contacts = CManagement.getContacts(name: search, isFuzzy: true)
-		
-		let faktor = searchIsEmail ? 1 : 0
-		
-        return contacts.count + faktor
+		switch section {
+		case 0:
+			return addedContacts.count + addedEmails.count
+		default:
+			contacts = CManagement.getContacts(name: search, isFuzzy: true, alreadyAdded: addedContacts)
+			
+			let faktor = searchIsEmail ? 1 : 0
+			
+			return contacts.count + faktor
+		}
     }
 	
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -63,17 +68,58 @@ class SetContactsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! ContactTableViewCell
-		if searchIsEmail {
-			if indexPath.row == 0 {
-				cell.setEmail(email: search)
+		switch indexPath.section {
+		case 0:
+			if indexPath.row < addedContacts.count {
+				cell.setContact(addedContacts[indexPath.row], shouldAdd: true)
 			} else {
-				cell.setContact(contacts[indexPath.row - 1])
+				cell.setEmail(email: addedEmails[indexPath.row - addedContacts.count], shouldAdd: true)
 			}
-		} else {
-			cell.setContact(contacts[indexPath.row])
+			
+		default:
+			if searchIsEmail {
+				if indexPath.row == 0 {
+					cell.setEmail(email: search)
+				} else {
+					cell.setContact(contacts[indexPath.row - 1], shouldAdd: false)
+				}
+			} else {
+				cell.setContact(contacts[indexPath.row], shouldAdd: false)
+			}
 		}
+		cell.setTableView = self
         return cell
     }
+	
+	func add(_ contact: CNContact) {
+		self.addedContacts.append(contact)
+		self.tableView.reloadSections(IndexSet(integersIn: 0...1), with: .automatic)
+	}
+	
+	func add(_ email: String) {
+		self.addedEmails.append(email)
+		self.tableView.reloadSections(IndexSet(integersIn: 0...1), with: .automatic)
+	}
+	
+	func remove(_ contact: CNContact) {
+		for i in 0..<addedContacts.count {
+			if contact.identifier == addedContacts[i].identifier {
+				addedContacts.remove(at: i)
+				break
+			}
+		}
+		self.tableView.reloadSections(IndexSet(integersIn: 0...1), with: .automatic)
+	}
+	
+	func remove(_ email: String) {
+		for i in 0..<addedContacts.count {
+			if email == addedEmails[i] {
+				addedContacts.remove(at: i)
+				break
+			}
+		}
+		self.tableView.reloadSections(IndexSet(integersIn: 0...1), with: .automatic)
+	}
 	
 	func searchDidChange(_ search: String) {
 		self.search = search

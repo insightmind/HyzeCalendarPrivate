@@ -15,7 +15,7 @@ class ContactsManagement {
 	let CMContactStore: CNContactStore
 	
 	func getContact(for predicate: NSPredicate) -> CNContact? {
-		let keysToFetch = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactImageDataKey]
+		let keysToFetch = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactImageDataKey, CNContactEmailAddressesKey]
 		do {
 			let contact = try CMContactStore.unifiedContacts(matching: predicate, keysToFetch: keysToFetch as [CNKeyDescriptor])
 			return contact.first
@@ -69,7 +69,7 @@ class ContactsManagement {
 		return emailTest.evaluate(with: email)
 	}
 	
-	func getContacts(name: String, isFuzzy: Bool = false) -> [CNContact] {
+	func getContacts(name: String, isFuzzy: Bool = false, alreadyAdded: [CNContact]) -> [CNContact] {
 		let searchString = " " + name
 		var contacts = [CNContact]()
 		let keysToFetch = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactEmailAddressesKey, CNContactImageDataKey]
@@ -79,7 +79,7 @@ class ContactsManagement {
 				
 				try self.CMContactStore.enumerateContacts(with: request, usingBlock: { (contact, cursor) in
 					
-					if !contact.emailAddresses.isEmpty {
+					if !contact.emailAddresses.isEmpty && !alreadyAdded.contains(contact) {
 						let isInName = self.contains(name: searchString, contact: contact)
 						let isInEmail = self.contains(email: searchString, contact: contact)
 						

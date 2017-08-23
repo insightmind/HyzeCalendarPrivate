@@ -12,19 +12,12 @@ import Contacts
 
 class ContactTableViewCell: UITableViewCell {
 	
-	var contact: CNContact? {
-		didSet {
-			if contact == nil {
-				isContact = false
-			} else {
-				isContact = true
-			}
-		}
-	}
+	var contact: CNContact?
 	var isContact: Bool = false
 	var email: String?
 	var name: String?
 	var tableView: SelectContactsTableView?
+	var setTableView: SetContactsTableViewController?
 	var isAdded: Bool = false
 
 	@IBOutlet weak var contactLabel: UILabel!
@@ -41,34 +34,70 @@ class ContactTableViewCell: UITableViewCell {
 	
 	
 	
-	@IBAction func toggleContact(_ sender: UIButton) {
-		if isAdded {
-			guard let checkedTableView = tableView else {
+	fileprivate func removeInTableView(_ tableView: SelectContactsTableView) {
+		if isContact {
+			guard let cnContact = contact else {
 				return
 			}
-			if isContact {
-				guard let cnContact = contact else {
-					return
-				}
-				guard let cnEmail = cnContact.emailAddresses.first else {
-					return
-				}
-				let stringEmail = String(cnEmail.value)
-				guard let participant = EManagement.createParticipant(email: stringEmail) else {
-					return
-				}
-				checkedTableView.deleteParticipant(participant)
-			} else {
-				guard let stringEmail = email else {
-					return
-				}
-				guard let participant = EManagement.createParticipant(email: stringEmail) else {
-					return
-				}
-				checkedTableView.deleteParticipant(participant)
+			guard let cnEmail = cnContact.emailAddresses.first else {
+				return
 			}
-			
-			return
+			let stringEmail = String(cnEmail.value)
+			guard let participant = EManagement.createParticipant(email: stringEmail) else {
+				return
+			}
+			tableView.deleteParticipant(participant)
+		} else {
+			guard let stringEmail = email else {
+				return
+			}
+			guard let participant = EManagement.createParticipant(email: stringEmail) else {
+				return
+			}
+			tableView.deleteParticipant(participant)
+		}
+	}
+	
+	fileprivate func removeInSetTableView(_ tableView: SetContactsTableViewController) {
+		if isContact {
+			guard let cnContact = contact else {
+				return
+			}
+			tableView.remove(cnContact)
+		} else {
+			guard let stringEmail = email else {
+				return
+			}
+			tableView.remove(stringEmail)
+		}
+	}
+	
+	fileprivate func addInSetTableView(_ tableView: SetContactsTableViewController) {
+		if isContact {
+			guard let cnContact = contact else {
+				return
+			}
+			tableView.add(cnContact)
+		} else {
+			guard let stringEmail = email else {
+				return
+			}
+			tableView.add(stringEmail)
+		}
+	}
+	
+	@IBAction func toggleContact(_ sender: UIButton) {
+		if isAdded {
+			if let checkedTableView = tableView {
+				removeInTableView(checkedTableView)
+				return
+			} else if let checkedTableView = setTableView {
+				removeInSetTableView(checkedTableView)
+			}
+		} else {
+			if let checkedTableView = setTableView {
+				addInSetTableView(checkedTableView)
+			}
 		}
 	}
 	
@@ -168,6 +197,7 @@ class ContactTableViewCell: UITableViewCell {
 		self.email = String(mail.value)
 		self.emailLabel.text = email
 		updateLayout()
+		self.contact = contact
 	}
 	
 	func setEmail(email: String, shouldAdd: Bool = false) {
@@ -190,6 +220,7 @@ class ContactTableViewCell: UITableViewCell {
 		let image = #imageLiteral(resourceName: "ic_account_circle").withRenderingMode(.alwaysTemplate)
 		self.contactImageView.image = image
 		self.contactView.layer.shadowColor = self.contactView.backgroundColor?.cgColor
+		self.isContact = false
 	}
 	
 	func setContact(_ participant: EKParticipant, shouldAdd: Bool = false) {
@@ -197,6 +228,7 @@ class ContactTableViewCell: UITableViewCell {
 		
 		if let realContact = CManagement.getContact(for: participant.contactPredicate) {
 			setUp(contact: realContact)
+			self.isContact = true
 		} else {
 			let stringEmail = participant.url.absoluteString
 			setUp(email: stringEmail, deleteMailto: true)
@@ -206,6 +238,7 @@ class ContactTableViewCell: UITableViewCell {
 	func setContact(_ contact: CNContact, shouldAdd: Bool = false) {
 		setIsAdded(shouldAdd)
 		setUp(contact: contact)
+		self.isContact = true
 		
 	}
 
@@ -219,6 +252,7 @@ class ContactTableViewCell: UITableViewCell {
 		NSLayoutConstraint.deactivate([contactLabelBottomConstraint])
 		NSLayoutConstraint.activate([emailLabelTopConstraint])
 		self.layoutSubviews()
+		self.isContact = true
 		self.emailLabel.text = nil
 		self.contactImageView.image = nil
 		self.contactView.layer.backgroundColor = Color.red.cgColor
