@@ -24,6 +24,9 @@
 		3E533BC71EC364BC000CEF5F /* DayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E533BC61EC364BC000CEF5F /* DayCollectionViewCell.swift */; };
 		3E59BDA31F432E1600BDCF25 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E59BDA21F432E1600BDCF25 /* UIViewExtension.swift */; };
 		3E61FE641E5239AF003D796C /* DayViewDecoration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E61FE631E5239AF003D796C /* DayViewDecoration.swift */; };
+		3E6283891F4DFF1700A799DC /* SetRecurrenceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6283871F4DFF1700A799DC /* SetRecurrenceTableViewCell.swift */; };
+		3E62838A1F4DFF1700A799DC /* SetRecurrenceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E6283881F4DFF1700A799DC /* SetRecurrenceTableViewCell.xib */; };
+		3E62838C1F4E069E00A799DC /* EventRecurrenceInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E62838B1F4E069E00A799DC /* EventRecurrenceInformation.swift */; };
 		3E6285431F4471B900301A42 /* CGFloatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6285421F4471B900301A42 /* CGFloatExtension.swift */; };
 		3E6285451F4471E800301A42 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6285441F4471E800301A42 /* UIColorExtension.swift */; };
 		3E6285471F44720400301A42 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6285461F44720400301A42 /* UIViewControllerExtension.swift */; };
@@ -95,6 +98,9 @@
 		3E533BC61EC364BC000CEF5F /* DayCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayCollectionViewCell.swift; sourceTree = "<group>"; };
 		3E59BDA21F432E1600BDCF25 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		3E61FE631E5239AF003D796C /* DayViewDecoration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayViewDecoration.swift; sourceTree = "<group>"; };
+		3E6283871F4DFF1700A799DC /* SetRecurrenceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetRecurrenceTableViewCell.swift; sourceTree = "<group>"; };
+		3E6283881F4DFF1700A799DC /* SetRecurrenceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetRecurrenceTableViewCell.xib; sourceTree = "<group>"; };
+		3E62838B1F4E069E00A799DC /* EventRecurrenceInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRecurrenceInformation.swift; sourceTree = "<group>"; };
 		3E6285421F4471B900301A42 /* CGFloatExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGFloatExtension.swift; sourceTree = "<group>"; };
 		3E6285441F4471E800301A42 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		3E6285461F44720400301A42 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
@@ -278,8 +284,8 @@
 			children = (
 				3E6560821F4CCBDF00C241BE /* SetContacts.storyboard */,
 				3E2C6ECD1F4CD0A700E88CA1 /* SetContactsPopoverViewController.swift */,
-				3EF9042B1F4CD4ED00C690C4 /* SetContactsTableViewController.swift */,
 				3EF9042D1F4CD53D00C690C4 /* SetContactsSearchViewController.swift */,
+				3EF9042B1F4CD4ED00C690C4 /* SetContactsTableViewController.swift */,
 			);
 			name = Popover;
 			sourceTree = "<group>";
@@ -331,6 +337,8 @@
 		3E8B90A31F433CAA000F8449 /* Recurrence */ = {
 			isa = PBXGroup;
 			children = (
+				3E6283871F4DFF1700A799DC /* SetRecurrenceTableViewCell.swift */,
+				3E6283881F4DFF1700A799DC /* SetRecurrenceTableViewCell.xib */,
 			);
 			name = Recurrence;
 			sourceTree = "<group>";
@@ -416,6 +424,7 @@
 				3E4A9B281E4BB4C0009E45EF /* EventsManagement.swift */,
 				3EA6E4741F4C7C1F003E9341 /* ContactsManagement.swift */,
 				3ED0F0DB1F437310001A12A8 /* EventEditorEventInformations.swift */,
+				3E62838B1F4E069E00A799DC /* EventRecurrenceInformation.swift */,
 			);
 			name = TimeManagement;
 			sourceTree = "<group>";
@@ -618,6 +627,7 @@
 			files = (
 				3E68B5C91E3A886D00AE103F /* Main.storyboard in Resources */,
 				3E067E0D1F31FA92003601FA /* Default-568h@2x.png in Resources */,
+				3E62838A1F4DFF1700A799DC /* SetRecurrenceTableViewCell.xib in Resources */,
 				3EA80D5C1E2BEC9300FD87C3 /* LaunchScreen.storyboard in Resources */,
 				3E36FF021F4A423700EAC9CC /* ContactTableViewCell.xib in Resources */,
 				3EBEC8E21F3D048100052C93 /* DateSelection.storyboard in Resources */,
@@ -703,6 +713,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E62838C1F4E069E00A799DC /* EventRecurrenceInformation.swift in Sources */,
 				3ECD09981E9BB39C00BF9627 /* TimeManagement.swift in Sources */,
 				3EA80D521E2BEC9300FD87C3 /* AppDelegate.swift in Sources */,
 				3EA8EE311ED2350E000D6EF2 /* MonthCollectionViewController.swift in Sources */,
@@ -711,6 +722,7 @@
 				3E36FEFE1F4A41A100EAC9CC /* SelectContactsTableView.swift in Sources */,
 				3E6285471F44720400301A42 /* UIViewControllerExtension.swift in Sources */,
 				3EE5426D1F479FCC00B230FF /* RemoveTableViewCell.swift in Sources */,
+				3E6283891F4DFF1700A799DC /* SetRecurrenceTableViewCell.swift in Sources */,
 				3EA6E4751F4C7C1F003E9341 /* ContactsManagement.swift in Sources */,
 				3E4A9B291E4BB4C0009E45EF /* EventsManagement.swift in Sources */,
 				3ED0F0DC1F437310001A12A8 /* EventEditorEventInformations.swift in Sources */,

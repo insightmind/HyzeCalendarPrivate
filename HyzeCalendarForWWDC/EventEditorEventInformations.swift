@@ -55,7 +55,7 @@ class EventEditorEventInformations: NSCopying {
 	var notes: String? = nil
 	var calendar: EKCalendar? = nil
 	var participants: [EKParticipant]? = nil
-	var isReadOnly: Bool = true
+	var isReadOnly: Bool = false
 	
 	
 	//only important for EventEditing not creation

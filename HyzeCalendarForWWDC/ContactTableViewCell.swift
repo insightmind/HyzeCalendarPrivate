@@ -166,9 +166,11 @@ class ContactTableViewCell: UITableViewCell {
 	fileprivate func setIsAdded(_ shouldAdd: Bool) {
 		self.isAdded = shouldAdd
 		if shouldAdd {
+			self.backgroundColor = Color.blue
 			let image = #imageLiteral(resourceName: "ic_remove").withRenderingMode(.alwaysTemplate)
 			self.contactDeleteButton.setImage(image, for: .normal)
 		} else {
+			self.backgroundColor = UIColor.clear
 			let image = #imageLiteral(resourceName: "ic_person_add").withRenderingMode(.alwaysTemplate)
 			self.contactDeleteButton.setImage(image, for: .normal)
 		}
@@ -214,11 +216,11 @@ class ContactTableViewCell: UITableViewCell {
 		}
 		self.contactLabel.text = email
 		self.emailLabel.text = nil
-		self.updateLayout()
 		let image = #imageLiteral(resourceName: "ic_account_circle").withRenderingMode(.alwaysTemplate)
 		self.contactImageView.image = image
 		self.contactView.layer.shadowColor = self.contactView.backgroundColor?.cgColor
 		self.isContact = false
+		self.updateLayout()
 	}
 	
 	func setContact(_ participant: EKParticipant, shouldAdd: Bool = false, email: String? = nil) {

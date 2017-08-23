@@ -145,6 +145,9 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
 			createViewDidLoad()
 		}
 		generalViewDidLoad()
+		if eventInformations.isReadOnly {
+			
+		}
     }
 
     override func didReceiveMemoryWarning() {
@@ -161,12 +164,15 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
     }
 	
 	func setDates(by duration: TimeInterval = 1800) {
+		self.eventInformations = EManagement.eventInformation
 		if eventInformations.eventIdentifier == nil {
 			let (year, month, dayIndexPath) = HSelection.selectedDayCellIndex
 			guard let checkedIndexPath = dayIndexPath else {
 				return
 			}
-			eventInformations.startDate = TimeManagement.convertToDate(yearID: year, monthID: month, dayID: checkedIndexPath.item)
+			let date = TimeManagement.convertToDate(yearID: year, monthID: month, dayID: checkedIndexPath.item)
+			let currentTimeComponents = TMCalendar.components([.hour, .minute], from: Date())
+			eventInformations.startDate = TMCalendar.date(byAdding: currentTimeComponents, to: date, options: .matchFirst)!
 			eventInformations.endDate = eventInformations.startDate.addingTimeInterval(duration)
 		}
 	}

@@ -16,12 +16,8 @@ class SelectContactsTableViewCell: UITableViewCell, EventEditorCell {
 		self.contactsTableView.setUpData()
 		self.contactsTableView.reloadSections(IndexSet(integer: 0), with: .automatic)
 		eventInformations = EManagement.eventInformation
-		eventInformations.isAllContacts = false
 		setUpLayout()
 		eventInformations.eventEditorTableViewController?.updateContactsCellHeight()
-		UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
-			self.showContactsButton.transform = CGAffineTransform(rotationAngle: self.eventInformations.isAllContacts ? PI : 2*PI)
-		}, completion: nil)
 	}
 	
 	@IBOutlet weak var topView: UIView!

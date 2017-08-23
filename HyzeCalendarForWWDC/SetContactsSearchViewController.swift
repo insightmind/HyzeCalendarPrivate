@@ -20,6 +20,8 @@ class SetContactsSearchViewController: UIViewController, UISearchBarDelegate {
 		self.view.backgroundColor = UIColor.clear
 		self.searchBar.barTintColor = Color.lightBlue
 		self.searchBar.searchBarStyle = .minimal
+		let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
+		textFieldInsideSearchBar?.textColor = darkMode ? Color.white : Color.grey
         // Do any additional setup after loading the view.
     }
 

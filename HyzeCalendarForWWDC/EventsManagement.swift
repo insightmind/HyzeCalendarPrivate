@@ -307,6 +307,7 @@ class EventManagement {
 		}
 		self.eventInformation = EventEditorEventInformations()
 	}
+
     
     init() {
         self.EMEventStore = EKEventStore()
