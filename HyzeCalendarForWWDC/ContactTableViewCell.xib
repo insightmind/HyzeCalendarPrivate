@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -20,16 +24,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="55.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="AdR-tP-qBX">
-                                <rect key="frame" x="56" y="8" width="208" height="40"/>
+                                <rect key="frame" x="55.5" y="6" width="209" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="750" constant="25" id="Iaa-Gc-Hbj"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W7I-pO-rwy">
-                                <rect key="frame" x="8" y="8" width="40" height="40"/>
+                                <rect key="frame" x="8" y="8" width="39.5" height="40"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_account_circle" translatesAutoresizingMaskIntoConstraints="NO" id="20w-ke-HzR">
-                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="39.5" height="40"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </imageView>
                                 </subviews>
@@ -43,10 +50,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wdb-uN-Wxb">
-                                <rect key="frame" x="272" y="8" width="39.5" height="39.5"/>
+                                <rect key="frame" x="272.5" y="8" width="39" height="39.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jYM-V6-pCl">
-                                        <rect key="frame" x="0.0" y="0.0" width="39.5" height="39.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="39" height="39.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <state key="normal" image="ic_remove"/>
                                         <connections>
@@ -64,20 +71,36 @@
                                     <constraint firstAttribute="trailing" secondItem="jYM-V6-pCl" secondAttribute="trailing" id="soe-5D-kaN"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="8xG-8M-V7P">
+                                <rect key="frame" x="55.5" y="33.5" width="209" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="0.74769905821917804" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.31620826569999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="wdb-uN-Wxb" firstAttribute="leading" secondItem="AdR-tP-qBX" secondAttribute="trailing" constant="8" id="B2O-KO-0Xo"/>
                             <constraint firstItem="W7I-pO-rwy" firstAttribute="leading" secondItem="NZb-hA-hh5" secondAttribute="leading" constant="8" id="Cp6-uj-8hq"/>
-                            <constraint firstAttribute="bottom" secondItem="AdR-tP-qBX" secondAttribute="bottom" constant="8" id="DJq-vf-frA"/>
-                            <constraint firstItem="AdR-tP-qBX" firstAttribute="top" secondItem="NZb-hA-hh5" secondAttribute="top" constant="8" id="ECX-ON-XMy"/>
+                            <constraint firstItem="AdR-tP-qBX" firstAttribute="top" secondItem="NZb-hA-hh5" secondAttribute="top" constant="6" id="ECX-ON-XMy"/>
                             <constraint firstAttribute="trailing" secondItem="wdb-uN-Wxb" secondAttribute="trailing" constant="8" id="LNd-Q0-XNf"/>
                             <constraint firstAttribute="bottom" secondItem="wdb-uN-Wxb" secondAttribute="bottom" constant="8" id="OdN-x5-R3c"/>
+                            <constraint firstItem="8xG-8M-V7P" firstAttribute="leading" secondItem="20w-ke-HzR" secondAttribute="trailing" constant="8" id="Pg5-B5-s6l"/>
+                            <constraint firstItem="8xG-8M-V7P" firstAttribute="top" secondItem="AdR-tP-qBX" secondAttribute="bottom" id="mpA-4P-2Mg"/>
                             <constraint firstItem="wdb-uN-Wxb" firstAttribute="top" secondItem="NZb-hA-hh5" secondAttribute="top" constant="8" id="nRc-2W-ylZ"/>
                             <constraint firstItem="AdR-tP-qBX" firstAttribute="leading" secondItem="W7I-pO-rwy" secondAttribute="trailing" constant="8" id="odM-F4-BBh"/>
+                            <constraint firstAttribute="bottom" secondItem="8xG-8M-V7P" secondAttribute="bottom" constant="6" id="pvs-Ch-EiB"/>
+                            <constraint firstAttribute="bottom" secondItem="AdR-tP-qBX" secondAttribute="bottom" constant="6" id="t9u-6V-r2J"/>
                             <constraint firstAttribute="bottom" secondItem="W7I-pO-rwy" secondAttribute="bottom" constant="7.5" id="vlA-KI-5IO"/>
                             <constraint firstItem="W7I-pO-rwy" firstAttribute="top" secondItem="NZb-hA-hh5" secondAttribute="top" constant="8" id="w5H-Ne-Pww"/>
+                            <constraint firstItem="jYM-V6-pCl" firstAttribute="leading" secondItem="8xG-8M-V7P" secondAttribute="trailing" constant="8" id="zx2-Mi-dkT"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="t9u-6V-r2J"/>
+                                <exclude reference="mpA-4P-2Mg"/>
+                            </mask>
+                        </variation>
                     </view>
                 </subviews>
                 <constraints>
@@ -93,7 +116,11 @@
                 <outlet property="contactDeleteView" destination="wdb-uN-Wxb" id="gfJ-zp-u30"/>
                 <outlet property="contactImageView" destination="20w-ke-HzR" id="qE2-cE-gp1"/>
                 <outlet property="contactLabel" destination="AdR-tP-qBX" id="gn0-pE-7RE"/>
+                <outlet property="contactLabelBottomConstraint" destination="t9u-6V-r2J" id="PY3-8z-2nK"/>
+                <outlet property="contactLabelHeightConstraint" destination="Iaa-Gc-Hbj" id="V5v-oX-JXh"/>
                 <outlet property="contactView" destination="W7I-pO-rwy" id="9Ed-PH-ytZ"/>
+                <outlet property="emailLabel" destination="8xG-8M-V7P" id="jv9-es-ExY"/>
+                <outlet property="emailLabelTopConstraint" destination="mpA-4P-2Mg" id="k4O-lc-4jj"/>
                 <outlet property="mainView" destination="NZb-hA-hh5" id="ejC-nu-LgZ"/>
             </connections>
             <point key="canvasLocation" x="25" y="58"/>

@@ -33,6 +33,13 @@ class ContactTableViewCell: UITableViewCell {
 	@IBOutlet weak var contactDeleteView: UIView!
 	@IBOutlet weak var contactDeleteButton: UIButton!
 	@IBOutlet weak var mainView: UIView!
+	@IBOutlet weak var emailLabel: UILabel!
+	
+	@IBOutlet weak var contactLabelBottomConstraint: NSLayoutConstraint!
+	@IBOutlet weak var emailLabelTopConstraint: NSLayoutConstraint!
+	@IBOutlet weak var contactLabelHeightConstraint: NSLayoutConstraint!
+	
+	
 	
 	@IBAction func toggleContact(_ sender: UIButton) {
 		if isAdded {
@@ -62,6 +69,18 @@ class ContactTableViewCell: UITableViewCell {
 			}
 			
 			return
+		}
+	}
+	
+	func updateLayout() {
+		if self.emailLabel.text == nil || self.emailLabel.text == "" {
+			NSLayoutConstraint.deactivate([emailLabelTopConstraint])
+			NSLayoutConstraint.activate([contactLabelBottomConstraint])
+			self.layoutSubviews()
+		} else {
+			NSLayoutConstraint.deactivate([contactLabelBottomConstraint])
+			NSLayoutConstraint.activate([emailLabelTopConstraint])
+			self.layoutSubviews()
 		}
 	}
 	
@@ -105,7 +124,14 @@ class ContactTableViewCell: UITableViewCell {
 		self.backgroundColor = UIColor.clear
 		self.mainView.backgroundColor = UIColor.clear
 		
-		self.contactLabel.textColor = Color.white
+		if darkMode {
+			self.contactLabel.textColor = Color.white
+			self.emailLabel.textColor = Color.white.withAlphaComponent(0.7)
+		} else {
+			self.contactLabel.textColor = Color.blue
+			self.emailLabel.textColor = Color.blue.withAlphaComponent(0.7)
+		}
+		
 		
 		
 		setUpContactDeleteButton()
@@ -136,6 +162,12 @@ class ContactTableViewCell: UITableViewCell {
 			self.contactImageView.image = image
 			self.contactView.layer.shadowColor = self.contactView.backgroundColor?.cgColor
 		}
+		guard let mail = contact.emailAddresses.first else {
+			return
+		}
+		self.email = String(mail.value)
+		self.emailLabel.text = email
+		updateLayout()
 	}
 	
 	func setEmail(email: String, shouldAdd: Bool = false) {
@@ -153,7 +185,11 @@ class ContactTableViewCell: UITableViewCell {
 			self.email = sEmail
 		}
 		self.contactLabel.text = email
-		self.contactView.layer.shadowColor = Color.red.cgColor
+		self.emailLabel.text = nil
+		self.updateLayout()
+		let image = #imageLiteral(resourceName: "ic_account_circle").withRenderingMode(.alwaysTemplate)
+		self.contactImageView.image = image
+		self.contactView.layer.shadowColor = self.contactView.backgroundColor?.cgColor
 	}
 	
 	func setContact(_ participant: EKParticipant, shouldAdd: Bool = false) {
@@ -180,6 +216,10 @@ class ContactTableViewCell: UITableViewCell {
     }
 	
 	override func prepareForReuse() {
+		NSLayoutConstraint.deactivate([contactLabelBottomConstraint])
+		NSLayoutConstraint.activate([emailLabelTopConstraint])
+		self.layoutSubviews()
+		self.emailLabel.text = nil
 		self.contactImageView.image = nil
 		self.contactView.layer.backgroundColor = Color.red.cgColor
 		self.contactLabel.text = nil
