@@ -63,7 +63,6 @@ class SelectContactsTableView: UITableView, UITableViewDelegate, UITableViewData
 					return
 				}
 				reloadParticipants()
-				self.reloadSections(IndexSet(integer: 0), with: .automatic)
 				tableView.reloadCell(.contacts, onlyInformations: true)
 				return
 			}

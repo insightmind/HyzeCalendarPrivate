@@ -13,6 +13,8 @@ class SelectContactsTableViewCell: UITableViewCell, EventEditorCell {
 	var eventInformations: EventEditorEventInformations! = EManagement.eventInformation
 	
 	func reloadInformations() {
+		self.contactsTableView.setUpData()
+		self.contactsTableView.reloadSections(IndexSet(integer: 0), with: .automatic)
 		eventInformations = EManagement.eventInformation
 		eventInformations.isAllContacts = false
 		setUpLayout()
