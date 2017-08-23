@@ -30,6 +30,24 @@ class SetContactsPopoverViewController: UIViewController {
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
+		self.popoverView.layer.cornerRadius = 20
+		self.popoverView.backgroundColor = UIColor.clear
+		self.popoverView.layer.masksToBounds = true
+		self.view.backgroundColor = UIColor.clear
+		
+		if darkMode {
+			backgroundBlurView.effect = UIBlurEffect(style: .dark)
+			toolbarBlurView.effect = UIBlurEffect(style: .dark)
+		} else {
+			backgroundBlurView.effect = UIBlurEffect(style: .light)
+			toolbarBlurView.effect = UIBlurEffect(style: .light)
+		}
+		
+		if darkMode {
+			self.popoverView.backgroundColor = Color.grey.withAlphaComponent(0.3)
+		} else {
+			self.popoverView.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+		}
 
         // Do any additional setup after loading the view.
     }

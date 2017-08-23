@@ -17,6 +17,8 @@ class SetContactsSearchViewController: UIViewController, UISearchBarDelegate {
 	override func viewDidLoad() {
         super.viewDidLoad()
 		searchBar.delegate = self
+		self.view.backgroundColor = UIColor.clear
+		self.searchBar.barTintColor = Color.lightBlue
         // Do any additional setup after loading the view.
     }
 

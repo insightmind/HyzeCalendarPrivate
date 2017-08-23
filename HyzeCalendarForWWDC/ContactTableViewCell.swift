@@ -12,7 +12,18 @@ import Contacts
 
 class ContactTableViewCell: UITableViewCell {
 	
-	var contact: EKParticipant?
+	var contact: CNContact? {
+		didSet {
+			if contact == nil {
+				isContact = false
+			} else {
+				isContact = true
+			}
+		}
+	}
+	var isContact: Bool = false
+	var email: String?
+	var name: String?
 	var tableView: SelectContactsTableView?
 	var isAdded: Bool = false
 
@@ -23,12 +34,34 @@ class ContactTableViewCell: UITableViewCell {
 	@IBOutlet weak var contactDeleteButton: UIButton!
 	@IBOutlet weak var mainView: UIView!
 	
-	@IBAction func deleteContact(_ sender: UIButton) {
+	@IBAction func toggleContact(_ sender: UIButton) {
 		if isAdded {
 			guard let checkedTableView = tableView else {
 				return
 			}
-			checkedTableView.deleteParticipant(contact!)
+			if isContact {
+				guard let cnContact = contact else {
+					return
+				}
+				guard let cnEmail = cnContact.emailAddresses.first else {
+					return
+				}
+				let stringEmail = String(cnEmail.value)
+				guard let participant = EManagement.createParticipant(email: stringEmail) else {
+					return
+				}
+				checkedTableView.deleteParticipant(participant)
+			} else {
+				guard let stringEmail = email else {
+					return
+				}
+				guard let participant = EManagement.createParticipant(email: stringEmail) else {
+					return
+				}
+				checkedTableView.deleteParticipant(participant)
+			}
+			
+			return
 		}
 	}
 	
@@ -59,8 +92,6 @@ class ContactTableViewCell: UITableViewCell {
 		self.contactView.layer.shadowRadius = 5
 		self.contactView.layer.shadowOffset = CGSize(width: 1, height: 2)
 		self.contactView.layer.shadowOpacity = 0.8
-		let image = #imageLiteral(resourceName: "ic_account_circle").withRenderingMode(.alwaysTemplate)
-		self.contactImageView.image = image
 		self.contactImageView.tintColor = Color.white
 		self.contactImageView.layer.masksToBounds = true
 		self.contactImageView.contentMode = .scaleAspectFill
@@ -83,29 +114,63 @@ class ContactTableViewCell: UITableViewCell {
 		
     }
 	
-	func setContact(_ participant: EKParticipant) {
-		self.contact = participant
-		print(participant)
-		guard let checkedContact = contact else {
-			return
-		}
-		self.isAdded = true
-		let image = #imageLiteral(resourceName: "ic_remove").withRenderingMode(.alwaysTemplate)
-		self.contactDeleteButton.setImage(image, for: .normal)
-		if let realContact = CManagement.getContact(for: checkedContact.contactPredicate) {
-			self.contactLabel.text = "\(realContact.familyName), \(realContact.givenName)"
-			if let data = realContact.imageData {
-				let image = UIImage(data: data)
-				self.contactImageView.image = image
-				self.contactView.layer.shadowColor = UIColor.black.cgColor
-			}
+	fileprivate func setIsAdded(_ shouldAdd: Bool) {
+		self.isAdded = shouldAdd
+		if shouldAdd {
+			let image = #imageLiteral(resourceName: "ic_remove").withRenderingMode(.alwaysTemplate)
+			self.contactDeleteButton.setImage(image, for: .normal)
 		} else {
-			var email = checkedContact.url.absoluteString
-			let range = email.startIndex...email.index(email.startIndex, offsetBy: 6)
-			email.removeSubrange(range)
-			self.contactLabel.text = email
-			self.contactView.layer.shadowColor = Color.red.cgColor
+			let image = #imageLiteral(resourceName: "ic_person_add").withRenderingMode(.alwaysTemplate)
+			self.contactDeleteButton.setImage(image, for: .normal)
 		}
+	}
+	
+	fileprivate func setUp(contact: CNContact) {
+		self.contactLabel.text = "\(contact.familyName), \(contact.givenName)"
+		if let data = contact.imageData {
+			let image = UIImage(data: data)
+			self.contactImageView.image = image
+			self.contactView.layer.shadowColor = UIColor.black.cgColor
+		} else {
+			let image = #imageLiteral(resourceName: "ic_account_circle").withRenderingMode(.alwaysTemplate)
+			self.contactImageView.image = image
+			self.contactView.layer.shadowColor = self.contactView.backgroundColor?.cgColor
+		}
+	}
+	
+	func setEmail(email: String, shouldAdd: Bool = false) {
+		setIsAdded(shouldAdd)
+		setUp(email: email)
+	}
+	
+	fileprivate func setUp(email stringEmail: String, deleteMailto: Bool = false) {
+		var sEmail = stringEmail
+		if deleteMailto {
+			let range = stringEmail.startIndex...stringEmail.index(stringEmail.startIndex, offsetBy: 6)
+			sEmail.removeSubrange(range)
+			self.email = sEmail
+		} else {
+			self.email = sEmail
+		}
+		self.contactLabel.text = email
+		self.contactView.layer.shadowColor = Color.red.cgColor
+	}
+	
+	func setContact(_ participant: EKParticipant, shouldAdd: Bool = false) {
+		setIsAdded(shouldAdd)
+		
+		if let realContact = CManagement.getContact(for: participant.contactPredicate) {
+			setUp(contact: realContact)
+		} else {
+			let stringEmail = participant.url.absoluteString
+			setUp(email: stringEmail, deleteMailto: true)
+		}
+	}
+	
+	func setContact(_ contact: CNContact, shouldAdd: Bool = false) {
+		setIsAdded(shouldAdd)
+		setUp(contact: contact)
+		
 	}
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -116,6 +181,7 @@ class ContactTableViewCell: UITableViewCell {
 	
 	override func prepareForReuse() {
 		self.contactImageView.image = nil
+		self.contactView.layer.backgroundColor = Color.red.cgColor
 		self.contactLabel.text = nil
 		self.contact = nil
 		self.contactDeleteButton.imageView?.image = nil

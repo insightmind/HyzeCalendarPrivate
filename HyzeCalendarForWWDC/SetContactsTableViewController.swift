@@ -13,14 +13,16 @@ class SetContactsTableViewController: UITableViewController {
 	
 	var searchBar: UISearchBar?
 	var search: String = ""
+	var searchIsEmail: Bool = false
 	let reuseIdentifier = "contactCell"
 	var contacts = [CNContact]()
+	var addedContacts = [CNContact]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 		self.tableView.allowsSelection = false
 		self.tableView.separatorStyle = .none
-		self.tableView.backgroundColor = Color.blue
+		self.tableView.backgroundColor = UIColor.clear
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -47,15 +49,11 @@ class SetContactsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
 		
-		let start = DispatchTime.now()
 		contacts = CManagement.getContacts(name: search, isFuzzy: true)
-		let end = DispatchTime.now()
 		
-		let nanoTime = end.uptimeNanoseconds - start.uptimeNanoseconds
-		let timeInterval = Double(nanoTime) / 1_000_000_000
-		print("Elapsed Time for search: \(timeInterval)")
+		let faktor = searchIsEmail ? 1 : 0
 		
-        return contacts.count
+        return contacts.count + faktor
     }
 	
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -65,22 +63,21 @@ class SetContactsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! ContactTableViewCell
-		let contact = contacts[indexPath.row]
-		cell.contactLabel.text = "\(contact.familyName), \(contact.givenName)"
-		if let data = contact.imageData {
-			let image = UIImage(data: data)
-			cell.layer.shadowColor = UIColor.black.cgColor
-			cell.contactImageView.image = image
+		if searchIsEmail {
+			if indexPath.row == 0 {
+				cell.setEmail(email: search)
+			} else {
+				cell.setContact(contacts[indexPath.row - 1])
+			}
 		} else {
-			let image = #imageLiteral(resourceName: "ic_account_circle").withRenderingMode(.alwaysTemplate)
-			cell.contactImageView.image = image
+			cell.setContact(contacts[indexPath.row])
 		}
-		cell.isAdded = true
         return cell
     }
 	
 	func searchDidChange(_ search: String) {
 		self.search = search
+		self.searchIsEmail = CManagement.isValidEmail(email: search)
 		self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
 	}
 

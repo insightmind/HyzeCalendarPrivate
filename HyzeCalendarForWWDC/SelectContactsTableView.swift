@@ -43,7 +43,7 @@ class SelectContactsTableView: UITableView, UITableViewDelegate, UITableViewData
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = self.dequeueReusableCell(withIdentifier: reuseIdentifier) as! ContactTableViewCell
-		cell.setContact(eventInformation.participants![indexPath.row])
+		cell.setContact(eventInformation.participants![indexPath.row], shouldAdd: true)
 		cell.tableView = self
 		return cell
 	}

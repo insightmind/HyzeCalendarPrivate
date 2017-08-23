@@ -158,7 +158,7 @@ class EventManagement {
 		return event
 	}
 	
-	private func createParticipant(email: String) -> EKParticipant? {
+ func createParticipant(email: String) -> EKParticipant? {
 		let clazz: AnyClass? = NSClassFromString("EKAttendee")
 		if let type = clazz as? NSObject.Type {
 			let attendee = type.init()

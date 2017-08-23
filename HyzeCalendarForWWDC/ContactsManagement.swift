@@ -8,6 +8,7 @@
 
 import Foundation
 import Contacts
+import EventKit
 
 class ContactsManagement {
 	
@@ -23,42 +24,49 @@ class ContactsManagement {
 		}
 	}
 	
-	func getContacts(email searchEmail: String, isFuzzy: Bool = false) -> [CNContact] {
-		var contacts = [CNContact]()
-		let keysToFetch = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactEmailAddressesKey, CNContactImageDataKey]
-		let request = CNContactFetchRequest(keysToFetch: keysToFetch as [CNKeyDescriptor])
-		do {
-			try self.CMContactStore.enumerateContacts(with: request, usingBlock: { (contact, cursor) in
-				mainLoop: for email in contact.emailAddresses {
-					let singleEmail = String(email.value).lowercased()
-					if isFuzzy {
-						var count = 0
-						let string = singleEmail + " "
-						fuzzyLoop: for i in searchEmail.lowercased().characters {
-							if string.contains(i) {
-								count += 1
-								if count == searchEmail.characters.count {
-									contacts.append(contact)
-									break mainLoop
-								}
-							} else {
-								break fuzzyLoop
-							}
-						}
-						if count == searchEmail.characters.count {
-							contacts.append(contact)
-							break mainLoop
-						}
-					} else if singleEmail == searchEmail {
-						contacts.append(contact)
-						break mainLoop
-					}
-				}
-			})
-		} catch let error {
-			print(error)
+	fileprivate func contains(name: String, contact: CNContact) -> Bool {
+		var count = 0
+		let string = contact.givenName.lowercased() + " " + contact.familyName.lowercased()
+		for i in name.lowercased().characters {
+			if string.contains(i) {
+				count += 1
+				continue
+			} else {
+				break
+			}
 		}
-		return contacts
+		if count == name.characters.count {
+			return true
+		}
+		return false
+	}
+	
+	fileprivate func contains(email: String, contact: CNContact) -> Bool {
+		mainLoop: for personsEmail in contact.emailAddresses {
+			let singleEmail = String(personsEmail.value).lowercased()
+			var count = 0
+			let string = singleEmail + " "
+			fuzzyLoop: for i in email.lowercased().characters {
+				if string.contains(i) {
+					count += 1
+					continue fuzzyLoop
+				} else {
+					break fuzzyLoop
+				}
+			}
+			if count == email.characters.count {
+				return true
+			}
+		}
+		return false
+	}
+	
+	func isValidEmail(email:String) -> Bool {
+		// print("validate calendar: \(testStr)")
+		let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+		
+		let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+		return emailTest.evaluate(with: email)
 	}
 	
 	func getContacts(name: String, isFuzzy: Bool = false) -> [CNContact] {
@@ -71,18 +79,15 @@ class ContactsManagement {
 				
 				try self.CMContactStore.enumerateContacts(with: request, usingBlock: { (contact, cursor) in
 					
-					var count = 0
-					let string = contact.givenName.lowercased() + " " + contact.familyName.lowercased()
-					for i in searchString.lowercased().characters {
-						if string.contains(i) {
-							count += 1
-						} else {
-							break
+					if !contact.emailAddresses.isEmpty {
+						let isInName = self.contains(name: searchString, contact: contact)
+						let isInEmail = self.contains(email: searchString, contact: contact)
+						
+						if isInName || isInEmail {
+							contacts.append(contact)
 						}
 					}
-					if count == searchString.characters.count {
-						contacts.append(contact)
-					}
+					
 				})
 				
 			} catch let error {

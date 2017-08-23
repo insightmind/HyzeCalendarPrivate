@@ -19,17 +19,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t0U-Hu-kwR">
-                                <rect key="frame" x="0.0" y="20" width="375" height="677"/>
+                                <rect key="frame" x="0.0" y="120" width="375" height="577"/>
                                 <subviews>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cyi-b1-mgT">
-                                        <rect key="frame" x="0.0" y="63" width="375" height="584"/>
+                                        <rect key="frame" x="0.0" y="63" width="375" height="484"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="muS-YE-dAu">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="584"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="484"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </view>
                                         <blurEffect style="light"/>
                                     </visualEffectView>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jl9-ve-Lzn">
+                                        <rect key="frame" x="0.0" y="63" width="375" height="484"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <segue destination="0Lf-hF-90v" kind="embed" id="15S-Wu-eK9"/>
+                                        </connections>
+                                    </containerView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calendar" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PIu-HX-SJL">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="63"/>
                                         <color key="backgroundColor" red="0.2036032975" green="0.57139366869999997" blue="0.90090757610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -40,15 +47,8 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jl9-ve-Lzn">
-                                        <rect key="frame" x="0.0" y="63" width="375" height="584"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <segue destination="0Lf-hF-90v" kind="embed" id="15S-Wu-eK9"/>
-                                        </connections>
-                                    </containerView>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6cU-EC-6Xh">
-                                        <rect key="frame" x="0.0" y="597" width="375" height="50"/>
+                                        <rect key="frame" x="0.0" y="497" width="375" height="50"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="6yw-eE-Wdt">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -72,7 +72,7 @@
                                         <blurEffect style="light"/>
                                     </visualEffectView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="dKB-x8-7Bm">
-                                        <rect key="frame" x="8" y="607" width="359" height="30"/>
+                                        <rect key="frame" x="8" y="507" width="359" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cRP-km-VG8">
                                                 <rect key="frame" x="0.0" y="0.0" width="179.5" height="30"/>
@@ -118,7 +118,7 @@
                         <constraints>
                             <constraint firstItem="t0U-Hu-kwR" firstAttribute="leading" secondItem="MJG-GB-VEo" secondAttribute="leading" id="a8v-KU-mAp"/>
                             <constraint firstItem="MJG-GB-VEo" firstAttribute="bottom" secondItem="dKB-x8-7Bm" secondAttribute="bottom" constant="10" id="aiy-i8-Frf"/>
-                            <constraint firstItem="t0U-Hu-kwR" firstAttribute="top" secondItem="MJG-GB-VEo" secondAttribute="top" id="clM-K2-Hc3"/>
+                            <constraint firstItem="t0U-Hu-kwR" firstAttribute="top" secondItem="MJG-GB-VEo" secondAttribute="top" constant="100" id="clM-K2-Hc3"/>
                             <constraint firstItem="t0U-Hu-kwR" firstAttribute="bottom" secondItem="MJG-GB-VEo" secondAttribute="bottom" constant="30" id="lBN-Gw-QGL"/>
                             <constraint firstItem="t0U-Hu-kwR" firstAttribute="trailing" secondItem="MJG-GB-VEo" secondAttribute="trailing" id="yxX-7v-JJh"/>
                         </constraints>
@@ -143,22 +143,24 @@
             <objects>
                 <viewController id="0Lf-hF-90v" customClass="SetContactsSearchViewController" customModule="HyzeCalendarForWWDC" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="trq-PO-0Mh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="584"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="484"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="mWZ-a3-pdP">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="ri9-Ah-ayt"/>
-                                </constraints>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="duX-0u-tYA">
-                                <rect key="frame" x="0.0" y="56" width="375" height="528"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="428"/>
                                 <connections>
                                     <segue destination="Eor-Wj-qAo" kind="embed" identifier="embed" id="ya4-jw-cdf"/>
                                 </connections>
                             </containerView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="mWZ-a3-pdP">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="ri9-Ah-ayt"/>
+                                </constraints>
+                                <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -185,7 +187,7 @@
             <objects>
                 <tableViewController id="Eor-Wj-qAo" customClass="SetContactsTableViewController" customModule="HyzeCalendarForWWDC" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="OQW-2I-sVH">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="528"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="428"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
