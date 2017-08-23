@@ -31,7 +31,7 @@ class SetContactsTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
 		let nib = UINib(nibName: "ContactTableViewCell", bundle: nil)
 		self.tableView.register(nib, forCellReuseIdentifier: reuseIdentifier)
-		self.tableView.contentInset = UIEdgeInsets(top: 56, left: 0, bottom: 56, right: 0)
+		self.tableView.contentInset = UIEdgeInsets(top: -56, left: 0, bottom: 56, right: 0)
     }
 
     override func didReceiveMemoryWarning() {

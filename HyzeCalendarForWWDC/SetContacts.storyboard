@@ -147,12 +147,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="duX-0u-tYA">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="484"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="428"/>
                                 <connections>
                                     <segue destination="Eor-Wj-qAo" kind="embed" identifier="embed" id="ya4-jw-cdf"/>
                                 </connections>
                             </containerView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="mWZ-a3-pdP">
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="mWZ-a3-pdP">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -166,7 +166,7 @@
                         <constraints>
                             <constraint firstItem="mWZ-a3-pdP" firstAttribute="leading" secondItem="En0-pM-IdE" secondAttribute="leading" id="2eL-BF-y0r"/>
                             <constraint firstItem="duX-0u-tYA" firstAttribute="bottom" secondItem="En0-pM-IdE" secondAttribute="bottom" id="CUG-mf-fQ3"/>
-                            <constraint firstItem="duX-0u-tYA" firstAttribute="top" secondItem="trq-PO-0Mh" secondAttribute="bottom" constant="-484" id="PtM-a8-4iV"/>
+                            <constraint firstItem="duX-0u-tYA" firstAttribute="top" secondItem="mWZ-a3-pdP" secondAttribute="bottom" id="PtM-a8-4iV"/>
                             <constraint firstItem="duX-0u-tYA" firstAttribute="leading" secondItem="En0-pM-IdE" secondAttribute="leading" id="Wia-HU-KRO"/>
                             <constraint firstItem="duX-0u-tYA" firstAttribute="trailing" secondItem="En0-pM-IdE" secondAttribute="trailing" id="bwl-u6-xIo"/>
                             <constraint firstItem="mWZ-a3-pdP" firstAttribute="trailing" secondItem="En0-pM-IdE" secondAttribute="trailing" id="erl-zb-9oB"/>
@@ -187,7 +187,7 @@
             <objects>
                 <tableViewController id="Eor-Wj-qAo" customClass="SetContactsTableViewController" customModule="HyzeCalendarForWWDC" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="OQW-2I-sVH">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="484"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="428"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
