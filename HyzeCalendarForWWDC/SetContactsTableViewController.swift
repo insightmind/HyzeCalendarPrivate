@@ -25,7 +25,7 @@ class SetContactsTableViewController: UITableViewController {
 		self.tableView.allowsSelection = false
 		self.tableView.separatorStyle = .none
 		self.tableView.backgroundColor = UIColor.clear
-
+		self.setUpAdded()
 		
 		
 		let nib = UINib(nibName: "ContactTableViewCell", bundle: nil)

@@ -69,6 +69,27 @@ class ContactsManagement {
 		return emailTest.evaluate(with: email)
 	}
 	
+	func getContact(email: String) -> CNContact? {
+		let keysToFetch = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactEmailAddressesKey, CNContactImageDataKey]
+		let request = CNContactFetchRequest(keysToFetch: keysToFetch as [CNKeyDescriptor])
+		var cContact: CNContact? = nil
+		do {
+			try self.CMContactStore.enumerateContacts(with: request, usingBlock: { (contact, cursor) in
+				if !contact.emailAddresses.isEmpty {
+					for i in contact.emailAddresses {
+						if String(i.value) == email {
+							cContact = contact
+						}
+					}
+				}
+			})
+			return cContact
+		} catch let error {
+			print(error)
+			return nil
+		}
+	}
+	
 	func getContacts(name: String, isFuzzy: Bool = false, alreadyAdded: [CNContact]) -> [CNContact] {
 		let searchString = " " + name
 		var contacts = [CNContact]()

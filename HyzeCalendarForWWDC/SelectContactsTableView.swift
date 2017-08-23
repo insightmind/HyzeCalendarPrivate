@@ -13,6 +13,7 @@ class SelectContactsTableView: UITableView, UITableViewDelegate, UITableViewData
 	
 	let eventInformation = EManagement.eventInformation
 	
+	var contacts = [String]()
 	let reuseIdentifier = "contactsCell"
 	
 	override init(frame: CGRect, style: UITableViewStyle) {
@@ -34,16 +35,18 @@ class SelectContactsTableView: UITableView, UITableViewDelegate, UITableViewData
 	
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		if let count = eventInformation.participants?.count {
-			return count
-		} else {
-			return 0
-		}
+		self.setUpData()
+		return contacts.count
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = self.dequeueReusableCell(withIdentifier: reuseIdentifier) as! ContactTableViewCell
-		cell.setContact(eventInformation.participants![indexPath.row], shouldAdd: true)
+		let email = contacts[indexPath.row]
+		if let contact = CManagement.getContact(email: email) {
+			cell.setContact(contact, shouldAdd: true, email: email, isInMainCell: true)
+		} else {
+			cell.setEmail(email: email, shouldAdd: true, isInMainCell: true)
+		}
 		cell.tableView = self
 		return cell
 	}
@@ -52,15 +55,44 @@ class SelectContactsTableView: UITableView, UITableViewDelegate, UITableViewData
 		return 56
 	}
 	
-	func deleteParticipant(_ participant: EKParticipant) {
-		if let participants = eventInformation.participants {
-			for i in 0..<participants.count {
-				if participants[i] == participant {
-					eventInformation.participants!.remove(at: i)
-					self.reloadSections(IndexSet(integer: 0), with: .none)
-					eventInformation.eventEditorTableViewController?.reloadCell(.contacts, onlyInformations: true)
+	func deleteParticipant(_ email: String) {
+		for i in 0..<contacts.count {
+			if contacts[i] == email {
+				contacts.remove(at: i)
+				guard let tableView = eventInformation.eventEditorTableViewController else {
+					return
 				}
+				reloadParticipants()
+				self.reloadSections(IndexSet(integer: 0), with: .automatic)
+				tableView.reloadCell(.contacts, onlyInformations: true)
+				return
 			}
 		}
+	}
+	
+	func reloadParticipants() {
+		var attendees = [EKParticipant]()
+		for email in contacts {
+			if let attendee = EManagement.createParticipant(email: email) {
+				attendees.append(attendee)
+			}
+		}
+		eventInformation.participants = attendees
+	}
+	
+	func setUpData() {
+		guard let participants = eventInformation.participants else {
+			return
+		}
+		var cContacts = [String]()
+		for participant in participants {
+			var email = participant.url.absoluteString
+			if email.contains("mailto:") {
+				let mailtoRange = email.startIndex...email.index(email.startIndex, offsetBy: 6)
+				email.removeSubrange(mailtoRange)
+			}
+			cContacts.append(email)
+		}
+		contacts = cContacts
 	}
 }

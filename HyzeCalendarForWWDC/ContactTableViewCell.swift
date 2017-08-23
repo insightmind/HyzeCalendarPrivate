@@ -13,6 +13,7 @@ import Contacts
 class ContactTableViewCell: UITableViewCell {
 	
 	let eventInformation = EManagement.eventInformation
+	var participant: EKParticipant?
 	var contact: CNContact?
 	var isContact: Bool = false
 	var email: String?
@@ -36,27 +37,10 @@ class ContactTableViewCell: UITableViewCell {
 	
 	
 	fileprivate func removeInTableView(_ tableView: SelectContactsTableView) {
-		if isContact {
-			guard let cnContact = contact else {
-				return
-			}
-			guard let cnEmail = cnContact.emailAddresses.first else {
-				return
-			}
-			let stringEmail = String(cnEmail.value)
-			guard let participant = EManagement.createParticipant(email: stringEmail) else {
-				return
-			}
-			tableView.deleteParticipant(participant)
-		} else {
-			guard let stringEmail = email else {
-				return
-			}
-			guard let participant = EManagement.createParticipant(email: stringEmail) else {
-				return
-			}
-			tableView.deleteParticipant(participant)
+		guard let stringEmail = email else {
+			return
 		}
+		tableView.deleteParticipant(stringEmail)
 	}
 	
 	fileprivate func removeInSetTableView(_ tableView: SetContactsTableViewController) {
@@ -210,9 +194,13 @@ class ContactTableViewCell: UITableViewCell {
 		self.contact = contact
 	}
 	
-	func setEmail(email: String, shouldAdd: Bool = false) {
+	func setEmail(email: String, shouldAdd: Bool = false, isInMainCell: Bool = false) {
 		setIsAdded(shouldAdd)
 		setUp(email: email)
+		if isInMainCell {
+			self.contactLabel.textColor = Color.white
+			self.emailLabel.textColor = Color.white.withAlphaComponent(0.7)
+		}
 	}
 	
 	fileprivate func setUp(email stringEmail: String, deleteMailto: Bool = false) {
@@ -233,8 +221,9 @@ class ContactTableViewCell: UITableViewCell {
 		self.isContact = false
 	}
 	
-	func setContact(_ participant: EKParticipant, shouldAdd: Bool = false) {
+	func setContact(_ participant: EKParticipant, shouldAdd: Bool = false, email: String? = nil) {
 		setIsAdded(shouldAdd)
+		self.participant = participant
 		if let realContact = CManagement.getContact(for: participant.contactPredicate) {
 			setUp(contact: realContact)
 			self.isContact = true
@@ -242,15 +231,26 @@ class ContactTableViewCell: UITableViewCell {
 			let stringEmail = participant.url.absoluteString
 			setUp(email: stringEmail, deleteMailto: true)
 		}
+		if let stringEmail = email {
+			self.emailLabel.text = stringEmail
+			self.email = stringEmail
+		}
 		self.contactLabel.textColor = Color.white
 		self.emailLabel.textColor = Color.white.withAlphaComponent(0.7)
 	}
 	
-	func setContact(_ contact: CNContact, shouldAdd: Bool = false) {
+	func setContact(_ contact: CNContact, shouldAdd: Bool = false, email: String? = nil, isInMainCell: Bool = false) {
 		setIsAdded(shouldAdd)
 		setUp(contact: contact)
 		self.isContact = true
-		
+		if let stringEmail = email {
+			self.emailLabel.text = stringEmail
+			self.email = stringEmail
+		}
+		if isInMainCell {
+			self.contactLabel.textColor = Color.white
+			self.emailLabel.textColor = Color.white.withAlphaComponent(0.7)
+		}
 	}
 
     override func setSelected(_ selected: Bool, animated: Bool) {
