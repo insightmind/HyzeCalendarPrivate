@@ -15,6 +15,7 @@ import UIKit
 class EventManagement {
 	
 	var eventInformation = EventEditorEventInformations()
+	var selectedEventInformation = EventEditorEventInformations()
     
     //initialize EKEventStore for EventKit usage
     let EMEventStore: EKEventStore!
@@ -107,7 +108,11 @@ class EventManagement {
         } else {
             EMEventStore.requestAccess(to: .event, completion: {
                 (accessGranted: Bool, error: Error?) in
-                if accessGranted == true {
+				if accessGranted == true {
+					let calendar = EManagement.getHyzeCalendar()
+					if calendar == nil {
+						EManagement.createCalendar()
+					}
                     status = true
                 }
             })
@@ -135,23 +140,34 @@ class EventManagement {
 			event.isAllDay = from.isAllDay
 			event.notes = from.notes
 			
-			var attendees = [EKParticipant]()
-			
-			if let participants = from.participants {
-				for i in 0..<participants.count {
-					if participants[i].isCurrentUser && participants[i].participantRole == .chair {
-						continue
-					}
-					var email = participants[i].url.absoluteString
-					let range = email.startIndex...email.index(email.startIndex, offsetBy: 6)
-					email.removeSubrange(range)
-					if let participant = createParticipant(email: email) {
-						attendees.append(participant)
+			switch event.calendar.type {
+			case .birthday:
+				break
+			case .local:
+				break
+			case .subscription:
+				break
+			default:
+				var attendees = [EKParticipant]()
+				
+				if let participants = from.participants {
+					for i in 0..<participants.count {
+						if participants[i].isCurrentUser && participants[i].participantRole == .chair {
+							continue
+						}
+						var email = participants[i].url.absoluteString
+						let range = email.startIndex...email.index(email.startIndex, offsetBy: 6)
+						email.removeSubrange(range)
+						if let participant = createParticipant(email: email) {
+							attendees.append(participant)
+						}
 					}
 				}
+				event.setValue(attendees, forKey: "attendees")
 			}
+			
 
-			event.setValue(attendees, forKey: "attendees")
+			
 		} else {
 			return nil
 		}
@@ -256,7 +272,7 @@ class EventManagement {
 				print("Could not add local Calendar, will now use standard Calendar for events")
 				guard let calendar = self.EMEventStore.defaultCalendarForNewEvents else {
 					print("There is no standard Calendar")
-					fatalError()
+					return
 				}
 				newCalendar = calendar
 			}

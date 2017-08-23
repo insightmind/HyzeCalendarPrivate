@@ -11,12 +11,14 @@ import UIKit
 class SelectContactsTableViewCell: UITableViewCell, EventEditorCell {
 	
 	var eventInformations: EventEditorEventInformations! = EManagement.eventInformation
+	var isEditable: Bool = false
 	
 	func reloadInformations() {
 		self.contactsTableView.setUpData()
 		self.contactsTableView.reloadSections(IndexSet(integer: 0), with: .automatic)
 		eventInformations = EManagement.eventInformation
 		setUpLayout()
+		checkEditable()
 		eventInformations.eventEditorTableViewController?.updateContactsCellHeight()
 	}
 	
@@ -95,7 +97,34 @@ class SelectContactsTableViewCell: UITableViewCell, EventEditorCell {
 		self.setUpAddButton()
 		self.setUpShowContactsButton()
 		self.setUpLayout()
+		
+		checkEditable()
+		
     }
+	
+	func checkEditable() {
+		guard let calendarType = eventInformations.calendar?.type else {
+			return
+		}
+		switch calendarType {
+		case .birthday, .local, .subscription:
+			isEditable = false
+		default:
+			isEditable = true
+		}
+		
+		if isEditable {
+			self.addContactLabel.text = "add Contacts"
+			self.realAddButton.isUserInteractionEnabled = true
+			let image = #imageLiteral(resourceName: "ic_person_add").withRenderingMode(.alwaysTemplate)
+			self.realAddButton.setImage(image, for: .normal)
+		} else {
+			self.addContactLabel.text = "unsupported by Calendar"
+			self.realAddButton.isUserInteractionEnabled = false
+			let image = #imageLiteral(resourceName: "ic_clear").withRenderingMode(.alwaysTemplate)
+			self.realAddButton.setImage(image, for: .normal)
+		}
+	}
 	
 	func setUpLayout() {
 		

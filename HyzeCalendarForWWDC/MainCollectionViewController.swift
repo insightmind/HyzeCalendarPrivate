@@ -22,11 +22,6 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		if EManagement.askForPermission() {
-			self.reloadCalendarView()
-			GlobalETView.reloadView()
-		}
-		
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

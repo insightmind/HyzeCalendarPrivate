@@ -146,7 +146,9 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
 		}
 		generalViewDidLoad()
 		if eventInformations.isReadOnly {
-			
+			self.saveButton.isHidden = true
+		} else {
+			self.saveButton.isHidden = false
 		}
     }
 

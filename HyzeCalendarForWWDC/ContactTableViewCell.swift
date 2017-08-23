@@ -163,6 +163,16 @@ class ContactTableViewCell: UITableViewCell {
 		
     }
 	
+	func setIsEditable(_ isEditable: Bool) {
+		if isEditable {
+			self.contactDeleteView.isHidden = false
+			self.contactDeleteButton.isUserInteractionEnabled = true
+		} else {
+			self.contactDeleteView.isHidden = true
+			self.contactDeleteButton.isUserInteractionEnabled = false
+		}
+	}
+	
 	fileprivate func setIsAdded(_ shouldAdd: Bool) {
 		self.isAdded = shouldAdd
 		if shouldAdd {

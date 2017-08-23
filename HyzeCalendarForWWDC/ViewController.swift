@@ -67,6 +67,12 @@ class ViewController: UIViewController {
     }
 	
     override func viewWillAppear(_ animated: Bool) {
+		
+		if EManagement.askForPermission() {
+			calendarView.setNeedsDisplay()
+			ETView.setNeedsDisplay()
+		}
+		
 		self.calendarView.layer.masksToBounds = false
         if darkMode{
             view.backgroundColor = Color.grey
@@ -106,6 +112,7 @@ class ViewController: UIViewController {
         }
         ETView.reloadView()
     }
+	
     
     override func viewDidLoad() {
         
@@ -113,11 +120,6 @@ class ViewController: UIViewController {
 		
 		if CManagement.askForPermission() {
 			print("Contacts access granted")
-		}
-		
-		let calendar = EManagement.getHyzeCalendar()
-		if calendar == nil {
-			EManagement.createCalendar()
 		}
 		
         darkModeTemp = darkMode

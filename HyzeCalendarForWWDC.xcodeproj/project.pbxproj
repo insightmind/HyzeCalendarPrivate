@@ -203,6 +203,7 @@
 			children = (
 				3E59BDA11F432DF000BDCF25 /* General */,
 				3E59BD9F1F432DC200BDCF25 /* Design */,
+				3E59BD9E1F432DAF00BDCF25 /* Extensions */,
 				3ECD099F1E9BFF1B00BF9627 /* Selection */,
 				3ECD099B1E9BD28900BF9627 /* TimeManagement */,
 			);
@@ -368,7 +369,6 @@
 			isa = PBXGroup;
 			children = (
 				3E067E0E1F31FB9B003601FA /* Info.plist */,
-				3E59BD9E1F432DAF00BDCF25 /* Extensions */,
 				3E4A9B261E4BB479009E45EF /* Data */,
 				3EE1E5A91E48D3AF00379576 /* View */,
 				3EA8EE251ED21919000D6EF2 /* Storyboards */,

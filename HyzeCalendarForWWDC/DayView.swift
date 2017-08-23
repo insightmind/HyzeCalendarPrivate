@@ -94,6 +94,7 @@ class DayView: UIView {
 		for i in events {
 			i.animate(.delete, duration: animated ? 0.3 : 0, delay: 0)
 		}
+		events = []
 		setUp()
 	}
     

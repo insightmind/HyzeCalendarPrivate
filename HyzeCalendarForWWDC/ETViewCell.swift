@@ -156,6 +156,7 @@ class ETViewCell: UITableViewCell {
     override func prepareForReuse() {
         self.inheritanceBar.bounds = CGRect(x: 5, y: 2, width: 2, height: 40)
 		self.contentView.backgroundColor = UIColor.clear
+		self.eventIdentifier = ""
     }
 
 }

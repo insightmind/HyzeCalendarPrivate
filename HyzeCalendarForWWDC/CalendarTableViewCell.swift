@@ -61,7 +61,12 @@ class CalendarTableViewCell: UITableViewCell {
 					userDefault.synchronize()
 				} else {
 					self.eventInformation.calendar = self.calendar
-					self.eventInformation.eventEditorTableViewController?.reloadCell(.calendar, onlyInformations: true)
+					guard let tableView = self.eventInformation.eventEditorTableViewController else {
+						return
+					}
+					tableView.reloadCell(.calendar, onlyInformations: true)
+					tableView.reloadCell(.contacts, onlyInformations: true)
+					
 				}
 				
 			})

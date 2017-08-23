@@ -12,6 +12,7 @@ import EventKit
 class SelectContactsTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
 	
 	let eventInformation = EManagement.eventInformation
+	var isEditable: Bool = false
 	
 	var contacts = [String]()
 	let reuseIdentifier = "contactsCell"
@@ -28,6 +29,17 @@ class SelectContactsTableView: UITableView, UITableViewDelegate, UITableViewData
 		
 		self.delegate = self
 		self.dataSource = self
+		
+		guard let calendarType = eventInformation.calendar?.type else {
+			return
+		}
+		
+		switch calendarType {
+		case .birthday, .local, .subscription:
+			isEditable = false
+		default:
+			isEditable = true
+		}
 		
 		let cell = UINib(nibName: "ContactTableViewCell", bundle: nil)
 		self.register(cell, forCellReuseIdentifier: reuseIdentifier)
@@ -48,6 +60,7 @@ class SelectContactsTableView: UITableView, UITableViewDelegate, UITableViewData
 			cell.setEmail(email: email, shouldAdd: true, isInMainCell: true)
 		}
 		cell.tableView = self
+		cell.setIsEditable(isEditable)
 		return cell
 	}
 	

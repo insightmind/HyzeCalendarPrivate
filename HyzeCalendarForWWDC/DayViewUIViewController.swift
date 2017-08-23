@@ -77,6 +77,7 @@ class DayViewUIVViewController: UIViewController {
 		} else if segue.identifier == "showDetail" {
 			if let eventEditor = segue.destination as? EventEditorViewController {
 				eventEditor.dayView = self
+				EManagement.eventInformation = EManagement.selectedEventInformation
 			}
 		}
 	}
@@ -178,15 +179,4 @@ class DayViewUIVViewController: UIViewController {
 		
 		needsDesignUpdate = true
 	}
-	
-	/*
-    // MARK: - Navigation
-
-        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-            
-        
-    }
-     */
 }
