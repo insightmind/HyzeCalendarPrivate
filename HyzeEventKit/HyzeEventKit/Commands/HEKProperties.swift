@@ -1,0 +1,65 @@
+//
+//  HEKProperties.swift
+//  HyzeEventKit
+//
+//  Created by redfleet on 8/25/17.
+//  Copyright © 2017 insightmind. All rights reserved.
+//
+
+import Foundation
+
+enum HEKProperties: String {
+	case calendarScale				=	"CALSCALE"
+	case method						=	"METHOD"
+	case prodid						=	"PRODID"
+	case version					=	"VERSION"
+	case attach						=	"ATTACH"
+	case categories					=	"CATEGORIES"
+	case _class						=	"CLASS"
+	case comment					=	"COMMENT"
+	case description				=	"DESCRIPTION"
+	case geo						=	"GEO"
+	case location					=	"LOCATION"
+	case percent_complete			=	"PERCENT-COMPLETE"
+	case priority					=	"PRIORITY"
+	case ressources					=	"RESSOURCES"
+	case status						=	"STATUS"
+	case summary					=	"SUMMARY"
+	case completed					=	"COMPLETED"
+	case dtend						=	"DTEND"
+	case due						=	"DUE"
+	case dtstart					=	"DTSTART"
+	case duration					=	"DURATION"
+	case freebusy					=	"FREEBUSY"
+	case transp						=	"TRANSP"
+	case tzid						=	"TZID"
+	case tzname						=	"TZNAME"
+	case tzoffsetfrom				=	"TZOFFSETFROM"
+	case tzoffsetto					=	"TZOFFSETTO"
+	case tzurl						=	"TZURL"
+	case attendee					=	"ATTENDEE"
+	case contact					=	"CONTACT"
+	case organizer					=	"ORGANIZER"
+	case recurrence_id				=	"RECURRENCE-ID"
+	case related_to					=	"RELATED-TO"
+	case url						=	"URL"
+	case uid						=	"UID"
+	case exdate						=	"EXDATE"
+	case deprecatedRFC2445_exrule	=	"EXRULE"
+	case rdate						=	"RDATE"
+	case rrule						=	"RRULE"
+	case action						=	"ACTION"
+	case _repeat					=	"REPEAT"
+	case trigger					=	"TRIGGER"
+	case created					=	"CREATED"
+	case dtstamp					=	"DTSTAMP"
+	case last_modified				=	"LAST-MODIFIED"
+	case sequence					=	"SEQUENCE"
+	case request_status				=	"REQUEST-STATUS"
+	case newRFC7986_name			=	"NAME"
+	case newRFC7986_refresh_interval =	"REFRESH-INTERVAL"
+	case newRFC7986_source			=	"SOURCE"
+	case newRFC7986_color			=	"COLOR"
+	case newRFC7986_image			=	"IMAGE"
+	case newRFC7986_conference		=	"CONFERENCE"
+}

@@ -10,8 +10,20 @@ import UIKit
 
 class SetRecurrenceTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
+	@IBOutlet weak var topView: UIView!
+	@IBOutlet weak var labelView: UIView!
+	@IBOutlet weak var titleLabel: UILabel!
+	@IBOutlet weak var mainView: UITableView!
+	
+	
+	override func awakeFromNib() {
         super.awakeFromNib()
+		self.backgroundColor = UIColor.clear
+		self.topView.backgroundColor = UIColor.clear
+		self.labelView.backgroundColor = Color.lightBlue
+		self.mainView.backgroundColor = Color.blue
+		self.topView.layer.cornerRadius = self.labelView.bounds.height / 2
+		self.topView.layer.masksToBounds = true
         // Initialization code
     }
 

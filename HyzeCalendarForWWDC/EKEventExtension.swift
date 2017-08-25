@@ -19,8 +19,6 @@ extension EKEvent {
 		isReadOnly = title == self.title
 		self.title = title
 		
-		print(isReadOnly)
-		
 		return isReadOnly
 	}
 }

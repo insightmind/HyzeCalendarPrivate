@@ -68,6 +68,7 @@
 		3EE1E5AD1E48D48C00379576 /* GlobalAccessProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E5AC1E48D48C00379576 /* GlobalAccessProperties.swift */; };
 		3EE5426D1F479FCC00B230FF /* RemoveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE5426B1F479FCC00B230FF /* RemoveTableViewCell.swift */; };
 		3EE5426E1F479FCC00B230FF /* RemoveTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EE5426C1F479FCC00B230FF /* RemoveTableViewCell.xib */; };
+		3EED27F11F50C4D5001ABBC4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3EED27F01F50C4D5001ABBC4 /* GoogleService-Info.plist */; };
 		3EF096B01E3FDC9F0011E726 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF096AF1E3FDC9F0011E726 /* ViewController.swift */; };
 		3EF9042C1F4CD4ED00C690C4 /* SetContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF9042B1F4CD4ED00C690C4 /* SetContactsTableViewController.swift */; };
 		3EF9042E1F4CD53D00C690C4 /* SetContactsSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF9042D1F4CD53D00C690C4 /* SetContactsSearchViewController.swift */; };
@@ -143,6 +144,7 @@
 		3EE1E5AC1E48D48C00379576 /* GlobalAccessProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalAccessProperties.swift; sourceTree = "<group>"; };
 		3EE5426B1F479FCC00B230FF /* RemoveTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveTableViewCell.swift; sourceTree = "<group>"; };
 		3EE5426C1F479FCC00B230FF /* RemoveTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RemoveTableViewCell.xib; sourceTree = "<group>"; };
+		3EED27F01F50C4D5001ABBC4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3EF096AF1E3FDC9F0011E726 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3EF9042B1F4CD4ED00C690C4 /* SetContactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetContactsTableViewController.swift; sourceTree = "<group>"; };
 		3EF9042D1F4CD53D00C690C4 /* SetContactsSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetContactsSearchViewController.swift; sourceTree = "<group>"; };
@@ -368,6 +370,7 @@
 		3EA80D501E2BEC9300FD87C3 /* HyzeCalendarForWWDC */ = {
 			isa = PBXGroup;
 			children = (
+				3EED27F01F50C4D5001ABBC4 /* GoogleService-Info.plist */,
 				3E067E0E1F31FB9B003601FA /* Info.plist */,
 				3E4A9B261E4BB479009E45EF /* Data */,
 				3EE1E5A91E48D3AF00379576 /* View */,
@@ -636,6 +639,7 @@
 				3EA80D591E2BEC9300FD87C3 /* Assets.xcassets in Resources */,
 				3EA8EE2C1ED219B8000D6EF2 /* DayView.storyboard in Resources */,
 				3EA727571F49F0560041B398 /* SelectContactsTableViewCell.xib in Resources */,
+				3EED27F11F50C4D5001ABBC4 /* GoogleService-Info.plist in Resources */,
 				3E6560831F4CCBDF00C241BE /* SetContacts.storyboard in Resources */,
 				3E68188E1F46FED600E8D7BC /* CalendarTableViewCell.xib in Resources */,
 				3EA8EE2A1ED21989000D6EF2 /* Settings.storyboard in Resources */,

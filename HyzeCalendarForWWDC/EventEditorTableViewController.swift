@@ -14,6 +14,7 @@ enum EventEditorCellType: String {
 	case contacts = "contacts"
 	case notes = "notes"
 	case remove = "remove"
+	case recurrence = "recurrence"
 }
 
 struct EventEditorCellInformations {
@@ -30,6 +31,7 @@ class EventEditorTableViewController: UITableViewController {
 	let contactsCell = EventEditorCellInformations(cellType: .contacts, height: 155.0)
 	let notesCell = EventEditorCellInformations(cellType: .notes, height: 170.0)
 	let removeCell = EventEditorCellInformations(cellType: .remove, height: 80.0)
+	let recurrenceCell = EventEditorCellInformations(cellType: .recurrence, height: 300.0)
 	
 	var eventsInformations: EventEditorEventInformations!
 
@@ -43,6 +45,7 @@ class EventEditorTableViewController: UITableViewController {
 		self.tableView.register(UINib(nibName: "SelectCalendarTableViewCell", bundle: nil), forCellReuseIdentifier: EventEditorCellType.calendar.rawValue)
 		self.tableView.register(UINib(nibName: "RemoveTableViewCell", bundle: nil), forCellReuseIdentifier: EventEditorCellType.remove.rawValue)
 		self.tableView.register(UINib(nibName: "SelectContactsTableViewCell", bundle: nil), forCellReuseIdentifier: EventEditorCellType.contacts.rawValue)
+		self.tableView.register(UINib(nibName: "SetRecurrenceTableViewCell", bundle: nil), forCellReuseIdentifier: EventEditorCellType.recurrence.rawValue)
 		
 		self.eventsInformations = EManagement.eventInformation
 		eventsInformations.eventEditorTableViewController = self
@@ -93,6 +96,9 @@ class EventEditorTableViewController: UITableViewController {
 			return cell
 		case .contacts:
 			let cell = tableView.dequeueReusableCell(withIdentifier: EventEditorCellType.contacts.rawValue) as! SelectContactsTableViewCell
+			return cell
+		case .recurrence:
+			let cell = tableView.dequeueReusableCell(withIdentifier: EventEditorCellType.recurrence.rawValue) as! SetRecurrenceTableViewCell
 			return cell
 		}
 		
@@ -146,11 +152,13 @@ class EventEditorTableViewController: UITableViewController {
 					cells.append(contactsCell)
 				}
 			}
+			cells.append(recurrenceCell)
 			if eventsInformations.notes != "" && eventsInformations.notes != nil {
 				cells.append(notesCell)
 			}
 		case .create:
 			cells.append(contactsCell)
+			cells.append(recurrenceCell)
 			cells.append(notesCell)
 			if eventsInformations.eventIdentifier != nil {
 				cells.append(removeCell)
