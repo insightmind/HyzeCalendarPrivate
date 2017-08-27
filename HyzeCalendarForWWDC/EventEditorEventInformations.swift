@@ -56,6 +56,7 @@ class EventEditorEventInformations: NSCopying {
 	var calendar: EKCalendar? = nil
 	var participants: [EKParticipant]? = nil
 	var isReadOnly: Bool = false
+	var recurrenceRule: EKRecurrenceRule? = nil
 	
 	
 	//only important for EventEditing not creation

@@ -26,7 +26,6 @@
 		3E61FE641E5239AF003D796C /* DayViewDecoration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E61FE631E5239AF003D796C /* DayViewDecoration.swift */; };
 		3E6283891F4DFF1700A799DC /* SetRecurrenceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6283871F4DFF1700A799DC /* SetRecurrenceTableViewCell.swift */; };
 		3E62838A1F4DFF1700A799DC /* SetRecurrenceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E6283881F4DFF1700A799DC /* SetRecurrenceTableViewCell.xib */; };
-		3E62838C1F4E069E00A799DC /* EventRecurrenceInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E62838B1F4E069E00A799DC /* EventRecurrenceInformation.swift */; };
 		3E6285431F4471B900301A42 /* CGFloatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6285421F4471B900301A42 /* CGFloatExtension.swift */; };
 		3E6285451F4471E800301A42 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6285441F4471E800301A42 /* UIColorExtension.swift */; };
 		3E6285471F44720400301A42 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6285461F44720400301A42 /* UIViewControllerExtension.swift */; };
@@ -57,6 +56,10 @@
 		3EBEC8E21F3D048100052C93 /* DateSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EBEC8E11F3D03F700052C93 /* DateSelection.storyboard */; };
 		3ECD09981E9BB39C00BF9627 /* TimeManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECD09971E9BB39C00BF9627 /* TimeManagement.swift */; };
 		3ECD09A11E9BFF3000BF9627 /* Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECD09A01E9BFF3000BF9627 /* Selection.swift */; };
+		3ED0C4DC1F532D11005915B6 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ED0C4DB1F532D11005915B6 /* EventKit.framework */; };
+		3ED0C4DE1F532D18005915B6 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ED0C4DD1F532D18005915B6 /* Contacts.framework */; };
+		3ED0C4E01F532D1F005915B6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ED0C4DF1F532D1F005915B6 /* UIKit.framework */; };
+		3ED0C4E31F533279005915B6 /* RecurrencePopover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED0C4E21F533279005915B6 /* RecurrencePopover.storyboard */; };
 		3ED0F0D41F4371AB001A12A8 /* Create_EventEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED0F0D31F4371AB001A12A8 /* Create_EventEditorViewController.swift */; };
 		3ED0F0D61F4371C5001A12A8 /* ShowDetail_EventEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED0F0D51F4371C5001A12A8 /* ShowDetail_EventEditorViewController.swift */; };
 		3ED0F0D81F4372CD001A12A8 /* DateSpecification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED0F0D71F4372CD001A12A8 /* DateSpecification.swift */; };
@@ -101,7 +104,6 @@
 		3E61FE631E5239AF003D796C /* DayViewDecoration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayViewDecoration.swift; sourceTree = "<group>"; };
 		3E6283871F4DFF1700A799DC /* SetRecurrenceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetRecurrenceTableViewCell.swift; sourceTree = "<group>"; };
 		3E6283881F4DFF1700A799DC /* SetRecurrenceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetRecurrenceTableViewCell.xib; sourceTree = "<group>"; };
-		3E62838B1F4E069E00A799DC /* EventRecurrenceInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRecurrenceInformation.swift; sourceTree = "<group>"; };
 		3E6285421F4471B900301A42 /* CGFloatExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGFloatExtension.swift; sourceTree = "<group>"; };
 		3E6285441F4471E800301A42 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		3E6285461F44720400301A42 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
@@ -133,6 +135,10 @@
 		3EC617B71EF86CDC00BB03B6 /* HyzeCalendarForWWDC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HyzeCalendarForWWDC.entitlements; sourceTree = "<group>"; };
 		3ECD09971E9BB39C00BF9627 /* TimeManagement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeManagement.swift; sourceTree = "<group>"; };
 		3ECD09A01E9BFF3000BF9627 /* Selection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Selection.swift; sourceTree = "<group>"; };
+		3ED0C4DB1F532D11005915B6 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		3ED0C4DD1F532D18005915B6 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
+		3ED0C4DF1F532D1F005915B6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		3ED0C4E21F533279005915B6 /* RecurrencePopover.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = RecurrencePopover.storyboard; path = ../../../../Users/redfleet/Music/RecurrencePopover.storyboard; sourceTree = "<group>"; };
 		3ED0F0D31F4371AB001A12A8 /* Create_EventEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Create_EventEditorViewController.swift; sourceTree = "<group>"; };
 		3ED0F0D51F4371C5001A12A8 /* ShowDetail_EventEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetail_EventEditorViewController.swift; sourceTree = "<group>"; };
 		3ED0F0D71F4372CD001A12A8 /* DateSpecification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSpecification.swift; sourceTree = "<group>"; };
@@ -160,6 +166,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3ED0C4E01F532D1F005915B6 /* UIKit.framework in Frameworks */,
+				3ED0C4DE1F532D18005915B6 /* Contacts.framework in Frameworks */,
+				3ED0C4DC1F532D11005915B6 /* EventKit.framework in Frameworks */,
 				54754F2275255EAFFCE2A627 /* Pods_HyzeCalendarForWWDC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -340,6 +349,7 @@
 		3E8B90A31F433CAA000F8449 /* Recurrence */ = {
 			isa = PBXGroup;
 			children = (
+				3ED0C4E11F53325A005915B6 /* Additional Views */,
 				3E6283871F4DFF1700A799DC /* SetRecurrenceTableViewCell.swift */,
 				3E6283881F4DFF1700A799DC /* SetRecurrenceTableViewCell.xib */,
 			);
@@ -427,7 +437,6 @@
 				3E4A9B281E4BB4C0009E45EF /* EventsManagement.swift */,
 				3EA6E4741F4C7C1F003E9341 /* ContactsManagement.swift */,
 				3ED0F0DB1F437310001A12A8 /* EventEditorEventInformations.swift */,
-				3E62838B1F4E069E00A799DC /* EventRecurrenceInformation.swift */,
 			);
 			name = TimeManagement;
 			sourceTree = "<group>";
@@ -438,6 +447,14 @@
 				3ECD09A01E9BFF3000BF9627 /* Selection.swift */,
 			);
 			name = Selection;
+			sourceTree = "<group>";
+		};
+		3ED0C4E11F53325A005915B6 /* Additional Views */ = {
+			isa = PBXGroup;
+			children = (
+				3ED0C4E21F533279005915B6 /* RecurrencePopover.storyboard */,
+			);
+			name = "Additional Views";
 			sourceTree = "<group>";
 		};
 		3ED0F0D01F43713B001A12A8 /* ShowDetail */ = {
@@ -538,6 +555,9 @@
 		D48AC8556D2AC934DB48314B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3ED0C4DF1F532D1F005915B6 /* UIKit.framework */,
+				3ED0C4DD1F532D18005915B6 /* Contacts.framework */,
+				3ED0C4DB1F532D11005915B6 /* EventKit.framework */,
 				E21A0F42434DA3DA544C82C6 /* Pods_HyzeCalendarForWWDC.framework */,
 			);
 			name = Frameworks;
@@ -639,6 +659,7 @@
 				3EA80D591E2BEC9300FD87C3 /* Assets.xcassets in Resources */,
 				3EA8EE2C1ED219B8000D6EF2 /* DayView.storyboard in Resources */,
 				3EA727571F49F0560041B398 /* SelectContactsTableViewCell.xib in Resources */,
+				3ED0C4E31F533279005915B6 /* RecurrencePopover.storyboard in Resources */,
 				3EED27F11F50C4D5001ABBC4 /* GoogleService-Info.plist in Resources */,
 				3E6560831F4CCBDF00C241BE /* SetContacts.storyboard in Resources */,
 				3E68188E1F46FED600E8D7BC /* CalendarTableViewCell.xib in Resources */,
@@ -717,7 +738,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3E62838C1F4E069E00A799DC /* EventRecurrenceInformation.swift in Sources */,
 				3ECD09981E9BB39C00BF9627 /* TimeManagement.swift in Sources */,
 				3EA80D521E2BEC9300FD87C3 /* AppDelegate.swift in Sources */,
 				3EA8EE311ED2350E000D6EF2 /* MonthCollectionViewController.swift in Sources */,

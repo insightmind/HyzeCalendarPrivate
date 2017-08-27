@@ -31,7 +31,7 @@ class EventEditorTableViewController: UITableViewController {
 	let contactsCell = EventEditorCellInformations(cellType: .contacts, height: 155.0)
 	let notesCell = EventEditorCellInformations(cellType: .notes, height: 170.0)
 	let removeCell = EventEditorCellInformations(cellType: .remove, height: 80.0)
-	let recurrenceCell = EventEditorCellInformations(cellType: .recurrence, height: 300.0)
+	let recurrenceCell = EventEditorCellInformations(cellType: .recurrence, height: 212.0)
 	
 	var eventsInformations: EventEditorEventInformations!
 
@@ -101,7 +101,6 @@ class EventEditorTableViewController: UITableViewController {
 			let cell = tableView.dequeueReusableCell(withIdentifier: EventEditorCellType.recurrence.rawValue) as! SetRecurrenceTableViewCell
 			return cell
 		}
-		
     }
 	
 	func reloadCell(_ cellType: EventEditorCellType, onlyInformations: Bool) {
@@ -123,6 +122,9 @@ class EventEditorTableViewController: UITableViewController {
 					if onlyInformations {
 						cell.reloadInformations()
 					}
+				case .recurrence:
+					let cell = self.tableView.cellForRow(at: IndexPath(row: i, section: 0)) as! SetRecurrenceTableViewCell
+					cell.setRoundView(cell.predefinedViews, shouldBeRounded: true)
 				default:
 					return
 				}
@@ -132,13 +134,15 @@ class EventEditorTableViewController: UITableViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		
-		if cells[indexPath.row].cellType == .contacts {
+		switch cells[indexPath.row].cellType {
+		case .contacts:
 			let (calculated, full) = calculateContactsCellHeight()
 			return eventsInformations.isAllContacts ? full : calculated
+		case .recurrence:
+			return calculateRecurrenceCellHeight()
+		default:
+			return cells[indexPath.row].height
 		}
-		
-		return cells[indexPath.row].height
 	}
 	
 	func updateCellsArray() {
@@ -201,6 +205,15 @@ class EventEditorTableViewController: UITableViewController {
 		let heights = (calculatedHeight, fullHeight)
 		
 		return heights
+	}
+	
+	func calculateRecurrenceCellHeight() -> CGFloat {
+		switch eventsInformations.state {
+		case .showDetail:
+			return 100.0
+		case .create:
+			return 212.0
+		}
 	}
 	
 	func updateContactsCellHeight() {

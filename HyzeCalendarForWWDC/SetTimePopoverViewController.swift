@@ -80,6 +80,16 @@ class SetTimePopoverViewController: UIViewController {
 			datePicker.locale = Locale(identifier: "de_DE")
 		}
 		
+		if darkMode {
+			self.blurLayer.effect = UIBlurEffect(style: .dark)
+			datePicker.setValue(Color.white, forKey: "textColor")
+			self.popover.backgroundColor = Color.grey.withAlphaComponent(0.3)
+		} else {
+			self.blurLayer.effect = UIBlurEffect(style: .light)
+			datePicker.setValue(Color.grey, forKey: "textColor")
+			self.popover.backgroundColor = Color.white.withAlphaComponent(0.3)
+		}
+		
 		didSelect(forState: currentState, animated: false)
 		
 		popover.layer.cornerRadius = 20
