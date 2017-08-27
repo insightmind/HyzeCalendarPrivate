@@ -85,7 +85,13 @@ class SetRecurrenceTableViewCell: UITableViewCell, EventEditorCell {
 		setDesign(.year)
 	}
 	
-	func selectCustom() {
+	@IBAction func selectCustom(_ sender: UIButton) {
+		let storyboard = UIStoryboard(name: "RecurrencePopover", bundle: nil)
+		guard let viewController = storyboard.instantiateInitialViewController() else { return }
+		eventInformations.eventEditor?.present(viewController, animated: true, completion: nil)
+	}
+	
+	func useCustom() {
 		self.setRoundView(predefinedViews, shouldBeRounded: true)
 		setDesign(.custom)
 	}
@@ -178,6 +184,7 @@ class SetRecurrenceTableViewCell: UITableViewCell, EventEditorCell {
 		self.backgroundColor = UIColor.clear
 		self.topView.layer.cornerRadius = self.labelView.bounds.height / 2
 		self.topView.layer.masksToBounds = true
+		self.everySelection.layer.masksToBounds = false
 		self.predefinedViewStack.backgroundColor = Color.lightBlue
 		self.predefinedViews.append(dayView)
 		self.predefinedViews.append(weekView)

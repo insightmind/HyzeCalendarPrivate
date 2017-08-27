@@ -60,6 +60,7 @@
 		3ED0C4DE1F532D18005915B6 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ED0C4DD1F532D18005915B6 /* Contacts.framework */; };
 		3ED0C4E01F532D1F005915B6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ED0C4DF1F532D1F005915B6 /* UIKit.framework */; };
 		3ED0C4E31F533279005915B6 /* RecurrencePopover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED0C4E21F533279005915B6 /* RecurrencePopover.storyboard */; };
+		3ED0C4E51F533961005915B6 /* RecurrencePopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED0C4E41F533961005915B6 /* RecurrencePopoverViewController.swift */; };
 		3ED0F0D41F4371AB001A12A8 /* Create_EventEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED0F0D31F4371AB001A12A8 /* Create_EventEditorViewController.swift */; };
 		3ED0F0D61F4371C5001A12A8 /* ShowDetail_EventEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED0F0D51F4371C5001A12A8 /* ShowDetail_EventEditorViewController.swift */; };
 		3ED0F0D81F4372CD001A12A8 /* DateSpecification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED0F0D71F4372CD001A12A8 /* DateSpecification.swift */; };
@@ -139,6 +140,7 @@
 		3ED0C4DD1F532D18005915B6 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
 		3ED0C4DF1F532D1F005915B6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3ED0C4E21F533279005915B6 /* RecurrencePopover.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = RecurrencePopover.storyboard; path = ../../../../Users/redfleet/Music/RecurrencePopover.storyboard; sourceTree = "<group>"; };
+		3ED0C4E41F533961005915B6 /* RecurrencePopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurrencePopoverViewController.swift; sourceTree = "<group>"; };
 		3ED0F0D31F4371AB001A12A8 /* Create_EventEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Create_EventEditorViewController.swift; sourceTree = "<group>"; };
 		3ED0F0D51F4371C5001A12A8 /* ShowDetail_EventEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetail_EventEditorViewController.swift; sourceTree = "<group>"; };
 		3ED0F0D71F4372CD001A12A8 /* DateSpecification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSpecification.swift; sourceTree = "<group>"; };
@@ -452,6 +454,7 @@
 		3ED0C4E11F53325A005915B6 /* Additional Views */ = {
 			isa = PBXGroup;
 			children = (
+				3ED0C4E41F533961005915B6 /* RecurrencePopoverViewController.swift */,
 				3ED0C4E21F533279005915B6 /* RecurrencePopover.storyboard */,
 			);
 			name = "Additional Views";
@@ -772,6 +775,7 @@
 				3E36FF011F4A423700EAC9CC /* ContactTableViewCell.swift in Sources */,
 				3E47BD311F30EE0200E0646C /* DateSelectionTableViewCell.swift in Sources */,
 				3EF096B01E3FDC9F0011E726 /* ViewController.swift in Sources */,
+				3ED0C4E51F533961005915B6 /* RecurrencePopoverViewController.swift in Sources */,
 				3EA727561F49F0560041B398 /* SelectContactsTableViewCell.swift in Sources */,
 				3E6818901F46FFFC00E8D7BC /* CalendarTableViewController.swift in Sources */,
 				3EFE5F491E41310A004E75F9 /* DayMainButton.swift in Sources */,
