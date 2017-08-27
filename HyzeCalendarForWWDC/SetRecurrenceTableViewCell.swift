@@ -108,7 +108,7 @@ class SetRecurrenceTableViewCell: UITableViewCell, EventEditorCell {
 				self.everySelection.backgroundColor = Color.blue
 			} else {
 				self.everySelectionButtonView.isHidden = false
-				self.everySelection.backgroundColor = Color.green
+				self.everySelection.backgroundColor = Color.blue
 			}
 			
 			switch type {
@@ -118,23 +118,23 @@ class SetRecurrenceTableViewCell: UITableViewCell, EventEditorCell {
 				self.selectionLabel.text = "No Repeat"
 			case .day:
 				transform = CGAffineTransform(rotationAngle: 0)
-				self.dayView.backgroundColor = Color.green
+				self.dayView.backgroundColor = Color.red
 				self.selectionLabel.text = "Every Day"
 			case .week:
 				transform = CGAffineTransform(rotationAngle: 0)
-				self.weekView.backgroundColor = Color.green
+				self.weekView.backgroundColor = Color.red
 				self.selectionLabel.text = "Every Week"
 			case .month:
 				transform = CGAffineTransform(rotationAngle: 0)
-				self.monthView.backgroundColor = Color.green
+				self.monthView.backgroundColor = Color.red
 				self.selectionLabel.text = "Every Month"
 			case .year:
 				transform = CGAffineTransform(rotationAngle: 0)
-				self.yearView.backgroundColor = Color.green
+				self.yearView.backgroundColor = Color.red
 				self.selectionLabel.text = "Every Year"
 			case .custom:
 				transform = CGAffineTransform(rotationAngle: 1/4*PI)
-				self.customSelection.backgroundColor = Color.green
+				self.customSelection.backgroundColor = Color.red
 				self.selectionLabel.text = "Custom"
 			}
 			
@@ -166,23 +166,35 @@ class SetRecurrenceTableViewCell: UITableViewCell, EventEditorCell {
 		for view in views {
 			if shouldBeRounded {
 				let path = UIBezierPath(roundedRect:view.bounds,
-				                        byRoundingCorners:[.bottomRight, .bottomLeft],
+				                        byRoundingCorners:[.allCorners],
 				                        cornerRadii: CGSize(width: 20, height:  20))
 				
 				let maskLayer = CAShapeLayer()
 				
 				maskLayer.path = path.cgPath
 				view.layer.mask = maskLayer
+				
 			} else {
 				view.layer.mask = nil
 			}
 		}
+		let cornerRadius = self.labelView.bounds.height / 2
+		let path = UIBezierPath(roundedRect:everySelection.bounds,
+		                        byRoundingCorners:[.bottomLeft, .bottomRight],
+		                        cornerRadii: CGSize(width: cornerRadius, height:  cornerRadius))
+		
+		let maskLayer = CAShapeLayer()
+		
+		maskLayer.path = path.cgPath
+		everySelection.layer.mask = maskLayer
 	}
 	
 	override func awakeFromNib() {
         super.awakeFromNib()
 		self.backgroundColor = UIColor.clear
-		self.topView.layer.cornerRadius = self.labelView.bounds.height / 2
+		self.mainView.backgroundColor = Color.lightBlue
+		let cornerRadius = self.labelView.bounds.height / 2
+		self.topView.layer.cornerRadius = cornerRadius
 		self.topView.layer.masksToBounds = true
 		self.everySelection.layer.masksToBounds = false
 		self.predefinedViewStack.backgroundColor = Color.lightBlue
@@ -192,7 +204,7 @@ class SetRecurrenceTableViewCell: UITableViewCell, EventEditorCell {
 		self.predefinedViews.append(yearView)
 		self.topView.backgroundColor = UIColor.clear
 		self.labelView.backgroundColor = Color.lightBlue
-		setUpButton(everySelectionButtonView, button: everySelectionButton, image: #imageLiteral(resourceName: "ic_clear"))
+		setUpButton(everySelectionButtonView, button: everySelectionButton, image: #imageLiteral(resourceName: "ic_delete"))
 		setUpButton(customSelectionButtonView, button: customSelectionButton, image: #imageLiteral(resourceName: "ic_add"))
 		setDesign(.none, animated: false)
 		
@@ -200,7 +212,17 @@ class SetRecurrenceTableViewCell: UITableViewCell, EventEditorCell {
 			self.customSelection.isHidden = true
 			self.predefinedViewStack.isHidden = true
 		}
+		
+		self.customSelection.layer.cornerRadius = cornerRadius
+		self.layoutIfNeeded()
     }
+	
+	override func layoutIfNeeded() {
+		super.layoutIfNeeded()
+		
+		self.setRoundView(predefinedViews, shouldBeRounded: true)
+		
+	}
 
 	override func prepareForReuse() {
 		self.predefinedViews = []

@@ -41,10 +41,31 @@ class RecurrencePopoverViewController: UIViewController {
 		}
 	}
 	@IBAction func selectWeekly(_ sender: UIButton) {
+		mainViewHeightConstraint.constant = 56
+		dailyButtonView.isHidden = true
+		monthlyButtonView.isHidden = true
+		yearlyButtonView.isHidden = true
+		UIView.animate(withDuration: 0.5) {
+			self.view.layoutIfNeeded()
+		}
 	}
 	@IBAction func selectMonthly(_ sender: UIButton) {
+		mainViewHeightConstraint.constant = 56
+		weeklyButtonView.isHidden = true
+		dailyButtonView.isHidden = true
+		yearlyButtonView.isHidden = true
+		UIView.animate(withDuration: 0.5) {
+			self.view.layoutIfNeeded()
+		}
 	}
 	@IBAction func selectYearly(_ sender: UIButton) {
+		mainViewHeightConstraint.constant = 56
+		weeklyButtonView.isHidden = true
+		monthlyButtonView.isHidden = true
+		dailyButtonView.isHidden = true
+		UIView.animate(withDuration: 0.5) {
+			self.view.layoutIfNeeded()
+		}
 	}
 	
 	override func viewDidLoad() {

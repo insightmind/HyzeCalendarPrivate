@@ -100,6 +100,8 @@ class SelectContactsTableViewCell: UITableViewCell, EventEditorCell {
 		
 		checkEditable()
 		
+		layoutIfNeeded()
+		
     }
 	
 	func checkEditable() {
@@ -163,6 +165,21 @@ class SelectContactsTableViewCell: UITableViewCell, EventEditorCell {
 			}
 		}
 		layoutSubviews()
+	}
+	
+	override func layoutIfNeeded() {
+		
+		super.layoutIfNeeded()
+		
+		let cornerRadius = self.labelView.bounds.height / 2
+		let path = UIBezierPath(roundedRect:topContactView.bounds,
+		                        byRoundingCorners:[.bottomLeft, .bottomRight],
+		                        cornerRadii: CGSize(width: cornerRadius, height:  cornerRadius))
+		
+		let maskLayer = CAShapeLayer()
+		
+		maskLayer.path = path.cgPath
+		topContactView.layer.mask = maskLayer
 	}
 
     override func setSelected(_ selected: Bool, animated: Bool) {

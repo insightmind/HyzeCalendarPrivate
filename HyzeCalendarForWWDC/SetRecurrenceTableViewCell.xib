@@ -92,16 +92,16 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qxw-58-Omj">
                                                 <rect key="frame" x="0.0" y="56" width="280" height="56"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="S0K-Rg-DCP">
-                                                        <rect key="frame" x="0.0" y="0.0" width="280" height="56"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="S0K-Rg-DCP">
+                                                        <rect key="frame" x="4" y="8" width="272" height="40"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I5R-GH-RJF">
-                                                                <rect key="frame" x="0.0" y="0.0" width="70" height="56"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="65" height="40"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C8V-PB-Tyn">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="70" height="56"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                                        <state key="normal" title="Day">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="65" height="40"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                                        <state key="normal" title="Daily">
                                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                         </state>
                                                                         <connections>
@@ -118,12 +118,12 @@
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ss7-RH-45l">
-                                                                <rect key="frame" x="70" y="0.0" width="70" height="56"/>
+                                                                <rect key="frame" x="69" y="0.0" width="65" height="40"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OW8-bs-TPI">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="70" height="56"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                                        <state key="normal" title="Week">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="65" height="40"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                                        <state key="normal" title="Weekly">
                                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                         </state>
                                                                         <connections>
@@ -140,12 +140,12 @@
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vl2-Ws-cvu">
-                                                                <rect key="frame" x="140" y="0.0" width="70" height="56"/>
+                                                                <rect key="frame" x="138" y="0.0" width="65" height="40"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aEt-Pc-Cyi">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="70" height="56"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                                        <state key="normal" title="Month">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="65" height="40"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                                        <state key="normal" title="Monthly">
                                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                         </state>
                                                                         <connections>
@@ -162,12 +162,12 @@
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iih-dX-Avu">
-                                                                <rect key="frame" x="210" y="0.0" width="70" height="56"/>
+                                                                <rect key="frame" x="207" y="0.0" width="65" height="40"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qZv-T5-I2v">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="70" height="56"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                                        <state key="normal" title="Year">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="65" height="40"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                                        <state key="normal" title="Yearly">
                                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                         </state>
                                                                         <connections>
@@ -188,10 +188,10 @@
                                                 </subviews>
                                                 <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="S0K-Rg-DCP" secondAttribute="trailing" id="Egz-88-dIh"/>
-                                                    <constraint firstAttribute="bottom" secondItem="S0K-Rg-DCP" secondAttribute="bottom" id="Pee-cw-1im"/>
-                                                    <constraint firstItem="S0K-Rg-DCP" firstAttribute="top" secondItem="qxw-58-Omj" secondAttribute="top" id="Txj-f6-hDP"/>
-                                                    <constraint firstItem="S0K-Rg-DCP" firstAttribute="leading" secondItem="qxw-58-Omj" secondAttribute="leading" id="rmb-XP-7xS"/>
+                                                    <constraint firstAttribute="trailing" secondItem="S0K-Rg-DCP" secondAttribute="trailing" constant="4" id="Egz-88-dIh"/>
+                                                    <constraint firstAttribute="bottom" secondItem="S0K-Rg-DCP" secondAttribute="bottom" constant="8" id="Pee-cw-1im"/>
+                                                    <constraint firstItem="S0K-Rg-DCP" firstAttribute="top" secondItem="qxw-58-Omj" secondAttribute="top" constant="8" id="Txj-f6-hDP"/>
+                                                    <constraint firstItem="S0K-Rg-DCP" firstAttribute="leading" secondItem="qxw-58-Omj" secondAttribute="leading" constant="4" id="rmb-XP-7xS"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QwO-oc-oGu">
