@@ -29,13 +29,27 @@ class RecurrenceTableViewController: UITableViewController {
 	
 	struct RecurrenceCells {
 		let cellType: RecurrenceCellTypes
-		var height: CGFloat
+		let height: CGFloat
 	}
 	
 	var cells: [RecurrenceCells] = []
 	let timeIntervalCell = RecurrenceCells(cellType: .timeInterval, height: 140.0)
 	var weekDayCell = RecurrenceCells(cellType: .weekDay, height: 88.0)
-	var dateCell = RecurrenceCells(cellType: .endDate, height: 200.0)
+	var dateCell = RecurrenceCells(cellType: .endDate, height: 268.0)
+	var dateCellExpanded: Bool = false {
+		didSet {
+			if dateCellExpanded != oldValue {
+				if dateCellExpanded {
+					popover?.containerViewHeightConstraint.constant += 112
+				} else {
+					popover?.containerViewHeightConstraint.constant -= 112
+				}
+				UIView.animate(withDuration: 0.3, animations: {
+					self.popover?.view.layoutIfNeeded()
+				})
+			}
+		}
+	}
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,10 +66,10 @@ class RecurrenceTableViewController: UITableViewController {
 		self.tableView.register(UINib(nibName: "DateTableViewCell", bundle: nil), forCellReuseIdentifier: RecurrenceCellTypes.endDate.rawValue)
     }
 	
-	override func viewWillAppear(_ animated: Bool) {
-		self.tableView.reloadData()
-		self.tableView.layoutIfNeeded()
-	}
+//	override func viewWillAppear(_ animated: Bool) {
+//		self.tableView.reloadData()
+//		self.tableView.layoutIfNeeded()
+//	}
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -66,7 +80,7 @@ class RecurrenceTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+		return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -112,22 +126,21 @@ class RecurrenceTableViewController: UITableViewController {
     }
 	
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+	
 		calculateCells()
-		calculateEndDateHeight()
-		if cells[indexPath.row].cellType == .endDate {
-			switch recurrenceEndType {
-			case .none:
-				return 156
-			case .date:
-				fallthrough
-			case .ocurrence:
-				return 200
-			}
+		
+		switch cells[indexPath.row].cellType {
+		case .endDate:
+			return dateCellExpanded ? 268 : 156
+		case .weekDay:
+			return 44 + (tableView.bounds.width - 40) / 7
+		default:
+			return cells[indexPath.row].height
 		}
-		return cells[indexPath.row].height
 	}
 	
 	func calculateCells() {
+		cells = []
 		switch selectedFrequency {
 		case .none:
 			cells = []
@@ -135,8 +148,6 @@ class RecurrenceTableViewController: UITableViewController {
 			cells = [timeIntervalCell,
 					 dateCell]
 		case .weekly:
-			let weekDayHeight = 44 + (tableView.bounds.width - 40) / 7
-			weekDayCell.height = weekDayHeight
 			cells = [timeIntervalCell,
 			         weekDayCell,
 					 dateCell]
@@ -147,30 +158,6 @@ class RecurrenceTableViewController: UITableViewController {
 			cells = [timeIntervalCell,
 					 dateCell]
 		}
-	}
-	
-	func calculateEndDateHeight() {
-		
-		var height: CGFloat
-		switch recurrenceEndType {
-		case .none:
-			height = 156
-		case .date:
-			fallthrough
-		case .ocurrence:
-			height = 200
-		}
-		var fullHeight: CGFloat = 0
-		for i in 0..<cells.count {
-			if cells[i].cellType == .endDate {
-				cells[i].height = height
-			}
-			fullHeight += cells[i].height
-		}
-		popover!.containerViewHeightConstraint.constant = fullHeight
-		UIView.animate(withDuration: 0.3, animations: {
-			self.popover!.view.layoutIfNeeded()
-		})
 	}
 	
 	func updateCellHeights() {

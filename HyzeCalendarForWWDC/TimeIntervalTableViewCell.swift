@@ -67,7 +67,7 @@ class TimeIntervalTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPick
 			}
 		}
 		self.selectedRow = row
-		pickerView.reloadAllComponents()
+		pickerView.reloadComponent(1)
 	}
 	
 	func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {

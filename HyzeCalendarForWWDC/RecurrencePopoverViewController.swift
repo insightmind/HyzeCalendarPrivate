@@ -90,6 +90,7 @@ class RecurrencePopoverViewController: UIViewController {
 			tableView?.selectedFrequency = .daily
 			tableView?.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
 			mainViewHeightConstraint.constant = 56.0
+			containerViewHeightConstraint.constant = 296
 			weeklyButtonView.isHidden = true
 			monthlyButtonView.isHidden = true
 			yearlyButtonView.isHidden = true
@@ -111,6 +112,7 @@ class RecurrencePopoverViewController: UIViewController {
 			tableView?.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
 			mainViewHeightConstraint.constant = 56
 			let height = 44 + (tableView!.tableView.bounds.width - 40) / 7
+			containerViewHeightConstraint.constant = 296 + height
 			dailyButtonView.isHidden = true
 			monthlyButtonView.isHidden = true
 			yearlyButtonView.isHidden = true
@@ -129,6 +131,7 @@ class RecurrencePopoverViewController: UIViewController {
 			tableView?.selectedFrequency = .monthly
 			tableView?.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
 			mainViewHeightConstraint.constant = 56
+			containerViewHeightConstraint.constant = 296
 			weeklyButtonView.isHidden = true
 			dailyButtonView.isHidden = true
 			yearlyButtonView.isHidden = true
@@ -147,6 +150,7 @@ class RecurrencePopoverViewController: UIViewController {
 			tableView?.selectedFrequency = .yearly
 			tableView?.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
 			mainViewHeightConstraint.constant = 56
+			containerViewHeightConstraint.constant = 296
 			weeklyButtonView.isHidden = true
 			monthlyButtonView.isHidden = true
 			dailyButtonView.isHidden = true
