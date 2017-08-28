@@ -19,7 +19,7 @@ class SetRecurrenceTableViewCell: UITableViewCell, EventEditorCell {
 	}
 	
 
-	enum recurrenceType {
+	enum RecurrenceType {
 		case none
 		case day
 		case week
@@ -56,7 +56,7 @@ class SetRecurrenceTableViewCell: UITableViewCell, EventEditorCell {
 			}
 		}
 	}
-	var selectedRecurrenceType: recurrenceType = .none
+	var selectedRecurrenceType: RecurrenceType = .none
 	
 	@IBAction func deleteRecurrence(_ sender: UIButton) {
 		recurrenceRule = nil
@@ -96,10 +96,9 @@ class SetRecurrenceTableViewCell: UITableViewCell, EventEditorCell {
 		setDesign(.custom)
 	}
 	
-	func setDesign(_ type: recurrenceType, animated: Bool = true) {
+	func setDesign(_ type: RecurrenceType, animated: Bool = true) {
 		UIView.animate(withDuration: animated ? 0.4 : 0, animations: {
 			
-			var transform: CGAffineTransform
 			self.setViewColor(self.predefinedViews, color: Color.lightBlue)
 			self.customSelection.backgroundColor = Color.blue
 			
@@ -113,33 +112,26 @@ class SetRecurrenceTableViewCell: UITableViewCell, EventEditorCell {
 			
 			switch type {
 			case .none:
-				transform = CGAffineTransform(rotationAngle: 0)
-				self.customSelection.backgroundColor = Color.blue
 				self.selectionLabel.text = "No Repeat"
 			case .day:
-				transform = CGAffineTransform(rotationAngle: 0)
 				self.dayView.backgroundColor = Color.red
 				self.selectionLabel.text = "Every Day"
 			case .week:
-				transform = CGAffineTransform(rotationAngle: 0)
 				self.weekView.backgroundColor = Color.red
 				self.selectionLabel.text = "Every Week"
 			case .month:
-				transform = CGAffineTransform(rotationAngle: 0)
 				self.monthView.backgroundColor = Color.red
 				self.selectionLabel.text = "Every Month"
 			case .year:
-				transform = CGAffineTransform(rotationAngle: 0)
 				self.yearView.backgroundColor = Color.red
 				self.selectionLabel.text = "Every Year"
 			case .custom:
-				transform = CGAffineTransform(rotationAngle: 1/4*PI)
-				self.customSelection.backgroundColor = Color.red
+				let image = #imageLiteral(resourceName: "ic_edit").withRenderingMode(.alwaysTemplate)
+				self.customSelectionButton.setImage(image, for: .normal)
 				self.selectionLabel.text = "Custom"
 			}
 			
 			self.selectedRecurrenceType = type
-			self.customSelectionButtonView.transform = transform
 		})
 	}
 	
@@ -165,17 +157,9 @@ class SetRecurrenceTableViewCell: UITableViewCell, EventEditorCell {
 	func setRoundView(_ views: [UIView], shouldBeRounded: Bool) {
 		for view in views {
 			if shouldBeRounded {
-				let path = UIBezierPath(roundedRect:view.bounds,
-				                        byRoundingCorners:[.allCorners],
-				                        cornerRadii: CGSize(width: 20, height:  20))
-				
-				let maskLayer = CAShapeLayer()
-				
-				maskLayer.path = path.cgPath
-				view.layer.mask = maskLayer
-				
+				view.layer.cornerRadius = view.bounds.height / 2
 			} else {
-				view.layer.mask = nil
+				view.layer.cornerRadius = 0
 			}
 		}
 		let cornerRadius = self.labelView.bounds.height / 2

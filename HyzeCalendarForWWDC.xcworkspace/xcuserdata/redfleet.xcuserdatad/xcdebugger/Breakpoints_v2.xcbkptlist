@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HyzeCalendarForWWDC/SelectContactsTableView.swift"
-            timestampString = "525216892.073087"
+            filePath = "HyzeCalendarForWWDC/RecurrenceTableViewController.swift"
+            timestampString = "525578348.048559"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "setUpData()"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HyzeCalendarForWWDC/SelectCalendarTableViewCell.swift"
-            timestampString = "525212419.469448"
+            filePath = "HyzeCalendarForWWDC/WeekdayTableViewCell.swift"
+            timestampString = "525578348.048851"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "awakeFromNib()"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "setDayViewButtonLabels()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
