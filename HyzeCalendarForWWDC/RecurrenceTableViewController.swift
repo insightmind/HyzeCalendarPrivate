@@ -45,6 +45,7 @@ class RecurrenceTableViewController: UITableViewController {
 	
 	override func viewWillAppear(_ animated: Bool) {
 		self.tableView.reloadData()
+		self.tableView.layoutIfNeeded()
 	}
 
     override func didReceiveMemoryWarning() {
