@@ -23,6 +23,8 @@
 		3E533BC51EC36440000CEF5F /* MonthCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E533BC41EC36440000CEF5F /* MonthCollectionViewCell.swift */; };
 		3E533BC71EC364BC000CEF5F /* DayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E533BC61EC364BC000CEF5F /* DayCollectionViewCell.swift */; };
 		3E59BDA31F432E1600BDCF25 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E59BDA21F432E1600BDCF25 /* UIViewExtension.swift */; };
+		3E5E0C1E1F545B1C0096E7E7 /* DateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5E0C1C1F545B1C0096E7E7 /* DateTableViewCell.swift */; };
+		3E5E0C1F1F545B1C0096E7E7 /* DateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E5E0C1D1F545B1C0096E7E7 /* DateTableViewCell.xib */; };
 		3E61C1121F53814900AE1A2B /* WeekdayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E61C1101F53814900AE1A2B /* WeekdayTableViewCell.swift */; };
 		3E61C1131F53814900AE1A2B /* WeekdayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E61C1111F53814900AE1A2B /* WeekdayTableViewCell.xib */; };
 		3E61C1161F53815800AE1A2B /* DaysOfMonthTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E61C1141F53815800AE1A2B /* DaysOfMonthTableViewCell.swift */; };
@@ -111,6 +113,8 @@
 		3E533BC41EC36440000CEF5F /* MonthCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthCollectionViewCell.swift; sourceTree = "<group>"; };
 		3E533BC61EC364BC000CEF5F /* DayCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayCollectionViewCell.swift; sourceTree = "<group>"; };
 		3E59BDA21F432E1600BDCF25 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		3E5E0C1C1F545B1C0096E7E7 /* DateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTableViewCell.swift; sourceTree = "<group>"; };
+		3E5E0C1D1F545B1C0096E7E7 /* DateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateTableViewCell.xib; sourceTree = "<group>"; };
 		3E61C1101F53814900AE1A2B /* WeekdayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekdayTableViewCell.swift; sourceTree = "<group>"; };
 		3E61C1111F53814900AE1A2B /* WeekdayTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeekdayTableViewCell.xib; sourceTree = "<group>"; };
 		3E61C1141F53815800AE1A2B /* DaysOfMonthTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysOfMonthTableViewCell.swift; sourceTree = "<group>"; };
@@ -287,6 +291,15 @@
 				3EE1E5AC1E48D48C00379576 /* GlobalAccessProperties.swift */,
 			);
 			name = General;
+			sourceTree = "<group>";
+		};
+		3E5E0C1B1F545AEA0096E7E7 /* endDate */ = {
+			isa = PBXGroup;
+			children = (
+				3E5E0C1C1F545B1C0096E7E7 /* DateTableViewCell.swift */,
+				3E5E0C1D1F545B1C0096E7E7 /* DateTableViewCell.xib */,
+			);
+			name = endDate;
 			sourceTree = "<group>";
 		};
 		3E65607F1F4CCB9200C241BE /* For Cell */ = {
@@ -483,6 +496,7 @@
 		3ED0C4E81F5371F4005915B6 /* RecurrenceTableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				3E5E0C1B1F545AEA0096E7E7 /* endDate */,
 				3ED0C4F01F5373FC005915B6 /* MonthsOfTheYear */,
 				3ED0C4EF1F5373F1005915B6 /* DaysOfTheMonth */,
 				3ED0C4EE1F5373E9005915B6 /* Weekday */,
@@ -725,6 +739,7 @@
 				3E36FF021F4A423700EAC9CC /* ContactTableViewCell.xib in Resources */,
 				3E61C11D1F53817C00AE1A2B /* MonthsOfYearTableViewCell.xib in Resources */,
 				3EBEC8E21F3D048100052C93 /* DateSelection.storyboard in Resources */,
+				3E5E0C1F1F545B1C0096E7E7 /* DateTableViewCell.xib in Resources */,
 				3ED0C4EC1F5373D4005915B6 /* TimeIntervalTableViewCell.xib in Resources */,
 				3EE5426E1F479FCC00B230FF /* RemoveTableViewCell.xib in Resources */,
 				3E61C1171F53815800AE1A2B /* DaysOfMonthTableViewCell.xib in Resources */,
@@ -847,6 +862,7 @@
 				3E533BC71EC364BC000CEF5F /* DayCollectionViewCell.swift in Sources */,
 				3E62854A1F44797900301A42 /* SelectCalendarTableViewCell.swift in Sources */,
 				3E7DD5731E4679FA001E1D0B /* EventView.swift in Sources */,
+				3E5E0C1E1F545B1C0096E7E7 /* DateTableViewCell.swift in Sources */,
 				3E36FF011F4A423700EAC9CC /* ContactTableViewCell.swift in Sources */,
 				3E47BD311F30EE0200E0646C /* DateSelectionTableViewCell.swift in Sources */,
 				3EF096B01E3FDC9F0011E726 /* ViewController.swift in Sources */,

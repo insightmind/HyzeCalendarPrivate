@@ -12,12 +12,19 @@ class RecurrenceTableViewController: UITableViewController {
 	
 	var eventInformations = EManagement.eventInformation
 	var selectedFrequency: FrequencyType = .none
+	var timeInterval: TimeIntervalTableViewCell?
+	var weekDay: WeekdayTableViewCell?
+	var endDate: DateTableViewCell?
+	var popover: RecurrencePopoverViewController?
+	
+	var recurrenceEndType: RecurrenceEndType = .none
 	
 	enum RecurrenceCellTypes: String {
 		case timeInterval = "timeInterval"
 		case weekDay = "weekDay"
 		case daysOfTheMonth = "daysOfTheMonth"
 		case monthsOfTheYear = "monthsOfTheYear"
+		case endDate = "endDate"
 	}
 	
 	struct RecurrenceCells {
@@ -27,7 +34,8 @@ class RecurrenceTableViewController: UITableViewController {
 	
 	var cells: [RecurrenceCells] = []
 	let timeIntervalCell = RecurrenceCells(cellType: .timeInterval, height: 140.0)
-	var weekDayCell = RecurrenceCells(cellType: .weekDay, height: 100)
+	var weekDayCell = RecurrenceCells(cellType: .weekDay, height: 88.0)
+	var dateCell = RecurrenceCells(cellType: .endDate, height: 200.0)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +49,7 @@ class RecurrenceTableViewController: UITableViewController {
 		self.tableView.allowsSelection = false
 		self.tableView.register(UINib(nibName: "WeekdayTableViewCell", bundle: nil), forCellReuseIdentifier: RecurrenceCellTypes.weekDay.rawValue)
 		self.tableView.register(UINib(nibName: "TimeIntervalTableViewCell", bundle: nil), forCellReuseIdentifier: RecurrenceCellTypes.timeInterval.rawValue)
+		self.tableView.register(UINib(nibName: "DateTableViewCell", bundle: nil), forCellReuseIdentifier: RecurrenceCellTypes.endDate.rawValue)
     }
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -66,13 +75,13 @@ class RecurrenceTableViewController: UITableViewController {
 		case .none:
 			return 0
 		case .daily:
-			return 1
-		case .weekly:
 			return 2
+		case .weekly:
+			return 3
 		case .monthly:
 			return 2
 		case .yearly:
-			return 3
+			return 2
 		}
     }
 
@@ -83,20 +92,38 @@ class RecurrenceTableViewController: UITableViewController {
 			let cell = tableView.dequeueReusableCell(withIdentifier: RecurrenceCellTypes.timeInterval.rawValue) as! TimeIntervalTableViewCell
 			cell.selectedFrequency = selectedFrequency
 			cell.pickerView.reloadAllComponents()
+			timeInterval = cell
 	        return cell
 		case .weekDay:
 			let cell = tableView.dequeueReusableCell(withIdentifier: RecurrenceCellTypes.weekDay.rawValue) as! WeekdayTableViewCell
 			cell.autoresizesSubviews = true
+			weekDay = cell
 			return cell
 		case .daysOfTheMonth:
 			fatalError()
 		case .monthsOfTheYear:
 			fatalError()
+		case .endDate:
+			let cell = tableView.dequeueReusableCell(withIdentifier: RecurrenceCellTypes.endDate.rawValue) as! DateTableViewCell
+			cell.tableView = self
+			endDate = cell
+			return cell
 		}
     }
 	
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		calculateCells()
+		calculateEndDateHeight()
+		if cells[indexPath.row].cellType == .endDate {
+			switch recurrenceEndType {
+			case .none:
+				return 156
+			case .date:
+				fallthrough
+			case .ocurrence:
+				return 200
+			}
+		}
 		return cells[indexPath.row].height
 	}
 	
@@ -105,15 +132,50 @@ class RecurrenceTableViewController: UITableViewController {
 		case .none:
 			cells = []
 		case .daily:
-			cells = [timeIntervalCell]
-		case .weekly:
 			cells = [timeIntervalCell,
-			         weekDayCell]
+					 dateCell]
+		case .weekly:
+			let weekDayHeight = 44 + (tableView.bounds.width - 40) / 7
+			weekDayCell.height = weekDayHeight
+			cells = [timeIntervalCell,
+			         weekDayCell,
+					 dateCell]
 		case .monthly:
-			cells = []
+			cells = [timeIntervalCell,
+					 dateCell]
 		case .yearly:
-			cells = []
+			cells = [timeIntervalCell,
+					 dateCell]
 		}
+	}
+	
+	func calculateEndDateHeight() {
+		
+		var height: CGFloat
+		switch recurrenceEndType {
+		case .none:
+			height = 156
+		case .date:
+			fallthrough
+		case .ocurrence:
+			height = 200
+		}
+		var fullHeight: CGFloat = 0
+		for i in 0..<cells.count {
+			if cells[i].cellType == .endDate {
+				cells[i].height = height
+			}
+			fullHeight += cells[i].height
+		}
+		popover!.containerViewHeightConstraint.constant = fullHeight
+		UIView.animate(withDuration: 0.3, animations: {
+			self.popover!.view.layoutIfNeeded()
+		})
+	}
+	
+	func updateCellHeights() {
+		self.tableView.beginUpdates()
+		self.tableView.endUpdates()
 	}
 
 

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import EventKit
 
 enum FrequencyType {
 	case none
@@ -53,7 +54,13 @@ class RecurrencePopoverViewController: UIViewController {
 	}
 	
 	@IBAction func save(_ sender: UIButton) {
+		
 		self.dismiss(animated: true, completion: nil)
+	}
+	
+	func calculateRecurrenceRule() {
+		
+		
 	}
 	
 	func frequencySelectionReset() {
@@ -83,7 +90,6 @@ class RecurrencePopoverViewController: UIViewController {
 			tableView?.selectedFrequency = .daily
 			tableView?.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
 			mainViewHeightConstraint.constant = 56.0
-			containerViewHeightConstraint.constant = 140.0
 			weeklyButtonView.isHidden = true
 			monthlyButtonView.isHidden = true
 			yearlyButtonView.isHidden = true
@@ -104,7 +110,7 @@ class RecurrencePopoverViewController: UIViewController {
 			tableView?.selectedFrequency = .weekly
 			tableView?.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
 			mainViewHeightConstraint.constant = 56
-			containerViewHeightConstraint.constant = 240.0
+			let height = 44 + (tableView!.tableView.bounds.width - 40) / 7
 			dailyButtonView.isHidden = true
 			monthlyButtonView.isHidden = true
 			yearlyButtonView.isHidden = true
@@ -123,7 +129,6 @@ class RecurrencePopoverViewController: UIViewController {
 			tableView?.selectedFrequency = .monthly
 			tableView?.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
 			mainViewHeightConstraint.constant = 56
-			containerViewHeightConstraint.constant = 140.0
 			weeklyButtonView.isHidden = true
 			dailyButtonView.isHidden = true
 			yearlyButtonView.isHidden = true
@@ -142,7 +147,6 @@ class RecurrencePopoverViewController: UIViewController {
 			tableView?.selectedFrequency = .yearly
 			tableView?.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
 			mainViewHeightConstraint.constant = 56
-			containerViewHeightConstraint.constant = 140.0
 			weeklyButtonView.isHidden = true
 			monthlyButtonView.isHidden = true
 			dailyButtonView.isHidden = true
@@ -202,7 +206,6 @@ class RecurrencePopoverViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     // MARK: - Navigation
 
@@ -211,6 +214,7 @@ class RecurrencePopoverViewController: UIViewController {
 		if segue.identifier == "embed" {
 			if let viewController = segue.destination as? RecurrenceTableViewController {
 				self.tableView = viewController
+				viewController.popover = self
 			}
 		}
     }

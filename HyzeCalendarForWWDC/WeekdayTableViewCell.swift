@@ -39,31 +39,33 @@ class WeekdayTableViewCell: UITableViewCell {
 		self.backgroundColor = UIColor.clear
 		self.cellView.layer.cornerRadius = self.topView.bounds.height / 2
 		self.cellView.layer.masksToBounds = true
-        dayViews = [firstDayView,
-					secondDayView,
-					thirdDayView,
-					fourthDayView,
-					fifthDayView,
-					sixthDayView,
-					seventhDayView]
-		dayViewButtons = [firstDayViewButton,
-						  secondDayViewButton,
-						  thirdDayViewButton,
-						  fourthDayViewButton,
-						  fifthDayViewButton,
-						  sixthDayViewButton,
-						  seventhDayViewButton]
+		setDayViewButtonLabels()
     }
 	
 	func setDayViewButtonLabels() {
+		
+		dayViews = [firstDayView,
+		            secondDayView,
+		            thirdDayView,
+		            fourthDayView,
+		            fifthDayView,
+		            sixthDayView,
+		            seventhDayView]
+		dayViewButtons = [firstDayViewButton,
+		                  secondDayViewButton,
+		                  thirdDayViewButton,
+		                  fourthDayViewButton,
+		                  fifthDayViewButton,
+		                  sixthDayViewButton,
+		                  seventhDayViewButton]
+		
 		for index in 0..<dayViewButtons.count {
-			var number = index + HSelection.weekDayStart.rawValue
+			var number = index + (HSelection.weekDayStart.rawValue) + 1
 			if number > 7 {
 				number -= 7
 			}
 			let weekDay = ["S", "M", "T", "W", "T", "F", "S"]
-			dayViewButtons[index].titleLabel!.text = weekDay[number - 1]
-			print(weekDay[number - 1])
+			dayViewButtons[index].setTitle(weekDay[number - 1], for: .normal)
 		}
 	}
 
@@ -108,10 +110,20 @@ class WeekdayTableViewCell: UITableViewCell {
 		}
 	}
 	
+	override func layoutIfNeeded() {
+		for view in dayViews {
+			view.layer.cornerRadius = view.bounds.height / 2
+		}
+	}
+	
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
+	
+	override func prepareForReuse() {
+		setDayViewButtonLabels()
+	}
     
 }
