@@ -56,7 +56,6 @@ class RecurrencePopoverViewController: UIViewController {
 	}
 	
 	@IBAction func save(_ sender: UIButton) {
-		
 		self.dismiss(animated: true, completion: nil)
 	}
 	

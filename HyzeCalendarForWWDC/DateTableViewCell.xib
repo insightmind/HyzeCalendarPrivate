@@ -18,7 +18,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="284"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="283.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="284"/>
                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Rl-9L-xnJ">
@@ -140,6 +140,12 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="304" height="64"/>
                                                         <date key="date" timeIntervalSinceReferenceDate="525643715.59104902">
                                                             <!--2017-08-28 20:08:35 +0000-->
+                                                        </date>
+                                                        <date key="minimumDate" timeIntervalSinceReferenceDate="441802800">
+                                                            <!--2015-01-01 11:00:00 +0000-->
+                                                        </date>
+                                                        <date key="maximumDate" timeIntervalSinceReferenceDate="63113857200">
+                                                            <!--4000-12-31 11:00:00 +0000-->
                                                         </date>
                                                     </datePicker>
                                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x5l-cC-GVU">
