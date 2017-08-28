@@ -36,20 +36,7 @@ class RecurrenceTableViewController: UITableViewController {
 	let timeIntervalCell = RecurrenceCells(cellType: .timeInterval, height: 140.0)
 	var weekDayCell = RecurrenceCells(cellType: .weekDay, height: 88.0)
 	var dateCell = RecurrenceCells(cellType: .endDate, height: 268.0)
-	var dateCellExpanded: Bool = false {
-		didSet {
-			if dateCellExpanded != oldValue {
-				if dateCellExpanded {
-					popover?.containerViewHeightConstraint.constant += 112
-				} else {
-					popover?.containerViewHeightConstraint.constant -= 112
-				}
-				UIView.animate(withDuration: 0.3, animations: {
-					self.popover?.view.layoutIfNeeded()
-				})
-			}
-		}
-	}
+	var dateCellExpanded: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
