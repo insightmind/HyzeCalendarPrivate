@@ -139,7 +139,6 @@ class DateTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDe
 		UIView.animate(withDuration: 0.3) {
 			self.layoutIfNeeded()
 		}
-		
 		tableView?.recurrenceEndType = type
 		tableView?.updateCellHeights()
 		

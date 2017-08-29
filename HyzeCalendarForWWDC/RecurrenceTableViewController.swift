@@ -15,6 +15,7 @@ class RecurrenceTableViewController: UITableViewController {
 	var timeInterval: TimeIntervalTableViewCell?
 	var weekDay: WeekdayTableViewCell?
 	var endDate: DateTableViewCell?
+	var daysOfMonth: DaysOfMonthTableViewCell?
 	var popover: RecurrencePopoverViewController?
 	
 	var recurrenceEndType: RecurrenceEndType = .none
@@ -35,7 +36,9 @@ class RecurrenceTableViewController: UITableViewController {
 	var cells: [RecurrenceCells] = []
 	let timeIntervalCell = RecurrenceCells(cellType: .timeInterval, height: 140.0)
 	var weekDayCell = RecurrenceCells(cellType: .weekDay, height: 88.0)
-	var dateCell = RecurrenceCells(cellType: .endDate, height: 268.0)
+	let daysOfMonthCell = RecurrenceCells(cellType: .daysOfTheMonth, height: 324.0)
+	var daysOfMonthCellExpanded: Bool = true
+	let dateCell = RecurrenceCells(cellType: .endDate, height: 280.0)
 	var dateCellExpanded: Bool = false
 
     override func viewDidLoad() {
@@ -51,6 +54,7 @@ class RecurrenceTableViewController: UITableViewController {
 		self.tableView.register(UINib(nibName: "WeekdayTableViewCell", bundle: nil), forCellReuseIdentifier: RecurrenceCellTypes.weekDay.rawValue)
 		self.tableView.register(UINib(nibName: "TimeIntervalTableViewCell", bundle: nil), forCellReuseIdentifier: RecurrenceCellTypes.timeInterval.rawValue)
 		self.tableView.register(UINib(nibName: "DateTableViewCell", bundle: nil), forCellReuseIdentifier: RecurrenceCellTypes.endDate.rawValue)
+		self.tableView.register(UINib(nibName: "DaysOfMonthTableViewCell", bundle: nil), forCellReuseIdentifier: RecurrenceCellTypes.daysOfTheMonth.rawValue)
     }
 	
 //	override func viewWillAppear(_ animated: Bool) {
@@ -80,7 +84,7 @@ class RecurrenceTableViewController: UITableViewController {
 		case .weekly:
 			return 3
 		case .monthly:
-			return 2
+			return 3
 		case .yearly:
 			return 2
 		}
@@ -101,7 +105,9 @@ class RecurrenceTableViewController: UITableViewController {
 			weekDay = cell
 			return cell
 		case .daysOfTheMonth:
-			fatalError()
+			let cell = tableView.dequeueReusableCell(withIdentifier: RecurrenceCellTypes.daysOfTheMonth.rawValue) as! DaysOfMonthTableViewCell
+			daysOfMonth = cell
+			return cell
 		case .monthsOfTheYear:
 			fatalError()
 		case .endDate:
@@ -121,6 +127,9 @@ class RecurrenceTableViewController: UITableViewController {
 			return dateCellExpanded ? 268 : 156
 		case .weekDay:
 			return 44 + (tableView.bounds.width - 40) / 7
+		case .daysOfTheMonth:
+			let expanded =  156 + (tableView.bounds.width - tableView.layoutMargins.left*2) / 7 * 5
+			return daysOfMonthCellExpanded ? expanded : cells[indexPath.row].height
 		default:
 			return cells[indexPath.row].height
 		}
@@ -140,6 +149,7 @@ class RecurrenceTableViewController: UITableViewController {
 					 dateCell]
 		case .monthly:
 			cells = [timeIntervalCell,
+			         daysOfMonthCell,
 					 dateCell]
 		case .yearly:
 			cells = [timeIntervalCell,
