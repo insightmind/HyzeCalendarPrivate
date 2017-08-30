@@ -221,7 +221,7 @@
         <!--MainNavigation-->
         <scene sceneID="Z3t-l8-PvS">
             <objects>
-                <navigationController title="MainNavigation" automaticallyAdjustsScrollViewInsets="NO" id="s5a-M1-ico" sceneMemberID="viewController">
+                <navigationController title="MainNavigation" automaticallyAdjustsScrollViewInsets="NO" id="s5a-M1-ico" customClass="MainNavigationViewController" customModule="HyzeCalendarForWWDC" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="mostViewed" id="6YW-lJ-l4d"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>

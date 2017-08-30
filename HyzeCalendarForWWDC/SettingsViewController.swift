@@ -22,6 +22,14 @@ class SettingsViewController: UIViewController {
 	@IBOutlet weak var startWeekDaySegmentedControl: UISegmentedControl!
 	@IBOutlet weak var defaultCalendarLabel: UILabel!
 	
+	override var preferredStatusBarStyle: UIStatusBarStyle {
+		if darkMode {
+			return .lightContent
+		} else {
+			return .default
+		}
+	}
+	
 	@IBAction func toggleAnimateDayView(_ sender: UISwitch) {
 		let defaults = UserDefaults.standard
 		if animateDayView {
@@ -56,6 +64,7 @@ class SettingsViewController: UIViewController {
         defaults.set(darkMode, forKey: "DarkMode")
         defaults.synchronize()
 		UIView.animate(withDuration: 0.4) {
+			self.setNeedsStatusBarAppearanceUpdate()
 			if darkMode{
 				self.defaultCalendarLabel.textColor = Color.white
 				self.settingsLabel.textColor = Color.white

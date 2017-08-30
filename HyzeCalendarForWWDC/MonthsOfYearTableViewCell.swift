@@ -61,6 +61,15 @@ class MonthsOfYearTableViewCell: UITableViewCell {
 		               octButton: (octView, false),
 		               novButton: (novView, false),
 		               decButton: (decView, false)]
+		
+		for i in viewButtons {
+			let (view, _) = i.value
+			view.layer.cornerRadius = view.bounds.height / 2
+			view.layer.masksToBounds = true
+			view.backgroundColor = Color.blue
+		}
+		
+		
     }
 	
 	@IBAction func toggleButton(_ sender: UIButton) {
@@ -84,8 +93,6 @@ class MonthsOfYearTableViewCell: UITableViewCell {
 	}
 	
 	func selectView(_ view: UIView) {
-		view.layer.cornerRadius = view.bounds.height / 2
-		view.layer.masksToBounds = true
 		UIView.animate(withDuration: 0.3) {
 			view.backgroundColor = Color.red
 		}
@@ -93,7 +100,7 @@ class MonthsOfYearTableViewCell: UITableViewCell {
 	
 	func deselectView(_ view: UIView) {
 		UIView.animate(withDuration: 0.3) {
-			view.backgroundColor = Color.lightBlue
+			view.backgroundColor = Color.blue
 		}
 	}
 	

@@ -13,6 +13,7 @@
 		3E21053A1E5B56C400E78840 /* ETViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2105391E5B56C400E78840 /* ETViewCell.swift */; };
 		3E2C6ECE1F4CD0A700E88CA1 /* SetContactsPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2C6ECD1F4CD0A700E88CA1 /* SetContactsPopoverViewController.swift */; };
 		3E2D7B791E6715E600A0170D /* EventEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2D7B781E6715E600A0170D /* EventEditorViewController.swift */; };
+		3E2DA5641F5773F4008CECD7 /* MainNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2DA5631F5773F4008CECD7 /* MainNavigationViewController.swift */; };
 		3E36FEFE1F4A41A100EAC9CC /* SelectContactsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E36FEFD1F4A41A100EAC9CC /* SelectContactsTableView.swift */; };
 		3E36FF011F4A423700EAC9CC /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E36FEFF1F4A423700EAC9CC /* ContactTableViewCell.swift */; };
 		3E36FF021F4A423700EAC9CC /* ContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E36FF001F4A423700EAC9CC /* ContactTableViewCell.xib */; };
@@ -107,6 +108,7 @@
 		3E2105391E5B56C400E78840 /* ETViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ETViewCell.swift; sourceTree = "<group>"; };
 		3E2C6ECD1F4CD0A700E88CA1 /* SetContactsPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetContactsPopoverViewController.swift; sourceTree = "<group>"; };
 		3E2D7B781E6715E600A0170D /* EventEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventEditorViewController.swift; sourceTree = "<group>"; };
+		3E2DA5631F5773F4008CECD7 /* MainNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationViewController.swift; sourceTree = "<group>"; };
 		3E36FEFD1F4A41A100EAC9CC /* SelectContactsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectContactsTableView.swift; sourceTree = "<group>"; };
 		3E36FEFF1F4A423700EAC9CC /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		3E36FF001F4A423700EAC9CC /* ContactTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactTableViewCell.xib; sourceTree = "<group>"; };
@@ -624,6 +626,7 @@
 			children = (
 				3EF096AF1E3FDC9F0011E726 /* ViewController.swift */,
 				3E533BCE1EC38392000CEF5F /* MainToYears */,
+				3E2DA5631F5773F4008CECD7 /* MainNavigationViewController.swift */,
 			);
 			name = CalendarView;
 			sourceTree = "<group>";
@@ -885,6 +888,7 @@
 				3EAD342B1F3E44CF00174FF7 /* Design.swift in Sources */,
 				3EE1E5AD1E48D48C00379576 /* GlobalAccessProperties.swift in Sources */,
 				3E6285431F4471B900301A42 /* CGFloatExtension.swift in Sources */,
+				3E2DA5641F5773F4008CECD7 /* MainNavigationViewController.swift in Sources */,
 				3E3AEDF81F23BFEF00792B11 /* SetTimePopoverViewController.swift in Sources */,
 				3ED0C4EB1F5373D4005915B6 /* TimeIntervalTableViewCell.swift in Sources */,
 				3EF9042C1F4CD4ED00C690C4 /* SetContactsTableViewController.swift in Sources */,
