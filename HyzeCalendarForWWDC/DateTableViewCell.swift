@@ -89,12 +89,17 @@ class DateTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDe
 	}
 	
 	func selectType(_ type: RecurrenceEndType) {
+		
+		let select = CGAffineTransform(rotationAngle: PI/4)
+		let deselect = CGAffineTransform(rotationAngle: 0)
 		switch type {
 		case .date:
 			
-			let image = #imageLiteral(resourceName: "ic_edit").withRenderingMode(.alwaysTemplate)
-			onDateButton.setImage(image, for: .normal)
-			afterOccurrencesButton.setImage(image, for: .normal)
+			UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+				self.onDateButton.transform = select
+				self.afterOccurrencesButton.transform = deselect
+				self.layoutIfNeeded()
+			}, completion: nil)
 			
 			selectViewHeightConstraint.constant = 56
 			
@@ -106,11 +111,14 @@ class DateTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDe
 			
 			tableView?.dateCellExpanded = true
 			
+			
 		case .occurrence:
 			
-			let image = #imageLiteral(resourceName: "ic_edit").withRenderingMode(.alwaysTemplate)
-			onDateButton.setImage(image, for: .normal)
-			afterOccurrencesButton.setImage(image, for: .normal)
+			UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+				self.onDateButton.transform = deselect
+				self.afterOccurrencesButton.transform = select
+				self.layoutIfNeeded()
+			}, completion: nil)
 			
 			selectViewHeightConstraint.constant = 56
 			
@@ -122,11 +130,14 @@ class DateTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDe
 			
 			tableView?.dateCellExpanded = true
 			
+			
 		case .none:
 			
-			let image = #imageLiteral(resourceName: "ic_done").withRenderingMode(.alwaysTemplate)
-			onDateButton.setImage(image, for: .normal)
-			afterOccurrencesButton.setImage(image, for: .normal)
+			UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+				self.onDateButton.transform = deselect
+				self.afterOccurrencesButton.transform = deselect
+				self.layoutIfNeeded()
+			}, completion: nil)
 			
 			selectViewHeightConstraint.constant = 112
 			onDateView.isHidden = false
@@ -137,9 +148,10 @@ class DateTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDe
 			
 			tableView?.dateCellExpanded = false
 		}
-		UIView.animate(withDuration: 0.4) {
-			self.layoutSubviews()
-		}
+		
+		UIView.animate(withDuration: 0.3, animations: {
+			self.layoutIfNeeded()
+		})
 		
 		tableView?.recurrenceEndType = type
 		self.selectedType = type
@@ -161,8 +173,8 @@ class DateTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDe
 		datePicker.setValue(Color.white, forKey: "textColor")
 		datePicker.tintColor = Color.white
 		
-		setUpButton(onDateButtonView, button: onDateButton, image: #imageLiteral(resourceName: "ic_done"))
-		setUpButton(afterOccurrencesButtonView, button: afterOccurrencesButton, image: #imageLiteral(resourceName: "ic_done"))
+		setUpButton(onDateButtonView, button: onDateButton, image: #imageLiteral(resourceName: "ic_add"))
+		setUpButton(afterOccurrencesButtonView, button: afterOccurrencesButton, image: #imageLiteral(resourceName: "ic_add"))
 		
         // Initialization code
     }

@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HyzeCalendarForWWDC/RecurrenceTableViewController.swift"
-            timestampString = "525793846.219869"
+            timestampString = "525794898.233907"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "108"
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HyzeCalendarForWWDC/DateTableViewCell.swift"
-            timestampString = "525791344.715633"
+            timestampString = "525794898.234037"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "75"
@@ -58,12 +58,12 @@
                   moduleName = "HyzeCalendarForWWDC"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/U/HyzeCalendarPrivate/HyzeCalendarForWWDC/DateTableViewCell.swift"
-                  timestampString = "525788387.067056"
+                  timestampString = "525794141.768406"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "75"
                   endingLineNumber = "75"
-                  offsetFromSymbolStart = "20">
+                  offsetFromSymbolStart = "13">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -73,12 +73,12 @@
                   moduleName = "HyzeCalendarForWWDC"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/U/HyzeCalendarPrivate/HyzeCalendarForWWDC/DateTableViewCell.swift"
-                  timestampString = "525788387.068393"
+                  timestampString = "525794141.769741"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "75"
                   endingLineNumber = "75"
-                  offsetFromSymbolStart = "28">
+                  offsetFromSymbolStart = "20">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HyzeCalendarForWWDC/DateTableViewCell.swift"
-            timestampString = "525791344.715671"
+            timestampString = "525794898.235384"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "91"
