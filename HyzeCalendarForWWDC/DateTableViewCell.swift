@@ -137,8 +137,10 @@ class DateTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDe
 			
 			tableView?.dateCellExpanded = false
 		}
+		UIView.animate(withDuration: 0.4) {
+			self.layoutSubviews()
+		}
 		
-		self.layoutSubviews()
 		tableView?.recurrenceEndType = type
 		self.selectedType = type
 		tableView?.updateCellHeights()
