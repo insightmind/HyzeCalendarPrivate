@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HyzeCalendarForWWDC/RecurrenceTableViewController.swift"
-            timestampString = "525741466.239919"
+            timestampString = "525793803.800152"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,12 +42,60 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HyzeCalendarForWWDC/DateTableViewCell.swift"
-            timestampString = "525741466.240007"
+            timestampString = "525791344.715633"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
             landmarkName = "selectDate(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HyzeCalendarForWWDC.DateTableViewCell.selectDate(__ObjC.UIButton) -&gt; ()"
+                  moduleName = "HyzeCalendarForWWDC"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/U/HyzeCalendarPrivate/HyzeCalendarForWWDC/DateTableViewCell.swift"
+                  timestampString = "525788387.067056"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "75"
+                  endingLineNumber = "75"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "@objc HyzeCalendarForWWDC.DateTableViewCell.selectDate(__ObjC.UIButton) -&gt; ()"
+                  moduleName = "HyzeCalendarForWWDC"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/U/HyzeCalendarPrivate/HyzeCalendarForWWDC/DateTableViewCell.swift"
+                  timestampString = "525788387.068393"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "75"
+                  endingLineNumber = "75"
+                  offsetFromSymbolStart = "28">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HyzeCalendarForWWDC/DateTableViewCell.swift"
+            timestampString = "525791344.715671"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "selectType(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -16,6 +16,8 @@ class RecurrenceTableViewController: UITableViewController {
 	var weekDay: WeekdayTableViewCell?
 	var endDate: DateTableViewCell?
 	var daysOfMonth: DaysOfMonthTableViewCell?
+	var daysOfMonthPicker: DaysOfMonthPickerTableViewCell?
+	var monthsOfYear: MonthsOfYearTableViewCell?
 	var popover: RecurrencePopoverViewController?
 	
 	var recurrenceEndType: RecurrenceEndType = .none
@@ -25,6 +27,7 @@ class RecurrenceTableViewController: UITableViewController {
 		case weekDay = "weekDay"
 		case daysOfTheMonth = "daysOfTheMonth"
 		case monthsOfTheYear = "monthsOfTheYear"
+		case daysOfTheMonthPicker = "daysOfTheMonthPicker"
 		case endDate = "endDate"
 	}
 	
@@ -37,7 +40,9 @@ class RecurrenceTableViewController: UITableViewController {
 	let timeIntervalCell = RecurrenceCells(cellType: .timeInterval, height: 140.0)
 	var weekDayCell = RecurrenceCells(cellType: .weekDay, height: 88.0)
 	let daysOfMonthCell = RecurrenceCells(cellType: .daysOfTheMonth, height: 324.0)
-	var daysOfMonthCellExpanded: Bool = true
+	let daysOfMonthPickerCell = RecurrenceCells(cellType: .daysOfTheMonthPicker, height: 100.0)
+	var daysOfMonthPickerExpanded: Bool = false
+	let monthsOfYearCell = RecurrenceCells(cellType: .monthsOfTheYear, height: 185.0)
 	let dateCell = RecurrenceCells(cellType: .endDate, height: 280.0)
 	var dateCellExpanded: Bool = false
 
@@ -55,12 +60,13 @@ class RecurrenceTableViewController: UITableViewController {
 		self.tableView.register(UINib(nibName: "TimeIntervalTableViewCell", bundle: nil), forCellReuseIdentifier: RecurrenceCellTypes.timeInterval.rawValue)
 		self.tableView.register(UINib(nibName: "DateTableViewCell", bundle: nil), forCellReuseIdentifier: RecurrenceCellTypes.endDate.rawValue)
 		self.tableView.register(UINib(nibName: "DaysOfMonthTableViewCell", bundle: nil), forCellReuseIdentifier: RecurrenceCellTypes.daysOfTheMonth.rawValue)
+		self.tableView.register(UINib(nibName: "MonthsOfYearTableViewCell", bundle: nil), forCellReuseIdentifier: RecurrenceCellTypes.monthsOfTheYear.rawValue)
+		self.tableView.register(UINib(nibName: "DaysOfMonthPickerTableViewCell", bundle: nil), forCellReuseIdentifier: RecurrenceCellTypes.daysOfTheMonthPicker.rawValue)
     }
 	
-//	override func viewWillAppear(_ animated: Bool) {
-//		self.tableView.reloadData()
-//		self.tableView.layoutIfNeeded()
-//	}
+	func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+		return UITableViewAutomaticDimension
+	}
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -86,7 +92,7 @@ class RecurrenceTableViewController: UITableViewController {
 		case .monthly:
 			return 3
 		case .yearly:
-			return 2
+			return 4
 		}
     }
 
@@ -109,11 +115,18 @@ class RecurrenceTableViewController: UITableViewController {
 			daysOfMonth = cell
 			return cell
 		case .monthsOfTheYear:
-			fatalError()
+			let cell = tableView.dequeueReusableCell(withIdentifier: RecurrenceCellTypes.monthsOfTheYear.rawValue) as! MonthsOfYearTableViewCell
+			monthsOfYear = cell
+			return cell
 		case .endDate:
 			let cell = tableView.dequeueReusableCell(withIdentifier: RecurrenceCellTypes.endDate.rawValue) as! DateTableViewCell
 			cell.tableView = self
 			endDate = cell
+			return cell
+		case .daysOfTheMonthPicker:
+			let cell = tableView.dequeueReusableCell(withIdentifier: RecurrenceCellTypes.daysOfTheMonthPicker.rawValue) as! DaysOfMonthPickerTableViewCell
+			daysOfMonthPicker = cell
+			cell.tableView = self
 			return cell
 		}
     }
@@ -128,8 +141,9 @@ class RecurrenceTableViewController: UITableViewController {
 		case .weekDay:
 			return 44 + (tableView.bounds.width - 40) / 7
 		case .daysOfTheMonth:
-			let expanded =  156 + (tableView.bounds.width - tableView.layoutMargins.left*2) / 7 * 5
-			return daysOfMonthCellExpanded ? expanded : cells[indexPath.row].height
+			return 160 + (UIScreen.main.bounds.width - max(0, 6 - 1)*1)/7 * 5
+		case .daysOfTheMonthPicker:
+			return daysOfMonthPickerExpanded ? 230.0 : 100.0
 		default:
 			return cells[indexPath.row].height
 		}
@@ -145,15 +159,17 @@ class RecurrenceTableViewController: UITableViewController {
 					 dateCell]
 		case .weekly:
 			cells = [timeIntervalCell,
-			         weekDayCell,
-					 dateCell]
+			         dateCell,
+			         weekDayCell]
 		case .monthly:
 			cells = [timeIntervalCell,
-			         daysOfMonthCell,
-					 dateCell]
+			         dateCell,
+					 daysOfMonthCell]
 		case .yearly:
 			cells = [timeIntervalCell,
-					 dateCell]
+			         dateCell,
+			         daysOfMonthPickerCell,
+					 monthsOfYearCell]
 		}
 	}
 	

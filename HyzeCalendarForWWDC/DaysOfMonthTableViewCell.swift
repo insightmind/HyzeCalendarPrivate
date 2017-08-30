@@ -13,43 +13,11 @@ enum MonthlyRecurrenceType {
 	case on
 }
 
-class DaysOfMonthTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDelegate {
-	
-	let zeroStrings = ["first",
-	                   "second",
-	                   "third",
-	                   "fourth",
-	                   "fifth",
-	                   "last"]
-	
-	var oneString: [String] = []
-	
-	func numberOfComponents(in pickerView: UIPickerView) -> Int {
-		return 2
-	}
-	
-	func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-		if component == 0 {
-			return zeroStrings.count
-		} else {
-			oneString = []
-			let dateFormatter = DateFormatter()
-			for i in 0...6 {
-				var index = i + HSelection.weekDayStart.rawValue
-				if index > 7 {
-					index -= 7
-				}
-				oneString.append(dateFormatter.weekdaySymbols[index])
-			}
-			oneString.append("day")
-			oneString.append("weekday")
-			oneString.append("weekend day")
-			return oneString.count
-		}
-	}
+class DaysOfMonthTableViewCell: UITableViewCell {
 	
 	var tableView: RecurrenceTableViewController?
 	var selectedType: MonthlyRecurrenceType = .each
+	let dataSource = RecurrenceDaysOfMonthPickerView()
 
 	@IBOutlet weak var cellView: UIView!
 	@IBOutlet weak var mainView: UIView!
@@ -79,16 +47,6 @@ class DaysOfMonthTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPicke
 		view.layer.shadowOpacity = 0.8
 	}
 	
-	func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-		var string = ""
-		if component == 0 {
-			string = zeroStrings[row]
-		} else {
-			string = oneString[row]
-		}
-		return NSAttributedString(string: string, attributes: [NSAttributedStringKey.foregroundColor: Color.white])
-	}
-	
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -96,8 +54,8 @@ class DaysOfMonthTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPicke
 		cellView.layer.cornerRadius = topView.bounds.height / 2
 		cellView.layer.masksToBounds = true
 		
-		pickerView.dataSource = self
-		pickerView.delegate = self
+		pickerView.dataSource = dataSource
+		pickerView.delegate = dataSource
 		pickerView.setValue(Color.white, forKey: "textColor")
 		pickerView.tintColor = Color.white
 		
@@ -107,11 +65,20 @@ class DaysOfMonthTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPicke
 		selectType(selectedType)
     }
 	@IBAction func selectEach(_ sender: UIButton) {
-		selectType(.each)
+		if selectedType == .each {
+			selectType(.on)
+		} else {
+			selectType(.each)
+		}
+		
 	}
 	
 	@IBAction func selectOn(_ sender: UIButton) {
-		selectType(.on)
+		if selectedType == .on {
+			selectType(.each)
+		} else {
+			selectType(.on)
+		}
 	}
 	
 	
@@ -130,7 +97,6 @@ class DaysOfMonthTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPicke
 				self.layoutIfNeeded()
 			}, completion: nil)
 			
-			tableView?.daysOfMonthCellExpanded = true
 		case .on:
 			
 			collectionView.isHidden = true
@@ -142,7 +108,6 @@ class DaysOfMonthTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPicke
 				self.layoutIfNeeded()
 			}, completion: nil)
 			
-			tableView?.daysOfMonthCellExpanded = false
 		}
 		tableView?.updateCellHeights()
 		selectedType = type

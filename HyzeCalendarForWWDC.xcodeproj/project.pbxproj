@@ -85,6 +85,9 @@
 		3EE1E5AD1E48D48C00379576 /* GlobalAccessProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E5AC1E48D48C00379576 /* GlobalAccessProperties.swift */; };
 		3EE5426D1F479FCC00B230FF /* RemoveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE5426B1F479FCC00B230FF /* RemoveTableViewCell.swift */; };
 		3EE5426E1F479FCC00B230FF /* RemoveTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EE5426C1F479FCC00B230FF /* RemoveTableViewCell.xib */; };
+		3EE9C8691F56F0C500FD93E9 /* RecurrenceDaysOfMonthPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE9C8681F56F0C500FD93E9 /* RecurrenceDaysOfMonthPickerView.swift */; };
+		3EE9C86D1F56F23100FD93E9 /* DaysOfMonthPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE9C86B1F56F23100FD93E9 /* DaysOfMonthPickerTableViewCell.swift */; };
+		3EE9C86E1F56F23100FD93E9 /* DaysOfMonthPickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EE9C86C1F56F23100FD93E9 /* DaysOfMonthPickerTableViewCell.xib */; };
 		3EED27F11F50C4D5001ABBC4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3EED27F01F50C4D5001ABBC4 /* GoogleService-Info.plist */; };
 		3EF096B01E3FDC9F0011E726 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF096AF1E3FDC9F0011E726 /* ViewController.swift */; };
 		3EF9042C1F4CD4ED00C690C4 /* SetContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF9042B1F4CD4ED00C690C4 /* SetContactsTableViewController.swift */; };
@@ -178,6 +181,9 @@
 		3EE1E5AC1E48D48C00379576 /* GlobalAccessProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalAccessProperties.swift; sourceTree = "<group>"; };
 		3EE5426B1F479FCC00B230FF /* RemoveTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveTableViewCell.swift; sourceTree = "<group>"; };
 		3EE5426C1F479FCC00B230FF /* RemoveTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RemoveTableViewCell.xib; sourceTree = "<group>"; };
+		3EE9C8681F56F0C500FD93E9 /* RecurrenceDaysOfMonthPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurrenceDaysOfMonthPickerView.swift; sourceTree = "<group>"; };
+		3EE9C86B1F56F23100FD93E9 /* DaysOfMonthPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysOfMonthPickerTableViewCell.swift; sourceTree = "<group>"; };
+		3EE9C86C1F56F23100FD93E9 /* DaysOfMonthPickerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DaysOfMonthPickerTableViewCell.xib; sourceTree = "<group>"; };
 		3EED27F01F50C4D5001ABBC4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3EF096AF1E3FDC9F0011E726 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3EF9042B1F4CD4ED00C690C4 /* SetContactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetContactsTableViewController.swift; sourceTree = "<group>"; };
@@ -509,6 +515,7 @@
 		3ED0C4E81F5371F4005915B6 /* RecurrenceTableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				3EE9C86A1F56F21000FD93E9 /* daysOfMonthPicker */,
 				3E5E0C1B1F545AEA0096E7E7 /* endDate */,
 				3ED0C4F01F5373FC005915B6 /* MonthsOfTheYear */,
 				3ED0C4EF1F5373F1005915B6 /* DaysOfTheMonth */,
@@ -650,6 +657,16 @@
 			name = Remove;
 			sourceTree = "<group>";
 		};
+		3EE9C86A1F56F21000FD93E9 /* daysOfMonthPicker */ = {
+			isa = PBXGroup;
+			children = (
+				3EE9C8681F56F0C500FD93E9 /* RecurrenceDaysOfMonthPickerView.swift */,
+				3EE9C86B1F56F23100FD93E9 /* DaysOfMonthPickerTableViewCell.swift */,
+				3EE9C86C1F56F23100FD93E9 /* DaysOfMonthPickerTableViewCell.xib */,
+			);
+			name = daysOfMonthPicker;
+			sourceTree = "<group>";
+		};
 		D48AC8556D2AC934DB48314B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -757,6 +774,7 @@
 				3ED0C4EC1F5373D4005915B6 /* TimeIntervalTableViewCell.xib in Resources */,
 				3EE5426E1F479FCC00B230FF /* RemoveTableViewCell.xib in Resources */,
 				3E61C1171F53815800AE1A2B /* DaysOfMonthTableViewCell.xib in Resources */,
+				3EE9C86E1F56F23100FD93E9 /* DaysOfMonthPickerTableViewCell.xib in Resources */,
 				3E47BD321F30EE0200E0646C /* DateSelectionTableViewCell.xib in Resources */,
 				3EA80D591E2BEC9300FD87C3 /* Assets.xcassets in Resources */,
 				3EA8EE2C1ED219B8000D6EF2 /* DayView.storyboard in Resources */,
@@ -843,6 +861,7 @@
 			files = (
 				3E61C11C1F53817C00AE1A2B /* MonthsOfYearTableViewCell.swift in Sources */,
 				3ECD09981E9BB39C00BF9627 /* TimeManagement.swift in Sources */,
+				3EE9C8691F56F0C500FD93E9 /* RecurrenceDaysOfMonthPickerView.swift in Sources */,
 				3EA80D521E2BEC9300FD87C3 /* AppDelegate.swift in Sources */,
 				3EA8EE311ED2350E000D6EF2 /* MonthCollectionViewController.swift in Sources */,
 				3E2D7B791E6715E600A0170D /* EventEditorViewController.swift in Sources */,
@@ -885,6 +904,7 @@
 				3ED0C4E51F533961005915B6 /* RecurrencePopoverViewController.swift in Sources */,
 				3EA727561F49F0560041B398 /* SelectContactsTableViewCell.swift in Sources */,
 				3E6818901F46FFFC00E8D7BC /* CalendarTableViewController.swift in Sources */,
+				3EE9C86D1F56F23100FD93E9 /* DaysOfMonthPickerTableViewCell.swift in Sources */,
 				3EFE5F491E41310A004E75F9 /* DayMainButton.swift in Sources */,
 				3EDC110B1F40E1B400E0B250 /* NotesTableViewCell.swift in Sources */,
 				3E7140431E46844C00D51B17 /* DayViewUIViewController.swift in Sources */,
@@ -1002,7 +1022,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -1077,7 +1097,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};

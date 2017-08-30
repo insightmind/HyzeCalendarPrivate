@@ -16,6 +16,8 @@ enum RecurrenceEndType {
 
 class DateTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDelegate {
 	
+	var selectedType: RecurrenceEndType = .none
+	
 	func numberOfComponents(in pickerView: UIPickerView) -> Int {
 		return 2
 	}
@@ -71,7 +73,7 @@ class DateTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDe
 	@IBOutlet weak var picker: UIPickerView!
 	
 	@IBAction func selectDate(_ sender: UIButton) {
-		if tableView?.dateCellExpanded == false {
+		if selectedType != .date {
 			selectType(.date)
 		} else {
 			selectType(.none)
@@ -79,7 +81,7 @@ class DateTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDe
 		
 	}
 	@IBAction func selectOccurrence(_ sender: UIButton) {
-		if tableView?.dateCellExpanded == false {
+		if selectedType != .occurrence {
 			selectType(.occurrence)
 		} else {
 			selectType(.none)
@@ -136,10 +138,9 @@ class DateTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDe
 			tableView?.dateCellExpanded = false
 		}
 		
-		UIView.animate(withDuration: 0.3) {
-			self.layoutIfNeeded()
-		}
+		self.layoutSubviews()
 		tableView?.recurrenceEndType = type
+		self.selectedType = type
 		tableView?.updateCellHeights()
 		
 	}
