@@ -15,7 +15,7 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
     /// Variable to check if Event should be added to the Calendar
     var addEvent: Bool = false
 	var tableViewController: EventEditorTableViewController?
-	var eventInformations = EManagement.eventInformation
+	var eventInformations = EventManagement.shared.eventInformation
 	var dayView: DayViewUIVViewController? = nil
 	
     // MARK: - Outlets
@@ -31,7 +31,7 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
 	@IBAction func cancel(_ sender: UIButton) {
 		
 		if eventInformations.state == .create && eventInformations.eventIdentifier != nil {
-			let correctInformationsForEvent = EManagement.convertToEventEditorEventInformations(eventIdentifier: eventInformations.eventIdentifier!, state: .showDetail)
+			let correctInformationsForEvent = EventManagement.shared.convertToEventEditorEventInformations(eventIdentifier: eventInformations.eventIdentifier!, state: .showDetail)
 			eventInformations.setEventInformations(correctInformationsForEvent!)
 			self.showDetailSetUpSaveButton()
 			self.titleTextField.text = self.eventInformations.title
@@ -86,26 +86,26 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
 	func saveToEventInformations() {
 		//Notes are saved in NotesTableViewCell
 		
-		if informationMode {
+		if Settings.shared.informationMode {
 			print("added Event")
 		}
 		
 		if eventInformations.eventIdentifier != nil {
-			if !EManagement.updateEvent(eventInformations) {
+			if !EventManagement.shared.updateEvent(eventInformations) {
 				let alert = UIAlertController(title: "Save failed!", message: "Could not save the event. Make sure you are allowed to change the event!", preferredStyle: .alert)
 				let ok = UIAlertAction(title: "Continue", style: .destructive, handler: { action in
-					EManagement.eventInformation.state = .showDetail
+					EventManagement.shared.eventInformation.state = .showDetail
 					self.endEditingWithReload()
 				})
 				alert.addAction(ok)
 				self.present(alert, animated: true, completion: nil)
 			} else {
-				EManagement.eventInformation.state = .showDetail
+				EventManagement.shared.eventInformation.state = .showDetail
 				endEditingWithReload()
 			}
 		} else {
-			EManagement.addEvent(eventInformations)
-			EManagement.eventInformation.state = .showDetail
+			EventManagement.shared.addEvent(eventInformations)
+			EventManagement.shared.eventInformation.state = .showDetail
 			endEditingWithReload()
 		}
 	}
@@ -122,7 +122,7 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
 		hideKeyboardWhenTappedAround()
 		self.titleTextField.delegate = self
 		self.titleTextField.layer.masksToBounds = false
-		if darkMode {
+		if Settings.shared.isDarkMode {
 			titleTextField.textColor = Color.white
 			blurEffectView.effect = UIBlurEffect(style: .dark)
 			blurEffectNavbarView.effect = blurEffectView.effect
@@ -135,7 +135,7 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		eventInformations = EManagement.eventInformation
+		eventInformations = EventManagement.shared.eventInformation
 		eventInformations.eventEditor = self
 		setDates()
 		switch eventInformations.state {
@@ -166,15 +166,15 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
     }
 	
 	func setDates(by duration: TimeInterval = 1800) {
-		self.eventInformations = EManagement.eventInformation
+		self.eventInformations = EventManagement.shared.eventInformation
 		if eventInformations.eventIdentifier == nil {
-			let (year, month, dayIndexPath) = HSelection.selectedDayCellIndex
+			let (year, month, dayIndexPath) = Selection.shared.selectedDayCellIndex
 			guard let checkedIndexPath = dayIndexPath else {
 				return
 			}
 			let date = TimeManagement.convertToDate(yearID: year, monthID: month, dayID: checkedIndexPath.item)
-			let currentTimeComponents = TMCalendar.components([.hour, .minute], from: Date())
-			eventInformations.startDate = TMCalendar.date(byAdding: currentTimeComponents, to: date, options: .matchFirst)!
+			let currentTimeComponents = TimeManagement.calendar.components([.hour, .minute], from: Date())
+			eventInformations.startDate = TimeManagement.calendar.date(byAdding: currentTimeComponents, to: date, options: .matchFirst)!
 			eventInformations.endDate = eventInformations.startDate.addingTimeInterval(duration)
 		}
 	}

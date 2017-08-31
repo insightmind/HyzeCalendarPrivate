@@ -14,7 +14,7 @@ class SetCalendarPopoverViewController: UIViewController {
 	@IBOutlet weak var topBlurView: UIVisualEffectView!
 	@IBOutlet weak var toolbarBlurView: UIVisualEffectView!
 	
-	var eventInformations = EManagement.eventInformation
+	var eventInformations = EventManagement.shared.eventInformation
 	
 	
 	@IBAction func cancel(_ sender: UIButton) {
@@ -24,7 +24,7 @@ class SetCalendarPopoverViewController: UIViewController {
 	override func viewDidLoad() {
         super.viewDidLoad()
 		
-		if darkMode {
+		if Settings.shared.isDarkMode {
 			topBlurView.effect = UIBlurEffect(style: .dark)
 			toolbarBlurView.effect = UIBlurEffect(style: .dark)
 		} else {

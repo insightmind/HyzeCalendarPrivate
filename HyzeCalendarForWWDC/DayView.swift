@@ -39,14 +39,14 @@ class DayView: UIView {
             let lbli = UILabel()
             var str: String
             if i == 0 {
-                if isAMPM {
+                if Settings.shared.isAMPM {
                     str = String(12)
                     //str = "\(str)am"
                 } else {
                     str = String(24)
                 }
             } else if i > 12 {
-                if isAMPM {
+                if Settings.shared.isAMPM {
                     str = String(i - 12)
                     //str = "\(str)pm"
                 } else {
@@ -109,27 +109,27 @@ class DayView: UIView {
             self.willRemoveSubview(i)
             i.removeFromSuperview()
         }
-        let (selectedYearID, selectedMonthID, indexPath) = HSelection.selectedDayCellIndex
+        let (selectedYearID, selectedMonthID, indexPath) = Selection.shared.selectedDayCellIndex
         
         guard let selectedIndexPath = indexPath else {
             fatalError()
         }
-        eventsOnDate = EManagement.convertEventsToTimeArray(EManagement.getEvents(for: TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item)))
+        eventsOnDate = EventManagement.shared.convertEventsToTimeArray(EventManagement.shared.getEvents(for: TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item)))
 		processedEventsOnDate = prepareEventSubViewLayout()
         addEventsSubViews()
         setUpDayViewCenterButton()
 		
-        if loaded {
+        if Settings.shared.loaded {
             for i in 0...23 {
-                hourDecorationPosition.append(calculateHourLabelPosition(CGFloat(i)))
+                Settings.shared.hourDecorationPosition.append(calculateHourLabelPosition(CGFloat(i)))
             }
-            loaded = false
+            Settings.shared.loaded = false
         }
         setUpHourLabels()
     }
     
     func calculateHourLabelPosition(_ hour: CGFloat) -> [CGFloat]{
-        let angle = (PI*hour)/12
+        let angle = (CGFloat.pi*hour)/12
         let inset: CGFloat = 25
         let width = self.dayViewCenterButton.bounds.width
         let height = self.dayViewCenterButton.bounds.height
@@ -150,7 +150,7 @@ class DayView: UIView {
                 y: 0,
                 width: self.dayViewCenterButton.bounds.width / 4,
                 height: self.dayViewCenterButton.bounds.height / 15)
-            self.hourLabel[i].center = CGPoint(x: hourDecorationPosition[i][0], y: hourDecorationPosition[i][1])
+            self.hourLabel[i].center = CGPoint(x: Settings.shared.hourDecorationPosition[i][0], y: Settings.shared.hourDecorationPosition[i][1])
             self.hourLabel[i].font = UIFont.boldSystemFont(ofSize: self.hourLabel[i].bounds.height)
             self.dayViewCenterButton.addSubview(hourLabel[i])
         }
@@ -166,19 +166,19 @@ class DayView: UIView {
     }
     
     func toggleIsTodayLabelColoring(_ label: UILabel) {
-        let (selectedYearID, selectedMonthID, indexPath) = HSelection.selectedDayCellIndex
+        let (selectedYearID, selectedMonthID, indexPath) = Selection.shared.selectedDayCellIndex
         
         guard let selectedIndexPath = indexPath else {
             fatalError()
         }
-        if darkMode {
-            if TMCalendar.isDateInToday(TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item)){
+        if Settings.shared.isDarkMode {
+            if TimeManagement.calendar.isDateInToday(TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item)){
                 label.textColor = Color.white
             } else {
                 label.textColor = Color.grey
             }
         } else {
-            if TMCalendar.isDateInToday(TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item)){
+            if TimeManagement.calendar.isDateInToday(TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item)){
                 label.textColor = Color.grey
             } else {
                 label.textColor = Color.white
@@ -196,7 +196,7 @@ class DayView: UIView {
             width: 2 * self.dayViewCenterButton.bounds.width / 4,
             height: self.dayViewCenterButton.bounds.height / 10 + 3)
         self.topLabel.font = UIFont.boldSystemFont(ofSize: self.topLabel.bounds.height - 2)
-        let (selectedYearID , selectedMonthID, _) = HSelection.selectedDayCellIndex
+        let (selectedYearID , selectedMonthID, _) = Selection.shared.selectedDayCellIndex
 		self.topLabel.text = TimeManagement.getMonthName(TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: 1), withYear: false)
         self.dayViewCenterButton.addSubview(topLabel)
     }
@@ -209,7 +209,7 @@ class DayView: UIView {
             width:  2 * self.dayViewCenterButton.bounds.width / 4,
             height: self.dayViewCenterButton.bounds.height / 4)
         self.midLabel.font = UIFont.boldSystemFont(ofSize: self.midLabel.bounds.height - 5)
-        let (_, _, indexPath) = HSelection.selectedDayCellIndex
+        let (_, _, indexPath) = Selection.shared.selectedDayCellIndex
         
         guard let selectedIndexPath = indexPath else {
             fatalError()
@@ -239,7 +239,7 @@ class DayView: UIView {
             width: 2 * self.dayViewCenterButton.bounds.width / 4,
             height: self.dayViewCenterButton.bounds.height / 10)
         self.botLabel.font = UIFont.boldSystemFont(ofSize: self.botLabel.bounds.height)
-        let (selectedYearID, _, _) = HSelection.selectedDayCellIndex
+        let (selectedYearID, _, _) = Selection.shared.selectedDayCellIndex
         self.botLabel.text = String(selectedYearID)
         self.dayViewCenterButton.addSubview(botLabel)
     }
@@ -296,7 +296,7 @@ class DayView: UIView {
 					let event = EventView(frame: self.bounds , carcWidth: 5, eventIdentifier: i.key)
 					event.drawLayer = layer
 					event.sendTimeProperties(start: i.value[1], end: i.value[2])
-					event.sendColorProperties(EManagement.getCalendarColor(eventIdentifier: event.eventIdentifier) ?? UIColor.randomColor())
+					event.sendColorProperties(EventManagement.shared.getCalendarColor(eventIdentifier: event.eventIdentifier) ?? UIColor.randomColor())
 					if i.value[0] == 0 {
 						event.isFullDay = true
 					}
@@ -308,7 +308,7 @@ class DayView: UIView {
 				}
 			}
 		}
-			if animateDayView {
+			if Settings.shared.animateDayView {
 				var i = events.count - 1
 				while i >= 0 {
 					let delay = events.count - 1 - i
@@ -323,23 +323,23 @@ class DayView: UIView {
         }
 		
 		
-        let (selectedYearID, selectedMonthID, indexPath) = HSelection.selectedDayCellIndex
+        let (selectedYearID, selectedMonthID, indexPath) = Selection.shared.selectedDayCellIndex
 		
         guard let selectedIndexPath = indexPath else {
             fatalError()
         }
-        if TMCalendar.isDateInToday(TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID , dayID: selectedIndexPath.item)){
+        if TimeManagement.calendar.isDateInToday(TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID , dayID: selectedIndexPath.item)){
             let watchhand = EventView(frame: self.bounds, carcWidth: 50, hourRotation: true)
             watchhand.sendTimeProperties(start:  -5, end: 5)
-			watchhand.sendColorProperties(darkMode ? Color.white : Color.grey)
+			watchhand.sendColorProperties(Settings.shared.isDarkMode ? Color.white : Color.grey)
             self.addSubview(watchhand)
 			let now = Date()
-			let components = TMCalendar.components(in: TimeZone.autoupdatingCurrent, from: now)
+			let components = TimeManagement.calendar.components(in: TimeZone.autoupdatingCurrent, from: now)
 			let nextDay = TimeManagement.convertToDate(yearID: components.year!, monthID: components.month!, dayID: components.day! + 1)
 			let duration = nextDay.timeIntervalSince(now)
 			let nowRadiant = TimeManagement.timeRadiant(now)
 			watchhand.transform = CGAffineTransform(rotationAngle: nowRadiant)
-			let fullRotation = ((1440 * PI)/720) - TimeManagement.timeRadiant(now)
+			let fullRotation = ((1440 * CGFloat.pi)/720) - TimeManagement.timeRadiant(now)
 
 			UIView.animateKeyframes(withDuration: duration, delay: 0, options: UIViewKeyframeAnimationOptions(rawValue: 3 << 16), animations: {
 				

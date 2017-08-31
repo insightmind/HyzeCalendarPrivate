@@ -12,7 +12,7 @@ import EventKit
 
 class SetRecurrenceTableViewCell: UITableViewCell, EventEditorCell {
 	
-	var eventInformations: EventEditorEventInformations! = EManagement.eventInformation
+	var eventInformations: EventEditorEventInformations! = EventManagement.shared.eventInformation
 	
 	func reloadInformations() {
 		return

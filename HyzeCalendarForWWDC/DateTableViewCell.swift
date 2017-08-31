@@ -90,7 +90,7 @@ class DateTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDe
 	
 	func selectType(_ type: RecurrenceEndType) {
 		
-		let select = CGAffineTransform(rotationAngle: PI/4)
+		let select = CGAffineTransform(rotationAngle: CGFloat.pi/4)
 		let deselect = CGAffineTransform(rotationAngle: 0)
 		switch type {
 		case .date:

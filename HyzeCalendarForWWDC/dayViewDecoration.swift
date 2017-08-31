@@ -20,8 +20,8 @@ class DayViewDecoration: UIView {
         let center = CGPoint(x: bounds.width/2, y: bounds.height/2)
         let radius: CGFloat = max(bounds.width - inset, bounds.height - inset)
      
-        let startAngle: CGFloat = ((self.startInt * PI)/720) + ((3*PI)/2)
-        let endAngle: CGFloat = ((self.endInt * PI)/720) + ((3*PI)/2)
+        let startAngle: CGFloat = ((self.startInt * CGFloat.pi)/720) + ((3*CGFloat.pi)/2)
+        let endAngle: CGFloat = ((self.endInt * CGFloat.pi)/720) + ((3*CGFloat.pi)/2)
         
         let path = UIBezierPath(arcCenter: center, radius: radius/2 - arcWidth/2, startAngle: startAngle, endAngle: endAngle, clockwise: true)
      

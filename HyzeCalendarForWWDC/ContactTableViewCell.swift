@@ -12,7 +12,7 @@ import Contacts
 
 class ContactTableViewCell: UITableViewCell {
 	
-	let eventInformation = EManagement.eventInformation
+	let eventInformation = EventManagement.shared.eventInformation
 	var participant: EKParticipant?
 	var contact: CNContact?
 	var isContact: Bool = false
@@ -138,7 +138,7 @@ class ContactTableViewCell: UITableViewCell {
 		self.backgroundColor = UIColor.clear
 		self.mainView.backgroundColor = UIColor.clear
 		
-		if darkMode {
+		if Settings.shared.isDarkMode {
 			self.contactLabel.textColor = Color.white
 			self.emailLabel.textColor = Color.white.withAlphaComponent(0.7)
 		} else {
@@ -236,7 +236,7 @@ class ContactTableViewCell: UITableViewCell {
 	func setContact(_ participant: EKParticipant, shouldAdd: Bool = false, email: String? = nil) {
 		setIsAdded(shouldAdd)
 		self.participant = participant
-		if let realContact = CManagement.getContact(for: participant.contactPredicate) {
+		if let realContact = ContactManagement.shared.getContact(for: participant.contactPredicate) {
 			setUp(contact: realContact)
 			self.isContact = true
 		} else {

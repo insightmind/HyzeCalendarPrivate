@@ -19,7 +19,7 @@ class DayCollectionViewCell: UICollectionViewCell {
 	lazy var lbl: UILabel = {
 		let lbl = UILabel()
 		lbl.text = "0"
-		if darkMode {
+		if Settings.shared.isDarkMode {
 			lbl.textColor = Color.white
 		} else {
 			lbl.textColor = Color.grey
@@ -31,7 +31,7 @@ class DayCollectionViewCell: UICollectionViewCell {
     
     lazy var bline: UIView = {
         let vw = UIView()
-        if darkMode {
+        if Settings.shared.isDarkMode {
             vw.backgroundColor = UIColor.lightGray
         } else {
             vw.backgroundColor = UIColor.darkGray

@@ -28,7 +28,7 @@ class DaysOfMonthPickerTableViewCell: UITableViewCell {
 		var transform: CGAffineTransform
 		if isSelected {
 			enableLabel.setTitle("disable", for: .normal)
-			transform = CGAffineTransform(rotationAngle: PI/4)
+			transform = CGAffineTransform(rotationAngle: CGFloat.pi/4)
 			pickerView.isHidden = false
 			tableView?.daysOfMonthPickerExpanded = true
 			tableView?.updateCellHeights()

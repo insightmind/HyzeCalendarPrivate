@@ -11,7 +11,7 @@ import Contacts
 
 class SetContactsTableViewController: UITableViewController {
 	
-	let eventInformation = EManagement.eventInformation
+	let eventInformation = EventManagement.shared.eventInformation
 	var searchBar: UISearchBar?
 	var search: String = ""
 	var searchIsEmail: Bool = false
@@ -52,7 +52,7 @@ class SetContactsTableViewController: UITableViewController {
 			return addedContacts.count + addedEmails.count
 		default:
 			
-			contacts = CManagement.getContacts(name: search, isFuzzy: true, alreadyAdded: addedContacts)
+			contacts = ContactManagement.shared.getContacts(name: search, isFuzzy: true, alreadyAdded: addedContacts)
 			
 			var faktor = 0
 			if searchIsEmail {
@@ -125,7 +125,7 @@ class SetContactsTableViewController: UITableViewController {
 	
 	func searchDidChange(_ search: String) {
 		self.search = search
-		self.searchIsEmail = CManagement.isValidEmail(email: search)
+		self.searchIsEmail = ContactManagement.shared.isValidEmail(email: search)
 		self.tableView.reloadSections(IndexSet(integersIn: 0...1), with: .automatic)
 	}
 	
@@ -134,7 +134,7 @@ class SetContactsTableViewController: UITableViewController {
 			return
 		}
 		for participant in participants {
-			if let contact = CManagement.getContact(for: participant.contactPredicate) {
+			if let contact = ContactManagement.shared.getContact(for: participant.contactPredicate) {
 				addedContacts.append(contact)
 			} else {
 				var email = participant.url.absoluteString

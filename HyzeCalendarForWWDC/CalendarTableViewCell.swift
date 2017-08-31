@@ -17,7 +17,7 @@ class CalendarTableViewCell: UITableViewCell {
 	@IBOutlet weak var selectButton: UIView!
 	@IBOutlet weak var arrowButton: UIButton!
 	
-	var eventInformation = EManagement.eventInformation
+	var eventInformation = EventManagement.shared.eventInformation
 	var calendar: EKCalendar? = nil
 	
 	override func awakeFromNib() {
@@ -40,7 +40,7 @@ class CalendarTableViewCell: UITableViewCell {
 			self.titleLabel.textColor = Color.white
 		} else {
 			self.mainView.backgroundColor = UIColor.clear
-			if darkMode {
+			if Settings.shared.isDarkMode {
 				self.titleLabel.textColor = Color.white
 			} else {
 				self.titleLabel.textColor = Color.blue
@@ -52,12 +52,12 @@ class CalendarTableViewCell: UITableViewCell {
 	@IBAction func setCalendar(_ sender: UIButton) {
 		if let viewController = eventInformation.setCalendarPopoverViewController {
 			viewController.dismiss(animated: true, completion: {
-				if isSettingDefaultCalendar {
-					EManagement.EMCalendar = self.calendar
+				if Settings.shared.isSettingDefaultCalendar {
+					EventManagement.shared.EMCalendar = self.calendar
 					let userDefault = UserDefaults.standard
-					userDefault.set(EManagement.EMCalendar?.calendarIdentifier, forKey: EManagement.userDefaultCalendarIdentifier)
-					settingsView?.loadInformations()
-					isSettingDefaultCalendar = false
+					userDefault.set(EventManagement.shared.EMCalendar?.calendarIdentifier, forKey: EventManagement.shared.userDefaultCalendarIdentifier)
+					Settings.shared.settingsView?.loadInformations()
+					Settings.shared.isSettingDefaultCalendar = false
 					userDefault.synchronize()
 				} else {
 					self.eventInformation.calendar = self.calendar

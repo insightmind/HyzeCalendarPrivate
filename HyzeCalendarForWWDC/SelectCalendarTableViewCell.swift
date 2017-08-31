@@ -54,7 +54,7 @@ class SelectCalendarTableViewCell: UITableViewCell, EventEditorCell {
 	override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-		self.eventInformations = EManagement.eventInformation
+		self.eventInformations = EventManagement.shared.eventInformation
 		
 		self.backgroundColor = UIColor.clear
 		self.mainView.layer.cornerRadius = self.labelView.bounds.height / 2
@@ -73,12 +73,12 @@ class SelectCalendarTableViewCell: UITableViewCell, EventEditorCell {
 			self.selectedCalendarLabel.text = title
 			self.calendarColorView.backgroundColor = UIColor(cgColor: (eventInformations.calendar?.cgColor)!)
 		} else {
-			if let standardTitle = EManagement.EMCalendar?.title {
+			if let standardTitle = EventManagement.shared.EMCalendar?.title {
 				self.selectedCalendarLabel.text = standardTitle
-				self.calendarColorView.backgroundColor = UIColor(cgColor: (EManagement.EMCalendar?.cgColor)!)
+				self.calendarColorView.backgroundColor = UIColor(cgColor: (EventManagement.shared.EMCalendar?.cgColor)!)
 			} else {
-				self.selectedCalendarLabel.text = EManagement.EMEventStore.defaultCalendarForNewEvents?.title
-				self.calendarColorView.backgroundColor = UIColor(cgColor: (EManagement.EMEventStore.defaultCalendarForNewEvents?.cgColor)!)
+				self.selectedCalendarLabel.text = EventManagement.shared.EMEventStore.defaultCalendarForNewEvents?.title
+				self.calendarColorView.backgroundColor = UIColor(cgColor: (EventManagement.shared.EMEventStore.defaultCalendarForNewEvents?.cgColor)!)
 			}
 		}
 		self.calendarColorView.layer.shadowColor = self.calendarColorView.backgroundColor?.cgColor
@@ -95,7 +95,7 @@ class SelectCalendarTableViewCell: UITableViewCell, EventEditorCell {
 
 	func reloadInformations() {
 		
-		eventInformations = EManagement.eventInformation
+		eventInformations = EventManagement.shared.eventInformation
 		
 		UIView.animate(withDuration: 0.3, animations: {
 			switch self.eventInformations.state {

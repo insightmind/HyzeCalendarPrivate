@@ -15,7 +15,7 @@ enum EventAnimationType {
 class EventView: UIButton {
 
     var startTime: CGFloat = 0
-    var endTime: CGFloat = 2 * PI
+    var endTime: CGFloat = 2 * CGFloat.pi
     var coloring: UIColor = Color.white
     var arcWidth: CGFloat = 25
     var allowHourRotation: Bool = false
@@ -69,7 +69,7 @@ class EventView: UIButton {
     
     func calculateAngle(for minute: CGFloat) -> CGFloat {
 		
-		return ((minute * PI)/720) + ((3*PI)/2)
+		return ((minute * CGFloat.pi)/720) + ((3*CGFloat.pi)/2)
 
     }
     

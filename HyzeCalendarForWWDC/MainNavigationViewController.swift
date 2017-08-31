@@ -23,7 +23,7 @@ class MainNavigationViewController: UINavigationController {
     }
 	
 	override var preferredStatusBarStyle: UIStatusBarStyle {
-		if darkMode {
+		if Settings.shared.isDarkMode {
 			return .lightContent
 		} else {
 			return .default

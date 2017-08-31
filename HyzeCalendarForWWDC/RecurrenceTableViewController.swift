@@ -10,7 +10,7 @@ import UIKit
 
 class RecurrenceTableViewController: UITableViewController {
 	
-	var eventInformations = EManagement.eventInformation
+	var eventInformations = EventManagement.shared.eventInformation
 	var selectedFrequency: FrequencyType = .none
 	var timeInterval: TimeIntervalTableViewCell?
 	var weekDay: WeekdayTableViewCell?

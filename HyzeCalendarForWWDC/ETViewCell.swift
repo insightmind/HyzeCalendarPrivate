@@ -30,7 +30,7 @@ class ETViewCell: UITableViewCell {
         lbl.baselineAdjustment = .alignCenters
         lbl.font = UIFont.systemFont(ofSize: 16)
         lbl.numberOfLines = 2
-        if darkMode {
+        if Settings.shared.isDarkMode {
             lbl.textColor = Color.white
         } else {
             lbl.textColor = Color.white
@@ -72,13 +72,13 @@ class ETViewCell: UITableViewCell {
             self.end = nil
         } else {
             let dateformatter = DateFormatter()
-            if isAMPM {
+            if Settings.shared.isAMPM {
                 dateformatter.locale = Locale(identifier:  "en_US")
             } else {
                 dateformatter.locale = Locale(identifier: "de_DE")
             }
 
-            if TMCalendar.component(.day, from: from) != TMCalendar.component(.day, from: to) {
+            if TimeManagement.calendar.component(.day, from: from) != TimeManagement.calendar.component(.day, from: to) {
                 dateformatter.dateStyle = .short
                 dateformatter.timeStyle = .short
             } else {
@@ -97,7 +97,7 @@ class ETViewCell: UITableViewCell {
 		
         self.color = color
         self.superEvent = inherit
-        if informationMode {
+        if Settings.shared.informationMode {
             print("[INFORMATION] \n ETViewCell \n title:       \(title),\n startDate:   \(start ?? "noStartDate"),\n endDate:     \(end ?? "noEndDate"),\n color:       \(color),\n inheritFrom: \(String(describing: superEvent)) \n")
         }
         
@@ -108,7 +108,7 @@ class ETViewCell: UITableViewCell {
         
         self.accessoryType = .none
         
-        self.inheritanceBar.backgroundColor = EManagement.getCalendarColor(eventIdentifier: eventIdentifier) ?? Color.white
+        self.inheritanceBar.backgroundColor = EventManagement.shared.getCalendarColor(eventIdentifier: eventIdentifier) ?? Color.white
         self.titleLabel.text = self.title
         self.startLabel.text = self.start
         self.endLabel.text = self.end
@@ -116,7 +116,7 @@ class ETViewCell: UITableViewCell {
         startLabel.textColor = UIColor.white
         endLabel.textColor = UIColor.white
         
-        if darkMode {
+        if Settings.shared.isDarkMode {
             titleLabel.textColor = Color.white
         } else {
             titleLabel.textColor = Color.white

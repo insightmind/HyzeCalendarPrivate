@@ -24,8 +24,8 @@ class ETView: UITableView, UITableViewDataSource, UITableViewDelegate{
         
         let event = events[indexPath.row]
         
-        if selectedETViewCellIndexPath != nil {
-            if selectedETViewCellIndexPath == indexPath {
+        if Selection.shared.selectedETViewCellIndexPath != nil {
+            if Selection.shared.selectedETViewCellIndexPath == indexPath {
                 eventCell.isSelected = true
                 visuallySelect(eventCell, duration: 0, indexPath: indexPath)
             }
@@ -45,11 +45,11 @@ class ETView: UITableView, UITableViewDataSource, UITableViewDelegate{
         tableView.contentInset = UIEdgeInsets(top: 30, left: 0, bottom: 30, right: 0)
         tableView.register(ETViewCell.self, forCellReuseIdentifier: cellIdentifier)
         prevEventsCount = events.count
-        let (selectedYearID, selectedMonthID, indexPath) = HSelection.selectedDayCellIndex
+        let (selectedYearID, selectedMonthID, indexPath) = Selection.shared.selectedDayCellIndex
         guard let selectedIndexPath = indexPath else {
             return 0
         }
-        events = EManagement.getEvents(for: TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item))
+        events = EventManagement.shared.getEvents(for: TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item))
         if events.count < 3 {
             tableView.isScrollEnabled = false
         } else {
@@ -67,28 +67,28 @@ class ETView: UITableView, UITableViewDataSource, UITableViewDelegate{
 		layer.cornerRadius = 20
 		layer.masksToBounds = true
 		
-        let (selectedYearID, selectedMonthID, indexPath) = HSelection.selectedDayCellIndex
+        let (selectedYearID, selectedMonthID, indexPath) = Selection.shared.selectedDayCellIndex
         
         guard let selectedIndexPath = indexPath else {
             return
         }
         self.prevEventsCount = self.events.count + 1
-        self.events = EManagement.getEvents(for: TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item))
+        self.events = EventManagement.shared.getEvents(for: TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item))
     }
     
     func reloadView() {
         
-        selectedETViewCellIndexPath = nil
+        Selection.shared.selectedETViewCellIndexPath = nil
         
-        let (selectedYearID, selectedMonthID, indexPath) = HSelection.selectedDayCellIndex
+        let (selectedYearID, selectedMonthID, indexPath) = Selection.shared.selectedDayCellIndex
         guard let selectedIndexPath = indexPath else {
             fatalError()
         }
 		
 		let convertedDate = TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item)
-		let localEvents = EManagement.getEvents(for: convertedDate)
+		let localEvents = EventManagement.shared.getEvents(for: convertedDate)
 		
-        calculateColorsForEventsOnSelectedDay(numberOfEvents: localEvents.count)
+        EventManagement.shared.calculateColorsForEventsOnSelectedDay(numberOfEvents: localEvents.count)
         self.beginUpdates()
 
         self.prevEventsCount = self.numberOfRows(inSection: 0)
@@ -112,9 +112,9 @@ class ETView: UITableView, UITableViewDataSource, UITableViewDelegate{
 	
 	func setDesign() {
 		UIView.animate(withDuration: 0.2) {
-			if HSelection.selectedIsToday!  {
+			if Selection.shared.selectedIsToday!  {
 				self.backgroundColor = Color.red
-			} else if HSelection.selectedIsOnWeekend! {
+			} else if Selection.shared.selectedIsOnWeekend! {
 				self.backgroundColor = Color.green
 			} else {
 				self.backgroundColor = Color.blue
@@ -128,15 +128,15 @@ class ETView: UITableView, UITableViewDataSource, UITableViewDelegate{
             return
         }
         
-        if indexPath == selectedETViewCellIndexPath {
+        if indexPath == Selection.shared.selectedETViewCellIndexPath {
 			return
         }
-        if selectedETViewCellIndexPath != nil {
+        if Selection.shared.selectedETViewCellIndexPath != nil {
             var access = true
-            let prevRow = tableView.cellForRow(at: selectedETViewCellIndexPath!) as? ETViewCell
+            let prevRow = tableView.cellForRow(at: Selection.shared.selectedETViewCellIndexPath!) as? ETViewCell
             if prevRow == nil{
                 print("Didn't found cell to unhighlight")
-                selectedETViewCellIndexPath = nil
+                Selection.shared.selectedETViewCellIndexPath = nil
                 access = false
             }
             if access {
@@ -145,12 +145,12 @@ class ETView: UITableView, UITableViewDataSource, UITableViewDelegate{
 
         }
 		
-		guard let informations = EManagement.convertToEventEditorEventInformations(eventIdentifier: row.eventIdentifier, state: .showDetail) else {
+		guard let informations = EventManagement.shared.convertToEventEditorEventInformations(eventIdentifier: row.eventIdentifier, state: .showDetail) else {
 			return
 		}
-		EManagement.selectedEventInformation = informations
+		EventManagement.shared.selectedEventInformation = informations
 
-        selectedETViewCellIndexPath = indexPath
+        Selection.shared.selectedETViewCellIndexPath = indexPath
         visuallySelect(row, indexPath: indexPath)
 
     }
@@ -165,9 +165,9 @@ class ETView: UITableView, UITableViewDataSource, UITableViewDelegate{
     }
     
     func visuallySelect(_ row: ETViewCell, duration: TimeInterval = 0.2, indexPath: IndexPath) {
-        if viewIsDayView {
-            if renDayView != nil {
-                renDayView?.selectEventView(with: row.eventIdentifier, duration: duration)
+        if Settings.shared.viewIsDayView {
+            if Settings.shared.renDayView != nil {
+                Settings.shared.renDayView?.selectEventView(with: row.eventIdentifier, duration: duration)
             }
         }
 		let otherOption = row.inheritanceBar.bounds.width * 4
@@ -192,7 +192,7 @@ class ETView: UITableView, UITableViewDataSource, UITableViewDelegate{
     
     override init(frame: CGRect, style: UITableViewStyle) {
         super.init(frame: frame, style: style)
-        GlobalETView = self
+        EventManagement.shared.ETView = self
         updateEvents()
     }
     

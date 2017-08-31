@@ -15,7 +15,7 @@ extension EventEditorViewController {
 		
 		var color: UIColor
 		
-		if darkMode {
+		if Settings.shared.isDarkMode {
 			color = Color.white.withAlphaComponent(0.5)
 		} else {
 			color = Color.grey.withAlphaComponent(0.5)

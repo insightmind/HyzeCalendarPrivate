@@ -83,7 +83,7 @@ class DaysOfMonthTableViewCell: UITableViewCell {
 	
 	
 	func selectType(_ type: MonthlyRecurrenceType) {
-		let selected = CGAffineTransform(rotationAngle: PI/4)
+		let selected = CGAffineTransform(rotationAngle: CGFloat.pi/4)
 		let deselected = CGAffineTransform(rotationAngle: 0)
 		switch type {
 		case .each:

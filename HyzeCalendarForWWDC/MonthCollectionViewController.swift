@@ -123,7 +123,7 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
             cell.label?.text = String(item - daysInMonth)
             cell.isSelectable = false
         } else {
-            if showLinesInCalendarView {
+            if Settings.shared.showLinesInCalendarView {
             if cell.bottomLine == nil {
                 cell.bline.frame = CGRect(x: -2, y: cell.bounds.height, width: cell.bounds.width + 4, height: 1)
                 cell.addSubview(cell.bline)
@@ -144,8 +144,8 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
         
         if isSelected {
 			self.forcedCellSelection = true
-            HSelection.selectedDayCellIndex = (yearID, monthID + 1, IndexPath(item: item, section: 0))
-			HSelection.selectedIsOnWeekend = isOnWeekend
+            Selection.shared.selectedDayCellIndex = (yearID, monthID + 1, IndexPath(item: item, section: 0))
+			Selection.shared.selectedIsOnWeekend = isOnWeekend
             self.collectionView!.selectItem(at: indexPath, animated: false, scrollPosition: .init(rawValue: 0))
             cell.isSelected = true
 
@@ -172,7 +172,7 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
 	}
 	
 	func calculateConformedItem(_ indexPath: IndexPath) -> Int {
-		var conform = firstDayInMonth - HSelection.weekDayStart.rawValue
+		var conform = firstDayInMonth - Selection.shared.weekDayStart.rawValue
 		if conform < 0 {
 			conform += 7
 		}
@@ -206,13 +206,13 @@ extension MonthCollectionViewController {
             return
         }
         
-        let (yID, mID, prevIndexPath) = HSelection.selectedDayCellIndex
+        let (yID, mID, prevIndexPath) = Selection.shared.selectedDayCellIndex
         
         if yID == yearID && mID == monthID && !forcedCellSelection{
             guard var checkedPrevIndexPath = prevIndexPath else {
                 fatalError()
             }
-			checkedPrevIndexPath = IndexPath(item: checkedPrevIndexPath.item + HSelection.weekDayStart.rawValue, section: checkedPrevIndexPath.section)
+			checkedPrevIndexPath = IndexPath(item: checkedPrevIndexPath.item + Selection.shared.weekDayStart.rawValue, section: checkedPrevIndexPath.section)
             self.collectionView(collectionView, didDeselectItemAt: checkedPrevIndexPath)
         }
 		
@@ -225,15 +225,15 @@ extension MonthCollectionViewController {
 		if prevIndexPath?.item == configuredIndexPath.item && yID == yearID && mID - 1 == monthID && !forcedCellSelection{
 			return
 		}
-		HSelection.selectedDayCellIndex = (self.yearID, self.monthID + 1, configuredIndexPath)
-		HSelection.selectedIsOnWeekend = self.isOnWeekend(for: indexPath)
-		HSelection.selectedIsToday = isToday
+		Selection.shared.selectedDayCellIndex = (self.yearID, self.monthID + 1, configuredIndexPath)
+		Selection.shared.selectedIsOnWeekend = self.isOnWeekend(for: indexPath)
+		Selection.shared.selectedIsToday = isToday
 		let prevSize = cell.contentView.bounds
 		let prevShadowPath = cell.layer.shadowPath
 		cell.layer.shadowPath = UIBezierPath(rect: CGRect.zero).cgPath
 		cell.contentView.bounds = CGRect.zero
 		cell.contentView.layer.cornerRadius = 0
-		cell.contentView.backgroundColor = darkMode ? Color.grey : Color.white
+		cell.contentView.backgroundColor = Settings.shared.isDarkMode ? Color.grey : Color.white
 		UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
 			
 			cell.setCellDesign(isToday: isToday, isSelected: isSelected, isOnWeekend: isOnWeekend)
@@ -247,7 +247,7 @@ extension MonthCollectionViewController {
         
         cell.isSelected = true
         
-        if informationMode {
+        if Settings.shared.informationMode {
         print("\(indexPath): | \(TimeManagement.convertToDate(yearID: yearID, monthID: monthID, dayID: indexPath.item))")
         }
 		
@@ -255,11 +255,11 @@ extension MonthCollectionViewController {
     }
 	
 	func isOnWeekend(for indexPath: IndexPath) -> Bool {
-		var sundaySolution = 1 - HSelection.weekDayStart.rawValue
+		var sundaySolution = 1 - Selection.shared.weekDayStart.rawValue
 		if sundaySolution < 0 {
 			sundaySolution += 7
 		}
-		var saturdaySolution = 0 - HSelection.weekDayStart.rawValue
+		var saturdaySolution = 0 - Selection.shared.weekDayStart.rawValue
 		if saturdaySolution < 0 {
 			saturdaySolution += 7
 		}

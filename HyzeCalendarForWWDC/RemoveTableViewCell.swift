@@ -10,10 +10,10 @@ import UIKit
 
 class RemoveTableViewCell: UITableViewCell, EventEditorCell {
 	
-	var eventInformations: EventEditorEventInformations! = EManagement.eventInformation
+	var eventInformations: EventEditorEventInformations! = EventManagement.shared.eventInformation
 	
 	func reloadInformations() {
-		eventInformations = EManagement.eventInformation
+		eventInformations = EventManagement.shared.eventInformation
 		return
 	}
 
@@ -46,7 +46,7 @@ class RemoveTableViewCell: UITableViewCell, EventEditorCell {
 			return
 		}
 		let remove = UIAlertAction(title: "Remove", style: .destructive) { (_) in
-			EManagement.deleteEvent(self.eventInformations)
+			EventManagement.shared.deleteEvent(self.eventInformations)
 			viewController.endEditingWithReload()
 		}
 		alert.addAction(cancel)

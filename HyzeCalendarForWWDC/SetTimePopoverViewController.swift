@@ -28,7 +28,7 @@ class SetTimePopoverViewController: UIViewController {
 	
 	@IBAction func save(_ sender: UIButton) {
 		
-		if TMCalendar.compare(dates[.startDate]!, to: dates[.endDate]!, toUnitGranularity: .minute) == ComparisonResult.orderedDescending {
+		if TimeManagement.calendar.compare(dates[.startDate]!, to: dates[.endDate]!, toUnitGranularity: .minute) == ComparisonResult.orderedDescending {
 			self.yearLabel.text = "Starts must be before Ends!"
 			UIView.animate(withDuration: 0.7, animations: {
 				self.startsButton.backgroundColor = Color.red
@@ -54,9 +54,9 @@ class SetTimePopoverViewController: UIViewController {
 	
 	@IBAction func changeDate(_ sender: UIDatePicker) {
 		dates[currentState] = sender.date
-		yearLabel.text = String(TMCalendar.component(.year, from: dates[currentState]!))
+		yearLabel.text = String(TimeManagement.calendar.component(.year, from: dates[currentState]!))
 		if currentState == .startDate {
-			if TMCalendar.compare(dates[.startDate]!, to: dates[.endDate]!, toUnitGranularity: .minute) == .orderedDescending {
+			if TimeManagement.calendar.compare(dates[.startDate]!, to: dates[.endDate]!, toUnitGranularity: .minute) == .orderedDescending {
 				dates[.endDate] = dates[.startDate]?.addingTimeInterval(1800)
 			}
 		}
@@ -65,7 +65,7 @@ class SetTimePopoverViewController: UIViewController {
 	override func viewDidLoad() {
         super.viewDidLoad()
 		
-		self.eventInformations = EManagement.eventInformation
+		self.eventInformations = EventManagement.shared.eventInformation
 		
 		dates = [.startDate: eventInformations.startDate,
 		         .endDate: eventInformations.endDate]
@@ -74,13 +74,13 @@ class SetTimePopoverViewController: UIViewController {
 
 		datePicker.date = dates[currentState]!
 		
-		if isAMPM {
+		if Settings.shared.isAMPM {
 			datePicker.locale = Locale(identifier: "en_US")
 		} else {
 			datePicker.locale = Locale(identifier: "de_DE")
 		}
 		
-		if darkMode {
+		if Settings.shared.isDarkMode {
 			self.blurLayer.effect = UIBlurEffect(style: .dark)
 			datePicker.setValue(Color.white, forKey: "textColor")
 			self.popover.backgroundColor = Color.grey.withAlphaComponent(0.3)
@@ -108,14 +108,14 @@ class SetTimePopoverViewController: UIViewController {
 				self.startsButton.backgroundColor = Color.lightBlue
 				self.endsButton.backgroundColor = Color.blue
 			}, completion: { (_) in
-				self.yearLabel.text = String(TMCalendar.component(.year, from: self.dates[self.currentState]!))
+				self.yearLabel.text = String(TimeManagement.calendar.component(.year, from: self.dates[self.currentState]!))
 			})
 		case .endDate:
 			UIView.animate(withDuration: time, delay: 0, options: .curveEaseInOut, animations: {
 				self.endsButton.backgroundColor = Color.lightBlue
 				self.startsButton.backgroundColor = Color.blue
 			}, completion: { (_) in
-				self.yearLabel.text = String(TMCalendar.component(.year, from: self.dates[self.currentState]!))
+				self.yearLabel.text = String(TimeManagement.calendar.component(.year, from: self.dates[self.currentState]!))
 			})
 		}
 		

@@ -21,7 +21,7 @@ class SetContactsPopoverViewController: UIViewController {
 	@IBOutlet weak var saveButton: UIButton!
 	
 	var searchBarViewController: SetContactsSearchViewController?
-	let eventInformation = EManagement.eventInformation
+	let eventInformation = EventManagement.shared.eventInformation
 	
 	@IBAction func cancel(_ sender: UIButton) {
 		self.dismiss(animated: true, completion: nil)
@@ -38,14 +38,14 @@ class SetContactsPopoverViewController: UIViewController {
 		
 		for contact in addedContacts {
 			if let email = contact.emailAddresses.first?.value {
-				if let attendee = EManagement.createParticipant(email: String(email)) {
+				if let attendee = EventManagement.shared.createParticipant(email: String(email)) {
 					attendees.append(attendee)
 				}
 			}
 		}
 		
 		for email in addedEmails {
-			if let attendee = EManagement.createParticipant(email: email) {
+			if let attendee = EventManagement.shared.createParticipant(email: email) {
 				attendees.append(attendee)
 			}
 		}
@@ -65,7 +65,7 @@ class SetContactsPopoverViewController: UIViewController {
 		self.popoverView.layer.masksToBounds = true
 		self.view.backgroundColor = UIColor.clear
 		
-		if darkMode {
+		if Settings.shared.isDarkMode {
 			backgroundBlurView.effect = UIBlurEffect(style: .dark)
 			toolbarBlurView.effect = UIBlurEffect(style: .dark)
 		} else {
@@ -73,7 +73,7 @@ class SetContactsPopoverViewController: UIViewController {
 			toolbarBlurView.effect = UIBlurEffect(style: .light)
 		}
 		
-		if darkMode {
+		if Settings.shared.isDarkMode {
 			self.popoverView.backgroundColor = Color.grey.withAlphaComponent(0.3)
 		} else {
 			self.popoverView.backgroundColor = UIColor.white.withAlphaComponent(0.5)

@@ -46,7 +46,7 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 	
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-		let years = TMCalendar.components(.year, from: TMPast, to: TMFuture, options: .matchLast).year!
+		let years = TimeManagement.calendar.components(.year, from: TimeManagement.past, to: TimeManagement.future, options: .matchLast).year!
 		
         return years
     }
@@ -78,16 +78,16 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if needsDesignUpdate {
+        if Settings.shared.needsDesignUpdate {
             reloadCalendarView()
-            needsDesignUpdate = false
+            Settings.shared.needsDesignUpdate = false
         }
 		self.calculateETViewUpdate()
     }
 	
 	func reloadCalendarView() {
 		self.collectionView!.reloadData()
-		let (yearID, monthID, _ ) = HSelection.selectedDayCellIndex
+		let (yearID, monthID, _ ) = Selection.shared.selectedDayCellIndex
 		scrollToSection(yearID: yearID, monthID: monthID - 1, animated: false)
 	}
     
@@ -113,8 +113,8 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 	
 	func scrollToSection(direction: ScrollDirection, animated anim: Bool = false) {
 		
-		let tmonthID = HSelection.currentMonthID - 1
-		let tyearID = HSelection.currentYearID
+		let tmonthID = Selection.shared.currentMonthID - 1
+		let tyearID = Selection.shared.currentYearID
 		
 		switch direction {
 		case .up:
@@ -141,7 +141,7 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 		setMonthName()
 	}
 	func setMonthName() {
-		let date = TimeManagement.calculateFirstDayInMonth(yearID: HSelection.currentYearID, monthID: HSelection.currentMonthID)
+		let date = TimeManagement.calculateFirstDayInMonth(yearID: Selection.shared.currentYearID, monthID: Selection.shared.currentMonthID)
 		let name = TimeManagement.getMonthName(date)
 		
 		guard let parent = self.parent as? ViewController else {
@@ -153,11 +153,11 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 	
 	fileprivate func calculateETViewUpdate() {
 		
-		let daysInMonth = TimeManagement.calculateDaysInMonth(yearID: HSelection.currentYearID, monthID: HSelection.currentMonthID)
+		let daysInMonth = TimeManagement.calculateDaysInMonth(yearID: Selection.shared.currentYearID, monthID: Selection.shared.currentMonthID)
 		
-		let firstWeekDayOfMonth = TimeManagement.calculateFirstWeekDayOfMonth(yearID: HSelection.currentYearID, monthID: HSelection.currentMonthID)
+		let firstWeekDayOfMonth = TimeManagement.calculateFirstWeekDayOfMonth(yearID: Selection.shared.currentYearID, monthID: Selection.shared.currentMonthID)
 		
-		var conform = (firstWeekDayOfMonth - HSelection.weekDayStart.rawValue)
+		var conform = (firstWeekDayOfMonth - Selection.shared.weekDayStart.rawValue)
 		if conform < 1 {
 			conform += 7
 		}
@@ -175,8 +175,8 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 		
 		let indexPath = IndexPath(item: monthID, section: yearID)
 		
-		HSelection.currentMonthID = monthID + 1
-		HSelection.currentYearID = yearID
+		Selection.shared.currentMonthID = monthID + 1
+		Selection.shared.currentYearID = yearID
 		
 		calculateETViewUpdate()
 		

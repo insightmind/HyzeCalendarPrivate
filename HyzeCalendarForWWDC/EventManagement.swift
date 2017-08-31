@@ -1,5 +1,5 @@
 //
-//  EventsManagement.swift
+//  EventManagement.swift
 //  HyzeCalendarForWWDC
 //
 //  Created by redfleet on 2/8/17.
@@ -14,6 +14,16 @@ import UIKit
 // Basic class for EventKit implementation and functionality
 class EventManagement {
 	
+	// MARK: - Shared
+	
+	static let shared = EventManagement()
+	
+	var ETView: ETView!
+	
+	//Declare all Names of Months ina year
+	let months: [String] = DateFormatter().monthSymbols!
+	
+	var eventsColorsOnSelectedDate: [UIColor] = [Color.grey]
 	var eventInformation = EventEditorEventInformations()
 	var selectedEventInformation = EventEditorEventInformations()
     
@@ -45,27 +55,27 @@ class EventManagement {
             } else {
                 var tip = 1
                 
-                let startHour = TMCalendar.component(.hour, from: event.startDate)
-                let startMinute = TMCalendar.component(.minute, from: event.startDate)
+                let startHour = TimeManagement.calendar.component(.hour, from: event.startDate)
+                let startMinute = TimeManagement.calendar.component(.minute, from: event.startDate)
                 var startTime = (startHour * 60) + startMinute
                 
-                let endHour = TMCalendar.component(.hour, from: event.endDate)
-                let endMinute = TMCalendar.component(.minute, from: event.endDate)
+                let endHour = TimeManagement.calendar.component(.hour, from: event.endDate)
+                let endMinute = TimeManagement.calendar.component(.minute, from: event.endDate)
                 var endTime = (endHour * 60) + endMinute
                 
-                let moreDays = TMCalendar.compare(event.startDate, to: event.endDate, toUnitGranularity: .day)
+                let moreDays = TimeManagement.calendar.compare(event.startDate, to: event.endDate, toUnitGranularity: .day)
                 
                 if moreDays == .orderedAscending {
-                    let (selectedYearID, selectedMonthID, indexPath) = HSelection.selectedDayCellIndex
+                    let (selectedYearID, selectedMonthID, indexPath) = Selection.shared.selectedDayCellIndex
                     
                     guard let selectedIndexPath = indexPath else {
                         fatalError()
                     }
                     
-                    if TMCalendar.compare(event.startDate, to: TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item), toUnitGranularity: .day) == .orderedSame {
+                    if TimeManagement.calendar.compare(event.startDate, to: TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item), toUnitGranularity: .day) == .orderedSame {
                         startTime = (startHour * 60) + startMinute
                         endTime = 1440
-                    } else if TMCalendar.compare(event.endDate, to: TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item), toUnitGranularity: .day) == .orderedSame {
+                    } else if TimeManagement.calendar.compare(event.endDate, to: TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item), toUnitGranularity: .day) == .orderedSame {
                         startTime = 0
                         endTime = (endHour * 60) + endMinute
                     } else {
@@ -78,7 +88,7 @@ class EventManagement {
                     endTime = (endHour * 60) + endMinute
                 }
                 
-                if informationMode{
+                if Settings.shared.informationMode{
                     print("[INFORMATION] \(startHour * 60) + \(startMinute) = \(startTime)min")
                     print("[INFORMATION] \(endHour * 60) + \(endMinute) = \(endTime)min")
                 }
@@ -93,7 +103,7 @@ class EventManagement {
     func getEvents(for date: Date) -> [EKEvent] {
 		let predicate = EMEventStore.predicateForEvents(withStart: date, end: date.addingTimeInterval(86399), calendars: nil)
         let events = EMEventStore.events(matching: predicate)
-        if informationMode {
+        if Settings.shared.informationMode {
 			print("[INFORMATION] Events from \(date) to \(date.addingTimeInterval(86339))")
             print("[INFORMATION] Predicate for Events: \(predicate)")
             print("[INFORMATION] Events: \(events)")
@@ -109,9 +119,9 @@ class EventManagement {
             EMEventStore.requestAccess(to: .event, completion: {
                 (accessGranted: Bool, error: Error?) in
 				if accessGranted == true {
-					let calendar = EManagement.getHyzeCalendar()
+					let calendar = EventManagement.shared.getHyzeCalendar()
 					if calendar == nil {
-						EManagement.createCalendar()
+						EventManagement.shared.createCalendar()
 					}
                     status = true
                 }
@@ -130,7 +140,7 @@ class EventManagement {
 			}
 			event = checkedEvent
 		} else {
-			event = EKEvent(eventStore: EManagement.EMEventStore)
+			event = EKEvent(eventStore: EventManagement.shared.EMEventStore)
 		}
 		if from.startDate < from.endDate && !from.isReadOnly {
 			event.title = from.title
@@ -191,10 +201,10 @@ class EventManagement {
 		}
         do {
             try EMEventStore.save(event, span: .thisEvent, commit: true)
-            eventsChange = true
+            Settings.shared.eventsChange = true
         } catch {
             print("Event could not be added")
-            eventsChange = false
+            Settings.shared.eventsChange = false
         }
 		self.eventInformation = EventEditorEventInformations()
 
@@ -294,12 +304,12 @@ class EventManagement {
 		}
 		do {
 			try EMEventStore.save(event, span: .thisEvent)
-			eventsChange = true
+			Settings.shared.eventsChange = true
 			self.eventInformation = informations
 			return true
 		} catch {
 			print("Event could not be updated")
-			eventsChange = false
+			Settings.shared.eventsChange = false
 			return false
 		}
 		
@@ -316,12 +326,20 @@ class EventManagement {
 		}
 		do {
 			try EMEventStore.remove(event, span: .thisEvent)
-			eventsChange = true
+			Settings.shared.eventsChange = true
 		} catch {
 			print("Could not remove event")
-			eventsChange = false
+			Settings.shared.eventsChange = false
 		}
 		self.eventInformation = EventEditorEventInformations()
+	}
+	
+	func calculateColorsForEventsOnSelectedDay(numberOfEvents : Int) {
+		EventManagement.shared.eventsColorsOnSelectedDate = []
+		for _ in 0..<numberOfEvents {
+			let color = UIColor.randomColor()
+			EventManagement.shared.eventsColorsOnSelectedDate.append(color)
+		}
 	}
 
     

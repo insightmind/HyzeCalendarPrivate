@@ -60,7 +60,7 @@ class WeekdayTableViewCell: UITableViewCell {
 		                  seventhDayViewButton]
 		
 		for index in 0..<dayViewButtons.count {
-			var number = index + (HSelection.weekDayStart.rawValue) + 1
+			var number = index + (Selection.shared.weekDayStart.rawValue) + 1
 			if number > 7 {
 				number -= 7
 			}
@@ -92,7 +92,7 @@ class WeekdayTableViewCell: UITableViewCell {
 	}
 	
 	func selectDay(_ dayIndex: Int) {
-		var number = dayIndex + HSelection.weekDayStart.rawValue
+		var number = dayIndex + Selection.shared.weekDayStart.rawValue
 		if number > 7 {
 			number -= 7
 		}

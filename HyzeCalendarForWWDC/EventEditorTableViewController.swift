@@ -47,7 +47,7 @@ class EventEditorTableViewController: UITableViewController {
 		self.tableView.register(UINib(nibName: "SelectContactsTableViewCell", bundle: nil), forCellReuseIdentifier: EventEditorCellType.contacts.rawValue)
 		self.tableView.register(UINib(nibName: "SetRecurrenceTableViewCell", bundle: nil), forCellReuseIdentifier: EventEditorCellType.recurrence.rawValue)
 		
-		self.eventsInformations = EManagement.eventInformation
+		self.eventsInformations = EventManagement.shared.eventInformation
 		eventsInformations.eventEditorTableViewController = self
 		
 		self.updateCellsArray()

@@ -29,8 +29,8 @@ class DayViewUIVViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setDesign()
-        viewIsDayView = true
-        renDayView = day
+        Settings.shared.viewIsDayView = true
+        Settings.shared.renDayView = day
         day.setUp()
 
 		
@@ -38,12 +38,12 @@ class DayViewUIVViewController: UIViewController {
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        viewIsDayView = true
-        renDayView = nil
+        Settings.shared.viewIsDayView = true
+        Settings.shared.renDayView = nil
     }
     
 	func setDesign(animated: Bool = false) {
-        if darkMode {
+        if Settings.shared.isDarkMode {
             view.backgroundColor = Color.grey
 			navigationController?.navigationBar.tintColor = Color.white
 			addButton.tintColor = Color.white
@@ -54,9 +54,9 @@ class DayViewUIVViewController: UIViewController {
         }
 		
 		UIView.animate(withDuration: animated ? 0.7 : 0, animations: {
-			if HSelection.selectedIsToday!  {
+			if Selection.shared.selectedIsToday!  {
 				self.day.dayViewCenterButton.backgroundColor = Color.red
-			} else if HSelection.selectedIsOnWeekend! {
+			} else if Selection.shared.selectedIsOnWeekend! {
 				self.day.dayViewCenterButton.backgroundColor = Color.green
 			} else {
 				self.day.dayViewCenterButton.backgroundColor = Color.blue
@@ -71,13 +71,13 @@ class DayViewUIVViewController: UIViewController {
 		if segue.identifier == "showEventEditor" {
 			if let eventEditor = segue.destination as? EventEditorViewController {
 				eventEditor.dayView = self
-				EManagement.eventInformation = EventEditorEventInformations()
-				EManagement.eventInformation.calendar = EManagement.EMCalendar ?? EManagement.getHyzeCalendar()
+				EventManagement.shared.eventInformation = EventEditorEventInformations()
+				EventManagement.shared.eventInformation.calendar = EventManagement.shared.EMCalendar ?? EventManagement.shared.getHyzeCalendar()
 			}
 		} else if segue.identifier == "showDetail" {
 			if let eventEditor = segue.destination as? EventEditorViewController {
 				eventEditor.dayView = self
-				EManagement.eventInformation = EManagement.selectedEventInformation
+				EventManagement.shared.eventInformation = EventManagement.shared.selectedEventInformation
 			}
 		}
 	}
@@ -99,7 +99,7 @@ class DayViewUIVViewController: UIViewController {
 	
 	func changeDay(_ direction: direction) {
 		
-		let (year, month, dayIndexPath) = HSelection.selectedDayCellIndex
+		let (year, month, dayIndexPath) = Selection.shared.selectedDayCellIndex
 		
 		guard let indexPath = dayIndexPath else {
 			fatalError("There is no selected day")
@@ -111,33 +111,33 @@ class DayViewUIVViewController: UIViewController {
 		
 		switch direction {
 		case .right:
-			guard let tempDate = TMCalendar.date(byAdding: .day, value: -1, to: date, options: .matchLast) else {
+			guard let tempDate = TimeManagement.calendar.date(byAdding: .day, value: -1, to: date, options: .matchLast) else {
 				fatalError("Could not find previous day")
 			}
 			nextDate = tempDate
 			
 		case .left:
-			guard let tempDate = TMCalendar.date(byAdding: .day, value: 1, to: date, options: .matchLast) else {
+			guard let tempDate = TimeManagement.calendar.date(byAdding: .day, value: 1, to: date, options: .matchLast) else {
 				fatalError("Could not find future day")
 			}
 			nextDate = tempDate
 		}
 		
-		let newYear = TMCalendar.component(.year, from: nextDate)
-		let newMonth = TMCalendar.component(.month, from: nextDate)
-		let newDayIndexPath = IndexPath(item: TMCalendar.component(.day, from: nextDate), section: 0)
+		let newYear = TimeManagement.calendar.component(.year, from: nextDate)
+		let newMonth = TimeManagement.calendar.component(.month, from: nextDate)
+		let newDayIndexPath = IndexPath(item: TimeManagement.calendar.component(.day, from: nextDate), section: 0)
 		
-		HSelection.selectedDayCellIndex = (newYear, newMonth, newDayIndexPath)
+		Selection.shared.selectedDayCellIndex = (newYear, newMonth, newDayIndexPath)
 		
-		let weekDay = TMCalendar.component(.weekday, from: nextDate)
+		let weekDay = TimeManagement.calendar.component(.weekday, from: nextDate)
 		
 		if weekDay == 1 || weekDay == 7 {
-			HSelection.selectedIsOnWeekend = true
+			Selection.shared.selectedIsOnWeekend = true
 		} else {
-			HSelection.selectedIsOnWeekend = false
+			Selection.shared.selectedIsOnWeekend = false
 		}
 		
-		HSelection.selectedIsToday = TimeManagement.isToday(yearID: newYear, monthID: newMonth, dayID: newDayIndexPath.item)
+		Selection.shared.selectedIsToday = TimeManagement.isToday(yearID: newYear, monthID: newMonth, dayID: newDayIndexPath.item)
 		
 		UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn, animations: {
 			NSLayoutConstraint.deactivate([self.dayViewNormal])
@@ -177,6 +177,6 @@ class DayViewUIVViewController: UIViewController {
 			
 		}
 		
-		needsDesignUpdate = true
+		Settings.shared.needsDesignUpdate = true
 	}
 }

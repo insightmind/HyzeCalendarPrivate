@@ -10,7 +10,7 @@ import UIKit
 
 class NotesTableViewCell: UITableViewCell, UITextViewDelegate, EventEditorCell {
 	func reloadInformations() {
-		eventInformations = EManagement.eventInformation
+		eventInformations = EventManagement.shared.eventInformation
 		switch eventInformations.state {
 		case .create:
 			self.textView.isUserInteractionEnabled = false
@@ -37,7 +37,7 @@ class NotesTableViewCell: UITableViewCell, UITextViewDelegate, EventEditorCell {
 		
 		textView.delegate = self
 		
-		self.eventInformations = EManagement.eventInformation
+		self.eventInformations = EventManagement.shared.eventInformation
 		self.backgroundColor = UIColor.clear
 		
 		self.labelView.backgroundColor = Color.lightBlue

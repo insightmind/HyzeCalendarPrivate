@@ -45,21 +45,21 @@ class ViewController: UIViewController {
 	
     
     @IBAction func jumpToToday(_ sender: UIBarButtonItem) {
-        let (yearID, monthID, _) = HSelection.todaysDayCellIndex
-		HSelection.selectedDayCellIndex = HSelection.todaysDayCellIndex
+        let (yearID, monthID, _) = Selection.shared.todaysDayCellIndex
+		Selection.shared.selectedDayCellIndex = Selection.shared.todaysDayCellIndex
 		scrollToSection(yearID: yearID, monthID: monthID + 1, animated: true)
     }
     
     @IBAction func jumpToSelected(_ sender: UIBarButtonItem) {
-        let (yearID, monthID, _ ) = HSelection.selectedDayCellIndex
+        let (yearID, monthID, _ ) = Selection.shared.selectedDayCellIndex
         scrollToSection(yearID: yearID, monthID: monthID + 1, animated: true)
     }
 
     func updateSelectedDayIcon(){
-        let (yearID, monthID, _ ) = HSelection.selectedDayCellIndex
-        if yearID > HSelection.currentYearID || monthID > HSelection.currentMonthID - 1 {
+        let (yearID, monthID, _ ) = Selection.shared.selectedDayCellIndex
+        if yearID > Selection.shared.currentYearID || monthID > Selection.shared.currentMonthID - 1 {
             selectedDayButton.image = #imageLiteral(resourceName: "ic_keyboard_arrow_down")
-        } else if yearID < HSelection.currentYearID || monthID < HSelection.currentMonthID - 1 {
+        } else if yearID < Selection.shared.currentYearID || monthID < Selection.shared.currentMonthID - 1 {
             selectedDayButton.image = #imageLiteral(resourceName: "ic_keyboard_arrow_up")
         } else {
             selectedDayButton.image = #imageLiteral(resourceName: "ic_keyboard_arrow_right")
@@ -68,13 +68,13 @@ class ViewController: UIViewController {
 	
     override func viewWillAppear(_ animated: Bool) {
 		
-		if EManagement.askForPermission() {
+		if EventManagement.shared.askForPermission() {
 			calendarView.setNeedsDisplay()
 			ETView.setNeedsDisplay()
 		}
 		
 		self.calendarView.layer.masksToBounds = false
-        if darkMode{
+        if Settings.shared.isDarkMode{
             view.backgroundColor = Color.grey
 			daysOfWeekBackgroundView.backgroundColor = Color.grey
 			updateDaysOfWeek(color: Color.white, weekendColor: Color.green)
@@ -105,10 +105,10 @@ class ViewController: UIViewController {
 				}
 			}
         }
-        if darkModeTemp != darkMode {
-            darkModeTemp = darkMode
-        } else if isAMPMTemp != isAMPM || eventsChange == true {
-            eventsChange = false
+        if darkModeTemp != Settings.shared.isDarkMode {
+            darkModeTemp = Settings.shared.isDarkMode
+        } else if isAMPMTemp != Settings.shared.isAMPM || Settings.shared.eventsChange == true {
+            Settings.shared.eventsChange = false
         }
         ETView.reloadView()
     }
@@ -118,11 +118,11 @@ class ViewController: UIViewController {
         
         super.viewDidLoad()
 		
-		if CManagement.askForPermission() {
+		if ContactManagement.shared.askForPermission() {
 			print("Contacts access granted")
 		}
 		
-        darkModeTemp = darkMode
+        darkModeTemp = Settings.shared.isDarkMode
         navigationBar.title = TimeManagement.getMonthName(Date())
 		
 		setTodaysProperties()
@@ -133,16 +133,16 @@ class ViewController: UIViewController {
 			}
 		}
         
-        let (selectedYearID, selectedMonthID, _) = HSelection.selectedDayCellIndex
+        let (selectedYearID, selectedMonthID, _) = Selection.shared.selectedDayCellIndex
 		
 		scrollToSection(yearID: selectedYearID, monthID: selectedMonthID - 1)
     }
 	
 	func setTodaysProperties() {
 		let date = Date()
-		HSelection.todaysYearID = TMCalendar.component(.year, from: date)
-		HSelection.todaysMonthID = TMCalendar.component(.month, from: date)
-		HSelection.todaysDayID = TMCalendar.component(.day, from: date)
+		Selection.shared.todaysYearID = TimeManagement.calendar.component(.year, from: date)
+		Selection.shared.todaysMonthID = TimeManagement.calendar.component(.month, from: date)
+		Selection.shared.todaysDayID = TimeManagement.calendar.component(.day, from: date)
 	}
 
 	func updateDaysOfWeek(color: UIColor, weekendColor: UIColor) {
@@ -155,7 +155,7 @@ class ViewController: UIViewController {
 		                              SixthDayOfWeek,
 		                              SeventhDayOfWeek]
 		
-		var state = HSelection.weekDayStart
+		var state = Selection.shared.weekDayStart
 		
 		for i in unconfiguredDaysOfWeek {
 			
@@ -209,15 +209,15 @@ class ViewController: UIViewController {
 	}
 	
 	func setMonthName() {
-		let date = TimeManagement.calculateFirstDayInMonth(yearID: HSelection.currentYearID, monthID: HSelection.currentMonthID)
+		let date = TimeManagement.calculateFirstDayInMonth(yearID: Selection.shared.currentYearID, monthID: Selection.shared.currentMonthID)
 		let name = TimeManagement.getMonthName(date)
 		navigationBar.title = name
 	}
 	
 	func scrollToSection(direction: ScrollDirection, animated anim: Bool = false) {
 		
-		let monthID = HSelection.currentMonthID - 1
-		let yearID = HSelection.currentYearID
+		let monthID = Selection.shared.currentMonthID - 1
+		let yearID = Selection.shared.currentYearID
 		
 		switch direction {
 		case .up:

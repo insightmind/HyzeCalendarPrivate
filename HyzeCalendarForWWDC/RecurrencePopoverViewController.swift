@@ -19,7 +19,7 @@ enum FrequencyType {
 
 class RecurrencePopoverViewController: UIViewController {
 	
-	var eventInformations = EManagement.eventInformation
+	var eventInformations = EventManagement.shared.eventInformation
 	
 	var selectedFrequency: FrequencyType = .none
 	
@@ -194,7 +194,7 @@ class RecurrencePopoverViewController: UIViewController {
 		popover.layer.cornerRadius = 20
 		popover.layer.masksToBounds = true
 		
-		if darkMode {
+		if Settings.shared.isDarkMode {
 			blurEffectView.effect = UIBlurEffect(style: .dark)
 			dailyButton.tintColor = Color.white
 			weeklyButton.tintColor = Color.white

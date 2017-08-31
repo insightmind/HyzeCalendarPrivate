@@ -10,7 +10,11 @@ import Foundation
 import Contacts
 import EventKit
 
-class ContactsManagement {
+class ContactManagement {
+	
+	// MARK: - Shared
+	
+	static let shared = ContactManagement()
 	
 	let CMContactStore: CNContactStore
 	

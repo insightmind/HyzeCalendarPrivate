@@ -11,7 +11,7 @@ import EventKit
 
 class CalendarTableViewController: UITableViewController {
 	
-	var calendars: [EKCalendar] = EManagement.EMEventStore.calendars(for: .event)
+	var calendars: [EKCalendar] = EventManagement.shared.EMEventStore.calendars(for: .event)
 	let reuseIdentifier = "calendar"
 
     override func viewDidLoad() {
@@ -25,7 +25,7 @@ class CalendarTableViewController: UITableViewController {
 		
 		self.tableView.allowsSelection = false
 		self.tableView.separatorStyle = .none
-		if darkMode {
+		if Settings.shared.isDarkMode {
 			self.tableView.backgroundColor = Color.grey.withAlphaComponent(0.3)
 		} else {
 			self.tableView.backgroundColor = UIColor.white.withAlphaComponent(0.5)
@@ -39,7 +39,7 @@ class CalendarTableViewController: UITableViewController {
 		
 		for i in 0..<calendars.count {
 			let calendar = calendars[i]
-			let eventInformation = EManagement.eventInformation
+			let eventInformation = EventManagement.shared.eventInformation
 			if calendar.calendarIdentifier == eventInformation.calendar?.calendarIdentifier && eventInformation.calendar != nil{
 				let removed = calendars.remove(at: i)
 				calendars.insert(removed, at: 0)

@@ -10,13 +10,13 @@ import UIKit
 
 class SelectContactsTableViewCell: UITableViewCell, EventEditorCell {
 	
-	var eventInformations: EventEditorEventInformations! = EManagement.eventInformation
+	var eventInformations: EventEditorEventInformations! = EventManagement.shared.eventInformation
 	var isEditable: Bool = false
 	
 	func reloadInformations() {
 		self.contactsTableView.setUpData()
 		self.contactsTableView.reloadSections(IndexSet(integer: 0), with: .automatic)
-		eventInformations = EManagement.eventInformation
+		eventInformations = EventManagement.shared.eventInformation
 		setUpLayout()
 		checkEditable()
 		eventInformations.eventEditorTableViewController?.updateContactsCellHeight()
@@ -49,7 +49,7 @@ class SelectContactsTableViewCell: UITableViewCell, EventEditorCell {
 		eventInformations.isAllContacts = !eventInformations.isAllContacts
 		eventInformations.eventEditorTableViewController?.updateContactsCellHeight()
 		UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
-			self.showContactsButton.transform = CGAffineTransform(rotationAngle: self.eventInformations.isAllContacts ? PI : 2*PI)
+			self.showContactsButton.transform = CGAffineTransform(rotationAngle: self.eventInformations.isAllContacts ? CGFloat.pi : 2*CGFloat.pi)
 		}, completion: nil)
 	}
 	

@@ -23,7 +23,7 @@ class SettingsViewController: UIViewController {
 	@IBOutlet weak var defaultCalendarLabel: UILabel!
 	
 	override var preferredStatusBarStyle: UIStatusBarStyle {
-		if darkMode {
+		if Settings.shared.isDarkMode {
 			return .lightContent
 		} else {
 			return .default
@@ -32,40 +32,40 @@ class SettingsViewController: UIViewController {
 	
 	@IBAction func toggleAnimateDayView(_ sender: UISwitch) {
 		let defaults = UserDefaults.standard
-		if animateDayView {
-			animateDayView = false
+		if Settings.shared.animateDayView {
+			Settings.shared.animateDayView = false
 		} else {
-			animateDayView = true
+			Settings.shared.animateDayView = true
 		}
-		defaults.set(animateDayView, forKey: "animateDayView")
+		defaults.set(Settings.shared.animateDayView, forKey: "animateDayView")
 		defaults.synchronize()
 	}
 	
 	@IBAction func toggleShowLinesInCalendarView(_ sender: UISwitch) {
         let defaults = UserDefaults.standard
-        if showLinesInCalendarView {
-            showLinesInCalendarView = false
+        if Settings.shared.showLinesInCalendarView {
+            Settings.shared.showLinesInCalendarView = false
         } else {
-            showLinesInCalendarView = true
+            Settings.shared.showLinesInCalendarView = true
         }
-        needsDesignUpdate = true
-        defaults.set(showLinesInCalendarView, forKey: "showLinesInCalendarView")
+        Settings.shared.needsDesignUpdate = true
+        defaults.set(Settings.shared.showLinesInCalendarView, forKey: "showLinesInCalendarView")
         defaults.synchronize()
     }
 
     @IBAction func toggleDarkMode(_ sender: UISwitch) {
         let defaults = UserDefaults.standard
-        if darkMode{
-            darkMode = false
+        if Settings.shared.isDarkMode{
+            Settings.shared.isDarkMode = false
         } else {
-            darkMode = true
+            Settings.shared.isDarkMode = true
         }
-        needsDesignUpdate = true
-        defaults.set(darkMode, forKey: "DarkMode")
+        Settings.shared.needsDesignUpdate = true
+        defaults.set(Settings.shared.isDarkMode, forKey: "DarkMode")
         defaults.synchronize()
 		UIView.animate(withDuration: 0.4) {
 			self.setNeedsStatusBarAppearanceUpdate()
-			if darkMode{
+			if Settings.shared.isDarkMode{
 				self.defaultCalendarLabel.textColor = Color.white
 				self.settingsLabel.textColor = Color.white
 				self.showLines.textColor = Color.white
@@ -86,36 +86,36 @@ class SettingsViewController: UIViewController {
     }
 	
 	@IBAction func toggleWeekDayStart(_ sender: UISegmentedControl) {
-		HSelection.weekDayStart = WeekDay(rawValue: sender.selectedSegmentIndex)!
+		Selection.shared.weekDayStart = WeekDay(rawValue: sender.selectedSegmentIndex)!
 		let defaults = UserDefaults.standard
-		defaults.set(HSelection.weekDayStart.rawValue, forKey: "firstWeekDayOfWeek")
+		defaults.set(Selection.shared.weekDayStart.rawValue, forKey: "firstWeekDayOfWeek")
 		defaults.synchronize()
-		needsDesignUpdate = true
+		Settings.shared.needsDesignUpdate = true
 	}
 	
 	
     func loadInformations() {
-		if isAMPM {
+		if Settings.shared.isAMPM {
 			hours24Switch.isOn = false
 		} else {
 			hours24Switch.isOn = true
 		}
-		if showLinesInCalendarView {
+		if Settings.shared.showLinesInCalendarView {
 			showLinesSwitch.isOn = true
 		} else {
 			showLinesSwitch.isOn = false
 		}
-		startWeekDaySegmentedControl.selectedSegmentIndex = HSelection.weekDayStart.rawValue
-		if animateDayView {
+		startWeekDaySegmentedControl.selectedSegmentIndex = Selection.shared.weekDayStart.rawValue
+		if Settings.shared.animateDayView {
 			animateDayViewSwitch.isOn = true
 		} else {
 			animateDayViewSwitch.isOn = false
 		}
-		self.defaultCalendarLabel.text = EManagement.EMCalendar?.title
+		self.defaultCalendarLabel.text = EventManagement.shared.EMCalendar?.title
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
-        if darkMode {
+        if Settings.shared.isDarkMode {
 			self.defaultCalendarLabel.textColor = Color.white
 			settingsLabel.textColor = Color.white
             darkModeSwitch.isOn = true
@@ -139,12 +139,12 @@ class SettingsViewController: UIViewController {
 
     @IBAction func toggle24Hour(_ sender: UISwitch) {
         let defaults = UserDefaults.standard
-        if isAMPM {
-            isAMPM = false
+        if Settings.shared.isAMPM {
+            Settings.shared.isAMPM = false
         } else {
-            isAMPM = true
+            Settings.shared.isAMPM = true
         }
-        defaults.set(isAMPM, forKey: "IsAMPM")
+        defaults.set(Settings.shared.isAMPM, forKey: "IsAMPM")
         defaults.synchronize()
     }
 	
@@ -152,8 +152,8 @@ class SettingsViewController: UIViewController {
 		
 		let storyboard = UIStoryboard(name: "SelectCalendar", bundle: nil)
 		
-		isSettingDefaultCalendar = true
-		EManagement.eventInformation.calendar = EManagement.EMCalendar ?? EManagement.getHyzeCalendar()
+		Settings.shared.isSettingDefaultCalendar = true
+		EventManagement.shared.eventInformation.calendar = EventManagement.shared.EMCalendar ?? EventManagement.shared.getHyzeCalendar()
 		
 		guard let viewController = storyboard.instantiateInitialViewController() else {
 			return
@@ -165,7 +165,7 @@ class SettingsViewController: UIViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		settingsView = self
+		Settings.shared.settingsView = self
         // Do any additional setup after loading the view.
     }
 

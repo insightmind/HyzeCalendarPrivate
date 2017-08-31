@@ -134,7 +134,7 @@ class DateSelectionTableViewCell: UITableViewCell, EventEditorCell {
 	func setUpDateLabel(animated: Bool) {
 		let hourFormatter = DateFormatter()
 		
-		if isAMPM {
+		if Settings.shared.isAMPM {
 			hourFormatter.locale = Locale(identifier:  "en_US")
 		} else {
 			hourFormatter.locale = Locale(identifier:  "de_DE")
@@ -156,7 +156,7 @@ class DateSelectionTableViewCell: UITableViewCell, EventEditorCell {
 		
 		let dayFormatter = DateFormatter()
 		
-		if isAMPM {
+		if Settings.shared.isAMPM {
 			dayFormatter.locale = Locale(identifier:  "en_US")
 		} else {
 			dayFormatter.locale = Locale(identifier:  "de_DE")
@@ -185,7 +185,7 @@ class DateSelectionTableViewCell: UITableViewCell, EventEditorCell {
 	
 	override func awakeFromNib() {
 		
-		self.eventInformations = EManagement.eventInformation
+		self.eventInformations = EventManagement.shared.eventInformation
 		
 		self.isAllDayConstraints = [isAllDayTopConstraint,
 									isAllDayBottomConstraint,

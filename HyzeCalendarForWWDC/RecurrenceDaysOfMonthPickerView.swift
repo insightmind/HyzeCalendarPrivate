@@ -40,7 +40,7 @@ class RecurrenceDaysOfMonthPickerView: NSObject, UIPickerViewDelegate, UIPickerV
 			oneString = []
 			let dateFormatter = DateFormatter()
 			for i in 0...6 {
-				var index = i + HSelection.weekDayStart.rawValue
+				var index = i + Selection.shared.weekDayStart.rawValue
 				if index > 6 {
 					index -= 7
 				}

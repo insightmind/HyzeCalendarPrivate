@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3E067E0D1F31FA92003601FA /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E067E0C1F31FA92003601FA /* Default-568h@2x.png */; };
+		3E0C9DDB1F5864C0001B644C /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0C9DDA1F5864C0001B644C /* Settings.swift */; };
 		3E0FDDE51F561BCA00086319 /* DaysOfMonthCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0FDDE41F561BCA00086319 /* DaysOfMonthCollectionViewCell.swift */; };
 		3E1B95251E3FAD9D009EB5C9 /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1B95241E3FAD9D009EB5C9 /* DayView.swift */; };
 		3E21053A1E5B56C400E78840 /* ETViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2105391E5B56C400E78840 /* ETViewCell.swift */; };
@@ -21,7 +22,7 @@
 		3E47BD2C1F30E7E900E0646C /* EventEditorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E47BD2B1F30E7E900E0646C /* EventEditorTableViewController.swift */; };
 		3E47BD311F30EE0200E0646C /* DateSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E47BD2F1F30EE0200E0646C /* DateSelectionTableViewCell.swift */; };
 		3E47BD321F30EE0200E0646C /* DateSelectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E47BD301F30EE0200E0646C /* DateSelectionTableViewCell.xib */; };
-		3E4A9B291E4BB4C0009E45EF /* EventsManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4A9B281E4BB4C0009E45EF /* EventsManagement.swift */; };
+		3E4A9B291E4BB4C0009E45EF /* EventManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4A9B281E4BB4C0009E45EF /* EventManagement.swift */; };
 		3E533BC51EC36440000CEF5F /* MonthCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E533BC41EC36440000CEF5F /* MonthCollectionViewCell.swift */; };
 		3E533BC71EC364BC000CEF5F /* DayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E533BC61EC364BC000CEF5F /* DayCollectionViewCell.swift */; };
 		3E59BDA31F432E1600BDCF25 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E59BDA21F432E1600BDCF25 /* UIViewExtension.swift */; };
@@ -83,7 +84,6 @@
 		3EDC110B1F40E1B400E0B250 /* NotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDC11091F40E1B400E0B250 /* NotesTableViewCell.swift */; };
 		3EDC110C1F40E1B400E0B250 /* NotesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EDC110A1F40E1B400E0B250 /* NotesTableViewCell.xib */; };
 		3EE011611E560D3800743914 /* ETView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE011601E560D3800743914 /* ETView.swift */; };
-		3EE1E5AD1E48D48C00379576 /* GlobalAccessProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E5AC1E48D48C00379576 /* GlobalAccessProperties.swift */; };
 		3EE5426D1F479FCC00B230FF /* RemoveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE5426B1F479FCC00B230FF /* RemoveTableViewCell.swift */; };
 		3EE5426E1F479FCC00B230FF /* RemoveTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EE5426C1F479FCC00B230FF /* RemoveTableViewCell.xib */; };
 		3EE9C8691F56F0C500FD93E9 /* RecurrenceDaysOfMonthPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE9C8681F56F0C500FD93E9 /* RecurrenceDaysOfMonthPickerView.swift */; };
@@ -103,6 +103,7 @@
 		35648DCA1721F1D49C458FA7 /* Pods-HyzeCalendarForWWDC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HyzeCalendarForWWDC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HyzeCalendarForWWDC/Pods-HyzeCalendarForWWDC.debug.xcconfig"; sourceTree = "<group>"; };
 		3E067E0C1F31FA92003601FA /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		3E067E0E1F31FB9B003601FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3E0C9DDA1F5864C0001B644C /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		3E0FDDE41F561BCA00086319 /* DaysOfMonthCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysOfMonthCollectionViewCell.swift; sourceTree = "<group>"; };
 		3E1B95241E3FAD9D009EB5C9 /* DayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DayView.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		3E2105391E5B56C400E78840 /* ETViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ETViewCell.swift; sourceTree = "<group>"; };
@@ -116,7 +117,7 @@
 		3E47BD2B1F30E7E900E0646C /* EventEditorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEditorTableViewController.swift; sourceTree = "<group>"; };
 		3E47BD2F1F30EE0200E0646C /* DateSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectionTableViewCell.swift; sourceTree = "<group>"; };
 		3E47BD301F30EE0200E0646C /* DateSelectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateSelectionTableViewCell.xib; sourceTree = "<group>"; };
-		3E4A9B281E4BB4C0009E45EF /* EventsManagement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = EventsManagement.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		3E4A9B281E4BB4C0009E45EF /* EventManagement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = EventManagement.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		3E533BC01EC36185000CEF5F /* HyzeCalendarForWWDC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HyzeCalendarForWWDC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E533BC41EC36440000CEF5F /* MonthCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthCollectionViewCell.swift; sourceTree = "<group>"; };
 		3E533BC61EC364BC000CEF5F /* DayCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -180,7 +181,6 @@
 		3EDC11091F40E1B400E0B250 /* NotesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewCell.swift; sourceTree = "<group>"; };
 		3EDC110A1F40E1B400E0B250 /* NotesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotesTableViewCell.xib; sourceTree = "<group>"; };
 		3EE011601E560D3800743914 /* ETView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ETView.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		3EE1E5AC1E48D48C00379576 /* GlobalAccessProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalAccessProperties.swift; sourceTree = "<group>"; };
 		3EE5426B1F479FCC00B230FF /* RemoveTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveTableViewCell.swift; sourceTree = "<group>"; };
 		3EE5426C1F479FCC00B230FF /* RemoveTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RemoveTableViewCell.xib; sourceTree = "<group>"; };
 		3EE9C8681F56F0C500FD93E9 /* RecurrenceDaysOfMonthPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurrenceDaysOfMonthPickerView.swift; sourceTree = "<group>"; };
@@ -300,7 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				3EA80D511E2BEC9300FD87C3 /* AppDelegate.swift */,
-				3EE1E5AC1E48D48C00379576 /* GlobalAccessProperties.swift */,
+				3E0C9DDA1F5864C0001B644C /* Settings.swift */,
 			);
 			name = General;
 			sourceTree = "<group>";
@@ -488,7 +488,7 @@
 			isa = PBXGroup;
 			children = (
 				3ECD09971E9BB39C00BF9627 /* TimeManagement.swift */,
-				3E4A9B281E4BB4C0009E45EF /* EventsManagement.swift */,
+				3E4A9B281E4BB4C0009E45EF /* EventManagement.swift */,
 				3EA6E4741F4C7C1F003E9341 /* ContactsManagement.swift */,
 				3ED0F0DB1F437310001A12A8 /* EventEditorEventInformations.swift */,
 			);
@@ -874,7 +874,7 @@
 				3EE5426D1F479FCC00B230FF /* RemoveTableViewCell.swift in Sources */,
 				3E6283891F4DFF1700A799DC /* SetRecurrenceTableViewCell.swift in Sources */,
 				3EA6E4751F4C7C1F003E9341 /* ContactsManagement.swift in Sources */,
-				3E4A9B291E4BB4C0009E45EF /* EventsManagement.swift in Sources */,
+				3E4A9B291E4BB4C0009E45EF /* EventManagement.swift in Sources */,
 				3ED0F0DC1F437310001A12A8 /* EventEditorEventInformations.swift in Sources */,
 				3ED0F0DA1F4372E4001A12A8 /* EventEditorState.swift in Sources */,
 				3E61C1121F53814900AE1A2B /* WeekdayTableViewCell.swift in Sources */,
@@ -886,7 +886,6 @@
 				3E47BD2C1F30E7E900E0646C /* EventEditorTableViewController.swift in Sources */,
 				3EFA24DD1E2BF1D200BC6DD5 /* CalendarViewFlowLayout.swift in Sources */,
 				3EAD342B1F3E44CF00174FF7 /* Design.swift in Sources */,
-				3EE1E5AD1E48D48C00379576 /* GlobalAccessProperties.swift in Sources */,
 				3E6285431F4471B900301A42 /* CGFloatExtension.swift in Sources */,
 				3E2DA5641F5773F4008CECD7 /* MainNavigationViewController.swift in Sources */,
 				3E3AEDF81F23BFEF00792B11 /* SetTimePopoverViewController.swift in Sources */,
@@ -914,6 +913,7 @@
 				3E7140431E46844C00D51B17 /* DayViewUIViewController.swift in Sources */,
 				3ED0F0D61F4371C5001A12A8 /* ShowDetail_EventEditorViewController.swift in Sources */,
 				3E68188D1F46FED600E8D7BC /* CalendarTableViewCell.swift in Sources */,
+				3E0C9DDB1F5864C0001B644C /* Settings.swift in Sources */,
 				3EE011611E560D3800743914 /* ETView.swift in Sources */,
 				3ECD09A11E9BFF3000BF9627 /* Selection.swift in Sources */,
 				3E6BCC511E5479DD00369E7D /* SettingsViewController.swift in Sources */,

@@ -11,7 +11,7 @@ import EventKit
 
 class SelectContactsTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
 	
-	let eventInformation = EManagement.eventInformation
+	let eventInformation = EventManagement.shared.eventInformation
 	var isEditable: Bool = false
 	
 	var contacts = [String]()
@@ -54,7 +54,7 @@ class SelectContactsTableView: UITableView, UITableViewDelegate, UITableViewData
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = self.dequeueReusableCell(withIdentifier: reuseIdentifier) as! ContactTableViewCell
 		let email = contacts[indexPath.row]
-		if let contact = CManagement.getContact(email: email) {
+		if let contact = ContactManagement.shared.getContact(email: email) {
 			cell.setContact(contact, shouldAdd: true, email: email, isInMainCell: true)
 		} else {
 			cell.setEmail(email: email, shouldAdd: true, isInMainCell: true)
@@ -85,7 +85,7 @@ class SelectContactsTableView: UITableView, UITableViewDelegate, UITableViewData
 	func reloadParticipants() {
 		var attendees = [EKParticipant]()
 		for email in contacts {
-			if let attendee = EManagement.createParticipant(email: email) {
+			if let attendee = EventManagement.shared.createParticipant(email: email) {
 				attendees.append(attendee)
 			}
 		}

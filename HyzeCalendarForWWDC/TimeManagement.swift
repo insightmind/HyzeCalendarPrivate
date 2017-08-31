@@ -12,6 +12,16 @@ import EventKit
 
 //MARK: -
 class TimeManagement {
+	
+	//MARK: - Calendar
+	static var calendar: NSCalendar = {
+		let c = NSCalendar(identifier: .gregorian)!
+		c.timeZone = NSTimeZone.system
+		return c
+	}()
+	
+	static let past = Date.distantPast
+	static let future = Date.distantFuture
     
     //MARK: - Global Functions
     
@@ -29,10 +39,10 @@ class TimeManagement {
 		
 		
         // Creating date based of the calculated components
-		let date = TMCalendar.date(from: components)!
+		let date = TimeManagement.calendar.date(from: components)!
         
         // Output informations
-        if informationMode {
+        if Settings.shared.informationMode {
             print("CONVERTTODATE: \(yearID):\(monthID):\(dayID)|\(date)")
         }
         
@@ -68,7 +78,7 @@ class TimeManagement {
 		let date = calculateFirstDayInMonth(yearID: yearID, monthID: monthID)
         
         // return the weekdayComponent of the firstDay and decrement it by 1 so Mon == 0
-		return TMCalendar.component(.weekday, from: date)
+		return TimeManagement.calendar.component(.weekday, from: date)
 	}
     
     /// Get the MonthName + YearName of the given date
@@ -78,17 +88,17 @@ class TimeManagement {
 	class func getMonthName(_ monthDate: Date, withYear: Bool = true) -> String {
 		
 		//get the Index of the month
-		let month = TMCalendar.component(.month, from: monthDate) - 1
+		let month = TimeManagement.calendar.component(.month, from: monthDate) - 1
         
-        // Get the monthName with the Index of the month
-        let prestr = monthName[month]
+        // Get the EventManagement.shared.months with the Index of the month
+        let prestr = EventManagement.shared.months[month]
 		
 		// Add both strings to one
 		let str: String
 		
 		if withYear {
 			// Get the yearName by getting the YearComponent of the given date
-			let poststr = String(TMCalendar.component(.year, from: monthDate))
+			let poststr = String(TimeManagement.calendar.component(.year, from: monthDate))
 			
 			str = "\(prestr) \(poststr)"
 			
@@ -97,7 +107,7 @@ class TimeManagement {
 		}
         
         // Output information
-		if informationMode {
+		if Settings.shared.informationMode {
 			print("getMonthName \(monthDate): \(str)")
 		}
         
@@ -117,7 +127,7 @@ class TimeManagement {
 		let date = calculateFirstDayInMonth(yearID: yearID, monthID: monthID)
         
         // Get the number of days in the month using the calculated day
-		let numOfDaysInMonth = TMCalendar.range(of: .day, in: .month, for: date).length
+		let numOfDaysInMonth = TimeManagement.calendar.range(of: .day, in: .month, for: date).length
         
         // Return the number of days in the month
 		return numOfDaysInMonth
@@ -134,7 +144,7 @@ class TimeManagement {
 	/// - Returns: a boolean indicating if both dates are the same
 	class func isToday(yearID: Int, monthID: Int, dayID: Int) -> Bool {
 		
-		let todaysDay = (HSelection.todaysDayID, HSelection.todaysMonthID, HSelection.todaysYearID)
+		let todaysDay = (Selection.shared.todaysDayID, Selection.shared.todaysMonthID, Selection.shared.todaysYearID)
 		let compareDay = (dayID, monthID, yearID)
 		
 		return todaysDay == compareDay
@@ -149,7 +159,7 @@ class TimeManagement {
 	///   - dayID: dayID of the comparable Date or Cell
 	/// - Returns: a boolean indicating if both cells are the same
 	class func isSelected(yearID: Int, monthID: Int, dayID: Int) -> Bool {
-        let (selectedYearID, selectedMonthID, indexPath) = HSelection.selectedDayCellIndex
+        let (selectedYearID, selectedMonthID, indexPath) = Selection.shared.selectedDayCellIndex
         guard let selectedIndexPath = indexPath else {
             return false
         }
@@ -159,11 +169,12 @@ class TimeManagement {
 		return selectedDay == compareDay
 	}
 	
+	
 	class func timeRadiant(_ date: Date) -> CGFloat {
-		let hour = TMCalendar.component(.hour, from: date)
-		let minute = TMCalendar.component(.minute, from: date)
+		let hour = TimeManagement.calendar.component(.hour, from: date)
+		let minute = TimeManagement.calendar.component(.minute, from: date)
 		let timeInMinute = CGFloat((hour * 60) + minute )
-		let angle = ((timeInMinute * PI)/720)
+		let angle = ((timeInMinute * CGFloat.pi)/720)
 		return angle
 	}
 }
