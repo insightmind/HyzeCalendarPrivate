@@ -29,6 +29,7 @@ class WeekdayTableViewCell: UITableViewCell {
 	@IBOutlet weak var sixthDayViewButton: UIButton!
 	@IBOutlet weak var seventhDayView: UIView!
 	@IBOutlet weak var seventhDayViewButton: UIButton!
+	@IBOutlet weak var stackView: UIStackView!
 	
 	var dayViews: [UIView] = []
 	var dayViewButtons: [UIButton] = []
@@ -40,6 +41,8 @@ class WeekdayTableViewCell: UITableViewCell {
 		self.cellView.layer.cornerRadius = self.topView.bounds.height / 2
 		self.cellView.layer.masksToBounds = true
 		setDayViewButtonLabels()
+		let freeSpace = stackView.bounds.width / 7 - stackView.bounds.height
+		stackView.spacing = freeSpace
     }
 	
 	func setDayViewButtonLabels() {
@@ -97,16 +100,19 @@ class WeekdayTableViewCell: UITableViewCell {
 			number -= 7
 		}
 		guard let weekday = EKWeekday.init(rawValue: number) else { return }
-		print(weekday.rawValue)
 		if let index = selectedDays.index(of: weekday) {
 			selectedDays.remove(at: index)
+			self.dayViews[dayIndex].layer.shadowPath = UIBezierPath(roundedRect: self.dayViews[dayIndex].bounds, cornerRadius: self.dayViews[dayIndex].layer.cornerRadius).cgPath
 			UIView.animate(withDuration: 0.3, animations: {
-				self.dayViews[dayIndex].backgroundColor = Color.lightBlue
+				self.dayViews[dayIndex].backgroundColor = Color.lightBlue.withAlphaComponent(0)
+				self.dayViews[dayIndex].layer.shadowOpacity = 0
 			})
 		} else {
 			selectedDays.append(weekday)
+			self.dayViews[dayIndex].layer.shadowPath = UIBezierPath(roundedRect: self.dayViews[dayIndex].bounds, cornerRadius: self.dayViews[dayIndex].layer.cornerRadius).cgPath
 			UIView.animate(withDuration: 0.3, animations: {
 				self.dayViews[dayIndex].backgroundColor = Color.red
+				self.dayViews[dayIndex].layer.shadowOpacity = 0.8
 			})
 		}
 	}
@@ -114,6 +120,11 @@ class WeekdayTableViewCell: UITableViewCell {
 	override func layoutIfNeeded() {
 		for view in dayViews {
 			view.layer.cornerRadius = view.bounds.height / 2
+			view.layer.shadowColor = Color.red.cgColor
+			view.layer.shadowOffset = CGSize(width: 1, height: 3)
+			view.layer.shadowRadius = 5
+			view.layer.shadowOpacity = 0
+			view.layer.masksToBounds = false
 		}
 	}
 	

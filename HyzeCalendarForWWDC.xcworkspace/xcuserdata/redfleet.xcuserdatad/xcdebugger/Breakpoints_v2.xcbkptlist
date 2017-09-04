@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HyzeCalendarForWWDC/WeekdayTableViewCell.swift"
-            timestampString = "526221739.451417"
+            timestampString = "526224940.730693"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
             landmarkName = "setDayViewButtonLabels()"
             landmarkType = "7">
          </BreakpointContent>

@@ -125,6 +125,9 @@ class EventEditorTableViewController: UITableViewController {
 				case .recurrence:
 					let cell = self.tableView.cellForRow(at: IndexPath(row: i, section: 0)) as! SetRecurrenceTableViewCell
 					cell.setRoundView(cell.predefinedViews, shouldBeRounded: true)
+					if onlyInformations {
+						cell.reloadInformations()
+					}
 				default:
 					return
 				}

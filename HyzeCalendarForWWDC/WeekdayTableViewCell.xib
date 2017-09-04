@@ -250,6 +250,7 @@
                 <outlet property="seventhDayViewButton" destination="DEH-Bv-4o0" id="GCR-g9-EMC"/>
                 <outlet property="sixthDayView" destination="2rG-80-VD9" id="b5w-bF-afv"/>
                 <outlet property="sixthDayViewButton" destination="0Pr-9i-LNr" id="dXH-8K-EKy"/>
+                <outlet property="stackView" destination="dGU-7J-hRr" id="P5V-C9-2J2"/>
                 <outlet property="thirdDayView" destination="AVz-ve-UTj" id="uVs-dz-O54"/>
                 <outlet property="thirdDayViewButton" destination="exr-Tf-dJw" id="dSn-ku-Z0m"/>
                 <outlet property="topLabel" destination="xhA-n0-K77" id="XWH-Ub-doy"/>

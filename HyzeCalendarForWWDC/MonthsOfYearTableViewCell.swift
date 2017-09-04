@@ -65,8 +65,13 @@ class MonthsOfYearTableViewCell: UITableViewCell {
 		for i in viewButtons {
 			let (view, _, _) = i.value
 			view.layer.cornerRadius = view.bounds.height / 2
-			view.layer.masksToBounds = true
-			view.backgroundColor = Color.blue
+			view.layer.shadowPath = UIBezierPath(roundedRect: view.bounds, cornerRadius: view.layer.cornerRadius).cgPath
+			view.backgroundColor = Color.blue.withAlphaComponent(0)
+			view.layer.shadowColor = Color.red.cgColor
+			view.layer.shadowOffset = CGSize(width: 1, height: 3)
+			view.layer.shadowRadius = 5
+			view.layer.shadowOpacity = 0
+			view.layer.masksToBounds = false
 		}
 		
 		
@@ -93,14 +98,19 @@ class MonthsOfYearTableViewCell: UITableViewCell {
 	}
 	
 	func selectView(_ view: UIView) {
+		view.layer.shadowPath = UIBezierPath(roundedRect: view.bounds, cornerRadius: view.layer.cornerRadius).cgPath
 		UIView.animate(withDuration: 0.3) {
 			view.backgroundColor = Color.red
+			view.layer.shadowOpacity = 0.8
 		}
+		self.bringSubview(toFront: view)
 	}
 	
 	func deselectView(_ view: UIView) {
+		view.layer.shadowPath = UIBezierPath(roundedRect: view.bounds, cornerRadius: view.layer.cornerRadius).cgPath
 		UIView.animate(withDuration: 0.3) {
-			view.backgroundColor = Color.blue
+			view.backgroundColor = Color.blue.withAlphaComponent(0)
+			view.layer.shadowOpacity = 0
 		}
 	}
 	
