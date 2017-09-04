@@ -9,6 +9,16 @@
 import UIKit
 import EventKit
 
+enum RecurrenceType {
+	case start
+	case none
+	case day
+	case week
+	case month
+	case year
+	case custom
+}
+
 
 class SetRecurrenceTableViewCell: UITableViewCell, EventEditorCellProtocol {
 	
@@ -16,21 +26,11 @@ class SetRecurrenceTableViewCell: UITableViewCell, EventEditorCellProtocol {
 	
 	func reloadInformations() {
 		
-		let type = analyseRule()
+		let type = EventManagement.shared.analyseRule(eventInformations)
 		self.setDesign(type, animated: true)
 		
 	}
-	
-	enum RecurrenceType {
-		case start
-		case none
-		case day
-		case week
-		case month
-		case year
-		case custom
-	}
-	
+
 	@IBOutlet weak var topView: UIView!
 	@IBOutlet weak var labelView: UIView!
 	@IBOutlet weak var titleLabel: UILabel!
@@ -52,9 +52,15 @@ class SetRecurrenceTableViewCell: UITableViewCell, EventEditorCellProtocol {
 	var selectedRecurrenceType: RecurrenceType = .start
 	
 	@IBAction func deleteRecurrence(_ sender: UIButton) {
-		eventInformations.recurrenceRule = nil
-		self.setRoundView(predefinedViews, shouldBeRounded: true)
-		setDesign(.none)
+		if eventInformations.state == .showDetail {
+			let storyboard = UIStoryboard(name: "RecurrencePopover", bundle: nil)
+			guard let viewController = storyboard.instantiateInitialViewController() else { return }
+			eventInformations.eventEditor?.present(viewController, animated: true, completion: nil)
+		} else {
+			eventInformations.recurrenceRule = nil
+			self.setRoundView(predefinedViews, shouldBeRounded: true)
+			setDesign(.none)
+		}
 	}
 	
 	@IBAction func selectDay(_ sender: UIButton) {
@@ -198,7 +204,9 @@ class SetRecurrenceTableViewCell: UITableViewCell, EventEditorCellProtocol {
 		self.predefinedViews.append(yearView)
 		self.topView.backgroundColor = UIColor.clear
 		self.labelView.backgroundColor = Color.lightBlue
+
 		setUpButton(everySelectionButtonView, button: everySelectionButton, image: #imageLiteral(resourceName: "ic_delete"))
+		
 		setUpButton(customSelectionButtonView, button: customSelectionButton, image: #imageLiteral(resourceName: "ic_add"))
 		
 		reloadInformations()
@@ -206,35 +214,18 @@ class SetRecurrenceTableViewCell: UITableViewCell, EventEditorCellProtocol {
 		if eventInformations.state == .showDetail {
 			self.customSelection.isHidden = true
 			self.predefinedViewStack.isHidden = true
+			if selectedRecurrenceType == .custom {
+				setUpButton(everySelectionButtonView, button: everySelectionButton, image: #imageLiteral(resourceName: "ic_keyboard_arrow_right"))
+			} else {
+				everySelectionButtonView.isHidden = true
+			}
+			
+			
 		}
 		
 		self.customSelection.layer.cornerRadius = cornerRadius
 		self.layoutIfNeeded()
     }
-	
-	func analyseRule() -> RecurrenceType {
-		guard let rule = eventInformations.recurrenceRule else { return .none }
-
-		if rule.recurrenceEnd != nil { return .custom }
-		if rule.interval != 1 { return .custom }
-		if rule.daysOfTheWeek != nil { return .custom }
-		if rule.daysOfTheMonth != nil { return .custom }
-		if rule.daysOfTheYear != nil { return .custom }
-		if rule.weeksOfTheYear != nil { return .custom }
-		if rule.monthsOfTheYear != nil { return .custom }
-		if rule.setPositions != nil { return .custom }
-		
-		switch rule.frequency {
-		case .daily:
-			return .day
-		case .weekly:
-			return .week
-		case .monthly:
-			return .month
-		case .yearly:
-			return .year
-		}
-	}
 	
 	override func layoutIfNeeded() {
 		super.layoutIfNeeded()

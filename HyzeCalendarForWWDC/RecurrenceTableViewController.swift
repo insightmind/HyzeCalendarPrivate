@@ -19,6 +19,9 @@ class RecurrenceTableViewController: UITableViewController {
 	var monthsOfYear: MonthsOfYearTableViewCell?
 	var popover: RecurrencePopoverViewController?
 	
+	var isEndLaunch = true
+	var isDaysOfMonthPickerLaunch = true
+	
 	var recurrenceEndType: RecurrenceEndType = .none
 	
 	enum RecurrenceCellTypes: String {
@@ -155,6 +158,17 @@ class RecurrenceTableViewController: UITableViewController {
 			cells = []
 			return
 		}
+		if let rule = eventInformations.recurrenceRule {
+			if rule.recurrenceEnd != nil && isEndLaunch {
+				isEndLaunch = false
+				dateCellExpanded = true
+			}
+			if rule.daysOfTheWeek != nil && rule.setPositions != nil && isDaysOfMonthPickerLaunch {
+				isDaysOfMonthPickerLaunch = false
+				daysOfMonthPickerExpanded = true
+			}
+		}
+		
 		switch frequency {
 		case .daily:
 			cells = [timeIntervalCell,

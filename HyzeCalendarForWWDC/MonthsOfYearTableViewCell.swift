@@ -10,6 +10,8 @@ import UIKit
 
 class MonthsOfYearTableViewCell: UITableViewCell {
 	
+	var eventInformations = EventManagement.shared.eventInformation
+	
 	var viewButtons: [UIButton: (UIView, Bool, Int)] = [:]
 	var selection: [Int] = []
 	
@@ -62,6 +64,8 @@ class MonthsOfYearTableViewCell: UITableViewCell {
 		               novButton: (novView, false, 11),
 		               decButton: (decView, false, 12)]
 		
+		
+		
 		for i in viewButtons {
 			let (view, _, _) = i.value
 			view.layer.cornerRadius = view.bounds.height / 2
@@ -76,6 +80,21 @@ class MonthsOfYearTableViewCell: UITableViewCell {
 		
 		
     }
+	
+	override func layoutIfNeeded() {
+		guard let monthsOfTheYear = eventInformations.recurrenceRule?.monthsOfTheYear else { return }
+		var indexes: [Int] = []
+		for months in monthsOfTheYear {
+			indexes.append(Int(truncating: months))
+		}
+		for i in viewButtons {
+			let (view, isSelected, index) = i.value
+			if indexes.contains(index) {
+				selectView(view)
+				viewButtons[i.key] = (view, !isSelected, index)
+			}
+		}
+	}
 	
 	@IBAction func toggleButton(_ sender: UIButton) {
 		for i in viewButtons {

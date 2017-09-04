@@ -63,12 +63,14 @@ class RecurrencePopoverViewController: UIViewController {
 		}
 	}
 	
-	func setContainerViewHeight(_ isSelection: Bool = true) {
-		if !isSelection {
+	func setContainerViewHeight() {
+		if selectedFrequency != nil {
+			mainViewHeightConstraint.constant = 56
 			NSLayoutConstraint.deactivate([containerViewHeightConstraint])
 			NSLayoutConstraint.activate([popoverTopConstraint])
 			tableView?.tableView.isScrollEnabled = true
 		} else {
+			mainViewHeightConstraint.constant = 224
 			NSLayoutConstraint.activate([containerViewHeightConstraint])
 			NSLayoutConstraint.deactivate([popoverTopConstraint])
 			containerViewHeightConstraint.constant = 0.0
@@ -78,9 +80,9 @@ class RecurrencePopoverViewController: UIViewController {
 	
 	func frequencySelectionReset() {
 		guard let table = tableView else { return }
+		selectedFrequency = nil
 		table.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
-		mainViewHeightConstraint.constant = 224.0
-		setContainerViewHeight(true)
+		setContainerViewHeight()
 		dailyButtonView.isHidden = false
 		weeklyButtonView.isHidden = false
 		monthlyButtonView.isHidden = false
@@ -93,91 +95,73 @@ class RecurrencePopoverViewController: UIViewController {
 		UIView.animate(withDuration: 0.5) {
 			self.view.layoutIfNeeded()
 		}
-		selectedFrequency = nil
+		
 	}
 	
 	@IBAction func selectDaily(_ sender: UIButton) {
 		if selectedFrequency != nil {
 			frequencySelectionReset()
 		} else {
-			selectedFrequency = .daily
-			guard let table = tableView else { return }
-			table.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
-			table.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
-			mainViewHeightConstraint.constant = 56.0
-			setContainerViewHeight(false)
-			weeklyButtonView.isHidden = true
-			monthlyButtonView.isHidden = true
-			yearlyButtonView.isHidden = true
-			let image = #imageLiteral(resourceName: "ic_edit").withRenderingMode(.alwaysTemplate)
-			dailyCircleButton.setImage(image, for: .normal)
-			UIView.animate(withDuration: 0.5) {
-				self.view.layoutIfNeeded()
-			}
-			table.tableView.reloadData()
+			didSelect(.daily)
 		}
 	}
 	@IBAction func selectWeekly(_ sender: UIButton) {
 		if selectedFrequency != nil {
 			frequencySelectionReset()
 		} else {
-			selectedFrequency = .weekly
-			guard let table = tableView else { return }
-			table.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
-			table.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
-			mainViewHeightConstraint.constant = 56
-			setContainerViewHeight(false)
-			dailyButtonView.isHidden = true
-			monthlyButtonView.isHidden = true
-			yearlyButtonView.isHidden = true
-			let image = #imageLiteral(resourceName: "ic_edit").withRenderingMode(.alwaysTemplate)
-			weeklyCircleButton.setImage(image, for: .normal)
-			UIView.animate(withDuration: 0.5) {
-				self.view.layoutIfNeeded()
-			}
-			
+			didSelect(.weekly)
 		}
 	}
 	@IBAction func selectMonthly(_ sender: UIButton) {
 		if selectedFrequency != nil {
 			frequencySelectionReset()
 		} else {
-			guard let table = tableView else { return }
-			selectedFrequency = .monthly
-			table.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
-			table.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
-			mainViewHeightConstraint.constant = 56
-			setContainerViewHeight(false)
-			weeklyButtonView.isHidden = true
-			dailyButtonView.isHidden = true
-			yearlyButtonView.isHidden = true
-			let image = #imageLiteral(resourceName: "ic_edit").withRenderingMode(.alwaysTemplate)
-			monthlyCircleButton.setImage(image, for: .normal)
-			UIView.animate(withDuration: 0.5) {
-				self.view.layoutIfNeeded()
-			}
+			didSelect(.monthly)
 		}
 	}
 	@IBAction func selectYearly(_ sender: UIButton) {
 		if selectedFrequency != nil {
 			frequencySelectionReset()
 		} else {
-			selectedFrequency = .yearly
-			guard let table = tableView else { return }
-			table.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
-			table.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
-			mainViewHeightConstraint.constant = 56
-			setContainerViewHeight(false)
+			didSelect(.yearly)
+		}
+	}
+	
+	func didSelect(_ type: EKRecurrenceFrequency) {
+		
+		selectedFrequency = type
+		guard let table = tableView else { return }
+		table.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+		table.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+		setContainerViewHeight()
+		let image = #imageLiteral(resourceName: "ic_edit").withRenderingMode(.alwaysTemplate)
+		
+		switch type {
+		case .daily:
+			weeklyButtonView.isHidden = true
+			monthlyButtonView.isHidden = true
+			yearlyButtonView.isHidden = true
+			dailyCircleButton.setImage(image, for: .normal)
+		case .weekly:
+			dailyButtonView.isHidden = true
+			monthlyButtonView.isHidden = true
+			yearlyButtonView.isHidden = true
+			weeklyCircleButton.setImage(image, for: .normal)
+		case .monthly:
+			weeklyButtonView.isHidden = true
+			dailyButtonView.isHidden = true
+			yearlyButtonView.isHidden = true
+			monthlyCircleButton.setImage(image, for: .normal)
+		case .yearly:
 			weeklyButtonView.isHidden = true
 			monthlyButtonView.isHidden = true
 			dailyButtonView.isHidden = true
-			let image = #imageLiteral(resourceName: "ic_edit").withRenderingMode(.alwaysTemplate)
 			yearlyCircleButton.setImage(image, for: .normal)
-			UIView.animate(withDuration: 0.5) {
-				self.view.layoutIfNeeded()
-			}
-			
 		}
+		UIView.animate(withDuration: 0.5) {
+			self.view.layoutIfNeeded()
+		}
+		table.tableView.reloadData()
 	}
 	
 	func setUpButton(_ view: UIView, button: UIButton, image: UIImage) {
@@ -191,6 +175,11 @@ class RecurrencePopoverViewController: UIViewController {
 		view.layer.shadowRadius = 5
 		view.layer.shadowOffset = CGSize(width: 1, height: 3)
 		view.layer.shadowOpacity = 0.8
+	}
+	
+	override func viewDidLayoutSubviews() {
+		setContainerViewHeight()
+		super.viewDidLayoutSubviews()
 	}
 	
 	override func viewDidLoad() {
@@ -215,14 +204,27 @@ class RecurrencePopoverViewController: UIViewController {
 			popover.backgroundColor = Color.white.withAlphaComponent(0.3)
 		}
 		
-		setContainerViewHeight(true)
-		containerViewHeightConstraint.constant = 0.0
-		tableView?.tableView.isScrollEnabled = false
 		setUpButton(dailyCircleButtonView, button: dailyCircleButton, image: #imageLiteral(resourceName: "ic_done"))
 		setUpButton(weeklyCircleButtonView, button: weeklyCircleButton, image: #imageLiteral(resourceName: "ic_done"))
 		setUpButton(monthlyCircleButtonView, button: monthlyCircleButton, image: #imageLiteral(resourceName: "ic_done"))
 		setUpButton(yearlyCircleButtonView, button: yearlyCircleButton, image: #imageLiteral(resourceName: "ic_done"))
+		
+		setUpInformations()
+		
     }
+	
+	func setUpInformations() {
+		guard let rule = eventInformations.recurrenceRule else {
+			frequencySelectionReset()
+			return
+		}
+		if EventManagement.shared.analyseRule(eventInformations) == .custom {
+			didSelect(rule.frequency)
+		} else {
+			frequencySelectionReset()
+		}
+		
+	}
 	
 	func saveRecurrenceRule() -> Bool {
 		

@@ -347,6 +347,54 @@ class EventManagement {
 			EventManagement.shared.eventsColorsOnSelectedDate.append(color)
 		}
 	}
+	
+	func analyseRule(_ information: EventEditorEventInformations) -> RecurrenceType {
+		guard let rule = information.recurrenceRule else { return .none }
+		
+		var couldBeOther = false
+		
+		if rule.recurrenceEnd != nil { return .custom }
+		if rule.interval != 1 { return .custom }
+		if let daysOfTheWeek = rule.daysOfTheWeek {
+			if daysOfTheWeek.count == 1 {
+				if daysOfTheWeek.first!.dayOfTheWeek.rawValue == 1 {
+					couldBeOther = true
+				} else {
+					return .custom
+				}
+			} else {
+				return .custom
+			}
+		}
+		if rule.daysOfTheMonth != nil { return .custom }
+		if rule.daysOfTheYear != nil { return .custom }
+		if rule.weeksOfTheYear != nil { return .custom }
+		if rule.monthsOfTheYear != nil {
+			if !rule.monthsOfTheYear!.isEmpty {
+				return .custom
+			}
+		}
+		if let position = rule.setPositions {
+			if position.count == 1 && couldBeOther {
+				if position.first! != 1 {
+					return .custom
+				}
+			} else {
+				return .custom
+			}
+		}
+		
+		switch rule.frequency {
+		case .daily:
+			return .day
+		case .weekly:
+			return .week
+		case .monthly:
+			return .month
+		case .yearly:
+			return .year
+		}
+	}
 
     
     init() {

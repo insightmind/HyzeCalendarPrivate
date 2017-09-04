@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import EventKit
 
 class DaysOfMonthPickerTableViewCell: UITableViewCell {
 	
+	var eventInformations = EventManagement.shared.eventInformation
 	let dataSource = RecurrenceDaysOfMonthPickerView()
 	var tableView: RecurrenceTableViewController?
+	
+	var isLaunch = true
 	
 	@IBOutlet weak var cellView: UIView!
 	@IBOutlet weak var topView: UIView!
@@ -24,7 +28,11 @@ class DaysOfMonthPickerTableViewCell: UITableViewCell {
 	@IBOutlet weak var pickerView: UIPickerView!
 
 	@IBAction func toggleSelection(_ sender: UIButton) {
-		isSelected = !isSelected
+		setSelection(!isSelected)
+	}
+	
+	func setSelection(_ isSelected: Bool, animated: Bool = true) {
+		setUpButton(enableButtonView, button: enableButton, image: #imageLiteral(resourceName: "ic_add"))
 		var transform: CGAffineTransform
 		if isSelected {
 			enableLabel.setTitle("disable", for: .normal)
@@ -39,11 +47,36 @@ class DaysOfMonthPickerTableViewCell: UITableViewCell {
 			tableView?.daysOfMonthPickerExpanded = false
 			tableView?.updateCellHeights()
 		}
-		
-		UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+		self.isSelected = isSelected
+		UIView.animate(withDuration: animated ? 0.6 : 0, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
 			self.enableButton.transform = transform
 			self.layoutIfNeeded()
 		}, completion: nil)
+	}
+	
+	func setPickerView(_ rule: EKRecurrenceRule) {
+		guard let position = rule.setPositions?.first else { return }
+		let num = Int(truncating: position)
+		switch num {
+		case 1...5:
+			pickerView.selectRow(num - 1, inComponent: 0, animated: false)
+		case -1:
+			pickerView.selectRow(5, inComponent: 0, animated: false)
+		default:
+			return
+		}
+		guard let daysOfTheWeek = rule.daysOfTheWeek else { return }
+		if daysOfTheWeek.count == 1 {
+			guard let first = daysOfTheWeek.first else { return }
+			let day = first.dayOfTheWeek.rawValue
+			pickerView.selectRow(day - 1, inComponent: 1, animated: false)
+		} else if daysOfTheWeek.count == 2 {
+			pickerView.selectRow(9, inComponent: 1, animated: false)
+		} else if daysOfTheWeek.count == 5 {
+			pickerView.selectRow(8, inComponent: 1, animated: false)
+		} else {
+			pickerView.selectRow(7, inComponent: 1, animated: false)
+		}
 	}
 	
 	func setUpButton(_ view: UIView, button: UIButton, image: UIImage) {
@@ -69,6 +102,16 @@ class DaysOfMonthPickerTableViewCell: UITableViewCell {
 		
 		pickerView.dataSource = dataSource
 		pickerView.delegate = dataSource
+		
+		if isLaunch {
+			isLaunch = false
+			guard let rule = eventInformations.recurrenceRule else { return }
+			setPickerView(rule)
+			self.enableButton.transform = CGAffineTransform(rotationAngle: CGFloat.pi/4)
+			enableLabel.setTitle("disable", for: .normal)
+			self.isSelected = true
+		}
+		
     }
     
 }

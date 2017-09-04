@@ -10,6 +10,8 @@ import UIKit
 
 class TimeIntervalTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDelegate {
 	
+	var eventInformations = EventManagement.shared.eventInformation
+	
 	var isOnlyOne: Bool = true
 	var selectedRow: Int = 0
 	var tableView: RecurrenceTableViewController?
@@ -27,6 +29,12 @@ class TimeIntervalTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPick
 		mainView.layer.masksToBounds = true
 		mainView.backgroundColor = Color.lightBlue
 		
+		if let rule = eventInformations.recurrenceRule {
+			selectedRow = rule.interval - 1
+			if rule.interval > 1 {
+				isOnlyOne = false
+			}
+		}
 		pickerView.selectRow(selectedRow, inComponent: 0, animated: false)
     }
 	

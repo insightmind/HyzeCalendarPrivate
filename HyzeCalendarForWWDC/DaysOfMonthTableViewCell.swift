@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import EventKit
 
 enum MonthlyRecurrenceType {
 	case each
@@ -14,6 +15,8 @@ enum MonthlyRecurrenceType {
 }
 
 class DaysOfMonthTableViewCell: UITableViewCell {
+	
+	var eventInformations = EventManagement.shared.eventInformation
 	
 	var tableView: RecurrenceTableViewController?
 	var selectedType: MonthlyRecurrenceType = .each
@@ -59,11 +62,48 @@ class DaysOfMonthTableViewCell: UITableViewCell {
 		pickerView.setValue(Color.white, forKey: "textColor")
 		pickerView.tintColor = Color.white
 		
+		
 		setUpButton(onViewButtonView, button: onViewButton, image: #imageLiteral(resourceName: "ic_add"))
 		setUpButton(eachViewButtonView, button: eachViewButton, image: #imageLiteral(resourceName: "ic_add"))
 		
+		if let rule = eventInformations.recurrenceRule {
+			if rule.daysOfTheMonth != nil {
+				selectedType = .each
+			} else {
+				selectedType = .on
+				setPickerView(rule)
+			}
+		}
+		
 		selectType(selectedType)
     }
+	
+	func setPickerView(_ rule: EKRecurrenceRule) {
+		guard let position = rule.setPositions?.first else { return }
+		let num = Int(truncating: position)
+		switch num {
+		case 1...5:
+			pickerView.selectRow(num - 1, inComponent: 0, animated: false)
+		case -1:
+			pickerView.selectRow(5, inComponent: 0, animated: false)
+		default:
+			return
+		}
+		guard let daysOfTheWeek = rule.daysOfTheWeek else { return }
+		if daysOfTheWeek.count == 1 {
+			guard let first = daysOfTheWeek.first else { return }
+			let day = first.dayOfTheWeek.rawValue
+			pickerView.selectRow(day - 1, inComponent: 1, animated: false)
+		} else if daysOfTheWeek.count == 2 {
+			pickerView.selectRow(9, inComponent: 1, animated: false)
+		} else if daysOfTheWeek.count == 5 {
+			pickerView.selectRow(8, inComponent: 1, animated: false)
+		} else {
+			pickerView.selectRow(7, inComponent: 1, animated: false)
+		}
+	}
+	
+	
 	@IBAction func selectEach(_ sender: UIButton) {
 		if selectedType == .each {
 			selectType(.on)

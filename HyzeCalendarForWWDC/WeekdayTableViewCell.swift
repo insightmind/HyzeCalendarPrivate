@@ -11,6 +11,8 @@ import EventKit
 
 class WeekdayTableViewCell: UITableViewCell {
 	
+	var eventInformations = EventManagement.shared.eventInformation
+	
 	@IBOutlet weak var cellView: UIView!
 	@IBOutlet weak var topView: UIView!
 	@IBOutlet weak var topLabel: UILabel!
@@ -125,6 +127,15 @@ class WeekdayTableViewCell: UITableViewCell {
 			view.layer.shadowRadius = 5
 			view.layer.shadowOpacity = 0
 			view.layer.masksToBounds = false
+		}
+		if let rule = eventInformations.recurrenceRule {
+			if rule.frequency == .weekly {
+				if let dayOfWeek = rule.daysOfTheWeek {
+					for day in dayOfWeek {
+						selectDay(day.dayOfTheWeek.rawValue - 1)
+					}
+				}
+			}
 		}
 	}
 	

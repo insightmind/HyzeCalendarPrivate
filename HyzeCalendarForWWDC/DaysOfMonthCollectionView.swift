@@ -10,18 +10,25 @@ import UIKit
 
 class DaysOfMonthCollectionView: UICollectionView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 	
+	var eventInformations = EventManagement.shared.eventInformation
+	
 	let reuseIdentifier = "day"
+	var selectedCells: [NSNumber]?
 	
 	override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
 		super.init(frame: frame, collectionViewLayout: layout)
 		self.dataSource = self
 		self.delegate = self
+		self.selectedCells = []
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
 		self.dataSource = self
 		self.delegate = self
+		
+		guard let rule = eventInformations.recurrenceRule else { return }
+		self.selectedCells = rule.daysOfTheMonth
 	}
 	
 	
@@ -56,6 +63,13 @@ class DaysOfMonthCollectionView: UICollectionView, UICollectionViewDataSource, U
 		let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:[superview]-(<=1)-[label]", options: .alignAllCenterX, metrics: nil, views: ["superview": cell, "label" : label])
 		
 		NSLayoutConstraint.activate(horizontalConstraints + verticalConstraints)
+		let number = NSNumber(integerLiteral: indexPath.item + 1)
+		if let selection = selectedCells {
+			if selection.contains(number) {
+				cell.contentView.backgroundColor = Color.red
+				cell.layer.shadowOpacity = 0.8
+			}
+		}
 		return cell
 	}
 	

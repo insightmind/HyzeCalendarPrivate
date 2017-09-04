@@ -16,7 +16,9 @@ enum RecurrenceEndType {
 
 class DateTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDelegate {
 	
+	var eventInformations = EventManagement.shared.eventInformation
 	var selectedType: RecurrenceEndType = .none
+	var isLaunch = true
 	
 	func numberOfComponents(in pickerView: UIPickerView) -> Int {
 		return 2
@@ -176,8 +178,44 @@ class DateTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDe
 		setUpButton(onDateButtonView, button: onDateButton, image: #imageLiteral(resourceName: "ic_add"))
 		setUpButton(afterOccurrencesButtonView, button: afterOccurrencesButton, image: #imageLiteral(resourceName: "ic_add"))
 		
-        // Initialization code
-    }
+		
+	}
+	
+	override func layoutIfNeeded() {
+		super.layoutIfNeeded()
+		if isLaunch {
+			isLaunch = false
+			guard let rule = eventInformations.recurrenceRule else { return }
+			guard let end = rule.recurrenceEnd else {
+				selectViewHeightConstraint.constant = 112
+				return
+			}
+			selectViewHeightConstraint.constant = 56
+			if let date = end.endDate {
+				selectedType = .date
+				datePicker.date = date
+				afterOccurrencesView.isHidden = true
+				picker.isHidden = true
+				onDateButton.transform = CGAffineTransform(rotationAngle: CGFloat.pi/4)
+				
+				onDateView.isHidden = false
+				datePicker.isHidden = false
+			} else {
+				selectedType = .occurrence
+				if end.occurrenceCount > 1 {
+					picker.selectRow(end.occurrenceCount - 2, inComponent: 0, animated: false)
+				}
+				onDateView.isHidden = true
+				datePicker.isHidden = true
+				
+				afterOccurrencesButton.transform = CGAffineTransform(rotationAngle: CGFloat.pi/4)
+				afterOccurrencesView.isHidden = false
+				picker.isHidden = false
+			}
+		}
+		
+	}
+	
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

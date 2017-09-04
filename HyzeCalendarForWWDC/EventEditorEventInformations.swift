@@ -26,6 +26,7 @@ class EventEditorEventInformations: NSCopying {
 		informations.dateSelectionPopoverState = dateSelectionPopoverState
 		informations.eventEditorTableViewController = eventEditorTableViewController
 		informations.setCalendarPopoverViewController = setCalendarPopoverViewController
+		informations.recurrenceRule = recurrenceRule
 		return informations
 	}
 	
@@ -39,6 +40,7 @@ class EventEditorEventInformations: NSCopying {
 		self.title = information.title
 		self.eventIdentifier = information.eventIdentifier
 		self.calendar = information.calendar
+		self.recurrenceRule = information.recurrenceRule
 		if allInformations {
 			dateSelectionPopoverState = information.dateSelectionPopoverState
 			setCalendarPopoverViewController = information.setCalendarPopoverViewController
