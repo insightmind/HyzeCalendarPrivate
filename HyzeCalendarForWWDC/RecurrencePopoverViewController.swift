@@ -9,19 +9,11 @@
 import UIKit
 import EventKit
 
-enum FrequencyType {
-	case none
-	case daily
-	case weekly
-	case monthly
-	case yearly
-}
-
 class RecurrencePopoverViewController: UIViewController {
 	
 	var eventInformations = EventManagement.shared.eventInformation
 	
-	var selectedFrequency: FrequencyType = .none
+	var selectedFrequency: EKRecurrenceFrequency? = nil
 	
 	var tableView: RecurrenceTableViewController? = nil
 
@@ -56,7 +48,19 @@ class RecurrencePopoverViewController: UIViewController {
 	}
 	
 	@IBAction func save(_ sender: UIButton) {
-		self.dismiss(animated: true, completion: nil)
+		if saveRecurrenceRule() {
+			self.dismiss(animated: true, completion: {
+				guard let viewController = self.eventInformations.eventEditorTableViewController else { return }
+				viewController.reloadCell(.recurrence, onlyInformations: true)
+			})
+		} else {
+			let alert = UIAlertController(title: "Could not save rule!", message: nil, preferredStyle: .alert)
+			let ok = UIAlertAction(title: "Continue", style: .destructive, handler: { (_) in
+				self.dismiss(animated: true, completion: nil)
+			})
+			alert.addAction(ok)
+			self.present(alert, animated: true, completion: nil)
+		}
 	}
 	
 	func setContainerViewHeight(_ isSelection: Bool = true) {
@@ -73,8 +77,8 @@ class RecurrencePopoverViewController: UIViewController {
 	}
 	
 	func frequencySelectionReset() {
-		tableView?.selectedFrequency = selectedFrequency
-		tableView?.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+		guard let table = tableView else { return }
+		table.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
 		mainViewHeightConstraint.constant = 224.0
 		setContainerViewHeight(true)
 		dailyButtonView.isHidden = false
@@ -89,16 +93,17 @@ class RecurrencePopoverViewController: UIViewController {
 		UIView.animate(withDuration: 0.5) {
 			self.view.layoutIfNeeded()
 		}
-		selectedFrequency = .none
+		selectedFrequency = nil
 	}
 	
 	@IBAction func selectDaily(_ sender: UIButton) {
-		if selectedFrequency != .none {
+		if selectedFrequency != nil {
 			frequencySelectionReset()
 		} else {
-			tableView?.selectedFrequency = .daily
-			tableView?.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
-			tableView?.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+			selectedFrequency = .daily
+			guard let table = tableView else { return }
+			table.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+			table.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
 			mainViewHeightConstraint.constant = 56.0
 			setContainerViewHeight(false)
 			weeklyButtonView.isHidden = true
@@ -109,18 +114,17 @@ class RecurrencePopoverViewController: UIViewController {
 			UIView.animate(withDuration: 0.5) {
 				self.view.layoutIfNeeded()
 			}
-			selectedFrequency = .daily
-			tableView?.selectedFrequency = selectedFrequency
-			tableView?.tableView.reloadData()
+			table.tableView.reloadData()
 		}
 	}
 	@IBAction func selectWeekly(_ sender: UIButton) {
-		if selectedFrequency != .none {
+		if selectedFrequency != nil {
 			frequencySelectionReset()
 		} else {
-			tableView?.selectedFrequency = .weekly
-			tableView?.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
-			tableView?.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+			selectedFrequency = .weekly
+			guard let table = tableView else { return }
+			table.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+			table.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
 			mainViewHeightConstraint.constant = 56
 			setContainerViewHeight(false)
 			dailyButtonView.isHidden = true
@@ -131,16 +135,17 @@ class RecurrencePopoverViewController: UIViewController {
 			UIView.animate(withDuration: 0.5) {
 				self.view.layoutIfNeeded()
 			}
-			selectedFrequency = .weekly
+			
 		}
 	}
 	@IBAction func selectMonthly(_ sender: UIButton) {
-		if selectedFrequency != .none {
+		if selectedFrequency != nil {
 			frequencySelectionReset()
 		} else {
-			tableView?.selectedFrequency = .monthly
-			tableView?.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
-			tableView?.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+			guard let table = tableView else { return }
+			selectedFrequency = .monthly
+			table.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+			table.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
 			mainViewHeightConstraint.constant = 56
 			setContainerViewHeight(false)
 			weeklyButtonView.isHidden = true
@@ -151,16 +156,16 @@ class RecurrencePopoverViewController: UIViewController {
 			UIView.animate(withDuration: 0.5) {
 				self.view.layoutIfNeeded()
 			}
-			selectedFrequency = .monthly
 		}
 	}
 	@IBAction func selectYearly(_ sender: UIButton) {
-		if selectedFrequency != .none {
+		if selectedFrequency != nil {
 			frequencySelectionReset()
 		} else {
-			tableView?.selectedFrequency = .yearly
-			tableView?.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
-			tableView?.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+			selectedFrequency = .yearly
+			guard let table = tableView else { return }
+			table.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+			table.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
 			mainViewHeightConstraint.constant = 56
 			setContainerViewHeight(false)
 			weeklyButtonView.isHidden = true
@@ -171,7 +176,7 @@ class RecurrencePopoverViewController: UIViewController {
 			UIView.animate(withDuration: 0.5) {
 				self.view.layoutIfNeeded()
 			}
-			selectedFrequency = .yearly
+			
 		}
 	}
 	
@@ -218,6 +223,166 @@ class RecurrencePopoverViewController: UIViewController {
 		setUpButton(monthlyCircleButtonView, button: monthlyCircleButton, image: #imageLiteral(resourceName: "ic_done"))
 		setUpButton(yearlyCircleButtonView, button: yearlyCircleButton, image: #imageLiteral(resourceName: "ic_done"))
     }
+	
+	func saveRecurrenceRule() -> Bool {
+		
+		guard let table = tableView else { return false }
+		guard let frequency = selectedFrequency else {
+			eventInformations.recurrenceRule = nil
+			return true
+		}
+		
+		guard let intervalCell = table.timeInterval else { return false }
+		let interval = intervalCell.pickerView.selectedRow(inComponent: 0) + 1
+		
+		let end = getRecurrenceEnd(table)
+		
+		var daysOfTheWeek: [EKRecurrenceDayOfWeek]? = nil
+		var daysOfTheMonth: [NSNumber]? = nil
+		var monthsOfTheYear: [NSNumber]? = nil
+		var setPositions: [NSNumber]? = nil
+		
+		switch frequency {
+		case .weekly:
+			daysOfTheWeek = getDaysOfTheWeek(table)
+		case .monthly:
+			if let daysOfTheMonthCell = table.daysOfMonth {
+				if daysOfTheMonthCell.selectedType == .each {
+					daysOfTheMonth = getDaysOfTheMonth(table)
+				} else if daysOfTheMonthCell.selectedType == .on {
+					guard let picker = daysOfTheMonthCell.pickerView else { return false }
+					let type = getSelectedType(picker)
+					guard let (dOTW, positions) = getDay(picker, type: type) else { return false }
+					daysOfTheWeek = dOTW
+					setPositions = positions
+				}
+			}
+		case .yearly:
+			monthsOfTheYear = getMonthsOfTheYear(table)
+			if let daysOfTheMonthPickerCell = table.daysOfMonthPicker {
+				guard let picker = daysOfTheMonthPickerCell.pickerView else { return false }
+				let type = getSelectedType(picker)
+				guard let (dOTW, positions) = getDay(picker, type: type) else { return false }
+				daysOfTheWeek = dOTW
+				setPositions = positions
+			}
+		default:
+			break
+		}
+		
+		eventInformations.recurrenceRule = EKRecurrenceRule(recurrenceWith: frequency, interval: interval, daysOfTheWeek: daysOfTheWeek, daysOfTheMonth: daysOfTheMonth, monthsOfTheYear: monthsOfTheYear, weeksOfTheYear: nil, daysOfTheYear: nil, setPositions: setPositions, end: end)
+
+		return true
+		
+	}
+	
+	func getSelectedType(_ pickerView: UIPickerView) -> RecurrenceDaysOfMonthPickerViewSelectedType {
+		let type = pickerView.selectedRow(inComponent: 1)
+		switch type {
+		case 0...6:
+			return .specificWeekDay
+		case 7:
+			return .day
+		case 8:
+			return .weekDay
+		case 9:
+			return .weekendDay
+		default:
+			fatalError()
+		}
+	}
+	
+	func getDay(_ picker: UIPickerView, type: RecurrenceDaysOfMonthPickerViewSelectedType) -> ([EKRecurrenceDayOfWeek], [NSNumber]?)? {
+		let which = picker.selectedRow(inComponent: 0)
+		
+		var dayOfWeek: [EKRecurrenceDayOfWeek] = []
+		var range: CountableClosedRange<Int> = 0...0
+		var shouldLoop: Bool = true
+		switch type {
+		case .specificWeekDay:
+			let day = picker.selectedRow(inComponent: 1) + 1
+			range = day...day
+		case .day:
+			range = 1...7
+		case .weekDay:
+			range = 2...6
+		case .weekendDay:
+			shouldLoop = false
+			if let weekDay = EKWeekday(rawValue: 1 ) {
+				let day = EKRecurrenceDayOfWeek(weekDay)
+				dayOfWeek.append(day)
+			}
+			if let weekDay = EKWeekday(rawValue: 7 ) {
+				let day = EKRecurrenceDayOfWeek(weekDay)
+				dayOfWeek.append(day)
+			}
+		}
+		if shouldLoop {
+			for index in range {
+				if let weekDay = EKWeekday(rawValue: index ) {
+					let day = EKRecurrenceDayOfWeek(weekDay)
+					dayOfWeek.append(day)
+				}
+			}
+		}
+		var position: NSNumber = 0
+		switch which {
+		case 0...4:
+			position = NSNumber(integerLiteral: which + 1)
+		case 5:
+			position = -1
+		default:
+			return nil
+		}
+		return (dayOfWeek,[position])
+	}
+	
+	func getMonthsOfTheYear(_ table: RecurrenceTableViewController) -> [NSNumber]? {
+		if let monthsOfTheYearCell = table.monthsOfYear {
+			return monthsOfTheYearCell.getSelectedMonths()
+		}
+		return nil
+	}
+	
+	func getDaysOfTheMonth(_ table: RecurrenceTableViewController) -> [NSNumber]? {
+		var numbers: [NSNumber] = []
+		if let daysOfTheMonthCell = table.daysOfMonth {
+			if daysOfTheMonthCell.selectedType != .each { return nil }
+			guard let indexPaths = daysOfTheMonthCell.collectionView.indexPathsForSelectedItems else { return nil }
+			for index in indexPaths {
+				let number = NSNumber(integerLiteral: index.item + 1)
+				numbers.append(number)
+			}
+		}
+		return numbers.isEmpty ? nil : numbers
+	}
+	
+	func getDaysOfTheWeek(_ table: RecurrenceTableViewController) -> [EKRecurrenceDayOfWeek]? {
+		var weekdays: [EKRecurrenceDayOfWeek] = []
+		if let daysOfTheWeekCell = table.weekDay {
+			for day in daysOfTheWeekCell.selectedDays {
+				weekdays.append(EKRecurrenceDayOfWeek(day))
+			}
+		}
+		return weekdays.isEmpty ? nil : weekdays
+	}
+	
+	func getRecurrenceEnd(_ table: RecurrenceTableViewController) -> EKRecurrenceEnd? {
+		if let endCell = table.endDate {
+			switch endCell.selectedType {
+			case .date:
+				return EKRecurrenceEnd(end: endCell.datePicker.date)
+			case .occurrence:
+				let count = endCell.picker.selectedRow(inComponent: 0) + 2
+				return EKRecurrenceEnd(occurrenceCount: count)
+			default:
+				break
+			}
+		}
+		return nil
+	}
+	
+	
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -235,5 +400,8 @@ class RecurrencePopoverViewController: UIViewController {
 			}
 		}
     }
-
+	
+	
 }
+
+

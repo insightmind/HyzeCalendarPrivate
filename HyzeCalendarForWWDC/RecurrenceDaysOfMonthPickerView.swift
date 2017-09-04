@@ -7,6 +7,14 @@
 //
 
 import UIKit
+import EventKit
+
+enum RecurrenceDaysOfMonthPickerViewSelectedType {
+	case specificWeekDay
+	case day
+	case weekDay
+	case weekendDay
+}
 
 class RecurrenceDaysOfMonthPickerView: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
 	

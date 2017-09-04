@@ -12,7 +12,7 @@ class TimeIntervalTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPick
 	
 	var isOnlyOne: Bool = true
 	var selectedRow: Int = 0
-	var selectedFrequency: FrequencyType = .daily
+	var tableView: RecurrenceTableViewController?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,9 +39,10 @@ class TimeIntervalTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPick
 		if component == 0 {
 			string = String(row + 1)
 		} else if component == 1 {
-			switch selectedFrequency {
-			case .none:
-				fallthrough
+			guard let frequency = tableView?.popover?.selectedFrequency else {
+				return nil
+			}
+			switch frequency {
 			case .daily:
 				string = isOnlyOne ? "day" : "days"
 			case .weekly:

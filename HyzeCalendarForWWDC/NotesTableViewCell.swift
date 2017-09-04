@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NotesTableViewCell: UITableViewCell, UITextViewDelegate, EventEditorCell {
+class NotesTableViewCell: UITableViewCell, UITextViewDelegate, EventEditorCellProtocol {
 	func reloadInformations() {
 		eventInformations = EventManagement.shared.eventInformation
 		switch eventInformations.state {

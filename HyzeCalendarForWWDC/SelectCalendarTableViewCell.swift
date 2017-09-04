@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SelectCalendarTableViewCell: UITableViewCell, EventEditorCell {
+class SelectCalendarTableViewCell: UITableViewCell, EventEditorCellProtocol {
 	
 	
 	@IBOutlet weak var mainView: UIView!

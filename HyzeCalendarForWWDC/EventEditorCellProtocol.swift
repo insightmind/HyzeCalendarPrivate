@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol EventEditorCell {
+protocol EventEditorCellProtocol {
 	var eventInformations: EventEditorEventInformations! { get set }
 	
 	func reloadInformations()

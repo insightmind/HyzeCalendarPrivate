@@ -92,11 +92,12 @@ class WeekdayTableViewCell: UITableViewCell {
 	}
 	
 	func selectDay(_ dayIndex: Int) {
-		var number = dayIndex + Selection.shared.weekDayStart.rawValue
+		var number = dayIndex + Selection.shared.weekDayStart.rawValue + 1
 		if number > 7 {
 			number -= 7
 		}
 		guard let weekday = EKWeekday.init(rawValue: number) else { return }
+		print(weekday.rawValue)
 		if let index = selectedDays.index(of: weekday) {
 			selectedDays.remove(at: index)
 			UIView.animate(withDuration: 0.3, animations: {

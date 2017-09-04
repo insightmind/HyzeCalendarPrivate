@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SelectContactsTableViewCell: UITableViewCell, EventEditorCell {
+class SelectContactsTableViewCell: UITableViewCell, EventEditorCellProtocol {
 	
 	var eventInformations: EventEditorEventInformations! = EventManagement.shared.eventInformation
 	var isEditable: Bool = false

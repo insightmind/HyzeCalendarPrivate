@@ -10,7 +10,7 @@ import UIKit
 import EventKit
 
 
-class SetRecurrenceTableViewCell: UITableViewCell, EventEditorCell {
+class SetRecurrenceTableViewCell: UITableViewCell, EventEditorCellProtocol {
 	
 	var eventInformations: EventEditorEventInformations! = EventManagement.shared.eventInformation
 	

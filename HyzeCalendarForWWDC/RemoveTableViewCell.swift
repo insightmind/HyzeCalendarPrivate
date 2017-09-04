@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RemoveTableViewCell: UITableViewCell, EventEditorCell {
+class RemoveTableViewCell: UITableViewCell, EventEditorCellProtocol {
 	
 	var eventInformations: EventEditorEventInformations! = EventManagement.shared.eventInformation
 	

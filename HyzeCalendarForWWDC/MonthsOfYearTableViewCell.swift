@@ -10,7 +10,7 @@ import UIKit
 
 class MonthsOfYearTableViewCell: UITableViewCell {
 	
-	var viewButtons: [UIButton: (UIView, Bool)] = [:]
+	var viewButtons: [UIButton: (UIView, Bool, Int)] = [:]
 	var selection: [Int] = []
 	
 	@IBOutlet weak var cellView: UIView!
@@ -49,21 +49,21 @@ class MonthsOfYearTableViewCell: UITableViewCell {
 		cellView.layer.cornerRadius = topView.bounds.height / 2
 		cellView.layer.masksToBounds = true
 		
-		viewButtons = [janButton: (janView, false),
-		               febButton: (febView, false),
-		               marButton: (marView, false),
-		               aprButton: (aprView, false),
-		               mayButton: (mayView, false),
-		               junButton: (junView, false),
-		               julButton: (julView, false),
-		               augButton: (augView, false),
-		               sepButton: (sepView, false),
-		               octButton: (octView, false),
-		               novButton: (novView, false),
-		               decButton: (decView, false)]
+		viewButtons = [janButton: (janView, false, 1),
+		               febButton: (febView, false, 2),
+		               marButton: (marView, false, 3),
+		               aprButton: (aprView, false, 4),
+		               mayButton: (mayView, false, 5),
+		               junButton: (junView, false, 6),
+		               julButton: (julView, false, 7),
+		               augButton: (augView, false, 8),
+		               sepButton: (sepView, false, 9),
+		               octButton: (octView, false, 10),
+		               novButton: (novView, false, 11),
+		               decButton: (decView, false, 12)]
 		
 		for i in viewButtons {
-			let (view, _) = i.value
+			let (view, _, _) = i.value
 			view.layer.cornerRadius = view.bounds.height / 2
 			view.layer.masksToBounds = true
 			view.backgroundColor = Color.blue
@@ -82,14 +82,14 @@ class MonthsOfYearTableViewCell: UITableViewCell {
 		}
 	}
 	
-	func setSelection(_ value: (UIView, Bool)) -> (UIView, Bool) {
-		let (view, isSelected) = value
+	func setSelection(_ value: (UIView, Bool, Int)) -> (UIView, Bool, Int) {
+		let (view, isSelected, index) = value
 		if isSelected {
 			deselectView(view)
 		} else {
 			selectView(view)
 		}
-		return (view, !isSelected)
+		return (view, !isSelected, index)
 	}
 	
 	func selectView(_ view: UIView) {
@@ -102,6 +102,17 @@ class MonthsOfYearTableViewCell: UITableViewCell {
 		UIView.animate(withDuration: 0.3) {
 			view.backgroundColor = Color.blue
 		}
+	}
+	
+	func getSelectedMonths() -> [NSNumber] {
+		var months: [NSNumber] = []
+		for i in viewButtons {
+			let (_, isSelected, index) = i.value
+			if isSelected {
+				months.append(NSNumber(integerLiteral: index))
+			}
+		}
+	return months
 	}
 	
     override func setSelected(_ selected: Bool, animated: Bool) {

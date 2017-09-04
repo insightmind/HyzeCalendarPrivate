@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DateSelectionTableViewCell: UITableViewCell, EventEditorCell {
+class DateSelectionTableViewCell: UITableViewCell, EventEditorCellProtocol {
 	
 	var eventInformations: EventEditorEventInformations!
 	
