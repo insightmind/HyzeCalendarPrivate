@@ -76,6 +76,9 @@ class MonthsOfYearTableViewCell: UITableViewCell {
 			view.layer.shadowRadius = 5
 			view.layer.shadowOpacity = 0
 			view.layer.masksToBounds = false
+			if eventInformations.state == .showDetail {
+				i.key.isUserInteractionEnabled = false
+			}
 		}
 		
 		

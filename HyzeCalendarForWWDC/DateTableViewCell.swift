@@ -75,6 +75,7 @@ class DateTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDe
 	@IBOutlet weak var picker: UIPickerView!
 	
 	@IBAction func selectDate(_ sender: UIButton) {
+		if eventInformations.state == .showDetail { return }
 		if selectedType != .date {
 			selectType(.date)
 		} else {
@@ -83,6 +84,7 @@ class DateTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDe
 		
 	}
 	@IBAction func selectOccurrence(_ sender: UIButton) {
+		if eventInformations.state == .showDetail { return }
 		if selectedType != .occurrence {
 			selectType(.occurrence)
 		} else {
@@ -178,6 +180,12 @@ class DateTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDe
 		setUpButton(onDateButtonView, button: onDateButton, image: #imageLiteral(resourceName: "ic_add"))
 		setUpButton(afterOccurrencesButtonView, button: afterOccurrencesButton, image: #imageLiteral(resourceName: "ic_add"))
 		
+		if eventInformations.state == .showDetail {
+			onDateButtonView.isHidden = true
+			afterOccurrencesButtonView.isHidden = true
+			datePicker.isUserInteractionEnabled = false
+			picker.isUserInteractionEnabled = false
+		}
 		
 	}
 	

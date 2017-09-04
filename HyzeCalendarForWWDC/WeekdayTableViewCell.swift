@@ -71,6 +71,9 @@ class WeekdayTableViewCell: UITableViewCell {
 			}
 			let weekDay = ["S", "M", "T", "W", "T", "F", "S"]
 			dayViewButtons[index].setTitle(weekDay[number - 1], for: .normal)
+			if eventInformations.state == .showDetail {
+				dayViewButtons[index].isUserInteractionEnabled = false
+			}
 		}
 	}
 

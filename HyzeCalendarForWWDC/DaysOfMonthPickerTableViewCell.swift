@@ -28,6 +28,7 @@ class DaysOfMonthPickerTableViewCell: UITableViewCell {
 	@IBOutlet weak var pickerView: UIPickerView!
 
 	@IBAction func toggleSelection(_ sender: UIButton) {
+		if eventInformations.state == .showDetail { return }
 		setSelection(!isSelected)
 	}
 	
@@ -112,6 +113,10 @@ class DaysOfMonthPickerTableViewCell: UITableViewCell {
 			self.isSelected = true
 		}
 		
+		if eventInformations.state == .showDetail {
+			enableButtonView.isHidden = true
+			pickerView.isUserInteractionEnabled = false
+		}
     }
     
 }

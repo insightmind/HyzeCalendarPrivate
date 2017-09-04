@@ -36,6 +36,10 @@ class TimeIntervalTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPick
 			}
 		}
 		pickerView.selectRow(selectedRow, inComponent: 0, animated: false)
+		
+		if eventInformations.state == .showDetail {
+			pickerView.isUserInteractionEnabled = false
+		}
     }
 	
 	func numberOfComponents(in pickerView: UIPickerView) -> Int {

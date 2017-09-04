@@ -35,6 +35,7 @@ class RecurrencePopoverViewController: UIViewController {
 	@IBOutlet weak var yearlyButtonView: UIView!
 	@IBOutlet weak var yearlyCircleButton: UIButton!
 	@IBOutlet weak var yearlyCircleButtonView: UIView!
+	@IBOutlet weak var saveButton: UIButton!
 	@IBOutlet weak var blurEffectView: UIVisualEffectView!
 	@IBOutlet weak var mainViewHeightConstraint: NSLayoutConstraint!
 
@@ -99,6 +100,7 @@ class RecurrencePopoverViewController: UIViewController {
 	}
 	
 	@IBAction func selectDaily(_ sender: UIButton) {
+		if eventInformations.state == .showDetail { return }
 		if selectedFrequency != nil {
 			frequencySelectionReset()
 		} else {
@@ -106,6 +108,7 @@ class RecurrencePopoverViewController: UIViewController {
 		}
 	}
 	@IBAction func selectWeekly(_ sender: UIButton) {
+		if eventInformations.state == .showDetail { return }
 		if selectedFrequency != nil {
 			frequencySelectionReset()
 		} else {
@@ -113,6 +116,7 @@ class RecurrencePopoverViewController: UIViewController {
 		}
 	}
 	@IBAction func selectMonthly(_ sender: UIButton) {
+		if eventInformations.state == .showDetail { return }
 		if selectedFrequency != nil {
 			frequencySelectionReset()
 		} else {
@@ -120,6 +124,7 @@ class RecurrencePopoverViewController: UIViewController {
 		}
 	}
 	@IBAction func selectYearly(_ sender: UIButton) {
+		if eventInformations.state == .showDetail { return }
 		if selectedFrequency != nil {
 			frequencySelectionReset()
 		} else {
@@ -210,6 +215,18 @@ class RecurrencePopoverViewController: UIViewController {
 		setUpButton(yearlyCircleButtonView, button: yearlyCircleButton, image: #imageLiteral(resourceName: "ic_done"))
 		
 		setUpInformations()
+		
+		if eventInformations.state == .showDetail {
+			dailyCircleButtonView.isHidden = true
+			weeklyCircleButtonView.isHidden = true
+			monthlyCircleButtonView.isHidden = true
+			yearlyCircleButtonView.isHidden = true
+			dailyButton.isUserInteractionEnabled = false
+			weeklyButton.isUserInteractionEnabled = false
+			monthlyButton.isUserInteractionEnabled = false
+			yearlyButton.isUserInteractionEnabled = false
+			saveButton.isHidden = true
+		}
 		
     }
 	

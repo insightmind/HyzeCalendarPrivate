@@ -76,6 +76,13 @@ class DaysOfMonthTableViewCell: UITableViewCell {
 		}
 		
 		selectType(selectedType)
+		
+		if eventInformations.state == .showDetail {
+			pickerView.isUserInteractionEnabled = false
+			collectionView.isUserInteractionEnabled = false
+			onViewButtonView.isHidden = true
+			eachViewButtonView.isHidden = true
+		}
     }
 	
 	func setPickerView(_ rule: EKRecurrenceRule) {
@@ -105,6 +112,7 @@ class DaysOfMonthTableViewCell: UITableViewCell {
 	
 	
 	@IBAction func selectEach(_ sender: UIButton) {
+		if eventInformations.state == .showDetail { return }
 		if selectedType == .each {
 			selectType(.on)
 		} else {
@@ -114,6 +122,7 @@ class DaysOfMonthTableViewCell: UITableViewCell {
 	}
 	
 	@IBAction func selectOn(_ sender: UIButton) {
+		if eventInformations.state == .showDetail { return }
 		if selectedType == .on {
 			selectType(.each)
 		} else {
