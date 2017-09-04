@@ -20,20 +20,32 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 	}
 	
 	@IBAction func scrollUpYear(_ sender: UISwipeGestureRecognizer) {
-		self.scrollToSection(yearID: Selection.shared.currentYearID - 1, monthID: Selection.shared.currentMonthID - 1, animated: false)
+		var year = Selection.shared.currentYearID - 1
+		if year < 0 { year = 0 }
+		if year > 4000 { year = 4000 }
+		self.scrollToSection(yearID: year, monthID: Selection.shared.currentMonthID - 1, animated: false)
 		self.setMonthName()
 	}
 	
 	@IBAction func scrollDownYear(_ sender: UISwipeGestureRecognizer) {
-		self.scrollToSection(yearID: Selection.shared.currentYearID + 1, monthID: Selection.shared.currentMonthID - 1, animated: false)
+		var year = Selection.shared.currentYearID + 1
+		if year < 0 { year = 0 }
+		if year > 4000 { year = 4000 }
+		self.scrollToSection(yearID: year, monthID: Selection.shared.currentMonthID - 1, animated: false)
 		self.setMonthName()
 	}
 	@IBAction func scrollDownCentury(_ sender: UISwipeGestureRecognizer) {
-		self.scrollToSection(yearID: Selection.shared.currentYearID + 10, monthID: Selection.shared.currentMonthID - 1, animated: false)
+		var year = Selection.shared.currentYearID + 10
+		if year < 0 { year = 0 }
+		if year > 4000 { year = 4000 }
+		self.scrollToSection(yearID: year, monthID: Selection.shared.currentMonthID - 1, animated: false)
 		self.setMonthName()
 	}
 	@IBAction func scrollUpCentury(_ sender: UISwipeGestureRecognizer) {
-		self.scrollToSection(yearID: Selection.shared.currentYearID - 10, monthID: Selection.shared.currentMonthID - 1, animated: false)
+		var year = Selection.shared.currentYearID - 10
+		if year < 0 { year = 0 }
+		if year > 4000 { year = 4000 }
+		self.scrollToSection(yearID: year, monthID: Selection.shared.currentMonthID - 1, animated: false)
 		self.setMonthName()
 	}
 	
