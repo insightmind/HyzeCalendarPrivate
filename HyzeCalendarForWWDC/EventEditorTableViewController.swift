@@ -15,6 +15,7 @@ enum EventEditorCellType: String {
 	case notes = "notes"
 	case remove = "remove"
 	case recurrence = "recurrence"
+	case location = "location"
 }
 
 struct EventEditorCellInformations {
@@ -32,6 +33,7 @@ class EventEditorTableViewController: UITableViewController {
 	let notesCell = EventEditorCellInformations(cellType: .notes, height: 170.0)
 	let removeCell = EventEditorCellInformations(cellType: .remove, height: 80.0)
 	let recurrenceCell = EventEditorCellInformations(cellType: .recurrence, height: 212.0)
+	let locationCell = EventEditorCellInformations(cellType: .location, height: 100.0)
 	
 	var eventsInformations: EventEditorEventInformations!
 
@@ -46,6 +48,7 @@ class EventEditorTableViewController: UITableViewController {
 		self.tableView.register(UINib(nibName: "RemoveTableViewCell", bundle: nil), forCellReuseIdentifier: EventEditorCellType.remove.rawValue)
 		self.tableView.register(UINib(nibName: "SelectContactsTableViewCell", bundle: nil), forCellReuseIdentifier: EventEditorCellType.contacts.rawValue)
 		self.tableView.register(UINib(nibName: "SetRecurrenceTableViewCell", bundle: nil), forCellReuseIdentifier: EventEditorCellType.recurrence.rawValue)
+		self.tableView.register(UINib(nibName: "SelectLocationTableViewCell", bundle: nil), forCellReuseIdentifier: EventEditorCellType.location.rawValue)
 		
 		self.eventsInformations = EventManagement.shared.eventInformation
 		eventsInformations.eventEditorTableViewController = self
@@ -99,6 +102,9 @@ class EventEditorTableViewController: UITableViewController {
 			return cell
 		case .recurrence:
 			let cell = tableView.dequeueReusableCell(withIdentifier: EventEditorCellType.recurrence.rawValue) as! SetRecurrenceTableViewCell
+			return cell
+		case .location:
+			let cell = tableView.dequeueReusableCell(withIdentifier: EventEditorCellType.location.rawValue) as! SelectLocationTableViewCell
 			return cell
 		}
     }
@@ -154,18 +160,22 @@ class EventEditorTableViewController: UITableViewController {
 		cells.append(calendarCell)
 		switch eventsInformations.state {
 		case .showDetail:
+			if eventsInformations.location != nil {
+				cells.append(locationCell)
+			}
 			if let attendees = eventsInformations.participants {
 				if !attendees.isEmpty {
 					cells.append(contactsCell)
 				}
 			}
-			if let _ = eventsInformations.recurrenceRule {
+			if eventsInformations.recurrenceRule != nil {
 				cells.append(recurrenceCell)
 			}
 			if eventsInformations.notes != "" && eventsInformations.notes != nil {
 				cells.append(notesCell)
 			}
 		case .create:
+			cells.append(locationCell)
 			cells.append(contactsCell)
 			cells.append(recurrenceCell)
 			cells.append(notesCell)

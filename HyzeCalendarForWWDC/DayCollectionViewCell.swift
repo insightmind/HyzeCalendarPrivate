@@ -24,7 +24,6 @@ class DayCollectionViewCell: UICollectionViewCell {
 		} else {
 			lbl.textColor = Color.grey
 		}
-		lbl.font = UIFont.init(name: "Futura", size: 16)
 		lbl.textAlignment = .center
 		return lbl
 	}()
@@ -74,6 +73,7 @@ class DayCollectionViewCell: UICollectionViewCell {
 	}
 	
 	func setCellDesign(isToday: Bool, isSelected: Bool, isNotInMonth: Bool = false, isOnWeekend: Bool = false) {
+		label!.font = UIFont.init(name: "Futura", size: self.bounds.height / 5 * 2)
 		self.isSelected = isSelected
         if isSelected {
 			layer.shadowOpacity = 0.85

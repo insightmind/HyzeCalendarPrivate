@@ -54,7 +54,6 @@
 		3E6BCC511E5479DD00369E7D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6BCC501E5479DD00369E7D /* SettingsViewController.swift */; };
 		3E7140431E46844C00D51B17 /* DayViewUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7140421E46844C00D51B17 /* DayViewUIViewController.swift */; };
 		3E7DD5731E4679FA001E1D0B /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7DD5721E4679FA001E1D0B /* EventView.swift */; };
-		3E8ED66B1F58A86100FADB25 /* RecurrenceRuleInformations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8ED66A1F58A86100FADB25 /* RecurrenceRuleInformations.swift */; };
 		3EA6E4751F4C7C1F003E9341 /* ContactsManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA6E4741F4C7C1F003E9341 /* ContactsManagement.swift */; };
 		3EA727561F49F0560041B398 /* SelectContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA727541F49F0560041B398 /* SelectContactsTableViewCell.swift */; };
 		3EA727571F49F0560041B398 /* SelectContactsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EA727551F49F0560041B398 /* SelectContactsTableViewCell.xib */; };
@@ -66,6 +65,8 @@
 		3EA8EE2E1ED21BCA000D6EF2 /* MainCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA8EE2D1ED21BCA000D6EF2 /* MainCollectionViewController.swift */; };
 		3EA8EE311ED2350E000D6EF2 /* MonthCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA8EE301ED2350E000D6EF2 /* MonthCollectionViewController.swift */; };
 		3EAD342B1F3E44CF00174FF7 /* Design.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAD342A1F3E44CF00174FF7 /* Design.swift */; };
+		3EBDF8C91F5DDE9600B66C96 /* SelectLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBDF8C71F5DDE9600B66C96 /* SelectLocationTableViewCell.swift */; };
+		3EBDF8CA1F5DDE9600B66C96 /* SelectLocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EBDF8C81F5DDE9600B66C96 /* SelectLocationTableViewCell.xib */; };
 		3EBEC8E21F3D048100052C93 /* DateSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EBEC8E11F3D03F700052C93 /* DateSelection.storyboard */; };
 		3ECD09981E9BB39C00BF9627 /* TimeManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECD09971E9BB39C00BF9627 /* TimeManagement.swift */; };
 		3ECD09A11E9BFF3000BF9627 /* Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECD09A01E9BFF3000BF9627 /* Selection.swift */; };
@@ -150,7 +151,6 @@
 		3E6BCC501E5479DD00369E7D /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		3E7140421E46844C00D51B17 /* DayViewUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayViewUIViewController.swift; sourceTree = "<group>"; };
 		3E7DD5721E4679FA001E1D0B /* EventView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
-		3E8ED66A1F58A86100FADB25 /* RecurrenceRuleInformations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurrenceRuleInformations.swift; sourceTree = "<group>"; };
 		3EA6E4741F4C7C1F003E9341 /* ContactsManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsManagement.swift; sourceTree = "<group>"; };
 		3EA727541F49F0560041B398 /* SelectContactsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectContactsTableViewCell.swift; sourceTree = "<group>"; };
 		3EA727551F49F0560041B398 /* SelectContactsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectContactsTableViewCell.xib; sourceTree = "<group>"; };
@@ -162,6 +162,8 @@
 		3EA8EE2D1ED21BCA000D6EF2 /* MainCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCollectionViewController.swift; sourceTree = "<group>"; };
 		3EA8EE301ED2350E000D6EF2 /* MonthCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthCollectionViewController.swift; sourceTree = "<group>"; };
 		3EAD342A1F3E44CF00174FF7 /* Design.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Design.swift; sourceTree = "<group>"; };
+		3EBDF8C71F5DDE9600B66C96 /* SelectLocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLocationTableViewCell.swift; sourceTree = "<group>"; };
+		3EBDF8C81F5DDE9600B66C96 /* SelectLocationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectLocationTableViewCell.xib; sourceTree = "<group>"; };
 		3EBEC8E11F3D03F700052C93 /* DateSelection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DateSelection.storyboard; sourceTree = "<group>"; };
 		3EC617B71EF86CDC00BB03B6 /* HyzeCalendarForWWDC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HyzeCalendarForWWDC.entitlements; sourceTree = "<group>"; };
 		3ECD09971E9BB39C00BF9627 /* TimeManagement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeManagement.swift; sourceTree = "<group>"; };
@@ -386,6 +388,8 @@
 		3E8B90A11F433C9D000F8449 /* Location */ = {
 			isa = PBXGroup;
 			children = (
+				3EBDF8C71F5DDE9600B66C96 /* SelectLocationTableViewCell.swift */,
+				3EBDF8C81F5DDE9600B66C96 /* SelectLocationTableViewCell.xib */,
 			);
 			name = Location;
 			sourceTree = "<group>";
@@ -490,7 +494,6 @@
 				3E4A9B281E4BB4C0009E45EF /* EventManagement.swift */,
 				3EA6E4741F4C7C1F003E9341 /* ContactsManagement.swift */,
 				3ED0F0DB1F437310001A12A8 /* EventEditorEventInformations.swift */,
-				3E8ED66A1F58A86100FADB25 /* RecurrenceRuleInformations.swift */,
 			);
 			name = TimeManagement;
 			sourceTree = "<group>";
@@ -778,6 +781,7 @@
 				3EE5426E1F479FCC00B230FF /* RemoveTableViewCell.xib in Resources */,
 				3E61C1171F53815800AE1A2B /* DaysOfMonthTableViewCell.xib in Resources */,
 				3EE9C86E1F56F23100FD93E9 /* DaysOfMonthPickerTableViewCell.xib in Resources */,
+				3EBDF8CA1F5DDE9600B66C96 /* SelectLocationTableViewCell.xib in Resources */,
 				3E47BD321F30EE0200E0646C /* DateSelectionTableViewCell.xib in Resources */,
 				3EA80D591E2BEC9300FD87C3 /* Assets.xcassets in Resources */,
 				3EA8EE2C1ED219B8000D6EF2 /* DayView.storyboard in Resources */,
@@ -875,6 +879,7 @@
 				3EA6E4751F4C7C1F003E9341 /* ContactsManagement.swift in Sources */,
 				3E4A9B291E4BB4C0009E45EF /* EventManagement.swift in Sources */,
 				3ED0F0DC1F437310001A12A8 /* EventEditorEventInformations.swift in Sources */,
+				3EBDF8C91F5DDE9600B66C96 /* SelectLocationTableViewCell.swift in Sources */,
 				3ED0F0DA1F4372E4001A12A8 /* EventEditorState.swift in Sources */,
 				3E61C1121F53814900AE1A2B /* WeekdayTableViewCell.swift in Sources */,
 				3ED0F0D41F4371AB001A12A8 /* Create_EventEditorViewController.swift in Sources */,
@@ -889,7 +894,6 @@
 				3E2DA5641F5773F4008CECD7 /* MainNavigationViewController.swift in Sources */,
 				3E3AEDF81F23BFEF00792B11 /* SetTimePopoverViewController.swift in Sources */,
 				3ED0C4EB1F5373D4005915B6 /* TimeIntervalTableViewCell.swift in Sources */,
-				3E8ED66B1F58A86100FADB25 /* RecurrenceRuleInformations.swift in Sources */,
 				3EF9042C1F4CD4ED00C690C4 /* SetContactsTableViewController.swift in Sources */,
 				3ED0F0D81F4372CD001A12A8 /* DateSpecification.swift in Sources */,
 				3E61C1161F53815800AE1A2B /* DaysOfMonthTableViewCell.swift in Sources */,
