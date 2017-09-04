@@ -26,7 +26,14 @@ class SelectLocationTableViewCell: UITableViewCell, EventEditorCellProtocol {
 	@IBOutlet weak var selectButton: UIButton!
 	@IBOutlet weak var label: UILabel!
 	
-    override func awakeFromNib() {
+	@IBAction func edit(_ sender: UIButton) {
+		let storyboard = UIStoryboard(name: "SelectLocation", bundle: nil)
+		guard let viewController = storyboard.instantiateInitialViewController() else { return }
+		guard let mainViewController = eventInformations.eventEditor else { return }
+		mainViewController.present(viewController, animated: true, completion: nil)
+	}
+	
+	override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
 		
