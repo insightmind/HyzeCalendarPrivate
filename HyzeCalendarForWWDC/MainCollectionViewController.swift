@@ -18,37 +18,7 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 	@IBAction func scrollDown(_ sender: UISwipeGestureRecognizer) {
 		self.scrollToSection(direction: ScrollDirection.down, animated: true)
 	}
-	
-	@IBAction func scrollUpYear(_ sender: UISwipeGestureRecognizer) {
-		var year = Selection.shared.currentYearID - 1
-		if year < 0 { year = 0 }
-		if year > 4000 { year = 4000 }
-		self.scrollToSection(yearID: year, monthID: Selection.shared.currentMonthID - 1, animated: false)
-		self.setMonthName()
-	}
-	
-	@IBAction func scrollDownYear(_ sender: UISwipeGestureRecognizer) {
-		var year = Selection.shared.currentYearID + 1
-		if year < 0 { year = 0 }
-		if year > 4000 { year = 4000 }
-		self.scrollToSection(yearID: year, monthID: Selection.shared.currentMonthID - 1, animated: false)
-		self.setMonthName()
-	}
-	@IBAction func scrollDownCentury(_ sender: UISwipeGestureRecognizer) {
-		var year = Selection.shared.currentYearID + 10
-		if year < 0 { year = 0 }
-		if year > 4000 { year = 4000 }
-		self.scrollToSection(yearID: year, monthID: Selection.shared.currentMonthID - 1, animated: false)
-		self.setMonthName()
-	}
-	@IBAction func scrollUpCentury(_ sender: UISwipeGestureRecognizer) {
-		var year = Selection.shared.currentYearID - 10
-		if year < 0 { year = 0 }
-		if year > 4000 { year = 4000 }
-		self.scrollToSection(yearID: year, monthID: Selection.shared.currentMonthID - 1, animated: false)
-		self.setMonthName()
-	}
-	
+
 	override func viewDidLoad() {
         super.viewDidLoad()
 		
