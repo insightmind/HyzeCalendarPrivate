@@ -246,6 +246,7 @@ class EventManagement {
 		informations.participants = event.attendees
 		informations.isReadOnly = event.isReadOnly()
 		informations.recurrenceRule = event.recurrenceRules?.first
+		informations.location = event.structuredLocation
 		
 		
 		if let complete = completion {

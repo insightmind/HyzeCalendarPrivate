@@ -73,7 +73,7 @@ class DayCollectionViewCell: UICollectionViewCell {
 	}
 	
 	func setCellDesign(isToday: Bool, isSelected: Bool, isNotInMonth: Bool = false, isOnWeekend: Bool = false) {
-		label!.font = UIFont.init(name: "Futura", size: self.bounds.height / 5 * 2)
+		label!.font = UIFont.init(name: "Futura", size: 17)
 		self.isSelected = isSelected
         if isSelected {
 			layer.shadowOpacity = 0.85

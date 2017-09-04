@@ -19,7 +19,25 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 		self.scrollToSection(direction: ScrollDirection.down, animated: true)
 	}
 	
-    override func viewDidLoad() {
+	@IBAction func scrollUpYear(_ sender: UISwipeGestureRecognizer) {
+		self.scrollToSection(yearID: Selection.shared.currentYearID - 1, monthID: Selection.shared.currentMonthID - 1, animated: false)
+		self.setMonthName()
+	}
+	
+	@IBAction func scrollDownYear(_ sender: UISwipeGestureRecognizer) {
+		self.scrollToSection(yearID: Selection.shared.currentYearID + 1, monthID: Selection.shared.currentMonthID - 1, animated: false)
+		self.setMonthName()
+	}
+	@IBAction func scrollDownCentury(_ sender: UISwipeGestureRecognizer) {
+		self.scrollToSection(yearID: Selection.shared.currentYearID + 10, monthID: Selection.shared.currentMonthID - 1, animated: false)
+		self.setMonthName()
+	}
+	@IBAction func scrollUpCentury(_ sender: UISwipeGestureRecognizer) {
+		self.scrollToSection(yearID: Selection.shared.currentYearID - 10, monthID: Selection.shared.currentMonthID - 1, animated: false)
+		self.setMonthName()
+	}
+	
+	override func viewDidLoad() {
         super.viewDidLoad()
 		
         // Uncomment the following line to preserve selection between presentations

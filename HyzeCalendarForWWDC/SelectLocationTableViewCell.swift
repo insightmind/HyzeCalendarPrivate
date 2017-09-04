@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 class SelectLocationTableViewCell: UITableViewCell, EventEditorCellProtocol {
 	
@@ -35,11 +36,15 @@ class SelectLocationTableViewCell: UITableViewCell, EventEditorCellProtocol {
 		cellView.layer.masksToBounds = true
 		
 		if let location = eventInformations.location {
-			label.text = location
-			setUpButton(selectButtonView, button: selectButton, image: #imageLiteral(resourceName: "ic_edit"))
+			label.text = location.title!
+			setUpButton(selectButtonView, button: selectButton, image: #imageLiteral(resourceName: "ic_clear"))
 		} else {
 			label.text = "add Location"
 			setUpButton(selectButtonView, button: selectButton, image: #imageLiteral(resourceName: "ic_add"))
+		}
+		
+		if eventInformations.state == .showDetail {
+			setUpButton(selectButtonView, button: selectButton, image: #imageLiteral(resourceName: "ic_keyboard_arrow_right"))
 		}
 		
 		

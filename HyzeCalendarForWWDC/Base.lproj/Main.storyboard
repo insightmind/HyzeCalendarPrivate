@@ -268,6 +268,10 @@
                             <outlet property="delegate" destination="otY-kj-Xhj" id="VQ9-Mi-FvX"/>
                             <outletCollection property="gestureRecognizers" destination="0tF-EL-58K" appends="YES" id="1yO-8j-m0D"/>
                             <outletCollection property="gestureRecognizers" destination="nDH-Gq-cHl" appends="YES" id="d2r-fW-v8i"/>
+                            <outletCollection property="gestureRecognizers" destination="CAK-ms-aL9" appends="YES" id="LaX-k8-4W3"/>
+                            <outletCollection property="gestureRecognizers" destination="b7G-es-yxx" appends="YES" id="hzm-J7-KYT"/>
+                            <outletCollection property="gestureRecognizers" destination="Gww-mf-plC" appends="YES" id="SiW-ia-4h8"/>
+                            <outletCollection property="gestureRecognizers" destination="gre-le-GhN" appends="YES" id="hq2-EX-jBb"/>
                         </connections>
                     </collectionView>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -282,6 +286,26 @@
                 <swipeGestureRecognizer direction="up" id="nDH-Gq-cHl">
                     <connections>
                         <action selector="scrollDown:" destination="otY-kj-Xhj" id="brd-KY-R84"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="up" numberOfTouchesRequired="2" id="CAK-ms-aL9">
+                    <connections>
+                        <action selector="scrollDownYear:" destination="otY-kj-Xhj" id="5JO-Fo-Vdb"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="down" numberOfTouchesRequired="2" id="b7G-es-yxx">
+                    <connections>
+                        <action selector="scrollUpYear:" destination="otY-kj-Xhj" id="wcA-3V-DwH"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="up" numberOfTouchesRequired="3" id="Gww-mf-plC">
+                    <connections>
+                        <action selector="scrollDownCentury:" destination="otY-kj-Xhj" id="zFB-MK-3wW"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="down" numberOfTouchesRequired="3" id="gre-le-GhN">
+                    <connections>
+                        <action selector="scrollUpCentury:" destination="otY-kj-Xhj" id="fjv-yq-3sd"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
