@@ -228,7 +228,6 @@ class RecurrencePopoverViewController: UIViewController {
 		
 		guard let table = tableView else { return false }
 		guard let frequency = selectedFrequency else {
-			eventInformations.recurrenceRule = nil
 			return true
 		}
 		

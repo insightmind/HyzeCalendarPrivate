@@ -172,6 +172,15 @@ class SetRecurrenceTableViewCell: UITableViewCell, EventEditorCellProtocol {
 				view.layer.cornerRadius = 0
 			}
 		}
+		let cornerRadius = self.labelView.bounds.height / 2
+		let path = UIBezierPath(roundedRect:everySelection.bounds,
+		                        byRoundingCorners:[.bottomLeft, .bottomRight],
+		                        cornerRadii: CGSize(width: cornerRadius, height:  cornerRadius))
+		
+		let maskLayer = CAShapeLayer()
+		
+		maskLayer.path = path.cgPath
+		everySelection.layer.mask = maskLayer 
 	}
 	
 	override func awakeFromNib() {
