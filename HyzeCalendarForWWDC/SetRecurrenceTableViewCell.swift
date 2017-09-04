@@ -200,7 +200,8 @@ class SetRecurrenceTableViewCell: UITableViewCell, EventEditorCellProtocol {
 		self.labelView.backgroundColor = Color.lightBlue
 		setUpButton(everySelectionButtonView, button: everySelectionButton, image: #imageLiteral(resourceName: "ic_delete"))
 		setUpButton(customSelectionButtonView, button: customSelectionButton, image: #imageLiteral(resourceName: "ic_add"))
-		setDesign(.none, animated: false)
+		
+		reloadInformations()
 		
 		if eventInformations.state == .showDetail {
 			self.customSelection.isHidden = true

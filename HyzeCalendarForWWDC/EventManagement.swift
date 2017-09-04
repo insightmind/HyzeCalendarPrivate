@@ -149,6 +149,11 @@ class EventManagement {
 			event.endDate = from.endDate
 			event.isAllDay = from.isAllDay
 			event.notes = from.notes
+			if let rule = from.recurrenceRule {
+				event.recurrenceRules = [rule]
+			} else {
+				event.recurrenceRules = nil
+			}
 			
 			switch event.calendar.type {
 			case .birthday:
@@ -240,6 +245,7 @@ class EventManagement {
 		informations.calendar = event.calendar
 		informations.participants = event.attendees
 		informations.isReadOnly = event.isReadOnly()
+		informations.recurrenceRule = event.recurrenceRules?.first
 		
 		
 		if let complete = completion {

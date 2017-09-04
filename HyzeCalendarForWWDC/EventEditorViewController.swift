@@ -37,7 +37,7 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
 			self.titleTextField.text = self.eventInformations.title
 			self.titleTextField.isUserInteractionEnabled = false
 			self.tableViewController?.updateCellsArray()
-			self.tableViewController?.tableView.reloadSections(IndexSet(integer: 0), with: .fade)
+			self.tableViewController?.tableView.reloadSections(IndexSet(integer: 0), with: .right)
 		} else {
 			self.dismiss(animated: true, completion: nil)
 		}
@@ -58,7 +58,7 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
 			titleTextField.isUserInteractionEnabled = true
 			createSetUpSaveButton()
 			self.tableViewController?.updateCellsArray()
-			self.tableViewController?.tableView.reloadSections(IndexSet(integer: 0), with: .fade)
+			self.tableViewController?.tableView.reloadSections(IndexSet(integer: 0), with: .left)
 			reloadAllCells()
 		}
 		

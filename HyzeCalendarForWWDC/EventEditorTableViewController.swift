@@ -159,7 +159,9 @@ class EventEditorTableViewController: UITableViewController {
 					cells.append(contactsCell)
 				}
 			}
-			cells.append(recurrenceCell)
+			if let _ = eventsInformations.recurrenceRule {
+				cells.append(recurrenceCell)
+			}
 			if eventsInformations.notes != "" && eventsInformations.notes != nil {
 				cells.append(notesCell)
 			}

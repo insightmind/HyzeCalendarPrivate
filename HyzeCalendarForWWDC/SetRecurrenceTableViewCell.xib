@@ -79,7 +79,7 @@
                                                         </constraints>
                                                     </view>
                                                 </subviews>
-                                                <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="12k-5B-865" firstAttribute="centerY" secondItem="RQt-4J-q4o" secondAttribute="centerY" id="Xc4-Pm-NxA"/>
                                                     <constraint firstAttribute="trailing" secondItem="12k-5B-865" secondAttribute="trailing" constant="8" id="Yy4-Fy-zPc"/>
@@ -109,7 +109,7 @@
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
-                                                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <color key="backgroundColor" red="0.21912518619999999" green="0.62914122500000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="trailing" secondItem="C8V-PB-Tyn" secondAttribute="trailing" id="6fn-RU-wid"/>
                                                                     <constraint firstAttribute="bottom" secondItem="C8V-PB-Tyn" secondAttribute="bottom" id="NzX-GA-daQ"/>
@@ -131,7 +131,7 @@
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
-                                                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <color key="backgroundColor" red="0.21912518619999999" green="0.62914122500000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstItem="OW8-bs-TPI" firstAttribute="leading" secondItem="Ss7-RH-45l" secondAttribute="leading" id="AwT-MD-I4b"/>
                                                                     <constraint firstAttribute="trailing" secondItem="OW8-bs-TPI" secondAttribute="trailing" id="K1J-zT-weK"/>
@@ -153,7 +153,7 @@
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
-                                                                <color key="backgroundColor" red="0.60000002384185791" green="0.40000000596046448" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <color key="backgroundColor" red="0.21912518619999999" green="0.62914122500000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstItem="aEt-Pc-Cyi" firstAttribute="top" secondItem="vl2-Ws-cvu" secondAttribute="top" id="BlE-aN-pfl"/>
                                                                     <constraint firstAttribute="trailing" secondItem="aEt-Pc-Cyi" secondAttribute="trailing" id="C8c-gi-xIA"/>
@@ -175,7 +175,7 @@
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
-                                                                <color key="backgroundColor" red="0.2036032975" green="0.57139366869999997" blue="0.90090757610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="backgroundColor" red="0.21912518619999999" green="0.62914122500000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="bottom" secondItem="qZv-T5-I2v" secondAttribute="bottom" id="CCl-wl-4dF"/>
                                                                     <constraint firstItem="qZv-T5-I2v" firstAttribute="leading" secondItem="Iih-dX-Avu" secondAttribute="leading" id="Ny9-B7-73F"/>
@@ -186,7 +186,7 @@
                                                         </subviews>
                                                     </stackView>
                                                 </subviews>
-                                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.21912518619999999" green="0.62914122500000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="S0K-Rg-DCP" secondAttribute="trailing" constant="4" id="Egz-88-dIh"/>
                                                     <constraint firstAttribute="bottom" secondItem="S0K-Rg-DCP" secondAttribute="bottom" constant="8" id="Pee-cw-1im"/>
@@ -224,7 +224,7 @@
                                                         </constraints>
                                                     </view>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="gol-RE-Qgq" secondAttribute="bottom" constant="8" id="0AZ-R3-XhA"/>
                                                     <constraint firstItem="yH3-Rc-XNR" firstAttribute="width" secondItem="yH3-Rc-XNR" secondAttribute="height" multiplier="1:1" id="3Xx-tt-3LB"/>
