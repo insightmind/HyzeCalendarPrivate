@@ -25,18 +25,16 @@ class SelectLocationViewController: UIViewController {
 	
 	var eventInformations = EventManagement.shared.eventInformation
 
+
 	@IBOutlet var popover: UIView!
 	@IBOutlet weak var mapView: MKMapView!
 	@IBOutlet weak var mainContainerView: UIView!
 	@IBOutlet weak var toolbar: UIView!
 	@IBOutlet weak var blurView: UIVisualEffectView!
 	@IBOutlet weak var cancelButton: UIButton!
-	@IBOutlet weak var saveButton: UIButton!
+	@IBOutlet weak var mainBlurView: UIVisualEffectView!
 	
 	@IBAction func cancel(_ sender: UIButton) {
-		self.dismiss(animated: true, completion: nil)
-	}
-	@IBAction func save(_ sender: UIButton) {
 		self.dismiss(animated: true, completion: nil)
 	}
 	
@@ -45,6 +43,15 @@ class SelectLocationViewController: UIViewController {
 		view.backgroundColor = UIColor.clear
 		popover.layer.cornerRadius = 20
 		popover.layer.masksToBounds = true
+		
+		if Settings.shared.isDarkMode {
+			self.popover.backgroundColor = Color.grey.withAlphaComponent(0.3)
+		} else {
+			self.popover.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+		}
+		
+		mainBlurView.effect = UIBlurEffect(style: Settings.shared.isDarkMode ? .dark : .light)
+		blurView.effect = UIBlurEffect(style: Settings.shared.isDarkMode ? .dark : .light)
 		
 		guard let location = eventInformations.location else { return }
 		guard let geoLocation = location.geoLocation else { return }

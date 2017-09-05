@@ -98,6 +98,10 @@
 		3EFBD3621F47025800DB0E7D /* SetCalendarPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFBD3611F47025800DB0E7D /* SetCalendarPopoverViewController.swift */; };
 		3EFC00C11F5DF4CB0028F387 /* SelectLocation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EFC00C01F5DF4CB0028F387 /* SelectLocation.storyboard */; };
 		3EFC00C31F5E09CA0028F387 /* SelectLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFC00C21F5E09CA0028F387 /* SelectLocationViewController.swift */; };
+		3EFC00C51F5E15EB0028F387 /* SelectLocationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFC00C41F5E15EB0028F387 /* SelectLocationSearchViewController.swift */; };
+		3EFC00C71F5E160E0028F387 /* SelectLocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFC00C61F5E160E0028F387 /* SelectLocationTableViewController.swift */; };
+		3EFC00CA1F5E165C0028F387 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFC00C81F5E165C0028F387 /* LocationTableViewCell.swift */; };
+		3EFC00CB1F5E165C0028F387 /* LocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EFC00C91F5E165C0028F387 /* LocationTableViewCell.xib */; };
 		3EFE5F491E41310A004E75F9 /* DayMainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFE5F481E41310A004E75F9 /* DayMainButton.swift */; };
 		54754F2275255EAFFCE2A627 /* Pods_HyzeCalendarForWWDC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E21A0F42434DA3DA544C82C6 /* Pods_HyzeCalendarForWWDC.framework */; };
 /* End PBXBuildFile section */
@@ -198,6 +202,10 @@
 		3EFBD3611F47025800DB0E7D /* SetCalendarPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCalendarPopoverViewController.swift; sourceTree = "<group>"; };
 		3EFC00C01F5DF4CB0028F387 /* SelectLocation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectLocation.storyboard; sourceTree = "<group>"; };
 		3EFC00C21F5E09CA0028F387 /* SelectLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLocationViewController.swift; sourceTree = "<group>"; };
+		3EFC00C41F5E15EB0028F387 /* SelectLocationSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLocationSearchViewController.swift; sourceTree = "<group>"; };
+		3EFC00C61F5E160E0028F387 /* SelectLocationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLocationTableViewController.swift; sourceTree = "<group>"; };
+		3EFC00C81F5E165C0028F387 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
+		3EFC00C91F5E165C0028F387 /* LocationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationTableViewCell.xib; sourceTree = "<group>"; };
 		3EFE5F481E41310A004E75F9 /* DayMainButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayMainButton.swift; sourceTree = "<group>"; };
 		A54B9A273C54D17A1F0059A0 /* Pods-HyzeCalendarForWWDC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HyzeCalendarForWWDC.release.xcconfig"; path = "Pods/Target Support Files/Pods-HyzeCalendarForWWDC/Pods-HyzeCalendarForWWDC.release.xcconfig"; sourceTree = "<group>"; };
 		E21A0F42434DA3DA544C82C6 /* Pods_HyzeCalendarForWWDC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HyzeCalendarForWWDC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -683,6 +691,10 @@
 			children = (
 				3EFC00C21F5E09CA0028F387 /* SelectLocationViewController.swift */,
 				3EFC00C01F5DF4CB0028F387 /* SelectLocation.storyboard */,
+				3EFC00C41F5E15EB0028F387 /* SelectLocationSearchViewController.swift */,
+				3EFC00C61F5E160E0028F387 /* SelectLocationTableViewController.swift */,
+				3EFC00C81F5E165C0028F387 /* LocationTableViewCell.swift */,
+				3EFC00C91F5E165C0028F387 /* LocationTableViewCell.xib */,
 			);
 			name = "Additional Views";
 			sourceTree = "<group>";
@@ -794,6 +806,7 @@
 				3ED0C4EC1F5373D4005915B6 /* TimeIntervalTableViewCell.xib in Resources */,
 				3EE5426E1F479FCC00B230FF /* RemoveTableViewCell.xib in Resources */,
 				3E61C1171F53815800AE1A2B /* DaysOfMonthTableViewCell.xib in Resources */,
+				3EFC00CB1F5E165C0028F387 /* LocationTableViewCell.xib in Resources */,
 				3EE9C86E1F56F23100FD93E9 /* DaysOfMonthPickerTableViewCell.xib in Resources */,
 				3EBDF8CA1F5DDE9600B66C96 /* SelectLocationTableViewCell.xib in Resources */,
 				3EFC00C11F5DF4CB0028F387 /* SelectLocation.storyboard in Resources */,
@@ -910,6 +923,7 @@
 				3E2DA5641F5773F4008CECD7 /* MainNavigationViewController.swift in Sources */,
 				3E3AEDF81F23BFEF00792B11 /* SetTimePopoverViewController.swift in Sources */,
 				3ED0C4EB1F5373D4005915B6 /* TimeIntervalTableViewCell.swift in Sources */,
+				3EFC00CA1F5E165C0028F387 /* LocationTableViewCell.swift in Sources */,
 				3EF9042C1F4CD4ED00C690C4 /* SetContactsTableViewController.swift in Sources */,
 				3ED0F0D81F4372CD001A12A8 /* DateSpecification.swift in Sources */,
 				3E61C1161F53815800AE1A2B /* DaysOfMonthTableViewCell.swift in Sources */,
@@ -928,7 +942,9 @@
 				3EA727561F49F0560041B398 /* SelectContactsTableViewCell.swift in Sources */,
 				3E6818901F46FFFC00E8D7BC /* CalendarTableViewController.swift in Sources */,
 				3EE9C86D1F56F23100FD93E9 /* DaysOfMonthPickerTableViewCell.swift in Sources */,
+				3EFC00C71F5E160E0028F387 /* SelectLocationTableViewController.swift in Sources */,
 				3EFE5F491E41310A004E75F9 /* DayMainButton.swift in Sources */,
+				3EFC00C51F5E15EB0028F387 /* SelectLocationSearchViewController.swift in Sources */,
 				3EDC110B1F40E1B400E0B250 /* NotesTableViewCell.swift in Sources */,
 				3E7140431E46844C00D51B17 /* DayViewUIViewController.swift in Sources */,
 				3ED0F0D61F4371C5001A12A8 /* ShowDetail_EventEditorViewController.swift in Sources */,
