@@ -15,7 +15,37 @@ class SelectLocationTableViewCell: UITableViewCell, EventEditorCellProtocol {
 	var eventInformations: EventEditorEventInformations! = EventManagement.shared.eventInformation
 	
 	func reloadInformations() {
-		return
+		if let location = eventInformations.location?.geoLocation {
+			let geoCoder = CLGeocoder()
+			var place: MKPlacemark?
+			geoCoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) in
+				if let e = error {
+					print(e.localizedDescription)
+				} else {
+					if let placemark = placemarks?.first {
+						place = MKPlacemark(placemark: placemark)
+					}
+				}
+				if let title = place?.title {
+					if title.contains(",") {
+						let splittedTitle = title.split(separator: ",", maxSplits: 1, omittingEmptySubsequences: true)
+						self.label.text = String(splittedTitle[0])
+						self.subLabel.text = String(splittedTitle[1])
+						self.subLabel.isHidden = false
+					} else {
+						self.label.text = title
+						self.subLabel.isHidden = true
+					}
+				}
+				self.layoutIfNeeded()
+			})
+			setUpButton(selectButtonView, button: selectButton, image: #imageLiteral(resourceName: "ic_edit"))
+		} else {
+			label.text = "add Location"
+			subLabel.isHidden = true
+			setUpButton(selectButtonView, button: selectButton, image: #imageLiteral(resourceName: "ic_add"))
+			self.layoutIfNeeded()
+		}
 	}
 	
 	@IBOutlet weak var cellView: UIView!
@@ -25,12 +55,21 @@ class SelectLocationTableViewCell: UITableViewCell, EventEditorCellProtocol {
 	@IBOutlet weak var selectButtonView: UIView!
 	@IBOutlet weak var selectButton: UIButton!
 	@IBOutlet weak var label: UILabel!
+	@IBOutlet weak var subLabel: UILabel!
+	@IBOutlet var labelBottomConstraint: NSLayoutConstraint!
+	@IBOutlet var labelHeightConstraint: NSLayoutConstraint!
 	
 	@IBAction func edit(_ sender: UIButton) {
+		LocationManagement.shared.locationManager.requestWhenInUseAuthorization()
 		let storyboard = UIStoryboard(name: "SelectLocation", bundle: nil)
 		guard let viewController = storyboard.instantiateInitialViewController() else { return }
 		guard let mainViewController = eventInformations.eventEditor else { return }
 		mainViewController.present(viewController, animated: true, completion: nil)
+	}
+	
+	override func layoutIfNeeded() {
+		super.layoutIfNeeded()
+		expandLabel(subLabel.isHidden)
 	}
 	
 	override func awakeFromNib() {
@@ -42,19 +81,11 @@ class SelectLocationTableViewCell: UITableViewCell, EventEditorCellProtocol {
 		cellView.layer.cornerRadius = topView.bounds.height / 2
 		cellView.layer.masksToBounds = true
 		
-		if let location = eventInformations.location {
-			label.text = location.title!
-			setUpButton(selectButtonView, button: selectButton, image: #imageLiteral(resourceName: "ic_clear"))
-		} else {
-			label.text = "add Location"
-			setUpButton(selectButtonView, button: selectButton, image: #imageLiteral(resourceName: "ic_add"))
-		}
+		reloadInformations()
 		
 		if eventInformations.state == .showDetail {
 			setUpButton(selectButtonView, button: selectButton, image: #imageLiteral(resourceName: "ic_keyboard_arrow_right"))
 		}
-		
-		
     }
 	
 	func setUpButton(_ view: UIView, button: UIButton, image: UIImage) {
@@ -68,6 +99,16 @@ class SelectLocationTableViewCell: UITableViewCell, EventEditorCellProtocol {
 		view.layer.shadowRadius = 5
 		view.layer.shadowOffset = CGSize(width: 1, height: 3)
 		view.layer.shadowOpacity = 0.8
+	}
+	
+	func expandLabel(_ expand: Bool) {
+		if expand {
+			labelHeightConstraint.isActive = false
+			labelBottomConstraint.isActive = true
+		} else {
+			labelHeightConstraint.isActive = true
+			labelBottomConstraint.isActive = false
+		}
 	}
 
     override func setSelected(_ selected: Bool, animated: Bool) {

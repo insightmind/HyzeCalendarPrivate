@@ -155,11 +155,8 @@ class ContactTableViewCell: UITableViewCell {
 			self.contactDeleteButton.isUserInteractionEnabled = true
 		}
 		
-		
-		
 		setUpContactDeleteButton()
 		setUpContactImageView()
-		
 		
     }
 	

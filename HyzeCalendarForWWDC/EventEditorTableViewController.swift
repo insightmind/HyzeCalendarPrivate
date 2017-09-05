@@ -112,25 +112,31 @@ class EventEditorTableViewController: UITableViewController {
 	func reloadCell(_ cellType: EventEditorCellType, onlyInformations: Bool) {
 		for i in 0..<cells.count {
 			if cells[i].cellType == cellType {
+				let cellAtIndexPath = self.tableView.cellForRow(at: IndexPath(row: i, section: 0))
 				switch cellType {
 				case .dateSelection:
-					let cell = self.tableView.cellForRow(at: IndexPath(row: i, section: 0)) as! DateSelectionTableViewCell
+					let cell = cellAtIndexPath as! DateSelectionTableViewCell
 					if onlyInformations {
 						cell.reloadInformations()
 					}
 				case .calendar:
-					let cell = self.tableView.cellForRow(at: IndexPath(row: i, section: 0)) as! SelectCalendarTableViewCell
+					let cell = cellAtIndexPath as! SelectCalendarTableViewCell
 					if onlyInformations {
 						cell.reloadInformations()
 					}
 				case .contacts:
-					let cell = self.tableView.cellForRow(at: IndexPath(row: i, section: 0)) as! SelectContactsTableViewCell
+					let cell = cellAtIndexPath as! SelectContactsTableViewCell
 					if onlyInformations {
 						cell.reloadInformations()
 					}
 				case .recurrence:
-					let cell = self.tableView.cellForRow(at: IndexPath(row: i, section: 0)) as! SetRecurrenceTableViewCell
+					let cell = cellAtIndexPath as! SetRecurrenceTableViewCell
 					cell.setRoundView(cell.predefinedViews, shouldBeRounded: true)
+					if onlyInformations {
+						cell.reloadInformations()
+					}
+				case .location:
+					let cell = cellAtIndexPath as! SelectLocationTableViewCell
 					if onlyInformations {
 						cell.reloadInformations()
 					}

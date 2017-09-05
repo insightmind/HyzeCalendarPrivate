@@ -28,6 +28,9 @@
                                 <rect key="frame" x="0.0" y="0.0" width="39" height="39.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <state key="normal" image="ic_remove"/>
+                                <connections>
+                                    <action selector="toggleSelection:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="d5p-6B-aFl"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -40,7 +43,7 @@
                             <constraint firstItem="nbV-zU-dXX" firstAttribute="top" secondItem="c5I-bW-RBj" secondAttribute="top" id="sE0-mk-7IV"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RPC-D5-NOr">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Determing Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RPC-D5-NOr">
                         <rect key="frame" x="8" y="6" width="257" height="25"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="spU-M6-y1b"/>
@@ -49,7 +52,7 @@
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ui0-Xc-mTh">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="fetching Location informations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ui0-Xc-mTh">
                         <rect key="frame" x="8" y="33.5" width="257" height="16"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="16" id="9Hk-HW-Qrz"/>

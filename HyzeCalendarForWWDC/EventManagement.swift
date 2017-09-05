@@ -149,6 +149,7 @@ class EventManagement {
 			event.endDate = from.endDate
 			event.isAllDay = from.isAllDay
 			event.notes = from.notes
+			event.structuredLocation = from.location
 			if let rule = from.recurrenceRule {
 				event.recurrenceRules = [rule]
 			} else {

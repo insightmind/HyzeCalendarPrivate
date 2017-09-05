@@ -32,11 +32,17 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" showsUserLocation="YES" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1iT-fv-8PH">
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1iT-fv-8PH">
                                         <rect key="frame" x="0.0" y="63" width="375" height="262.5"/>
                                         <constraints>
+                                            <constraint firstAttribute="width" secondItem="1iT-fv-8PH" secondAttribute="height" multiplier="1:1" id="CED-RK-Ap8"/>
                                             <constraint firstAttribute="width" secondItem="1iT-fv-8PH" secondAttribute="height" multiplier="1:0.7" id="fNQ-At-jsa"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="CED-RK-Ap8"/>
+                                            </mask>
+                                        </variation>
                                     </mapView>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Di0-li-n78">
                                         <rect key="frame" x="0.0" y="326" width="375" height="271"/>
@@ -49,7 +55,7 @@
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D6B-GA-AOq">
                                         <rect key="frame" x="0.0" y="326" width="375" height="321"/>
                                         <connections>
-                                            <segue destination="Gk0-Mw-HQl" kind="embed" id="fz5-tl-Fs3"/>
+                                            <segue destination="Gk0-Mw-HQl" kind="embed" identifier="embed" id="fz5-tl-Fs3"/>
                                         </connections>
                                     </containerView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oyW-gA-Bwe">
@@ -67,10 +73,17 @@
                                                 <rect key="frame" x="8" y="0.0" width="359" height="50"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RX2-61-EjO">
-                                                        <rect key="frame" x="0.0" y="0.0" width="359" height="50"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="48" height="50"/>
                                                         <state key="normal" title="Cancel"/>
                                                         <connections>
                                                             <action selector="cancel:" destination="xI2-y5-lYW" eventType="touchUpInside" id="jip-TI-idz"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W4f-7h-f8E">
+                                                        <rect key="frame" x="325" y="0.0" width="34" height="50"/>
+                                                        <state key="normal" title="Save"/>
+                                                        <connections>
+                                                            <action selector="save:" destination="xI2-y5-lYW" eventType="touchUpInside" id="m8Q-Xl-jnj"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -127,7 +140,10 @@
                         <outlet property="mainBlurView" destination="Di0-li-n78" id="mB6-a9-EZc"/>
                         <outlet property="mainContainerView" destination="D6B-GA-AOq" id="gli-uW-Spv"/>
                         <outlet property="mapView" destination="1iT-fv-8PH" id="hSt-Xc-gwg"/>
+                        <outlet property="mapViewAspectRatio" destination="fNQ-At-jsa" id="wGQ-qX-R74"/>
+                        <outlet property="mapViewOneOneAspectRatio" destination="CED-RK-Ap8" id="55Z-OW-YsL"/>
                         <outlet property="popover" destination="cLI-zG-RtB" id="QwW-cm-ddg"/>
+                        <outlet property="saveButton" destination="W4f-7h-f8E" id="LTV-CC-rzR"/>
                         <outlet property="toolbar" destination="oyW-gA-Bwe" id="pU9-VF-nHq"/>
                     </connections>
                 </viewController>
@@ -143,6 +159,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="321"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wrM-CV-4Bl">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="321"/>
+                                <connections>
+                                    <segue destination="0cb-5Z-Xvc" kind="embed" identifier="embed" id="gph-pf-6nq"/>
+                                </connections>
+                            </containerView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aCf-4s-7fk">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="qdw-GI-kfu">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="KBI-HN-Bun">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                                 <constraints>
@@ -151,26 +181,25 @@
                                 <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="search"/>
                             </searchBar>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wrM-CV-4Bl">
-                                <rect key="frame" x="0.0" y="56" width="375" height="265"/>
-                                <connections>
-                                    <segue destination="0cb-5Z-Xvc" kind="embed" id="gph-pf-6nq"/>
-                                </connections>
-                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="aCf-4s-7fk" firstAttribute="bottom" secondItem="KBI-HN-Bun" secondAttribute="bottom" id="1Ax-h2-Byc"/>
                             <constraint firstItem="wrM-CV-4Bl" firstAttribute="leading" secondItem="Ejb-ox-un9" secondAttribute="leading" id="1F3-FI-aS3"/>
                             <constraint firstItem="wrM-CV-4Bl" firstAttribute="trailing" secondItem="Ejb-ox-un9" secondAttribute="trailing" id="44T-Xj-0aT"/>
                             <constraint firstItem="KBI-HN-Bun" firstAttribute="trailing" secondItem="Ejb-ox-un9" secondAttribute="trailing" id="G8V-nj-OS7"/>
                             <constraint firstItem="KBI-HN-Bun" firstAttribute="leading" secondItem="Ejb-ox-un9" secondAttribute="leading" id="Iz0-zA-Zgt"/>
+                            <constraint firstItem="aCf-4s-7fk" firstAttribute="leading" secondItem="KBI-HN-Bun" secondAttribute="leading" id="Vl9-ms-2J0"/>
                             <constraint firstAttribute="bottom" secondItem="wrM-CV-4Bl" secondAttribute="bottom" id="dcJ-h5-GJ6"/>
-                            <constraint firstItem="wrM-CV-4Bl" firstAttribute="top" secondItem="KBI-HN-Bun" secondAttribute="bottom" id="hQw-t9-DHa"/>
+                            <constraint firstItem="wrM-CV-4Bl" firstAttribute="top" secondItem="QSY-8E-Y3l" secondAttribute="top" id="hQw-t9-DHa"/>
                             <constraint firstItem="KBI-HN-Bun" firstAttribute="top" secondItem="Ejb-ox-un9" secondAttribute="top" id="iJe-Va-ay7"/>
+                            <constraint firstItem="aCf-4s-7fk" firstAttribute="top" secondItem="KBI-HN-Bun" secondAttribute="top" id="rBT-dF-NDX"/>
+                            <constraint firstItem="aCf-4s-7fk" firstAttribute="trailing" secondItem="KBI-HN-Bun" secondAttribute="trailing" id="xc6-es-Cyd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ejb-ox-un9"/>
                     </view>
                     <connections>
+                        <outlet property="blurView" destination="aCf-4s-7fk" id="bXR-ol-VUw"/>
                         <outlet property="searchBar" destination="KBI-HN-Bun" id="snh-sC-mlM"/>
                         <outlet property="searchDisplayController" destination="BD2-DI-UAk" id="D76-X6-NG8"/>
                     </connections>
@@ -192,7 +221,7 @@
             <objects>
                 <tableViewController id="0cb-5Z-Xvc" customClass="SelectLocationTableViewController" customModule="HyzeCalendarForWWDC" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="suU-1j-bXq">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="265"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="321"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -200,7 +229,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cPP-Sj-xGZ" id="IzG-i7-jCt">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
