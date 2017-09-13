@@ -78,7 +78,7 @@ class SelectCalendarTableViewCell: UITableViewCell, EventEditorCellProtocol {
 				self.calendarColorView.backgroundColor = UIColor(cgColor: (EventManagement.shared.EMCalendar?.cgColor)!)
 			} else {
 				self.selectedCalendarLabel.text = EventManagement.shared.EMEventStore.defaultCalendarForNewEvents?.title
-				self.calendarColorView.backgroundColor = UIColor(cgColor: (EventManagement.shared.EMEventStore.defaultCalendarForNewEvents?.cgColor)!)
+				self.calendarColorView.backgroundColor = UIColor(cgColor: (EventManagement.shared.EMEventStore.defaultCalendarForNewEvents?.cgColor) ?? Color.blue.cgColor)
 			}
 		}
 		self.calendarColorView.layer.shadowColor = self.calendarColorView.backgroundColor?.cgColor
