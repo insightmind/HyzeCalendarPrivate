@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="4in-gb-opo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="4in-gb-opo">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -88,7 +88,7 @@
                             <constraint firstAttribute="trailing" secondItem="DCD-IK-MQs" secondAttribute="trailing" id="BQm-Az-hLj"/>
                             <constraint firstItem="NeF-Az-v1m" firstAttribute="centerX" secondItem="PfB-zh-Sgo" secondAttribute="centerX" id="CqK-hg-WbP"/>
                             <constraint firstAttribute="leading" secondItem="NeF-Az-v1m" secondAttribute="trailing" priority="750" constant="75" id="EZW-M9-z2l"/>
-                            <constraint firstItem="n78-f7-hAW" firstAttribute="top" secondItem="qet-3Z-dfx" secondAttribute="bottom" constant="-16" id="KGk-wp-F6T"/>
+                            <constraint firstAttribute="bottom" secondItem="qet-3Z-dfx" secondAttribute="bottom" constant="-16" id="KGk-wp-F6T"/>
                             <constraint firstItem="qet-3Z-dfx" firstAttribute="top" secondItem="DCD-IK-MQs" secondAttribute="bottom" id="MGD-CQ-ip3"/>
                             <constraint firstItem="NeF-Az-v1m" firstAttribute="leading" secondItem="PfB-zh-Sgo" secondAttribute="trailing" priority="750" constant="75" id="SSG-s2-gxn"/>
                             <constraint firstItem="DCD-IK-MQs" firstAttribute="leading" secondItem="PfB-zh-Sgo" secondAttribute="leading" id="Vfi-4f-vhq"/>
@@ -188,7 +188,7 @@
                                 <blurEffect style="extraLight"/>
                             </visualEffectView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Mp-VE-c89">
-                                <rect key="frame" x="0.0" y="3" width="375" height="664"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <connections>
                                     <segue destination="Ehi-tk-gaE" kind="embed" identifier="embed" id="Cdl-qJ-GlG"/>
                                 </connections>
@@ -259,20 +259,20 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="UdT-j9-cxD" firstAttribute="baseline" secondItem="j08-VV-qd0" secondAttribute="baseline" id="3dd-jf-bEw"/>
+                            <constraint firstItem="fmZ-f3-9fn" firstAttribute="top" secondItem="OvM-tT-AXz" secondAttribute="bottom" constant="-47" id="3ew-QQ-yWz"/>
                             <constraint firstItem="UdT-j9-cxD" firstAttribute="top" secondItem="Esq-Go-3wf" secondAttribute="bottom" constant="8" symbolic="YES" id="BhU-ZX-M1O"/>
                             <constraint firstAttribute="trailing" secondItem="Dcw-VL-8Yh" secondAttribute="trailing" id="C8k-83-47k"/>
                             <constraint firstItem="Dcw-VL-8Yh" firstAttribute="top" secondItem="Rdh-tp-9Cc" secondAttribute="top" id="CBa-ml-Kao"/>
                             <constraint firstItem="OvM-tT-AXz" firstAttribute="top" secondItem="Rdh-tp-9Cc" secondAttribute="top" id="DLl-27-8ft"/>
-                            <constraint firstItem="4Mp-VE-c89" firstAttribute="top" secondItem="fmZ-f3-9fn" secondAttribute="bottom" constant="-108" id="FYl-6j-wvL"/>
+                            <constraint firstItem="4Mp-VE-c89" firstAttribute="top" secondItem="Rdh-tp-9Cc" secondAttribute="top" id="FYl-6j-wvL"/>
                             <constraint firstAttribute="trailing" secondItem="OvM-tT-AXz" secondAttribute="trailing" id="Fo2-Cd-NgJ"/>
                             <constraint firstItem="UdT-j9-cxD" firstAttribute="leading" secondItem="Rdh-tp-9Cc" secondAttribute="leadingMargin" id="Lot-A8-pNV"/>
-                            <constraint firstItem="Dcw-VL-8Yh" firstAttribute="bottom" secondItem="AY9-Ry-ahx" secondAttribute="top" id="PuT-2y-unu"/>
+                            <constraint firstItem="Dcw-VL-8Yh" firstAttribute="bottom" secondItem="Rdh-tp-9Cc" secondAttribute="bottom" id="PuT-2y-unu"/>
                             <constraint firstAttribute="trailingMargin" secondItem="j08-VV-qd0" secondAttribute="trailing" constant="-9" id="Qg8-sg-Ek0"/>
                             <constraint firstItem="Dcw-VL-8Yh" firstAttribute="leading" secondItem="Rdh-tp-9Cc" secondAttribute="leading" id="TAh-T7-Niw"/>
                             <constraint firstItem="fmZ-f3-9fn" firstAttribute="centerX" secondItem="4Mp-VE-c89" secondAttribute="centerX" id="Z1f-vq-qZo"/>
                             <constraint firstItem="fmZ-f3-9fn" firstAttribute="top" secondItem="UdT-j9-cxD" secondAttribute="bottom" constant="18" id="aXC-bD-rdA"/>
-                            <constraint firstItem="4Mp-VE-c89" firstAttribute="bottom" secondItem="AY9-Ry-ahx" secondAttribute="top" id="be4-iY-97W"/>
-                            <constraint firstItem="4Mp-VE-c89" firstAttribute="top" secondItem="OvM-tT-AXz" secondAttribute="bottom" constant="-120" id="cWm-2l-HzX"/>
+                            <constraint firstItem="4Mp-VE-c89" firstAttribute="bottom" secondItem="Rdh-tp-9Cc" secondAttribute="bottom" id="be4-iY-97W"/>
                             <constraint firstItem="UdT-j9-cxD" firstAttribute="leading" secondItem="fmZ-f3-9fn" secondAttribute="leading" id="hRh-Nj-GRf"/>
                             <constraint firstItem="Dcw-VL-8Yh" firstAttribute="leading" secondItem="4Mp-VE-c89" secondAttribute="leading" id="l8a-Mf-wey"/>
                             <constraint firstItem="Dcw-VL-8Yh" firstAttribute="trailing" secondItem="4Mp-VE-c89" secondAttribute="trailing" id="mgd-YK-RiC"/>
@@ -298,7 +298,7 @@
             <objects>
                 <tableViewController id="Ehi-tk-gaE" customClass="EventEditorTableViewController" customModule="HyzeCalendarForWWDC" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="NPS-Od-36P">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="664"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <connections>
@@ -309,7 +309,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5et-kw-Euy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9065" y="-147"/>
+            <point key="canvasLocation" x="9039" y="-85"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

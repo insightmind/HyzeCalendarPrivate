@@ -73,7 +73,7 @@ class EventEditorTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-		tableView.contentInset = UIEdgeInsets(top: 108, left: 0, bottom: 108, right: 0)
+		tableView.contentInset = UIEdgeInsets(top: 120, left: 0, bottom: 108, right: 0)
         return 1
     }
 

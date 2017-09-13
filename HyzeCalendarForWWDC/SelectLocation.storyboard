@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xI2-y5-lYW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xI2-y5-lYW">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -45,9 +45,9 @@
                                         </variation>
                                     </mapView>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Di0-li-n78">
-                                        <rect key="frame" x="0.0" y="326" width="375" height="271"/>
+                                        <rect key="frame" x="0.0" y="326" width="375" height="361"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="5du-Cc-051">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="271"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="361"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </view>
                                         <blurEffect style="dark"/>
@@ -62,9 +62,9 @@
                                         <rect key="frame" x="0.0" y="597" width="375" height="50"/>
                                         <subviews>
                                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KxC-GI-ldC">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="naf-4b-U8a">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </view>
                                                 <blurEffect style="light"/>
@@ -96,7 +96,7 @@
                                             <constraint firstAttribute="bottom" secondItem="ptC-CB-bjq" secondAttribute="bottom" id="RkB-kY-muP"/>
                                             <constraint firstItem="ptC-CB-bjq" firstAttribute="leading" secondItem="oyW-gA-Bwe" secondAttribute="leading" constant="8" id="Tm4-am-VW3"/>
                                             <constraint firstItem="ptC-CB-bjq" firstAttribute="top" secondItem="oyW-gA-Bwe" secondAttribute="top" id="Zaw-7J-qRC"/>
-                                            <constraint firstAttribute="bottom" secondItem="KxC-GI-ldC" secondAttribute="bottom" id="ZeK-kq-4Gz"/>
+                                            <constraint firstAttribute="bottom" secondItem="KxC-GI-ldC" secondAttribute="bottom" constant="-40" id="ZeK-kq-4Gz"/>
                                             <constraint firstAttribute="trailing" secondItem="ptC-CB-bjq" secondAttribute="trailing" constant="8" id="nxJ-db-bv6"/>
                                             <constraint firstAttribute="height" constant="50" id="tKL-7J-DxQ"/>
                                             <constraint firstItem="KxC-GI-ldC" firstAttribute="leading" secondItem="oyW-gA-Bwe" secondAttribute="leading" id="te1-qG-w9F"/>
@@ -112,7 +112,7 @@
                                     <constraint firstItem="oyW-gA-Bwe" firstAttribute="leading" secondItem="cLI-zG-RtB" secondAttribute="leading" id="JfD-ad-BNH"/>
                                     <constraint firstItem="Di0-li-n78" firstAttribute="leading" secondItem="cLI-zG-RtB" secondAttribute="leading" id="MFd-Fg-FT9"/>
                                     <constraint firstAttribute="bottom" secondItem="oyW-gA-Bwe" secondAttribute="bottom" constant="40" id="R5Y-e7-J2c"/>
-                                    <constraint firstItem="oyW-gA-Bwe" firstAttribute="top" secondItem="Di0-li-n78" secondAttribute="bottom" id="Uhb-HR-tl2"/>
+                                    <constraint firstAttribute="bottom" secondItem="Di0-li-n78" secondAttribute="bottom" id="Uhb-HR-tl2"/>
                                     <constraint firstAttribute="trailing" secondItem="oyu-dO-tdK" secondAttribute="trailing" id="YUg-Qd-Jwg"/>
                                     <constraint firstAttribute="bottom" secondItem="D6B-GA-AOq" secondAttribute="bottom" constant="40" id="bGc-b6-cPp"/>
                                     <constraint firstItem="1iT-fv-8PH" firstAttribute="leading" secondItem="cLI-zG-RtB" secondAttribute="leading" id="hav-Hx-3tu"/>
@@ -229,7 +229,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cPP-Sj-xGZ" id="IzG-i7-jCt">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>

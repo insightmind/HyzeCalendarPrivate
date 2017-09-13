@@ -12,7 +12,8 @@ import UIKit
 
 struct Color {
 	static let white = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-	static let grey = #colorLiteral(red: 0.171, green: 0.1708723033, blue: 0.1708723033, alpha: 1)
+	static let grey = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+	static let oldGrey = #colorLiteral(red: 0.171, green: 0.1708723033, blue: 0.1708723033, alpha: 1)
 	static let orange = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
 	static let blue = #colorLiteral(red: 0.204, green: 0.571, blue: 0.901, alpha: 1)
 	static let lightBlue = #colorLiteral(red: 0.219, green: 0.629, blue: 1, alpha: 1)

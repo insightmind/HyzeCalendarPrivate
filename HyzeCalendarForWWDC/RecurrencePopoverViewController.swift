@@ -40,7 +40,6 @@ class RecurrencePopoverViewController: UIViewController {
 	@IBOutlet weak var mainViewHeightConstraint: NSLayoutConstraint!
 
 	@IBOutlet weak var containerView: UIView!
-	@IBOutlet var containerViewHeightConstraint: NSLayoutConstraint!
 	
 	@IBOutlet var popoverTopConstraint: NSLayoutConstraint!
 	
@@ -67,14 +66,9 @@ class RecurrencePopoverViewController: UIViewController {
 	func setContainerViewHeight() {
 		if selectedFrequency != nil {
 			mainViewHeightConstraint.constant = 56
-			NSLayoutConstraint.deactivate([containerViewHeightConstraint])
-			NSLayoutConstraint.activate([popoverTopConstraint])
 			tableView?.tableView.isScrollEnabled = true
 		} else {
 			mainViewHeightConstraint.constant = 224
-			NSLayoutConstraint.activate([containerViewHeightConstraint])
-			NSLayoutConstraint.deactivate([popoverTopConstraint])
-			containerViewHeightConstraint.constant = 0.0
 			tableView?.tableView.isScrollEnabled = false
 		}
 	}

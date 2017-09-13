@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1Yw-J2-3sI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1Yw-J2-3sI">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,19 +19,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t0U-Hu-kwR">
-                                <rect key="frame" x="0.0" y="120" width="375" height="577"/>
+                                <rect key="frame" x="0.0" y="120" width="375" height="587"/>
                                 <subviews>
-                                    <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cyi-b1-mgT">
-                                        <rect key="frame" x="0.0" y="63" width="375" height="484"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="muS-YE-dAu">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="484"/>
+                                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cyi-b1-mgT">
+                                        <rect key="frame" x="0.0" y="63" width="375" height="524"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="muS-YE-dAu">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="524"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </view>
                                         <blurEffect style="light"/>
                                     </visualEffectView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jl9-ve-Lzn">
-                                        <rect key="frame" x="0.0" y="63" width="375" height="484"/>
+                                        <rect key="frame" x="0.0" y="63" width="375" height="494"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <segue destination="0Lf-hF-90v" kind="embed" identifier="embed" id="15S-Wu-eK9"/>
@@ -48,16 +47,16 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6cU-EC-6Xh">
-                                        <rect key="frame" x="0.0" y="497" width="375" height="50"/>
+                                        <rect key="frame" x="0.0" y="497" width="375" height="90"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="6yw-eE-Wdt">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ty0-Nh-Z1H">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="WO0-Wj-y5c">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     </view>
                                                     <vibrancyEffect>
@@ -67,7 +66,7 @@
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="KN6-iy-MRm"/>
+                                            <constraint firstAttribute="height" constant="90" id="KN6-iy-MRm"/>
                                         </constraints>
                                         <blurEffect style="light"/>
                                     </visualEffectView>
@@ -98,9 +97,13 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="dKB-x8-7Bm" secondAttribute="bottom" constant="40" id="5iM-va-V64"/>
+                                    <constraint firstAttribute="bottom" secondItem="dKB-x8-7Bm" secondAttribute="bottom" constant="50" id="5iM-va-V64"/>
+                                    <constraint firstItem="Cyi-b1-mgT" firstAttribute="top" secondItem="PIu-HX-SJL" secondAttribute="bottom" id="A6S-eL-u8D"/>
+                                    <constraint firstAttribute="trailing" secondItem="Cyi-b1-mgT" secondAttribute="trailing" id="BOB-wU-7aH"/>
+                                    <constraint firstItem="Cyi-b1-mgT" firstAttribute="leading" secondItem="t0U-Hu-kwR" secondAttribute="leading" id="CaX-nW-gvp"/>
                                     <constraint firstItem="PIu-HX-SJL" firstAttribute="leading" secondItem="t0U-Hu-kwR" secondAttribute="leading" id="ChN-Tf-0zl"/>
                                     <constraint firstItem="Jl9-ve-Lzn" firstAttribute="top" secondItem="PIu-HX-SJL" secondAttribute="bottom" id="QeH-jB-uPR"/>
+                                    <constraint firstAttribute="bottom" secondItem="Cyi-b1-mgT" secondAttribute="bottom" id="T9X-6z-VmW"/>
                                     <constraint firstAttribute="trailing" secondItem="Jl9-ve-Lzn" secondAttribute="trailing" id="UXx-uF-g50"/>
                                     <constraint firstItem="PIu-HX-SJL" firstAttribute="top" secondItem="t0U-Hu-kwR" secondAttribute="top" id="Vhv-mr-yZ6"/>
                                     <constraint firstItem="6cU-EC-6Xh" firstAttribute="leading" secondItem="t0U-Hu-kwR" secondAttribute="leading" id="aLq-cY-och"/>
@@ -109,7 +112,7 @@
                                     <constraint firstAttribute="trailing" secondItem="6cU-EC-6Xh" secondAttribute="trailing" id="rAt-Ax-f9W"/>
                                     <constraint firstAttribute="trailing" secondItem="PIu-HX-SJL" secondAttribute="trailing" id="sTs-ke-SMa"/>
                                     <constraint firstItem="dKB-x8-7Bm" firstAttribute="leading" secondItem="t0U-Hu-kwR" secondAttribute="leading" constant="8" id="xGq-en-HuD"/>
-                                    <constraint firstAttribute="bottom" secondItem="6cU-EC-6Xh" secondAttribute="bottom" constant="30" id="xvs-QV-zee"/>
+                                    <constraint firstAttribute="bottom" secondItem="6cU-EC-6Xh" secondAttribute="bottom" id="xvs-QV-zee"/>
                                     <constraint firstAttribute="trailing" secondItem="dKB-x8-7Bm" secondAttribute="trailing" constant="8" id="ywo-Vb-rCM"/>
                                 </constraints>
                             </view>
@@ -119,7 +122,7 @@
                             <constraint firstItem="t0U-Hu-kwR" firstAttribute="leading" secondItem="MJG-GB-VEo" secondAttribute="leading" id="a8v-KU-mAp"/>
                             <constraint firstItem="MJG-GB-VEo" firstAttribute="bottom" secondItem="dKB-x8-7Bm" secondAttribute="bottom" constant="10" id="aiy-i8-Frf"/>
                             <constraint firstItem="t0U-Hu-kwR" firstAttribute="top" secondItem="MJG-GB-VEo" secondAttribute="top" constant="100" id="clM-K2-Hc3"/>
-                            <constraint firstItem="t0U-Hu-kwR" firstAttribute="bottom" secondItem="MJG-GB-VEo" secondAttribute="bottom" constant="30" id="lBN-Gw-QGL"/>
+                            <constraint firstItem="t0U-Hu-kwR" firstAttribute="bottom" secondItem="MJG-GB-VEo" secondAttribute="bottom" constant="40" id="lBN-Gw-QGL"/>
                             <constraint firstItem="t0U-Hu-kwR" firstAttribute="trailing" secondItem="MJG-GB-VEo" secondAttribute="trailing" id="yxX-7v-JJh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MJG-GB-VEo"/>
@@ -143,11 +146,11 @@
             <objects>
                 <viewController id="0Lf-hF-90v" customClass="SetContactsSearchViewController" customModule="HyzeCalendarForWWDC" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="trq-PO-0Mh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="484"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="494"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="duX-0u-tYA">
-                                <rect key="frame" x="0.0" y="56" width="375" height="428"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="438"/>
                                 <connections>
                                     <segue destination="Eor-Wj-qAo" kind="embed" identifier="embed" id="ya4-jw-cdf"/>
                                 </connections>
@@ -187,7 +190,7 @@
             <objects>
                 <tableViewController id="Eor-Wj-qAo" customClass="SetContactsTableViewController" customModule="HyzeCalendarForWWDC" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="OQW-2I-sVH">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="428"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="438"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
