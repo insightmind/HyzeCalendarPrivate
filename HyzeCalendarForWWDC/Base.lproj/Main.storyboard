@@ -87,8 +87,8 @@
                                 </connections>
                             </tableView>
                             <view opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3te-8G-WxE">
-                                <rect key="frame" x="0.0" y="0.0" width="321" height="37"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="0.0" y="0.0" width="321" height="27"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="tSU-Yg-gF9">
                                 <rect key="frame" x="6" y="5" width="308" height="24"/>
@@ -155,7 +155,7 @@
                             <constraint firstItem="A3r-3z-TZC" firstAttribute="top" secondItem="Q51-W6-Rno" secondAttribute="bottom" id="Cia-ee-nQn"/>
                             <constraint firstAttribute="trailingMargin" secondItem="tSU-Yg-gF9" secondAttribute="trailing" constant="-10" id="Gjb-pd-cmm"/>
                             <constraint firstItem="GCF-0K-sLN" firstAttribute="leading" secondItem="8SE-NO-vxc" secondAttribute="leadingMargin" constant="-16" id="HZk-7A-M4U"/>
-                            <constraint firstItem="Q51-W6-Rno" firstAttribute="top" secondItem="3te-8G-WxE" secondAttribute="bottom" id="MmH-cE-7dk"/>
+                            <constraint firstItem="Q51-W6-Rno" firstAttribute="top" secondItem="3te-8G-WxE" secondAttribute="bottom" constant="10" id="MmH-cE-7dk"/>
                             <constraint firstItem="A3r-3z-TZC" firstAttribute="top" secondItem="Q51-W6-Rno" secondAttribute="bottom" id="Nyc-jh-8oy"/>
                             <constraint firstItem="A3r-3z-TZC" firstAttribute="leading" secondItem="8SE-NO-vxc" secondAttribute="leading" id="S6x-58-iKD"/>
                             <constraint firstItem="tSU-Yg-gF9" firstAttribute="leading" secondItem="8SE-NO-vxc" secondAttribute="leadingMargin" constant="-10" id="VIc-hw-RAV"/>

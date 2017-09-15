@@ -61,7 +61,6 @@ class DayViewUIVViewController: UIViewController {
 			} else {
 				self.day.dayViewCenterButton.backgroundColor = Color.blue
 			}
-			self.day.layer.shadowColor = UIColor.black.cgColor
 		})
 		
 		
@@ -72,8 +71,13 @@ class DayViewUIVViewController: UIViewController {
 			if let eventEditor = segue.destination as? EventEditorViewController {
 				eventEditor.dayView = self
 				EventManagement.shared.eventInformation = EventEditorEventInformations()
-				EventManagement.shared.eventInformation.calendar = EventManagement.shared.EMCalendar ?? EventManagement.shared.getHyzeCalendar()
+				if let key = UserDefaults.standard.string(forKey: "LocalHyzeCalendarIdentifier") {
+					EventManagement.shared.eventInformation.calendar = EventManagement.shared.EMEventStore.calendar(withIdentifier: key) ?? EventManagement.shared.EMEventStore.defaultCalendarForNewEvents
+				} else {
+					EventManagement.shared.eventInformation.calendar = EventManagement.shared.EMEventStore.defaultCalendarForNewEvents
+				}
 			}
+				
 		} else if segue.identifier == "showDetail" {
 			if let eventEditor = segue.destination as? EventEditorViewController {
 				eventEditor.dayView = self
@@ -139,7 +143,7 @@ class DayViewUIVViewController: UIViewController {
 		
 		Selection.shared.selectedIsToday = TimeManagement.isToday(yearID: newYear, monthID: newMonth, dayID: newDayIndexPath.item)
 		
-		UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn, animations: {
+		UIView.animate(withDuration: 0.15, delay: 0, options: .curveEaseIn, animations: {
 			NSLayoutConstraint.deactivate([self.dayViewNormal])
 			switch direction {
 			case .right:
@@ -164,7 +168,7 @@ class DayViewUIVViewController: UIViewController {
 			self.setDesign(animated: false)
 			self.eventTableView.reloadView()
 			
-			UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+			UIView.animate(withDuration: 0.15, delay: 0, options: .curveEaseOut, animations: {
 				NSLayoutConstraint.activate([self.dayViewNormal])
 				switch direction {
 				case .right:

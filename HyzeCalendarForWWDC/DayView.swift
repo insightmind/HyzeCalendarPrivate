@@ -102,9 +102,6 @@ class DayView: UIView {
 		
 		self.backgroundColor = UIColor.clear
 		
-		layer.shadowOffset = CGSize(width: 1, height: 3)
-		layer.shadowOpacity = 0.5
-		
         for i in self.subviews {
             self.willRemoveSubview(i)
             i.removeFromSuperview()
@@ -312,7 +309,7 @@ class DayView: UIView {
 				var i = events.count - 1
 				while i >= 0 {
 					let delay = events.count - 1 - i
-					events[i].animate(.add, duration: 1, delay: 0.1 * Double(delay))
+					events[i].animate(.add, duration: 0.3, delay: 0.1 * Double(delay))
 					i -= 1
 				}
 			} else {

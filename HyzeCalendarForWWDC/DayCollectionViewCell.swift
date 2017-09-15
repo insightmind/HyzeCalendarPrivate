@@ -42,10 +42,10 @@ class DayCollectionViewCell: UICollectionViewCell {
 		let shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: bounds.width / 2)
 		layer.masksToBounds = false
 		layer.shadowColor = self.contentView.backgroundColor?.cgColor
-		layer.shadowRadius = 5
-		layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+		layer.shadowRadius = 10
+		layer.shadowOffset = CGSize(width: 0, height: 4.0)
 		if isSelected {
-			layer.shadowOpacity = 1
+			layer.shadowOpacity = 0.5
 		} else {
 			layer.shadowOpacity = 0
 		}
