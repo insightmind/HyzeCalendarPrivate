@@ -140,7 +140,7 @@ class DaysOfMonthTableViewCell: UITableViewCell {
 			collectionView.isHidden = false
 			pickerView.isHidden = true
 			
-			UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+			UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
 				self.eachViewButton.transform = selected
 				self.onViewButton.transform = deselected
 				self.layoutIfNeeded()
@@ -151,7 +151,7 @@ class DaysOfMonthTableViewCell: UITableViewCell {
 			collectionView.isHidden = true
 			pickerView.isHidden = false
 			
-			UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+			UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
 				self.eachViewButton.transform = deselected
 				self.onViewButton.transform = selected
 				self.layoutIfNeeded()

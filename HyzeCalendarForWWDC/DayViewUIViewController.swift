@@ -77,7 +77,6 @@ class DayViewUIVViewController: UIViewController {
 					EventManagement.shared.eventInformation.calendar = EventManagement.shared.EMEventStore.defaultCalendarForNewEvents
 				}
 			}
-				
 		} else if segue.identifier == "showDetail" {
 			if let eventEditor = segue.destination as? EventEditorViewController {
 				eventEditor.dayView = self

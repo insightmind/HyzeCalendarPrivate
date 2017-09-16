@@ -63,6 +63,8 @@ class NotesTableViewCell: UITableViewCell, UITextViewDelegate, EventEditorCellPr
 			textView.textColor = Color.white
 		}
 		textView.becomeFirstResponder()
+		guard let superView = eventInformations.eventEditorTableViewController else { return }
+		superView.enlarge(true)
 	}
 	
 	func textViewDidEndEditing(_ textView: UITextView) {
@@ -73,6 +75,8 @@ class NotesTableViewCell: UITableViewCell, UITextViewDelegate, EventEditorCellPr
 		} else {
 			eventInformations.notes = textView.text
 		}
+		guard let superView = eventInformations.eventEditorTableViewController else { return }
+		superView.enlarge(false)
 	}
 	
 }

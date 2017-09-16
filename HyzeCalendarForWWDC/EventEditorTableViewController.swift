@@ -73,7 +73,7 @@ class EventEditorTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-		tableView.contentInset = UIEdgeInsets(top: 120, left: 0, bottom: 108, right: 0)
+		tableView.contentInset = UIEdgeInsets(top: 120, left: 0, bottom: 50, right: 0)
         return 1
     }
 
@@ -235,6 +235,17 @@ class EventEditorTableViewController: UITableViewController {
 		case .create:
 			return 212.0
 		}
+	}
+	
+	func enlarge(_ shouldAddSpace: Bool) {
+		self.tableView.contentInset = UIEdgeInsets(top: tableView.contentInset.top, left: 0, bottom: shouldAddSpace ? 450 : 50, right: 0)
+		for index in 0..<cells.count {
+			if cells[index].cellType == .notes {
+				let indexPath = IndexPath(row: index, section: 0)
+				self.tableView.scrollToRow(at: indexPath, at: shouldAddSpace ? .top : .bottom, animated: true)
+			}
+		}
+		
 	}
 	
 	func updateContactsCellHeight() {

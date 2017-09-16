@@ -96,7 +96,7 @@ class SetRecurrenceTableViewCell: UITableViewCell, EventEditorCellProtocol {
 	}
 	
 	func setDesign(_ type: RecurrenceType, animated: Bool = true) {
-		UIView.animate(withDuration: animated ? 0.3 : 0, animations: {
+		UIView.animate(withDuration: animated ? 0.15 : 0, animations: {
 			
 			if type != self.selectedRecurrenceType {
 				self.setViewColor(self.predefinedViews, color: Color.lightBlue.withAlphaComponent(0))
