@@ -59,6 +59,11 @@ class EventView: UIButton {
 			shapeLayer.fillColor = coloring.cgColor
 			shapeLayer.opacity = 1
 		}
+		shapeLayer.shadowPath = shapeLayer.path
+		shapeLayer.shadowColor = coloring.cgColor
+		shapeLayer.shadowOffset = CGSize(width: 0, height: 0)
+		shapeLayer.shadowRadius = 25
+		shapeLayer.shadowOpacity = 1
 		
 		shapeLayer.lineWidth = path.lineWidth
 		shapeLayer.position = CGPoint(x: 0, y: 0)

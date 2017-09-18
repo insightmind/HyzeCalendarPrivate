@@ -111,10 +111,13 @@ class DayView: UIView {
         guard let selectedIndexPath = indexPath else {
             fatalError()
         }
+		
+		setUpDayViewCenterButton()
+		
         eventsOnDate = EventManagement.shared.convertEventsToTimeArray(EventManagement.shared.getEvents(for: TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item)))
 		processedEventsOnDate = prepareEventSubViewLayout()
         addEventsSubViews()
-        setUpDayViewCenterButton()
+		
 		
         if Settings.shared.loaded {
             for i in 0...23 {
