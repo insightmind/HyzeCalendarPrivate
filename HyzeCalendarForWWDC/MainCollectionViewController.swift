@@ -193,6 +193,7 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 	}
 	
  func updateETViewHeight(_ collectionView: UICollectionView, isExpandedByRows: CGFloat) {
+	return
 		let superViewController = UIApplication.shared.keyWindow?.rootViewController
 		var mainViewController: ViewController
 		for i in (superViewController?.childViewControllers)! {

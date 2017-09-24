@@ -55,7 +55,9 @@ class ViewController: UIViewController {
         scrollToSection(yearID: yearID, monthID: monthID + 1, animated: true)
     }
 
+	// DEPRECATED
     func updateSelectedDayIcon(){
+		return
         let (yearID, monthID, _ ) = Selection.shared.selectedDayCellIndex
         if yearID > Selection.shared.currentYearID || monthID > Selection.shared.currentMonthID - 1 {
             selectedDayButton.image = #imageLiteral(resourceName: "ic_keyboard_arrow_down")
@@ -83,12 +85,12 @@ class ViewController: UIViewController {
 			navigationBar.backBarButtonItem?.tintColor = Color.grey
 			navigationBar.leftBarButtonItem?.tintColor = Color.white
 			navigationBar.rightBarButtonItem?.tintColor = Color.white
-			toolbar.barTintColor = Color.grey
-			if toolbar.items != nil {
-				for i in toolbar.items! {
-					i.tintColor = Color.white
-				}
-			}
+//			//toolbar.barTintColor = Color.grey
+//			//if toolbar.items != nil {
+//				//for i in toolbar.items! {
+//					//i.tintColor = Color.white
+//				}
+//			}
         } else {
             view.backgroundColor = Color.white
 			daysOfWeekBackgroundView.backgroundColor = Color.white
@@ -98,19 +100,19 @@ class ViewController: UIViewController {
 			navigationBar.backBarButtonItem?.tintColor = Color.grey
 			navigationBar.leftBarButtonItem?.tintColor = Color.grey
 			navigationBar.rightBarButtonItem?.tintColor = Color.grey
-			toolbar.barTintColor = Color.white
-			if toolbar.items != nil {
-				for i in toolbar.items! {
-					i.tintColor = Color.grey
-				}
-			}
+//			toolbar.barTintColor = Color.white
+//			if toolbar.items != nil {
+//				for i in toolbar.items! {
+//					i.tintColor = Color.grey
+//				}
+//			}
         }
         if darkModeTemp != Settings.shared.isDarkMode {
             darkModeTemp = Settings.shared.isDarkMode
         } else if isAMPMTemp != Settings.shared.isAMPM || Settings.shared.eventsChange == true {
             Settings.shared.eventsChange = false
         }
-        ETView.reloadView()
+        //ETView.reloadView()
     }
 	
     

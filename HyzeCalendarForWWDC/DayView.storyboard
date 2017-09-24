@@ -57,24 +57,8 @@
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DCD-IK-MQs">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="305"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap upperhalf to access EventEditor when a Event is selected, swipe to change the date" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="alI-vn-3cp">
-                                        <rect key="frame" x="8" y="243" width="359" height="62"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="62" id="Ber-JD-kv0"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="alI-vn-3cp" secondAttribute="bottom" id="ZFt-kD-NN3"/>
-                                    <constraint firstItem="alI-vn-3cp" firstAttribute="leading" secondItem="DCD-IK-MQs" secondAttribute="leading" constant="8" id="bjz-gq-yK4"/>
-                                    <constraint firstAttribute="trailing" secondItem="alI-vn-3cp" secondAttribute="trailing" constant="8" id="qYN-sf-32P"/>
-                                </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="cbs-bN-xwi" appends="YES" id="WcA-QW-LfW"/>
                                     <outletCollection property="gestureRecognizers" destination="e3r-qf-M7u" appends="YES" id="fxf-TQ-5kq"/>

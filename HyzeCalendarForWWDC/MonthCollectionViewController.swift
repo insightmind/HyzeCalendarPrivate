@@ -190,7 +190,7 @@ extension MonthCollectionViewController {
 		for i in (superViewController?.childViewControllers)! {
 			if i.title == "MonthView" {
 				mainViewController = i as! ViewController
-				mainViewController.ETView.reloadView()
+				//mainViewController.ETView.reloadView()
 				mainViewController.updateSelectedDayIcon()
 			}
 		}
