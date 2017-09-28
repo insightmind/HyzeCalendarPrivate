@@ -150,6 +150,13 @@ class TimeManagement {
 		return todaysDay == compareDay
 		
 	}
+    
+    class func getWeekNumber(yearID: Int, monthID: Int, dayID: Int) -> Int {
+        
+        let date = convertToDate(yearID: yearID, monthID: monthID, dayID: dayID)
+        return TimeManagement.calendar.component(.weekOfYear, from: date)
+        
+    }
 	
 	/// Checks if Cell is same as selectedCell
 	///

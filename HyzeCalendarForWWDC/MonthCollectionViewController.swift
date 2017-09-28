@@ -137,10 +137,12 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
 			cell.label?.text = String(item)
             isNotInMonth = false
 		}
+        let isLeft = ((indexPath.item) % 7 == 0) ? true : false
+        let weekNumber = isLeft ? TimeManagement.getWeekNumber(yearID: yearID, monthID: monthID + 1, dayID: item) : nil
 		let isToday = TimeManagement.isToday(yearID: yearID, monthID: monthID + 1, dayID: item)
 		let isSelected = TimeManagement.isSelected(yearID: yearID, monthID: monthID + 1, dayID: item)
 		let isOnWeekend = self.isOnWeekend(for: indexPath)
-		cell.setCellDesign(isToday: isToday, isSelected: isSelected, isNotInMonth: isNotInMonth, isOnWeekend: isOnWeekend)
+        cell.setCellDesign(isToday: isToday, isSelected: isSelected, isNotInMonth: isNotInMonth, isOnWeekend: isOnWeekend, weekNumber: weekNumber)
         
         if isSelected {
 			self.forcedCellSelection = true

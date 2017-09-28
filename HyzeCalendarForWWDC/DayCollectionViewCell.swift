@@ -14,6 +14,7 @@ class DayCollectionViewCell: UICollectionViewCell {
 	var label: UILabel?
 	var configured: Bool = false
     var isSelectable: Bool = true
+    var weekNumber: Int? = nil
     var bottomLine: UIView?
 	
 	lazy var lbl: UILabel = {
@@ -27,6 +28,18 @@ class DayCollectionViewCell: UICollectionViewCell {
 		lbl.textAlignment = .center
 		return lbl
 	}()
+    
+    lazy var lftLbl: UILabel = {
+        let lbl = UILabel()
+        lbl.text = "ND"
+        if Settings.shared.isDarkMode {
+            lbl.textColor = Color.white
+        } else {
+            lbl.textColor = Color.grey
+        }
+        lbl.textAlignment = .left
+        return lbl
+    }()
     
     lazy var bline: UIView = {
         let vw = UIView()
@@ -72,9 +85,10 @@ class DayCollectionViewCell: UICollectionViewCell {
 		setUpShadow()
 	}
 	
-	func setCellDesign(isToday: Bool, isSelected: Bool, isNotInMonth: Bool = false, isOnWeekend: Bool = false) {
+    func setCellDesign(isToday: Bool, isSelected: Bool, isNotInMonth: Bool = false, isOnWeekend: Bool = false, weekNumber: Int? = nil) {
 		label!.font = UIFont.init(name: "Futura", size: 17)
 		self.isSelected = isSelected
+        self.weekNumber = weekNumber
         if isSelected {
 			layer.shadowOpacity = 0.85
 			if isOnWeekend {
@@ -102,8 +116,21 @@ class DayCollectionViewCell: UICollectionViewCell {
         if isNotInMonth {
             label?.textColor = label?.textColor.withAlphaComponent(0.3)
         }
+        if weekNumber != nil {
+            addWeekNumber()
+        }
 		layer.shadowColor = self.contentView.backgroundColor?.cgColor
+        
 	}
+    
+    func addWeekNumber() {
+        guard let num = self.weekNumber else { return }
+        let weekNumber = self.lftLbl
+        weekNumber.text = String(num)
+        weekNumber.frame = CGRect(x: 0, y: self.bounds.height / 8 * 7, width: self.bounds.width, height: self.bounds.height / 4)
+        weekNumber.font = weekNumber.font.withSize((self.bounds.height / 4))
+        self.addSubview(self.lftLbl)
+    }
 	
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
