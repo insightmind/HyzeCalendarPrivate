@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wqB-9H-Own">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Set Calendar Popover View Controller-->
+        <scene sceneID="5wK-3f-Nqp">
+            <objects>
+                <viewController modalPresentationStyle="overFullScreen" id="wqB-9H-Own" customClass="SetCalendarPopoverViewController" customModule="HyzeCalendarForWWDC" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4gU-M2-y1I">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QMf-tc-ZG1">
+                                <rect key="frame" x="0.0" y="264" width="375" height="443"/>
+                                <subviews>
+                                    <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wdj-Pb-szP">
+                                        <rect key="frame" x="0.0" y="63" width="375" height="350"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="Hdu-gf-uyt">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="350"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </view>
+                                        <blurEffect style="light"/>
+                                    </visualEffectView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calendar" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XGC-8K-cqp">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="63"/>
+                                        <color key="backgroundColor" red="0.2036032975" green="0.57139366869999997" blue="0.90090757610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="63" id="G7b-YC-iuS"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yGX-Nb-KeT">
+                                        <rect key="frame" x="0.0" y="63" width="375" height="350"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="350" id="Smd-Kc-Hky"/>
+                                        </constraints>
+                                        <connections>
+                                            <segue destination="Fuh-9e-yVm" kind="embed" identifier="embed" id="CSn-9A-w7j"/>
+                                        </connections>
+                                    </containerView>
+                                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="maM-1c-RRz">
+                                        <rect key="frame" x="0.0" y="353" width="375" height="90"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="pSU-Au-DV3">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Xf-JO-I9y">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="m7j-bR-uLb">
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    </view>
+                                                    <vibrancyEffect>
+                                                        <blurEffect style="light"/>
+                                                    </vibrancyEffect>
+                                                </visualEffectView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="90" id="UQF-Q0-d5c"/>
+                                        </constraints>
+                                        <blurEffect style="light"/>
+                                    </visualEffectView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U01-mG-dCq">
+                                        <rect key="frame" x="8" y="353" width="359" height="50"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Cancel"/>
+                                        <connections>
+                                            <action selector="cancel:" destination="wqB-9H-Own" eventType="touchUpInside" id="8Ri-of-cXO"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="yGX-Nb-KeT" firstAttribute="top" secondItem="XGC-8K-cqp" secondAttribute="bottom" id="3sH-7y-UXE"/>
+                                    <constraint firstItem="U01-mG-dCq" firstAttribute="bottom" secondItem="maM-1c-RRz" secondAttribute="bottom" constant="-40" id="BdV-DJ-Kz6"/>
+                                    <constraint firstAttribute="trailing" secondItem="maM-1c-RRz" secondAttribute="trailing" id="CnX-4Y-QwW"/>
+                                    <constraint firstAttribute="bottom" secondItem="yGX-Nb-KeT" secondAttribute="bottom" constant="30" id="G7V-mc-IoV"/>
+                                    <constraint firstItem="maM-1c-RRz" firstAttribute="leading" secondItem="QMf-tc-ZG1" secondAttribute="leading" id="LdX-fq-MDb"/>
+                                    <constraint firstAttribute="trailing" secondItem="XGC-8K-cqp" secondAttribute="trailing" id="RXI-cU-7t8"/>
+                                    <constraint firstAttribute="bottom" secondItem="maM-1c-RRz" secondAttribute="bottom" id="YBr-LJ-eb7"/>
+                                    <constraint firstItem="U01-mG-dCq" firstAttribute="leading" secondItem="QMf-tc-ZG1" secondAttribute="leadingMargin" id="YYv-73-Gb5"/>
+                                    <constraint firstItem="U01-mG-dCq" firstAttribute="top" secondItem="maM-1c-RRz" secondAttribute="top" id="a6P-Ig-URF"/>
+                                    <constraint firstAttribute="trailing" secondItem="yGX-Nb-KeT" secondAttribute="trailing" id="eTf-rD-QSr"/>
+                                    <constraint firstItem="U01-mG-dCq" firstAttribute="centerX" secondItem="maM-1c-RRz" secondAttribute="centerX" id="ixt-MJ-qtq"/>
+                                    <constraint firstItem="yGX-Nb-KeT" firstAttribute="leading" secondItem="QMf-tc-ZG1" secondAttribute="leading" id="jlf-ce-O0h"/>
+                                    <constraint firstItem="XGC-8K-cqp" firstAttribute="leading" secondItem="QMf-tc-ZG1" secondAttribute="leading" id="oOn-hH-5hB"/>
+                                    <constraint firstItem="XGC-8K-cqp" firstAttribute="top" secondItem="QMf-tc-ZG1" secondAttribute="top" id="y8d-z2-d86"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="QMf-tc-ZG1" firstAttribute="trailing" secondItem="z67-Pk-KkB" secondAttribute="trailing" id="Cxm-78-c9I"/>
+                            <constraint firstItem="QMf-tc-ZG1" firstAttribute="leading" secondItem="z67-Pk-KkB" secondAttribute="leading" id="Ukf-89-IOQ"/>
+                            <constraint firstItem="QMf-tc-ZG1" firstAttribute="bottom" secondItem="z67-Pk-KkB" secondAttribute="bottom" constant="40" id="vYE-uE-Aaq"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="z67-Pk-KkB"/>
+                    </view>
+                    <connections>
+                        <outlet property="popover" destination="QMf-tc-ZG1" id="cHS-tp-2Ua"/>
+                        <outlet property="toolbarBlurView" destination="maM-1c-RRz" id="WLY-lo-Tro"/>
+                        <outlet property="topBlurView" destination="Wdj-Pb-szP" id="ZAs-JU-stZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c7D-7c-vzJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="133.59999999999999" y="148.87556221889056"/>
+        </scene>
+        <!--Calendar Table View Controller-->
+        <scene sceneID="4Pp-tX-uwc">
+            <objects>
+                <tableViewController id="Fuh-9e-yVm" customClass="CalendarTableViewController" customModule="HyzeCalendarForWWDC" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="esS-5b-hkM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="350"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="calendar" id="TnP-2o-g8e">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TnP-2o-g8e" id="gIq-QR-w7T">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Fuh-9e-yVm" id="t9T-Vy-rcL"/>
+                            <outlet property="delegate" destination="Fuh-9e-yVm" id="tuL-f0-sLn"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i4p-ub-SOP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="858" y="148"/>
+        </scene>
+    </scenes>
+</document>
