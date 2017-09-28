@@ -124,6 +124,9 @@ class DayCollectionViewCell: UICollectionViewCell {
 	}
     
     func addWeekNumber() {
+        if !Settings.shared.showWeekNumber {
+            return
+        }
         guard let num = self.weekNumber else { return }
         let weekNumber = self.lftLbl
         weekNumber.text = String(num)

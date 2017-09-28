@@ -23,6 +23,7 @@ class Settings {
 	var showLinesInCalendarView: Bool = UserDefaults.standard.bool(forKey: "showLinesInCalendarView")
 	var animateDayView: Bool = UserDefaults.standard.bool(forKey: "animateDayView")
 	var isAMPM : Bool = UserDefaults.standard.bool(forKey: "IsAMPM")
+    var showWeekNumber: Bool = UserDefaults.standard.bool(forKey: "showWeekNumber")
 	
 	// MARK: Interaction
 	var needsDesignUpdate: Bool = false
