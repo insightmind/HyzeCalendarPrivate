@@ -31,7 +31,7 @@ class ContactManagement {
 	fileprivate func contains(name: String, contact: CNContact) -> Bool {
 		var count = 0
 		let string = contact.givenName.lowercased() + " " + contact.familyName.lowercased()
-		for i in name.lowercased().characters {
+		for i in name.lowercased() {
 			if string.contains(i) {
 				count += 1
 				continue
@@ -39,7 +39,7 @@ class ContactManagement {
 				break
 			}
 		}
-		if count == name.characters.count {
+		if count == name.count {
 			return true
 		}
 		return false
@@ -50,7 +50,7 @@ class ContactManagement {
 			let singleEmail = String(personsEmail.value).lowercased()
 			var count = 0
 			let string = singleEmail + " "
-			fuzzyLoop: for i in email.lowercased().characters {
+			fuzzyLoop: for i in email.lowercased() {
 				if string.contains(i) {
 					count += 1
 					continue fuzzyLoop
@@ -58,7 +58,7 @@ class ContactManagement {
 					break fuzzyLoop
 				}
 			}
-			if count == email.characters.count {
+			if count == email.count {
 				return true
 			}
 		}
