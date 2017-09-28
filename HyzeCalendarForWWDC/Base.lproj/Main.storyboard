@@ -98,7 +98,7 @@
                                 </subviews>
                             </stackView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YFY-0E-SzH">
-                                <rect key="frame" x="0.0" y="357" width="375" height="367"/>
+                                <rect key="frame" x="0.0" y="357" width="375" height="397"/>
                                 <connections>
                                     <segue destination="p2k-fS-LzL" kind="embed" id="QOT-4X-JH1"/>
                                 </connections>
@@ -114,7 +114,7 @@
                             <constraint firstItem="tSU-Yg-gF9" firstAttribute="leading" secondItem="8SE-NO-vxc" secondAttribute="leadingMargin" constant="-10" id="VIc-hw-RAV"/>
                             <constraint firstItem="3te-8G-WxE" firstAttribute="top" secondItem="mt5-rK-ae8" secondAttribute="bottom" id="Vhc-WV-bs1"/>
                             <constraint firstItem="YFY-0E-SzH" firstAttribute="top" secondItem="Q51-W6-Rno" secondAttribute="bottom" id="YSt-uc-yT7"/>
-                            <constraint firstAttribute="bottom" secondItem="YFY-0E-SzH" secondAttribute="bottom" id="eJ8-ak-eM7"/>
+                            <constraint firstAttribute="bottom" secondItem="YFY-0E-SzH" secondAttribute="bottom" constant="-30" id="eJ8-ak-eM7"/>
                             <constraint firstAttribute="trailing" secondItem="3te-8G-WxE" secondAttribute="trailing" id="fHT-4D-KNG"/>
                             <constraint firstItem="3te-8G-WxE" firstAttribute="leading" secondItem="8SE-NO-vxc" secondAttribute="leading" id="nVR-Vx-6nt"/>
                             <constraint firstItem="Q51-W6-Rno" firstAttribute="top" secondItem="mt5-rK-ae8" secondAttribute="bottom" constant="37" id="oRk-Lh-Fsb"/>

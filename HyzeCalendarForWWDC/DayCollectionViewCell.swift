@@ -86,7 +86,9 @@ class DayCollectionViewCell: UICollectionViewCell {
 	}
 	
     func setCellDesign(isToday: Bool, isSelected: Bool, isNotInMonth: Bool = false, isOnWeekend: Bool = false, weekNumber: Int? = nil) {
-		label!.font = UIFont.init(name: "Futura", size: 17)
+        if let mainLabel = label {
+            mainLabel.font = UIFont.init(name: "Futura", size: mainLabel.bounds.height / 10 * 4)
+        }
 		self.isSelected = isSelected
         self.weekNumber = weekNumber
         if isSelected {
