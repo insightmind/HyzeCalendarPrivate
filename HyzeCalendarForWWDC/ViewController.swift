@@ -24,9 +24,6 @@ class ViewController: UIViewController {
 	
 	@IBOutlet weak var calendarView: UIView!
     @IBOutlet public weak var navigationBar: UINavigationItem!
-    @IBOutlet weak var selectedDayButton: UIBarButtonItem!
-    @IBOutlet weak var ETView: ETView!
-    @IBOutlet weak var toolbar: UIToolbar!
 
 	//Outlets of DaysOfWeek
     @IBOutlet weak var FirstDayOfWeek: UILabel!
@@ -36,43 +33,17 @@ class ViewController: UIViewController {
     @IBOutlet weak var FivthDayOfWeek: UILabel!
     @IBOutlet weak var SixthDayOfWeek: UILabel!
     @IBOutlet weak var SeventhDayOfWeek: UILabel!
-	@IBOutlet weak var ETViewTopLayoutConstraint: NSLayoutConstraint!
 	
 	var daysOfWeek: [WeekDay: UILabel] = [:]
 
 	@IBOutlet weak var daysOfWeekBackgroundView: UIView!
-	@IBOutlet weak var ETViewTopLayoutConstraintWithoutLastRow: NSLayoutConstraint!
 	
     
-    @IBAction func jumpToToday(_ sender: UIBarButtonItem) {
-        let (yearID, monthID, _) = Selection.shared.todaysDayCellIndex
-		Selection.shared.selectedDayCellIndex = Selection.shared.todaysDayCellIndex
-		scrollToSection(yearID: yearID, monthID: monthID + 1, animated: true)
-    }
-    
-    @IBAction func jumpToSelected(_ sender: UIBarButtonItem) {
-        let (yearID, monthID, _ ) = Selection.shared.selectedDayCellIndex
-        scrollToSection(yearID: yearID, monthID: monthID + 1, animated: true)
-    }
-
-	// DEPRECATED
-    func updateSelectedDayIcon(){
-		return
-        let (yearID, monthID, _ ) = Selection.shared.selectedDayCellIndex
-        if yearID > Selection.shared.currentYearID || monthID > Selection.shared.currentMonthID - 1 {
-            selectedDayButton.image = #imageLiteral(resourceName: "ic_keyboard_arrow_down")
-        } else if yearID < Selection.shared.currentYearID || monthID < Selection.shared.currentMonthID - 1 {
-            selectedDayButton.image = #imageLiteral(resourceName: "ic_keyboard_arrow_up")
-        } else {
-            selectedDayButton.image = #imageLiteral(resourceName: "ic_keyboard_arrow_right")
-        }
-    }
 	
     override func viewWillAppear(_ animated: Bool) {
 		
 		if EventManagement.shared.askForPermission() {
 			calendarView.setNeedsDisplay()
-			ETView.setNeedsDisplay()
 		}
 		
 		self.calendarView.layer.masksToBounds = false

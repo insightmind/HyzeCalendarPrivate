@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HyzeCalendarForWWDC/MainCollectionViewController.swift"
+            timestampString = "528322764.82894"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
+            landmarkName = "scrollToSection(yearID:monthID:animated:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HyzeCalendarForWWDC/ViewController.swift"
+            timestampString = "528322764.829356"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "190"
+            endingLineNumber = "190"
+            landmarkName = "scrollToSection(direction:animated:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HyzeCalendarForWWDC/ViewController.swift"
+            timestampString = "528322764.829466"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "178"
+            endingLineNumber = "178"
+            landmarkName = "scrollToSection(yearID:monthID:animated:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HyzeCalendarForWWDC.ViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "HyzeCalendarForWWDC"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/niklas/Documents/HyzeCalendarPrivate/HyzeCalendarForWWDC/ViewController.swift"
+                  timestampString = "528322766.175389"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "178"
+                  endingLineNumber = "178"
+                  offsetFromSymbolStart = "1520">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HyzeCalendarForWWDC.ViewController.scrollToSection(yearID: Swift.Int, monthID: Swift.Int, animated: Swift.Bool) -&gt; ()"
+                  moduleName = "HyzeCalendarForWWDC"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/niklas/Documents/HyzeCalendarPrivate/HyzeCalendarForWWDC/ViewController.swift"
+                  timestampString = "528322766.176658"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "178"
+                  endingLineNumber = "178"
+                  offsetFromSymbolStart = "32">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HyzeCalendarForWWDC.ViewController.scrollToSection(direction: HyzeCalendarForWWDC.ScrollDirection, animated: Swift.Bool) -&gt; ()"
+                  moduleName = "HyzeCalendarForWWDC"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/niklas/Documents/HyzeCalendarPrivate/HyzeCalendarForWWDC/ViewController.swift"
+                  timestampString = "528322766.178245"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "178"
+                  endingLineNumber = "178"
+                  offsetFromSymbolStart = "292">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HyzeCalendarForWWDC.ViewController.scrollToSection(direction: HyzeCalendarForWWDC.ScrollDirection, animated: Swift.Bool) -&gt; ()"
+                  moduleName = "HyzeCalendarForWWDC"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/niklas/Documents/HyzeCalendarPrivate/HyzeCalendarForWWDC/ViewController.swift"
+                  timestampString = "528322766.17991"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "178"
+                  endingLineNumber = "178"
+                  offsetFromSymbolStart = "588">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HyzeCalendarForWWDC.ViewController.scrollToSection(direction: HyzeCalendarForWWDC.ScrollDirection, animated: Swift.Bool) -&gt; ()"
+                  moduleName = "HyzeCalendarForWWDC"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/niklas/Documents/HyzeCalendarPrivate/HyzeCalendarForWWDC/ViewController.swift"
+                  timestampString = "528322766.181379"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "178"
+                  endingLineNumber = "178"
+                  offsetFromSymbolStart = "672">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,14 +20,68 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R4n-FU-Sds">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
-                                <color key="backgroundColor" red="0.0" green="1" blue="0.1678815008725163" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YwG-iE-EDz">
+                                        <rect key="frame" x="167" y="8" width="40" height="6"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="6" id="BP8-G1-Rpn"/>
+                                            <constraint firstAttribute="width" constant="40" id="KCq-vl-Ust"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GRw-9N-jxY">
+                                        <rect key="frame" x="0.0" y="20" width="375" height="50"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monday 2nd" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="K8Q-47-knS">
+                                                <rect key="frame" x="58" y="0.0" width="259" height="50"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qpz-70-KJ9">
+                                                <rect key="frame" x="317" y="0.0" width="50" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="Qpz-70-KJ9" secondAttribute="height" multiplier="1:1" id="jKc-yx-fkc"/>
+                                                </constraints>
+                                                <state key="normal" image="ic_keyboard_arrow_right"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iQI-gl-KDf">
+                                                <rect key="frame" x="8" y="0.0" width="50" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="iQI-gl-KDf" secondAttribute="height" multiplier="1:1" id="J5j-KY-bWr"/>
+                                                </constraints>
+                                                <state key="normal" image="ic_keyboard_arrow_left"/>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="Qpz-70-KJ9" firstAttribute="top" secondItem="GRw-9N-jxY" secondAttribute="top" id="4oY-aS-7Ur"/>
+                                            <constraint firstItem="K8Q-47-knS" firstAttribute="leading" secondItem="iQI-gl-KDf" secondAttribute="trailing" id="6UD-VY-8zO"/>
+                                            <constraint firstAttribute="bottom" secondItem="iQI-gl-KDf" secondAttribute="bottom" id="9n7-Of-RiB"/>
+                                            <constraint firstAttribute="bottom" secondItem="K8Q-47-knS" secondAttribute="bottom" id="FXY-6z-WFl"/>
+                                            <constraint firstItem="Qpz-70-KJ9" firstAttribute="leading" secondItem="K8Q-47-knS" secondAttribute="trailing" id="P8c-pA-oZA"/>
+                                            <constraint firstItem="iQI-gl-KDf" firstAttribute="leading" secondItem="GRw-9N-jxY" secondAttribute="leading" constant="8" id="QKb-Sb-nQP"/>
+                                            <constraint firstAttribute="bottom" secondItem="Qpz-70-KJ9" secondAttribute="bottom" id="hiO-kR-ZjA"/>
+                                            <constraint firstItem="iQI-gl-KDf" firstAttribute="top" secondItem="GRw-9N-jxY" secondAttribute="top" id="srV-h6-LBE"/>
+                                            <constraint firstItem="K8Q-47-knS" firstAttribute="top" secondItem="GRw-9N-jxY" secondAttribute="top" id="wH6-gd-4P3"/>
+                                            <constraint firstAttribute="trailing" secondItem="Qpz-70-KJ9" secondAttribute="trailing" constant="8" id="yrJ-rb-Ksm"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.92900000000000005" green="0.26300000000000001" blue="0.216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="jdg-Bi-vm1"/>
+                                    <constraint firstItem="GRw-9N-jxY" firstAttribute="leading" secondItem="R4n-FU-Sds" secondAttribute="leading" id="3fy-Xb-ESm"/>
+                                    <constraint firstItem="GRw-9N-jxY" firstAttribute="top" secondItem="YwG-iE-EDz" secondAttribute="bottom" constant="6" id="7KA-Xf-Z1G"/>
+                                    <constraint firstAttribute="trailing" secondItem="GRw-9N-jxY" secondAttribute="trailing" id="NH9-qY-l08"/>
+                                    <constraint firstItem="YwG-iE-EDz" firstAttribute="centerX" secondItem="R4n-FU-Sds" secondAttribute="centerX" id="ZIs-zz-4Wk"/>
+                                    <constraint firstAttribute="height" constant="70" id="jdg-Bi-vm1"/>
+                                    <constraint firstItem="YwG-iE-EDz" firstAttribute="top" secondItem="R4n-FU-Sds" secondAttribute="top" constant="8" id="lKD-zc-MJx"/>
+                                    <constraint firstAttribute="bottom" secondItem="GRw-9N-jxY" secondAttribute="bottom" id="s5p-66-3Wd"/>
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hoh-Xf-yrS">
-                                <rect key="frame" x="0.0" y="60" width="375" height="607"/>
+                                <rect key="frame" x="0.0" y="70" width="375" height="597"/>
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.96507912392293571" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <segue destination="yr3-6U-u1R" kind="embed" id="jvc-KT-AHR"/>
@@ -45,6 +100,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9N5-sh-Dms"/>
                     </view>
+                    <connections>
+                        <outlet property="dayLabel" destination="K8Q-47-knS" id="QDb-Vk-A6E"/>
+                        <outlet property="gestureBar" destination="YwG-iE-EDz" id="Rsv-ns-YgI"/>
+                        <outlet property="leftToolbarButton" destination="iQI-gl-KDf" id="X1R-vT-DnC"/>
+                        <outlet property="rightToolbarButton" destination="Qpz-70-KJ9" id="Pl7-qv-AIP"/>
+                        <outlet property="toolBar" destination="R4n-FU-Sds" id="hb4-jC-4RJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z4S-BO-uhT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -55,9 +117,9 @@
             <objects>
                 <viewController id="yr3-6U-u1R" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qy0-bN-6m8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="607"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="597"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.0" green="1" blue="0.98835509361694207" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.92900000000000005" green="0.26300000000000001" blue="0.216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Og-3v-shF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -65,4 +127,8 @@
             <point key="canvasLocation" x="1270" y="-200"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ic_keyboard_arrow_left" width="24" height="24"/>
+        <image name="ic_keyboard_arrow_right" width="24" height="24"/>
+    </resources>
 </document>

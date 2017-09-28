@@ -193,7 +193,6 @@ extension MonthCollectionViewController {
 			if i.title == "MonthView" {
 				mainViewController = i as! ViewController
 				//mainViewController.ETView.reloadView()
-				mainViewController.updateSelectedDayIcon()
 			}
 		}
 	}

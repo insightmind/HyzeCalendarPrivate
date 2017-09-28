@@ -187,7 +187,6 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
         for i in (superViewController?.childViewControllers)! {
             if i.title == "MonthView" {
                 mainViewController = i as! ViewController
-                mainViewController.updateSelectedDayIcon()
             }
         }
 	}
@@ -201,9 +200,9 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 				mainViewController = i as! ViewController
 				UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
 					if isExpandedByRows > 0 {
-						mainViewController.ETViewTopLayoutConstraint.constant = -(isExpandedByRows * ((collectionView.bounds.width / 7) - 2))
-					} else {
-						mainViewController.ETViewTopLayoutConstraint.constant = 0
+//                        mainViewController.ETViewTopLayoutConstraint.constant = -(isExpandedByRows * ((collectionView.bounds.width / 7) - 2))
+                    } else {
+//                        mainViewController.ETViewTopLayoutConstraint.constant = 0
 					}
 					mainViewController.view.layoutIfNeeded()
 				}, completion: nil)
