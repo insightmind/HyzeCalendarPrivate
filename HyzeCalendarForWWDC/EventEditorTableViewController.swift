@@ -42,6 +42,7 @@ class EventEditorTableViewController: UITableViewController {
 		self.tableView.backgroundColor = UIColor.clear
 		self.tableView.separatorStyle = .none
 		self.tableView.allowsSelection = false
+        self.tableView.showsVerticalScrollIndicator = false
 		self.tableView.register(UINib(nibName: "DateSelectionTableViewCell", bundle: nil) ,forCellReuseIdentifier: EventEditorCellType.dateSelection.rawValue)
 		self.tableView.register(UINib(nibName: "NotesTableViewCell", bundle: nil) ,forCellReuseIdentifier: EventEditorCellType.notes.rawValue)
 		self.tableView.register(UINib(nibName: "SelectCalendarTableViewCell", bundle: nil), forCellReuseIdentifier: EventEditorCellType.calendar.rawValue)

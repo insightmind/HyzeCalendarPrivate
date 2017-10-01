@@ -33,10 +33,10 @@ class ETViewController: UIViewController {
     }
     
     func setUpToolbar() {
-        let leftImage = #imageLiteral(resourceName: "ic_keyboard_arrow_left").withRenderingMode(.alwaysTemplate)
+        let leftImage = #imageLiteral(resourceName: "ic_error_outline").withRenderingMode(.alwaysTemplate)
         leftToolbarButton.setImage(leftImage, for: .normal)
         leftToolbarButton.tintColor = Color.white
-        let rightImage = #imageLiteral(resourceName: "ic_keyboard_arrow_right").withRenderingMode(.alwaysTemplate)
+        let rightImage = #imageLiteral(resourceName: "ic_error_outline").withRenderingMode(.alwaysTemplate)
         rightToolbarButton.setImage(rightImage, for: .normal)
         rightToolbarButton.tintColor = Color.white
     }

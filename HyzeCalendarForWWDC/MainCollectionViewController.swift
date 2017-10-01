@@ -34,7 +34,15 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 		self.collectionView?.layer.masksToBounds = false
 		
 		self.collectionView?.backgroundColor = UIColor.clear
-		
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let (selectedYearID, selectedMonthID, _) = Selection.shared.selectedDayCellIndex
+        
+        self.scrollToSection(yearID: selectedYearID, monthID: selectedMonthID - 1, animated: animated)
     }
 	
     override func didReceiveMemoryWarning() {
@@ -145,7 +153,7 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 		let name = TimeManagement.getMonthName(date)
 		
 		guard let parent = self.parent as? ViewController else {
-			fatalError()
+			return
 		}
 		
 		parent.navigationBar.title = name
@@ -182,13 +190,6 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 		
 		self.collectionView!.scrollToItem(at: indexPath, at: .centeredVertically, animated: anim)
 		setMonthName()
-        let superViewController = UIApplication.shared.keyWindow?.rootViewController
-        var mainViewController: ViewController
-        for i in (superViewController?.childViewControllers)! {
-            if i.title == "MonthView" {
-                mainViewController = i as! ViewController
-            }
-        }
 	}
 	
  func updateETViewHeight(_ collectionView: UICollectionView, isExpandedByRows: CGFloat) {

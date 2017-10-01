@@ -105,10 +105,6 @@ class ViewController: UIViewController {
 				self.calendarViewController = i as? MainCollectionViewController
 			}
 		}
-        
-        let (selectedYearID, selectedMonthID, _) = Selection.shared.selectedDayCellIndex
-		
-		scrollToSection(yearID: selectedYearID, monthID: selectedMonthID - 1)
     }
 	
 	func setTodaysProperties() {
