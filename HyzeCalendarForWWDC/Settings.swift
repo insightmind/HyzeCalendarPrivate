@@ -11,7 +11,6 @@ import UIKit
 
 class Settings {
 	
-	
 	// MARK: - Shared
 	
 	static let shared = Settings()
@@ -24,6 +23,12 @@ class Settings {
 	var animateDayView: Bool = UserDefaults.standard.bool(forKey: "animateDayView")
 	var isAMPM : Bool = UserDefaults.standard.bool(forKey: "IsAMPM")
     var showWeekNumber: Bool = UserDefaults.standard.bool(forKey: "showWeekNumber")
+   
+    // MARK: CalendarView
+    var lastRowIsNecessary: Bool = true
+    
+    // MARK: EventList
+    var isEventListRelative: Bool = true
 	
 	// MARK: Interaction
 	var needsDesignUpdate: Bool = false

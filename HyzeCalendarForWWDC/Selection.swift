@@ -77,6 +77,8 @@ struct Selection {
         // Assign calculated data to the variable
 		selectedIsOnWeekend = false
         todaysDayCellIndex = (yearID, monthID, dayIndexPath)
+        currentMonthID = monthID
+        currentYearID = yearID
         selectedDayCellIndex = todaysDayCellIndex
     }
 	

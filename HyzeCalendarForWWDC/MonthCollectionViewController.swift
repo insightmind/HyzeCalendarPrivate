@@ -22,7 +22,6 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
 	let _weeksInMonth = 6
 	let _daysInWeek = 7
     
-    var isLastRowNecessary: Bool = true
 	var forcedCellSelection: Bool = false
 	
     override func viewDidLoad() {
@@ -192,7 +191,7 @@ extension MonthCollectionViewController {
 		for i in (superViewController?.childViewControllers)! {
 			if i.title == "MonthView" {
 				mainViewController = i as! ViewController
-				//mainViewController.ETView.reloadView()
+				mainViewController.eventListViewController?.updateDesign()
 			}
 		}
 	}

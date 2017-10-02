@@ -38,11 +38,8 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        let (selectedYearID, selectedMonthID, _) = Selection.shared.selectedDayCellIndex
-        
-        self.scrollToSection(yearID: selectedYearID, monthID: selectedMonthID - 1, animated: animated)
+        super.viewDidAppear(animated)        
+        self.scrollToSection(yearID: Selection.shared.currentYearID, monthID: Selection.shared.currentMonthID - 1, animated: animated)
     }
 	
     override func didReceiveMemoryWarning() {
@@ -95,13 +92,14 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 	
 	func reloadCalendarView() {
 		self.collectionView!.reloadData()
-		let (yearID, monthID, _ ) = Selection.shared.selectedDayCellIndex
-		scrollToSection(yearID: yearID, monthID: monthID - 1, animated: false)
+		scrollToSection(yearID: Selection.shared.currentYearID, monthID: Selection.shared.currentMonthID - 1, animated: false)
 	}
     
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let cellsPerRow: CGFloat = 1
 		let width = UIScreen.main.bounds.width - 12
-		let cellSize = CGSize(width: width, height: width / 7 * 6)
+		let cellSize = CGSize(width: width / cellsPerRow, height: (width / 7 * 6) / cellsPerRow)
 		
 		return cellSize
 		
@@ -193,20 +191,21 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 	}
 	
  func updateETViewHeight(_ collectionView: UICollectionView, isExpandedByRows: CGFloat) {
-	return
 		let superViewController = UIApplication.shared.keyWindow?.rootViewController
 		var mainViewController: ViewController
 		for i in (superViewController?.childViewControllers)! {
 			if i.title == "MonthView" {
 				mainViewController = i as! ViewController
-				UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
-					if isExpandedByRows > 0 {
-//                        mainViewController.ETViewTopLayoutConstraint.constant = -(isExpandedByRows * ((collectionView.bounds.width / 7) - 2))
+                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+                    if isExpandedByRows > 0 {
+                        mainViewController.eventListToCalendarViewConstraint.constant = -(isExpandedByRows * ((collectionView.bounds.width / 7) - 2))
                     } else {
-//                        mainViewController.ETViewTopLayoutConstraint.constant = 0
-					}
-					mainViewController.view.layoutIfNeeded()
-				}, completion: nil)
+                        mainViewController.eventListToCalendarViewConstraint.constant = 0
+                    }
+                    mainViewController.view.layoutIfNeeded()
+                }, completion: nil)
+                guard let eventList = mainViewController.eventListViewController else { return }
+                eventList.updateDesign()
 			}
 		}
 	}

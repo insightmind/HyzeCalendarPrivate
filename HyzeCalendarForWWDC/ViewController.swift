@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     var isAMPMTemp: Bool!
 	
 	var calendarViewController: MainCollectionViewController? = nil
+    var eventListViewController: ETViewController? = nil
 	
 	@IBOutlet weak var calendarView: UIView!
     @IBOutlet public weak var navigationBar: UINavigationItem!
@@ -38,8 +39,9 @@ class ViewController: UIViewController {
 
 	@IBOutlet weak var daysOfWeekBackgroundView: UIView!
 	
+    @IBOutlet weak var eventListToCalendarViewConstraint: NSLayoutConstraint!
+    @IBOutlet weak var eventListToTopConstraint: NSLayoutConstraint!
     
-	
     override func viewWillAppear(_ animated: Bool) {
 		
 		if EventManagement.shared.askForPermission() {
@@ -56,12 +58,6 @@ class ViewController: UIViewController {
 			navigationBar.backBarButtonItem?.tintColor = Color.grey
 			navigationBar.leftBarButtonItem?.tintColor = Color.white
 			navigationBar.rightBarButtonItem?.tintColor = Color.white
-//			//toolbar.barTintColor = Color.grey
-//			//if toolbar.items != nil {
-//				//for i in toolbar.items! {
-//					//i.tintColor = Color.white
-//				}
-//			}
         } else {
             view.backgroundColor = Color.white
 			daysOfWeekBackgroundView.backgroundColor = Color.white
@@ -71,12 +67,6 @@ class ViewController: UIViewController {
 			navigationBar.backBarButtonItem?.tintColor = Color.grey
 			navigationBar.leftBarButtonItem?.tintColor = Color.grey
 			navigationBar.rightBarButtonItem?.tintColor = Color.grey
-//			toolbar.barTintColor = Color.white
-//			if toolbar.items != nil {
-//				for i in toolbar.items! {
-//					i.tintColor = Color.grey
-//				}
-//			}
         }
         if darkModeTemp != Settings.shared.isDarkMode {
             darkModeTemp = Settings.shared.isDarkMode
@@ -86,7 +76,6 @@ class ViewController: UIViewController {
         //ETView.reloadView()
     }
 	
-    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -166,51 +155,15 @@ class ViewController: UIViewController {
 		
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "embedETView" {
+            if let viewController = segue.destination as? ETViewController {
+                self.eventListViewController = viewController
+            }
+        }
+    }
+    
     @IBAction func unwindToMonthView(segue: UIStoryboardSegue) {
     }
-	
-	//MARK: - Function
-	
-	func scrollToSection(yearID: Int, monthID: Int, animated anim: Bool = false) {
-		
-		calendarViewController?.scrollToSection(yearID: yearID, monthID: monthID, animated: anim)
-		
-	}
-	
-	func setMonthName() {
-		let date = TimeManagement.calculateFirstDayInMonth(yearID: Selection.shared.currentYearID, monthID: Selection.shared.currentMonthID)
-		let name = TimeManagement.getMonthName(date)
-		navigationBar.title = name
-	}
-	
-	func scrollToSection(direction: ScrollDirection, animated anim: Bool = false) {
-		
-		let monthID = Selection.shared.currentMonthID - 1
-		let yearID = Selection.shared.currentYearID
-		
-		switch direction {
-		case .up:
-			if monthID == 0 {
-				if yearID == 0 {
-					break
-				} else {
-					scrollToSection(yearID: yearID - 1, monthID: 11, animated: anim)
-				}
-			} else {
-				scrollToSection(yearID: yearID, monthID: monthID - 1, animated: anim)
-			}
-		case .down:
-			if monthID == 11 {
-				if yearID == 3999 {
-					break
-				} else {
-					scrollToSection(yearID: yearID + 1, monthID: 0, animated: anim)
-				}
-			} else {
-				scrollToSection(yearID: yearID, monthID: monthID + 1, animated: anim)
-			}
-		}
-		self.setMonthName()
-	}
 }
 
