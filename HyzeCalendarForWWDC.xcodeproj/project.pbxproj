@@ -105,6 +105,7 @@
 		3EFC00CA1F5E165C0028F387 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFC00C81F5E165C0028F387 /* LocationTableViewCell.swift */; };
 		3EFC00CB1F5E165C0028F387 /* LocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EFC00C91F5E165C0028F387 /* LocationTableViewCell.xib */; };
 		3EFE5F491E41310A004E75F9 /* DayMainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFE5F481E41310A004E75F9 /* DayMainButton.swift */; };
+		85108E0F1F81857000F42FDD /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 85108E0E1F81857000F42FDD /* Podfile */; };
 		857CDFD51F7D76FD00ACECB6 /* ETViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857CDFD41F7D76FD00ACECB6 /* ETViewController.swift */; };
 		BD379CE11E3065B18A68D862 /* Pods_HyzeCalendarForWWDC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97F66AFE0BF643DE942FADFE /* Pods_HyzeCalendarForWWDC.framework */; };
 /* End PBXBuildFile section */
@@ -213,6 +214,7 @@
 		3EFC00C81F5E165C0028F387 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
 		3EFC00C91F5E165C0028F387 /* LocationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationTableViewCell.xib; sourceTree = "<group>"; };
 		3EFE5F481E41310A004E75F9 /* DayMainButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayMainButton.swift; sourceTree = "<group>"; };
+		85108E0E1F81857000F42FDD /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		857CDFD41F7D76FD00ACECB6 /* ETViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETViewController.swift; sourceTree = "<group>"; };
 		97F66AFE0BF643DE942FADFE /* Pods_HyzeCalendarForWWDC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HyzeCalendarForWWDC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -713,6 +715,7 @@
 			children = (
 				3AA15B1A29B6DC8C262D4571 /* Pods-HyzeCalendarForWWDC.release.xcconfig */,
 				1EFC1B12198C6C88D7A630DC /* Pods-HyzeCalendarForWWDC.debug.xcconfig */,
+				85108E0E1F81857000F42FDD /* Podfile */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -828,6 +831,7 @@
 				3E61C1131F53814900AE1A2B /* WeekdayTableViewCell.xib in Resources */,
 				3E6560831F4CCBDF00C241BE /* SetContacts.storyboard in Resources */,
 				3E68188E1F46FED600E8D7BC /* CalendarTableViewCell.xib in Resources */,
+				85108E0F1F81857000F42FDD /* Podfile in Resources */,
 				3EA8EE2A1ED21989000D6EF2 /* Settings.storyboard in Resources */,
 				3E68188A1F46FB6300E8D7BC /* SelectCalendar.storyboard in Resources */,
 				3EDC110C1F40E1B400E0B250 /* NotesTableViewCell.xib in Resources */,
@@ -844,9 +848,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-HyzeCalendarForWWDC/Pods-HyzeCalendarForWWDC-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/IGListKit/IGListKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IGListKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

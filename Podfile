@@ -6,5 +6,6 @@ target 'HyzeCalendarForWWDC' do
   use_frameworks!
 
   # Pods for HyzeCalendarForWWDC
+  pod 'IGListKit', '~> 3.0'
 
 end
