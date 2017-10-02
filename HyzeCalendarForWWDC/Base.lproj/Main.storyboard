@@ -100,7 +100,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YFY-0E-SzH">
                                 <rect key="frame" x="0.0" y="357" width="375" height="397"/>
                                 <connections>
-                                    <segue destination="p2k-fS-LzL" kind="embed" id="QOT-4X-JH1"/>
+                                    <segue destination="p2k-fS-LzL" kind="embed" identifier="embedETView" id="QOT-4X-JH1"/>
                                 </connections>
                             </containerView>
                         </subviews>

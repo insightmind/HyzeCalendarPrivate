@@ -21,7 +21,8 @@ class SettingsViewController: UIViewController {
 	@IBOutlet weak var animateDayViewSwitch: UISwitch!
 	@IBOutlet weak var startWeekDaySegmentedControl: UISegmentedControl!
 	@IBOutlet weak var defaultCalendarLabel: UILabel!
-	
+    @IBOutlet weak var testView: UIView!
+    
 	override var preferredStatusBarStyle: UIStatusBarStyle {
 		if Settings.shared.isDarkMode {
 			return .lightContent

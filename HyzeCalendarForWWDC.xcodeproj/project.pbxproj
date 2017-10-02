@@ -107,6 +107,10 @@
 		3EFE5F491E41310A004E75F9 /* DayMainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFE5F481E41310A004E75F9 /* DayMainButton.swift */; };
 		85108E0F1F81857000F42FDD /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 85108E0E1F81857000F42FDD /* Podfile */; };
 		857CDFD51F7D76FD00ACECB6 /* ETViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857CDFD41F7D76FD00ACECB6 /* ETViewController.swift */; };
+		85DCD7D11F82AE4700DA38B5 /* layers_red.json in Resources */ = {isa = PBXBuildFile; fileRef = 85DCD7D01F82AE4700DA38B5 /* layers_red.json */; };
+		85DCD7D31F82B66100DA38B5 /* Saturn Planet.json in Resources */ = {isa = PBXBuildFile; fileRef = 85DCD7D21F82B66100DA38B5 /* Saturn Planet.json */; };
+		85DCD7D61F82BFD700DA38B5 /* layers_green.json in Resources */ = {isa = PBXBuildFile; fileRef = 85DCD7D51F82BFD700DA38B5 /* layers_green.json */; };
+		85DCD7D81F82BFDC00DA38B5 /* layers_blue.json in Resources */ = {isa = PBXBuildFile; fileRef = 85DCD7D71F82BFDB00DA38B5 /* layers_blue.json */; };
 		BD379CE11E3065B18A68D862 /* Pods_HyzeCalendarForWWDC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97F66AFE0BF643DE942FADFE /* Pods_HyzeCalendarForWWDC.framework */; };
 /* End PBXBuildFile section */
 
@@ -214,8 +218,12 @@
 		3EFC00C81F5E165C0028F387 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
 		3EFC00C91F5E165C0028F387 /* LocationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationTableViewCell.xib; sourceTree = "<group>"; };
 		3EFE5F481E41310A004E75F9 /* DayMainButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayMainButton.swift; sourceTree = "<group>"; };
-		85108E0E1F81857000F42FDD /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		85108E0E1F81857000F42FDD /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		857CDFD41F7D76FD00ACECB6 /* ETViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETViewController.swift; sourceTree = "<group>"; };
+		85DCD7D01F82AE4700DA38B5 /* layers_red.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = layers_red.json; sourceTree = "<group>"; };
+		85DCD7D21F82B66100DA38B5 /* Saturn Planet.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Saturn Planet.json"; sourceTree = "<group>"; };
+		85DCD7D51F82BFD700DA38B5 /* layers_green.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = layers_green.json; sourceTree = "<group>"; };
+		85DCD7D71F82BFDB00DA38B5 /* layers_blue.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = layers_blue.json; sourceTree = "<group>"; };
 		97F66AFE0BF643DE942FADFE /* Pods_HyzeCalendarForWWDC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HyzeCalendarForWWDC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -459,6 +467,7 @@
 		3EA80D501E2BEC9300FD87C3 /* HyzeCalendarForWWDC */ = {
 			isa = PBXGroup;
 			children = (
+				85DCD7D41F82BF8000DA38B5 /* LottieAnimationFiles */,
 				3E067E0E1F31FB9B003601FA /* Info.plist */,
 				3E4A9B261E4BB479009E45EF /* Data */,
 				3EE1E5A91E48D3AF00379576 /* View */,
@@ -710,6 +719,17 @@
 			name = "Additional Views";
 			sourceTree = "<group>";
 		};
+		85DCD7D41F82BF8000DA38B5 /* LottieAnimationFiles */ = {
+			isa = PBXGroup;
+			children = (
+				85DCD7D21F82B66100DA38B5 /* Saturn Planet.json */,
+				85DCD7D01F82AE4700DA38B5 /* layers_red.json */,
+				85DCD7D51F82BFD700DA38B5 /* layers_green.json */,
+				85DCD7D71F82BFDB00DA38B5 /* layers_blue.json */,
+			);
+			name = LottieAnimationFiles;
+			sourceTree = "<group>";
+		};
 		D0DB78F19C588A5DB8C22CB4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -816,6 +836,8 @@
 				3E36FF021F4A423700EAC9CC /* ContactTableViewCell.xib in Resources */,
 				3E61C11D1F53817C00AE1A2B /* MonthsOfYearTableViewCell.xib in Resources */,
 				3EBEC8E21F3D048100052C93 /* DateSelection.storyboard in Resources */,
+				85DCD7D11F82AE4700DA38B5 /* layers_red.json in Resources */,
+				85DCD7D31F82B66100DA38B5 /* Saturn Planet.json in Resources */,
 				3E5E0C1F1F545B1C0096E7E7 /* DateTableViewCell.xib in Resources */,
 				3ED0C4EC1F5373D4005915B6 /* TimeIntervalTableViewCell.xib in Resources */,
 				3EE5426E1F479FCC00B230FF /* RemoveTableViewCell.xib in Resources */,
@@ -825,11 +847,13 @@
 				3EBDF8CA1F5DDE9600B66C96 /* SelectLocationTableViewCell.xib in Resources */,
 				3EFC00C11F5DF4CB0028F387 /* SelectLocation.storyboard in Resources */,
 				3E47BD321F30EE0200E0646C /* DateSelectionTableViewCell.xib in Resources */,
+				85DCD7D81F82BFDC00DA38B5 /* layers_blue.json in Resources */,
 				3EA80D591E2BEC9300FD87C3 /* Assets.xcassets in Resources */,
 				3EA8EE2C1ED219B8000D6EF2 /* DayView.storyboard in Resources */,
 				3EA727571F49F0560041B398 /* SelectContactsTableViewCell.xib in Resources */,
 				3E61C1131F53814900AE1A2B /* WeekdayTableViewCell.xib in Resources */,
 				3E6560831F4CCBDF00C241BE /* SetContacts.storyboard in Resources */,
+				85DCD7D61F82BFD700DA38B5 /* layers_green.json in Resources */,
 				3E68188E1F46FED600E8D7BC /* CalendarTableViewCell.xib in Resources */,
 				85108E0F1F81857000F42FDD /* Podfile in Resources */,
 				3EA8EE2A1ED21989000D6EF2 /* Settings.storyboard in Resources */,
@@ -850,10 +874,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-HyzeCalendarForWWDC/Pods-HyzeCalendarForWWDC-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/IGListKit/IGListKit.framework",
+				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IGListKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

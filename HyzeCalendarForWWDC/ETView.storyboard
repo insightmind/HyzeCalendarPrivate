@@ -41,10 +41,14 @@
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qpz-70-KJ9">
                                                 <rect key="frame" x="317" y="0.0" width="50" height="50"/>
+                                                <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="Qpz-70-KJ9" secondAttribute="height" multiplier="1:1" id="jKc-yx-fkc"/>
                                                 </constraints>
-                                                <state key="normal" image="ic_keyboard_arrow_right"/>
+                                                <connections>
+                                                    <action selector="tapRight:" destination="Dpl-WA-LgF" eventType="touchUpInside" id="xhc-rD-SDS"/>
+                                                    <outletCollection property="gestureRecognizers" destination="cZf-qU-B9k" appends="YES" id="b1l-QY-8Bu"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iQI-gl-KDf">
                                                 <rect key="frame" x="8" y="0.0" width="50" height="50"/>
@@ -109,6 +113,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z4S-BO-uhT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="cZf-qU-B9k">
+                    <connections>
+                        <action selector="tap:" destination="Dpl-WA-LgF" id="ho5-f2-if7"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="285.60000000000002" y="-200.14992503748127"/>
         </scene>
@@ -120,6 +129,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="597"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.92900000000000005" green="0.26300000000000001" blue="0.216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="W24-LT-pnU"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Og-3v-shF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -129,6 +139,5 @@
     </scenes>
     <resources>
         <image name="ic_keyboard_arrow_left" width="24" height="24"/>
-        <image name="ic_keyboard_arrow_right" width="24" height="24"/>
     </resources>
 </document>
