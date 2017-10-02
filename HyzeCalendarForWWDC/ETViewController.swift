@@ -30,6 +30,7 @@ class ETViewController: UIViewController {
     @IBOutlet weak var toolBar: UIView!
     
     var rightAnimation: LOTAnimationView?
+    var superViewController: ViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +41,18 @@ class ETViewController: UIViewController {
         setUpTitle()
     }
     
+    @IBAction func handleGestureBarPan(_ sender: UIPanGestureRecognizer) {
+        
+        if let superController = superViewController {
+            superController.setUpTopChange()
+            let translation = sender.translation(in: superController.view)
+            let translatedCenterY = superController.view.center.y + translation.y
+            let progress = translatedCenterY / superController.view.bounds.size.height
+            guard let animator = superController.topChange else { return }
+            animator.fractionComplete = progress
+        }
+        
+    }
     @IBAction func jumpToToday(_ sender: UIButton) {
         let superViewController = UIApplication.shared.keyWindow?.rootViewController
         var mainViewController: ViewController
@@ -159,6 +172,8 @@ class ETViewController: UIViewController {
         }
         self.leftToolbarButton.transform = transform
     }
+    
+    
 
     /*
     // MARK: - Navigation

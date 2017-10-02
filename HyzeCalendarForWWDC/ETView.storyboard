@@ -25,10 +25,14 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YwG-iE-EDz">
                                         <rect key="frame" x="167" y="8" width="40" height="6"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="6" id="BP8-G1-Rpn"/>
                                             <constraint firstAttribute="width" constant="40" id="KCq-vl-Ust"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="5bk-9f-XZb" appends="YES" id="j8D-TW-ku8"/>
+                                        </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GRw-9N-jxY">
                                         <rect key="frame" x="0.0" y="20" width="375" height="50"/>
@@ -122,6 +126,11 @@
                         <action selector="tap:" destination="Dpl-WA-LgF" id="ho5-f2-if7"/>
                     </connections>
                 </tapGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="5bk-9f-XZb">
+                    <connections>
+                        <action selector="handleGestureBarPan:" destination="Dpl-WA-LgF" id="yoG-Hu-ezS"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="285.60000000000002" y="-200.14992503748127"/>
         </scene>

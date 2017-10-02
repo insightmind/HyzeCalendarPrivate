@@ -42,6 +42,16 @@ class ViewController: UIViewController {
     @IBOutlet weak var eventListToCalendarViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var eventListToTopConstraint: NSLayoutConstraint!
     
+    var topChange: UIViewPropertyAnimator? = nil
+    
+    func setUpTopChange() {
+        topChange = UIViewPropertyAnimator(duration: 0.5, dampingRatio: 0.6, animations: {
+            self.eventListToCalendarViewConstraint.isActive = false
+            self.eventListToTopConstraint.isActive = true
+            self.view.layoutIfNeeded()
+        })
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
 		
 		if EventManagement.shared.askForPermission() {
@@ -159,6 +169,7 @@ class ViewController: UIViewController {
         if segue.identifier == "embedETView" {
             if let viewController = segue.destination as? ETViewController {
                 self.eventListViewController = viewController
+                viewController.superViewController = self
             }
         }
     }
