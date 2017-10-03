@@ -42,14 +42,24 @@ class ViewController: UIViewController {
     @IBOutlet weak var eventListToCalendarViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var eventListToTopConstraint: NSLayoutConstraint!
     
-    var topChange: UIViewPropertyAnimator? = nil
+    lazy var topChange: UIViewPropertyAnimator = {
+        let cubicParameters = UICubicTimingParameters(animationCurve: .easeInOut)
+        let animator = UIViewPropertyAnimator(duration: 0.5, timingParameters: cubicParameters)
+        animator.isInterruptible = true
+        return animator
+    }()
     
     func setUpTopChange() {
-        topChange = UIViewPropertyAnimator(duration: 0.5, dampingRatio: 0.6, animations: {
+        topChange = UIViewPropertyAnimator(duration: 0.5, curve: .easeInOut, animations: {
             self.eventListToCalendarViewConstraint.isActive = false
             self.eventListToTopConstraint.isActive = true
             self.view.layoutIfNeeded()
         })
+        topChange.addCompletion { (position) in
+            self.topChange.stopAnimation(true)
+            self.topChange.finishAnimation(at: .end)
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

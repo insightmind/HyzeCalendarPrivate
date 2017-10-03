@@ -41,18 +41,6 @@ class ETViewController: UIViewController {
         setUpTitle()
     }
     
-    @IBAction func handleGestureBarPan(_ sender: UIPanGestureRecognizer) {
-        
-        if let superController = superViewController {
-            superController.setUpTopChange()
-            let translation = sender.translation(in: superController.view)
-            let translatedCenterY = superController.view.center.y + translation.y
-            let progress = translatedCenterY / superController.view.bounds.size.height
-            guard let animator = superController.topChange else { return }
-            animator.fractionComplete = progress
-        }
-        
-    }
     @IBAction func jumpToToday(_ sender: UIButton) {
         let superViewController = UIApplication.shared.keyWindow?.rootViewController
         var mainViewController: ViewController
@@ -71,9 +59,31 @@ class ETViewController: UIViewController {
         gestureBar.backgroundColor = Color.grey.withAlphaComponent(0.5)
     }
     
+//    @IBAction func handlePan(_ sender: UIPanGestureRecognizer) {
+//        guard let superController = superViewController else { return }
+//        superController.setUpTopChange()
+//        guard let animator = superController.topChange else { return }
+//        switch sender.state {
+//        case .began:
+//            animator.pauseAnimation()
+//        case .changed:
+//            let translation = sender.translation(in: superController.view)
+//            animator.fractionComplete = translation.y / superController.view.frame.size.height
+//        case .ended:
+//            animator.continueAnimation(withTimingParameters: nil, durationFactor: 0)
+//            animator.finishAnimation(at: .end)
+//        default:
+//            animator.continueAnimation(withTimingParameters: nil, durationFactor: 0)
+//
+//
+//        }
+//    }
+    
+    
     @IBAction func tap(_ sender: UITapGestureRecognizer) {
         setLayerPosition()
     }
+    
     
     func setUpTitle() {
         switch state {
@@ -97,10 +107,51 @@ class ETViewController: UIViewController {
     }
     
     func setUpToolbar() {
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan(recognizer:)))
+        self.toolBar.addGestureRecognizer(panGestureRecognizer)
         let leftImage = #imageLiteral(resourceName: "ic_keyboard_arrow_right").withRenderingMode(.alwaysTemplate)
         leftToolbarButton.setImage(leftImage, for: .normal)
         leftToolbarButton.tintColor = Color.white
         setUpLayerAnimation()
+    }
+    
+    @objc func handlePan(recognizer: UIPanGestureRecognizer) {
+        switch state {
+        case .expanded:
+            break
+        case .minimal:
+            break
+        case .normal:
+            normalStatePan(recognizer)
+        }
+    }
+    
+    private func normalStatePan(_ recognizer: UIPanGestureRecognizer) {
+        guard let superController = superViewController else { return }
+        let touchPoint = recognizer.translation(in: superController.view)
+        let animator = superController.topChange
+        switch recognizer.state {
+        case .began:
+            if animator.isRunning {
+                animator.stopAnimation(true)
+            }
+            
+            animator.addAnimations {
+                superController.eventListToCalendarViewConstraint.isActive = false
+                superController.eventListToTopConstraint.isActive = true
+                superController.view.layoutIfNeeded()
+            }
+            animator.pauseAnimation()
+            
+        case .changed:
+            let translatedCenterY = -touchPoint.y
+            print(translatedCenterY)
+            animator.fractionComplete = translatedCenterY / (superController.calendarView.bounds.height)
+        case .ended, .cancelled:
+            animator.continueAnimation(withTimingParameters: nil, durationFactor: 0)
+        default:
+            break
+        }
     }
     
     func setUpLayerAnimation() {
