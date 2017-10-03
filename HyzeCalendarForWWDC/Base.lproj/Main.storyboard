@@ -159,6 +159,7 @@
                         <outlet property="ThirdDayOfWeek" destination="x4j-ij-qFV" id="Kmy-px-Cmm"/>
                         <outlet property="calendarView" destination="Q51-W6-Rno" id="d1v-af-Ml0"/>
                         <outlet property="daysOfWeekBackgroundView" destination="3te-8G-WxE" id="Mox-gF-4eU"/>
+                        <outlet property="eventListHeightConstraint" destination="BLq-D3-gsr" id="EJ3-qk-0VB"/>
                         <outlet property="eventListToCalendarViewConstraint" destination="YSt-uc-yT7" id="TMu-3V-xtN"/>
                         <outlet property="eventListToTopConstraint" destination="Ljr-Pp-BNC" id="9Ph-om-UyO"/>
                         <outlet property="navigationBar" destination="rOZ-nb-EdF" id="jOZ-ZR-T5Y"/>

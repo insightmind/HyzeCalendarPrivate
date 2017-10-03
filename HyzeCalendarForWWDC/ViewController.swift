@@ -41,6 +41,7 @@ class ViewController: UIViewController {
 	
     @IBOutlet weak var eventListToCalendarViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var eventListToTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var eventListHeightConstraint: NSLayoutConstraint!
     
     lazy var topChange: UIViewPropertyAnimator = {
         let cubicParameters = UICubicTimingParameters(animationCurve: .easeInOut)

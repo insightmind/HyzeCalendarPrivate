@@ -135,20 +135,21 @@ class ETViewController: UIViewController {
             if animator.isRunning {
                 animator.stopAnimation(true)
             }
-            
+        case .changed:
+            let translatedCenterY = superController.view.center.y - touchPoint.y
+            print(translatedCenterY)
+            superController.eventListToCalendarViewConstraint.isActive = false
+            superController.eventListHeightConstraint.isActive = true
+            superController.eventListHeightConstraint.constant = translatedCenterY
+            superController.view.layoutIfNeeded()
+        case .ended, .cancelled:
             animator.addAnimations {
                 superController.eventListToCalendarViewConstraint.isActive = false
+                superController.eventListHeightConstraint.isActive = false
                 superController.eventListToTopConstraint.isActive = true
                 superController.view.layoutIfNeeded()
             }
-            animator.pauseAnimation()
-            
-        case .changed:
-            let translatedCenterY = -touchPoint.y
-            print(translatedCenterY)
-            animator.fractionComplete = translatedCenterY / (superController.calendarView.bounds.height)
-        case .ended, .cancelled:
-            animator.continueAnimation(withTimingParameters: nil, durationFactor: 0)
+            animator.startAnimation()
         default:
             break
         }
