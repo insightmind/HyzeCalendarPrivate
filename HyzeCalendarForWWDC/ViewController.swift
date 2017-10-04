@@ -38,30 +38,16 @@ class ViewController: UIViewController {
 	var daysOfWeek: [WeekDay: UILabel] = [:]
 
 	@IBOutlet weak var daysOfWeekBackgroundView: UIView!
-	
-    @IBOutlet weak var eventListToCalendarViewConstraint: NSLayoutConstraint!
-    @IBOutlet weak var eventListToTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var eventListHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var calendarViewToTopConstraint: NSLayoutConstraint!
     
     lazy var topChange: UIViewPropertyAnimator = {
         let cubicParameters = UICubicTimingParameters(animationCurve: .easeInOut)
-        let animator = UIViewPropertyAnimator(duration: 0.5, timingParameters: cubicParameters)
+        let springParameters = UISpringTimingParameters(dampingRatio: 0.6)
+        let animator = UIViewPropertyAnimator(duration: 0.5, timingParameters: springParameters)
         animator.isInterruptible = true
         return animator
     }()
-    
-    func setUpTopChange() {
-        topChange = UIViewPropertyAnimator(duration: 0.5, curve: .easeInOut, animations: {
-            self.eventListToCalendarViewConstraint.isActive = false
-            self.eventListToTopConstraint.isActive = true
-            self.view.layoutIfNeeded()
-        })
-        topChange.addCompletion { (position) in
-            self.topChange.stopAnimation(true)
-            self.topChange.finishAnimation(at: .end)
-        }
-        
-    }
     
     override func viewWillAppear(_ animated: Bool) {
 		
@@ -115,6 +101,8 @@ class ViewController: UIViewController {
 				self.calendarViewController = i as? MainCollectionViewController
 			}
 		}
+        self.eventListHeightConstraint.constant = calendarViewToTopConstraint.constant + calendarView.frame.height
+        self.view.layoutIfNeeded()
     }
 	
 	func setTodaysProperties() {

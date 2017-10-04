@@ -59,26 +59,6 @@ class ETViewController: UIViewController {
         gestureBar.backgroundColor = Color.grey.withAlphaComponent(0.5)
     }
     
-//    @IBAction func handlePan(_ sender: UIPanGestureRecognizer) {
-//        guard let superController = superViewController else { return }
-//        superController.setUpTopChange()
-//        guard let animator = superController.topChange else { return }
-//        switch sender.state {
-//        case .began:
-//            animator.pauseAnimation()
-//        case .changed:
-//            let translation = sender.translation(in: superController.view)
-//            animator.fractionComplete = translation.y / superController.view.frame.size.height
-//        case .ended:
-//            animator.continueAnimation(withTimingParameters: nil, durationFactor: 0)
-//            animator.finishAnimation(at: .end)
-//        default:
-//            animator.continueAnimation(withTimingParameters: nil, durationFactor: 0)
-//
-//
-//        }
-//    }
-    
     
     @IBAction func tap(_ sender: UITapGestureRecognizer) {
         setLayerPosition()
@@ -116,37 +96,41 @@ class ETViewController: UIViewController {
     }
     
     @objc func handlePan(recognizer: UIPanGestureRecognizer) {
-        switch state {
-        case .expanded:
-            break
-        case .minimal:
-            break
-        case .normal:
-            normalStatePan(recognizer)
-        }
-    }
-    
-    private func normalStatePan(_ recognizer: UIPanGestureRecognizer) {
         guard let superController = superViewController else { return }
         let touchPoint = recognizer.translation(in: superController.view)
         let animator = superController.topChange
         switch recognizer.state {
         case .began:
+            Design.shared.currentETViewHeight = superController.eventListHeightConstraint.constant
             if animator.isRunning {
                 animator.stopAnimation(true)
             }
         case .changed:
-            let translatedCenterY = superController.view.center.y - touchPoint.y
-            print(translatedCenterY)
-            superController.eventListToCalendarViewConstraint.isActive = false
-            superController.eventListHeightConstraint.isActive = true
+            guard let visibleView = superController.navigationController?.visibleViewController?.view else { return }
+            var translatedCenterY = touchPoint.y + Design.shared.currentETViewHeight
+//            let basicHeight = superController.calendarViewToTopConstraint.constant + superController.calendarView.frame.height
+//            let expandedValue = Design.shared.currentETViewIsExpandedByNumOfRows * ((superController.calendarView.bounds.width / 7) - 2)
+            let minHeight = visibleView.frame.height - 20
+            if translatedCenterY > minHeight {
+                translatedCenterY = minHeight
+            } else if translatedCenterY < 0  {
+                translatedCenterY = 0
+            }
             superController.eventListHeightConstraint.constant = translatedCenterY
             superController.view.layoutIfNeeded()
         case .ended, .cancelled:
+            guard let maxHeight = superController.navigationController?.visibleViewController?.view.frame.height else { return }
+            switch superController.eventListHeightConstraint.constant {
+            case 0...maxHeight/3:
+                superController.eventListHeightConstraint.constant = superController.calendarViewToTopConstraint.constant + 10 + ((superController.calendarView.bounds.width / 7) - 2)
+            case 3*maxHeight/4...maxHeight:
+                superController.eventListHeightConstraint.constant = maxHeight - 70
+            default:
+                let basicHeight = superController.calendarViewToTopConstraint.constant + superController.calendarView.frame.height
+                let expandedValue = Design.shared.currentETViewIsExpandedByNumOfRows * ((superController.calendarView.bounds.width / 7) - 2)
+                superController.eventListHeightConstraint.constant = basicHeight - expandedValue
+            }
             animator.addAnimations {
-                superController.eventListToCalendarViewConstraint.isActive = false
-                superController.eventListHeightConstraint.isActive = false
-                superController.eventListToTopConstraint.isActive = true
                 superController.view.layoutIfNeeded()
             }
             animator.startAnimation()

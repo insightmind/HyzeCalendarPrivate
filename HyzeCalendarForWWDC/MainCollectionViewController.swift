@@ -169,11 +169,14 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 		}
 		
 		if conform + daysInMonth > 36 {
-			updateETViewHeight(self.collectionView!, isExpandedByRows: 0)
+            Design.shared.currentETViewIsExpandedByNumOfRows = 0
+			updateETViewHeight(self.collectionView!)
 		} else if conform + daysInMonth > 29 {
-			updateETViewHeight(self.collectionView!, isExpandedByRows: 1)
+            Design.shared.currentETViewIsExpandedByNumOfRows = 1
+			updateETViewHeight(self.collectionView!)
 		} else {
-			updateETViewHeight(self.collectionView!, isExpandedByRows: 2)
+            Design.shared.currentETViewIsExpandedByNumOfRows = 2
+			updateETViewHeight(self.collectionView!)
 		}
 	}
 	
@@ -190,18 +193,16 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 		setMonthName()
 	}
 	
- func updateETViewHeight(_ collectionView: UICollectionView, isExpandedByRows: CGFloat) {
+ func updateETViewHeight(_ collectionView: UICollectionView) {
 		let superViewController = UIApplication.shared.keyWindow?.rootViewController
 		var mainViewController: ViewController
 		for i in (superViewController?.childViewControllers)! {
 			if i.title == "MonthView" {
 				mainViewController = i as! ViewController
                 UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
-                    if isExpandedByRows > 0 {
-                        mainViewController.eventListToCalendarViewConstraint.constant = -(isExpandedByRows * ((collectionView.bounds.width / 7) - 2))
-                    } else {
-                        mainViewController.eventListToCalendarViewConstraint.constant = 0
-                    }
+                    let basicHeight = mainViewController.calendarViewToTopConstraint.constant + mainViewController.calendarView.frame.height
+                    let expandedValue = Design.shared.currentETViewIsExpandedByNumOfRows * ((collectionView.bounds.width / 7) - 2)
+                    mainViewController.eventListHeightConstraint.constant = basicHeight - expandedValue
                     mainViewController.view.layoutIfNeeded()
                 }, completion: nil)
                 guard let eventList = mainViewController.eventListViewController else { return }

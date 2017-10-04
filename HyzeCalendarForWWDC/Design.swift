@@ -23,4 +23,13 @@ struct Color {
 	static let darkRed = #colorLiteral(red: 0.7825556307, green: 0.2195591687, blue: 0.1829024916, alpha: 1)
 }
 
+class Design {
+    
+    static let shared = Design()
+    
+    var currentETViewHeight: CGFloat = 0
+    var currentETViewIsExpandedByNumOfRows: CGFloat = 0
+    
+}
+
 

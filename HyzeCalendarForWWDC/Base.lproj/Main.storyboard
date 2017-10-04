@@ -95,15 +95,7 @@
                                 </subviews>
                             </stackView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YFY-0E-SzH">
-                                <rect key="frame" x="0.0" y="357" width="375" height="397"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="134" id="BLq-D3-gsr"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="BLq-D3-gsr"/>
-                                    </mask>
-                                </variation>
+                                <rect key="frame" x="0.0" y="134" width="375" height="620"/>
                                 <connections>
                                     <segue destination="p2k-fS-LzL" kind="embed" identifier="embedETView" id="QOT-4X-JH1"/>
                                 </connections>
@@ -115,25 +107,19 @@
                             <constraint firstAttribute="trailingMargin" secondItem="Q51-W6-Rno" secondAttribute="trailing" constant="-15" id="CQf-0T-GLf"/>
                             <constraint firstItem="HTG-xk-BQv" firstAttribute="trailing" secondItem="YFY-0E-SzH" secondAttribute="trailing" id="DXY-cq-XB7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="tSU-Yg-gF9" secondAttribute="trailing" constant="-10" id="Gjb-pd-cmm"/>
-                            <constraint firstItem="YFY-0E-SzH" firstAttribute="top" secondItem="HTG-xk-BQv" secondAttribute="top" id="Ljr-Pp-BNC"/>
                             <constraint firstItem="Q51-W6-Rno" firstAttribute="top" secondItem="3te-8G-WxE" secondAttribute="bottom" constant="10" id="MmH-cE-7dk"/>
                             <constraint firstItem="tSU-Yg-gF9" firstAttribute="leading" secondItem="8SE-NO-vxc" secondAttribute="leadingMargin" constant="-10" id="VIc-hw-RAV"/>
                             <constraint firstItem="3te-8G-WxE" firstAttribute="top" secondItem="HTG-xk-BQv" secondAttribute="top" id="Vhc-WV-bs1"/>
-                            <constraint firstItem="YFY-0E-SzH" firstAttribute="top" secondItem="Q51-W6-Rno" secondAttribute="bottom" id="YSt-uc-yT7"/>
                             <constraint firstItem="HTG-xk-BQv" firstAttribute="bottom" secondItem="YFY-0E-SzH" secondAttribute="bottom" constant="-64" id="eJ8-ak-eM7"/>
                             <constraint firstItem="HTG-xk-BQv" firstAttribute="trailing" secondItem="3te-8G-WxE" secondAttribute="trailing" id="fHT-4D-KNG"/>
                             <constraint firstItem="3te-8G-WxE" firstAttribute="leading" secondItem="HTG-xk-BQv" secondAttribute="leading" id="nVR-Vx-6nt"/>
                             <constraint firstItem="Q51-W6-Rno" firstAttribute="top" secondItem="HTG-xk-BQv" secondAttribute="top" constant="37" id="oRk-Lh-Fsb"/>
                             <constraint firstItem="YFY-0E-SzH" firstAttribute="leading" secondItem="HTG-xk-BQv" secondAttribute="leading" id="tC9-96-biI"/>
                             <constraint firstItem="Q51-W6-Rno" firstAttribute="leading" secondItem="8SE-NO-vxc" secondAttribute="leadingMargin" constant="-15" id="tw9-u3-BL9"/>
+                            <constraint firstItem="YFY-0E-SzH" firstAttribute="top" secondItem="HTG-xk-BQv" secondAttribute="top" constant="134" id="v8U-U0-k1s"/>
                             <constraint firstItem="tSU-Yg-gF9" firstAttribute="top" secondItem="HTG-xk-BQv" secondAttribute="top" constant="5" id="wej-5h-R4x"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HTG-xk-BQv"/>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="Ljr-Pp-BNC"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="TEST" id="rOZ-nb-EdF">
                         <barButtonItem key="leftBarButtonItem" image="ic_settings" id="F2I-Wd-r97">
@@ -158,10 +144,9 @@
                         <outlet property="SixthDayOfWeek" destination="pz0-F0-FYV" id="Itm-FY-pk9"/>
                         <outlet property="ThirdDayOfWeek" destination="x4j-ij-qFV" id="Kmy-px-Cmm"/>
                         <outlet property="calendarView" destination="Q51-W6-Rno" id="d1v-af-Ml0"/>
+                        <outlet property="calendarViewToTopConstraint" destination="oRk-Lh-Fsb" id="M8Z-kz-Nma"/>
                         <outlet property="daysOfWeekBackgroundView" destination="3te-8G-WxE" id="Mox-gF-4eU"/>
-                        <outlet property="eventListHeightConstraint" destination="BLq-D3-gsr" id="EJ3-qk-0VB"/>
-                        <outlet property="eventListToCalendarViewConstraint" destination="YSt-uc-yT7" id="TMu-3V-xtN"/>
-                        <outlet property="eventListToTopConstraint" destination="Ljr-Pp-BNC" id="9Ph-om-UyO"/>
+                        <outlet property="eventListHeightConstraint" destination="v8U-U0-k1s" id="Okv-QB-bGE"/>
                         <outlet property="navigationBar" destination="rOZ-nb-EdF" id="jOZ-ZR-T5Y"/>
                     </connections>
                 </viewController>
