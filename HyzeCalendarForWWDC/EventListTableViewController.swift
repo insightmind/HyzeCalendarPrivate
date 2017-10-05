@@ -89,8 +89,14 @@ class EventListTableViewController: UITableViewController {
         return CGFloat(height)
     }
     
-    func reloadList() {
-        self.tableView.reloadSections(IndexSet(integer: 0), with: .fade)
+    func reloadList(onlyDesign: Bool = false) {
+        if onlyDesign {
+            self.tableView.beginUpdates()
+            self.tableView.endUpdates()
+        } else {
+            self.tableView.reloadSections(IndexSet(integer: 0), with: .fade)
+        }
+        
     }
 
     /*

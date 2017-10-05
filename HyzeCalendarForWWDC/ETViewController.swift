@@ -86,7 +86,7 @@ class ETViewController: UIViewController {
         }
         Settings.shared.isEventListRelative = !Settings.shared.isEventListRelative
         guard let list = eventList else { return }
-        list.reloadList()
+        list.reloadList(onlyDesign: true)
     }
     
     func setUpToolbar() {
