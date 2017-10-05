@@ -193,7 +193,10 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 		setMonthName()
 	}
 	
- func updateETViewHeight(_ collectionView: UICollectionView) {
+    func updateETViewHeight(_ collectionView: UICollectionView) {
+        if Design.shared.currentETViewState != .normal {
+            return
+        }
 		let superViewController = UIApplication.shared.keyWindow?.rootViewController
 		var mainViewController: ViewController
 		for i in (superViewController?.childViewControllers)! {

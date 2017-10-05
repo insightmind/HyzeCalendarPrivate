@@ -25,15 +25,15 @@ class ELEventTableViewCell: UITableViewCell {
         startTime.textColor = txtColor
         endTime.textColor = txtColor
         titleLabel.textColor = Color.white
-        
-//        let path = UIBezierPath(roundedRect: mainView.bounds, cornerRadius: 20)
-//        mainView.layer.shadowPath = path.cgPath
-//        mainView.layer.shadowColor = Color.grey.cgColor
-//        mainView.layer.shadowOpacity = 0.7
     }
     
     func loadDateTexts() {
         guard let secureEvent = event else { return }
+        if secureEvent.isAllDay == true {
+            startTime.text = "all Day"
+            endTime.text = ""
+            return
+        }
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .none
         dateFormatter.timeStyle = .short
@@ -68,6 +68,23 @@ class ELEventTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+//        let path = UIBezierPath(roundedRect: mainView.bounds, cornerRadius: 20)
+//        mainView.layer.shadowPath = path.cgPath
+//        mainView.layer.shadowColor = Color.grey.cgColor
+//        mainView.layer.shadowOpacity = 0.7
+//        mainView.layer.shadowOffset = CGSize(width: 0, height: 5)
+//        mainView.layer.shadowRadius = 10
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        titleLabel.text = "unable to load Event"
+        startTime.text = ""
+        endTime.text = ""
     }
     
 }

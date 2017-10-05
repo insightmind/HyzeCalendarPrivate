@@ -31,6 +31,7 @@ class ETViewController: UIViewController {
     
     var rightAnimation: LOTAnimationView?
     var superViewController: ViewController?
+    var eventList: EventListTableViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,6 +85,8 @@ class ETViewController: UIViewController {
             animation.play(fromProgress: 0, toProgress: 0.5, withCompletion: nil)
         }
         Settings.shared.isEventListRelative = !Settings.shared.isEventListRelative
+        guard let list = eventList else { return }
+        list.reloadList()
     }
     
     func setUpToolbar() {
@@ -108,8 +111,6 @@ class ETViewController: UIViewController {
         case .changed:
             guard let visibleView = superController.navigationController?.visibleViewController?.view else { return }
             var translatedCenterY = touchPoint.y + Design.shared.currentETViewHeight
-//            let basicHeight = superController.calendarViewToTopConstraint.constant + superController.calendarView.frame.height
-//            let expandedValue = Design.shared.currentETViewIsExpandedByNumOfRows * ((superController.calendarView.bounds.width / 7) - 2)
             let minHeight = visibleView.frame.height - 20
             if translatedCenterY > minHeight {
                 translatedCenterY = minHeight
@@ -123,12 +124,15 @@ class ETViewController: UIViewController {
             switch superController.eventListHeightConstraint.constant {
             case 0...maxHeight/3:
                 superController.eventListHeightConstraint.constant = superController.calendarViewToTopConstraint.constant + 10 + ((superController.calendarView.bounds.width / 7) - 2)
+                Design.shared.currentETViewState = .expanded
             case 3*maxHeight/4...maxHeight:
                 superController.eventListHeightConstraint.constant = maxHeight - 70
+                Design.shared.currentETViewState = .minimal
             default:
                 let basicHeight = superController.calendarViewToTopConstraint.constant + superController.calendarView.frame.height
                 let expandedValue = Design.shared.currentETViewIsExpandedByNumOfRows * ((superController.calendarView.bounds.width / 7) - 2)
                 superController.eventListHeightConstraint.constant = basicHeight - expandedValue
+                Design.shared.currentETViewState = .normal
             }
             animator.addAnimations {
                 superController.view.layoutIfNeeded()
@@ -211,14 +215,14 @@ class ETViewController: UIViewController {
     
     
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "embed" {
+            guard let vc = segue.destination as? EventListTableViewController else { return }
+            self.eventList = vc
+        }
     }
-    */
 
 }

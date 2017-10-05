@@ -28,6 +28,7 @@ class Design {
     static let shared = Design()
     
     var currentETViewHeight: CGFloat = 0
+    var currentETViewState: ETViewState = .normal
     var currentETViewIsExpandedByNumOfRows: CGFloat = 0
     
 }

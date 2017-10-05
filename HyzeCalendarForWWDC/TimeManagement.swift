@@ -157,6 +157,13 @@ class TimeManagement {
         return TimeManagement.calendar.component(.weekOfYear, from: date)
         
     }
+    
+    class func getTimeInMinutes(of date: Date) -> Int {
+        let hour = TimeManagement.calendar.component(.hour, from: date)
+        let minute = TimeManagement.calendar.component(.minute, from: date)
+        let time = (hour * 60) + minute
+        return time
+    }
 	
 	/// Checks if Cell is same as selectedCell
 	///

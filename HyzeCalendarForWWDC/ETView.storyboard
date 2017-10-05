@@ -93,7 +93,7 @@
                                 <rect key="frame" x="0.0" y="70" width="375" height="597"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
-                                    <segue destination="tvS-db-FIN" kind="embed" id="iRB-Wq-dzb"/>
+                                    <segue destination="tvS-db-FIN" kind="embed" identifier="embed" id="iRB-Wq-dzb"/>
                                 </connections>
                             </containerView>
                         </subviews>

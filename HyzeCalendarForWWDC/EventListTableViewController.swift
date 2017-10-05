@@ -75,7 +75,22 @@ class EventListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        
+        let event = events[indexPath.row]
+        if event.isAllDay || !Settings.shared.isEventListRelative {
+            return 100
+        }
+        let start = TimeManagement.getTimeInMinutes(of: event.startDate)
+        let end = TimeManagement.getTimeInMinutes(of: event.endDate)
+        
+        let length = end - start
+        let height = length < 100 ? 100 : length
+        
+        return CGFloat(height)
+    }
+    
+    func reloadList() {
+        self.tableView.reloadSections(IndexSet(integer: 0), with: .fade)
     }
 
     /*

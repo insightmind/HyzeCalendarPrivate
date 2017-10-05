@@ -153,7 +153,8 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
         } else {
             cell.isSelected = false
         }
-
+        
+        
         
         return cell
     }
@@ -187,11 +188,13 @@ extension MonthCollectionViewController {
     
 	fileprivate func forceETViewReload() {
 		let superViewController = UIApplication.shared.keyWindow?.rootViewController
-		var mainViewController: ViewController
 		for i in (superViewController?.childViewControllers)! {
 			if i.title == "MonthView" {
-				mainViewController = i as! ViewController
-				mainViewController.eventListViewController?.updateDesign()
+                guard let mainViewController = i as? ViewController else { return }
+                guard let vc = mainViewController.eventListViewController else { return }
+                guard let list = vc.eventList else { return }
+				vc.updateDesign()
+                list.reloadList()
 			}
 		}
 	}
