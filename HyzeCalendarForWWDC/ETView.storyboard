@@ -93,7 +93,7 @@
                                 <rect key="frame" x="0.0" y="70" width="375" height="597"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
-                                    <segue destination="yr3-6U-u1R" kind="embed" id="jvc-KT-AHR"/>
+                                    <segue destination="tvS-db-FIN" kind="embed" id="iRB-Wq-dzb"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -127,20 +127,33 @@
             </objects>
             <point key="canvasLocation" x="285.60000000000002" y="-200.14992503748127"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="FEE-44-3Fc">
+        <!--Event List Table View Controller-->
+        <scene sceneID="ySZ-10-oNC">
             <objects>
-                <viewController id="yr3-6U-u1R" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="qy0-bN-6m8">
+                <tableViewController id="tvS-db-FIN" customClass="EventListTableViewController" customModule="HyzeCalendarForWWDC" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="tSh-i2-QCm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="597"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="W24-LT-pnU"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6Og-3v-shF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="event" id="Bj5-jz-zyi">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Bj5-jz-zyi" id="4Z6-ZA-7Xk">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="tvS-db-FIN" id="M8D-m3-6hW"/>
+                            <outlet property="delegate" destination="tvS-db-FIN" id="bQo-yT-e86"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jGA-hw-Vfa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1054" y="-169"/>
+            <point key="canvasLocation" x="1052" y="-169"/>
         </scene>
     </scenes>
     <resources>
