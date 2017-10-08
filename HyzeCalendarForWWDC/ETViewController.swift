@@ -127,6 +127,7 @@ class ETViewController: UIViewController {
                 Design.shared.currentETViewState = .expanded
             case 3*maxHeight/4...maxHeight:
                 superController.eventListHeightConstraint.constant = maxHeight - 70
+                
                 Design.shared.currentETViewState = .minimal
             default:
                 let basicHeight = superController.calendarViewToTopConstraint.constant + superController.calendarView.frame.height

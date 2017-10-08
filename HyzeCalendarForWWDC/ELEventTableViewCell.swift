@@ -20,11 +20,16 @@ class ELEventTableViewCell: UITableViewCell {
     
     func configure() {
         backgroundColor = UIColor.clear
+        layer.masksToBounds = false
         mainView.layer.cornerRadius = 20
         let txtColor = Color.white.withAlphaComponent(0.7)
         startTime.textColor = txtColor
         endTime.textColor = txtColor
         titleLabel.textColor = Color.white
+        mainView.layer.shadowColor = Color.grey.cgColor
+        mainView.layer.shadowOpacity = 0.6
+        mainView.layer.shadowOffset = CGSize(width: 0, height: 5)
+        mainView.layer.shadowRadius = 5
     }
     
     func loadDateTexts() {
@@ -68,16 +73,6 @@ class ELEventTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-//        let path = UIBezierPath(roundedRect: mainView.bounds, cornerRadius: 20)
-//        mainView.layer.shadowPath = path.cgPath
-//        mainView.layer.shadowColor = Color.grey.cgColor
-//        mainView.layer.shadowOpacity = 0.7
-//        mainView.layer.shadowOffset = CGSize(width: 0, height: 5)
-//        mainView.layer.shadowRadius = 10
     }
     
     override func prepareForReuse() {

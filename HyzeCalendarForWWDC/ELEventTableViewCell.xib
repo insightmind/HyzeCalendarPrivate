@@ -21,13 +21,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jdu-gT-Cz6">
-                        <rect key="frame" x="55" y="21" width="249" height="165"/>
+                        <rect key="frame" x="55" y="5" width="249" height="196.5"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="XjI-sQ-7W6">
-                                <rect key="frame" x="8" y="8" width="233" height="149"/>
+                                <rect key="frame" x="8" y="16" width="233" height="164.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="___NAME___" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="1Lw-mm-cU6">
-                                        <rect key="frame" x="0.0" y="0.0" width="233" height="149"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="233" height="164.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -38,23 +38,23 @@
                         <constraints>
                             <constraint firstItem="XjI-sQ-7W6" firstAttribute="leading" secondItem="jdu-gT-Cz6" secondAttribute="leadingMargin" id="Epm-Ep-YkN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="XjI-sQ-7W6" secondAttribute="trailing" id="SfI-2i-b7Z"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="XjI-sQ-7W6" secondAttribute="bottom" id="WNy-eK-vAw"/>
-                            <constraint firstItem="XjI-sQ-7W6" firstAttribute="top" secondItem="jdu-gT-Cz6" secondAttribute="topMargin" id="up8-yd-BGc"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="XjI-sQ-7W6" secondAttribute="bottom" constant="8" id="WNy-eK-vAw"/>
+                            <constraint firstItem="XjI-sQ-7W6" firstAttribute="top" secondItem="jdu-gT-Cz6" secondAttribute="topMargin" constant="8" id="v2d-z6-pJr"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 am" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qAc-gh-edr">
-                        <rect key="frame" x="0.0" y="11" width="52" height="21"/>
+                        <rect key="frame" x="0.0" y="5" width="52" height="15"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="21" id="uux-bJ-Ldo"/>
+                            <constraint firstAttribute="height" constant="15" id="uux-bJ-Ldo"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 am" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bHt-o1-FGy">
-                        <rect key="frame" x="0.0" y="175" width="52" height="21"/>
+                        <rect key="frame" x="0.0" y="186.5" width="52" height="15"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="21" id="CrT-78-EFC"/>
+                            <constraint firstAttribute="height" constant="15" id="CrT-78-EFC"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <nil key="textColor"/>
@@ -62,16 +62,16 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="jdu-gT-Cz6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10" id="8i5-xZ-OM3"/>
+                    <constraint firstItem="jdu-gT-Cz6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="8i5-xZ-OM3"/>
                     <constraint firstItem="qAc-gh-edr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Bv7-cg-L2O"/>
                     <constraint firstItem="jdu-gT-Cz6" firstAttribute="leading" secondItem="bHt-o1-FGy" secondAttribute="trailing" constant="3" id="JjW-YN-pca"/>
                     <constraint firstAttribute="trailingMargin" secondItem="jdu-gT-Cz6" secondAttribute="trailing" id="TeR-XI-RUm"/>
                     <constraint firstItem="jdu-gT-Cz6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="55" id="Wxq-qU-rr5"/>
                     <constraint firstItem="jdu-gT-Cz6" firstAttribute="leading" secondItem="qAc-gh-edr" secondAttribute="trailing" constant="3" id="XLS-ZT-zus"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="jdu-gT-Cz6" secondAttribute="bottom" constant="10" id="XXl-kH-z7H"/>
-                    <constraint firstItem="qAc-gh-edr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="aEk-wN-Jfa"/>
+                    <constraint firstAttribute="bottom" secondItem="jdu-gT-Cz6" secondAttribute="bottom" constant="5" id="XXl-kH-z7H"/>
+                    <constraint firstItem="qAc-gh-edr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="aEk-wN-Jfa"/>
                     <constraint firstItem="bHt-o1-FGy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="pdV-Wf-wtm"/>
-                    <constraint firstAttribute="bottom" secondItem="bHt-o1-FGy" secondAttribute="bottom" constant="11" id="w8K-gu-zl3"/>
+                    <constraint firstAttribute="bottom" secondItem="bHt-o1-FGy" secondAttribute="bottom" constant="5" id="w8K-gu-zl3"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
