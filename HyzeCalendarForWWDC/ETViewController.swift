@@ -60,11 +60,9 @@ class ETViewController: UIViewController {
         gestureBar.backgroundColor = Color.grey.withAlphaComponent(0.5)
     }
     
-    
     @IBAction func tap(_ sender: UITapGestureRecognizer) {
         setLayerPosition()
     }
-    
     
     func setUpTitle() {
         switch state {
@@ -90,6 +88,7 @@ class ETViewController: UIViewController {
     }
     
     func setUpToolbar() {
+        toolBar.backgroundColor = self.view.backgroundColor
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan(recognizer:)))
         self.toolBar.addGestureRecognizer(panGestureRecognizer)
         let leftImage = #imageLiteral(resourceName: "ic_keyboard_arrow_right").withRenderingMode(.alwaysTemplate)
@@ -124,16 +123,15 @@ class ETViewController: UIViewController {
             switch superController.eventListHeightConstraint.constant {
             case 0...maxHeight/3:
                 superController.eventListHeightConstraint.constant = superController.calendarViewToTopConstraint.constant + 10 + ((superController.calendarView.bounds.width / 7) - 2)
-                Design.shared.currentETViewState = .expanded
+                changeState(to: .expanded)
             case 3*maxHeight/4...maxHeight:
                 superController.eventListHeightConstraint.constant = maxHeight - 70
-                
-                Design.shared.currentETViewState = .minimal
+                changeState(to: .minimal)
             default:
                 let basicHeight = superController.calendarViewToTopConstraint.constant + superController.calendarView.frame.height
                 let expandedValue = Design.shared.currentETViewIsExpandedByNumOfRows * ((superController.calendarView.bounds.width / 7) - 2)
                 superController.eventListHeightConstraint.constant = basicHeight - expandedValue
-                Design.shared.currentETViewState = .normal
+                changeState(to: .normal)
             }
             animator.addAnimations {
                 superController.view.layoutIfNeeded()
@@ -184,6 +182,7 @@ class ETViewController: UIViewController {
             } else{
                 self.view.backgroundColor = Color.blue
             }
+            self.toolBar.backgroundColor = self.view.backgroundColor
             if let animation = self.rightAnimation {
                 animation.removeFromSuperview()
                 self.setUpLayerAnimation()
@@ -214,7 +213,9 @@ class ETViewController: UIViewController {
         self.leftToolbarButton.transform = transform
     }
     
-    
+    func changeState(to state: ETViewState) {
+        Design.shared.currentETViewState = state
+    }
 
     // MARK: - Navigation
 

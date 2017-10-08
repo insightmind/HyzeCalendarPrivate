@@ -32,10 +32,10 @@ class TimeManagement {
     ///   - monthID: monthID of the date in the CalendarView
     ///   - dayID: dayID of the date in the CalendarView
     /// - Returns: Date from the given Input
-	class func convertToDate(yearID: Int, monthID: Int, dayID: Int, timeZone: TimeZone = TimeZone.autoupdatingCurrent) -> Date {
+    class func convertToDate(yearID: Int, monthID: Int, dayID: Int, timeZone: TimeZone = TimeZone.current) -> Date {
         
         // Creating DateComponents of the given IDs, incrementing monthID by 1 because Month begins in CalendarView by 0
-		let components = DateComponents(calendar: Calendar.current, timeZone: timeZone, year: yearID, month: monthID, day: dayID)
+		let components = DateComponents(calendar: Calendar.current, year: yearID, month: monthID, day: dayID)
 		
 		
         // Creating date based of the calculated components

@@ -19,6 +19,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hoh-Xf-yrS">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <segue destination="tvS-db-FIN" kind="embed" identifier="embed" id="iRB-Wq-dzb"/>
+                                </connections>
+                            </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R4n-FU-Sds">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                                 <subviews>
@@ -77,7 +84,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.92900000000000005" green="0.26300000000000001" blue="0.216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="GRw-9N-jxY" firstAttribute="leading" secondItem="R4n-FU-Sds" secondAttribute="leading" id="3fy-Xb-ESm"/>
@@ -89,17 +96,10 @@
                                     <constraint firstAttribute="bottom" secondItem="GRw-9N-jxY" secondAttribute="bottom" id="s5p-66-3Wd"/>
                                 </constraints>
                             </view>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hoh-Xf-yrS">
-                                <rect key="frame" x="0.0" y="70" width="375" height="597"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <segue destination="tvS-db-FIN" kind="embed" identifier="embed" id="iRB-Wq-dzb"/>
-                                </connections>
-                            </containerView>
                         </subviews>
                         <color key="backgroundColor" red="0.92900000000000005" green="0.26300000000000001" blue="0.216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="hoh-Xf-yrS" firstAttribute="top" secondItem="R4n-FU-Sds" secondAttribute="bottom" id="1ZM-4O-WEu"/>
+                            <constraint firstItem="hoh-Xf-yrS" firstAttribute="top" secondItem="MZq-Cv-fOf" secondAttribute="top" id="1ZM-4O-WEu"/>
                             <constraint firstItem="hoh-Xf-yrS" firstAttribute="leading" secondItem="9N5-sh-Dms" secondAttribute="leading" id="2jq-5J-vHP"/>
                             <constraint firstItem="hoh-Xf-yrS" firstAttribute="trailing" secondItem="9N5-sh-Dms" secondAttribute="trailing" id="5Gk-cK-cVu"/>
                             <constraint firstItem="9N5-sh-Dms" firstAttribute="trailing" secondItem="R4n-FU-Sds" secondAttribute="trailing" id="QZQ-0A-ZJp"/>
@@ -132,7 +132,7 @@
             <objects>
                 <tableViewController id="tvS-db-FIN" customClass="EventListTableViewController" customModule="HyzeCalendarForWWDC" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="tSh-i2-QCm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="597"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -153,7 +153,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jGA-hw-Vfa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1052" y="-169"/>
+            <point key="canvasLocation" x="1025" y="-200"/>
         </scene>
     </scenes>
     <resources>

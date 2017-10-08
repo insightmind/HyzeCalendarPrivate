@@ -12,11 +12,13 @@ import EventKit
 class ELEventTableViewCell: UITableViewCell {
     
     var event: EKEvent? = nil
+    let smallFontSize = UIFont.systemFont(ofSize: 14)
 
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var startTime: UILabel!
     @IBOutlet weak var endTime: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var stackView: UIStackView!
     
     func configure() {
         backgroundColor = UIColor.clear
@@ -26,9 +28,10 @@ class ELEventTableViewCell: UITableViewCell {
         startTime.textColor = txtColor
         endTime.textColor = txtColor
         titleLabel.textColor = Color.white
+        mainView.layer.masksToBounds = false
         mainView.layer.shadowColor = Color.grey.cgColor
         mainView.layer.shadowOpacity = 0.6
-        mainView.layer.shadowOffset = CGSize(width: 0, height: 5)
+        mainView.layer.shadowOffset = CGSize.zero
         mainView.layer.shadowRadius = 5
     }
     

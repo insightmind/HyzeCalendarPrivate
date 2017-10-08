@@ -21,13 +21,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jdu-gT-Cz6">
-                        <rect key="frame" x="55" y="5" width="249" height="196.5"/>
+                        <rect key="frame" x="55" y="11" width="249" height="185"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="XjI-sQ-7W6">
-                                <rect key="frame" x="8" y="16" width="233" height="164.5"/>
+                                <rect key="frame" x="8" y="8" width="233" height="169"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="___NAME___" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="1Lw-mm-cU6">
-                                        <rect key="frame" x="0.0" y="0.0" width="233" height="164.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="233" height="169"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -38,8 +38,8 @@
                         <constraints>
                             <constraint firstItem="XjI-sQ-7W6" firstAttribute="leading" secondItem="jdu-gT-Cz6" secondAttribute="leadingMargin" id="Epm-Ep-YkN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="XjI-sQ-7W6" secondAttribute="trailing" id="SfI-2i-b7Z"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="XjI-sQ-7W6" secondAttribute="bottom" constant="8" id="WNy-eK-vAw"/>
-                            <constraint firstItem="XjI-sQ-7W6" firstAttribute="top" secondItem="jdu-gT-Cz6" secondAttribute="topMargin" constant="8" id="v2d-z6-pJr"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="XjI-sQ-7W6" secondAttribute="bottom" id="WNy-eK-vAw"/>
+                            <constraint firstItem="XjI-sQ-7W6" firstAttribute="top" secondItem="jdu-gT-Cz6" secondAttribute="topMargin" id="v2d-z6-pJr"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 am" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qAc-gh-edr">
@@ -62,13 +62,13 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="jdu-gT-Cz6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="8i5-xZ-OM3"/>
+                    <constraint firstItem="jdu-gT-Cz6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="8i5-xZ-OM3"/>
                     <constraint firstItem="qAc-gh-edr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Bv7-cg-L2O"/>
                     <constraint firstItem="jdu-gT-Cz6" firstAttribute="leading" secondItem="bHt-o1-FGy" secondAttribute="trailing" constant="3" id="JjW-YN-pca"/>
                     <constraint firstAttribute="trailingMargin" secondItem="jdu-gT-Cz6" secondAttribute="trailing" id="TeR-XI-RUm"/>
                     <constraint firstItem="jdu-gT-Cz6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="55" id="Wxq-qU-rr5"/>
                     <constraint firstItem="jdu-gT-Cz6" firstAttribute="leading" secondItem="qAc-gh-edr" secondAttribute="trailing" constant="3" id="XLS-ZT-zus"/>
-                    <constraint firstAttribute="bottom" secondItem="jdu-gT-Cz6" secondAttribute="bottom" constant="5" id="XXl-kH-z7H"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="jdu-gT-Cz6" secondAttribute="bottom" id="XXl-kH-z7H"/>
                     <constraint firstItem="qAc-gh-edr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="aEk-wN-Jfa"/>
                     <constraint firstItem="bHt-o1-FGy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="pdV-Wf-wtm"/>
                     <constraint firstAttribute="bottom" secondItem="bHt-o1-FGy" secondAttribute="bottom" constant="5" id="w8K-gu-zl3"/>
@@ -78,6 +78,7 @@
             <connections>
                 <outlet property="endTime" destination="bHt-o1-FGy" id="eeM-Ob-4M8"/>
                 <outlet property="mainView" destination="jdu-gT-Cz6" id="wvh-en-xxq"/>
+                <outlet property="stackView" destination="XjI-sQ-7W6" id="6vx-zM-Dfv"/>
                 <outlet property="startTime" destination="qAc-gh-edr" id="Pae-3k-K4H"/>
                 <outlet property="titleLabel" destination="1Lw-mm-cU6" id="YOW-a9-p7G"/>
             </connections>

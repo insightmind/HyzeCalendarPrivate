@@ -14,6 +14,8 @@ class EventListTableViewController: UITableViewController {
     let eventCellReuseIdentifier = "eventCell"
     let freetimeCellReuseIdentifier = "freetimeCell"
     
+    let basicCellHeight: CGFloat = 90
+    
     var events = [EKEvent]()
     
     func fetchEvents() {
@@ -28,7 +30,7 @@ class EventListTableViewController: UITableViewController {
         tableView.allowsSelection = false
         tableView.separatorStyle = .none
         tableView.backgroundColor = UIColor.clear
-        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: 70, left: 0, bottom: 70, right: 0)
     }
     
     func registerCells() {
@@ -60,33 +62,53 @@ class EventListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         fetchEvents()
-        return events.count
+        let count = 2 * events.count - 1
+        return count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        if indexPath.item % 2 == 0{
+            let cell = tableView.dequeueReusableCell(withIdentifier: eventCellReuseIdentifier) as! ELEventTableViewCell
+            // Configure the cell...
+            cell.loadEvent(events[indexPath.row / 2])
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: freetimeCellReuseIdentifier) as! ELFreetimeTableViewCell
+            return cell
+        }
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: eventCellReuseIdentifier) as! ELEventTableViewCell
-
-        // Configure the cell...
-        cell.loadEvent(events[indexPath.row])
-        
-        return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        let event = events[indexPath.row]
-        if event.isAllDay || !Settings.shared.isEventListRelative {
-            return 75
+        if indexPath.item % 2 != 0 {
+            if !Settings.shared.isEventListRelative { return 1 }
+            var index = (indexPath.row / 2)
+            index -= index % 1
+            let prevEvent = events[index]
+            if prevEvent.isAllDay { return 1 }
+            let futEvent = events[index + 1]
+            let start = TimeManagement.getTimeInMinutes(of: prevEvent.endDate)
+            let end = TimeManagement.getTimeInMinutes(of: futEvent.startDate)
+            let length = end - start
+            if length < 53 { return 1 }
+            print(length)
+            return CGFloat(length)
+            
+        } else {
+            let event = events[indexPath.row / 2]
+            if event.isAllDay || !Settings.shared.isEventListRelative {
+                return basicCellHeight
+            }
+            let start = TimeManagement.getTimeInMinutes(of: event.startDate)
+            let end = TimeManagement.getTimeInMinutes(of: event.endDate)
+            
+            let length = CGFloat(end - start)
+            let height = length < basicCellHeight ? basicCellHeight : length
+            
+            return CGFloat(height)
         }
-        let start = TimeManagement.getTimeInMinutes(of: event.startDate)
-        let end = TimeManagement.getTimeInMinutes(of: event.endDate)
-        
-        let length = end - start
-        let height = length < 90 ? 90 : length
-        
-        return CGFloat(height)
     }
     
     func reloadList(onlyDesign: Bool = false) {

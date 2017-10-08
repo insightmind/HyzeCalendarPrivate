@@ -211,13 +211,9 @@ extension MonthCollectionViewController {
         
         let (yID, mID, prevIndexPath) = Selection.shared.selectedDayCellIndex
         
-        if yID == yearID && mID == monthID && !forcedCellSelection{
-            guard var checkedPrevIndexPath = prevIndexPath else {
-                fatalError()
-            }
-			checkedPrevIndexPath = IndexPath(item: checkedPrevIndexPath.item + Selection.shared.weekDayStart.rawValue, section: checkedPrevIndexPath.section)
-            self.collectionView(collectionView, didDeselectItemAt: checkedPrevIndexPath)
-        }
+        guard var checkedPrevIndexPath = prevIndexPath else { fatalError() }
+        checkedPrevIndexPath = IndexPath(item: checkedPrevIndexPath.item + Selection.shared.weekDayStart.rawValue, section: checkedPrevIndexPath.section)
+        self.collectionView(collectionView, didDeselectItemAt: checkedPrevIndexPath)
 		
 		let isOnWeekend = self.isOnWeekend(for: indexPath)
 		let item = calculateConformedItem(indexPath)
@@ -226,7 +222,11 @@ extension MonthCollectionViewController {
         let isToday = TimeManagement.isToday(yearID: yearID, monthID: monthID + 1, dayID: item)
         let configuredIndexPath = IndexPath(item: calculateConformedItem(indexPath) , section: 0)
 		if prevIndexPath?.item == configuredIndexPath.item && yID == yearID && mID - 1 == monthID && !forcedCellSelection{
-			return
+//            let storyboard = UIStoryboard(name: "DayView", bundle: nil)
+//            let viewController = storyboard.instantiateInitialViewController()
+//            let superViewController = UIApplication.shared.keyWindow?.rootViewController
+//            superViewController?.present(viewController!, animated: true, completion: nil)
+            return
 		}
 		Selection.shared.selectedDayCellIndex = (self.yearID, self.monthID + 1, configuredIndexPath)
 		Selection.shared.selectedIsOnWeekend = self.isOnWeekend(for: indexPath)
