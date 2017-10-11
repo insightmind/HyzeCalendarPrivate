@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Lottie
 
 enum ETViewState {
     case expanded
@@ -29,7 +28,6 @@ class ETViewController: UIViewController {
     
     @IBOutlet weak var toolBar: UIView!
     
-    var rightAnimation: LOTAnimationView?
     var superViewController: ViewController?
     var eventList: EventListTableViewController?
     
@@ -57,7 +55,7 @@ class ETViewController: UIViewController {
     
     func setUpGestureBar() {
         gestureBar.layer.cornerRadius = gestureBar.bounds.height / 2
-        gestureBar.backgroundColor = Color.grey.withAlphaComponent(0.5)
+        gestureBar.backgroundColor = Color.grey.withAlphaComponent(0.75)
     }
     
     @IBAction func tap(_ sender: UITapGestureRecognizer) {
@@ -74,14 +72,14 @@ class ETViewController: UIViewController {
     }
     
     func setLayerPosition() {
-        guard let animation = rightAnimation else { return }
-        if Settings.shared.isEventListRelative {
-            animation.play(fromProgress: 0.5, toProgress: 1, withCompletion: { (_) in
-                animation.animationProgress = 0
-            })
-        } else {
-            animation.play(fromProgress: 0, toProgress: 0.5, withCompletion: nil)
-        }
+//        guard let animation = rightAnimation else { return }
+//        if Settings.shared.isEventListRelative {
+//            animation.play(fromProgress: 0.5, toProgress: 1, withCompletion: { (_) in
+//                animation.animationProgress = 0
+//            })
+//        } else {
+//            animation.play(fromProgress: 0, toProgress: 0.5, withCompletion: nil)
+//        }
         Settings.shared.isEventListRelative = !Settings.shared.isEventListRelative
         guard let list = eventList else { return }
         list.reloadList(onlyDesign: true)
@@ -94,7 +92,7 @@ class ETViewController: UIViewController {
         let leftImage = #imageLiteral(resourceName: "ic_keyboard_arrow_right").withRenderingMode(.alwaysTemplate)
         leftToolbarButton.setImage(leftImage, for: .normal)
         leftToolbarButton.tintColor = Color.white
-        setUpLayerAnimation()
+//        setUpLayerAnimation()
     }
     
     @objc func handlePan(recognizer: UIPanGestureRecognizer) {
@@ -123,14 +121,18 @@ class ETViewController: UIViewController {
             switch superController.eventListHeightConstraint.constant {
             case 0...maxHeight/3:
                 superController.eventListHeightConstraint.constant = superController.calendarViewToTopConstraint.constant + 10 + ((superController.calendarView.bounds.width / 7) - 2)
+                eventList?.tableView.isScrollEnabled = true
                 changeState(to: .expanded)
             case 3*maxHeight/4...maxHeight:
-                superController.eventListHeightConstraint.constant = maxHeight - 70
+                superController.eventListHeightConstraint.constant = maxHeight - 100
+                eventList?.tableView.isScrollEnabled = false
+                eventList?.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
                 changeState(to: .minimal)
             default:
                 let basicHeight = superController.calendarViewToTopConstraint.constant + superController.calendarView.frame.height
                 let expandedValue = Design.shared.currentETViewIsExpandedByNumOfRows * ((superController.calendarView.bounds.width / 7) - 2)
                 superController.eventListHeightConstraint.constant = basicHeight - expandedValue
+                eventList?.tableView.isScrollEnabled = true
                 changeState(to: .normal)
             }
             animator.addAnimations {
@@ -142,29 +144,29 @@ class ETViewController: UIViewController {
         }
     }
     
-    func setUpLayerAnimation() {
-        var layerString = "layers_blue"
-        guard let isToday = Selection.shared.selectedIsToday else { return }
-        guard let isWeekend = Selection.shared.selectedIsOnWeekend else { return }
-        if isToday{
-            layerString = "layers_red"
-        } else if isWeekend {
-            layerString = "layers_green"
-        }
-        let animation = LOTAnimationView(name: layerString)
-        rightAnimation = animation
-        animation.contentMode = .scaleAspectFill
-        animation.animationSpeed = 4
-        animation.backgroundColor = UIColor.clear
-        animation.frame = rightToolbarButton.bounds
-        rightToolbarButton.addSubview(animation)
-        if Settings.shared.isEventListRelative {
-            animation.animationProgress = 0.5
-        } else {
-            animation.animationProgress = 0
-        }
-        
-    }
+//    func setUpLayerAnimation() {
+//        var layerString = "layers_blue"
+//        guard let isToday = Selection.shared.selectedIsToday else { return }
+//        guard let isWeekend = Selection.shared.selectedIsOnWeekend else { return }
+//        if isToday{
+//            layerString = "layers_red"
+//        } else if isWeekend {
+//            layerString = "layers_green"
+//        }
+//        let animation = LOTAnimationView(name: layerString)
+//        rightAnimation = animation
+//        animation.contentMode = .scaleAspectFill
+//        animation.animationSpeed = 4
+//        animation.backgroundColor = UIColor.clear
+//        animation.frame = rightToolbarButton.bounds
+//        rightToolbarButton.addSubview(animation)
+//        if Settings.shared.isEventListRelative {
+//            animation.animationProgress = 0.5
+//        } else {
+//            animation.animationProgress = 0
+//        }
+//
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -182,11 +184,11 @@ class ETViewController: UIViewController {
             } else{
                 self.view.backgroundColor = Color.blue
             }
-            self.toolBar.backgroundColor = self.view.backgroundColor
-            if let animation = self.rightAnimation {
-                animation.removeFromSuperview()
-                self.setUpLayerAnimation()
-            }
+            self.toolBar.backgroundColor = UIColor.clear
+//            if let animation = self.rightAnimation {
+//                animation.removeFromSuperview()
+//                self.setUpLayerAnimation()
+//            }
         }
         UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.75, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
             self.updateSelectTodayIcon()

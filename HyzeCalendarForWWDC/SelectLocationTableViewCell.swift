@@ -15,7 +15,20 @@ class SelectLocationTableViewCell: UITableViewCell, EventEditorCellProtocol {
 	var eventInformations: EventEditorEventInformations! = EventManagement.shared.eventInformation
 	
 	func reloadInformations() {
-		if let location = eventInformations.location?.geoLocation {
+        if let title = eventInformations.location?.title {
+            self.label.text = title
+            self.subLabel.isHidden = true
+            if eventInformations.state == .showDetail {
+               self.selectButtonView.isHidden = true
+            } else {
+               self.selectButtonView.isHidden = false
+                setUpButton(selectButtonView, button: selectButton, image: #imageLiteral(resourceName: "ic_edit"))
+            }
+            self.layoutIfNeeded()
+            return
+        }
+        self.selectButtonView.isHidden = false
+        if let location = eventInformations.location?.geoLocation {
 			let geoCoder = CLGeocoder()
 			var place: MKPlacemark?
 			geoCoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) in
@@ -87,19 +100,6 @@ class SelectLocationTableViewCell: UITableViewCell, EventEditorCellProtocol {
 			setUpButton(selectButtonView, button: selectButton, image: #imageLiteral(resourceName: "ic_keyboard_arrow_right"))
 		}
     }
-	
-	func setUpButton(_ view: UIView, button: UIButton, image: UIImage) {
-		view.layer.cornerRadius = view.bounds.width / 2
-		view.backgroundColor = Color.red
-		button.setImage(image.withRenderingMode(.alwaysTemplate), for: .normal)
-		button.tintColor = Color.white
-		
-		view.layer.shadowPath = UIBezierPath(roundedRect: view.bounds, cornerRadius: view.bounds.width / 2).cgPath
-		view.layer.shadowColor = view.backgroundColor?.cgColor
-		view.layer.shadowRadius = 5
-		view.layer.shadowOffset = CGSize(width: 1, height: 3)
-		view.layer.shadowOpacity = 0.8
-	}
 	
 	func expandLabel(_ expand: Bool) {
 		if expand {

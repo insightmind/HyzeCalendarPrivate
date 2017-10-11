@@ -23,12 +23,17 @@ class Settings {
 	var animateDayView: Bool = UserDefaults.standard.bool(forKey: "animateDayView")
 	var isAMPM : Bool = UserDefaults.standard.bool(forKey: "IsAMPM")
     var showWeekNumber: Bool = UserDefaults.standard.bool(forKey: "showWeekNumber")
+    let isFirstBoot: Bool = UserDefaults.standard.bool(forKey: "isFirstBoot")
    
     // MARK: CalendarView
     var lastRowIsNecessary: Bool = true
     
     // MARK: EventList
-    var isEventListRelative: Bool = true
+    var isEventListRelative: Bool = UserDefaults.standard.bool(forKey: "isEventListRelative") {
+        didSet {
+            UserDefaults.standard.set(isEventListRelative, forKey: "isEventListRelative")
+        }
+    }
 	
 	// MARK: Interaction
 	var needsDesignUpdate: Bool = false

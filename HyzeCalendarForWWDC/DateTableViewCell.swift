@@ -41,19 +41,6 @@ class DateTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDe
 		}
 		return NSAttributedString(string: string, attributes: [NSAttributedStringKey.foregroundColor: Color.white])
 	}
-	
-	func setUpButton(_ view: UIView, button: UIButton, image: UIImage) {
-		view.layer.cornerRadius = view.bounds.width / 2
-		view.backgroundColor = Color.red
-		button.setImage(image.withRenderingMode(.alwaysTemplate), for: .normal)
-		button.tintColor = Color.white
-		
-		view.layer.shadowPath = UIBezierPath(roundedRect: view.bounds, cornerRadius: view.bounds.width / 2).cgPath
-		view.layer.shadowColor = view.backgroundColor?.cgColor
-		view.layer.shadowRadius = 5
-		view.layer.shadowOffset = CGSize(width: 1, height: 3)
-		view.layer.shadowOpacity = 0.8
-	}
 
 	var tableView: RecurrenceTableViewController?
 	@IBOutlet weak var cellView: UIView!

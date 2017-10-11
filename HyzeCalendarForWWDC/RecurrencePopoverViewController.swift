@@ -229,7 +229,7 @@ class RecurrencePopoverViewController: UIViewController {
 			frequencySelectionReset()
 			return
 		}
-		if EventManagement.shared.analyseRule(eventInformations) == .custom {
+		if EventManagement.shared.analyze(eventInformations) == .custom {
 			didSelect(rule.frequency)
 		} else {
 			frequencySelectionReset()

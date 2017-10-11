@@ -80,7 +80,6 @@ class ViewController: UIViewController {
         } else if isAMPMTemp != Settings.shared.isAMPM || Settings.shared.eventsChange == true {
             Settings.shared.eventsChange = false
         }
-        //ETView.reloadView()
     }
 	
     override func viewDidLoad() {

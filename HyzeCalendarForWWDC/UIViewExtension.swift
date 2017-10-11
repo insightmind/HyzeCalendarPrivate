@@ -29,6 +29,20 @@ extension UIView {
 		layer.shadowOpacity = opacity
 		layer.shadowRadius = radius
 		layer.shadowOffset = offset
-		
 	}
+    
+    func setUpButton(_ view: UIView, button: UIButton, image: UIImage, backgroundColor: UIColor = Color.red, tintColor: UIColor = Color.white) {
+        view.layer.cornerRadius = view.bounds.width / 2
+        view.backgroundColor = backgroundColor
+        button.setImage(image.withRenderingMode(.alwaysTemplate), for: .normal)
+        button.tintColor = tintColor
+        
+        view.layer.shadowPath = UIBezierPath(roundedRect: view.bounds, cornerRadius: view.bounds.width / 2).cgPath
+        view.layer.shadowColor = view.backgroundColor?.cgColor
+        view.layer.shadowRadius = 5
+        view.layer.shadowOffset = CGSize(width: 1, height: 3)
+        view.layer.shadowOpacity = 0.8
+    }
+    
+    
 }

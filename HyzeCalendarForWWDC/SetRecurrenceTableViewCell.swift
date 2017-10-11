@@ -26,7 +26,7 @@ class SetRecurrenceTableViewCell: UITableViewCell, EventEditorCellProtocol {
 	
 	func reloadInformations() {
 		
-		let type = EventManagement.shared.analyseRule(eventInformations)
+		let type = EventManagement.shared.analyze(eventInformations)
 		self.setDesign(type, animated: true)
 		
 	}
@@ -143,19 +143,6 @@ class SetRecurrenceTableViewCell: UITableViewCell, EventEditorCellProtocol {
 			
 			self.selectedRecurrenceType = type
 		})
-	}
-	
-	func setUpButton(_ view: UIView, button: UIButton, image: UIImage) {
-			view.layer.cornerRadius = view.bounds.width / 2
-			view.backgroundColor = Color.red
-			button.setImage(image.withRenderingMode(.alwaysTemplate), for: .normal)
-			button.tintColor = Color.white
-			
-			view.layer.shadowPath = UIBezierPath(roundedRect: view.bounds, cornerRadius: view.bounds.width / 2).cgPath
-			view.layer.shadowColor = view.backgroundColor?.cgColor
-			view.layer.shadowRadius = 5
-			view.layer.shadowOffset = CGSize(width: 1, height: 3)
-			view.layer.shadowOpacity = 0.8
 	}
 	
 	func setViewColor(_ views: [UIView], color: UIColor) {

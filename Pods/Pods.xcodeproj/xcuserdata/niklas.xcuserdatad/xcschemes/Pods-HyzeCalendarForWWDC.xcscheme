@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A7BE7B6CF0A8448046A61CE0D9C5D625"
+               BlueprintIdentifier = "3C8C36E2E7DFFEBA2BC2CDF79BD92DF8"
                BuildableName = "Pods_HyzeCalendarForWWDC.framework"
                BlueprintName = "Pods-HyzeCalendarForWWDC"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A7BE7B6CF0A8448046A61CE0D9C5D625"
+            BlueprintIdentifier = "3C8C36E2E7DFFEBA2BC2CDF79BD92DF8"
             BuildableName = "Pods_HyzeCalendarForWWDC.framework"
             BlueprintName = "Pods-HyzeCalendarForWWDC"
             ReferencedContainer = "container:Pods.xcodeproj">

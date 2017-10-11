@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13528" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="s5a-M1-ico">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13528" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="G5g-tM-Kgw">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -161,6 +161,34 @@
             </objects>
             <point key="canvasLocation" x="7178" y="-972"/>
         </scene>
+        <!--Boot View View Controller-->
+        <scene sceneID="eSq-KR-vzv">
+            <objects>
+                <viewController id="G5g-tM-Kgw" customClass="BootViewViewController" customModule="HyzeCalendarForWWDC" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="u4p-8p-AdW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppIconImage" translatesAutoresizingMaskIntoConstraints="NO" id="vew-gy-wf9">
+                                <rect key="frame" x="89" y="307" width="197" height="197"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="197" id="4Tl-u0-6Ws"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vew-gy-wf9" firstAttribute="centerX" secondItem="u4p-8p-AdW" secondAttribute="centerX" id="0Lj-qw-3Fy"/>
+                            <constraint firstItem="vew-gy-wf9" firstAttribute="width" secondItem="vew-gy-wf9" secondAttribute="height" multiplier="1:1" id="Cb1-fo-zDo"/>
+                            <constraint firstItem="vew-gy-wf9" firstAttribute="centerY" secondItem="u4p-8p-AdW" secondAttribute="centerY" id="XfC-B9-GUM"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="fMw-72-5XY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nvh-Xi-pdr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6223" y="-972"/>
+        </scene>
         <!--MainNavigation-->
         <scene sceneID="Z3t-l8-PvS">
             <objects>
@@ -189,7 +217,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dtk-Hg-lGG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6418" y="-972"/>
+            <point key="canvasLocation" x="7167" y="-2011"/>
         </scene>
         <!--CalendarView-->
         <scene sceneID="IWj-aY-DO5">
@@ -260,6 +288,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="AppIconImage" width="341" height="341"/>
         <image name="ic_data_usage" width="24" height="24"/>
         <image name="ic_settings" width="24" height="24"/>
     </resources>

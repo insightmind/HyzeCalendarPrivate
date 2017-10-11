@@ -350,7 +350,7 @@ class EventManagement {
 		}
 	}
 	
-	func analyseRule(_ information: EventEditorEventInformations) -> RecurrenceType {
+	func analyze(_ information: EventEditorEventInformations) -> RecurrenceType {
 		guard let rule = information.recurrenceRule else { return .none }
 		
 		var couldBeOther = false
