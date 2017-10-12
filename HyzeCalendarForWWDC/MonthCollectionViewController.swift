@@ -222,10 +222,6 @@ extension MonthCollectionViewController {
         let isToday = TimeManagement.isToday(yearID: yearID, monthID: monthID + 1, dayID: item)
         let configuredIndexPath = IndexPath(item: calculateConformedItem(indexPath) , section: 0)
 		if prevIndexPath?.item == configuredIndexPath.item && yID == yearID && mID - 1 == monthID && !forcedCellSelection{
-//            let storyboard = UIStoryboard(name: "DayView", bundle: nil)
-//            let viewController = storyboard.instantiateInitialViewController()
-//            let superViewController = UIApplication.shared.keyWindow?.rootViewController
-//            superViewController?.present(viewController!, animated: true, completion: nil)
             return
 		}
 		Selection.shared.selectedDayCellIndex = (self.yearID, self.monthID + 1, configuredIndexPath)

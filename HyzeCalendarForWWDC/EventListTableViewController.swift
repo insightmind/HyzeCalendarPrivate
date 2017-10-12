@@ -59,35 +59,41 @@ class EventListTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        fetchEvents()
-        return events.count + 1
+        switch section {
+        case 0:
+            return 1
+        default:
+            fetchEvents()
+            return events.count
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.row == 0 {
+        if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: addEventCellReuseIdentifier) as! ELAddEventTableViewCell
+            cell.tableView = self
             return cell
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: eventCellReuseIdentifier) as! ELEventTableViewCell
         // Configure the cell...
-        cell.loadEvent(events[indexPath.row - 1])
+        cell.loadEvent(events[indexPath.row])
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        if indexPath.row == 0 {
+        if indexPath.section == 0 {
             return 75
         }
         
-        let event = events[indexPath.row - 1]
+        let event = events[indexPath.row]
         if event.isAllDay || !Settings.shared.isEventListRelative {
             return basicCellHeight
         }
@@ -105,7 +111,7 @@ class EventListTableViewController: UITableViewController {
             self.tableView.beginUpdates()
             self.tableView.endUpdates()
         } else {
-            self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+            self.tableView.reloadSections(IndexSet(integer: 1), with: .automatic)
         }
         
     }
