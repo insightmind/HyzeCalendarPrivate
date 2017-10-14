@@ -19,6 +19,7 @@ class ELEventTableViewCell: UITableViewCell {
     @IBOutlet weak var endTime: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var selectMenu: UIView!
     
     func configure() {
         backgroundColor = UIColor.clear
@@ -33,6 +34,7 @@ class ELEventTableViewCell: UITableViewCell {
         mainView.layer.shadowOpacity = 0.6
         mainView.layer.shadowOffset = CGSize.zero
         mainView.layer.shadowRadius = 5
+        selectMenu.layer.cornerRadius = selectMenu.frame.height / 2
     }
     
     func loadDateTexts() {
@@ -74,12 +76,9 @@ class ELEventTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         if selected {
-            
-            
-            
-            
+            selectMenu.isHidden = false
         } else {
-            
+            selectMenu.isHidden = true
         }
     }
     
