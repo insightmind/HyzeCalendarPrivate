@@ -21,6 +21,15 @@ class ELEventTableViewCell: UITableViewCell {
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var selectMenu: UIView!
     
+    @IBOutlet weak var editButtonView: UIView!
+    @IBOutlet weak var editButton: UIButton!
+    
+    @IBOutlet weak var showButtonView: UIView!
+    @IBOutlet weak var showButton: UIButton!
+    
+    @IBOutlet weak var removeButtonView: UIView!
+    @IBOutlet weak var removeButton: UIButton!
+    
     func configure() {
         backgroundColor = UIColor.clear
         layer.masksToBounds = false
@@ -34,7 +43,19 @@ class ELEventTableViewCell: UITableViewCell {
         mainView.layer.shadowOpacity = 0.6
         mainView.layer.shadowOffset = CGSize.zero
         mainView.layer.shadowRadius = 5
-        selectMenu.layer.cornerRadius = selectMenu.frame.height / 2
+        selectMenu.layer.cornerRadius = 20
+    }
+    
+    func configureButtons() {
+        setUpButton(editButtonView, button: editButton, image: #imageLiteral(resourceName: "ic_edit"), backgroundColor: Color.blue)
+        editButtonView.layer.cornerRadius = editButton.bounds.width / 2
+        editButtonView.layer.shadowColor = Color.grey.cgColor
+        setUpButton(showButtonView, button: showButton, image: #imageLiteral(resourceName: "ic_star"), backgroundColor: Color.green)
+        showButtonView.layer.cornerRadius = showButton.bounds.width / 2
+        showButtonView.layer.shadowColor = Color.grey.cgColor
+        setUpButton(removeButtonView, button: removeButton, image: #imageLiteral(resourceName: "ic_delete"), backgroundColor: Color.red)
+        removeButtonView.layer.cornerRadius = removeButton.bounds.width / 2
+        removeButtonView.layer.shadowColor = Color.grey.cgColor
     }
     
     func loadDateTexts() {
@@ -72,6 +93,8 @@ class ELEventTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         configure()
+        configureButtons()
+        layoutIfNeeded()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -80,10 +103,45 @@ class ELEventTableViewCell: UITableViewCell {
         } else {
             selectMenu.isHidden = true
         }
+        self.configureButtons()
+        UIView.animate(withDuration: 0.3, animations: {
+            self.selectMenu.layoutIfNeeded()
+            self.layoutIfNeeded()
+        })
     }
     
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {
         return
+    }
+    
+    @IBAction func edit(_ sender: UIButton) {
+        openInEventEditor(state: .create)
+    }
+    @IBAction func show(_ sender: UIButton) {
+        openInEventEditor(state: .showDetail)
+    }
+    @IBAction func remove(_ sender: UIButton) {
+        guard let identfier = event?.eventIdentifier else { return }
+        guard let eventInformations = EventManagement.shared.convertToEventEditorEventInformations(eventIdentifier: identfier, state: .create) else { return }
+        EventManagement.shared.deleteEvent(eventInformations)
+    }
+    
+    func openInEventEditor(state: EventEditorState) {
+        guard let identfier = event?.eventIdentifier else { return }
+        guard let eventInformations = EventManagement.shared.convertToEventEditorEventInformations(eventIdentifier: identfier, state: state) else { return }
+        EventManagement.shared.eventInformation = eventInformations
+        let storyboard = UIStoryboard(name: "EventEditor", bundle: nil)
+        let superViewController = UIApplication.shared.keyWindow?.rootViewController
+        var mainViewController: ViewController
+        guard let eventEditor = storyboard.instantiateInitialViewController() else { return }
+        for i in (superViewController?.childViewControllers)! {
+            if i.title == "MonthView" {
+                mainViewController = i as! ViewController
+                eventEditor.modalPresentationStyle = .overCurrentContext
+                eventEditor.modalTransitionStyle = .crossDissolve
+                mainViewController.present(eventEditor, animated: true, completion: nil)
+            }
+        }
     }
     
     override func prepareForReuse() {

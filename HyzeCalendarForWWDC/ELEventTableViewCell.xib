@@ -27,16 +27,90 @@
                                 <rect key="frame" x="8" y="8" width="233" height="169"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="___NAME___" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="1Lw-mm-cU6">
-                                        <rect key="frame" x="0.0" y="0.0" width="233" height="109"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="233" height="111"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zbY-Sk-Uxa">
-                                        <rect key="frame" x="0.0" y="109" width="233" height="60"/>
-                                        <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <rect key="frame" x="0.0" y="111" width="233" height="58"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="QHG-Mt-Fyy">
+                                                <rect key="frame" x="8" y="8" width="217" height="50"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V58-oH-XjO">
+                                                        <rect key="frame" x="0.0" y="0.0" width="65.5" height="50"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gsu-1j-a4a">
+                                                                <rect key="frame" x="7.5" y="0.0" width="50" height="50"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="50" id="8gT-Y3-anW"/>
+                                                                </constraints>
+                                                                <state key="normal" image="ic_edit"/>
+                                                                <connections>
+                                                                    <action selector="edit:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="EYj-eY-8vL"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstItem="gsu-1j-a4a" firstAttribute="top" secondItem="V58-oH-XjO" secondAttribute="top" id="6dS-EK-9Pg"/>
+                                                            <constraint firstAttribute="bottom" secondItem="gsu-1j-a4a" secondAttribute="bottom" id="8kR-fk-1VM"/>
+                                                            <constraint firstItem="gsu-1j-a4a" firstAttribute="centerX" secondItem="V58-oH-XjO" secondAttribute="centerX" id="IY7-O8-E0l"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sdd-ZZ-O5C">
+                                                        <rect key="frame" x="75.5" y="0.0" width="66" height="50"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VIR-aQ-YtW">
+                                                                <rect key="frame" x="8" y="0.0" width="50" height="50"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="50" id="NHM-uu-A9r"/>
+                                                                </constraints>
+                                                                <state key="normal" image="ic_star"/>
+                                                                <connections>
+                                                                    <action selector="show:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="pnq-v4-8qK"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstItem="VIR-aQ-YtW" firstAttribute="top" secondItem="Sdd-ZZ-O5C" secondAttribute="top" id="htt-Sc-wNM"/>
+                                                            <constraint firstAttribute="bottom" secondItem="VIR-aQ-YtW" secondAttribute="bottom" id="v2L-AZ-ed8"/>
+                                                            <constraint firstItem="VIR-aQ-YtW" firstAttribute="centerX" secondItem="Sdd-ZZ-O5C" secondAttribute="centerX" id="yQE-ge-oTI"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dOj-cf-wIy">
+                                                        <rect key="frame" x="151.5" y="0.0" width="65.5" height="50"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Yv-OJ-2sv">
+                                                                <rect key="frame" x="8.5" y="0.0" width="50" height="50"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="50" id="zVX-eS-DhY"/>
+                                                                </constraints>
+                                                                <state key="normal" image="ic_delete"/>
+                                                                <connections>
+                                                                    <action selector="remove:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="VdI-Jv-F9L"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="bottom" secondItem="6Yv-OJ-2sv" secondAttribute="bottom" id="Jog-wB-vTb"/>
+                                                            <constraint firstItem="6Yv-OJ-2sv" firstAttribute="centerX" secondItem="dOj-cf-wIy" secondAttribute="centerX" id="fx8-6l-Hdu"/>
+                                                            <constraint firstItem="6Yv-OJ-2sv" firstAttribute="top" secondItem="dOj-cf-wIy" secondAttribute="top" id="vin-8J-UWR"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="60" id="z0w-2D-w0K"/>
+                                            <constraint firstAttribute="bottom" secondItem="QHG-Mt-Fyy" secondAttribute="bottom" id="0GJ-2l-KDe"/>
+                                            <constraint firstItem="QHG-Mt-Fyy" firstAttribute="top" secondItem="zbY-Sk-Uxa" secondAttribute="topMargin" id="Z3s-DD-SeI"/>
+                                            <constraint firstItem="QHG-Mt-Fyy" firstAttribute="leading" secondItem="zbY-Sk-Uxa" secondAttribute="leadingMargin" id="pXX-BD-q4m"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="QHG-Mt-Fyy" secondAttribute="trailing" id="prQ-af-6gU"/>
+                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="58" id="z0w-2D-w0K"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -83,9 +157,15 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="editButton" destination="gsu-1j-a4a" id="l6o-rX-yI9"/>
+                <outlet property="editButtonView" destination="V58-oH-XjO" id="VyX-yo-o0z"/>
                 <outlet property="endTime" destination="bHt-o1-FGy" id="eeM-Ob-4M8"/>
                 <outlet property="mainView" destination="jdu-gT-Cz6" id="wvh-en-xxq"/>
+                <outlet property="removeButton" destination="6Yv-OJ-2sv" id="tex-gq-afU"/>
+                <outlet property="removeButtonView" destination="dOj-cf-wIy" id="KcH-Kj-36S"/>
                 <outlet property="selectMenu" destination="zbY-Sk-Uxa" id="ipv-X0-0g8"/>
+                <outlet property="showButton" destination="VIR-aQ-YtW" id="ppH-UC-LoJ"/>
+                <outlet property="showButtonView" destination="Sdd-ZZ-O5C" id="v1e-Zg-Egg"/>
                 <outlet property="stackView" destination="XjI-sQ-7W6" id="6vx-zM-Dfv"/>
                 <outlet property="startTime" destination="qAc-gh-edr" id="Pae-3k-K4H"/>
                 <outlet property="titleLabel" destination="1Lw-mm-cU6" id="YOW-a9-p7G"/>
@@ -93,4 +173,9 @@
             <point key="canvasLocation" x="34" y="-27.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="ic_delete" width="24" height="24"/>
+        <image name="ic_edit" width="24" height="24"/>
+        <image name="ic_star" width="24" height="24"/>
+    </resources>
 </document>

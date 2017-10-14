@@ -21,8 +21,13 @@ extension EventEditorViewController {
 			color = Color.grey.withAlphaComponent(0.5)
 		}
 		
-		let str = NSAttributedString(string: "Untitled Event", attributes: [NSAttributedStringKey.foregroundColor : color])
-		titleTextField.attributedPlaceholder = str
+        if eventInformations.title == "" {
+            let str = NSAttributedString(string: "Untitled Event", attributes: [NSAttributedStringKey.foregroundColor : color])
+            titleTextField.attributedPlaceholder = str
+        } else {
+            self.titleTextField.text = eventInformations.title
+        }
+		
 	}
 	
 	func createSetUpSaveButton() {
