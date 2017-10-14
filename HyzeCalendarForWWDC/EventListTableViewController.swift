@@ -27,7 +27,6 @@ class EventListTableViewController: UITableViewController {
     }
     
     func configure() {
-        tableView.allowsSelection = false
         tableView.separatorStyle = .none
         tableView.backgroundColor = UIColor.clear
         tableView.contentInset = UIEdgeInsets(top: 22, left: 0, bottom: 70, right: 0)
@@ -94,26 +93,42 @@ class EventListTableViewController: UITableViewController {
         }
         
         let event = events[indexPath.row]
-        if event.isAllDay || !Settings.shared.isEventListRelative {
-            return basicCellHeight
-        }
+        
         let start = TimeManagement.getTimeInMinutes(of: event.startDate)
         let end = TimeManagement.getTimeInMinutes(of: event.endDate)
         
         let length = CGFloat(end - start)
-        let height = length < basicCellHeight ? basicCellHeight : length
-            
+        var height = length < basicCellHeight ? basicCellHeight : length
+        
+        if event.isAllDay || !Settings.shared.isEventListRelative {
+            height = basicCellHeight
+        }
+        if self.tableView.indexPathForSelectedRow == indexPath {
+            height += 60
+        }
+        
         return CGFloat(height)
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        reloadList(onlyDesign: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        if indexPath.section == 0 {
+            return nil
+        }
+        return indexPath
     }
     
     func reloadList(onlyDesign: Bool = false) {
         if onlyDesign {
             self.tableView.beginUpdates()
             self.tableView.endUpdates()
+            guard let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? ELAddEventTableViewCell else { return }
+            cell.updateDesign()
         } else {
-            self.tableView.reloadSections(IndexSet(integer: 1), with: .automatic)
+            self.tableView.reloadSections(IndexSet(integer: 1), with: .fade)
         }
-        
     }
-
 }

@@ -73,9 +73,18 @@ class ELEventTableViewCell: UITableViewCell {
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        if selected {
+            
+            
+            
+            
+        } else {
+            
+        }
+    }
+    
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        return
     }
     
     override func prepareForReuse() {

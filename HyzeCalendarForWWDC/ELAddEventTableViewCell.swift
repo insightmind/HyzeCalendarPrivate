@@ -35,7 +35,19 @@ class ELAddEventTableViewCell: UITableViewCell {
     }
     
     @IBAction func addEvent(_ sender: UIButton) {
-        
+        EventManagement.shared.eventInformation = EventEditorEventInformations()
+        let storyboard = UIStoryboard(name: "EventEditor", bundle: nil)
+        let superViewController = UIApplication.shared.keyWindow?.rootViewController
+        var mainViewController: ViewController
+        guard let eventEditor = storyboard.instantiateInitialViewController() else { return }
+        for i in (superViewController?.childViewControllers)! {
+            if i.title == "MonthView" {
+                mainViewController = i as! ViewController
+                eventEditor.modalPresentationStyle = .overCurrentContext
+                eventEditor.modalTransitionStyle = .crossDissolve
+                mainViewController.present(eventEditor, animated: true, completion: nil)
+            }
+        }
     }
     
     @IBAction func toggleLayer(_ sender: UIButton) {
@@ -47,8 +59,13 @@ class ELAddEventTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        selectionStyle = .none
+        layoutIfNeeded()
+    }
+    
+    override func layoutIfNeeded() {
+        super.layoutIfNeeded()
         updateDesign()
-        // Initialization code
     }
     
     func updateDesign() {
@@ -97,12 +114,6 @@ class ELAddEventTableViewCell: UITableViewCell {
             }
             self.selectTodayButton.transform = transform
         }, completion: nil)
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
 }

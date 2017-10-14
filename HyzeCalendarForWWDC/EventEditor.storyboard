@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13528" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="CPl-dw-xgF">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13526"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--eventEditor-->
+        <scene sceneID="jfK-W9-XJB">
+            <objects>
+                <viewController title="eventEditor" id="CPl-dw-xgF" customClass="EventEditorViewController" customModule="HyzeCalendarForWWDC" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Esq-Go-3wf"/>
+                        <viewControllerLayoutGuide type="bottom" id="AY9-Ry-ahx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Rdh-tp-9Cc">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dcw-VL-8Yh">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="IQ9-0U-0qH">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VZE-Mz-WFL">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="1Xu-XP-T9N">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            </view>
+                                            <vibrancyEffect>
+                                                <blurEffect style="light"/>
+                                            </vibrancyEffect>
+                                        </visualEffectView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="VZE-Mz-WFL" firstAttribute="leading" secondItem="IQ9-0U-0qH" secondAttribute="leading" id="9nW-4k-wtV"/>
+                                        <constraint firstAttribute="trailing" secondItem="VZE-Mz-WFL" secondAttribute="trailing" id="LXh-fo-Xmw"/>
+                                        <constraint firstItem="VZE-Mz-WFL" firstAttribute="top" secondItem="IQ9-0U-0qH" secondAttribute="top" id="crQ-7y-fSF"/>
+                                        <constraint firstAttribute="bottom" secondItem="VZE-Mz-WFL" secondAttribute="bottom" id="lhy-2A-xcx"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="extraLight"/>
+                            </visualEffectView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Mp-VE-c89">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <connections>
+                                    <segue destination="Ehi-tk-gaE" kind="embed" identifier="embed" id="Cdl-qJ-GlG"/>
+                                </connections>
+                            </containerView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OvM-tT-AXz">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="123"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Dkn-J6-nHi">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="123"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8jl-H2-mcO">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="123"/>
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="nN2-AS-zWK">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="123"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            </view>
+                                            <vibrancyEffect>
+                                                <blurEffect style="light"/>
+                                            </vibrancyEffect>
+                                        </visualEffectView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="8jl-H2-mcO" firstAttribute="top" secondItem="Dkn-J6-nHi" secondAttribute="top" id="CSD-0W-xUb"/>
+                                        <constraint firstAttribute="trailing" secondItem="8jl-H2-mcO" secondAttribute="trailing" id="Dlk-Jw-c08"/>
+                                        <constraint firstItem="8jl-H2-mcO" firstAttribute="leading" secondItem="Dkn-J6-nHi" secondAttribute="leading" id="DyV-bF-AFj"/>
+                                        <constraint firstAttribute="bottom" secondItem="8jl-H2-mcO" secondAttribute="bottom" id="P4o-Om-9iD"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="NEW EVENT" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fmZ-f3-9fn">
+                                <rect key="frame" x="16" y="76" width="343" height="35"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="Rap-H5-OsS"/>
+                                </constraints>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UdT-j9-cxD">
+                                <rect key="frame" x="16" y="28" width="68" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="68" id="tPs-TC-Ngc"/>
+                                </constraints>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="0.2036032975" green="0.57139366869999997" blue="0.90090757610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancel:" destination="CPl-dw-xgF" eventType="touchUpInside" id="7Uf-2u-5fl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j08-VV-qd0">
+                                <rect key="frame" x="322" y="28" width="46" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="vPs-Gl-JBK"/>
+                                </constraints>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" red="0.2036032975" green="0.57139366869999997" blue="0.90090757610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="save:" destination="CPl-dw-xgF" eventType="touchUpInside" id="1Ed-2d-a4L"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="UdT-j9-cxD" firstAttribute="baseline" secondItem="j08-VV-qd0" secondAttribute="baseline" id="3dd-jf-bEw"/>
+                            <constraint firstItem="fmZ-f3-9fn" firstAttribute="top" secondItem="OvM-tT-AXz" secondAttribute="bottom" constant="-47" id="3ew-QQ-yWz"/>
+                            <constraint firstItem="UdT-j9-cxD" firstAttribute="top" secondItem="Esq-Go-3wf" secondAttribute="bottom" constant="8" symbolic="YES" id="BhU-ZX-M1O"/>
+                            <constraint firstAttribute="trailing" secondItem="Dcw-VL-8Yh" secondAttribute="trailing" id="C8k-83-47k"/>
+                            <constraint firstItem="Dcw-VL-8Yh" firstAttribute="top" secondItem="Rdh-tp-9Cc" secondAttribute="top" id="CBa-ml-Kao"/>
+                            <constraint firstItem="OvM-tT-AXz" firstAttribute="top" secondItem="Rdh-tp-9Cc" secondAttribute="top" id="DLl-27-8ft"/>
+                            <constraint firstItem="4Mp-VE-c89" firstAttribute="top" secondItem="Rdh-tp-9Cc" secondAttribute="top" id="FYl-6j-wvL"/>
+                            <constraint firstAttribute="trailing" secondItem="OvM-tT-AXz" secondAttribute="trailing" id="Fo2-Cd-NgJ"/>
+                            <constraint firstItem="UdT-j9-cxD" firstAttribute="leading" secondItem="Rdh-tp-9Cc" secondAttribute="leadingMargin" id="Lot-A8-pNV"/>
+                            <constraint firstItem="Dcw-VL-8Yh" firstAttribute="bottom" secondItem="Rdh-tp-9Cc" secondAttribute="bottom" id="PuT-2y-unu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="j08-VV-qd0" secondAttribute="trailing" constant="-9" id="Qg8-sg-Ek0"/>
+                            <constraint firstItem="Dcw-VL-8Yh" firstAttribute="leading" secondItem="Rdh-tp-9Cc" secondAttribute="leading" id="TAh-T7-Niw"/>
+                            <constraint firstItem="fmZ-f3-9fn" firstAttribute="centerX" secondItem="4Mp-VE-c89" secondAttribute="centerX" id="Z1f-vq-qZo"/>
+                            <constraint firstItem="fmZ-f3-9fn" firstAttribute="top" secondItem="UdT-j9-cxD" secondAttribute="bottom" constant="18" id="aXC-bD-rdA"/>
+                            <constraint firstItem="4Mp-VE-c89" firstAttribute="bottom" secondItem="Rdh-tp-9Cc" secondAttribute="bottom" id="be4-iY-97W"/>
+                            <constraint firstItem="UdT-j9-cxD" firstAttribute="leading" secondItem="fmZ-f3-9fn" secondAttribute="leading" id="hRh-Nj-GRf"/>
+                            <constraint firstItem="Dcw-VL-8Yh" firstAttribute="leading" secondItem="4Mp-VE-c89" secondAttribute="leading" id="l8a-Mf-wey"/>
+                            <constraint firstItem="Dcw-VL-8Yh" firstAttribute="trailing" secondItem="4Mp-VE-c89" secondAttribute="trailing" id="mgd-YK-RiC"/>
+                            <constraint firstItem="OvM-tT-AXz" firstAttribute="leading" secondItem="Rdh-tp-9Cc" secondAttribute="leading" id="nwa-Uk-vQ8"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="blurEffectNavbarView" destination="OvM-tT-AXz" id="SNx-gX-AUo"/>
+                        <outlet property="blurEffectView" destination="Dcw-VL-8Yh" id="SeW-jZ-tg2"/>
+                        <outlet property="saveButton" destination="j08-VV-qd0" id="UA4-Ln-Svx"/>
+                        <outlet property="tableView" destination="4Mp-VE-c89" id="zXy-hS-t35"/>
+                        <outlet property="titleTextField" destination="fmZ-f3-9fn" id="g2Q-P6-isb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0fS-fN-gpE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="ptL-fB-3hO" userLabel="startDateTap"/>
+                <tapGestureRecognizer id="pRf-g7-lxY" userLabel="endDateTap"/>
+            </objects>
+            <point key="canvasLocation" x="8248.7999999999993" y="-85.007496251874073"/>
+        </scene>
+        <!--Event Editor Table View Controller-->
+        <scene sceneID="1Hd-kH-Cab">
+            <objects>
+                <tableViewController id="Ehi-tk-gaE" customClass="EventEditorTableViewController" customModule="HyzeCalendarForWWDC" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="NPS-Od-36P">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="Ehi-tk-gaE" id="Fpf-1E-dvF"/>
+                            <outlet property="delegate" destination="Ehi-tk-gaE" id="dwQ-xt-1Bp"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5et-kw-Euy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="9039" y="-85"/>
+        </scene>
+    </scenes>
+</document>

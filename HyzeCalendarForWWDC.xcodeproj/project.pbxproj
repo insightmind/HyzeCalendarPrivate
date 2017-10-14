@@ -112,6 +112,7 @@
 		85788BB81F865EA10073B90C /* ELEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85788BB61F865EA10073B90C /* ELEventTableViewCell.swift */; };
 		85788BB91F865EA10073B90C /* ELEventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85788BB71F865EA10073B90C /* ELEventTableViewCell.xib */; };
 		857CDFD51F7D76FD00ACECB6 /* ETViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857CDFD41F7D76FD00ACECB6 /* ETViewController.swift */; };
+		85868DC71F926A8D00D5EF1E /* EventEditor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85868DC61F926A8D00D5EF1E /* EventEditor.storyboard */; };
 		BD379CE11E3065B18A68D862 /* Pods_HyzeCalendarForWWDC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97F66AFE0BF643DE942FADFE /* Pods_HyzeCalendarForWWDC.framework */; };
 /* End PBXBuildFile section */
 
@@ -226,6 +227,7 @@
 		85788BB61F865EA10073B90C /* ELEventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ELEventTableViewCell.swift; sourceTree = "<group>"; };
 		85788BB71F865EA10073B90C /* ELEventTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ELEventTableViewCell.xib; sourceTree = "<group>"; };
 		857CDFD41F7D76FD00ACECB6 /* ETViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETViewController.swift; sourceTree = "<group>"; };
+		85868DC61F926A8D00D5EF1E /* EventEditor.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EventEditor.storyboard; sourceTree = "<group>"; };
 		97F66AFE0BF643DE942FADFE /* Pods_HyzeCalendarForWWDC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HyzeCalendarForWWDC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -486,6 +488,7 @@
 				3EA80D5A1E2BEC9300FD87C3 /* LaunchScreen.storyboard */,
 				3E68B5C71E3A886D00AE103F /* Main.storyboard */,
 				3EA8EE2B1ED219B8000D6EF2 /* DayView.storyboard */,
+				85868DC61F926A8D00D5EF1E /* EventEditor.storyboard */,
 				3EA8EE281ED21989000D6EF2 /* Settings.storyboard */,
 			);
 			name = Storyboards;
@@ -868,6 +871,7 @@
 				3EA80D591E2BEC9300FD87C3 /* Assets.xcassets in Resources */,
 				3EA8EE2C1ED219B8000D6EF2 /* DayView.storyboard in Resources */,
 				3EA727571F49F0560041B398 /* SelectContactsTableViewCell.xib in Resources */,
+				85868DC71F926A8D00D5EF1E /* EventEditor.storyboard in Resources */,
 				3E61C1131F53814900AE1A2B /* WeekdayTableViewCell.xib in Resources */,
 				3E6560831F4CCBDF00C241BE /* SetContacts.storyboard in Resources */,
 				854626B21F8E7162002D6EF5 /* ELAddEventTableViewCell.xib in Resources */,

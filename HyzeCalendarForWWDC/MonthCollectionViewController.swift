@@ -153,9 +153,6 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
         } else {
             cell.isSelected = false
         }
-        
-        
-        
         return cell
     }
 	
@@ -193,8 +190,8 @@ extension MonthCollectionViewController {
                 guard let mainViewController = i as? ViewController else { return }
                 guard let vc = mainViewController.eventListViewController else { return }
                 guard let list = vc.eventList else { return }
-				vc.updateDesign()
-                list.reloadList()
+                list.reloadList(onlyDesign: false)
+                vc.updateDesign()
 			}
 		}
 	}

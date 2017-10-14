@@ -116,8 +116,8 @@ class ETViewController: UIViewController {
             }
             self.toolBar.backgroundColor = UIColor.clear
         }
-        guard let cell = eventList?.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? ELAddEventTableViewCell else { return }
-        cell.updateSelectTodayIcon()
+        guard let eList = eventList else { return }
+        eList.reloadList(onlyDesign: true)
     }
     
     func changeState(to state: ETViewState) {
