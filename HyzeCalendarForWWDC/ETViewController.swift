@@ -159,7 +159,7 @@ class ETViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func updateDesign() {
+    func updateDesign(_ shouldReload: Bool = false) {
         guard let isToday = Selection.shared.selectedIsToday else { return }
         guard let isWeekend = Selection.shared.selectedIsOnWeekend else { return }
         UIView.animate(withDuration: 0.2) {
@@ -173,7 +173,7 @@ class ETViewController: UIViewController {
             self.toolBar.backgroundColor = UIColor.clear
         }
         guard let eList = eventList else { return }
-        eList.reloadList(onlyDesign: true)
+        eList.reloadList(onlyDesign: shouldReload)
     }
     
     func changeState(to state: ETViewState) {

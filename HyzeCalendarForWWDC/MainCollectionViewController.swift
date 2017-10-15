@@ -83,9 +83,12 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
     override func viewWillAppear(_ animated: Bool) {
         if Settings.shared.needsDesignUpdate {
             reloadCalendarView()
+            self.calculateETViewUpdate(shouldReload: true)
             Settings.shared.needsDesignUpdate = false
+        } else {
+            self.calculateETViewUpdate()
         }
-		self.calculateETViewUpdate()
+		
     }
 	
 	func reloadCalendarView() {
@@ -155,7 +158,7 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 		parent.navigationBar.title = name
 	}
 	
-	fileprivate func calculateETViewUpdate() {
+    fileprivate func calculateETViewUpdate(shouldReload: Bool = false) {
 		
 		let daysInMonth = TimeManagement.calculateDaysInMonth(yearID: Selection.shared.currentYearID, monthID: Selection.shared.currentMonthID)
 		
@@ -168,14 +171,12 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 		
 		if conform + daysInMonth > 36 {
             Design.shared.currentETViewIsExpandedByNumOfRows = 0
-			updateETViewHeight(self.collectionView!)
 		} else if conform + daysInMonth > 29 {
             Design.shared.currentETViewIsExpandedByNumOfRows = 1
-			updateETViewHeight(self.collectionView!)
 		} else {
             Design.shared.currentETViewIsExpandedByNumOfRows = 2
-			updateETViewHeight(self.collectionView!)
-		}
+        }
+        updateETViewHeight(self.collectionView!, shouldReload: shouldReload)
 	}
 	
 	func scrollToSection(yearID: Int, monthID: Int, animated anim: Bool = false) {
@@ -191,7 +192,7 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 		setMonthName()
 	}
 	
-    func updateETViewHeight(_ collectionView: UICollectionView) {
+    func updateETViewHeight(_ collectionView: UICollectionView, shouldReload: Bool = false) {
         if Design.shared.currentETViewState != .normal {
             return
         }
@@ -207,7 +208,7 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
                     mainViewController.view.layoutIfNeeded()
                 }, completion: nil)
                 guard let eventList = mainViewController.eventListViewController else { return }
-                eventList.updateDesign()
+                eventList.updateDesign(shouldReload)
 			}
 		}
 	}

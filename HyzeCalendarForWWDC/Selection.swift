@@ -9,6 +9,8 @@
 //MARK: - Imports
 import Foundation
 
+typealias DayIndexConform = (Int, Int, IndexPath?)
+
 enum WeekDay: Int {
 	case sunday = 0
 	case monday = 1
@@ -33,7 +35,7 @@ struct Selection {
 	
     /// Data for the current selected Day in the MonthView
     /// (YearID: Int, MonthID: Int, indexPath in MonthView: IndexPath?)
-    var selectedDayCellIndex: (Int, Int, IndexPath?)
+    var selectedDayCellIndex: DayIndexConform
 	
 	/// information if the selected Day is at weekend
 	var selectedIsOnWeekend: Bool?
@@ -43,7 +45,7 @@ struct Selection {
     
     /// Data for the current Day in the MonthView
     /// (YearID: Int, MonthID: Int, indexPath in MonthView: IndexPath?)
-    var todaysDayCellIndex: (Int, Int, IndexPath?)
+    var todaysDayCellIndex: DayIndexConform
     
     ///current yearID of the presented MainCollectionView in CalendarView
 	var currentYearID: Int = 0

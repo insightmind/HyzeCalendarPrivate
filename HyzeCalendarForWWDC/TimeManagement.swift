@@ -10,6 +10,15 @@
 import Foundation
 import EventKit
 
+enum EventComparisonResult {
+    case before
+    case after
+    case intersectBefore
+    case intersectAfter
+    case intersectBeforeAfter
+    case intersect
+}
+
 //MARK: -
 class TimeManagement {
 	
@@ -191,4 +200,9 @@ class TimeManagement {
 		let angle = ((timeInMinute * CGFloat.pi)/720)
 		return angle
 	}
+    
+    //MARK: Not Finished
+//    class func checkIntersection(first: EKEvent, second: EKEvent) -> EventComparisonResult {
+//
+//    }
 }

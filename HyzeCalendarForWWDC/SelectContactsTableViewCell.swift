@@ -106,6 +106,8 @@ class SelectContactsTableViewCell: UITableViewCell, EventEditorCellProtocol {
 	
 	func checkEditable() {
 		guard let calendarType = eventInformations.calendar?.type else {
+            self.addContactLabel.text = "Select Calendar first"
+            self.addButton.isHidden = true
 			return
 		}
 		switch calendarType {
@@ -114,7 +116,7 @@ class SelectContactsTableViewCell: UITableViewCell, EventEditorCellProtocol {
 		default:
 			isEditable = true
 		}
-		
+		self.addButton.isHidden = false
 		if isEditable {
 			self.addContactLabel.text = "add Contacts"
 			self.realAddButton.isUserInteractionEnabled = true
