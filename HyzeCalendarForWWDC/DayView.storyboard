@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13528" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="4in-gb-opo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13528" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4in-gb-opo">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13526"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,10 +15,6 @@
         <scene sceneID="XXD-uG-pqP">
             <objects>
                 <viewController id="4in-gb-opo" customClass="DayViewUIVViewController" customModule="HyzeCalendarForWWDC" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Nza-hy-l1u"/>
-                        <viewControllerLayoutGuide type="bottom" id="n78-f7-hAW"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="PfB-zh-Sgo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -31,55 +28,38 @@
                                     <constraint firstAttribute="width" secondItem="NeF-Az-v1m" secondAttribute="height" multiplier="1:1" id="on8-ep-cWk"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qet-3Z-dfx" customClass="ETView" customModule="HyzeCalendarForWWDC" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="305" width="375" height="314"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="sectionIndexColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="sectionIndexTrackingBackgroundColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Events" id="MZw-of-dJN" customClass="ETViewCell" customModule="HyzeCalendarForWWDC" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MZw-of-dJN" id="MG7-Ke-Eap">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="nyN-5R-T2a" id="g1f-vU-duY"/>
-                                    <outlet property="delegate" destination="nyN-5R-T2a" id="tnB-vn-uRK"/>
-                                </connections>
-                            </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DCD-IK-MQs">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="305"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="659-qx-L76">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="cbs-bN-xwi" appends="YES" id="WcA-QW-LfW"/>
-                                    <outletCollection property="gestureRecognizers" destination="e3r-qf-M7u" appends="YES" id="fxf-TQ-5kq"/>
-                                    <outletCollection property="gestureRecognizers" destination="I6G-84-jUb" appends="YES" id="76D-TI-RAr"/>
+                                    <outletCollection property="gestureRecognizers" destination="2sd-F0-7Kf" appends="YES" id="rnY-cu-p5R"/>
+                                    <outletCollection property="gestureRecognizers" destination="1hf-V4-PUD" appends="YES" id="YVP-z1-4Ov"/>
                                 </connections>
                             </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JbP-kr-UTh">
+                                <rect key="frame" x="0.0" y="300" width="375" height="367"/>
+                                <connections>
+                                    <segue destination="KPH-Ex-wsk" kind="embed" identifier="embed" id="AGd-tA-KMJ"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="qet-3Z-dfx" firstAttribute="leading" secondItem="PfB-zh-Sgo" secondAttribute="leading" id="74b-Kr-gma"/>
-                            <constraint firstAttribute="trailing" secondItem="DCD-IK-MQs" secondAttribute="trailing" id="BQm-Az-hLj"/>
-                            <constraint firstItem="NeF-Az-v1m" firstAttribute="centerX" secondItem="PfB-zh-Sgo" secondAttribute="centerX" id="CqK-hg-WbP"/>
-                            <constraint firstAttribute="leading" secondItem="NeF-Az-v1m" secondAttribute="trailing" priority="750" constant="75" id="EZW-M9-z2l"/>
-                            <constraint firstAttribute="bottom" secondItem="qet-3Z-dfx" secondAttribute="bottom" constant="-16" id="KGk-wp-F6T"/>
-                            <constraint firstItem="qet-3Z-dfx" firstAttribute="top" secondItem="DCD-IK-MQs" secondAttribute="bottom" id="MGD-CQ-ip3"/>
-                            <constraint firstItem="NeF-Az-v1m" firstAttribute="leading" secondItem="PfB-zh-Sgo" secondAttribute="trailing" priority="750" constant="75" id="SSG-s2-gxn"/>
-                            <constraint firstItem="DCD-IK-MQs" firstAttribute="leading" secondItem="PfB-zh-Sgo" secondAttribute="leading" id="Vfi-4f-vhq"/>
-                            <constraint firstItem="DCD-IK-MQs" firstAttribute="top" secondItem="Nza-hy-l1u" secondAttribute="bottom" id="aSd-0w-jBh"/>
-                            <constraint firstAttribute="trailing" secondItem="qet-3Z-dfx" secondAttribute="trailing" id="grD-IX-Ges"/>
-                            <constraint firstItem="NeF-Az-v1m" firstAttribute="top" secondItem="Nza-hy-l1u" secondAttribute="bottom" constant="40" id="kOe-vh-yfQ"/>
-                            <constraint firstItem="qet-3Z-dfx" firstAttribute="top" secondItem="NeF-Az-v1m" secondAttribute="bottom" constant="40" id="w3I-Hw-b1Z"/>
+                            <constraint firstItem="JbP-kr-UTh" firstAttribute="top" secondItem="fVR-o1-yrT" secondAttribute="top" constant="300" id="8cR-2E-MAD"/>
+                            <constraint firstItem="JbP-kr-UTh" firstAttribute="bottom" secondItem="fVR-o1-yrT" secondAttribute="bottom" constant="64" id="CaG-0v-B9S"/>
+                            <constraint firstItem="NeF-Az-v1m" firstAttribute="centerX" secondItem="fVR-o1-yrT" secondAttribute="centerX" id="CqK-hg-WbP"/>
+                            <constraint firstItem="fVR-o1-yrT" firstAttribute="leading" secondItem="NeF-Az-v1m" secondAttribute="trailing" priority="750" constant="75" id="EZW-M9-z2l"/>
+                            <constraint firstItem="fVR-o1-yrT" firstAttribute="trailing" secondItem="659-qx-L76" secondAttribute="trailing" id="P6p-It-edn"/>
+                            <constraint firstItem="JbP-kr-UTh" firstAttribute="leading" secondItem="fVR-o1-yrT" secondAttribute="leading" id="PhS-tj-8Cr"/>
+                            <constraint firstItem="JbP-kr-UTh" firstAttribute="top" secondItem="659-qx-L76" secondAttribute="bottom" id="R9A-n5-P4D"/>
+                            <constraint firstItem="NeF-Az-v1m" firstAttribute="leading" secondItem="fVR-o1-yrT" secondAttribute="trailing" priority="750" constant="75" id="SSG-s2-gxn"/>
+                            <constraint firstItem="JbP-kr-UTh" firstAttribute="trailing" secondItem="fVR-o1-yrT" secondAttribute="trailing" id="Yb4-bY-ZSq"/>
+                            <constraint firstItem="NeF-Az-v1m" firstAttribute="top" secondItem="fVR-o1-yrT" secondAttribute="top" constant="40" id="kOe-vh-yfQ"/>
+                            <constraint firstItem="fVR-o1-yrT" firstAttribute="top" secondItem="659-qx-L76" secondAttribute="top" id="oCc-Lz-cah"/>
+                            <constraint firstItem="659-qx-L76" firstAttribute="leading" secondItem="fVR-o1-yrT" secondAttribute="leading" id="w81-lx-Wk4"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="fVR-o1-yrT"/>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="EZW-M9-z2l"/>
@@ -88,60 +68,43 @@
                         </variation>
                     </view>
                     <tabBarItem key="tabBarItem" tag="1" systemItem="more" id="kJ7-Jn-DGx"/>
-                    <navigationItem key="navigationItem" id="9bw-Ll-QIt">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="mpO-EJ-ORb">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <segue destination="o4Q-Rv-rmY" kind="presentation" identifier="showEventEditor" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="hO6-c1-sZp"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="9bw-Ll-QIt"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO">
                         <color key="tintColor" red="0.25061571598052979" green="0.25083461403846741" blue="0.25064963102340698" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" red="0.93814986944198608" green="0.51639610528945923" blue="0.2135617733001709" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </simulatedNavigationBarMetrics>
                     <connections>
-                        <outlet property="LeftSwipeRecognizer" destination="e3r-qf-M7u" id="faR-hg-uZl"/>
-                        <outlet property="RightSwipeRecognizer" destination="cbs-bN-xwi" id="Sgi-kz-Ryd"/>
-                        <outlet property="addButton" destination="mpO-EJ-ORb" id="gLy-8d-ZcI"/>
                         <outlet property="day" destination="NeF-Az-v1m" id="RBp-N6-QbW"/>
+                        <outlet property="dayTopConstraint" destination="kOe-vh-yfQ" id="3wy-mJ-cK1"/>
                         <outlet property="dayViewLeft" destination="EZW-M9-z2l" id="0eV-BC-LI2"/>
                         <outlet property="dayViewNormal" destination="CqK-hg-WbP" id="vGp-iu-jjc"/>
                         <outlet property="dayViewRight" destination="SSG-s2-gxn" id="OnY-ej-3Ne"/>
-                        <outlet property="eventTableView" destination="qet-3Z-dfx" id="9it-wW-K6x"/>
+                        <outlet property="eventListTopConstraint" destination="8cR-2E-MAD" id="02g-1P-PhP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9tn-v4-F0a" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="nyN-5R-T2a" customClass="ETView" customModule="HyzeCalendarForWWDC" customModuleProvider="target"/>
-                <swipeGestureRecognizer direction="right" id="cbs-bN-xwi">
+                <swipeGestureRecognizer direction="right" id="2sd-F0-7Kf" userLabel="SwipeRight">
                     <connections>
-                        <action selector="swipeRight:" destination="4in-gb-opo" id="sCL-DH-rNe"/>
+                        <action selector="swipeRight:" destination="4in-gb-opo" id="NgY-iN-ZBZ"/>
                     </connections>
                 </swipeGestureRecognizer>
-                <swipeGestureRecognizer direction="left" id="e3r-qf-M7u">
+                <swipeGestureRecognizer direction="left" id="1hf-V4-PUD" userLabel="SwipeLeft">
                     <connections>
-                        <action selector="swipeLeft:" destination="4in-gb-opo" id="8QP-O3-8hI"/>
+                        <action selector="swipeLeft:" destination="4in-gb-opo" id="Xzu-8k-cSg"/>
                     </connections>
                 </swipeGestureRecognizer>
-                <tapGestureRecognizer id="I6G-84-jUb">
-                    <connections>
-                        <segue destination="o4Q-Rv-rmY" kind="presentation" identifier="showDetail" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="0bX-zJ-UCa"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="7140" y="-109.29535232383809"/>
         </scene>
-        <!--EventEditor-->
-        <scene sceneID="HK5-0H-blp">
+        <!--ETView-->
+        <scene sceneID="waR-Hz-vQK">
             <objects>
-                <viewControllerPlaceholder storyboardName="EventEditor" id="o4Q-Rv-rmY" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="w5p-eG-nzA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="ETView" id="KPH-Ex-wsk" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nbe-JG-XIi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7849" y="-110"/>
+            <point key="canvasLocation" x="7722" y="-110"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="hO6-c1-sZp"/>
-    </inferredMetricsTieBreakers>
 </document>

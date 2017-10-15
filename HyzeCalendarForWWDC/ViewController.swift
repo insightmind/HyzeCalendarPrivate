@@ -167,7 +167,7 @@ class ViewController: UIViewController {
         if segue.identifier == "embedETView" {
             if let viewController = segue.destination as? ETViewController {
                 self.eventListViewController = viewController
-                viewController.superViewController = self
+                viewController.calendarViewController = self
             }
         }
     }

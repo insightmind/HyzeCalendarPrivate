@@ -486,8 +486,8 @@
 			isa = PBXGroup;
 			children = (
 				3EA80D5A1E2BEC9300FD87C3 /* LaunchScreen.storyboard */,
-				3E68B5C71E3A886D00AE103F /* Main.storyboard */,
 				3EA8EE2B1ED219B8000D6EF2 /* DayView.storyboard */,
+				3E68B5C71E3A886D00AE103F /* Main.storyboard */,
 				85868DC61F926A8D00D5EF1E /* EventEditor.storyboard */,
 				3EA8EE281ED21989000D6EF2 /* Settings.storyboard */,
 			);

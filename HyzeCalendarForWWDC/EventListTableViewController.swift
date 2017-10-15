@@ -15,6 +15,7 @@ class EventListTableViewController: UITableViewController {
     let addEventCellReuseIdentifier = "addEventCell"
     
     let basicCellHeight: CGFloat = 70
+    var isEmbededInDayView: Bool = false
     
     var events = [EKEvent]()
     

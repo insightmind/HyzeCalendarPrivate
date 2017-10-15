@@ -73,8 +73,16 @@ class ELAddEventTableViewCell: UITableViewCell {
         layer.masksToBounds = false
         let bColor = Settings.shared.isDarkMode ? Color.grey : Color.white
         let tColor = Settings.shared.isDarkMode ? Color.white : Color.grey
-        setUpButton(selectTodayButtonView, button: selectTodayButton, image: #imageLiteral(resourceName: "ic_keyboard_arrow_right"), backgroundColor:  bColor, tintColor: tColor)
-        selectTodayButtonView.layer.shadowColor = Color.grey.cgColor
+        if let superController = tableView {
+            if superController.isEmbededInDayView {
+                selectTodayButtonView.isHidden = true
+            } else {
+                selectTodayButtonView.isHidden = false
+                setUpButton(selectTodayButtonView, button: selectTodayButton, image: #imageLiteral(resourceName: "ic_keyboard_arrow_right"), backgroundColor:  bColor, tintColor: tColor)
+                selectTodayButtonView.layer.shadowColor = Color.grey.cgColor
+            }
+        }
+        
         setUpButton(addEventButtonView, button: addEventButton, image: #imageLiteral(resourceName: "ic_add"), backgroundColor: Color.green)
         addEventButtonView.layer.shadowColor = Color.grey.cgColor
         addEventButtonView.layer.cornerRadius = addEventButtonView.bounds.height / 2

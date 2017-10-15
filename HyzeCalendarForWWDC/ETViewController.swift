@@ -18,13 +18,15 @@ enum ETViewState {
 class ETViewController: UIViewController {
     
     var state: ETViewState = .normal
+    var isCalendarView = true
 
     @IBOutlet weak var gestureBar: UIView!
     @IBOutlet var rightTapGestureRecognizer: UITapGestureRecognizer!
     
     @IBOutlet weak var toolBar: UIView!
     
-    var superViewController: ViewController?
+    var calendarViewController: ViewController? { didSet{ isCalendarView = true }}
+    var dayViewController: DayViewUIVViewController? { didSet{ isCalendarView = false }}
     var eventList: EventListTableViewController?
     
     override func viewDidLoad() {
@@ -33,10 +35,6 @@ class ETViewController: UIViewController {
         self.view.layer.masksToBounds = true
         setUpGestureBar()
         setUpToolbar()
-    }
-    
-    @IBAction func jumpToToday(_ sender: UIButton) {
-       
     }
     
     func setUpGestureBar() {
@@ -50,7 +48,18 @@ class ETViewController: UIViewController {
     }
     
     @objc func handlePan(recognizer: UIPanGestureRecognizer) {
-        guard let superController = superViewController else { return }
+        if let superController = calendarViewController {
+            handlePanForCalendarView(superController, recognizer: recognizer)
+            return
+        }
+        if let superController = dayViewController {
+            handlePanForDayView(superController, recognizer: recognizer)
+            return
+        }
+    }
+    
+    func handlePanForCalendarView(_ vc: ViewController, recognizer: UIPanGestureRecognizer) {
+        let superController = vc
         let touchPoint = recognizer.translation(in: superController.view)
         let animator = superController.topChange
         switch recognizer.state {
@@ -97,6 +106,53 @@ class ETViewController: UIViewController {
             break
         }
     }
+    
+    func handlePanForDayView(_ vc: DayViewUIVViewController, recognizer: UIPanGestureRecognizer) {
+        let superController = vc
+        let touchPoint = recognizer.translation(in: superController.view)
+        let animator = superController.topChange
+        switch recognizer.state {
+        case .began:
+            Design.shared.currentETViewHeight = superController.eventListTopConstraint.constant
+            if animator.isRunning {
+                animator.stopAnimation(true)
+            }
+        case .changed:
+            guard let visibleView = superController.navigationController?.visibleViewController?.view else { return }
+            var translatedCenterY = touchPoint.y + Design.shared.currentETViewHeight
+            let minHeight = visibleView.frame.height - 20
+            if translatedCenterY > minHeight {
+                translatedCenterY = minHeight
+            } else if translatedCenterY < 0  {
+                translatedCenterY = 0
+            }
+            superController.eventListTopConstraint.constant = translatedCenterY
+            superController.view.layoutIfNeeded()
+        case .ended, .cancelled:
+            guard let maxHeight = superController.navigationController?.visibleViewController?.view.frame.height else { return }
+            switch superController.eventListTopConstraint.constant {
+            case 0...maxHeight/3:
+                superController.eventListTopConstraint.constant = 0
+                eventList?.tableView.isScrollEnabled = true
+                changeState(to: .expanded)
+            case 3*maxHeight/4...maxHeight:
+                superController.eventListTopConstraint.constant = maxHeight - 100
+                eventList?.tableView.isScrollEnabled = false
+                eventList?.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+                changeState(to: .minimal)
+            default:
+                superController.eventListTopConstraint.constant = 2 * superController.dayTopConstraint.constant + superController.day.bounds.height
+                eventList?.tableView.isScrollEnabled = true
+                changeState(to: .normal)
+            }
+            animator.addAnimations {
+                superController.view.layoutIfNeeded()
+            }
+            animator.startAnimation()
+        default:
+            break
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -131,6 +187,9 @@ class ETViewController: UIViewController {
         if segue.identifier == "embed" {
             guard let vc = segue.destination as? EventListTableViewController else { return }
             self.eventList = vc
+            if let _ = self.dayViewController {
+                vc.isEmbededInDayView = true
+            }
         }
     }
 

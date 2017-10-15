@@ -113,7 +113,7 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
 	func endEditingWithReload() {
 		self.dismiss(animated: true, completion: {
 			self.dayView?.day.reloadData()
-			self.dayView?.eventTableView.reloadView()
+			self.dayView?.eventList?.eventList?.reloadList()
 		})
 	}
 	

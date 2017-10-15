@@ -16,22 +16,31 @@ class DayViewUIVViewController: UIViewController {
 	}
 
     @IBOutlet weak var day: DayView!
-	@IBOutlet weak var addButton: UIBarButtonItem!
-	@IBOutlet var LeftSwipeRecognizer: UISwipeGestureRecognizer!
-	@IBOutlet var RightSwipeRecognizer: UISwipeGestureRecognizer!
-	@IBOutlet weak var eventTableView: ETView!
 	
 	@IBOutlet weak var dayViewNormal: NSLayoutConstraint!
 	@IBOutlet weak var dayViewRight: NSLayoutConstraint!
 	@IBOutlet weak var dayViewLeft: NSLayoutConstraint!
-	
-	
+    
+    @IBOutlet weak var eventListTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var dayTopConstraint: NSLayoutConstraint!
+    
+    var eventList: ETViewController?
+    
+    lazy var topChange: UIViewPropertyAnimator = {
+        let cubicParameters = UICubicTimingParameters(animationCurve: .easeInOut)
+        let springParameters = UISpringTimingParameters(dampingRatio: 0.6)
+        let animator = UIViewPropertyAnimator(duration: 0.5, timingParameters: springParameters)
+        animator.isInterruptible = true
+        return animator
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setDesign()
         Settings.shared.viewIsDayView = true
         Settings.shared.renDayView = day
         day.setUp()
+        eventListTopConstraint.constant = 2*dayTopConstraint.constant + day.frame.height
 
 		
         // Do any additional setup after loading the view.
@@ -46,11 +55,9 @@ class DayViewUIVViewController: UIViewController {
         if Settings.shared.isDarkMode {
             view.backgroundColor = Color.grey
 			navigationController?.navigationBar.tintColor = Color.white
-			addButton.tintColor = Color.white
         } else {
             view.backgroundColor = Color.white
 			navigationController?.navigationBar.tintColor = Color.grey
-			addButton.tintColor = Color.grey
         }
 		
 		UIView.animate(withDuration: animated ? 0.7 : 0, animations: {
@@ -82,7 +89,12 @@ class DayViewUIVViewController: UIViewController {
 				eventEditor.dayView = self
 				EventManagement.shared.eventInformation = EventManagement.shared.selectedEventInformation
 			}
-		}
+        } else if segue.identifier == "embed" {
+            if let eList = segue.destination as? ETViewController {
+                eventList = eList
+                eventList?.dayViewController = self
+            }
+        }
 	}
     
     override func didReceiveMemoryWarning() {
@@ -90,16 +102,13 @@ class DayViewUIVViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 	
-	//PREVDAY
-	@IBAction func swipeRight(_ sender: UISwipeGestureRecognizer) {
-		changeDay(.right)
-	}
-	
-	//FUTDAY
-	@IBAction func swipeLeft(_ sender: UISwipeGestureRecognizer) {
-		changeDay(.left)
-	}
-	
+    @IBAction func swipeRight(_ sender: UISwipeGestureRecognizer) {
+        changeDay(.right)
+    }
+    @IBAction func swipeLeft(_ sender: UISwipeGestureRecognizer) {
+        changeDay(.left)
+    }
+    
 	func changeDay(_ direction: direction) {
 		
 		let (year, month, dayIndexPath) = Selection.shared.selectedDayCellIndex
@@ -165,7 +174,9 @@ class DayViewUIVViewController: UIViewController {
 			
 			self.day.reloadData()
 			self.setDesign(animated: false)
-			self.eventTableView.reloadView()
+            if let eList = self.eventList?.eventList {
+                eList.reloadList()
+            }
 			
 			UIView.animate(withDuration: 0.15, delay: 0, options: .curveEaseOut, animations: {
 				NSLayoutConstraint.activate([self.dayViewNormal])
