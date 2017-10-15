@@ -67,6 +67,7 @@ class EventEditorEventInformations: NSCopying {
 	var eventIdentifier: String? = nil
 	
 	//NOT IMPORTANT FOR EVENTCREATION
+    var forceDismiss: Bool = false
 	var dateSelectionPopoverState: DateSpecification = .startDate
 	var state: EventEditorState = .create
 	var setCalendarPopoverViewController: SetCalendarPopoverViewController?

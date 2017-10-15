@@ -30,7 +30,7 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
 	// MARK: - Actions
 	@IBAction func cancel(_ sender: UIButton) {
 		
-		if eventInformations.state == .create && eventInformations.eventIdentifier != nil {
+		if eventInformations.state == .create && eventInformations.eventIdentifier != nil && !eventInformations.forceDismiss {
 			let correctInformationsForEvent = EventManagement.shared.convertToEventEditorEventInformations(eventIdentifier: eventInformations.eventIdentifier!, state: .showDetail)
 			eventInformations.setEventInformations(correctInformationsForEvent!)
 			self.showDetailSetUpSaveButton()

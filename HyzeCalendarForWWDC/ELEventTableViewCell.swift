@@ -58,6 +58,15 @@ class ELEventTableViewCell: UITableViewCell {
         removeButtonView.layer.shadowColor = Color.grey.cgColor
     }
     
+    func configureRecognizer() {
+        let editRecognizer = UITapGestureRecognizer(target: self, action: #selector(edit(_:)))
+        editButtonView.addGestureRecognizer(editRecognizer)
+        let showRecognizer = UITapGestureRecognizer(target: self, action: #selector(show(_:)))
+        editButtonView.addGestureRecognizer(showRecognizer)
+        let removeRecognizer = UITapGestureRecognizer(target: self, action: #selector(remove(_:)))
+        editButtonView.addGestureRecognizer(removeRecognizer)
+    }
+    
     func loadDateTexts() {
         guard let secureEvent = event else { return }
         if secureEvent.isAllDay == true {
@@ -83,17 +92,30 @@ class ELEventTableViewCell: UITableViewCell {
         titleLabel.text = title
     }
     
+    func loadReadWriteAccess() {
+        guard let evnt = event else { return }
+        if evnt.isReadOnly() {
+            editButtonView.isHidden = true
+            removeButtonView.isHidden = true
+        } else {
+            editButtonView.isHidden = false
+            removeButtonView.isHidden = false
+        }
+    }
+    
     func loadEvent(_ event: EKEvent) {
         self.event = event
         loadDateTexts()
         loadTitle()
         loadCalendarColor()
+        loadReadWriteAccess()
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         configure()
         configureButtons()
+        configureRecognizer()
         layoutIfNeeded()
     }
 
@@ -105,22 +127,24 @@ class ELEventTableViewCell: UITableViewCell {
         }
         self.configureButtons()
         UIView.animate(withDuration: 0.3, animations: {
-            self.selectMenu.layoutIfNeeded()
             self.layoutIfNeeded()
-        })
+        }) { (_) in
+            self.configureButtons()
+        }
+        
     }
     
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {
         return
     }
     
-    @IBAction func edit(_ sender: UIButton) {
+    @IBAction func edit(_ sender: Any) {
         openInEventEditor(state: .create)
     }
-    @IBAction func show(_ sender: UIButton) {
+    @IBAction func show(_ sender: Any) {
         openInEventEditor(state: .showDetail)
     }
-    @IBAction func remove(_ sender: UIButton) {
+    @IBAction func remove(_ sender: Any) {
         guard let identfier = event?.eventIdentifier else { return }
         guard let eventInformations = EventManagement.shared.convertToEventEditorEventInformations(eventIdentifier: identfier, state: .create) else { return }
         EventManagement.shared.deleteEvent(eventInformations)
@@ -129,6 +153,7 @@ class ELEventTableViewCell: UITableViewCell {
     func openInEventEditor(state: EventEditorState) {
         guard let identfier = event?.eventIdentifier else { return }
         guard let eventInformations = EventManagement.shared.convertToEventEditorEventInformations(eventIdentifier: identfier, state: state) else { return }
+        eventInformations.forceDismiss = state == .create ? true : false
         EventManagement.shared.eventInformation = eventInformations
         let storyboard = UIStoryboard(name: "EventEditor", bundle: nil)
         let superViewController = UIApplication.shared.keyWindow?.rootViewController
