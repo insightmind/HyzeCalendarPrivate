@@ -40,10 +40,24 @@ class DayViewUIVViewController: UIViewController {
         Settings.shared.viewIsDayView = true
         Settings.shared.renDayView = day
         day.setUp()
-        eventListTopConstraint.constant = 2*dayTopConstraint.constant + day.frame.height
+        setEventListHeight()
+        
 
 		
         // Do any additional setup after loading the view.
+    }
+    
+    func setEventListHeight() {
+        guard let maxHeight = self.navigationController?.visibleViewController?.view.frame.height else { return }
+        let state = Design.shared.currentETViewState
+        switch state {
+        case .normal:
+            eventListTopConstraint.constant = 2*dayTopConstraint.constant + day.frame.height
+        case .minimal:
+            eventListTopConstraint.constant = maxHeight - 100
+        case .expanded:
+            eventListTopConstraint.constant = 0
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
