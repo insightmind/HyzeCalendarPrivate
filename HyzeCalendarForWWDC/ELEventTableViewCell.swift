@@ -13,6 +13,7 @@ class ELEventTableViewCell: UITableViewCell {
     
     var event: EKEvent? = nil
     let smallFontSize = UIFont.systemFont(ofSize: 14)
+    var eventList: EventListTableViewController?
 
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var startTime: UILabel!
@@ -147,7 +148,27 @@ class ELEventTableViewCell: UITableViewCell {
     @IBAction func remove(_ sender: Any) {
         guard let identfier = event?.eventIdentifier else { return }
         guard let eventInformations = EventManagement.shared.convertToEventEditorEventInformations(eventIdentifier: identfier, state: .create) else { return }
-        EventManagement.shared.deleteEvent(eventInformations)
+        let superViewController = UIApplication.shared.keyWindow?.rootViewController
+        var mainViewController: ViewController
+        for i in (superViewController?.childViewControllers)! {
+            if i.title == "MonthView" {
+                mainViewController = i as! ViewController
+                let alert = UIAlertController(title: "Remove Event?", message: "You can't undo this action! ", preferredStyle: .alert)
+                let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
+                    return
+                }
+                let remove = UIAlertAction(title: "Remove", style: .destructive) { (_) in
+                    EventManagement.shared.deleteEvent(eventInformations)
+                    guard let eList = self.eventList else { return }
+                    eList.reloadList()
+                }
+                alert.addAction(cancel)
+                alert.addAction(remove)
+                
+                mainViewController.present(alert, animated: true, completion: nil)
+            }
+        }
+        
     }
     
     func openInEventEditor(state: EventEditorState) {

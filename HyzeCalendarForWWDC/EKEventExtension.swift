@@ -11,17 +11,6 @@ import EventKit
 
 extension EKEvent {
 	func isReadOnly() -> Bool {
-		var isReadOnly = false
-        if let _ = organizer?.isCurrentUser {
-            return true
-        }
-		let title = self.title
-		let checkTitle = "checkReadWriteAccess"
-		
-		self.title = checkTitle
-		isReadOnly = title == self.title
-		self.title = title
-		
-		return isReadOnly
+        return !calendar.allowsContentModifications
 	}
 }

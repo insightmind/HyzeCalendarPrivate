@@ -83,6 +83,7 @@ class EventListTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: eventCellReuseIdentifier) as! ELEventTableViewCell
         // Configure the cell...
         cell.loadEvent(events[indexPath.row])
+        cell.eventList = self
         return cell
     }
     
