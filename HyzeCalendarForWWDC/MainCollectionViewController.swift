@@ -82,8 +82,8 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
     
     override func viewWillAppear(_ animated: Bool) {
         if Settings.shared.needsDesignUpdate {
+            calculateETViewUpdate(shouldReload: true)
             reloadCalendarView()
-            self.calculateETViewUpdate(shouldReload: true)
             Settings.shared.needsDesignUpdate = false
         } else {
             self.calculateETViewUpdate()
@@ -186,7 +186,7 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 		Selection.shared.currentMonthID = monthID + 1
 		Selection.shared.currentYearID = yearID
 		
-		calculateETViewUpdate()
+		calculateETViewUpdate(shouldReload: false)
 		
 		self.collectionView!.scrollToItem(at: indexPath, at: .centeredVertically, animated: anim)
 		setMonthName()

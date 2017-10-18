@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HyzeCalendarForWWDC/MainCollectionViewController.swift"
-            timestampString = "529781927.009312"
+            timestampString = "530048120.060413"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "182"
@@ -224,11 +224,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HyzeCalendarForWWDC/EventListTableViewController.swift"
-            timestampString = "530047299.960724"
+            timestampString = "530048120.060756"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "125"
@@ -237,14 +237,14 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "function signature specialization &lt;Arg[0] = Dead&gt; of HyzeCalendarForWWDC.MonthCollectionViewController.(forceETViewReload in _CBC14E7E985D216322AACB72DBA8267C)() -&gt; ()"
                   moduleName = "HyzeCalendarForWWDC"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/niklas/Documents/HyzeCalendarPrivate/HyzeCalendarForWWDC/EventListTableViewController.swift"
-                  timestampString = "530047300.062394"
+                  timestampString = "530047629.846306"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "125"
@@ -252,14 +252,14 @@
                   offsetFromSymbolStart = "1224">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "function signature specialization &lt;Arg[0] = Owned To Guaranteed&gt; of closure #1 () -&gt; () in HyzeCalendarForWWDC.EventEditorViewController.endEditingWithReload() -&gt; ()"
                   moduleName = "HyzeCalendarForWWDC"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/niklas/Documents/HyzeCalendarPrivate/HyzeCalendarForWWDC/EventListTableViewController.swift"
-                  timestampString = "530047300.063593"
+                  timestampString = "530047629.847548"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "125"
@@ -267,14 +267,14 @@
                   offsetFromSymbolStart = "881">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "HyzeCalendarForWWDC.EventListTableViewController.reloadList(onlyDesign: Swift.Bool) -&gt; ()"
                   moduleName = "HyzeCalendarForWWDC"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/niklas/Documents/HyzeCalendarPrivate/HyzeCalendarForWWDC/EventListTableViewController.swift"
-                  timestampString = "530047300.064867"
+                  timestampString = "530047629.84938"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "125"
@@ -282,14 +282,14 @@
                   offsetFromSymbolStart = "17">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "function signature specialization &lt;Arg[1] = Owned To Guaranteed, Arg[2] = Owned To Guaranteed&gt; of closure #2 (__ObjC.UIAlertAction) -&gt; () in HyzeCalendarForWWDC.ELEventTableViewCell.remove(Any) -&gt; ()"
                   moduleName = "HyzeCalendarForWWDC"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/niklas/Documents/HyzeCalendarPrivate/HyzeCalendarForWWDC/EventListTableViewController.swift"
-                  timestampString = "530047300.066026"
+                  timestampString = "530047629.851286"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "125"
@@ -297,6 +297,70 @@
                   offsetFromSymbolStart = "281">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HyzeCalendarForWWDC/MainCollectionViewController.swift"
+            timestampString = "530048120.060799"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HyzeCalendarForWWDC/MainCollectionViewController.swift"
+            timestampString = "530048120.060978"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "reloadCalendarView()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HyzeCalendarForWWDC/MainCollectionViewController.swift"
+            timestampString = "530048120.061151"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
+            landmarkName = "scrollToSection(direction:animated:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HyzeCalendarForWWDC/MainCollectionViewController.swift"
+            timestampString = "530048120.061317"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
+            landmarkName = "calculateETViewUpdate(shouldReload:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
