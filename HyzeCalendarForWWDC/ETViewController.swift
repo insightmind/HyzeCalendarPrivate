@@ -173,7 +173,7 @@ class ETViewController: UIViewController {
             self.toolBar.backgroundColor = UIColor.clear
         }
         guard let eList = eventList else { return }
-        eList.reloadList(onlyDesign: shouldReload)
+        eList.reloadList(onlyDesign: !shouldReload)
     }
     
     func changeState(to state: ETViewState) {

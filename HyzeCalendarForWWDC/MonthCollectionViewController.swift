@@ -189,9 +189,7 @@ extension MonthCollectionViewController {
 			if i.title == "MonthView" {
                 guard let mainViewController = i as? ViewController else { return }
                 guard let vc = mainViewController.eventListViewController else { return }
-                guard let list = vc.eventList else { return }
-                list.reloadList(onlyDesign: false)
-                vc.updateDesign()
+                vc.updateDesign(true)
 			}
 		}
 	}
