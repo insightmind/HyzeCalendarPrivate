@@ -11,6 +11,8 @@ import EventKit
 
 class ELEventTableViewCell: UITableViewCell {
     
+    let selectMenuHeight: CGFloat = 45
+    
     var event: EKEvent? = nil
     let smallFontSize = UIFont.systemFont(ofSize: 14)
     var eventList: EventListTableViewController?
@@ -19,8 +21,9 @@ class ELEventTableViewCell: UITableViewCell {
     @IBOutlet weak var startTime: UILabel!
     @IBOutlet weak var endTime: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var selectMenu: UIView!
+    @IBOutlet weak var eventView: UIView!
+    @IBOutlet weak var topView: UIView!
     
     @IBOutlet weak var editButtonView: UIView!
     @IBOutlet weak var editButton: UIButton!
@@ -30,6 +33,8 @@ class ELEventTableViewCell: UITableViewCell {
     
     @IBOutlet weak var removeButtonView: UIView!
     @IBOutlet weak var removeButton: UIButton!
+    @IBOutlet weak var selectMenuHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var eventViewBottomConstraint: NSLayoutConstraint!
     
     func configure() {
         backgroundColor = UIColor.clear
@@ -44,19 +49,26 @@ class ELEventTableViewCell: UITableViewCell {
         mainView.layer.shadowOpacity = 0.6
         mainView.layer.shadowOffset = CGSize.zero
         mainView.layer.shadowRadius = 5
-        selectMenu.layer.cornerRadius = 20
+        topView.layer.cornerRadius = 20
+        topView.layer.masksToBounds = true
+        eventView.layer.cornerRadius = 20
+        eventView.layer.masksToBounds = false
+        eventView.layer.shadowColor = Color.grey.cgColor
+        eventView.layer.shadowOpacity = 0.6
+        eventView.layer.shadowOffset = CGSize.zero
+        eventView.layer.shadowRadius = 5
     }
     
     func configureButtons() {
         setUpButton(editButtonView, button: editButton, image: #imageLiteral(resourceName: "ic_edit"), backgroundColor: Color.blue)
-        editButtonView.layer.cornerRadius = editButton.bounds.width / 2
-        editButtonView.layer.shadowColor = Color.grey.cgColor
+        editButtonView.layer.cornerRadius = 0
+        editButtonView.layer.shadowOpacity = 0
         setUpButton(showButtonView, button: showButton, image: #imageLiteral(resourceName: "ic_star"), backgroundColor: Color.green)
-        showButtonView.layer.cornerRadius = showButton.bounds.width / 2
-        showButtonView.layer.shadowColor = Color.grey.cgColor
+        showButtonView.layer.cornerRadius = 0
+        showButtonView.layer.shadowOpacity = 0
         setUpButton(removeButtonView, button: removeButton, image: #imageLiteral(resourceName: "ic_delete"), backgroundColor: Color.red)
-        removeButtonView.layer.cornerRadius = removeButton.bounds.width / 2
-        removeButtonView.layer.shadowColor = Color.grey.cgColor
+        removeButtonView.layer.cornerRadius = 0
+        removeButtonView.layer.shadowOpacity = 0
     }
     
     func configureRecognizer() {
@@ -85,7 +97,8 @@ class ELEventTableViewCell: UITableViewCell {
     func loadCalendarColor() {
         guard let calendar = event?.calendar else { return }
         let color = UIColor(cgColor: calendar.cgColor)
-        mainView.backgroundColor = color
+        eventView.backgroundColor = color
+        topView.backgroundColor = color
     }
     
     func loadTitle() {
@@ -122,17 +135,14 @@ class ELEventTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         if selected {
-            selectMenu.isHidden = false
+            eventViewBottomConstraint.constant = selectMenuHeight
         } else {
-            selectMenu.isHidden = true
+            eventViewBottomConstraint.constant = 0
         }
         self.configureButtons()
-        UIView.animate(withDuration: 0.3, animations: {
+        UIView.animate(withDuration: 0.3) {
             self.layoutIfNeeded()
-        }) { (_) in
-            self.configureButtons()
         }
-        
     }
     
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {

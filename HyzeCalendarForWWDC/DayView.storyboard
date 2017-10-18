@@ -80,6 +80,7 @@
                         <outlet property="dayViewLeft" destination="EZW-M9-z2l" id="0eV-BC-LI2"/>
                         <outlet property="dayViewNormal" destination="CqK-hg-WbP" id="vGp-iu-jjc"/>
                         <outlet property="dayViewRight" destination="SSG-s2-gxn" id="OnY-ej-3Ne"/>
+                        <outlet property="dayWidthConstraint" destination="CzV-EV-qyi" id="P6D-Xe-zLZ"/>
                         <outlet property="eventListTopConstraint" destination="8cR-2E-MAD" id="02g-1P-PhP"/>
                     </connections>
                 </viewController>

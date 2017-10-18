@@ -14,7 +14,7 @@ class EventListTableViewController: UITableViewController {
     let eventCellReuseIdentifier = "eventCell"
     let addEventCellReuseIdentifier = "addEventCell"
     
-    let basicCellHeight: CGFloat = 70
+    let basicCellHeight: CGFloat = 90
     var isEmbededInDayView: Bool = false
     
     var events = [EKEvent]()
@@ -106,7 +106,7 @@ class EventListTableViewController: UITableViewController {
             height = basicCellHeight
         }
         if self.tableView.indexPathForSelectedRow == indexPath {
-            height += 58
+            height += 45
         }
         return CGFloat(height)
     }

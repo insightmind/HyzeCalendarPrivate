@@ -23,6 +23,7 @@ class DayViewUIVViewController: UIViewController {
     
     @IBOutlet weak var eventListTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var dayTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var dayWidthConstraint: NSLayoutConstraint!
     
     var eventList: ETViewController?
     
@@ -164,7 +165,6 @@ class DayViewUIVViewController: UIViewController {
 		}
 		
 		Selection.shared.selectedIsToday = TimeManagement.isToday(yearID: newYear, monthID: newMonth, dayID: newDayIndexPath.item)
-		
 		UIView.animate(withDuration: 0.15, delay: 0, options: .curveEaseIn, animations: {
 			NSLayoutConstraint.deactivate([self.dayViewNormal])
 			switch direction {
@@ -184,24 +184,25 @@ class DayViewUIVViewController: UIViewController {
 				NSLayoutConstraint.deactivate([self.dayViewLeft])
 				NSLayoutConstraint.activate([self.dayViewRight])
 			}
+            
 			self.view.layoutIfNeeded()
 			
 			self.day.reloadData()
 			self.setDesign(animated: false)
-            if let eList = self.eventList?.eventList {
-                eList.reloadList()
+            if let eList = self.eventList {
+                eList.updateDesign(true)
             }
 			
-			UIView.animate(withDuration: 0.15, delay: 0, options: .curveEaseOut, animations: {
-				NSLayoutConstraint.activate([self.dayViewNormal])
-				switch direction {
-				case .right:
-					NSLayoutConstraint.deactivate([self.dayViewLeft])
-				case .left:
-					NSLayoutConstraint.deactivate([self.dayViewRight])
-				}
-				self.view.layoutIfNeeded()
-			}, completion: nil)
+            UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: .curveEaseOut, animations: {
+                NSLayoutConstraint.activate([self.dayViewNormal])
+                switch direction {
+                case .right:
+                    NSLayoutConstraint.deactivate([self.dayViewLeft])
+                case .left:
+                    NSLayoutConstraint.deactivate([self.dayViewRight])
+                }
+                self.view.layoutIfNeeded()
+            }, completion: nil)
 			
 		}
 		
