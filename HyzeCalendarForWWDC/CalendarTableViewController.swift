@@ -11,7 +11,7 @@ import EventKit
 
 class CalendarTableViewController: UITableViewController {
 	
-	var calendars: [EKCalendar] = EventManagement.shared.EMEventStore.calendars(for: .event)
+	var calendars: [EKCalendar] = EventManagement.shared.getCalendars(onlyEditable: true, for: .event)
 	let reuseIdentifier = "calendar"
 
     override func viewDidLoad() {

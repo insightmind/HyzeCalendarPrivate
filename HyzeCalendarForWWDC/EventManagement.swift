@@ -399,6 +399,18 @@ class EventManagement {
 	}
 
     
+    func getCalendars(onlyEditable: Bool, for type: EKEntityType) -> [EKCalendar] {
+        let calendars = EMEventStore.calendars(for: type)
+        if !onlyEditable { return calendars }
+        var editableCalendars = [EKCalendar]()
+        for calendar in calendars {
+            if calendar.allowsContentModifications {
+                editableCalendars.append(calendar)
+            }
+        }
+        return editableCalendars
+    }
+    
     init() {
         self.EMEventStore = EKEventStore()
     }
