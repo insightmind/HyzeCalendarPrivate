@@ -14,7 +14,7 @@ class EventListTableViewController: UITableViewController {
     let eventCellReuseIdentifier = "eventCell"
     let addEventCellReuseIdentifier = "addEventCell"
     
-    let basicCellHeight: CGFloat = 90
+    let basicCellHeight: CGFloat = 80
     var isEmbededInDayView: Bool = false
     
     var events = [EKEvent]()
@@ -30,7 +30,7 @@ class EventListTableViewController: UITableViewController {
     func configure() {
         tableView.separatorStyle = .none
         tableView.backgroundColor = UIColor.clear
-        tableView.contentInset = UIEdgeInsets(top: 22, left: 0, bottom: 70, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: 40, left: 0, bottom: 70, right: 0)
     }
     
     func registerCells() {
@@ -91,7 +91,7 @@ class EventListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if indexPath.section == 0 {
-            return 75
+            return 50
         }
         
         let event = events[indexPath.row]
