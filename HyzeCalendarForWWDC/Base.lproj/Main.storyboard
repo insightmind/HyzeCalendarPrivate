@@ -21,14 +21,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView clipsSubviews="YES" tag="32" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q51-W6-Rno">
-                                <rect key="frame" x="1" y="37" width="373" height="320"/>
+                                <rect key="frame" x="1" y="37" width="373" height="319.66666666666669"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" secondItem="Q51-W6-Rno" secondAttribute="height" multiplier="7:6" id="T91-W2-9QH"/>
                                     <constraint firstAttribute="width" secondItem="Q51-W6-Rno" secondAttribute="height" multiplier="7:6" identifier="longMonth" id="cnB-fa-ZDS"/>
                                     <constraint firstAttribute="width" secondItem="Q51-W6-Rno" secondAttribute="height" multiplier="7:5" identifier="shortMonth" id="zd5-QV-y9A"/>
                                 </constraints>
                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="cnB-fa-ZDS"/>
                                         <exclude reference="zd5-QV-y9A"/>
                                     </mask>
                                 </variation>
@@ -110,6 +112,7 @@
                             <constraint firstItem="Q51-W6-Rno" firstAttribute="top" secondItem="3te-8G-WxE" secondAttribute="bottom" constant="10" id="MmH-cE-7dk"/>
                             <constraint firstItem="tSU-Yg-gF9" firstAttribute="leading" secondItem="8SE-NO-vxc" secondAttribute="leadingMargin" constant="-10" id="VIc-hw-RAV"/>
                             <constraint firstItem="3te-8G-WxE" firstAttribute="top" secondItem="HTG-xk-BQv" secondAttribute="top" id="Vhc-WV-bs1"/>
+                            <constraint firstItem="HTG-xk-BQv" firstAttribute="bottom" secondItem="Q51-W6-Rno" secondAttribute="bottom" id="b4H-v1-jVf"/>
                             <constraint firstItem="HTG-xk-BQv" firstAttribute="bottom" secondItem="YFY-0E-SzH" secondAttribute="bottom" constant="-64" id="eJ8-ak-eM7"/>
                             <constraint firstItem="HTG-xk-BQv" firstAttribute="trailing" secondItem="3te-8G-WxE" secondAttribute="trailing" id="fHT-4D-KNG"/>
                             <constraint firstItem="3te-8G-WxE" firstAttribute="leading" secondItem="HTG-xk-BQv" secondAttribute="leading" id="nVR-Vx-6nt"/>
@@ -120,6 +123,11 @@
                             <constraint firstItem="tSU-Yg-gF9" firstAttribute="top" secondItem="HTG-xk-BQv" secondAttribute="top" constant="5" id="wej-5h-R4x"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HTG-xk-BQv"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="b4H-v1-jVf"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="TEST" id="rOZ-nb-EdF">
                         <barButtonItem key="leftBarButtonItem" image="ic_settings" id="F2I-Wd-r97">

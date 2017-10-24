@@ -97,7 +97,14 @@ class MainCollectionViewController: UICollectionViewController {
 	}
     
     func reloadLayout() {
-        self.collectionView!.collectionViewLayout.invalidateLayout()
+        switch Design.shared.currentETViewState {
+        case .minimal:
+            self.collectionView!.setCollectionViewLayout(yearViewLayout, animated: true)
+            self.collectionView!.isUserInteractionEnabled = false
+        default:
+            self.collectionView!.setCollectionViewLayout(monthViewLayout, animated: true)
+            self.reloadCalendarView()
+        }
     }
 	
 	func scrollToSection(direction: ScrollDirection, animated anim: Bool = false) {
@@ -170,7 +177,7 @@ class MainCollectionViewController: UICollectionViewController {
 		
 		calculateETViewUpdate(shouldReload: false)
 		
-		self.collectionView!.scrollToItem(at: indexPath, at: .centeredVertically, animated: anim)
+		self.collectionView!.scrollToItem(at: indexPath, at: .top, animated: anim)
 		setMonthName()
 	}
 	

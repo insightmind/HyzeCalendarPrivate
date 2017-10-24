@@ -136,10 +136,6 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
 			cell.label?.text = String(item)
             isNotInMonth = false
 		}
-        let maxIndex = (_daysInWeek * _weeksInMonth) - (_daysInWeek * Int(Design.shared.currentETViewIsExpandedByNumOfRows)) - 1
-        if indexPath.item > maxIndex {
-            cell.isHidden = true
-        }
         let isLeft = ((indexPath.item) % 7 == 0) ? true : false
         let weekNumber = isLeft ? TimeManagement.getWeekNumber(yearID: yearID, monthID: monthID + 1, dayID: item) : nil
 		let isToday = TimeManagement.isToday(yearID: yearID, monthID: monthID + 1, dayID: item)
