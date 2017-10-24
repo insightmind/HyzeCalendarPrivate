@@ -10,7 +10,10 @@ import UIKit
 
 private let reuseIdentifier = "MonthCell"
 
-class MainCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class MainCollectionViewController: UICollectionViewController {
+    
+    let monthViewLayout = GridCollectionViewFlowLayout(cellsPerRow: 1, scrollDirection: .vertical)
+    let yearViewLayout = GridCollectionViewFlowLayout(cellsPerRow: 2, scrollDirection: .vertical)
 	
 	@IBAction func scrollUp(_ sender: UISwipeGestureRecognizer) {
 		self.scrollToSection(direction: ScrollDirection.up, animated: true)
@@ -24,7 +27,6 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 		
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
         // Register cell classes
         self.collectionView!.register(MonthCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         // Do any additional setup after loading the view.
@@ -38,7 +40,8 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)        
+        super.viewDidAppear(animated)
+        self.collectionView!.setCollectionViewLayout(monthViewLayout, animated: false)
         self.scrollToSection(yearID: Selection.shared.currentYearID, monthID: Selection.shared.currentMonthID - 1, animated: animated)
     }
 	
@@ -52,14 +55,12 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
 		let years = TimeManagement.calendar.components(.year, from: TimeManagement.past, to: TimeManagement.future, options: .matchLast).year!
-		
         return years
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-		
         return 12
     }
 
@@ -68,7 +69,7 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 		
         // Configure the cell
 		if cell.controller == nil {
-			let newController = MonthCollectionViewController(collectionViewLayout: CalendarViewFlowLayout(), idOfYear: indexPath.section, idOfMonth: indexPath.item)
+			let newController = MonthCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout(), idOfYear: indexPath.section, idOfMonth: indexPath.item)
 			self.addChildViewController(newController)
 			newController.view.frame = cell.bounds
 			newController.view.tag = 69
@@ -76,7 +77,6 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 			newController.didMove(toParentViewController: self)
 			cell.controller = newController
 		}
-		
         return cell
     }
     
@@ -96,27 +96,9 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 		scrollToSection(yearID: Selection.shared.currentYearID, monthID: Selection.shared.currentMonthID - 1, animated: false)
 	}
     
-	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        let cellsPerRow: CGFloat = 1
-		let width = UIScreen.main.bounds.width - 12
-		let cellSize = CGSize(width: width / cellsPerRow, height: (width / 7 * 6) / cellsPerRow)
-		
-		return cellSize
-		
-	}
-	
-	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-		return UIEdgeInsets.zero
-	}
-	
-	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-		return 5
-	}
-	
-	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-		return 0
-	}
+    func reloadLayout() {
+        self.collectionView!.collectionViewLayout.invalidateLayout()
+    }
 	
 	func scrollToSection(direction: ScrollDirection, animated anim: Bool = false) {
 		

@@ -73,14 +73,14 @@ class SettingsViewController: UIViewController {
 				self.hours24Label.textColor = Color.white
 				self.darkModeLabel.textColor = Color.white
 				self.animateDayViewLabel.textColor = Color.white
-				self.view.backgroundColor = Color.grey
+				self.view.backgroundColor = Color.black
 			} else {
-				self.defaultCalendarLabel.textColor = Color.grey
-				self.settingsLabel.textColor = Color.grey
-				self.showLines.textColor = Color.grey
-				self.hours24Label.textColor = Color.grey
-				self.darkModeLabel.textColor = Color.grey
-				self.animateDayViewLabel.textColor = Color.grey
+				self.defaultCalendarLabel.textColor = Color.black
+				self.settingsLabel.textColor = Color.black
+				self.showLines.textColor = Color.black
+				self.hours24Label.textColor = Color.black
+				self.darkModeLabel.textColor = Color.black
+				self.animateDayViewLabel.textColor = Color.black
 				self.view.backgroundColor = Color.white
 			}
 		}
@@ -124,15 +124,15 @@ class SettingsViewController: UIViewController {
             hours24Label.textColor = Color.white
             darkModeLabel.textColor = Color.white
 			self.animateDayViewLabel.textColor = Color.white
-			view.backgroundColor = Color.grey
+			view.backgroundColor = Color.black
         } else {
-			self.defaultCalendarLabel.textColor = Color.grey
-			settingsLabel.textColor = Color.grey
+			self.defaultCalendarLabel.textColor = Color.black
+			settingsLabel.textColor = Color.black
             darkModeSwitch.isOn = false
-            showLines.textColor = Color.grey
-            hours24Label.textColor = Color.grey
-            darkModeLabel.textColor = Color.grey
-			self.animateDayViewLabel.textColor = Color.grey
+            showLines.textColor = Color.black
+            hours24Label.textColor = Color.black
+            darkModeLabel.textColor = Color.black
+			self.animateDayViewLabel.textColor = Color.black
             view.backgroundColor = Color.white
         }
 		loadInformations()

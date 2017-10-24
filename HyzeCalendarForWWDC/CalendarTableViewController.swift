@@ -26,7 +26,7 @@ class CalendarTableViewController: UITableViewController {
 		self.tableView.allowsSelection = false
 		self.tableView.separatorStyle = .none
 		if Settings.shared.isDarkMode {
-			self.tableView.backgroundColor = Color.grey.withAlphaComponent(0.3)
+			self.tableView.backgroundColor = Color.black.withAlphaComponent(0.3)
 		} else {
 			self.tableView.backgroundColor = UIColor.white.withAlphaComponent(0.5)
 		}

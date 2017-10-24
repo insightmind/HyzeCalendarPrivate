@@ -39,7 +39,7 @@ class ETViewController: UIViewController {
     
     func setUpGestureBar() {
         gestureBar.layer.cornerRadius = gestureBar.bounds.height / 2
-        gestureBar.backgroundColor = Color.grey.withAlphaComponent(0.75)
+        gestureBar.backgroundColor = Color.black.withAlphaComponent(0.75)
     }
     
     func setUpToolbar() {
@@ -100,6 +100,7 @@ class ETViewController: UIViewController {
             }
             animator.addAnimations {
                 superController.view.layoutIfNeeded()
+                superController.calendarViewController!.reloadLayout()
             }
             animator.startAnimation()
         default:

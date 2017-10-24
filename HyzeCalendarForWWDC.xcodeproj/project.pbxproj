@@ -96,7 +96,6 @@
 		3EF096B01E3FDC9F0011E726 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF096AF1E3FDC9F0011E726 /* ViewController.swift */; };
 		3EF9042C1F4CD4ED00C690C4 /* SetContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF9042B1F4CD4ED00C690C4 /* SetContactsTableViewController.swift */; };
 		3EF9042E1F4CD53D00C690C4 /* SetContactsSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF9042D1F4CD53D00C690C4 /* SetContactsSearchViewController.swift */; };
-		3EFA24DD1E2BF1D200BC6DD5 /* CalendarViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFA24DC1E2BF1D200BC6DD5 /* CalendarViewFlowLayout.swift */; };
 		3EFBD3621F47025800DB0E7D /* SetCalendarPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFBD3611F47025800DB0E7D /* SetCalendarPopoverViewController.swift */; };
 		3EFC00C11F5DF4CB0028F387 /* SelectLocation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EFC00C01F5DF4CB0028F387 /* SelectLocation.storyboard */; };
 		3EFC00C31F5E09CA0028F387 /* SelectLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFC00C21F5E09CA0028F387 /* SelectLocationViewController.swift */; };
@@ -106,6 +105,7 @@
 		3EFC00CB1F5E165C0028F387 /* LocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EFC00C91F5E165C0028F387 /* LocationTableViewCell.xib */; };
 		3EFE5F491E41310A004E75F9 /* DayMainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFE5F481E41310A004E75F9 /* DayMainButton.swift */; };
 		85108E0F1F81857000F42FDD /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 85108E0E1F81857000F42FDD /* Podfile */; };
+		852EC4471F9FA6BD0024126A /* GridCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852EC4461F9FA6BD0024126A /* GridCollectionViewFlowLayout.swift */; };
 		854626B11F8E7162002D6EF5 /* ELAddEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854626AF1F8E7162002D6EF5 /* ELAddEventTableViewCell.swift */; };
 		854626B21F8E7162002D6EF5 /* ELAddEventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 854626B01F8E7162002D6EF5 /* ELAddEventTableViewCell.xib */; };
 		85788BB01F865A030073B90C /* EventListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85788BAF1F865A030073B90C /* EventListTableViewController.swift */; };
@@ -211,7 +211,6 @@
 		3EF096AF1E3FDC9F0011E726 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3EF9042B1F4CD4ED00C690C4 /* SetContactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetContactsTableViewController.swift; sourceTree = "<group>"; };
 		3EF9042D1F4CD53D00C690C4 /* SetContactsSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetContactsSearchViewController.swift; sourceTree = "<group>"; };
-		3EFA24DC1E2BF1D200BC6DD5 /* CalendarViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewFlowLayout.swift; sourceTree = "<group>"; };
 		3EFBD3611F47025800DB0E7D /* SetCalendarPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCalendarPopoverViewController.swift; sourceTree = "<group>"; };
 		3EFC00C01F5DF4CB0028F387 /* SelectLocation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectLocation.storyboard; sourceTree = "<group>"; };
 		3EFC00C21F5E09CA0028F387 /* SelectLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLocationViewController.swift; sourceTree = "<group>"; };
@@ -221,6 +220,7 @@
 		3EFC00C91F5E165C0028F387 /* LocationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationTableViewCell.xib; sourceTree = "<group>"; };
 		3EFE5F481E41310A004E75F9 /* DayMainButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayMainButton.swift; sourceTree = "<group>"; };
 		85108E0E1F81857000F42FDD /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		852EC4461F9FA6BD0024126A /* GridCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		854626AF1F8E7162002D6EF5 /* ELAddEventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ELAddEventTableViewCell.swift; sourceTree = "<group>"; };
 		854626B01F8E7162002D6EF5 /* ELAddEventTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ELAddEventTableViewCell.xib; sourceTree = "<group>"; };
 		85788BAF1F865A030073B90C /* EventListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListTableViewController.swift; sourceTree = "<group>"; };
@@ -296,7 +296,7 @@
 			children = (
 				3E533BCF1EC383C4000CEF5F /* YearToMonths */,
 				3EA8EE2D1ED21BCA000D6EF2 /* MainCollectionViewController.swift */,
-				3EFA24DC1E2BF1D200BC6DD5 /* CalendarViewFlowLayout.swift */,
+				852EC4461F9FA6BD0024126A /* GridCollectionViewFlowLayout.swift */,
 			);
 			name = MainToYears;
 			sourceTree = "<group>";
@@ -983,9 +983,9 @@
 				3E6285451F4471E800301A42 /* UIColorExtension.swift in Sources */,
 				3EA8EE2E1ED21BCA000D6EF2 /* MainCollectionViewController.swift in Sources */,
 				3E533BC51EC36440000CEF5F /* MonthCollectionViewCell.swift in Sources */,
+				852EC4471F9FA6BD0024126A /* GridCollectionViewFlowLayout.swift in Sources */,
 				3EF9042E1F4CD53D00C690C4 /* SetContactsSearchViewController.swift in Sources */,
 				3E47BD2C1F30E7E900E0646C /* EventEditorTableViewController.swift in Sources */,
-				3EFA24DD1E2BF1D200BC6DD5 /* CalendarViewFlowLayout.swift in Sources */,
 				3EAD342B1F3E44CF00174FF7 /* Design.swift in Sources */,
 				3E6285431F4471B900301A42 /* CGFloatExtension.swift in Sources */,
 				3E2DA5641F5773F4008CECD7 /* MainNavigationViewController.swift in Sources */,

@@ -23,7 +23,7 @@ class EventManagement {
 	//Declare all Names of Months ina year
 	let months: [String] = DateFormatter().monthSymbols!
 	
-	var eventsColorsOnSelectedDate: [UIColor] = [Color.grey]
+	var eventsColorsOnSelectedDate: [UIColor] = [Color.black]
 	var eventInformation = EventEditorEventInformations()
 	var selectedEventInformation = EventEditorEventInformations()
     

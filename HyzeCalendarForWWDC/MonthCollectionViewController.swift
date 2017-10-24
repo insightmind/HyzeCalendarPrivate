@@ -116,11 +116,11 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
 		if item < 1{
             isNotInMonth = true
             cell.label?.text = String(prevDaysInMonth + item)
-            cell.isSelectable = false
+            cell.isUserInteractionEnabled = false
         } else if item > daysInMonth {
             isNotInMonth = true
             cell.label?.text = String(item - daysInMonth)
-            cell.isSelectable = false
+            cell.isUserInteractionEnabled = false
         } else {
             if Settings.shared.showLinesInCalendarView {
             if cell.bottomLine == nil {
@@ -136,6 +136,10 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
 			cell.label?.text = String(item)
             isNotInMonth = false
 		}
+        let maxIndex = (_daysInWeek * _weeksInMonth) - (_daysInWeek * Int(Design.shared.currentETViewIsExpandedByNumOfRows)) - 1
+        if indexPath.item > maxIndex {
+            cell.isHidden = true
+        }
         let isLeft = ((indexPath.item) % 7 == 0) ? true : false
         let weekNumber = isLeft ? TimeManagement.getWeekNumber(yearID: yearID, monthID: monthID + 1, dayID: item) : nil
 		let isToday = TimeManagement.isToday(yearID: yearID, monthID: monthID + 1, dayID: item)
@@ -156,20 +160,6 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
         return cell
     }
 	
-	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-		let width = collectionView.bounds.width / CGFloat(_daysInWeek)
-		let size = CGSize(width: width - 2, height: width - 2)
-		return size
-	}
-	
-	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-		return 2
-	}
-	
-	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-		return 2
-	}
-	
 	func calculateConformedItem(_ indexPath: IndexPath) -> Int {
 		var conform = firstDayInMonth - Selection.shared.weekDayStart.rawValue
 		if conform < 0 {
@@ -178,6 +168,20 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
 		let item = indexPath.item - conform + 1
 		return item
 	}
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.bounds.width / CGFloat(7)
+        let size = CGSize(width: width - 2, height: width - 2)
+        return size
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
 	
 }
 
@@ -227,7 +231,7 @@ extension MonthCollectionViewController {
 		cell.layer.shadowPath = UIBezierPath(rect: CGRect.zero).cgPath
 		cell.contentView.bounds = CGRect.zero
 		cell.contentView.layer.cornerRadius = 0
-		cell.contentView.backgroundColor = Settings.shared.isDarkMode ? Color.grey : Color.white
+		cell.contentView.backgroundColor = Settings.shared.isDarkMode ? Color.black : Color.white
 		UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
 			
 			cell.setCellDesign(isToday: isToday, isSelected: isSelected, isOnWeekend: isOnWeekend)

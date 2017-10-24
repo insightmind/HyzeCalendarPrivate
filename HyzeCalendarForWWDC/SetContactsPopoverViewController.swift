@@ -74,7 +74,7 @@ class SetContactsPopoverViewController: UIViewController {
 		}
 		
 		if Settings.shared.isDarkMode {
-			self.popoverView.backgroundColor = Color.grey.withAlphaComponent(0.3)
+			self.popoverView.backgroundColor = Color.black.withAlphaComponent(0.3)
 		} else {
 			self.popoverView.backgroundColor = UIColor.white.withAlphaComponent(0.5)
 		}

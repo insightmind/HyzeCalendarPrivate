@@ -129,7 +129,7 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
 		} else {
 			blurEffectView.effect = UIBlurEffect(style: .light)
 			blurEffectNavbarView.effect = blurEffectView.effect
-			titleTextField.textColor = Color.grey
+			titleTextField.textColor = Color.black
 		}
 	}
 	

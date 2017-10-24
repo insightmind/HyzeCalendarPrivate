@@ -45,7 +45,7 @@ class ELEventTableViewCell: UITableViewCell {
         endTime.textColor = txtColor
         titleLabel.textColor = Color.white
         mainView.layer.masksToBounds = false
-        mainView.layer.shadowColor = Color.grey.cgColor
+        mainView.layer.shadowColor = Color.black.cgColor
         mainView.layer.shadowOpacity = 0.6
         mainView.layer.shadowOffset = CGSize.zero
         mainView.layer.shadowRadius = 5
@@ -53,7 +53,7 @@ class ELEventTableViewCell: UITableViewCell {
         topView.layer.masksToBounds = true
         eventView.layer.cornerRadius = 20
         eventView.layer.masksToBounds = false
-        eventView.layer.shadowColor = Color.grey.cgColor
+        eventView.layer.shadowColor = Color.black.cgColor
         eventView.layer.shadowOpacity = 0.6
         eventView.layer.shadowOffset = CGSize.zero
         eventView.layer.shadowRadius = 5

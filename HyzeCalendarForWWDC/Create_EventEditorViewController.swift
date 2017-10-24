@@ -18,7 +18,7 @@ extension EventEditorViewController {
 		if Settings.shared.isDarkMode {
 			color = Color.white.withAlphaComponent(0.5)
 		} else {
-			color = Color.grey.withAlphaComponent(0.5)
+			color = Color.black.withAlphaComponent(0.5)
 		}
 		
         if eventInformations.title == "" {

@@ -175,11 +175,11 @@ class DayView: UIView {
             if TimeManagement.calendar.isDateInToday(TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item)){
                 label.textColor = Color.white
             } else {
-                label.textColor = Color.grey
+                label.textColor = Color.black
             }
         } else {
             if TimeManagement.calendar.isDateInToday(TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item)){
-                label.textColor = Color.grey
+                label.textColor = Color.black
             } else {
                 label.textColor = Color.white
             }
@@ -331,7 +331,7 @@ class DayView: UIView {
         if TimeManagement.calendar.isDateInToday(TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID , dayID: selectedIndexPath.item)){
             let watchhand = EventView(frame: self.bounds, carcWidth: 50, hourRotation: true)
             watchhand.sendTimeProperties(start:  -5, end: 5)
-			watchhand.sendColorProperties(Settings.shared.isDarkMode ? Color.white : Color.grey)
+			watchhand.sendColorProperties(Settings.shared.isDarkMode ? Color.white : Color.black)
             self.addSubview(watchhand)
 			let now = Date()
 			let components = TimeManagement.calendar.components(in: TimeZone.autoupdatingCurrent, from: now)

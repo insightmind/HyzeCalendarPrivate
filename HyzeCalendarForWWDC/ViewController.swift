@@ -57,23 +57,23 @@ class ViewController: UIViewController {
 		
 		self.calendarView.layer.masksToBounds = false
         if Settings.shared.isDarkMode{
-            view.backgroundColor = Color.grey
-			daysOfWeekBackgroundView.backgroundColor = Color.grey
+            view.backgroundColor = Color.black
+			daysOfWeekBackgroundView.backgroundColor = Color.black
 			updateDaysOfWeek(color: Color.white, weekendColor: Color.green)
-			navigationController?.navigationBar.barTintColor = Color.grey
+			navigationController?.navigationBar.barTintColor = Color.black
 			navigationController?.navigationBar.titleTextAttributes![NSAttributedStringKey.foregroundColor] = Color.white
-			navigationBar.backBarButtonItem?.tintColor = Color.grey
+			navigationBar.backBarButtonItem?.tintColor = Color.black
 			navigationBar.leftBarButtonItem?.tintColor = Color.white
 			navigationBar.rightBarButtonItem?.tintColor = Color.white
         } else {
             view.backgroundColor = Color.white
 			daysOfWeekBackgroundView.backgroundColor = Color.white
-			updateDaysOfWeek(color: Color.grey, weekendColor: Color.green)
+			updateDaysOfWeek(color: Color.black, weekendColor: Color.green)
 			navigationController?.navigationBar.barTintColor = Color.white
-			navigationController?.navigationBar.titleTextAttributes![NSAttributedStringKey.foregroundColor] = Color.grey
-			navigationBar.backBarButtonItem?.tintColor = Color.grey
-			navigationBar.leftBarButtonItem?.tintColor = Color.grey
-			navigationBar.rightBarButtonItem?.tintColor = Color.grey
+			navigationController?.navigationBar.titleTextAttributes![NSAttributedStringKey.foregroundColor] = Color.black
+			navigationBar.backBarButtonItem?.tintColor = Color.black
+			navigationBar.leftBarButtonItem?.tintColor = Color.black
+			navigationBar.rightBarButtonItem?.tintColor = Color.black
         }
         if darkModeTemp != Settings.shared.isDarkMode {
             darkModeTemp = Settings.shared.isDarkMode

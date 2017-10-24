@@ -72,28 +72,28 @@ class ELAddEventTableViewCell: UITableViewCell {
     func updateDesign() {
         backgroundColor = UIColor.clear
         layer.masksToBounds = false
-        let bColor = Settings.shared.isDarkMode ? Color.grey : Color.white
-        let tColor = Settings.shared.isDarkMode ? Color.white : Color.grey
+        let bColor = Settings.shared.isDarkMode ? Color.black : Color.white
+        let tColor = Settings.shared.isDarkMode ? Color.white : Color.black
         if let superController = tableView {
             if superController.isEmbededInDayView {
                 selectTodayButtonView.isHidden = true
             } else {
                 selectTodayButtonView.isHidden = false
                 setUpButton(selectTodayButtonView, button: selectTodayButton, image: #imageLiteral(resourceName: "ic_keyboard_arrow_right"), backgroundColor:  bColor, tintColor: tColor)
-                selectTodayButtonView.layer.shadowColor = Color.grey.cgColor
+                selectTodayButtonView.layer.shadowColor = Color.black.cgColor
             }
         }
         
         setUpButton(addEventButtonView, button: addEventButton, image: #imageLiteral(resourceName: "ic_add"), backgroundColor: Color.green)
-        addEventButtonView.layer.shadowColor = Color.grey.cgColor
+        addEventButtonView.layer.shadowColor = Color.black.cgColor
         addEventButtonView.layer.cornerRadius = addEventButtonView.bounds.height / 2
         updateLayerDesign()
         updateSelectTodayIcon()
     }
     
     func updateLayerDesign() {
-        let bColor = Settings.shared.isDarkMode ? Color.grey : Color.white
-        let tColor = Settings.shared.isDarkMode ? Color.white : Color.grey
+        let bColor = Settings.shared.isDarkMode ? Color.black : Color.white
+        let tColor = Settings.shared.isDarkMode ? Color.white : Color.black
         var image: UIImage
         if Settings.shared.isEventListRelative {
             image = #imageLiteral(resourceName: "ic_layers")
@@ -101,7 +101,7 @@ class ELAddEventTableViewCell: UITableViewCell {
             image = #imageLiteral(resourceName: "ic_layers_clear")
         }
         setUpButton(layerButtonView, button: layerButton, image: image, backgroundColor: bColor, tintColor: tColor)
-        layerButtonView.layer.shadowColor = Color.grey.cgColor
+        layerButtonView.layer.shadowColor = Color.black.cgColor
     }
     
     func updateSelectTodayIcon() {

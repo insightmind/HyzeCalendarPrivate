@@ -26,7 +26,7 @@ class SelectLocationSearchViewController: UIViewController, UISearchBarDelegate 
         // Do any additional setup after loading the view.
 		searchBar.delegate = self
 		let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
-		textFieldInsideSearchBar?.textColor = Settings.shared.isDarkMode ? Color.white : Color.grey
+		textFieldInsideSearchBar?.textColor = Settings.shared.isDarkMode ? Color.white : Color.black
 		
 		blurView.effect = UIBlurEffect(style: Settings.shared.isDarkMode ? .dark : .light)
 		

@@ -68,11 +68,11 @@ class DayViewUIVViewController: UIViewController {
     
 	func setDesign(animated: Bool = false) {
         if Settings.shared.isDarkMode {
-            view.backgroundColor = Color.grey
+            view.backgroundColor = Color.black
 			navigationController?.navigationBar.tintColor = Color.white
         } else {
             view.backgroundColor = Color.white
-			navigationController?.navigationBar.tintColor = Color.grey
+			navigationController?.navigationBar.tintColor = Color.black
         }
 		
 		UIView.animate(withDuration: animated ? 0.7 : 0, animations: {

@@ -23,7 +23,7 @@ class DayCollectionViewCell: UICollectionViewCell {
 		if Settings.shared.isDarkMode {
 			lbl.textColor = Color.white
 		} else {
-			lbl.textColor = Color.grey
+			lbl.textColor = Color.black
 		}
 		lbl.textAlignment = .center
 		return lbl
@@ -35,7 +35,7 @@ class DayCollectionViewCell: UICollectionViewCell {
         if Settings.shared.isDarkMode {
             lbl.textColor = Color.white
         } else {
-            lbl.textColor = Color.grey
+            lbl.textColor = Color.black
         }
         lbl.textAlignment = .left
         return lbl

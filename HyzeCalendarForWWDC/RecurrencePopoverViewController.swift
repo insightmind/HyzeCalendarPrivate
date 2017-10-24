@@ -193,13 +193,13 @@ class RecurrencePopoverViewController: UIViewController {
 			weeklyButton.tintColor = Color.white
 			monthlyButton.tintColor = Color.white
 			yearlyButton.tintColor = Color.white
-			popover.backgroundColor = Color.grey.withAlphaComponent(0.3)
+			popover.backgroundColor = Color.black.withAlphaComponent(0.3)
 		} else {
 			blurEffectView.effect = UIBlurEffect(style: .light)
-			dailyButton.tintColor = Color.grey
-			weeklyButton.tintColor = Color.grey
-			monthlyButton.tintColor = Color.grey
-			yearlyButton.tintColor = Color.grey
+			dailyButton.tintColor = Color.black
+			weeklyButton.tintColor = Color.black
+			monthlyButton.tintColor = Color.black
+			yearlyButton.tintColor = Color.black
 			popover.backgroundColor = Color.white.withAlphaComponent(0.3)
 		}
 		

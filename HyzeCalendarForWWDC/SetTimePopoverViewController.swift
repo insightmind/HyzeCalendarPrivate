@@ -83,10 +83,10 @@ class SetTimePopoverViewController: UIViewController {
 		if Settings.shared.isDarkMode {
 			self.blurLayer.effect = UIBlurEffect(style: .dark)
 			datePicker.setValue(Color.white, forKey: "textColor")
-			self.popover.backgroundColor = Color.grey.withAlphaComponent(0.3)
+			self.popover.backgroundColor = Color.black.withAlphaComponent(0.3)
 		} else {
 			self.blurLayer.effect = UIBlurEffect(style: .light)
-			datePicker.setValue(Color.grey, forKey: "textColor")
+			datePicker.setValue(Color.black, forKey: "textColor")
 			self.popover.backgroundColor = Color.white.withAlphaComponent(0.3)
 		}
 		

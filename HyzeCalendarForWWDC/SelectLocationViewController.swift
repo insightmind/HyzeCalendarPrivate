@@ -68,7 +68,7 @@ class SelectLocationViewController: UIViewController {
 		popover.layer.masksToBounds = true
 		
 		if Settings.shared.isDarkMode {
-			self.popover.backgroundColor = Color.grey.withAlphaComponent(0.3)
+			self.popover.backgroundColor = Color.black.withAlphaComponent(0.3)
 		} else {
 			self.popover.backgroundColor = UIColor.white.withAlphaComponent(0.5)
 		}
