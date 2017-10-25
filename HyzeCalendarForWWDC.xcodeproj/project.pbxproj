@@ -103,6 +103,7 @@
 		3EFC00CB1F5E165C0028F387 /* LocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EFC00C91F5E165C0028F387 /* LocationTableViewCell.xib */; };
 		3EFE5F491E41310A004E75F9 /* DayMainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFE5F481E41310A004E75F9 /* DayMainButton.swift */; };
 		85108E0F1F81857000F42FDD /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 85108E0E1F81857000F42FDD /* Podfile */; };
+		852BE7161FA0BC4F00FEAD43 /* SettingsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852BE7151FA0BC4F00FEAD43 /* SettingsListTableViewController.swift */; };
 		852EC4471F9FA6BD0024126A /* GridCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852EC4461F9FA6BD0024126A /* GridCollectionViewFlowLayout.swift */; };
 		852EC44A1F9FB8A60024126A /* Deprecated_ETViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852EC4481F9FB8A50024126A /* Deprecated_ETViewCell.swift */; };
 		852EC44B1F9FB8A60024126A /* Deprecated_ETView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852EC4491F9FB8A60024126A /* Deprecated_ETView.swift */; };
@@ -113,6 +114,7 @@
 		85788BB91F865EA10073B90C /* ELEventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85788BB71F865EA10073B90C /* ELEventTableViewCell.xib */; };
 		857CDFD51F7D76FD00ACECB6 /* ETViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857CDFD41F7D76FD00ACECB6 /* ETViewController.swift */; };
 		85868DC71F926A8D00D5EF1E /* EventEditor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85868DC61F926A8D00D5EF1E /* EventEditor.storyboard */; };
+		859F543F1FA0BE070069777F /* SettingsListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 859F543D1FA0BE070069777F /* SettingsListTableViewCell.xib */; };
 		85BF6BE91F9FDE0E00D7247F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BF6BE81F9FDE0E00D7247F /* SettingsViewController.swift */; };
 		BD379CE11E3065B18A68D862 /* Pods_HyzeCalendarForWWDC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97F66AFE0BF643DE942FADFE /* Pods_HyzeCalendarForWWDC.framework */; };
 /* End PBXBuildFile section */
@@ -219,6 +221,7 @@
 		3EFC00C91F5E165C0028F387 /* LocationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationTableViewCell.xib; sourceTree = "<group>"; };
 		3EFE5F481E41310A004E75F9 /* DayMainButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayMainButton.swift; sourceTree = "<group>"; };
 		85108E0E1F81857000F42FDD /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		852BE7151FA0BC4F00FEAD43 /* SettingsListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsListTableViewController.swift; sourceTree = "<group>"; };
 		852EC4461F9FA6BD0024126A /* GridCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		852EC4481F9FB8A50024126A /* Deprecated_ETViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deprecated_ETViewCell.swift; sourceTree = "<group>"; };
 		852EC4491F9FB8A60024126A /* Deprecated_ETView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deprecated_ETView.swift; sourceTree = "<group>"; };
@@ -229,6 +232,7 @@
 		85788BB71F865EA10073B90C /* ELEventTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ELEventTableViewCell.xib; sourceTree = "<group>"; };
 		857CDFD41F7D76FD00ACECB6 /* ETViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETViewController.swift; sourceTree = "<group>"; };
 		85868DC61F926A8D00D5EF1E /* EventEditor.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EventEditor.storyboard; sourceTree = "<group>"; };
+		859F543D1FA0BE070069777F /* SettingsListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsListTableViewCell.xib; sourceTree = "<group>"; };
 		85BF6BE81F9FDE0E00D7247F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		97F66AFE0BF643DE942FADFE /* Pods_HyzeCalendarForWWDC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HyzeCalendarForWWDC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -689,6 +693,7 @@
 		3EE519EC1E54C20A00074CDC /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				852BE7141FA0BC3800FEAD43 /* SettingsList */,
 				3E6BCC501E5479DD00369E7D /* Deprecated_SettingsViewController.swift */,
 				85BF6BE81F9FDE0E00D7247F /* SettingsViewController.swift */,
 			);
@@ -725,6 +730,15 @@
 				3EFC00C91F5E165C0028F387 /* LocationTableViewCell.xib */,
 			);
 			name = "Additional Views";
+			sourceTree = "<group>";
+		};
+		852BE7141FA0BC3800FEAD43 /* SettingsList */ = {
+			isa = PBXGroup;
+			children = (
+				852BE7151FA0BC4F00FEAD43 /* SettingsListTableViewController.swift */,
+				859F543D1FA0BE070069777F /* SettingsListTableViewCell.xib */,
+			);
+			name = SettingsList;
 			sourceTree = "<group>";
 		};
 		854626AE1F8E712A002D6EF5 /* AddEventCell */ = {
@@ -874,6 +888,7 @@
 				3EA80D591E2BEC9300FD87C3 /* Assets.xcassets in Resources */,
 				3EA8EE2C1ED219B8000D6EF2 /* DayView.storyboard in Resources */,
 				3EA727571F49F0560041B398 /* SelectContactsTableViewCell.xib in Resources */,
+				859F543F1FA0BE070069777F /* SettingsListTableViewCell.xib in Resources */,
 				85868DC71F926A8D00D5EF1E /* EventEditor.storyboard in Resources */,
 				3E61C1131F53814900AE1A2B /* WeekdayTableViewCell.xib in Resources */,
 				3E6560831F4CCBDF00C241BE /* SetContacts.storyboard in Resources */,
@@ -976,6 +991,7 @@
 				3E6283891F4DFF1700A799DC /* SetRecurrenceTableViewCell.swift in Sources */,
 				3EA6E4751F4C7C1F003E9341 /* ContactsManagement.swift in Sources */,
 				3E4A9B291E4BB4C0009E45EF /* EventManagement.swift in Sources */,
+				852BE7161FA0BC4F00FEAD43 /* SettingsListTableViewController.swift in Sources */,
 				3ED0F0DC1F437310001A12A8 /* EventEditorEventInformations.swift in Sources */,
 				3EFC00C31F5E09CA0028F387 /* SelectLocationViewController.swift in Sources */,
 				3EBDF8C91F5DDE9600B66C96 /* SelectLocationTableViewCell.swift in Sources */,
