@@ -352,10 +352,10 @@
             </objects>
             <point key="canvasLocation" x="8248.7999999999993" y="-85.007496251874073"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Settings List Table View Controller-->
         <scene sceneID="KhF-RT-XYJ">
             <objects>
-                <tableViewController id="1Ug-PP-rfv" sceneMemberID="viewController">
+                <tableViewController id="1Ug-PP-rfv" customClass="SettingsListTableViewController" customModule="HyzeCalendarForWWDC" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="4ME-md-NAU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

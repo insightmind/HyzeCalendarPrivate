@@ -39,6 +39,7 @@ class EventEditorTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.contentInset = UIEdgeInsets(top: 120, left: 0, bottom: 50, right: 0)
 		self.tableView.backgroundColor = UIColor.clear
 		self.tableView.separatorStyle = .none
 		self.tableView.allowsSelection = false
@@ -74,7 +75,6 @@ class EventEditorTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-		tableView.contentInset = UIEdgeInsets(top: 120, left: 0, bottom: 50, right: 0)
         return 1
     }
 

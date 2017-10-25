@@ -21,12 +21,10 @@ class MainCollectionViewController: UICollectionViewController {
 	@IBAction func scrollDown(_ sender: UISwipeGestureRecognizer) {
 		self.scrollToSection(direction: ScrollDirection.down, animated: true)
 	}
-
+    
 	override func viewDidLoad() {
-        super.viewDidLoad()
         
-        self.collectionView!.collectionViewLayout = monthViewLayout
-		
+        super.viewDidLoad()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         // Register cell classes
@@ -60,7 +58,6 @@ class MainCollectionViewController: UICollectionViewController {
         return years
     }
 
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
         return 12
@@ -90,7 +87,7 @@ class MainCollectionViewController: UICollectionViewController {
         } else {
             self.calculateETViewUpdate()
         }
-		
+		self.collectionView?.collectionViewLayout = monthViewLayout
     }
 	
 	func reloadCalendarView() {

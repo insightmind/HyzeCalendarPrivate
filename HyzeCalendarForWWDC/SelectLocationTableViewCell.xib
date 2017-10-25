@@ -36,10 +36,10 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.219" green="0.62914122500000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="VKD-ID-PKM" secondAttribute="trailing" constant="8" id="0fV-pw-07B"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="VKD-ID-PKM" secondAttribute="trailing" id="0fV-pw-07B"/>
                                     <constraint firstAttribute="height" constant="28" id="7y3-wP-8Q2"/>
                                     <constraint firstAttribute="bottom" secondItem="VKD-ID-PKM" secondAttribute="bottom" id="KTM-o2-YSe"/>
-                                    <constraint firstItem="VKD-ID-PKM" firstAttribute="leading" secondItem="cXZ-kT-MOq" secondAttribute="leading" constant="8" id="TmY-t2-bd9"/>
+                                    <constraint firstItem="VKD-ID-PKM" firstAttribute="leading" secondItem="cXZ-kT-MOq" secondAttribute="leadingMargin" id="TmY-t2-bd9"/>
                                     <constraint firstItem="VKD-ID-PKM" firstAttribute="top" secondItem="cXZ-kT-MOq" secondAttribute="top" id="VWK-r7-LJ7"/>
                                 </constraints>
                             </view>

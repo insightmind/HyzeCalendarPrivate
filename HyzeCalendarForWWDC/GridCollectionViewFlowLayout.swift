@@ -40,6 +40,11 @@ class GridCollectionViewFlowLayout: UICollectionViewFlowLayout {
     func sizeForItems() -> CGSize {
         
         let width = collectionView!.bounds.width
+        
+        if width == 0 {
+            return CGSize.zero
+        }
+        
         let cellSize = CGSize(width: (width - 2 * inset) / cellsPerRow, height: ((width - 2 * inset) / 7 * 6) / cellsPerRow)
         
         return cellSize

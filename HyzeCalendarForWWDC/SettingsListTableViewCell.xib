@@ -36,9 +36,9 @@
                                 <color key="backgroundColor" red="0.219" green="0.62914122500000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="cZC-9w-6pm" secondAttribute="bottom" id="JsR-Ag-9rh"/>
-                                    <constraint firstAttribute="trailing" secondItem="cZC-9w-6pm" secondAttribute="trailing" constant="8" id="Zrx-Gv-RiZ"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="cZC-9w-6pm" secondAttribute="trailing" id="Zrx-Gv-RiZ"/>
                                     <constraint firstAttribute="height" constant="28" id="d6s-XH-y52"/>
-                                    <constraint firstItem="cZC-9w-6pm" firstAttribute="leading" secondItem="OuX-Lc-hb2" secondAttribute="leading" constant="8" id="tEB-TJ-wsA"/>
+                                    <constraint firstItem="cZC-9w-6pm" firstAttribute="leading" secondItem="OuX-Lc-hb2" secondAttribute="leadingMargin" id="tEB-TJ-wsA"/>
                                     <constraint firstItem="cZC-9w-6pm" firstAttribute="top" secondItem="OuX-Lc-hb2" secondAttribute="top" id="ypo-qq-5n5"/>
                                 </constraints>
                             </view>
@@ -67,6 +67,12 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="cellView" destination="eQm-BH-yYZ" id="zIF-b2-vxG"/>
+                <outlet property="mainView" destination="ze5-Hd-3QJ" id="0zN-9e-h9I"/>
+                <outlet property="title" destination="cZC-9w-6pm" id="GSM-Jc-Gxf"/>
+                <outlet property="topView" destination="OuX-Lc-hb2" id="sp7-uk-tfJ"/>
+            </connections>
             <point key="canvasLocation" x="35" y="-17.5"/>
         </tableViewCell>
     </objects>

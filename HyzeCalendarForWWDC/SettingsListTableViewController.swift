@@ -8,12 +8,28 @@
 
 import UIKit
 
+struct SettingsListTableViewCellConfiguration {
+    let title: String
+//    let viewController: UIViewController
+//    let height: CGFloat
+}
+
 class SettingsListTableViewController: UITableViewController {
 
+    let reuseIdentifier = "settingsBasicCell"
+    
+    let data = [SettingsListTableViewCellConfiguration(title: "General"),
+                SettingsListTableViewCellConfiguration(title: "Design"),
+                SettingsListTableViewCellConfiguration(title: "Usability"),
+                SettingsListTableViewCellConfiguration(title: "Support")]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
+        tableView.contentInset = UIEdgeInsets(top: 120, left: 0, bottom: 50, right: 0)
+        let nib = UINib(nibName: "SettingsListTableViewCell", bundle: nil)
+        self.tableView.register(nib, forCellReuseIdentifier: reuseIdentifier)
+        
+        //Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
@@ -29,23 +45,27 @@ class SettingsListTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return data.count
     }
 
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
-        // Configure the cell...
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! SettingsListTableViewCell
+
+        cell.setTitle(data[indexPath.row].title)
 
         return cell
     }
-    */
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200
+    }
+
 
     /*
     // Override to support conditional editing of the table view.
