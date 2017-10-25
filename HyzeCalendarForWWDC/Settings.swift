@@ -41,7 +41,7 @@ class Settings {
 	var hourDecorationPosition = [[CGFloat]]()
 	
 	var isSettingDefaultCalendar = false
-	var settingsView: SettingsViewController?
+	var settingsView: Deprecated_SettingsViewController?
 	
 	var eventsChange: Bool = false
 	var viewIsDayView: Bool = false

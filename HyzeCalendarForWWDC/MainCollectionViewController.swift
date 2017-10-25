@@ -24,6 +24,8 @@ class MainCollectionViewController: UICollectionViewController {
 
 	override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.collectionView!.collectionViewLayout = monthViewLayout
 		
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -34,6 +36,7 @@ class MainCollectionViewController: UICollectionViewController {
 		self.collectionView!.isScrollEnabled = false
         self.collectionView!.isPrefetchingEnabled = false
 		self.collectionView?.layer.masksToBounds = false
+        
 		
 		self.collectionView?.backgroundColor = UIColor.clear
         
@@ -41,7 +44,6 @@ class MainCollectionViewController: UICollectionViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.collectionView!.setCollectionViewLayout(monthViewLayout, animated: false)
         self.scrollToSection(yearID: Selection.shared.currentYearID, monthID: Selection.shared.currentMonthID - 1, animated: animated)
     }
 	
@@ -95,17 +97,6 @@ class MainCollectionViewController: UICollectionViewController {
 		self.collectionView!.reloadData()
 		scrollToSection(yearID: Selection.shared.currentYearID, monthID: Selection.shared.currentMonthID - 1, animated: false)
 	}
-    
-    func reloadLayout() {
-        switch Design.shared.currentETViewState {
-        case .minimal:
-            self.collectionView!.setCollectionViewLayout(yearViewLayout, animated: true)
-            self.collectionView!.isUserInteractionEnabled = false
-        default:
-            self.collectionView!.setCollectionViewLayout(monthViewLayout, animated: true)
-            self.reloadCalendarView()
-        }
-    }
 	
 	func scrollToSection(direction: ScrollDirection, animated anim: Bool = false) {
 		

@@ -29,7 +29,8 @@ class ELAddEventTableViewCell: UITableViewCell {
                 mainViewController = i as! ViewController
                 guard let calendarViewController = mainViewController.calendarViewController else { return }
                 let (todayYearID, todayMonthID, _) = Selection.shared.todaysDayCellIndex
-                calendarViewController.scrollToSection(yearID: todayYearID, monthID: todayMonthID - 1, animated: true)
+                //calendarViewController.scrollToSection(yearID: todayYearID, monthID: todayMonthID - 1, animated: true)
+                calendarViewController.collectionView?.setCollectionViewLayout(calendarViewController.yearViewLayout, animated: true)
             }
         }
     }

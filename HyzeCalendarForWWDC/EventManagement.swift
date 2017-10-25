@@ -18,8 +18,6 @@ class EventManagement {
 	
 	static let shared = EventManagement()
 	
-	var ETView: ETView!
-	
 	//Declare all Names of Months ina year
 	let months: [String] = DateFormatter().monthSymbols!
 	
@@ -143,7 +141,7 @@ class EventManagement {
 			event = EKEvent(eventStore: EventManagement.shared.EMEventStore)
 		}
 		if from.startDate < from.endDate && !from.isReadOnly {
-			event.title = from.title
+            event.title = from.title == "" ? "Untitled Event" : from.title
 			event.calendar = from.calendar ?? getHyzeCalendar()
 			event.startDate = from.startDate
 			event.endDate = from.endDate

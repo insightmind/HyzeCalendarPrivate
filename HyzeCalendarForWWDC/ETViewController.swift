@@ -23,6 +23,8 @@ class ETViewController: UIViewController {
     @IBOutlet weak var gestureBar: UIView!
     @IBOutlet var rightTapGestureRecognizer: UITapGestureRecognizer!
     
+    var collectionViewTransitioningLayout: UICollectionViewTransitionLayout?
+    
     @IBOutlet weak var toolBar: UIView!
     
     var calendarViewController: ViewController? { didSet{ isCalendarView = true }}
@@ -68,6 +70,12 @@ class ETViewController: UIViewController {
             if animator.isRunning {
                 animator.stopAnimation(true)
             }
+            if let calendarView = superController.calendarViewController {
+                let isMinimal = Design.shared.currentETViewState == .minimal
+                let year = calendarView.yearViewLayout
+                let month = calendarView.monthViewLayout
+                collectionViewTransitioningLayout = calendarView.collectionView!.startInteractiveTransition(to: isMinimal ? month : year, completion: nil)
+            }
         case .changed:
             guard let visibleView = superController.navigationController?.visibleViewController?.view else { return }
             var translatedCenterY = touchPoint.y + Design.shared.currentETViewHeight
@@ -77,6 +85,12 @@ class ETViewController: UIViewController {
             } else if translatedCenterY < 0  {
                 translatedCenterY = 0
             }
+            if let transitionLayout = collectionViewTransitioningLayout {
+                let fractal = translatedCenterY / (0.5 * minHeight)
+                print(fractal)
+                transitionLayout.transitionProgress = fractal
+                transitionLayout.invalidateLayout()
+            }
             superController.eventListHeightConstraint.constant = translatedCenterY
             superController.view.layoutIfNeeded()
         case .ended, .cancelled:
@@ -85,22 +99,40 @@ class ETViewController: UIViewController {
             case 0...maxHeight/3:
                 superController.eventListHeightConstraint.constant = superController.calendarViewToTopConstraint.constant + 10 + ((superController.calendarView.bounds.width / 7) - 2)
                 eventList?.tableView.isScrollEnabled = true
+                
+                if Design.shared.currentETViewState == .minimal {
+                    superController.calendarViewController?.collectionView?.finishInteractiveTransition()
+                } else {
+                    superController.calendarViewController?.collectionView?.cancelInteractiveTransition()
+                }
+                
                 changeState(to: .expanded)
+                
             case 3*maxHeight/4...maxHeight:
                 superController.eventListHeightConstraint.constant = maxHeight - 100
                 eventList?.tableView.isScrollEnabled = false
                 eventList?.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+                if Design.shared.currentETViewState == .minimal {
+                    superController.calendarViewController?.collectionView?.cancelInteractiveTransition()
+                } else {
+                    superController.calendarViewController?.collectionView?.finishInteractiveTransition()
+                }
                 changeState(to: .minimal)
             default:
                 let basicHeight = superController.calendarViewToTopConstraint.constant + superController.calendarView.frame.height
                 let expandedValue = Design.shared.currentETViewIsExpandedByNumOfRows * ((superController.calendarView.bounds.width / 7) - 2)
                 superController.eventListHeightConstraint.constant = basicHeight - expandedValue
                 eventList?.tableView.isScrollEnabled = true
+                if Design.shared.currentETViewState == .minimal {
+                    superController.calendarViewController?.collectionView?.finishInteractiveTransition()
+                } else {
+                    superController.calendarViewController?.collectionView?.cancelInteractiveTransition()
+                }
                 changeState(to: .normal)
             }
             animator.addAnimations {
                 superController.view.layoutIfNeeded()
-                superController.calendarViewController!.reloadLayout()
+                
             }
             animator.startAnimation()
         default:

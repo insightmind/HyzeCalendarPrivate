@@ -192,7 +192,7 @@ class ETView: UITableView, UITableViewDataSource, UITableViewDelegate{
     
     override init(frame: CGRect, style: UITableViewStyle) {
         super.init(frame: frame, style: style)
-        EventManagement.shared.ETView = self
+        
         updateEvents()
     }
     

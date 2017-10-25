@@ -10,13 +10,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HyzeCalendarForWWDC/MainCollectionViewController.swift"
-            timestampString = "530560887.740555"
+            timestampString = "530572208.431512"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "172"
-            endingLineNumber = "172"
-            landmarkName = "scrollToSection(yearID:monthID:animated:)"
-            landmarkType = "7">
+            startingLineNumber = "163"
+            endingLineNumber = "163"
+            landmarkName = "unknown"
+            landmarkType = "0">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -306,13 +306,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HyzeCalendarForWWDC/MainCollectionViewController.swift"
-            timestampString = "530560887.740675"
+            timestampString = "530572208.431922"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "viewWillAppear(_:)"
-            landmarkType = "7">
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -322,13 +322,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HyzeCalendarForWWDC/MainCollectionViewController.swift"
-            timestampString = "530560887.740726"
+            timestampString = "530572208.432114"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
-            landmarkName = "reloadCalendarView()"
-            landmarkType = "7">
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -338,13 +338,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HyzeCalendarForWWDC/MainCollectionViewController.swift"
-            timestampString = "530560887.740768"
+            timestampString = "530572208.432277"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
-            landmarkName = "scrollToSection(direction:animated:)"
-            landmarkType = "7">
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -354,13 +354,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HyzeCalendarForWWDC/MainCollectionViewController.swift"
-            timestampString = "530560887.740809"
+            timestampString = "530572208.432438"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
-            landmarkName = "calculateETViewUpdate(shouldReload:)"
-            landmarkType = "7">
+            startingLineNumber = "142"
+            endingLineNumber = "142"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -49,7 +49,7 @@ class EventEditorEventInformations: NSCopying {
 		}
 	}
 	
-	var title: String = "Untitled Event"
+	var title: String = ""
 	var isAllDay: Bool = false
 	var startDate: Date = Date()
 	var endDate: Date = Date(timeIntervalSinceNow: -10)

@@ -58,4 +58,9 @@ class GridCollectionViewFlowLayout: UICollectionViewFlowLayout {
         return collectionView!.contentOffset
     }
     
+    override func prepare() {
+        super.prepare()
+        self.invalidateLayout()
+    }
+    
 }

@@ -11,7 +11,6 @@
 		3E0C9DDB1F5864C0001B644C /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0C9DDA1F5864C0001B644C /* Settings.swift */; };
 		3E0FDDE51F561BCA00086319 /* DaysOfMonthCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0FDDE41F561BCA00086319 /* DaysOfMonthCollectionViewCell.swift */; };
 		3E1B95251E3FAD9D009EB5C9 /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1B95241E3FAD9D009EB5C9 /* DayView.swift */; };
-		3E21053A1E5B56C400E78840 /* Deprecated_ETViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2105391E5B56C400E78840 /* Deprecated_ETViewCell.swift */; };
 		3E2C6ECE1F4CD0A700E88CA1 /* SetContactsPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2C6ECD1F4CD0A700E88CA1 /* SetContactsPopoverViewController.swift */; };
 		3E2D7B791E6715E600A0170D /* EventEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2D7B781E6715E600A0170D /* EventEditorViewController.swift */; };
 		3E2DA5641F5773F4008CECD7 /* MainNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2DA5631F5773F4008CECD7 /* MainNavigationViewController.swift */; };
@@ -52,7 +51,7 @@
 		3E68188E1F46FED600E8D7BC /* CalendarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E68188C1F46FED600E8D7BC /* CalendarTableViewCell.xib */; };
 		3E6818901F46FFFC00E8D7BC /* CalendarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E68188F1F46FFFC00E8D7BC /* CalendarTableViewController.swift */; };
 		3E68B5C91E3A886D00AE103F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E68B5C71E3A886D00AE103F /* Main.storyboard */; };
-		3E6BCC511E5479DD00369E7D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6BCC501E5479DD00369E7D /* SettingsViewController.swift */; };
+		3E6BCC511E5479DD00369E7D /* Deprecated_SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6BCC501E5479DD00369E7D /* Deprecated_SettingsViewController.swift */; };
 		3E7140431E46844C00D51B17 /* DayViewUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7140421E46844C00D51B17 /* DayViewUIViewController.swift */; };
 		3E7DD5731E4679FA001E1D0B /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7DD5721E4679FA001E1D0B /* EventView.swift */; };
 		3EA6E4751F4C7C1F003E9341 /* ContactsManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA6E4741F4C7C1F003E9341 /* ContactsManagement.swift */; };
@@ -87,7 +86,6 @@
 		3ED0F0DC1F437310001A12A8 /* EventEditorEventInformations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED0F0DB1F437310001A12A8 /* EventEditorEventInformations.swift */; };
 		3EDC110B1F40E1B400E0B250 /* NotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDC11091F40E1B400E0B250 /* NotesTableViewCell.swift */; };
 		3EDC110C1F40E1B400E0B250 /* NotesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EDC110A1F40E1B400E0B250 /* NotesTableViewCell.xib */; };
-		3EE011611E560D3800743914 /* Deprecated_ETView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE011601E560D3800743914 /* Deprecated_ETView.swift */; };
 		3EE5426D1F479FCC00B230FF /* RemoveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE5426B1F479FCC00B230FF /* RemoveTableViewCell.swift */; };
 		3EE5426E1F479FCC00B230FF /* RemoveTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EE5426C1F479FCC00B230FF /* RemoveTableViewCell.xib */; };
 		3EE9C8691F56F0C500FD93E9 /* RecurrenceDaysOfMonthPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE9C8681F56F0C500FD93E9 /* RecurrenceDaysOfMonthPickerView.swift */; };
@@ -106,6 +104,8 @@
 		3EFE5F491E41310A004E75F9 /* DayMainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFE5F481E41310A004E75F9 /* DayMainButton.swift */; };
 		85108E0F1F81857000F42FDD /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 85108E0E1F81857000F42FDD /* Podfile */; };
 		852EC4471F9FA6BD0024126A /* GridCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852EC4461F9FA6BD0024126A /* GridCollectionViewFlowLayout.swift */; };
+		852EC44A1F9FB8A60024126A /* Deprecated_ETViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852EC4481F9FB8A50024126A /* Deprecated_ETViewCell.swift */; };
+		852EC44B1F9FB8A60024126A /* Deprecated_ETView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852EC4491F9FB8A60024126A /* Deprecated_ETView.swift */; };
 		854626B11F8E7162002D6EF5 /* ELAddEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854626AF1F8E7162002D6EF5 /* ELAddEventTableViewCell.swift */; };
 		854626B21F8E7162002D6EF5 /* ELAddEventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 854626B01F8E7162002D6EF5 /* ELAddEventTableViewCell.xib */; };
 		85788BB01F865A030073B90C /* EventListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85788BAF1F865A030073B90C /* EventListTableViewController.swift */; };
@@ -113,6 +113,7 @@
 		85788BB91F865EA10073B90C /* ELEventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85788BB71F865EA10073B90C /* ELEventTableViewCell.xib */; };
 		857CDFD51F7D76FD00ACECB6 /* ETViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857CDFD41F7D76FD00ACECB6 /* ETViewController.swift */; };
 		85868DC71F926A8D00D5EF1E /* EventEditor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85868DC61F926A8D00D5EF1E /* EventEditor.storyboard */; };
+		85BF6BE91F9FDE0E00D7247F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BF6BE81F9FDE0E00D7247F /* SettingsViewController.swift */; };
 		BD379CE11E3065B18A68D862 /* Pods_HyzeCalendarForWWDC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97F66AFE0BF643DE942FADFE /* Pods_HyzeCalendarForWWDC.framework */; };
 /* End PBXBuildFile section */
 
@@ -124,7 +125,6 @@
 		3E0C9DDA1F5864C0001B644C /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		3E0FDDE41F561BCA00086319 /* DaysOfMonthCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysOfMonthCollectionViewCell.swift; sourceTree = "<group>"; };
 		3E1B95241E3FAD9D009EB5C9 /* DayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DayView.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		3E2105391E5B56C400E78840 /* Deprecated_ETViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deprecated_ETViewCell.swift; sourceTree = "<group>"; };
 		3E2C6ECD1F4CD0A700E88CA1 /* SetContactsPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetContactsPopoverViewController.swift; sourceTree = "<group>"; };
 		3E2D7B781E6715E600A0170D /* EventEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventEditorViewController.swift; sourceTree = "<group>"; };
 		3E2DA5631F5773F4008CECD7 /* MainNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationViewController.swift; sourceTree = "<group>"; };
@@ -166,7 +166,7 @@
 		3E68188C1F46FED600E8D7BC /* CalendarTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarTableViewCell.xib; sourceTree = "<group>"; };
 		3E68188F1F46FFFC00E8D7BC /* CalendarTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewController.swift; sourceTree = "<group>"; };
 		3E68B5C81E3A886D00AE103F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		3E6BCC501E5479DD00369E7D /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		3E6BCC501E5479DD00369E7D /* Deprecated_SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deprecated_SettingsViewController.swift; sourceTree = "<group>"; };
 		3E7140421E46844C00D51B17 /* DayViewUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayViewUIViewController.swift; sourceTree = "<group>"; };
 		3E7DD5721E4679FA001E1D0B /* EventView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
 		3EA6E4741F4C7C1F003E9341 /* ContactsManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsManagement.swift; sourceTree = "<group>"; };
@@ -202,7 +202,6 @@
 		3ED0F0DB1F437310001A12A8 /* EventEditorEventInformations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEditorEventInformations.swift; sourceTree = "<group>"; };
 		3EDC11091F40E1B400E0B250 /* NotesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewCell.swift; sourceTree = "<group>"; };
 		3EDC110A1F40E1B400E0B250 /* NotesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotesTableViewCell.xib; sourceTree = "<group>"; };
-		3EE011601E560D3800743914 /* Deprecated_ETView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Deprecated_ETView.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		3EE5426B1F479FCC00B230FF /* RemoveTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveTableViewCell.swift; sourceTree = "<group>"; };
 		3EE5426C1F479FCC00B230FF /* RemoveTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RemoveTableViewCell.xib; sourceTree = "<group>"; };
 		3EE9C8681F56F0C500FD93E9 /* RecurrenceDaysOfMonthPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurrenceDaysOfMonthPickerView.swift; sourceTree = "<group>"; };
@@ -221,6 +220,8 @@
 		3EFE5F481E41310A004E75F9 /* DayMainButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayMainButton.swift; sourceTree = "<group>"; };
 		85108E0E1F81857000F42FDD /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		852EC4461F9FA6BD0024126A /* GridCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		852EC4481F9FB8A50024126A /* Deprecated_ETViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deprecated_ETViewCell.swift; sourceTree = "<group>"; };
+		852EC4491F9FB8A60024126A /* Deprecated_ETView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deprecated_ETView.swift; sourceTree = "<group>"; };
 		854626AF1F8E7162002D6EF5 /* ELAddEventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ELAddEventTableViewCell.swift; sourceTree = "<group>"; };
 		854626B01F8E7162002D6EF5 /* ELAddEventTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ELAddEventTableViewCell.xib; sourceTree = "<group>"; };
 		85788BAF1F865A030073B90C /* EventListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListTableViewController.swift; sourceTree = "<group>"; };
@@ -228,6 +229,7 @@
 		85788BB71F865EA10073B90C /* ELEventTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ELEventTableViewCell.xib; sourceTree = "<group>"; };
 		857CDFD41F7D76FD00ACECB6 /* ETViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETViewController.swift; sourceTree = "<group>"; };
 		85868DC61F926A8D00D5EF1E /* EventEditor.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EventEditor.storyboard; sourceTree = "<group>"; };
+		85BF6BE81F9FDE0E00D7247F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		97F66AFE0BF643DE942FADFE /* Pods_HyzeCalendarForWWDC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HyzeCalendarForWWDC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -641,9 +643,9 @@
 		3EE0115F1E560D0300743914 /* ETView */ = {
 			isa = PBXGroup;
 			children = (
+				852EC4491F9FB8A60024126A /* Deprecated_ETView.swift */,
+				852EC4481F9FB8A50024126A /* Deprecated_ETViewCell.swift */,
 				857CDFD41F7D76FD00ACECB6 /* ETViewController.swift */,
-				3EE011601E560D3800743914 /* Deprecated_ETView.swift */,
-				3E2105391E5B56C400E78840 /* Deprecated_ETViewCell.swift */,
 				3EBCA9DB1F78024E0083EE44 /* ETView.storyboard */,
 				85788BB11F865E4B0073B90C /* EventList */,
 			);
@@ -687,7 +689,8 @@
 		3EE519EC1E54C20A00074CDC /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				3E6BCC501E5479DD00369E7D /* SettingsViewController.swift */,
+				3E6BCC501E5479DD00369E7D /* Deprecated_SettingsViewController.swift */,
+				85BF6BE81F9FDE0E00D7247F /* SettingsViewController.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -984,6 +987,7 @@
 				3EA8EE2E1ED21BCA000D6EF2 /* MainCollectionViewController.swift in Sources */,
 				3E533BC51EC36440000CEF5F /* MonthCollectionViewCell.swift in Sources */,
 				852EC4471F9FA6BD0024126A /* GridCollectionViewFlowLayout.swift in Sources */,
+				852EC44A1F9FB8A60024126A /* Deprecated_ETViewCell.swift in Sources */,
 				3EF9042E1F4CD53D00C690C4 /* SetContactsSearchViewController.swift in Sources */,
 				3E47BD2C1F30E7E900E0646C /* EventEditorTableViewController.swift in Sources */,
 				3EAD342B1F3E44CF00174FF7 /* Design.swift in Sources */,
@@ -1002,6 +1006,7 @@
 				3E7DD5731E4679FA001E1D0B /* EventView.swift in Sources */,
 				3E5E0C1E1F545B1C0096E7E7 /* DateTableViewCell.swift in Sources */,
 				3E36FF011F4A423700EAC9CC /* ContactTableViewCell.swift in Sources */,
+				852EC44B1F9FB8A60024126A /* Deprecated_ETView.swift in Sources */,
 				3E0FDDE51F561BCA00086319 /* DaysOfMonthCollectionViewCell.swift in Sources */,
 				3E47BD311F30EE0200E0646C /* DateSelectionTableViewCell.swift in Sources */,
 				3EF096B01E3FDC9F0011E726 /* ViewController.swift in Sources */,
@@ -1019,16 +1024,15 @@
 				3ED0F0D61F4371C5001A12A8 /* ShowDetail_EventEditorViewController.swift in Sources */,
 				3E68188D1F46FED600E8D7BC /* CalendarTableViewCell.swift in Sources */,
 				3E0C9DDB1F5864C0001B644C /* Settings.swift in Sources */,
-				3EE011611E560D3800743914 /* Deprecated_ETView.swift in Sources */,
 				3ECD09A11E9BFF3000BF9627 /* Selection.swift in Sources */,
-				3E6BCC511E5479DD00369E7D /* SettingsViewController.swift in Sources */,
+				3E6BCC511E5479DD00369E7D /* Deprecated_SettingsViewController.swift in Sources */,
 				3E59BDA31F432E1600BDCF25 /* UIViewExtension.swift in Sources */,
 				3E6412FD1F560DD500688E78 /* DaysOfMonthCollectionView.swift in Sources */,
 				85788BB81F865EA10073B90C /* ELEventTableViewCell.swift in Sources */,
-				3E21053A1E5B56C400E78840 /* Deprecated_ETViewCell.swift in Sources */,
 				3E65607E1F4CC3E700C241BE /* EKEventExtension.swift in Sources */,
 				3E61FE641E5239AF003D796C /* DayViewDecoration.swift in Sources */,
 				3E1B95251E3FAD9D009EB5C9 /* DayView.swift in Sources */,
+				85BF6BE91F9FDE0E00D7247F /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

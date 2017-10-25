@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Settings View Controller-->
+        <!--Deprecated Settings View Controller-->
         <scene sceneID="Qb4-qh-A7u">
             <objects>
-                <viewController id="9Ys-zU-rvq" customClass="SettingsViewController" customModule="HyzeCalendarForWWDC" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9Ys-zU-rvq" customClass="Deprecated_SettingsViewController" customModule="HyzeCalendarForWWDC" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zU0-dh-AkT"/>
                         <viewControllerLayoutGuide type="bottom" id="1Le-Oi-acY"/>
@@ -212,7 +212,7 @@
         <!--eventEditor-->
         <scene sceneID="b77-ZB-9BK">
             <objects>
-                <viewController title="eventEditor" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="ozu-a3-3Zh" sceneMemberID="viewController">
+                <viewController title="eventEditor" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="ozu-a3-3Zh" customClass="SettingsViewController" customModule="HyzeCalendarForWWDC" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JrG-6G-X2k"/>
                         <viewControllerLayoutGuide type="bottom" id="aHe-qZ-9qY"/>
@@ -312,6 +312,9 @@
                                 <state key="normal" title="Save">
                                     <color key="titleColor" red="0.2036032975" green="0.57139366869999997" blue="0.90090757610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="save:" destination="ozu-a3-3Zh" eventType="touchUpInside" id="1v0-gS-REO"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -337,6 +340,10 @@
                             <constraint firstItem="HBP-If-ciW" firstAttribute="bottom" secondItem="BC1-TA-A7V" secondAttribute="bottom" id="y3f-AO-k69"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="backgroundBlurView" destination="zmJ-zW-yWd" id="ssa-aD-rxO"/>
+                        <outlet property="topBarBlurView" destination="gwu-3d-JwG" id="kNi-SB-7lK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xca-3t-pd5" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="H8M-eJ-sOQ" userLabel="Exit" sceneMemberID="exit"/>
