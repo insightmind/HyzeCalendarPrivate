@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13528" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13526"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -22,13 +22,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Tw-M6-dGH">
-                        <rect key="frame" x="8" y="8" width="280" height="233.5"/>
+                        <rect key="frame" x="16" y="11" width="264" height="228"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DGz-YR-n4u">
-                                <rect key="frame" x="0.0" y="0.0" width="280" height="28"/>
+                                <rect key="frame" x="0.0" y="0.0" width="264" height="28"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attendees" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dfp-dt-AGU">
-                                        <rect key="frame" x="13" y="0.0" width="259" height="28"/>
+                                        <rect key="frame" x="13" y="0.0" width="238" height="28"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -36,21 +36,21 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.2036032975" green="0.57139366869999997" blue="0.90090757610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="Dfp-dt-AGU" secondAttribute="trailing" constant="8" id="73m-al-POV"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="Dfp-dt-AGU" secondAttribute="trailing" constant="5" id="73m-al-POV"/>
                                     <constraint firstItem="Dfp-dt-AGU" firstAttribute="top" secondItem="DGz-YR-n4u" secondAttribute="top" id="GOw-7m-icT"/>
-                                    <constraint firstItem="Dfp-dt-AGU" firstAttribute="leading" secondItem="DGz-YR-n4u" secondAttribute="leading" constant="13" id="OJ6-Fn-tqN"/>
+                                    <constraint firstItem="Dfp-dt-AGU" firstAttribute="leading" secondItem="DGz-YR-n4u" secondAttribute="leadingMargin" constant="5" id="OJ6-Fn-tqN"/>
                                     <constraint firstAttribute="height" constant="28" id="UT0-A8-Bhe"/>
                                     <constraint firstAttribute="bottom" secondItem="Dfp-dt-AGU" secondAttribute="bottom" id="UyI-Wt-rEk"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S6k-aA-kgC">
-                                <rect key="frame" x="0.0" y="28" width="280" height="205.5"/>
+                                <rect key="frame" x="0.0" y="28" width="264" height="200"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fc3-YZ-Hem">
-                                        <rect key="frame" x="0.0" y="0.0" width="280" height="55.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="264" height="55.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tw3-Dz-Ezx">
-                                                <rect key="frame" x="232.5" y="8" width="39.5" height="39.5"/>
+                                                <rect key="frame" x="216.5" y="8" width="39.5" height="39.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bie-gG-YNy">
                                                         <rect key="frame" x="0.0" y="0.0" width="39.5" height="39.5"/>
@@ -72,7 +72,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="attendees not supported by Calendar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="TxB-G9-Wi1">
-                                                <rect key="frame" x="8" y="8" width="216.5" height="40"/>
+                                                <rect key="frame" x="8" y="8" width="200.5" height="40"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -91,14 +91,14 @@
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ler-3N-QZB" customClass="SelectContactsTableView" customModule="HyzeCalendarForWWDC" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55" width="280" height="94.5"/>
+                                        <rect key="frame" x="0.0" y="55" width="264" height="89"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L5y-kK-UzY">
-                                        <rect key="frame" x="0.0" y="150" width="280" height="56"/>
+                                        <rect key="frame" x="0.0" y="144.5" width="264" height="56"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bpX-0l-Z1d">
-                                                <rect key="frame" x="121" y="9" width="39.5" height="39.5"/>
+                                                <rect key="frame" x="113" y="9" width="39.5" height="39.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ePh-2u-3QF">
                                                         <rect key="frame" x="0.0" y="0.0" width="39.5" height="39.5"/>

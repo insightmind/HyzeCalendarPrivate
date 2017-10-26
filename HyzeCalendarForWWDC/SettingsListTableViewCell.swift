@@ -33,6 +33,12 @@ class SettingsListTableViewCell: UITableViewCell {
         cellView.backgroundColor = UIColor.clear
         cellView.layer.cornerRadius = 20
         cellView.layer.masksToBounds = true
+        
+        let label = UILabel()
+        label.textColor = Color.white
+        label.text = "Please add Content"
+        label.textAlignment = .center
+        setMainView(to: label)
     }
     
     func setTitle(_ to: String) {
@@ -46,19 +52,26 @@ class SettingsListTableViewCell: UITableViewCell {
     func setMainView(to controller: UIViewController) -> Bool {
         guard let superController = superView else { return false }
         superController.addChildViewController(controller)
-        controller.view.translatesAutoresizingMaskIntoConstraints = false
-        mainView.addSubview(controller.view)
         
-        NSLayoutConstraint.activate([
-            controller.view.leadingAnchor.constraint(equalTo: self.mainView.leadingAnchor, constant: 0),
-            controller.view.trailingAnchor.constraint(equalTo: self.mainView.trailingAnchor, constant: 0),
-            controller.view.topAnchor.constraint(equalTo: self.mainView.topAnchor, constant: 0),
-            controller.view.bottomAnchor.constraint(equalTo: self.mainView.bottomAnchor, constant: 0)
-            ])
+        setMainView(to: controller.view)
         
         controller.didMove(toParentViewController: superController)
         self.tableViewController = controller
         return true
+    }
+    
+    func setMainView(to view: UIView) {
+        
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        mainView.addSubview(view)
+        
+        NSLayoutConstraint.activate([
+            view.leadingAnchor.constraint(equalTo: self.mainView.leadingAnchor, constant: 0),
+            view.trailingAnchor.constraint(equalTo: self.mainView.trailingAnchor, constant: 0),
+            view.topAnchor.constraint(equalTo: self.mainView.topAnchor, constant: 0),
+            view.bottomAnchor.constraint(equalTo: self.mainView.bottomAnchor, constant: 0)
+            ])
     }
     
 }

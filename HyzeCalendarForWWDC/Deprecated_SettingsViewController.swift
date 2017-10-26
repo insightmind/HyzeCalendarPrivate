@@ -166,7 +166,6 @@ class Deprecated_SettingsViewController: UIViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		Settings.shared.settingsView = self
         // Do any additional setup after loading the view.
     }
 

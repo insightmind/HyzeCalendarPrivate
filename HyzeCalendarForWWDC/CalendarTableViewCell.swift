@@ -56,7 +56,6 @@ class CalendarTableViewCell: UITableViewCell {
 					EventManagement.shared.EMCalendar = self.calendar
 					let userDefault = UserDefaults.standard
 					userDefault.set(EventManagement.shared.EMCalendar?.calendarIdentifier, forKey: EventManagement.shared.userDefaultCalendarIdentifier)
-					Settings.shared.settingsView?.loadInformations()
 					Settings.shared.isSettingDefaultCalendar = false
 					userDefault.synchronize()
 				} else {

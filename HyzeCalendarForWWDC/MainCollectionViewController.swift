@@ -42,6 +42,7 @@ class MainCollectionViewController: UICollectionViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.collectionView?.collectionViewLayout = monthViewLayout
         self.scrollToSection(yearID: Selection.shared.currentYearID, monthID: Selection.shared.currentMonthID - 1, animated: animated)
     }
 	
@@ -87,7 +88,6 @@ class MainCollectionViewController: UICollectionViewController {
         } else {
             self.calculateETViewUpdate()
         }
-		self.collectionView?.collectionViewLayout = monthViewLayout
     }
 	
 	func reloadCalendarView() {

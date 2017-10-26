@@ -207,7 +207,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mMu-JZ-P9O" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="iAu-Qy-el5" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="7168.8000000000002" y="-749.7751124437782"/>
+            <point key="canvasLocation" x="6778" y="-737"/>
         </scene>
         <!--eventEditor-->
         <scene sceneID="b77-ZB-9BK">
@@ -303,7 +303,7 @@
                                     <segue destination="H8M-eJ-sOQ" kind="unwind" unwindAction="unwindToMonthViewWithSegue:" id="FIt-d5-bRc"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x1F-Xk-9Oo">
+                            <button hidden="YES" opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x1F-Xk-9Oo">
                                 <rect key="frame" x="322" y="28" width="46" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -342,6 +342,7 @@
                     </view>
                     <connections>
                         <outlet property="backgroundBlurView" destination="zmJ-zW-yWd" id="ssa-aD-rxO"/>
+                        <outlet property="titleTextField" destination="GFL-7v-eya" id="bq3-pF-s2g"/>
                         <outlet property="topBarBlurView" destination="gwu-3d-JwG" id="kNi-SB-7lK"/>
                     </connections>
                 </viewController>

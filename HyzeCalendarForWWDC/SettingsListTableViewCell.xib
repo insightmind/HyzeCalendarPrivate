@@ -27,7 +27,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="288" height="28"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="___TITLE___" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cZC-9w-6pm">
-                                        <rect key="frame" x="8" y="0.0" width="272" height="28"/>
+                                        <rect key="frame" x="13" y="0.0" width="262" height="28"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -36,9 +36,9 @@
                                 <color key="backgroundColor" red="0.219" green="0.62914122500000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="cZC-9w-6pm" secondAttribute="bottom" id="JsR-Ag-9rh"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="cZC-9w-6pm" secondAttribute="trailing" id="Zrx-Gv-RiZ"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="cZC-9w-6pm" secondAttribute="trailing" constant="5" id="Zrx-Gv-RiZ"/>
                                     <constraint firstAttribute="height" constant="28" id="d6s-XH-y52"/>
-                                    <constraint firstItem="cZC-9w-6pm" firstAttribute="leading" secondItem="OuX-Lc-hb2" secondAttribute="leadingMargin" id="tEB-TJ-wsA"/>
+                                    <constraint firstItem="cZC-9w-6pm" firstAttribute="leading" secondItem="OuX-Lc-hb2" secondAttribute="leadingMargin" constant="5" id="tEB-TJ-wsA"/>
                                     <constraint firstItem="cZC-9w-6pm" firstAttribute="top" secondItem="OuX-Lc-hb2" secondAttribute="top" id="ypo-qq-5n5"/>
                                 </constraints>
                             </view>

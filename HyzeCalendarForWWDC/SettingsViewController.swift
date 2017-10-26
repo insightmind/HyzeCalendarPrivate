@@ -10,6 +10,7 @@ import UIKit
 
 class SettingsViewController: UIViewController {
     
+    @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var topBarBlurView: UIVisualEffectView!
     @IBOutlet weak var backgroundBlurView: UIVisualEffectView!
     
@@ -21,6 +22,7 @@ class SettingsViewController: UIViewController {
         topBarBlurView.effect = blurEffect
         backgroundBlurView.effect = blurEffect
         
+        titleTextField.textColor = Settings.shared.isDarkMode ? Color.white : Color.black
         
         // Do any additional setup after loading the view.
     }

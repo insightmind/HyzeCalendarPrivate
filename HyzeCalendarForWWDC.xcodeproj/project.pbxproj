@@ -113,6 +113,9 @@
 		85788BB81F865EA10073B90C /* ELEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85788BB61F865EA10073B90C /* ELEventTableViewCell.swift */; };
 		85788BB91F865EA10073B90C /* ELEventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85788BB71F865EA10073B90C /* ELEventTableViewCell.xib */; };
 		857CDFD51F7D76FD00ACECB6 /* ETViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857CDFD41F7D76FD00ACECB6 /* ETViewController.swift */; };
+		8585F0921FA2103A0068A6E9 /* SettingsListGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8585F0911FA2103A0068A6E9 /* SettingsListGroupTableViewController.swift */; };
+		8585F0951FA213800068A6E9 /* SettingsListGroupOnOffButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8585F0931FA213800068A6E9 /* SettingsListGroupOnOffButtonTableViewCell.swift */; };
+		8585F0961FA213800068A6E9 /* SettingsListGroupOnOffButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8585F0941FA213800068A6E9 /* SettingsListGroupOnOffButtonTableViewCell.xib */; };
 		85868DC71F926A8D00D5EF1E /* EventEditor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85868DC61F926A8D00D5EF1E /* EventEditor.storyboard */; };
 		859F543F1FA0BE070069777F /* SettingsListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 859F543D1FA0BE070069777F /* SettingsListTableViewCell.xib */; };
 		859F54411FA0BFBB0069777F /* SettingsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859F54401FA0BFBA0069777F /* SettingsListTableViewCell.swift */; };
@@ -232,6 +235,9 @@
 		85788BB61F865EA10073B90C /* ELEventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ELEventTableViewCell.swift; sourceTree = "<group>"; };
 		85788BB71F865EA10073B90C /* ELEventTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ELEventTableViewCell.xib; sourceTree = "<group>"; };
 		857CDFD41F7D76FD00ACECB6 /* ETViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETViewController.swift; sourceTree = "<group>"; };
+		8585F0911FA2103A0068A6E9 /* SettingsListGroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsListGroupTableViewController.swift; sourceTree = "<group>"; };
+		8585F0931FA213800068A6E9 /* SettingsListGroupOnOffButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsListGroupOnOffButtonTableViewCell.swift; sourceTree = "<group>"; };
+		8585F0941FA213800068A6E9 /* SettingsListGroupOnOffButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsListGroupOnOffButtonTableViewCell.xib; sourceTree = "<group>"; };
 		85868DC61F926A8D00D5EF1E /* EventEditor.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EventEditor.storyboard; sourceTree = "<group>"; };
 		859F543D1FA0BE070069777F /* SettingsListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsListTableViewCell.xib; sourceTree = "<group>"; };
 		859F54401FA0BFBA0069777F /* SettingsListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsListTableViewCell.swift; sourceTree = "<group>"; };
@@ -737,6 +743,7 @@
 		852BE7141FA0BC3800FEAD43 /* SettingsList */ = {
 			isa = PBXGroup;
 			children = (
+				8585F0901FA2100E0068A6E9 /* SettingsListGroup */,
 				859F54401FA0BFBA0069777F /* SettingsListTableViewCell.swift */,
 				852BE7151FA0BC4F00FEAD43 /* SettingsListTableViewController.swift */,
 				859F543D1FA0BE070069777F /* SettingsListTableViewCell.xib */,
@@ -770,6 +777,16 @@
 				85788BB71F865EA10073B90C /* ELEventTableViewCell.xib */,
 			);
 			name = EventCell;
+			sourceTree = "<group>";
+		};
+		8585F0901FA2100E0068A6E9 /* SettingsListGroup */ = {
+			isa = PBXGroup;
+			children = (
+				8585F0911FA2103A0068A6E9 /* SettingsListGroupTableViewController.swift */,
+				8585F0931FA213800068A6E9 /* SettingsListGroupOnOffButtonTableViewCell.swift */,
+				8585F0941FA213800068A6E9 /* SettingsListGroupOnOffButtonTableViewCell.xib */,
+			);
+			name = SettingsListGroup;
 			sourceTree = "<group>";
 		};
 		D0DB78F19C588A5DB8C22CB4 /* Pods */ = {
@@ -882,6 +899,7 @@
 				3ED0C4EC1F5373D4005915B6 /* TimeIntervalTableViewCell.xib in Resources */,
 				3EE5426E1F479FCC00B230FF /* RemoveTableViewCell.xib in Resources */,
 				3E61C1171F53815800AE1A2B /* DaysOfMonthTableViewCell.xib in Resources */,
+				8585F0961FA213800068A6E9 /* SettingsListGroupOnOffButtonTableViewCell.xib in Resources */,
 				3EFC00CB1F5E165C0028F387 /* LocationTableViewCell.xib in Resources */,
 				3EE9C86E1F56F23100FD93E9 /* DaysOfMonthPickerTableViewCell.xib in Resources */,
 				85788BB91F865EA10073B90C /* ELEventTableViewCell.xib in Resources */,
@@ -982,6 +1000,7 @@
 				857CDFD51F7D76FD00ACECB6 /* ETViewController.swift in Sources */,
 				3E61C11C1F53817C00AE1A2B /* MonthsOfYearTableViewCell.swift in Sources */,
 				3ECD09981E9BB39C00BF9627 /* TimeManagement.swift in Sources */,
+				8585F0951FA213800068A6E9 /* SettingsListGroupOnOffButtonTableViewCell.swift in Sources */,
 				3EE9C8691F56F0C500FD93E9 /* RecurrenceDaysOfMonthPickerView.swift in Sources */,
 				3EA80D521E2BEC9300FD87C3 /* AppDelegate.swift in Sources */,
 				3EA8EE311ED2350E000D6EF2 /* MonthCollectionViewController.swift in Sources */,
@@ -989,6 +1008,7 @@
 				3E2D7B791E6715E600A0170D /* EventEditorViewController.swift in Sources */,
 				3E2C6ECE1F4CD0A700E88CA1 /* SetContactsPopoverViewController.swift in Sources */,
 				3E36FEFE1F4A41A100EAC9CC /* SelectContactsTableView.swift in Sources */,
+				8585F0921FA2103A0068A6E9 /* SettingsListGroupTableViewController.swift in Sources */,
 				3E6285471F44720400301A42 /* UIViewControllerExtension.swift in Sources */,
 				3EE5426D1F479FCC00B230FF /* RemoveTableViewCell.swift in Sources */,
 				3E6283891F4DFF1700A799DC /* SetRecurrenceTableViewCell.swift in Sources */,

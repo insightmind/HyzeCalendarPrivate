@@ -1,35 +1,65 @@
 //
-//  SettingsListTableViewController.swift
+//  SettingsListGroupTableViewController.swift
 //  HyzeCalendarForWWDC
 //
-//  Created by Niklas Bülow on 25.10.17.
+//  Created by Niklas Bülow on 26.10.17.
 //  Copyright © 2017 Niklas Bülow. All rights reserved.
 //
 
 import UIKit
 
-struct SettingsListTableViewCellConfiguration {
-    let title: String
-//    let viewController: UIViewController
-    let height: CGFloat
+enum SettingsListGroupTableViewCellType {
+    case onOffButton
+    case button
+    case none
 }
 
-class SettingsListTableViewController: UITableViewController {
+struct SettingsListGroupCellInformations {
+    let type: SettingsListGroupTableViewCellType
+    let title: String
+    let color: UIColor = Color.blue
+    let textColor: UIColor = Color.white
+    let buttonColor: UIColor = Color.red
+    let key: String
+}
 
-    let reuseIdentifier = "settingsBasicCell"
+struct SettingsListGroupCellConfigurations {
+    static let darkMode = SettingsListGroupCellInformations(type: .onOffButton, title: "DarkMode", key: "DarkMode")
+    static let showWeekSeperators = SettingsListGroupCellInformations(type: .onOffButton, title: "show Week seperators", key: "showLinesInCalendarView")
+    static let animateDayView = SettingsListGroupCellInformations(type: .onOffButton, title: "allow Animations", key: "animateDayView")
+    static let isAMPM = SettingsListGroupCellInformations(type: .onOffButton, title: "24 hours", key: "IsAMPM")
+    static let showWeekNumber = SettingsListGroupCellInformations(type: .onOffButton, title: "show Weeknumbers", key: "showWeekNumber")
+}
+
+class SettingsListGroupTableViewController: UITableViewController {
     
-    let data = [SettingsListTableViewCellConfiguration(title: "Design", height: 250 + 28 + 16),
-                SettingsListTableViewCellConfiguration(title: "Design", height: 100),
-                SettingsListTableViewCellConfiguration(title: "Usability", height: 125),
-                SettingsListTableViewCellConfiguration(title: "Support", height: 175)]
+    let reuse: String = "onOffCell"
     
+//    private var data: [SettingsListGroupCellInformations]? {
+//        didSet {
+//            self.tableView.reloadData()
+//        }
+//    }
+//
+//    func fetchData(_ data: [SettingsListGroupCellInformations]) {
+//        self.data = data
+//    }
+    
+    let data = [SettingsListGroupCellConfigurations.darkMode,
+                SettingsListGroupCellConfigurations.showWeekSeperators,
+                SettingsListGroupCellConfigurations.animateDayView,
+                SettingsListGroupCellConfigurations.isAMPM,
+                SettingsListGroupCellConfigurations.showWeekNumber]
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.contentInset = UIEdgeInsets(top: 120, left: 0, bottom: 50, right: 0)
-        let nib = UINib(nibName: "SettingsListTableViewCell", bundle: nil)
-        self.tableView.register(nib, forCellReuseIdentifier: reuseIdentifier)
-        
-        //Uncomment the following line to preserve selection between presentations
+
+        let nib = UINib(nibName: "SettingsListGroupOnOffButtonTableViewCell", bundle: nil)
+        self.tableView.register(nib, forCellReuseIdentifier: reuse)
+        self.tableView.allowsSelection = false
+        self.tableView.isScrollEnabled = false
+        self.tableView.separatorStyle = .none
+        // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
@@ -50,27 +80,27 @@ class SettingsListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        //return data.count
-        return 1
-    }
-
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! SettingsListTableViewCell
-
-        let tView = SettingsListGroupTableViewController(style: .plain)
-        cell.setTitle(data[indexPath.row].title)
-        cell.connect(to: self)
-        let successful = cell.setMainView(to: tView)
-        print(successful)
-
-        return cell
+//        if let secureData = data {
+//            return secureData.count
+//        } else {
+//            return 0
+//        }
+        return data.count
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return data[indexPath.row].height
+        return 50
     }
 
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuse, for: indexPath) as! SettingsListGroupOnOffButtonTableViewCell
+        
+        cell.fetchConfiguration(data[indexPath.item])
+
+        // Configure the cell...
+
+        return cell
+    }
 
     /*
     // Override to support conditional editing of the table view.

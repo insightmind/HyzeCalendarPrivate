@@ -28,7 +28,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="288" height="28"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VKD-ID-PKM">
-                                        <rect key="frame" x="8" y="0.0" width="272" height="28"/>
+                                        <rect key="frame" x="13" y="0.0" width="262" height="28"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -36,10 +36,10 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.219" green="0.62914122500000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailingMargin" secondItem="VKD-ID-PKM" secondAttribute="trailing" id="0fV-pw-07B"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="VKD-ID-PKM" secondAttribute="trailing" constant="5" id="0fV-pw-07B"/>
                                     <constraint firstAttribute="height" constant="28" id="7y3-wP-8Q2"/>
                                     <constraint firstAttribute="bottom" secondItem="VKD-ID-PKM" secondAttribute="bottom" id="KTM-o2-YSe"/>
-                                    <constraint firstItem="VKD-ID-PKM" firstAttribute="leading" secondItem="cXZ-kT-MOq" secondAttribute="leadingMargin" id="TmY-t2-bd9"/>
+                                    <constraint firstItem="VKD-ID-PKM" firstAttribute="leading" secondItem="cXZ-kT-MOq" secondAttribute="leadingMargin" constant="5" id="TmY-t2-bd9"/>
                                     <constraint firstItem="VKD-ID-PKM" firstAttribute="top" secondItem="cXZ-kT-MOq" secondAttribute="top" id="VWK-r7-LJ7"/>
                                 </constraints>
                             </view>
