@@ -132,9 +132,11 @@ class DayCollectionViewCell: UICollectionViewCell {
         guard let num = self.weekNumber else { return }
         let weekNumber = self.lftLbl
         weekNumber.text = String(num)
-        weekNumber.frame = CGRect(x: 0, y: self.bounds.height / 8 * 7, width: self.bounds.width, height: self.bounds.height / 4)
+        weekNumber.frame = CGRect(x: -5, y: self.bounds.height / 8 * 7, width: self.bounds.width / 3, height: self.bounds.height / 4)
         weekNumber.font = weekNumber.font.withSize((self.bounds.height / 4))
-        self.addSubview(self.lftLbl)
+        weekNumber.backgroundColor = Settings.shared.isDarkMode ? Color.black : Color.white
+        weekNumber.textAlignment = .center
+        self.addSubview(weekNumber)
     }
 	
 	required init?(coder aDecoder: NSCoder) {
