@@ -10,10 +10,7 @@ import UIKit
 
 private let reuseIdentifier = "MonthCell"
 
-class MainCollectionViewController: UICollectionViewController {
-    
-    let monthViewLayout = GridCollectionViewFlowLayout(cellsPerRow: 1, scrollDirection: .vertical)
-    let yearViewLayout = GridCollectionViewFlowLayout(cellsPerRow: 2, scrollDirection: .vertical)
+class MainCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 	
 	@IBAction func scrollUp(_ sender: UISwipeGestureRecognizer) {
 		self.scrollToSection(direction: ScrollDirection.up, animated: true)
@@ -32,17 +29,14 @@ class MainCollectionViewController: UICollectionViewController {
         // Do any additional setup after loading the view.
 		self.collectionView!.allowsSelection = false
 		self.collectionView!.isScrollEnabled = false
-        self.collectionView!.isPrefetchingEnabled = false
 		self.collectionView?.layer.masksToBounds = false
-        
-		
 		self.collectionView?.backgroundColor = UIColor.clear
+        self.collectionView!.contentInset = UIEdgeInsetsMake(0, 5, 0, 5)
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.collectionView?.collectionViewLayout = monthViewLayout
         self.scrollToSection(yearID: Selection.shared.currentYearID, monthID: Selection.shared.currentMonthID - 1, animated: animated)
     }
 	
@@ -94,6 +88,20 @@ class MainCollectionViewController: UICollectionViewController {
 		self.collectionView!.reloadData()
 		scrollToSection(yearID: Selection.shared.currentYearID, monthID: Selection.shared.currentMonthID - 1, animated: false)
 	}
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.bounds.width - 10
+        let size = CGSize(width: width, height: width / 7 * 6)
+        return size
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
 	
 	func scrollToSection(direction: ScrollDirection, animated anim: Bool = false) {
 		
@@ -124,9 +132,9 @@ class MainCollectionViewController: UICollectionViewController {
 		}
 		setMonthName()
 	}
-	func setMonthName() {
+    func setMonthName(onlyYear: Bool = false) {
 		let date = TimeManagement.calculateFirstDayInMonth(yearID: Selection.shared.currentYearID, monthID: Selection.shared.currentMonthID)
-		let name = TimeManagement.getMonthName(date)
+        let name = TimeManagement.getMonthName(date, withMonth: !onlyYear)
 		
 		guard let parent = self.parent as? ViewController else {
 			return
@@ -155,18 +163,50 @@ class MainCollectionViewController: UICollectionViewController {
         }
         updateETViewHeight(self.collectionView!, shouldReload: shouldReload)
 	}
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if self.collectionView?.isScrollEnabled != true { return }
+        guard let visibleCell = self.collectionView?.visibleCells.first else { return }
+        guard let cell = visibleCell as? MonthCollectionViewCell else { return }
+        guard let cellController = cell.controller else { return }
+        let month = cellController.monthID
+        let year = cellController.yearID
+
+        Selection.shared.currentMonthID = month + 1
+        Selection.shared.currentYearID = year
+        
+        setMonthName()
+        
+        let superViewController = UIApplication.shared.keyWindow?.rootViewController
+        var mainViewController: ViewController
+        for i in (superViewController?.childViewControllers)! {
+            if i.title == "MonthView" {
+                mainViewController = i as! ViewController
+                guard let eventList = mainViewController.eventListViewController else { return }
+                eventList.updateDesign(false)
+            }
+        }
+    }
 	
 	func scrollToSection(yearID: Int, monthID: Int, animated anim: Bool = false) {
 		
-		let indexPath = IndexPath(item: monthID, section: yearID)
-		
-		Selection.shared.currentMonthID = monthID + 1
-		Selection.shared.currentYearID = yearID
-		
-		calculateETViewUpdate(shouldReload: false)
+        let indexPath = IndexPath(item: monthID, section: yearID)
+
+        Selection.shared.currentMonthID = monthID + 1
+        Selection.shared.currentYearID = yearID
 		
 		self.collectionView!.scrollToItem(at: indexPath, at: .top, animated: anim)
-		setMonthName()
+        calculateETViewUpdate(shouldReload: false)
+        setMonthName()
+        let superViewController = UIApplication.shared.keyWindow?.rootViewController
+        var mainViewController: ViewController
+        for i in (superViewController?.childViewControllers)! {
+            if i.title == "MonthView" {
+                mainViewController = i as! ViewController
+                guard let eventList = mainViewController.eventListViewController else { return }
+                eventList.updateDesign(false)
+            }
+        }
 	}
 	
     func updateETViewHeight(_ collectionView: UICollectionView, shouldReload: Bool = false) {
@@ -179,8 +219,8 @@ class MainCollectionViewController: UICollectionViewController {
 			if i.title == "MonthView" {
 				mainViewController = i as! ViewController
                 UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
-                    let basicHeight = mainViewController.calendarViewToTopConstraint.constant + mainViewController.calendarView.frame.height
-                    let expandedValue = Design.shared.currentETViewIsExpandedByNumOfRows * ((collectionView.bounds.width / 7) - 2)
+                    let basicHeight = mainViewController.calendarViewToTopConstraint.constant + mainViewController.calendarView.frame.height - 10
+                    let expandedValue = Design.shared.currentETViewIsExpandedByNumOfRows * ((collectionView.bounds.width / 7))
                     mainViewController.eventListHeightConstraint.constant = basicHeight - expandedValue
                     mainViewController.view.layoutIfNeeded()
                 }, completion: nil)

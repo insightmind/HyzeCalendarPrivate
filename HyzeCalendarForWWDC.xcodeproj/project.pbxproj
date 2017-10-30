@@ -104,7 +104,6 @@
 		3EFE5F491E41310A004E75F9 /* DayMainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFE5F481E41310A004E75F9 /* DayMainButton.swift */; };
 		85108E0F1F81857000F42FDD /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 85108E0E1F81857000F42FDD /* Podfile */; };
 		852BE7161FA0BC4F00FEAD43 /* SettingsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852BE7151FA0BC4F00FEAD43 /* SettingsListTableViewController.swift */; };
-		852EC4471F9FA6BD0024126A /* GridCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852EC4461F9FA6BD0024126A /* GridCollectionViewFlowLayout.swift */; };
 		852EC44A1F9FB8A60024126A /* Deprecated_ETViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852EC4481F9FB8A50024126A /* Deprecated_ETViewCell.swift */; };
 		852EC44B1F9FB8A60024126A /* Deprecated_ETView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852EC4491F9FB8A60024126A /* Deprecated_ETView.swift */; };
 		854626B11F8E7162002D6EF5 /* ELAddEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854626AF1F8E7162002D6EF5 /* ELAddEventTableViewCell.swift */; };
@@ -117,6 +116,7 @@
 		8585F0951FA213800068A6E9 /* SettingsListGroupOnOffButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8585F0931FA213800068A6E9 /* SettingsListGroupOnOffButtonTableViewCell.swift */; };
 		8585F0961FA213800068A6E9 /* SettingsListGroupOnOffButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8585F0941FA213800068A6E9 /* SettingsListGroupOnOffButtonTableViewCell.xib */; };
 		85868DC71F926A8D00D5EF1E /* EventEditor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85868DC61F926A8D00D5EF1E /* EventEditor.storyboard */; };
+		859BFF231FA74DC000EC7085 /* GridCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859BFF221FA74DC000EC7085 /* GridCollectionViewFlowLayout.swift */; };
 		859F543F1FA0BE070069777F /* SettingsListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 859F543D1FA0BE070069777F /* SettingsListTableViewCell.xib */; };
 		859F54411FA0BFBB0069777F /* SettingsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859F54401FA0BFBA0069777F /* SettingsListTableViewCell.swift */; };
 		85BF6BE91F9FDE0E00D7247F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BF6BE81F9FDE0E00D7247F /* SettingsViewController.swift */; };
@@ -226,7 +226,6 @@
 		3EFE5F481E41310A004E75F9 /* DayMainButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayMainButton.swift; sourceTree = "<group>"; };
 		85108E0E1F81857000F42FDD /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		852BE7151FA0BC4F00FEAD43 /* SettingsListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsListTableViewController.swift; sourceTree = "<group>"; };
-		852EC4461F9FA6BD0024126A /* GridCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		852EC4481F9FB8A50024126A /* Deprecated_ETViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deprecated_ETViewCell.swift; sourceTree = "<group>"; };
 		852EC4491F9FB8A60024126A /* Deprecated_ETView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deprecated_ETView.swift; sourceTree = "<group>"; };
 		854626AF1F8E7162002D6EF5 /* ELAddEventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ELAddEventTableViewCell.swift; sourceTree = "<group>"; };
@@ -239,6 +238,7 @@
 		8585F0931FA213800068A6E9 /* SettingsListGroupOnOffButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsListGroupOnOffButtonTableViewCell.swift; sourceTree = "<group>"; };
 		8585F0941FA213800068A6E9 /* SettingsListGroupOnOffButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsListGroupOnOffButtonTableViewCell.xib; sourceTree = "<group>"; };
 		85868DC61F926A8D00D5EF1E /* EventEditor.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EventEditor.storyboard; sourceTree = "<group>"; };
+		859BFF221FA74DC000EC7085 /* GridCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		859F543D1FA0BE070069777F /* SettingsListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsListTableViewCell.xib; sourceTree = "<group>"; };
 		859F54401FA0BFBA0069777F /* SettingsListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsListTableViewCell.swift; sourceTree = "<group>"; };
 		85BF6BE81F9FDE0E00D7247F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -310,7 +310,7 @@
 			children = (
 				3E533BCF1EC383C4000CEF5F /* YearToMonths */,
 				3EA8EE2D1ED21BCA000D6EF2 /* MainCollectionViewController.swift */,
-				852EC4461F9FA6BD0024126A /* GridCollectionViewFlowLayout.swift */,
+				859BFF221FA74DC000EC7085 /* GridCollectionViewFlowLayout.swift */,
 			);
 			name = MainToYears;
 			sourceTree = "<group>";
@@ -488,10 +488,10 @@
 				3E067E0E1F31FB9B003601FA /* Info.plist */,
 				3E4A9B261E4BB479009E45EF /* Data */,
 				3EE1E5A91E48D3AF00379576 /* View */,
+				3EC617B71EF86CDC00BB03B6 /* HyzeCalendarForWWDC.entitlements */,
 				3EA8EE251ED21919000D6EF2 /* Storyboards */,
 				3EC617B31EF86ADC00BB03B6 /* Localizations */,
 				3EA80D581E2BEC9300FD87C3 /* Assets.xcassets */,
-				3EC617B71EF86CDC00BB03B6 /* HyzeCalendarForWWDC.entitlements */,
 			);
 			path = HyzeCalendarForWWDC;
 			sourceTree = "<group>";
@@ -1025,7 +1025,6 @@
 				3E6285451F4471E800301A42 /* UIColorExtension.swift in Sources */,
 				3EA8EE2E1ED21BCA000D6EF2 /* MainCollectionViewController.swift in Sources */,
 				3E533BC51EC36440000CEF5F /* MonthCollectionViewCell.swift in Sources */,
-				852EC4471F9FA6BD0024126A /* GridCollectionViewFlowLayout.swift in Sources */,
 				852EC44A1F9FB8A60024126A /* Deprecated_ETViewCell.swift in Sources */,
 				3EF9042E1F4CD53D00C690C4 /* SetContactsSearchViewController.swift in Sources */,
 				3E47BD2C1F30E7E900E0646C /* EventEditorTableViewController.swift in Sources */,
@@ -1070,6 +1069,7 @@
 				3E6412FD1F560DD500688E78 /* DaysOfMonthCollectionView.swift in Sources */,
 				85788BB81F865EA10073B90C /* ELEventTableViewCell.swift in Sources */,
 				3E65607E1F4CC3E700C241BE /* EKEventExtension.swift in Sources */,
+				859BFF231FA74DC000EC7085 /* GridCollectionViewFlowLayout.swift in Sources */,
 				3E61FE641E5239AF003D796C /* DayViewDecoration.swift in Sources */,
 				3E1B95251E3FAD9D009EB5C9 /* DayView.swift in Sources */,
 				85BF6BE91F9FDE0E00D7247F /* SettingsViewController.swift in Sources */,

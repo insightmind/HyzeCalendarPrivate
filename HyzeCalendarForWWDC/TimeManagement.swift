@@ -94,26 +94,17 @@ class TimeManagement {
     ///
     /// - Parameter monthDate: Any date in the month
     /// - Returns: name of the month and year as string
-	class func getMonthName(_ monthDate: Date, withYear: Bool = true) -> String {
+    class func getMonthName(_ monthDate: Date, withYear: Bool = true, withMonth: Bool = true) -> String {
 		
 		//get the Index of the month
 		let month = TimeManagement.calendar.component(.month, from: monthDate) - 1
         
         // Get the EventManagement.shared.months with the Index of the month
-        let prestr = EventManagement.shared.months[month]
-		
+        let prestr = withMonth ? EventManagement.shared.months[month] + " " : ""
+        let poststr = withYear ? String(TimeManagement.calendar.component(.year, from: monthDate)) : ""
+        
 		// Add both strings to one
-		let str: String
-		
-		if withYear {
-			// Get the yearName by getting the YearComponent of the given date
-			let poststr = String(TimeManagement.calendar.component(.year, from: monthDate))
-			
-			str = "\(prestr) \(poststr)"
-			
-		} else {
-			str = prestr
-		}
+		let str = "\(prestr)\(poststr)"
         
         // Output information
 		if Settings.shared.informationMode {

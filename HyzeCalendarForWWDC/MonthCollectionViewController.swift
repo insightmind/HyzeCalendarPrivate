@@ -28,7 +28,7 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
         super.viewDidLoad()
 
         // Register cell classes
-        self.collectionView!.register(DayCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+
 		self.collectionView!.isScrollEnabled = false
 		self.automaticallyAdjustsScrollViewInsets = true
 		self.collectionView?.autoresizesSubviews = true
@@ -36,9 +36,7 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
         // Do any additional setup after loading the view.
 		
 		self.collectionView?.allowsMultipleSelection = false
-		self.collectionView?.isPrefetchingEnabled = false
-		
-		collectionViewLayout.invalidateLayout()
+        self.collectionView!.register(DayCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
 	
 	fileprivate class func setUpPrevFutMonthDays(_ monthID: Int, _ yearID: Int) -> (prevDays: Int, futDays: Int) {
@@ -205,10 +203,6 @@ extension MonthCollectionViewController {
         }
         
         let (yID, mID, prevIndexPath) = Selection.shared.selectedDayCellIndex
-        
-        guard var checkedPrevIndexPath = prevIndexPath else { fatalError() }
-        checkedPrevIndexPath = IndexPath(item: checkedPrevIndexPath.item + Selection.shared.weekDayStart.rawValue, section: checkedPrevIndexPath.section)
-        self.collectionView(collectionView, didDeselectItemAt: checkedPrevIndexPath)
 		
 		let isOnWeekend = self.isOnWeekend(for: indexPath)
 		let item = calculateConformedItem(indexPath)
@@ -229,7 +223,6 @@ extension MonthCollectionViewController {
 		cell.contentView.layer.cornerRadius = 0
 		cell.contentView.backgroundColor = Settings.shared.isDarkMode ? Color.black : Color.white
 		UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
-			
 			cell.setCellDesign(isToday: isToday, isSelected: isSelected, isOnWeekend: isOnWeekend)
 			cell.contentView.layer.cornerRadius = prevSize.width / 2
 			cell.contentView.bounds = prevSize

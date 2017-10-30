@@ -12,17 +12,23 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var topBarBlurView: UIVisualEffectView!
-    @IBOutlet weak var backgroundBlurView: UIVisualEffectView!
+    @IBOutlet weak var back: UIButton!
+    
+    
+    @IBAction func back(_ sender: UIButton) {
+        Settings.shared.needsDesignUpdate = true
+        self.dismiss(animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let blurEffect = UIBlurEffect(style: Settings.shared.isDarkMode ? .dark : .light)
+        view.backgroundColor = Settings.shared.isDarkMode ? Color.black : Color.white
         
-        topBarBlurView.effect = blurEffect
-        backgroundBlurView.effect = blurEffect
+        topBarBlurView.effect = UIBlurEffect(style: Settings.shared.isDarkMode ? .dark : .light)
         
         titleTextField.textColor = Settings.shared.isDarkMode ? Color.white : Color.black
+        back.tintColor = Color.blue
         
         // Do any additional setup after loading the view.
     }
@@ -45,14 +51,8 @@ class SettingsViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        return
     }
-    */
 
 }

@@ -40,6 +40,8 @@ class ViewController: UIViewController {
 	@IBOutlet weak var daysOfWeekBackgroundView: UIView!
     @IBOutlet weak var eventListHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var calendarViewToTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var calendarViewToETListConstraint: NSLayoutConstraint!
+    @IBOutlet weak var calendarViewAspectRatio: NSLayoutConstraint!
     
     lazy var topChange: UIViewPropertyAnimator = {
         let cubicParameters = UICubicTimingParameters(animationCurve: .easeInOut)

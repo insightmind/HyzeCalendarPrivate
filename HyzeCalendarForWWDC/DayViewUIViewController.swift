@@ -193,7 +193,7 @@ class DayViewUIVViewController: UIViewController {
                 eList.updateDesign(true)
             }
 			
-            UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: .curveEaseOut, animations: {
+            UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseOut, animations: {
                 NSLayoutConstraint.activate([self.dayViewNormal])
                 switch direction {
                 case .right:

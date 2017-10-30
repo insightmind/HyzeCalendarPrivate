@@ -18,12 +18,31 @@ class Settings {
 	// MARK: - Variables
 	
 	// MARK: General
-	var isDarkMode: Bool = UserDefaults.standard.bool(forKey: "DarkMode")
-	var showLinesInCalendarView: Bool = UserDefaults.standard.bool(forKey: "showLinesInCalendarView")
-	var animateDayView: Bool = UserDefaults.standard.bool(forKey: "animateDayView")
-	var isAMPM : Bool = UserDefaults.standard.bool(forKey: "IsAMPM")
-    var showWeekNumber: Bool = UserDefaults.standard.bool(forKey: "showWeekNumber")
-    let isFirstBoot: Bool = UserDefaults.standard.bool(forKey: "isFirstBoot")
+    
+    var isDarkMode: Bool {
+        set { self.isDarkMode = UserDefaults.standard.bool(forKey: "DarkMode") }
+        get { return UserDefaults.standard.bool(forKey: "DarkMode") }
+    }
+    var showLinesInCalendarView: Bool {
+        set { self.isDarkMode = UserDefaults.standard.bool(forKey: "showLinesInCalendarView") }
+        get { return UserDefaults.standard.bool(forKey: "showLinesInCalendarView") }
+    }
+    var animateDayView: Bool {
+        set { self.isDarkMode = UserDefaults.standard.bool(forKey: "animateDayView") }
+        get { return UserDefaults.standard.bool(forKey: "animateDayView") }
+    }
+    var isAMPM : Bool {
+        set { self.isDarkMode = UserDefaults.standard.bool(forKey: "IsAMPM") }
+        get { return UserDefaults.standard.bool(forKey: "IsAMPM") }
+    }
+    var showWeekNumber: Bool {
+        set { self.isDarkMode = UserDefaults.standard.bool(forKey: "showWeekNumber") }
+        get { return UserDefaults.standard.bool(forKey: "showWeekNumber") }
+    }
+    var isFirstBoot: Bool {
+        set { self.isDarkMode = UserDefaults.standard.bool(forKey: "isFirstBoot") }
+        get { return UserDefaults.standard.bool(forKey: "isFirstBoot") }
+    }
    
     // MARK: CalendarView
     var lastRowIsNecessary: Bool = true
