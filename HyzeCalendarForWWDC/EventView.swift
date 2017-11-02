@@ -40,8 +40,6 @@ class EventView: UIButton {
 		let startAngle = calculateAngle(for: startTime)
 		let endAngle = calculateAngle(for: endTime)
 		
-		
-		
 		let path = UIBezierPath(arcCenter: tcenter, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
 		
 		path.usesEvenOddFillRule = true
@@ -62,7 +60,7 @@ class EventView: UIButton {
 		shapeLayer.shadowPath = shapeLayer.path
 		shapeLayer.shadowColor = coloring.cgColor
 		shapeLayer.shadowOffset = CGSize(width: 0, height: 0)
-		shapeLayer.shadowRadius = 25
+		shapeLayer.shadowRadius = 10
 		shapeLayer.shadowOpacity = 1
 		
 		shapeLayer.lineWidth = path.lineWidth
@@ -167,7 +165,6 @@ class EventView: UIButton {
 			group.isRemovedOnCompletion = false
 			group.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
 			shapeLayer.add(group, forKey: nil)
-			
 			
         case .load:
             break

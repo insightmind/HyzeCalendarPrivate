@@ -44,5 +44,10 @@ extension UIView {
         view.layer.shadowOpacity = 0.8
     }
     
+    func rotate(by radians: CGFloat) {
+        let transform = CGAffineTransform(rotationAngle: radians)
+        self.transform = transform
+    }
+    
     
 }

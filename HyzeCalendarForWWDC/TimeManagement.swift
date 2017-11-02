@@ -144,12 +144,18 @@ class TimeManagement {
 	/// - Returns: a boolean indicating if both dates are the same
 	class func isToday(yearID: Int, monthID: Int, dayID: Int) -> Bool {
 		
-		let todaysDay = (Selection.shared.todaysDayID, Selection.shared.todaysMonthID, Selection.shared.todaysYearID)
-		let compareDay = (dayID, monthID, yearID)
-		
-		return todaysDay == compareDay
+		let date = convertToDate(yearID: yearID, monthID: monthID, dayID: dayID)
+        return TimeManagement.calendar.isDateInToday(date)
 		
 	}
+    
+    class func isSelectedToday() -> Bool {
+        let (selectedYearID, selectedMonthID, indexPath) = Selection.shared.selectedDayCellIndex
+        guard let selectedIndexPath = indexPath else {
+            return false
+        }
+        return isToday(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item)
+    }
     
     class func getWeekNumber(yearID: Int, monthID: Int, dayID: Int) -> Int {
         

@@ -9,6 +9,11 @@
 import UIKit
 import EventKit
 
+enum watchHandType {
+    case hour
+    case minute
+}
+
 class DayView: UIView {
     
     let dayCenterButtonSpacing: CGFloat = 20
@@ -70,13 +75,15 @@ class DayView: UIView {
     
     var hourDecoration = [DayViewDecoration]()
 
-    
+    var hourImage: UIImageView?
+    var minuteImage: UIImageView?
     
     //in MIN 24*60 = 1440 min per Day
 	var eventsOnDate: [String: [Int]]?
     var events = [EventView]()
 	var processedEventsOnDate: [[String:[Int]]]!
     
+    var superController: DayViewUIVViewController?
     var date: Date?
     
     
@@ -112,12 +119,12 @@ class DayView: UIView {
             fatalError()
         }
 		
-		setUpDayViewCenterButton()
+		
 		
         eventsOnDate = EventManagement.shared.convertEventsToTimeArray(EventManagement.shared.getEvents(for: TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID, dayID: selectedIndexPath.item)))
 		processedEventsOnDate = prepareEventSubViewLayout()
         addEventsSubViews()
-		
+		setUpDayViewCenterButton()
 		
         if Settings.shared.loaded {
             for i in 0...23 {
@@ -126,6 +133,8 @@ class DayView: UIView {
             Settings.shared.loaded = false
         }
         setUpHourLabels()
+        
+        setUpWatchHand()
     }
     
     func calculateHourLabelPosition(_ hour: CGFloat) -> [CGFloat]{
@@ -321,42 +330,90 @@ class DayView: UIView {
 				}
 			}
         }
-		
-		
-        let (selectedYearID, selectedMonthID, indexPath) = Selection.shared.selectedDayCellIndex
-		
-        guard let selectedIndexPath = indexPath else {
-            fatalError()
+    }
+    
+    func setUpWatchHand() {
+        
+        if !TimeManagement.isSelectedToday() { return }
+        
+        loadWatchHandImageView(type: .hour)
+        loadWatchHandImageView(type: .minute)
+        
+        animateWatchHand()
+        
+    }
+    
+    func animateWatchHand() {
+    
+            
+        let radiant = 2*CGFloat.pi
+        let hours: CGFloat = 24
+        let minutes: CGFloat = 60
+            
+            Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { timer in
+                
+                guard let hour = self.hourImage else { return }
+                guard let minute = self.minuteImage else { return }
+                
+                if !TimeManagement.isSelectedToday() {
+                    hour.removeFromSuperview()
+                    minute.removeFromSuperview()
+                    if let dayViewController = self.superController {
+                        dayViewController.setDesign(animated: true)
+                    }
+                    timer.invalidate()
+                }
+                UIView.animate(withDuration: 0.1, animations: {
+                    
+                    let now = Date()
+                    let currentHour = TimeManagement.calendar.component(.hour, from: now)
+                    let currentMinute = TimeManagement.calendar.component(.minute, from: now)
+                    let both = currentHour * 60 + currentMinute
+                    
+                    let hourRadians = radiant / (hours * minutes)
+                    hour.rotate(by: CGFloat(both) * hourRadians)
+                    
+                    let minuteRadians = radiant / minutes
+                    minute.rotate(by: CGFloat(currentMinute) * minuteRadians)
+                })
+            })
+    }
+    
+    
+    func loadWatchHandImageView(type: watchHandType) {
+        
+        var image: UIImage
+        var rect: CGRect
+        var color: UIColor
+        switch type {
+        case .hour:
+            image = #imageLiteral(resourceName: "watchhand_bold")
+            rect = self.bounds.insetBy(dx: 5, dy: 5)
+            color = Settings.shared.isDarkMode ? Color.white : Color.black
+        case .minute:
+            image = #imageLiteral(resourceName: "watchhand")
+            rect = self.bounds.insetBy(dx: -50, dy: -50)
+            color = Color.red
         }
-        if TimeManagement.calendar.isDateInToday(TimeManagement.convertToDate(yearID: selectedYearID, monthID: selectedMonthID , dayID: selectedIndexPath.item)){
-            let watchhand = EventView(frame: self.bounds, carcWidth: 50, hourRotation: true)
-            watchhand.sendTimeProperties(start:  -5, end: 5)
-			watchhand.sendColorProperties(Settings.shared.isDarkMode ? Color.white : Color.black)
-            self.addSubview(watchhand)
-			let now = Date()
-			let components = TimeManagement.calendar.components(in: TimeZone.autoupdatingCurrent, from: now)
-			let nextDay = TimeManagement.convertToDate(yearID: components.year!, monthID: components.month!, dayID: components.day! + 1)
-			let duration = nextDay.timeIntervalSince(now)
-			let nowRadiant = TimeManagement.timeRadiant(now)
-			watchhand.transform = CGAffineTransform(rotationAngle: nowRadiant)
-			let fullRotation = ((1440 * CGFloat.pi)/720) - TimeManagement.timeRadiant(now)
-
-			UIView.animateKeyframes(withDuration: duration, delay: 0, options: UIViewKeyframeAnimationOptions(rawValue: 3 << 16), animations: {
-				
-				UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1/3, animations: {
-					watchhand.transform = CGAffineTransform(rotationAngle: 1/3 * fullRotation)
-				})
-				UIView.addKeyframe(withRelativeStartTime: 1/3, relativeDuration: 1/3, animations: {
-					watchhand.transform = CGAffineTransform(rotationAngle: 2/3 * fullRotation)
-				})
-				UIView.addKeyframe(withRelativeStartTime: 2/3, relativeDuration: 1/3, animations: {
-					watchhand.transform = CGAffineTransform(rotationAngle: 3/3 * fullRotation)
-				})
-				
-			}, completion: { (_) in
-				watchhand.removeFromSuperview()
-			})
-			
+        // load WatchHandImage
+        let templateImage = image.withRenderingMode(.alwaysTemplate)
+        
+        // setUp ImageView
+        let imageView = UIImageView(image: templateImage)
+        imageView.frame = rect
+        imageView.tintColor = color
+        
+        imageView.layer.shadowColor = Color.black.cgColor
+        imageView.layer.shadowOpacity = 0.8
+        imageView.layer.shadowRadius = 5
+        
+        self.addSubview(imageView)
+        
+        switch type {
+        case .hour:
+            hourImage = imageView
+        case .minute:
+            minuteImage = imageView
         }
     }
 	
@@ -388,7 +445,7 @@ class DayView: UIView {
 		}
         eventView.animate(.deselect, duration: duration)
     }
-
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)

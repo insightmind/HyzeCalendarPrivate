@@ -37,15 +37,21 @@ class DayViewUIVViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        day.superController = self
         setDesign()
         Settings.shared.viewIsDayView = true
         Settings.shared.renDayView = day
         day.setUp()
         setEventListHeight()
-        
-
-		
         // Do any additional setup after loading the view.
+        
+        guard let nav = self.navigationController else { return }
+        
+        let (_, _, indexPath) = Selection.shared.selectedDayCellIndex
+        
+        guard let date = indexPath?.row else { return }
+        
+        nav.title = String(date + 1) + "."
     }
     
     func setEventListHeight() {
