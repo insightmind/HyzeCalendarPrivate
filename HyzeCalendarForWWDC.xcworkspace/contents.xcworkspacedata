@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:HyzeCalendarForWWDC.xcodeproj">
+      location = "group:/Users/niklas/Documents/HyzeCalendarPrivate/Hyze.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

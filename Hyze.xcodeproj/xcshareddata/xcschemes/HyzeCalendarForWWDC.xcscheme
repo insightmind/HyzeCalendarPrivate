@@ -17,7 +17,7 @@
                BlueprintIdentifier = "3EA80D4D1E2BEC9300FD87C3"
                BuildableName = "HyzeCalendarForWWDC.app"
                BlueprintName = "HyzeCalendarForWWDC"
-               ReferencedContainer = "container:HyzeCalendarForWWDC.xcodeproj">
+               ReferencedContainer = "container:Hyze.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -37,7 +37,7 @@
             BlueprintIdentifier = "3EA80D4D1E2BEC9300FD87C3"
             BuildableName = "HyzeCalendarForWWDC.app"
             BlueprintName = "HyzeCalendarForWWDC"
-            ReferencedContainer = "container:HyzeCalendarForWWDC.xcodeproj">
+            ReferencedContainer = "container:Hyze.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -63,7 +63,7 @@
             BlueprintIdentifier = "3EA80D4D1E2BEC9300FD87C3"
             BuildableName = "HyzeCalendarForWWDC.app"
             BlueprintName = "HyzeCalendarForWWDC"
-            ReferencedContainer = "container:HyzeCalendarForWWDC.xcodeproj">
+            ReferencedContainer = "container:Hyze.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <EnvironmentVariables>
@@ -93,7 +93,7 @@
             BlueprintIdentifier = "3EA80D4D1E2BEC9300FD87C3"
             BuildableName = "HyzeCalendarForWWDC.app"
             BlueprintName = "HyzeCalendarForWWDC"
-            ReferencedContainer = "container:HyzeCalendarForWWDC.xcodeproj">
+            ReferencedContainer = "container:Hyze.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -48,6 +48,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		3B3F16B65841F27C0281BA6E6B51DB29 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C6EE2797F07BC6519ABEE6061F59FD6C /* Timepiece */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		7D5F485D6C3C0F56C0C93955A18C8A76 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -61,6 +69,7 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				3B3F16B65841F27C0281BA6E6B51DB29 /* Pods */,
 				076C6EFC670A79C004F03AFCC8A0E88E /* Products */,
 				7D5F485D6C3C0F56C0C93955A18C8A76 /* Targets Support Files */,
 			);
@@ -72,6 +81,14 @@
 				D35AF013A5F0BAD4F32504907A52519E /* iOS */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C6EE2797F07BC6519ABEE6061F59FD6C /* Timepiece */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Timepiece;
+			path = Timepiece;
 			sourceTree = "<group>";
 		};
 		CFB891388906D40D4FD157CB53AC4761 /* Pods-HyzeCalendarForWWDC */ = {
