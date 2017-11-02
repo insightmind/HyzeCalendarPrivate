@@ -23,6 +23,7 @@ class EventManagement {
     private var date = Date.today()
     
     func fetch() -> [EKEvent] {
+        let _ = askForPermission()
         guard let nextDay = self.date + 1.day else { return [EKEvent]() }
         let predicate = EMEventStore.predicateForEvents(withStart: self.date, end: nextDay, calendars: nil)
         let events = EMEventStore.events(matching: predicate)
@@ -41,6 +42,19 @@ class EventManagement {
         case .today:
             self.date = Date.today()
         }
+    }
+    
+    func setDay(by parameter: Int) {
+        guard let day = self.date + parameter.day else { return }
+        self.date = day
+    }
+    
+    func getString() -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        let string = formatter.string(from: self.date)
+        return string
     }
     
     func getDate() -> Date { return date }

@@ -11,9 +11,13 @@ import Foundation
 
 class EventRow: NSObject {
 
-
     @IBOutlet var eventTitle: WKInterfaceLabel!
+    
     func setTitle(_ string: String?) {
         eventTitle.setText(string)
+    }
+    func setColor(_ color: CGColor) {
+        let newColor = UIColor(cgColor: color)
+        eventTitle.setTextColor(newColor)
     }
 }

@@ -1,20 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="13528" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="13770" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
     <device id="watch38" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="watchOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13526"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="13506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="13756"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="ArialHB.ttc">
+            <string>ArialHebrew-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Hyze" customModuleProvider="target">
                     <items>
-                        <label width="1" alignment="left" text="Label" id="Vzx-EX-b3h"/>
+                        <label width="1" alignment="left" text="Label" id="Vzx-EX-b3h">
+                            <gestureRecognizers>
+                                <tapGestureRecognizer id="7M3-2r-Yg5">
+                                    <connections>
+                                        <action selector="selectDate:" destination="AgC-eL-Hgc" id="MpD-oN-XJm"/>
+                                    </connections>
+                                </tapGestureRecognizer>
+                            </gestureRecognizers>
+                            <fontDescription key="font" name="ArialHebrew-Bold" family="Arial Hebrew" pointSize="16"/>
+                        </label>
                         <table alignment="left" id="NrQ-1W-22Y" customClass="TodaysEventInterfaceTable" customModule="HyzeCalendarForWWDC">
                             <items>
                                 <tableRow identifier="EventRow" selectable="NO" id="YsX-FS-k3f" customClass="EventRow" customModule="Hyze_Extension">
@@ -25,6 +39,7 @@
                                     </group>
                                     <connections>
                                         <outlet property="eventTitle" destination="VQ8-os-HUC" id="6zI-HR-11k"/>
+                                        <segue destination="AoG-or-Uqg" kind="push" identifier="showEvent" id="cTB-wG-QNq"/>
                                     </connections>
                                 </tableRow>
                             </items>
@@ -38,14 +53,14 @@
                                     <action selector="previousDay" destination="AgC-eL-Hgc" id="9UJ-Y5-dq0"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Today" image="ic_star" id="ltg-lU-eTk">
-                                <connections>
-                                    <action selector="today" destination="AgC-eL-Hgc" id="P7B-q2-dWJ"/>
-                                </connections>
-                            </menuItem>
                             <menuItem title="Next" image="ic_keyboard_arrow_right" id="lLk-HA-dIx">
                                 <connections>
                                     <action selector="nextDay" destination="AgC-eL-Hgc" id="WzK-rs-JF6"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Today" image="ic_star" id="ltg-lU-eTk">
+                                <connections>
+                                    <action selector="today" destination="AgC-eL-Hgc" id="P7B-q2-dWJ"/>
                                 </connections>
                             </menuItem>
                         </items>
@@ -58,6 +73,27 @@
                 </controller>
             </objects>
             <point key="canvasLocation" x="220" y="345"/>
+        </scene>
+        <!--Event Controller-->
+        <scene sceneID="KtL-Ia-mFA">
+            <objects>
+                <controller id="AoG-or-Uqg" customClass="EventController" customModule="Hyze_Extension">
+                    <items>
+                        <label alignment="left" text="Label" numberOfLines="2" id="Quf-Ci-enn">
+                            <fontDescription key="font" type="system" pointSize="20"/>
+                        </label>
+                        <label width="1" alignment="left" text="Label" textAlignment="center" numberOfLines="2" id="QYs-6z-Y0o"/>
+                        <label width="1" alignment="left" text="-" textAlignment="center" id="7oT-ej-JtL"/>
+                        <label width="1" alignment="left" text="Label" textAlignment="center" numberOfLines="2" id="Kt7-9a-fZ2"/>
+                    </items>
+                    <connections>
+                        <outlet property="endTime" destination="Kt7-9a-fZ2" id="dmE-aQ-rzM"/>
+                        <outlet property="startTime" destination="QYs-6z-Y0o" id="Bcq-Ra-t4R"/>
+                        <outlet property="titleLabel" destination="Quf-Ci-enn" id="XA8-tL-pNF"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="519" y="345"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">

@@ -10,8 +10,14 @@ import WatchKit
 import EventKit
 import Foundation
 
-class InterfaceController: WKInterfaceController {
+class InterfaceController: WKInterfaceController, WKCrownDelegate {
+    
+    var isDateSelected: Bool = false
 
+    @IBAction func selectDate(_ sender: Any) {
+        isDateSelected = !isDateSelected
+        setDate()
+    }
     
     @IBOutlet var date: WKInterfaceLabel!
     @IBOutlet var noEventsLabel: WKInterfaceLabel!
@@ -37,9 +43,9 @@ class InterfaceController: WKInterfaceController {
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
-        
         // Configure interface objects here.
-        
+        crownSequencer.focus()
+        crownSequencer.delegate = self
         loadEventList()
         setDate()
     }
@@ -56,12 +62,17 @@ class InterfaceController: WKInterfaceController {
     }
     
     func setDate() {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .none
-        let currentDate = EventManagement.shared.getDate()
-        let string = formatter.string(from: currentDate)
-        date.setText(string)
+        if isDateSelected {
+            let font = UIFont.systemFont(ofSize: 16, weight: .bold)
+            let string = NSAttributedString(string: EventManagement.shared.getString(), attributes: [NSAttributedStringKey.font: font])
+            date.setAttributedText(string)
+            date.setTextColor(Color.red)
+        } else {
+            let font = UIFont.systemFont(ofSize: 16, weight: .regular)
+            let string = NSAttributedString(string: EventManagement.shared.getString(), attributes: [NSAttributedStringKey.font: font])
+            date.setAttributedText(string)
+            date.setTextColor(Color.blue)
+        }
     }
     
     func loadEventList() {
@@ -76,16 +87,15 @@ class InterfaceController: WKInterfaceController {
         }
         
         self.eventList.setNumberOfRows(events.count, withRowType: "EventRow")
-            
         let rowCount = self.eventList.numberOfRows
-            
+
         for index in 0..<rowCount {
             let row = self.eventList.rowController(at: index) as! EventRow
             let title = events[index].title
             row.setTitle(title)
+            guard let color = events[index].calendar.cgColor else { continue }
+            row.setColor(color)
         }
-        
-        
     }
 
 }
