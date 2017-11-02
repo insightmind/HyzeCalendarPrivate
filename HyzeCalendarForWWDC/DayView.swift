@@ -12,6 +12,7 @@ import EventKit
 enum watchHandType {
     case hour
     case minute
+    case second
 }
 
 class DayView: UIView {
@@ -77,6 +78,7 @@ class DayView: UIView {
 
     var hourImage: UIImageView?
     var minuteImage: UIImageView?
+    var secondImage: UIImageView?
     
     //in MIN 24*60 = 1440 min per Day
 	var eventsOnDate: [String: [Int]]?
@@ -338,6 +340,7 @@ class DayView: UIView {
         
         loadWatchHandImageView(type: .hour)
         loadWatchHandImageView(type: .minute)
+        loadWatchHandImageView(type: .second)
         
         animateWatchHand()
         
@@ -349,11 +352,17 @@ class DayView: UIView {
         let radiant = 2*CGFloat.pi
         let hours: CGFloat = 24
         let minutes: CGFloat = 60
+        let seconds: CGFloat = 60
+        
+        let hourRadians = radiant / (hours * minutes)
+        let minuteRadians = radiant / minutes
+        let secondRadians = radiant / seconds
             
             Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { timer in
                 
                 guard let hour = self.hourImage else { return }
                 guard let minute = self.minuteImage else { return }
+                guard let second = self.secondImage else { return }
                 
                 if !TimeManagement.isSelectedToday() {
                     hour.removeFromSuperview()
@@ -363,19 +372,21 @@ class DayView: UIView {
                     }
                     timer.invalidate()
                 }
-                UIView.animate(withDuration: 0.1, animations: {
-                    
-                    let now = Date()
-                    let currentHour = TimeManagement.calendar.component(.hour, from: now)
-                    let currentMinute = TimeManagement.calendar.component(.minute, from: now)
-                    let both = currentHour * 60 + currentMinute
-                    
-                    let hourRadians = radiant / (hours * minutes)
+                
+                let now = Date()
+                let currentHour = TimeManagement.calendar.component(.hour, from: now)
+                let currentMinute = TimeManagement.calendar.component(.minute, from: now)
+                let currentSecond = TimeManagement.calendar.component(.second, from: now)
+                let both = currentHour * 60 + currentMinute
+                
+                UIView.animate(withDuration: 0.3, animations: {
                     hour.rotate(by: CGFloat(both) * hourRadians)
-                    
-                    let minuteRadians = radiant / minutes
                     minute.rotate(by: CGFloat(currentMinute) * minuteRadians)
                 })
+                
+                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: .curveEaseOut, animations: {
+                    second.rotate(by: CGFloat(currentSecond) * secondRadians)
+                }, completion: nil)
             })
     }
     
@@ -388,11 +399,15 @@ class DayView: UIView {
         switch type {
         case .hour:
             image = #imageLiteral(resourceName: "watchhand_bold")
-            rect = self.bounds.insetBy(dx: 5, dy: 5)
+            rect = self.bounds.insetBy(dx: 30, dy: 30)
             color = Settings.shared.isDarkMode ? Color.white : Color.black
         case .minute:
+            image = #imageLiteral(resourceName: "watchhand_bold")
+            rect = self.bounds.insetBy(dx: 5, dy: 5)
+            color = Settings.shared.isDarkMode ? Color.white : Color.black
+        case .second:
             image = #imageLiteral(resourceName: "watchhand")
-            rect = self.bounds.insetBy(dx: -50, dy: -50)
+            rect = self.bounds.insetBy(dx: -30, dy: -30)
             color = Color.red
         }
         // load WatchHandImage
@@ -414,6 +429,8 @@ class DayView: UIView {
             hourImage = imageView
         case .minute:
             minuteImage = imageView
+        case .second:
+            secondImage = imageView
         }
     }
 	
