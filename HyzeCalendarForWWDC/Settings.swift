@@ -43,6 +43,11 @@ class Settings {
         set { self.isDarkMode = UserDefaults.standard.bool(forKey: "isFirstBoot") }
         get { return UserDefaults.standard.bool(forKey: "isFirstBoot") }
     }
+    
+    var showWatchHands: Bool {
+        set { self.isDarkMode = UserDefaults.standard.bool(forKey: "showWatchHands") }
+        get { return UserDefaults.standard.bool(forKey: "showWatchHands") }
+    }
    
     // MARK: CalendarView
     var lastRowIsNecessary: Bool = true

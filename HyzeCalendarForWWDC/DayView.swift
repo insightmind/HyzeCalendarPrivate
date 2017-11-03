@@ -336,6 +336,7 @@ class DayView: UIView {
     
     func setUpWatchHand() {
         
+        if !Settings.shared.showWatchHands { return }
         if !TimeManagement.isSelectedToday() { return }
         
         loadWatchHandImageView(type: .hour)
@@ -347,7 +348,6 @@ class DayView: UIView {
     }
     
     func animateWatchHand() {
-    
             
         let radiant = 2*CGFloat.pi
         let hours: CGFloat = 24
@@ -367,6 +367,7 @@ class DayView: UIView {
                 if !TimeManagement.isSelectedToday() {
                     hour.removeFromSuperview()
                     minute.removeFromSuperview()
+                    second.removeFromSuperview()
                     if let dayViewController = self.superController {
                         dayViewController.setDesign(animated: true)
                     }
@@ -400,11 +401,11 @@ class DayView: UIView {
         case .hour:
             image = #imageLiteral(resourceName: "watchhand_bold")
             rect = self.bounds.insetBy(dx: 30, dy: 30)
-            color = Settings.shared.isDarkMode ? Color.white : Color.black
+            color = !Settings.shared.isDarkMode ? Color.white : Color.black
         case .minute:
             image = #imageLiteral(resourceName: "watchhand_bold")
             rect = self.bounds.insetBy(dx: 5, dy: 5)
-            color = Settings.shared.isDarkMode ? Color.white : Color.black
+            color = !Settings.shared.isDarkMode ? Color.white : Color.black
         case .second:
             image = #imageLiteral(resourceName: "watchhand")
             rect = self.bounds.insetBy(dx: -30, dy: -30)

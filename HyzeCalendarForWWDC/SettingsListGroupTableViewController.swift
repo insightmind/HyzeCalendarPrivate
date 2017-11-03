@@ -27,8 +27,9 @@ struct SettingsListGroupCellConfigurations {
     static let darkMode = SettingsListGroupCellInformations(type: .onOffButton, title: "DarkMode", key: "DarkMode")
     static let showWeekSeperators = SettingsListGroupCellInformations(type: .onOffButton, title: "show Week seperators", key: "showLinesInCalendarView")
     static let animateDayView = SettingsListGroupCellInformations(type: .onOffButton, title: "allow Animations", key: "animateDayView")
-    static let isAMPM = SettingsListGroupCellInformations(type: .onOffButton, title: "24 hours", key: "IsAMPM")
+    static let isAMPM = SettingsListGroupCellInformations(type: .onOffButton, title: "use AM/PM", key: "IsAMPM")
     static let showWeekNumber = SettingsListGroupCellInformations(type: .onOffButton, title: "show Weeknumbers", key: "showWeekNumber")
+    static let showWatchHand = SettingsListGroupCellInformations(type: .onOffButton, title: "show Watchhands", key: "showWatchHands")
 }
 
 class SettingsListGroupTableViewController: UITableViewController {
@@ -47,9 +48,10 @@ class SettingsListGroupTableViewController: UITableViewController {
     
     let data = [SettingsListGroupCellConfigurations.darkMode,
                 SettingsListGroupCellConfigurations.showWeekSeperators,
-                SettingsListGroupCellConfigurations.animateDayView,
+                SettingsListGroupCellConfigurations.showWeekNumber,
                 SettingsListGroupCellConfigurations.isAMPM,
-                SettingsListGroupCellConfigurations.showWeekNumber]
+                SettingsListGroupCellConfigurations.animateDayView,
+                SettingsListGroupCellConfigurations.showWatchHand]
 
     override func viewDidLoad() {
         super.viewDidLoad()

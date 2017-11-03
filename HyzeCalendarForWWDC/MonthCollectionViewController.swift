@@ -36,7 +36,6 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
         // Do any additional setup after loading the view.
 		
 		self.collectionView?.allowsMultipleSelection = false
-        self.collectionView!.register(DayCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
 	
 	fileprivate class func setUpPrevFutMonthDays(_ monthID: Int, _ yearID: Int) -> (prevDays: Int, futDays: Int) {
@@ -97,6 +96,9 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
+        
+        self.collectionView!.register(DayCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        
         return 1
     }
 
@@ -125,7 +127,7 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
                 cell.bline.frame = CGRect(x: -2, y: cell.bounds.height, width: cell.bounds.width + 4, height: 1)
                 cell.addSubview(cell.bline)
                 cell.bottomLine = cell.bline
-            }
+                }
             } else {
                 if cell.bottomLine != nil {
                     cell.bottomLine?.removeFromSuperview()
@@ -134,13 +136,12 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
 			cell.label?.text = String(item)
             isNotInMonth = false
 		}
-        let isLeft = ((indexPath.item) % 7 == 0) ? true : false
+        let isLeft = ((indexPath.item) % 7 == 0)
         let weekNumber = isLeft ? TimeManagement.getWeekNumber(yearID: yearID, monthID: monthID + 1, dayID: item) : nil
 		let isToday = TimeManagement.isToday(yearID: yearID, monthID: monthID + 1, dayID: item)
 		let isSelected = TimeManagement.isSelected(yearID: yearID, monthID: monthID + 1, dayID: item)
 		let isOnWeekend = self.isOnWeekend(for: indexPath)
         cell.setCellDesign(isToday: isToday, isSelected: isSelected, isNotInMonth: isNotInMonth, isOnWeekend: isOnWeekend, weekNumber: weekNumber)
-        
         if isSelected {
 			self.forcedCellSelection = true
             Selection.shared.selectedDayCellIndex = (yearID, monthID + 1, IndexPath(item: item, section: 0))

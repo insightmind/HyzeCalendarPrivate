@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		defaults.register(defaults: ["firstWeekDayOfWeek" : WeekDay.monday.rawValue])
         defaults.register(defaults: ["showWeekNumber": false])
         defaults.register(defaults: ["isEventListRelative" : false])
+        defaults.register(defaults: ["showWatchHands": true])
         return true
     }
 
