@@ -136,6 +136,11 @@ class ELEventTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         if selected {
             eventViewBottomConstraint.constant = selectMenuHeight
+            
+            Selection.shared.selectedEventIdentifier = event?.eventIdentifier
+            guard let dayView = Settings.shared.renDayView else { return }
+            dayView.selectEventView(with: Selection.shared.selectedEventIdentifier, duration: 0.2)
+            
         } else {
             eventViewBottomConstraint.constant = 0
         }
@@ -143,6 +148,7 @@ class ELEventTableViewCell: UITableViewCell {
         UIView.animate(withDuration: 0.3) {
             self.layoutIfNeeded()
         }
+        
     }
     
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {

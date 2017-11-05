@@ -62,6 +62,9 @@ struct Selection {
 	/// used to set the first weekDay of the calendarView: Default is Sunday => Week starts at sunday
 	var weekDayStart: WeekDay = WeekDay.sunday
     
+    /// selected Event
+    var selectedEventIdentifier: String? = nil
+    
     //MARK: - Initializer
     /// Initializer to set the data of the selection at the start of the app to the data provided by Date()
     init() {

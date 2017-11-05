@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3E067E0D1F31FA92003601FA /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E067E0C1F31FA92003601FA /* Default-568h@2x.png */; };
 		3E0C9DDB1F5864C0001B644C /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0C9DDA1F5864C0001B644C /* Settings.swift */; };
 		3E0FDDE51F561BCA00086319 /* DaysOfMonthCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0FDDE41F561BCA00086319 /* DaysOfMonthCollectionViewCell.swift */; };
 		3E1B95251E3FAD9D009EB5C9 /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1B95241E3FAD9D009EB5C9 /* DayView.swift */; };
@@ -189,7 +188,6 @@
 /* Begin PBXFileReference section */
 		1EFC1B12198C6C88D7A630DC /* Pods-HyzeCalendarForWWDC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HyzeCalendarForWWDC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HyzeCalendarForWWDC/Pods-HyzeCalendarForWWDC.debug.xcconfig"; sourceTree = "<group>"; };
 		3AA15B1A29B6DC8C262D4571 /* Pods-HyzeCalendarForWWDC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HyzeCalendarForWWDC.release.xcconfig"; path = "Pods/Target Support Files/Pods-HyzeCalendarForWWDC/Pods-HyzeCalendarForWWDC.release.xcconfig"; sourceTree = "<group>"; };
-		3E067E0C1F31FA92003601FA /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		3E0C9DDA1F5864C0001B644C /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		3E0FDDE41F561BCA00086319 /* DaysOfMonthCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysOfMonthCollectionViewCell.swift; sourceTree = "<group>"; };
 		3E1B95241E3FAD9D009EB5C9 /* DayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DayView.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -590,15 +588,14 @@
 		3EA80D451E2BEC9300FD87C3 = {
 			isa = PBXGroup;
 			children = (
-				3E067E0C1F31FA92003601FA /* Default-568h@2x.png */,
-				3EA80D501E2BEC9300FD87C3 /* HyzeCalendarForWWDC */,
 				3E533BC01EC36185000CEF5F /* HyzeCalendarForWWDC.app */,
+				3EA80D501E2BEC9300FD87C3 /* HyzeCalendarForWWDC */,
+				859BFF411FA7B06800EC7085 /* Hyze.app */,
 				859BFF421FA7B06800EC7085 /* Hyze */,
+				859BFF4D1FA7B06800EC7085 /* Hyze Extension.appex */,
 				859BFF511FA7B06800EC7085 /* Hyze Extension */,
 				D48AC8556D2AC934DB48314B /* Frameworks */,
 				D0DB78F19C588A5DB8C22CB4 /* Pods */,
-				859BFF411FA7B06800EC7085 /* Hyze.app */,
-				859BFF4D1FA7B06800EC7085 /* Hyze Extension.appex */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1140,7 +1137,6 @@
 			files = (
 				3EBCA9DC1F78024E0083EE44 /* ETView.storyboard in Resources */,
 				3E68B5C91E3A886D00AE103F /* Main.storyboard in Resources */,
-				3E067E0D1F31FA92003601FA /* Default-568h@2x.png in Resources */,
 				3E62838A1F4DFF1700A799DC /* SetRecurrenceTableViewCell.xib in Resources */,
 				3EA80D5C1E2BEC9300FD87C3 /* LaunchScreen.storyboard in Resources */,
 				3E46B5161F6888F20050CEBB /* RecurrencePopover.storyboard in Resources */,

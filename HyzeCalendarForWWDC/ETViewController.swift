@@ -37,6 +37,7 @@ class ETViewController: UIViewController {
         self.view.layer.masksToBounds = true
         setUpGestureBar()
         setUpToolbar()
+        updateDesign()
     }
     
     func setUpGestureBar() {

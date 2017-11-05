@@ -105,7 +105,7 @@ class EventListTableViewController: UITableViewController {
         if event.isAllDay || !Settings.shared.isEventListRelative {
             height = basicCellHeight
         }
-        if self.tableView.indexPathForSelectedRow == indexPath {
+        if self.tableView.indexPathForSelectedRow == indexPath || event.eventIdentifier == Selection.shared.selectedEventIdentifier {
             height += 45
         }
         return CGFloat(height)
@@ -120,6 +120,15 @@ class EventListTableViewController: UITableViewController {
             return nil
         }
         return indexPath
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let configuredCell = cell as? ELEventTableViewCell else { return }
+        guard let event = configuredCell.event else { return }
+        if event.eventIdentifier == Selection.shared.selectedEventIdentifier {
+            cell.setSelected(true, animated: false)
+            self.reloadList(onlyDesign: false)
+        }
     }
     
     func reloadList(onlyDesign: Bool = false) {
