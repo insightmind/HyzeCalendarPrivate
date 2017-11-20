@@ -61,7 +61,7 @@ class DayViewUIVViewController: UIViewController {
         case .normal:
             eventListTopConstraint.constant = 2*dayTopConstraint.constant + day.frame.height
         case .minimal:
-            eventListTopConstraint.constant = maxHeight - 100
+            eventListTopConstraint.constant = maxHeight - 180
         case .expanded:
             eventListTopConstraint.constant = 0
         }

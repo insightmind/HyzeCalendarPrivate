@@ -17,6 +17,29 @@ enum ETViewState {
 
 class ETViewController: UIViewController {
     
+    public var startColor: UIColor = .white {
+        didSet {
+            gradientLayer.colors = [startColor.cgColor, endColor.cgColor]
+            self.view.setNeedsDisplay()
+        }
+    }
+    
+    public var endColor: UIColor = .white {
+        didSet {
+            gradientLayer.colors = [startColor.cgColor, endColor.cgColor]
+            self.view.backgroundColor = endColor
+            self.view.setNeedsDisplay()
+        }
+    }
+    
+    private lazy var gradientLayer: CAGradientLayer = {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = self.view.bounds
+        gradientLayer.colors = [self.startColor.cgColor, self.endColor.cgColor]
+        gradientLayer.frame = UIScreen.main.bounds
+        return gradientLayer
+    }()
+    
     var state: ETViewState = .normal
     var isCalendarView = true
 
@@ -35,6 +58,7 @@ class ETViewController: UIViewController {
         super.viewDidLoad()
         self.view.layer.cornerRadius = 20
         self.view.layer.masksToBounds = true
+        self.view.layer.insertSublayer(gradientLayer, at: 0)
         setUpGestureBar()
         setUpToolbar()
         updateDesign()
@@ -88,10 +112,10 @@ class ETViewController: UIViewController {
             guard let maxHeight = superController.navigationController?.visibleViewController?.view.frame.height else { return }
             switch superController.eventListHeightConstraint.constant {
             case 0...maxHeight/3:
-                superController.eventListHeightConstraint.constant = superController.calendarViewToTopConstraint.constant + 10 + ((superController.calendarView.bounds.width / 7) - 2)
-                eventList?.tableView.isScrollEnabled = true
                 superController.calendarViewAspectRatio.isActive = true
                 superController.calendarViewToETListConstraint.isActive = false
+                superController.eventListHeightConstraint.constant = superController.calendarViewToTopConstraint.constant + 10 + ((superController.calendarView.bounds.width / 7) - 2)
+                eventList?.tableView.isScrollEnabled = true
                 superController.calendarViewController?.collectionView?.isScrollEnabled = false
                 superController.calendarViewController?.collectionView?.allowsSelection = true
                 changeState(to: .expanded)
@@ -104,12 +128,13 @@ class ETViewController: UIViewController {
                 superController.calendarViewController?.collectionView?.allowsSelection = false
                 changeState(to: .minimal)
             default:
-                let basicHeight = superController.calendarViewToTopConstraint.constant + (superController.calendarView.bounds.width / 7 * 6) - 10
-                let expandedValue = Design.shared.currentETViewIsExpandedByNumOfRows * (superController.calendarView.bounds.width / 7)
-                superController.eventListHeightConstraint.constant = basicHeight - expandedValue
-                eventList?.tableView.isScrollEnabled = true
                 superController.calendarViewAspectRatio.isActive = true
                 superController.calendarViewToETListConstraint.isActive = false
+                let basicHeight = superController.calendarViewToTopConstraint.constant + (self.view.bounds.width / 7 * 6) - 10
+                let expandedValue = Design.shared.currentETViewIsExpandedByNumOfRows * (superController.calendarView.bounds.width / 7)
+                print(basicHeight - expandedValue)
+                superController.eventListHeightConstraint.constant = basicHeight - expandedValue
+                eventList?.tableView.isScrollEnabled = true
                 superController.calendarViewController?.collectionView?.isScrollEnabled = false
                 superController.calendarViewController?.collectionView?.allowsSelection = true
                 superController.calendarViewController?.scrollToSection(yearID: Selection.shared.currentYearID, monthID: Selection.shared.currentMonthID - 1, animated: true)
@@ -181,11 +206,14 @@ class ETViewController: UIViewController {
         guard let isWeekend = Selection.shared.selectedIsOnWeekend else { return }
         UIView.animate(withDuration: 0.2) {
             if isToday {
-                self.view.backgroundColor = Color.red
+                self.startColor = Color.red
+                self.endColor = Color.darkRed
             } else if isWeekend {
-                self.view.backgroundColor = Color.green
+                self.startColor = Color.green
+                self.endColor = Color.darkGreen
             } else{
-                self.view.backgroundColor = Color.blue
+                self.startColor = Color.blue
+                self.endColor = Color.darkBlue
             }
             self.toolBar.backgroundColor = UIColor.clear
         }

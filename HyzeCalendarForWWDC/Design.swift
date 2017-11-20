@@ -17,10 +17,12 @@ struct Color {
     static let orange = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
     static let blue = #colorLiteral(red: 0.204, green: 0.571, blue: 0.901, alpha: 1)
     static let lightBlue = #colorLiteral(red: 0.219, green: 0.629, blue: 1, alpha: 1)
-    static let green = #colorLiteral(red: 0.376, green: 0.78, blue: 0.388, alpha: 1)
+    static let darkBlue = #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)
+    static let green = #colorLiteral(red: 0.3764705882, green: 0.7803921569, blue: 0.3882352941, alpha: 1)
+    static let darkGreen = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
     static let red = #colorLiteral(red: 0.929, green: 0.263, blue: 0.216, alpha: 1)
     static let lightRed = #colorLiteral(red: 1, green: 0.2805668505, blue: 0.2337245871, alpha: 1)
-    static let darkRed = #colorLiteral(red: 0.7825556307, green: 0.2195591687, blue: 0.1829024916, alpha: 1)
+    static let darkRed = #colorLiteral(red: 0.521568656, green: 0.1098039225, blue: 0.05098039284, alpha: 1)
 }
 
 class Design {

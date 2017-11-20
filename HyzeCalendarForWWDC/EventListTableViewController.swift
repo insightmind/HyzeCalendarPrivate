@@ -112,7 +112,7 @@ class EventListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        reloadList(onlyDesign: true)
+        reloadCellSize()
     }
     
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
@@ -127,8 +127,13 @@ class EventListTableViewController: UITableViewController {
         guard let event = configuredCell.event else { return }
         if event.eventIdentifier == Selection.shared.selectedEventIdentifier {
             cell.setSelected(true, animated: false)
-            self.reloadList(onlyDesign: false)
+            self.reloadCellSize()
         }
+    }
+    
+    func reloadCellSize() {
+        self.tableView.beginUpdates()
+        self.tableView.endUpdates()
     }
     
     func reloadList(onlyDesign: Bool = false) {

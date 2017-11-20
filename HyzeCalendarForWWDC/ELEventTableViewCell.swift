@@ -36,6 +36,28 @@ class ELEventTableViewCell: UITableViewCell {
     @IBOutlet weak var selectMenuHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var eventViewBottomConstraint: NSLayoutConstraint!
     
+    public var startColor: UIColor = .white {
+        didSet {
+            gradientLayer.colors = [startColor.cgColor, endColor.cgColor]
+            self.eventView.setNeedsDisplay()
+        }
+    }
+    
+    public var endColor: UIColor = .white {
+        didSet {
+            gradientLayer.colors = [startColor.cgColor, endColor.cgColor]
+            self.eventView.setNeedsDisplay()
+        }
+    }
+    
+    private lazy var gradientLayer: CAGradientLayer = {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = self.eventView.bounds
+        gradientLayer.cornerRadius = 20
+        gradientLayer.colors = [self.startColor.cgColor, self.endColor.cgColor]
+        return gradientLayer
+    }()
+    
     func configure() {
         backgroundColor = UIColor.clear
         layer.masksToBounds = false
@@ -57,6 +79,12 @@ class ELEventTableViewCell: UITableViewCell {
         eventView.layer.shadowOpacity = 0.6
         eventView.layer.shadowOffset = CGSize.zero
         eventView.layer.shadowRadius = 5
+        eventView.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        gradientLayer.frame = self.eventView.bounds
     }
     
     func configureButtons() {
@@ -98,7 +126,16 @@ class ELEventTableViewCell: UITableViewCell {
         guard let calendar = event?.calendar else { return }
         let color = UIColor(cgColor: calendar.cgColor)
         eventView.backgroundColor = color
-        topView.backgroundColor = color
+        if let lighter = color.lighter(by: 10.0) {
+            startColor = lighter
+        } else {
+            startColor = color
+        }
+        if let darker = color.darker(by: 10.0) {
+            endColor = darker
+        } else {
+            endColor = color
+        }
     }
     
     func loadTitle() {
@@ -176,7 +213,7 @@ class ELEventTableViewCell: UITableViewCell {
                 let remove = UIAlertAction(title: "Remove", style: .destructive) { (_) in
                     EventManagement.shared.deleteEvent(eventInformations)
                     guard let eList = self.eventList else { return }
-                    eList.reloadList()
+                    eList.reloadCellSize()
                 }
                 alert.addAction(cancel)
                 alert.addAction(remove)

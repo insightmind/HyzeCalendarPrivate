@@ -116,6 +116,7 @@
 		852EC44B1F9FB8A60024126A /* Deprecated_ETView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852EC4491F9FB8A60024126A /* Deprecated_ETView.swift */; };
 		854626B11F8E7162002D6EF5 /* ELAddEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854626AF1F8E7162002D6EF5 /* ELAddEventTableViewCell.swift */; };
 		854626B21F8E7162002D6EF5 /* ELAddEventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 854626B01F8E7162002D6EF5 /* ELAddEventTableViewCell.xib */; };
+		85577FA11FC1CA2300657E0F /* EventModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 85577F9F1FC1CA2300657E0F /* EventModel.xcdatamodeld */; };
 		85788BB01F865A030073B90C /* EventListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85788BAF1F865A030073B90C /* EventListTableViewController.swift */; };
 		85788BB81F865EA10073B90C /* ELEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85788BB61F865EA10073B90C /* ELEventTableViewCell.swift */; };
 		85788BB91F865EA10073B90C /* ELEventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85788BB71F865EA10073B90C /* ELEventTableViewCell.xib */; };
@@ -312,6 +313,7 @@
 		852EC4491F9FB8A60024126A /* Deprecated_ETView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deprecated_ETView.swift; sourceTree = "<group>"; };
 		854626AF1F8E7162002D6EF5 /* ELAddEventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ELAddEventTableViewCell.swift; sourceTree = "<group>"; };
 		854626B01F8E7162002D6EF5 /* ELAddEventTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ELAddEventTableViewCell.xib; sourceTree = "<group>"; };
+		85577FA01FC1CA2300657E0F /* EventModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EventModel.xcdatamodel; sourceTree = "<group>"; };
 		85788BAF1F865A030073B90C /* EventListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListTableViewController.swift; sourceTree = "<group>"; };
 		85788BB61F865EA10073B90C /* ELEventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ELEventTableViewCell.swift; sourceTree = "<group>"; };
 		85788BB71F865EA10073B90C /* ELEventTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ELEventTableViewCell.xib; sourceTree = "<group>"; };
@@ -410,6 +412,7 @@
 		3E4A9B261E4BB479009E45EF /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				851122BF1FC1C9AA00A3C974 /* DataModels */,
 				3E59BDA11F432DF000BDCF25 /* General */,
 				3E59BD9F1F432DC200BDCF25 /* Design */,
 				3E59BD9E1F432DAF00BDCF25 /* Extensions */,
@@ -856,6 +859,14 @@
 				3EFC00C91F5E165C0028F387 /* LocationTableViewCell.xib */,
 			);
 			name = "Additional Views";
+			sourceTree = "<group>";
+		};
+		851122BF1FC1C9AA00A3C974 /* DataModels */ = {
+			isa = PBXGroup;
+			children = (
+				85577F9F1FC1CA2300657E0F /* EventModel.xcdatamodeld */,
+			);
+			name = DataModels;
 			sourceTree = "<group>";
 		};
 		8525D2951FAB38A50075B532 /* Support Files */ = {
@@ -1323,6 +1334,7 @@
 				3E6412FD1F560DD500688E78 /* DaysOfMonthCollectionView.swift in Sources */,
 				8525D2A31FAB3C3C0075B532 /* Date+Timepiece.swift in Sources */,
 				85788BB81F865EA10073B90C /* ELEventTableViewCell.swift in Sources */,
+				85577FA11FC1CA2300657E0F /* EventModel.xcdatamodeld in Sources */,
 				3E65607E1F4CC3E700C241BE /* EKEventExtension.swift in Sources */,
 				859BFF231FA74DC000EC7085 /* GridCollectionViewFlowLayout.swift in Sources */,
 				3E61FE641E5239AF003D796C /* DayViewDecoration.swift in Sources */,
@@ -1717,6 +1729,19 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		85577F9F1FC1CA2300657E0F /* EventModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				85577FA01FC1CA2300657E0F /* EventModel.xcdatamodel */,
+			);
+			currentVersion = 85577FA01FC1CA2300657E0F /* EventModel.xcdatamodel */;
+			path = EventModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 3EA80D461E2BEC9300FD87C3 /* Project object */;
 }

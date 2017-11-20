@@ -8,6 +8,7 @@
 
 import Foundation
 import EventKit
+import CoreData
 import UIKit
 
 
@@ -110,6 +111,27 @@ class EventManagement {
         return events
     }
     
+    func getModelEvent(_ identifier: String) -> Event? {
+        guard let managedContext = loadManagedContext() else { return nil }
+        
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Event")
+        fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
+        
+        do {
+            let events = try managedContext.fetch(fetchRequest) as! [Event]
+            return events.first
+        } catch {
+            print("Failed to fetch Event: \(error.localizedDescription)")
+            return nil
+        }
+    }
+    
+    func loadManagedContext() -> NSManagedObjectContext? {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return nil }
+        
+        return appDelegate.persistentContainer.viewContext
+    }
+    
     func askForPermission() -> Bool {
 		var status = false
         if EKEventStore.authorizationStatus(for: .event) ==  EKAuthorizationStatus.authorized {
@@ -153,6 +175,16 @@ class EventManagement {
 			} else {
 				event.recurrenceRules = nil
 			}
+            
+            guard let managedContext = loadManagedContext() else { return nil}
+            
+            let entity = NSEntityDescription.entity(forEntityName: "Event", in: managedContext)!
+            
+            let coreEvent = NSManagedObject(entity: entity, insertInto: managedContext)
+            
+            coreEvent.setValue(from.eventIdentifier, forKey: "identifier")
+            let encodedColor = NSKeyedArchiver.archivedData(withRootObject: from.color)
+            coreEvent.setValue(encodedColor, forKey: "color")
 			
 			switch event.calendar.type {
 			case .birthday:
@@ -247,7 +279,10 @@ class EventManagement {
 		informations.recurrenceRule = event.recurrenceRules?.first
 		informations.location = event.structuredLocation
 		
-		
+        if let coreEvent = getModelEvent(eventIdentifier) {
+            // - MARK: Implement CoreData
+        }
+        
 		if let complete = completion {
 			complete()
 		}
