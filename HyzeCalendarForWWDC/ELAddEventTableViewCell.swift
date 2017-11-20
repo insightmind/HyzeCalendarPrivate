@@ -91,6 +91,8 @@ class ELAddEventTableViewCell: UITableViewCell {
         updateSelectTodayIcon()
     }
     
+    
+    
     func updateLayerDesign() {
         let bColor = Settings.shared.isDarkMode ? Color.black : Color.white
         let tColor = Settings.shared.isDarkMode ? Color.white : Color.black

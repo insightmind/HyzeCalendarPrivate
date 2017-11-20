@@ -53,7 +53,7 @@ class EventEditorEventInformations: NSCopying {
 	var isAllDay: Bool = false
 	var startDate: Date = Date()
 	var endDate: Date = Date(timeIntervalSinceNow: -10)
-	var color: UIColor = Color.grey
+	var color: UIColor = UIColor.randomColor()
     var notes: String? = nil
 	var calendar: EKCalendar? = nil
 	var participants: [EKParticipant]? = nil

@@ -111,15 +111,15 @@ class EventManagement {
         return events
     }
     
-    func getModelEvent(_ identifier: String) -> Event? {
+    func getModelEvent(_ identifier: String) -> EventMO? {
         guard let managedContext = loadManagedContext() else { return nil }
         
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Event")
-        fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
+        fetchRequest.predicate = NSPredicate(format: "event == %@", identifier)
         
         do {
-            let events = try managedContext.fetch(fetchRequest) as! [Event]
-            return events.first
+            let events = try managedContext.fetch(fetchRequest) as? [EventMO]
+            return events?.first
         } catch {
             print("Failed to fetch Event: \(error.localizedDescription)")
             return nil
@@ -153,12 +153,25 @@ class EventManagement {
 	func createEvent(from: EventEditorEventInformations) -> EKEvent? {
 		
 		var event: EKEvent
-		
 		if let identifier = from.eventIdentifier {
 			guard let checkedEvent = EMEventStore.event(withIdentifier: identifier) else {
 				return nil
 			}
 			event = checkedEvent
+            
+            guard let managedContext = loadManagedContext() else { return nil}
+            
+            let coreEvent = NSEntityDescription.insertNewObject(forEntityName: "Event", into: managedContext) as! EventMO
+            coreEvent.event = identifier
+            let encodedColor = NSKeyedArchiver.archivedData(withRootObject: from.color)
+            coreEvent.color = encodedColor
+            
+            do {
+                try managedContext.save()
+            } catch {
+                print("Error saving context: \(error.localizedDescription)")
+            }
+            
 		} else {
 			event = EKEvent(eventStore: EventManagement.shared.EMEventStore)
 		}
@@ -175,16 +188,6 @@ class EventManagement {
 			} else {
 				event.recurrenceRules = nil
 			}
-            
-            guard let managedContext = loadManagedContext() else { return nil}
-            
-            let entity = NSEntityDescription.entity(forEntityName: "Event", in: managedContext)!
-            
-            let coreEvent = NSManagedObject(entity: entity, insertInto: managedContext)
-            
-            coreEvent.setValue(from.eventIdentifier, forKey: "identifier")
-            let encodedColor = NSKeyedArchiver.archivedData(withRootObject: from.color)
-            coreEvent.setValue(encodedColor, forKey: "color")
 			
 			switch event.calendar.type {
 			case .birthday:
@@ -220,7 +223,7 @@ class EventManagement {
 		return event
 	}
 	
- func createParticipant(email: String) -> EKParticipant? {
+    func createParticipant(email: String) -> EKParticipant? {
 		let clazz: AnyClass? = NSClassFromString("EKAttendee")
 		if let type = clazz as? NSObject.Type {
 			let attendee = type.init()
@@ -242,8 +245,24 @@ class EventManagement {
             print("Event could not be added")
             Settings.shared.eventsChange = false
         }
-		self.eventInformation = EventEditorEventInformations()
-
+        event.refresh()
+        
+        self.eventInformation = EventEditorEventInformations()
+        
+        guard let managedContext = loadManagedContext() else { return }
+        
+        let coreEvent = NSEntityDescription.insertNewObject(forEntityName: "Event", into: managedContext) as! EventMO
+        let identifier = event.eventIdentifier
+        coreEvent.event = identifier
+        let encodedColor = NSKeyedArchiver.archivedData(withRootObject: informations.color)
+        coreEvent.color = encodedColor
+        
+        do {
+            try managedContext.save()
+        } catch {
+            print("Error saving context: \(error.localizedDescription)")
+        }
+		
     }
 	
 	func getCalendarColor(eventIdentifier: String) -> UIColor? {
@@ -279,8 +298,13 @@ class EventManagement {
 		informations.recurrenceRule = event.recurrenceRules?.first
 		informations.location = event.structuredLocation
 		
-        if let coreEvent = getModelEvent(eventIdentifier) {
-            // - MARK: Implement CoreData
+        if let color = getModelEvent(eventIdentifier)?.color {
+            if let unarchivedColor = NSKeyedUnarchiver.unarchiveObject(with: color) as? UIColor {
+                informations.color = unarchivedColor
+                print("EXTRACTED COLOR \(unarchivedColor)")
+            } else {
+                print("Did not find color")
+            }
         }
         
 		if let complete = completion {
