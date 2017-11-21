@@ -131,8 +131,6 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
 			blurEffectNavbarView.effect = blurEffectView.effect
 			titleTextField.textColor = Color.black
 		}
-        self.view.backgroundColor = eventInformations.color
-        self.titleTextField.text = String(describing: eventInformations.color)
 	}
 	
 	override func viewDidLoad() {

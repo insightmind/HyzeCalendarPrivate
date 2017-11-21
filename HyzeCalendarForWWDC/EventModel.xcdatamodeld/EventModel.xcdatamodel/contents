@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13771" systemVersion="17B48" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Event" representedClassName="EventMO" isAbstract="YES" syncable="YES" codeGenerationType="class">
+    <entity name="Event" representedClassName="EventMO" syncable="YES" codeGenerationType="class">
         <attribute name="color" optional="YES" attributeType="Transformable" customClassName="Data" syncable="YES"/>
         <attribute name="event" attributeType="String" defaultValueString="noEvent" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Event" positionX="-5922" positionY="-1656" width="299" height="73"/>
+        <element name="Event" positionX="-5922" positionY="-1656" width="299" height="75"/>
     </elements>
 </model>

@@ -108,7 +108,7 @@ class ETViewCell: UITableViewCell {
         
         self.accessoryType = .none
         
-        self.inheritanceBar.backgroundColor = EventManagement.shared.getCalendarColor(eventIdentifier: eventIdentifier) ?? Color.white
+        self.inheritanceBar.backgroundColor = EventManagement.shared.getColor(eventIdentifier: eventIdentifier) ?? Color.white
         self.titleLabel.text = self.title
         self.startLabel.text = self.start
         self.endLabel.text = self.end

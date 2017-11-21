@@ -37,6 +37,9 @@ class ELAddEventTableViewCell: UITableViewCell {
     @IBAction func addEvent(_ sender: UIButton) {
         EventManagement.shared.eventInformation = EventEditorEventInformations()
         EventManagement.shared.eventInformation.calendar = EventManagement.shared.getHyzeCalendar() ?? EventManagement.shared.EMEventStore.defaultCalendarForNewEvents
+        if let color = EventManagement.shared.eventInformation.calendar?.cgColor {
+            EventManagement.shared.eventInformation.color = UIColor(cgColor: color)
+        }
         let storyboard = UIStoryboard(name: "EventEditor", bundle: nil)
         let superViewController = UIApplication.shared.keyWindow?.rootViewController
         var mainViewController: ViewController

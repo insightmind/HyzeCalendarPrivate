@@ -16,6 +16,7 @@ enum EventEditorCellType: String {
 	case remove = "remove"
 	case recurrence = "recurrence"
 	case location = "location"
+    case colorPicker = "colorPicker"
 }
 
 struct EventEditorCellInformations {
@@ -34,6 +35,7 @@ class EventEditorTableViewController: UITableViewController {
 	let removeCell = EventEditorCellInformations(cellType: .remove, height: 80.0)
 	let recurrenceCell = EventEditorCellInformations(cellType: .recurrence, height: 212.0)
 	let locationCell = EventEditorCellInformations(cellType: .location, height: 100.0)
+    let colorPickerCell = EventEditorCellInformations(cellType: .colorPicker, height: 100.0)
 	
 	var eventsInformations: EventEditorEventInformations!
 
@@ -51,6 +53,7 @@ class EventEditorTableViewController: UITableViewController {
 		self.tableView.register(UINib(nibName: "SelectContactsTableViewCell", bundle: nil), forCellReuseIdentifier: EventEditorCellType.contacts.rawValue)
 		self.tableView.register(UINib(nibName: "SetRecurrenceTableViewCell", bundle: nil), forCellReuseIdentifier: EventEditorCellType.recurrence.rawValue)
 		self.tableView.register(UINib(nibName: "SelectLocationTableViewCell", bundle: nil), forCellReuseIdentifier: EventEditorCellType.location.rawValue)
+        self.tableView.register(UINib(nibName: "PickColorTableViewCell", bundle: nil), forCellReuseIdentifier: EventEditorCellType.colorPicker.rawValue)
 		
 		self.eventsInformations = EventManagement.shared.eventInformation
 		eventsInformations.eventEditorTableViewController = self
@@ -107,6 +110,9 @@ class EventEditorTableViewController: UITableViewController {
 		case .location:
 			let cell = tableView.dequeueReusableCell(withIdentifier: EventEditorCellType.location.rawValue) as! SelectLocationTableViewCell
 			return cell
+        case .colorPicker:
+            let cell = tableView.dequeueReusableCell(withIdentifier: EventEditorCellType.colorPicker.rawValue) as! PickColorTableViewCell
+            return cell
 		}
     }
 	
@@ -141,6 +147,11 @@ class EventEditorTableViewController: UITableViewController {
 					if onlyInformations {
 						cell.reloadInformations()
 					}
+                case .colorPicker:
+                    let cell = cellAtIndexPath as! PickColorTableViewCell
+                    if onlyInformations {
+                        cell.reloadInformations()
+                    }
 				default:
 					return
 				}
@@ -164,6 +175,7 @@ class EventEditorTableViewController: UITableViewController {
 	func updateCellsArray() {
 		cells = []
 		cells.append(dateSelectionCell)
+        cells.append(colorPickerCell)
 		cells.append(calendarCell)
 		switch eventsInformations.state {
 		case .showDetail:

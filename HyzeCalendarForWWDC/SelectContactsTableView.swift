@@ -8,13 +8,14 @@
 
 import UIKit
 import EventKit
+import Contacts
 
 class SelectContactsTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
 	
 	let eventInformation = EventManagement.shared.eventInformation
 	var isEditable: Bool = false
 	
-	var contacts = [String]()
+	var contacts = [EKParticipant]()
 	let reuseIdentifier = "contactsCell"
 	
 	override init(frame: CGRect, style: UITableViewStyle) {
@@ -29,17 +30,12 @@ class SelectContactsTableView: UITableView, UITableViewDelegate, UITableViewData
 		
 		self.delegate = self
 		self.dataSource = self
-		
-		guard let calendarType = eventInformation.calendar?.type else {
-			return
-		}
-		
-		switch calendarType {
-		case .birthday, .local, .subscription:
-			isEditable = false
-		default:
-			isEditable = true
-		}
+        
+        if eventInformation.state == .showDetail || eventInformation.isReadOnly {
+            isEditable = false
+        } else {
+            isEditable = true
+        }
 		
 		let cell = UINib(nibName: "ContactTableViewCell", bundle: nil)
 		self.register(cell, forCellReuseIdentifier: reuseIdentifier)
@@ -53,12 +49,14 @@ class SelectContactsTableView: UITableView, UITableViewDelegate, UITableViewData
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = self.dequeueReusableCell(withIdentifier: reuseIdentifier) as! ContactTableViewCell
-		let email = contacts[indexPath.row]
-		if let contact = ContactManagement.shared.getContact(email: email) {
-			cell.setContact(contact, shouldAdd: true, email: email, isInMainCell: true)
-		} else {
-			cell.setEmail(email: email, shouldAdd: true, isInMainCell: true)
-		}
+        let participant = contacts[indexPath.row]
+        if let contact = ContactManagement.shared.getContact(for: participant.contactPredicate) {
+            cell.setContact(contact, shouldAdd: true)
+            cell.participant = participant
+        } else {
+            let email = participant.name ?? "Unknown"
+            cell.setEmail(email: email, shouldAdd: true, isInMainCell: true)
+        }
 		cell.tableView = self
 		cell.setIsEditable(isEditable)
 		return cell
@@ -68,9 +66,9 @@ class SelectContactsTableView: UITableView, UITableViewDelegate, UITableViewData
 		return 56
 	}
 	
-	func deleteParticipant(_ email: String) {
+	func deleteParticipant(_ email: URL) {
 		for i in 0..<contacts.count {
-			if contacts[i] == email {
+			if contacts[i].url == email {
 				contacts.remove(at: i)
 				guard let tableView = eventInformation.eventEditorTableViewController else {
 					return
@@ -83,28 +81,13 @@ class SelectContactsTableView: UITableView, UITableViewDelegate, UITableViewData
 	}
 	
 	func reloadParticipants() {
-		var attendees = [EKParticipant]()
-		for email in contacts {
-			if let attendee = EventManagement.shared.createParticipant(email: email) {
-				attendees.append(attendee)
-			}
-		}
-		eventInformation.participants = attendees
+		eventInformation.participants = contacts
 	}
 	
 	func setUpData() {
-		guard let participants = eventInformation.participants else {
-			return
-		}
-		var cContacts = [String]()
-		for participant in participants {
-			var email = participant.url.absoluteString
-			if email.contains("mailto:") {
-				let mailtoRange = email.startIndex...email.index(email.startIndex, offsetBy: 6)
-				email.removeSubrange(mailtoRange)
-			}
-			cContacts.append(email)
-		}
-		contacts = cContacts
+        guard let cn = eventInformation.participants else {
+            return
+        }
+		contacts = cn
 	}
 }

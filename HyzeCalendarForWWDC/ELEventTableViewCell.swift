@@ -95,8 +95,8 @@ class ELEventTableViewCell: UITableViewCell {
     }
     
     func loadCalendarColor() {
-        guard let calendar = event?.calendar else { return }
-        let color = UIColor(cgColor: calendar.cgColor)
+        guard let checkedEvent = event else { return }
+        guard let color = EventManagement.shared.getColor(event: checkedEvent) else { return }
         eventView.backgroundColor = color
         topView.backgroundColor = color
     }

@@ -114,6 +114,10 @@
 		852BE7161FA0BC4F00FEAD43 /* SettingsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852BE7151FA0BC4F00FEAD43 /* SettingsListTableViewController.swift */; };
 		852EC44A1F9FB8A60024126A /* Deprecated_ETViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852EC4481F9FB8A50024126A /* Deprecated_ETViewCell.swift */; };
 		852EC44B1F9FB8A60024126A /* Deprecated_ETView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852EC4491F9FB8A60024126A /* Deprecated_ETView.swift */; };
+		8534F0891FC48298006616A7 /* EventMOManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8534F0881FC48298006616A7 /* EventMOManagement.swift */; };
+		8534F08B1FC486C5006616A7 /* CoreDataManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8534F08A1FC486C5006616A7 /* CoreDataManagement.swift */; };
+		8534F08F1FC49291006616A7 /* PickColorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8534F08D1FC49291006616A7 /* PickColorTableViewCell.swift */; };
+		8534F0901FC49291006616A7 /* PickColorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8534F08E1FC49291006616A7 /* PickColorTableViewCell.xib */; };
 		854626B11F8E7162002D6EF5 /* ELAddEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854626AF1F8E7162002D6EF5 /* ELAddEventTableViewCell.swift */; };
 		854626B21F8E7162002D6EF5 /* ELAddEventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 854626B01F8E7162002D6EF5 /* ELAddEventTableViewCell.xib */; };
 		85577FA11FC1CA2300657E0F /* EventModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 85577F9F1FC1CA2300657E0F /* EventModel.xcdatamodeld */; };
@@ -311,6 +315,10 @@
 		852BE7151FA0BC4F00FEAD43 /* SettingsListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsListTableViewController.swift; sourceTree = "<group>"; };
 		852EC4481F9FB8A50024126A /* Deprecated_ETViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deprecated_ETViewCell.swift; sourceTree = "<group>"; };
 		852EC4491F9FB8A60024126A /* Deprecated_ETView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deprecated_ETView.swift; sourceTree = "<group>"; };
+		8534F0881FC48298006616A7 /* EventMOManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMOManagement.swift; sourceTree = "<group>"; };
+		8534F08A1FC486C5006616A7 /* CoreDataManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagement.swift; sourceTree = "<group>"; };
+		8534F08D1FC49291006616A7 /* PickColorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickColorTableViewCell.swift; sourceTree = "<group>"; };
+		8534F08E1FC49291006616A7 /* PickColorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickColorTableViewCell.xib; sourceTree = "<group>"; };
 		854626AF1F8E7162002D6EF5 /* ELAddEventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ELAddEventTableViewCell.swift; sourceTree = "<group>"; };
 		854626B01F8E7162002D6EF5 /* ELAddEventTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ELAddEventTableViewCell.xib; sourceTree = "<group>"; };
 		85577FA01FC1CA2300657E0F /* EventModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EventModel.xcdatamodel; sourceTree = "<group>"; };
@@ -398,6 +406,7 @@
 			isa = PBXGroup;
 			children = (
 				3E62854C1F447E3200301A42 /* EventEditorCellProtocol.swift */,
+				8534F08C1FC49250006616A7 /* ColorPicker */,
 				3EA269211F3CF2330021BB56 /* DateSelection */,
 				3E8B90A21F433CA3000F8449 /* Calendar */,
 				3E8B90A11F433C9D000F8449 /* Location */,
@@ -865,6 +874,8 @@
 			isa = PBXGroup;
 			children = (
 				85577F9F1FC1CA2300657E0F /* EventModel.xcdatamodeld */,
+				8534F0881FC48298006616A7 /* EventMOManagement.swift */,
+				8534F08A1FC486C5006616A7 /* CoreDataManagement.swift */,
 			);
 			name = DataModels;
 			sourceTree = "<group>";
@@ -927,6 +938,15 @@
 				859F543D1FA0BE070069777F /* SettingsListTableViewCell.xib */,
 			);
 			name = SettingsList;
+			sourceTree = "<group>";
+		};
+		8534F08C1FC49250006616A7 /* ColorPicker */ = {
+			isa = PBXGroup;
+			children = (
+				8534F08D1FC49291006616A7 /* PickColorTableViewCell.swift */,
+				8534F08E1FC49291006616A7 /* PickColorTableViewCell.xib */,
+			);
+			path = ColorPicker;
 			sourceTree = "<group>";
 		};
 		854626AE1F8E712A002D6EF5 /* AddEventCell */ = {
@@ -1162,6 +1182,7 @@
 				3EFC00CB1F5E165C0028F387 /* LocationTableViewCell.xib in Resources */,
 				3EE9C86E1F56F23100FD93E9 /* DaysOfMonthPickerTableViewCell.xib in Resources */,
 				85788BB91F865EA10073B90C /* ELEventTableViewCell.xib in Resources */,
+				8534F0901FC49291006616A7 /* PickColorTableViewCell.xib in Resources */,
 				3EBDF8CA1F5DDE9600B66C96 /* SelectLocationTableViewCell.xib in Resources */,
 				3EFC00C11F5DF4CB0028F387 /* SelectLocation.storyboard in Resources */,
 				3E47BD321F30EE0200E0646C /* DateSelectionTableViewCell.xib in Resources */,
@@ -1275,6 +1296,7 @@
 				3E6285471F44720400301A42 /* UIViewControllerExtension.swift in Sources */,
 				3EE5426D1F479FCC00B230FF /* RemoveTableViewCell.swift in Sources */,
 				3E6283891F4DFF1700A799DC /* SetRecurrenceTableViewCell.swift in Sources */,
+				8534F0891FC48298006616A7 /* EventMOManagement.swift in Sources */,
 				3EA6E4751F4C7C1F003E9341 /* ContactsManagement.swift in Sources */,
 				3E4A9B291E4BB4C0009E45EF /* EventManagement.swift in Sources */,
 				852BE7161FA0BC4F00FEAD43 /* SettingsListTableViewController.swift in Sources */,
@@ -1306,9 +1328,11 @@
 				8525D2B01FAB3C5C0075B532 /* Timepiece-dummy.m in Sources */,
 				3E533BC71EC364BC000CEF5F /* DayCollectionViewCell.swift in Sources */,
 				3E62854A1F44797900301A42 /* SelectCalendarTableViewCell.swift in Sources */,
+				8534F08B1FC486C5006616A7 /* CoreDataManagement.swift in Sources */,
 				3E7DD5731E4679FA001E1D0B /* EventView.swift in Sources */,
 				3E5E0C1E1F545B1C0096E7E7 /* DateTableViewCell.swift in Sources */,
 				3E36FF011F4A423700EAC9CC /* ContactTableViewCell.swift in Sources */,
+				8534F08F1FC49291006616A7 /* PickColorTableViewCell.swift in Sources */,
 				852EC44B1F9FB8A60024126A /* Deprecated_ETView.swift in Sources */,
 				3E0FDDE51F561BCA00086319 /* DaysOfMonthCollectionViewCell.swift in Sources */,
 				3E47BD311F30EE0200E0646C /* DateSelectionTableViewCell.swift in Sources */,

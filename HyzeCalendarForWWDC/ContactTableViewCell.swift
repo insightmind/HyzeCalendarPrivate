@@ -37,10 +37,10 @@ class ContactTableViewCell: UITableViewCell {
 	
 	
 	fileprivate func removeInTableView(_ tableView: SelectContactsTableView) {
-		guard let stringEmail = email else {
+		guard let url = participant?.url else {
 			return
 		}
-		tableView.deleteParticipant(stringEmail)
+		tableView.deleteParticipant(url)
 	}
 	
 	fileprivate func removeInSetTableView(_ tableView: SetContactsTableViewController) {
@@ -145,15 +145,7 @@ class ContactTableViewCell: UITableViewCell {
 			self.contactLabel.textColor = Color.blue
 			self.emailLabel.textColor = Color.blue.withAlphaComponent(0.7)
 		}
-		
-		switch eventInformation.state {
-		case .showDetail:
-			self.contactDeleteView.isHidden = true
-			self.contactDeleteButton.isUserInteractionEnabled = false
-		default:
-			self.contactDeleteView.isHidden = false
-			self.contactDeleteButton.isUserInteractionEnabled = true
-		}
+    
 		
 		setUpContactDeleteButton()
 		setUpContactImageView()
@@ -237,8 +229,9 @@ class ContactTableViewCell: UITableViewCell {
 			setUp(contact: realContact)
 			self.isContact = true
 		} else {
-			let stringEmail = participant.url.absoluteString
-			setUp(email: stringEmail, deleteMailto: true)
+			let string = participant.name ?? "Unknown"
+			self.emailLabel.text = string
+            self.email = string
 		}
 		if let stringEmail = email {
 			self.emailLabel.text = stringEmail

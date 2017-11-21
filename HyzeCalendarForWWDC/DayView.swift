@@ -307,7 +307,7 @@ class DayView: UIView {
 					let event = EventView(frame: self.bounds , carcWidth: 5, eventIdentifier: i.key)
 					event.drawLayer = layer
 					event.sendTimeProperties(start: i.value[1], end: i.value[2])
-					event.sendColorProperties(EventManagement.shared.getCalendarColor(eventIdentifier: event.eventIdentifier) ?? UIColor.randomColor())
+					event.sendColorProperties(EventManagement.shared.getColor(eventIdentifier: event.eventIdentifier) ?? UIColor.randomColor())
 					if i.value[0] == 0 {
 						event.isFullDay = true
 					}

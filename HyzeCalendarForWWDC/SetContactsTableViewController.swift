@@ -137,9 +137,9 @@ class SetContactsTableViewController: UITableViewController {
 			if let contact = ContactManagement.shared.getContact(for: participant.contactPredicate) {
 				addedContacts.append(contact)
 			} else {
-				var email = participant.url.absoluteString
-				let range = email.startIndex...email.index(email.startIndex, offsetBy: 6)
-				email.removeSubrange(range)
+				let email = participant.name ?? "Unknown"
+//                let range = email.startIndex...email.index(email.startIndex, offsetBy: 6)
+//                email.removeSubrange(range)
 				addedEmails.append(email)
 			}
 		}
