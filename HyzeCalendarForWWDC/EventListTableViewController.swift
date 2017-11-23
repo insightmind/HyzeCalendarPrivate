@@ -44,10 +44,16 @@ class EventListTableViewController: UITableViewController {
         super.viewDidLoad()
         configure()
         registerCells()
+        Settings.shared.eventList = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -136,14 +142,14 @@ class EventListTableViewController: UITableViewController {
         self.tableView.endUpdates()
     }
     
-    func reloadList(onlyDesign: Bool = false) {
+    func reloadList(onlyDesign: Bool = false, animated: Bool = true) {
         if onlyDesign {
             self.tableView.beginUpdates()
             self.tableView.endUpdates()
             guard let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? ELAddEventTableViewCell else { return }
             cell.updateDesign()
         } else {
-            self.tableView.reloadSections(IndexSet(integer: 1), with: .fade)
+            self.tableView.reloadSections(IndexSet(integer: 1), with: animated ? .fade : .none)
         }
     }
 }

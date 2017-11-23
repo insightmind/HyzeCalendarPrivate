@@ -23,7 +23,8 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
 	@IBOutlet weak var blurEffectView: UIVisualEffectView!
 	@IBOutlet weak var blurEffectNavbarView: UIVisualEffectView!
 	@IBOutlet weak var saveButton: UIButton!
-	
+    @IBOutlet weak var cancelButton: UIButton!
+    
 	@IBOutlet weak var tableView: UIView!
 	@IBOutlet weak var titleTextField: UITextField!
 	
@@ -114,6 +115,8 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
 		self.dismiss(animated: true, completion: {
 			self.dayView?.day.reloadData()
 			self.dayView?.eventList?.eventList?.reloadList()
+            
+            Settings.shared.eventList?.reloadList(onlyDesign: false)
 		})
 	}
 	
@@ -132,6 +135,16 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
 			titleTextField.textColor = Color.black
 		}
 	}
+    
+    func setButtons(shouldHide: Bool) {
+        if shouldHide {
+            self.saveButton.isHidden = true
+            self.cancelButton.isHidden = true
+        } else {
+            self.saveButton.isHidden = false
+            self.cancelButton.isHidden = false
+        }
+    }
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()

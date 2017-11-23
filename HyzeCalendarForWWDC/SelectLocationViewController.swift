@@ -25,9 +25,8 @@ class Artwork: NSObject, MKAnnotation {
 	}
 }
 
-class SelectLocationViewController: UIViewController {
+class SelectLocationViewController: PopoverViewController {
 	
-	var eventInformations = EventManagement.shared.eventInformation
 	var searchController: SelectLocationSearchViewController?
 
 

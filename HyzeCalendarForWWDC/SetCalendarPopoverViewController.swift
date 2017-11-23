@@ -8,13 +8,11 @@
 
 import UIKit
 
-class SetCalendarPopoverViewController: UIViewController {
+class SetCalendarPopoverViewController: PopoverViewController {
 	
 	@IBOutlet weak var popover: UIView!
 	@IBOutlet weak var topBlurView: UIVisualEffectView!
 	@IBOutlet weak var toolbarBlurView: UIVisualEffectView!
-	
-	var eventInformations = EventManagement.shared.eventInformation
 	
 	
 	@IBAction func cancel(_ sender: UIButton) {

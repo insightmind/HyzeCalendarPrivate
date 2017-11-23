@@ -35,11 +35,17 @@ class EventMOManagement: CoreDataManagement {
     }
     
     class func updateEventModel(_ informations: EventEditorEventInformations, event: EKEvent, managedContext: NSManagedObjectContext) {
-        let coreEvent = NSEntityDescription.insertNewObject(forEntityName: "Event", into: managedContext) as! EventMO
-        let identifier = event.eventIdentifier
-        coreEvent.event = identifier
-        let encodedColor = NSKeyedArchiver.archivedData(withRootObject: informations.color)
-        coreEvent.color = encodedColor
+        guard let identifier = event.eventIdentifier else { return }
+        if let existingCoreEvent = EventMOManagement.fetchEventModel(identifier: identifier) {
+            let encodedColor = NSKeyedArchiver.archivedData(withRootObject: informations.color)
+            existingCoreEvent.color = encodedColor
+            return
+        } else {
+            let coreEvent = NSEntityDescription.insertNewObject(forEntityName: "Event", into: managedContext) as! EventMO
+            coreEvent.event = identifier
+            let encodedColor = NSKeyedArchiver.archivedData(withRootObject: informations.color)
+            coreEvent.color = encodedColor
+        }
     }
     
 }

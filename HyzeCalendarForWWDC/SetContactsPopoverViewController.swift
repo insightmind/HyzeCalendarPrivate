@@ -9,7 +9,7 @@
 import UIKit
 import EventKit
 
-class SetContactsPopoverViewController: UIViewController {
+class SetContactsPopoverViewController: PopoverViewController {
 
 	
 	@IBOutlet weak var popoverView: UIView!
@@ -21,7 +21,6 @@ class SetContactsPopoverViewController: UIViewController {
 	@IBOutlet weak var saveButton: UIButton!
 	
 	var searchBarViewController: SetContactsSearchViewController?
-	let eventInformation = EventManagement.shared.eventInformation
 	
 	@IBAction func cancel(_ sender: UIButton) {
 		self.dismiss(animated: true, completion: nil)
@@ -50,10 +49,10 @@ class SetContactsPopoverViewController: UIViewController {
 			}
 		}
 		
-		eventInformation.participants = attendees
+		eventInformations.participants = attendees
 		
 		self.dismiss(animated: true, completion: {
-			self.eventInformation.eventEditorTableViewController?.reloadCell(.contacts, onlyInformations: true)
+			self.eventInformations.eventEditorTableViewController?.reloadCell(.contacts, onlyInformations: true)
 		})
 	}
 	

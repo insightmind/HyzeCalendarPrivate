@@ -29,16 +29,12 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
         // Do any additional setup after loading the view.
 		self.collectionView!.allowsSelection = false
 		self.collectionView!.isScrollEnabled = false
+        self.collectionView?.isPrefetchingEnabled = false
 		self.collectionView?.layer.masksToBounds = false
 		self.collectionView?.backgroundColor = UIColor.clear
         self.collectionView!.contentInset = UIEdgeInsetsMake(0, 5, 0, 5)
+    }
         
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.scrollToSection(yearID: Selection.shared.currentYearID, monthID: Selection.shared.currentMonthID - 1, animated: animated)
-    }
 	
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -75,17 +71,23 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if Settings.shared.needsDesignUpdate {
+        
+        switch Settings.shared.needsDesignUpdate {
+        case .calendarView:
+            reloadCalendarView()
+        case .list:
+            calculateETViewUpdate(shouldReload: true)
+        case .all:
             calculateETViewUpdate(shouldReload: true)
             reloadCalendarView()
-            Settings.shared.needsDesignUpdate = false
-        } else {
-            self.calculateETViewUpdate()
+        default:
+            break
         }
+        Settings.shared.needsDesignUpdate = .none
     }
 	
 	func reloadCalendarView() {
-		self.collectionView!.reloadData()
+        self.collectionView!.reloadData()
 		scrollToSection(yearID: Selection.shared.currentYearID, monthID: Selection.shared.currentMonthID - 1, animated: false)
 	}
     
@@ -144,7 +146,6 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 	}
 	
     fileprivate func calculateETViewUpdate(shouldReload: Bool = false) {
-		
 		let daysInMonth = TimeManagement.calculateDaysInMonth(yearID: Selection.shared.currentYearID, monthID: Selection.shared.currentMonthID)
 		
 		let firstWeekDayOfMonth = TimeManagement.calculateFirstWeekDayOfMonth(yearID: Selection.shared.currentYearID, monthID: Selection.shared.currentMonthID)
@@ -161,7 +162,7 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 		} else {
             Design.shared.currentETViewIsExpandedByNumOfRows = 2
         }
-        updateETViewHeight(self.collectionView!, shouldReload: shouldReload)
+        updateETViewHeight(self.collectionView!, shouldReload: !shouldReload)
 	}
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -171,19 +172,34 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
         guard let cellController = cell.controller else { return }
         let month = cellController.monthID
         let year = cellController.yearID
-
+        
+//        handleSelection(controller: cellController, month: month, year: year, isAppearing: false)
+        
         Selection.shared.currentMonthID = month + 1
         Selection.shared.currentYearID = year
         
         setMonthName()
         
-        let superViewController = UIApplication.shared.keyWindow?.rootViewController
-        var mainViewController: ViewController
-        for i in (superViewController?.childViewControllers)! {
-            if i.title == "MonthView" {
-                mainViewController = i as! ViewController
-                guard let eventList = mainViewController.eventListViewController else { return }
-                eventList.updateDesign(false)
+//        let superViewController = UIApplication.shared.keyWindow?.rootViewController
+//        var mainViewController: ViewController
+//        for i in (superViewController?.childViewControllers)! {
+//            if i.title == "MonthView" {
+////                mainViewController = i as! ViewController
+////                guard let eventList = mainViewController.eventListViewController else { return }
+////                eventList.updateDesign(false)
+//            }
+//        }
+    }
+    
+    func handleSelection(controller: MonthCollectionViewController ,month: Int, year: Int, isAppearing: Bool) {
+        let (selectionYear, selectionMonth, indexPath) = Selection.shared.selectedDayCellIndex
+        guard let selectedIndexPath = indexPath else { return }
+        if month == selectionMonth && year == selectionYear {
+            switch isAppearing {
+            case true:
+                controller.collectionView?.selectItem(at: selectedIndexPath, animated: true, scrollPosition: .top)
+            case false:
+                controller.collectionView?.deselectItem(at: selectedIndexPath, animated: false)
             }
         }
     }
@@ -198,15 +214,15 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 		self.collectionView!.scrollToItem(at: indexPath, at: .top, animated: anim)
         calculateETViewUpdate(shouldReload: false)
         setMonthName()
-        let superViewController = UIApplication.shared.keyWindow?.rootViewController
-        var mainViewController: ViewController
-        for i in (superViewController?.childViewControllers)! {
-            if i.title == "MonthView" {
-                mainViewController = i as! ViewController
-                guard let eventList = mainViewController.eventListViewController else { return }
-                eventList.updateDesign(false)
-            }
-        }
+//        let superViewController = UIApplication.shared.keyWindow?.rootViewController
+//        var mainViewController: ViewController
+//        for i in (superViewController?.childViewControllers)! {
+//            if i.title == "MonthView" {
+//                mainViewController = i as! ViewController
+//                guard let eventList = mainViewController.eventListViewController else { return }
+//                eventList.updateDesign(false)
+//            }
+//        }
 	}
 	
     func updateETViewHeight(_ collectionView: UICollectionView, shouldReload: Bool = false) {

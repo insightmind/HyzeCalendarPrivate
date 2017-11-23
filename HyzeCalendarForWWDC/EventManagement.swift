@@ -132,15 +132,16 @@ class EventManagement {
 	func createEvent(from: EventEditorEventInformations) -> EKEvent? {
 		
 		var event: EKEvent
-        identifier: if let identifier = from.eventIdentifier {
+        if let identifier = from.eventIdentifier {
 			guard let checkedEvent = EMEventStore.event(withIdentifier: identifier) else {
 				return nil
 			}
 			event = checkedEvent
             
-            guard let managedContext = EventMOManagement.loadManagedContext() else { break identifier }
-            EventMOManagement.updateEventModel(from, event: event, managedContext: managedContext)
-            EventMOManagement.save(managedContext: managedContext)
+            if let managedContext = EventMOManagement.loadManagedContext() {
+                EventMOManagement.updateEventModel(from, event: event, managedContext: managedContext)
+                EventMOManagement.save(managedContext: managedContext)
+            }
             
 		} else {
 			event = EKEvent(eventStore: EventManagement.shared.EMEventStore)
@@ -336,6 +337,7 @@ class EventManagement {
 			try EMEventStore.save(event, span: .thisEvent)
 			Settings.shared.eventsChange = true
 			self.eventInformation = informations
+            
 			return true
 		} catch {
 			print("Event could not be updated")

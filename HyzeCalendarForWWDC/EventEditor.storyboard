@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13528" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="CPl-dw-xgF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="CPl-dw-xgF">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13526"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,7 +19,7 @@
                         <viewControllerLayoutGuide type="bottom" id="AY9-Ry-ahx"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Rdh-tp-9Cc">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dcw-VL-8Yh">
@@ -100,7 +104,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j08-VV-qd0">
-                                <rect key="frame" x="322" y="28" width="46" height="30"/>
+                                <rect key="frame" x="313" y="28" width="46" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="46" id="vPs-Gl-JBK"/>
@@ -125,7 +129,7 @@
                             <constraint firstAttribute="trailing" secondItem="OvM-tT-AXz" secondAttribute="trailing" id="Fo2-Cd-NgJ"/>
                             <constraint firstItem="UdT-j9-cxD" firstAttribute="leading" secondItem="Rdh-tp-9Cc" secondAttribute="leadingMargin" id="Lot-A8-pNV"/>
                             <constraint firstItem="Dcw-VL-8Yh" firstAttribute="bottom" secondItem="Rdh-tp-9Cc" secondAttribute="bottom" id="PuT-2y-unu"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="j08-VV-qd0" secondAttribute="trailing" constant="-9" id="Qg8-sg-Ek0"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="j08-VV-qd0" secondAttribute="trailing" id="Qg8-sg-Ek0"/>
                             <constraint firstItem="Dcw-VL-8Yh" firstAttribute="leading" secondItem="Rdh-tp-9Cc" secondAttribute="leading" id="TAh-T7-Niw"/>
                             <constraint firstItem="fmZ-f3-9fn" firstAttribute="centerX" secondItem="4Mp-VE-c89" secondAttribute="centerX" id="Z1f-vq-qZo"/>
                             <constraint firstItem="fmZ-f3-9fn" firstAttribute="top" secondItem="UdT-j9-cxD" secondAttribute="bottom" constant="18" id="aXC-bD-rdA"/>
@@ -139,6 +143,7 @@
                     <connections>
                         <outlet property="blurEffectNavbarView" destination="OvM-tT-AXz" id="SNx-gX-AUo"/>
                         <outlet property="blurEffectView" destination="Dcw-VL-8Yh" id="SeW-jZ-tg2"/>
+                        <outlet property="cancelButton" destination="UdT-j9-cxD" id="efk-kK-h7B"/>
                         <outlet property="saveButton" destination="j08-VV-qd0" id="UA4-Ln-Svx"/>
                         <outlet property="tableView" destination="4Mp-VE-c89" id="zXy-hS-t35"/>
                         <outlet property="titleTextField" destination="fmZ-f3-9fn" id="g2Q-P6-isb"/>

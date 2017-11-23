@@ -8,10 +8,9 @@
 
 import UIKit
 
-class SetTimePopoverViewController: UIViewController {
+class SetTimePopoverViewController: PopoverViewController {
 	
 	var dates: [DateSpecification: Date] = [:]
-	var eventInformations: EventEditorEventInformations!
 	var currentState: DateSpecification! = .startDate
 
 	@IBOutlet var popover: UIView!
@@ -64,8 +63,6 @@ class SetTimePopoverViewController: UIViewController {
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
-		
-		self.eventInformations = EventManagement.shared.eventInformation
 		
 		dates = [.startDate: eventInformations.startDate,
 		         .endDate: eventInformations.endDate]

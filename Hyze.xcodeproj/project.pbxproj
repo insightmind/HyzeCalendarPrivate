@@ -101,11 +101,10 @@
 		3EFC00CA1F5E165C0028F387 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFC00C81F5E165C0028F387 /* LocationTableViewCell.swift */; };
 		3EFC00CB1F5E165C0028F387 /* LocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EFC00C91F5E165C0028F387 /* LocationTableViewCell.xib */; };
 		3EFE5F491E41310A004E75F9 /* DayMainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFE5F481E41310A004E75F9 /* DayMainButton.swift */; };
+		850BAFCA1FC748ED008EF9CE /* Hyze Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 850BAFC91FC748ED008EF9CE /* Hyze Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		850BAFDA1FC748ED008EF9CE /* Hyze.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 850BAFBD1FC748ED008EF9CE /* Hyze.app */; };
+		850BAFE51FC77B11008EF9CE /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850BAFE41FC77B11008EF9CE /* PopoverViewController.swift */; };
 		85108E0F1F81857000F42FDD /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 85108E0E1F81857000F42FDD /* Podfile */; };
-		8525D2961FAB38A50075B532 /* DateComponents+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8525D28B1FAB38A40075B532 /* DateComponents+Timepiece.swift */; };
-		8525D2971FAB38A50075B532 /* Date+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8525D28D1FAB38A50075B532 /* Date+Timepiece.swift */; };
-		8525D2981FAB38A50075B532 /* Int+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8525D28E1FAB38A50075B532 /* Int+Timepiece.swift */; };
-		8525D2991FAB38A50075B532 /* String+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8525D28C1FAB38A40075B532 /* String+Timepiece.swift */; };
 		8525D2A21FAB3C3C0075B532 /* String+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8525D29E1FAB3C3B0075B532 /* String+Timepiece.swift */; };
 		8525D2A31FAB3C3C0075B532 /* Date+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8525D29F1FAB3C3C0075B532 /* Date+Timepiece.swift */; };
 		8525D2A41FAB3C3C0075B532 /* Int+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8525D2A01FAB3C3C0075B532 /* Int+Timepiece.swift */; };
@@ -118,6 +117,7 @@
 		8534F08B1FC486C5006616A7 /* CoreDataManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8534F08A1FC486C5006616A7 /* CoreDataManagement.swift */; };
 		8534F08F1FC49291006616A7 /* PickColorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8534F08D1FC49291006616A7 /* PickColorTableViewCell.swift */; };
 		8534F0901FC49291006616A7 /* PickColorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8534F08E1FC49291006616A7 /* PickColorTableViewCell.xib */; };
+		8534F0971FC4B463006616A7 /* ColorPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8534F0961FC4B463006616A7 /* ColorPicker.storyboard */; };
 		854626B11F8E7162002D6EF5 /* ELAddEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854626AF1F8E7162002D6EF5 /* ELAddEventTableViewCell.swift */; };
 		854626B21F8E7162002D6EF5 /* ELAddEventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 854626B01F8E7162002D6EF5 /* ELAddEventTableViewCell.xib */; };
 		85577FA11FC1CA2300657E0F /* EventModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 85577F9F1FC1CA2300657E0F /* EventModel.xcdatamodeld */; };
@@ -130,49 +130,40 @@
 		8585F0961FA213800068A6E9 /* SettingsListGroupOnOffButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8585F0941FA213800068A6E9 /* SettingsListGroupOnOffButtonTableViewCell.xib */; };
 		85868DC71F926A8D00D5EF1E /* EventEditor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85868DC61F926A8D00D5EF1E /* EventEditor.storyboard */; };
 		859BFF231FA74DC000EC7085 /* GridCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859BFF221FA74DC000EC7085 /* GridCollectionViewFlowLayout.swift */; };
-		859BFF451FA7B06800EC7085 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 859BFF431FA7B06800EC7085 /* Interface.storyboard */; };
-		859BFF471FA7B06800EC7085 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 859BFF461FA7B06800EC7085 /* Assets.xcassets */; };
-		859BFF4E1FA7B06800EC7085 /* Hyze Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 859BFF4D1FA7B06800EC7085 /* Hyze Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		859BFF531FA7B06800EC7085 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859BFF521FA7B06800EC7085 /* InterfaceController.swift */; };
-		859BFF551FA7B06800EC7085 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859BFF541FA7B06800EC7085 /* ExtensionDelegate.swift */; };
-		859BFF571FA7B06800EC7085 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859BFF561FA7B06800EC7085 /* NotificationController.swift */; };
-		859BFF591FA7B06800EC7085 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 859BFF581FA7B06800EC7085 /* Assets.xcassets */; };
-		859BFF5E1FA7B06800EC7085 /* Hyze.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 859BFF411FA7B06800EC7085 /* Hyze.app */; };
-		859BFF6B1FA7B58700EC7085 /* EventManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859BFF6A1FA7B58700EC7085 /* EventManagement.swift */; };
 		859F543F1FA0BE070069777F /* SettingsListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 859F543D1FA0BE070069777F /* SettingsListTableViewCell.xib */; };
 		859F54411FA0BFBB0069777F /* SettingsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859F54401FA0BFBA0069777F /* SettingsListTableViewCell.swift */; };
-		85BAE8F11FAB529300F6A61B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BAE8F01FAB529300F6A61B /* Color.swift */; };
-		85BAE8F31FAB598A00F6A61B /* EventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BAE8F21FAB598A00F6A61B /* EventController.swift */; };
+		85B165321FC4C03600CB80E3 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B165311FC4C03600CB80E3 /* ColorPickerViewController.swift */; };
+		85B165341FC4C0EF00CB80E3 /* ColorPickerCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B165331FC4C0EF00CB80E3 /* ColorPickerCollectionViewController.swift */; };
+		85B165361FC4C94A00CB80E3 /* MaterialColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B165351FC4C94A00CB80E3 /* MaterialColors.swift */; };
 		85BF6BE91F9FDE0E00D7247F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BF6BE81F9FDE0E00D7247F /* SettingsViewController.swift */; };
-		85F1F22F1FA7D2310074CE00 /* EventRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F1F22E1FA7D2310074CE00 /* EventRow.swift */; };
 		BD379CE11E3065B18A68D862 /* Pods_HyzeCalendarForWWDC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97F66AFE0BF643DE942FADFE /* Pods_HyzeCalendarForWWDC.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		859BFF4F1FA7B06800EC7085 /* PBXContainerItemProxy */ = {
+		850BAFCB1FC748ED008EF9CE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3EA80D461E2BEC9300FD87C3 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 859BFF4C1FA7B06800EC7085;
+			remoteGlobalIDString = 850BAFC81FC748ED008EF9CE;
 			remoteInfo = "Hyze Extension";
 		};
-		859BFF5C1FA7B06800EC7085 /* PBXContainerItemProxy */ = {
+		850BAFD81FC748ED008EF9CE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3EA80D461E2BEC9300FD87C3 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 859BFF401FA7B06800EC7085;
+			remoteGlobalIDString = 850BAFBC1FC748ED008EF9CE;
 			remoteInfo = Hyze;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		859BFF641FA7B06800EC7085 /* Embed App Extensions */ = {
+		850BAFDE1FC748ED008EF9CE /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				859BFF4E1FA7B06800EC7085 /* Hyze Extension.appex in Embed App Extensions */,
+				850BAFCA1FC748ED008EF9CE /* Hyze Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -183,7 +174,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				859BFF5E1FA7B06800EC7085 /* Hyze.app in Embed Watch Content */,
+				850BAFDA1FC748ED008EF9CE /* Hyze.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -289,6 +280,15 @@
 		3EFC00C81F5E165C0028F387 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
 		3EFC00C91F5E165C0028F387 /* LocationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationTableViewCell.xib; sourceTree = "<group>"; };
 		3EFE5F481E41310A004E75F9 /* DayMainButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayMainButton.swift; sourceTree = "<group>"; };
+		850BAFA11FC74719008EF9CE /* Interface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Interface.storyboard; sourceTree = "<group>"; };
+		850BAFA51FC74740008EF9CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		850BAFA91FC7475E008EF9CE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		850BAFAD1FC74793008EF9CE /* NotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		850BAFAF1FC747DB008EF9CE /* ExtensionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		850BAFB21FC747DB008EF9CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		850BAFBD1FC748ED008EF9CE /* Hyze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hyze.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		850BAFC91FC748ED008EF9CE /* Hyze Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Hyze Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		850BAFE41FC77B11008EF9CE /* PopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 		85108E0E1F81857000F42FDD /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		8525D2841FAB33E10075B532 /* Pods_HyzeCalendarForWWDC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_HyzeCalendarForWWDC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8525D2861FAB33E70075B532 /* Pods_HyzeCalendarForWWDC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_HyzeCalendarForWWDC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -319,6 +319,7 @@
 		8534F08A1FC486C5006616A7 /* CoreDataManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagement.swift; sourceTree = "<group>"; };
 		8534F08D1FC49291006616A7 /* PickColorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickColorTableViewCell.swift; sourceTree = "<group>"; };
 		8534F08E1FC49291006616A7 /* PickColorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickColorTableViewCell.xib; sourceTree = "<group>"; };
+		8534F0961FC4B463006616A7 /* ColorPicker.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ColorPicker.storyboard; sourceTree = "<group>"; };
 		854626AF1F8E7162002D6EF5 /* ELAddEventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ELAddEventTableViewCell.swift; sourceTree = "<group>"; };
 		854626B01F8E7162002D6EF5 /* ELAddEventTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ELAddEventTableViewCell.xib; sourceTree = "<group>"; };
 		85577FA01FC1CA2300657E0F /* EventModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EventModel.xcdatamodel; sourceTree = "<group>"; };
@@ -331,20 +332,15 @@
 		8585F0941FA213800068A6E9 /* SettingsListGroupOnOffButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsListGroupOnOffButtonTableViewCell.xib; sourceTree = "<group>"; };
 		85868DC61F926A8D00D5EF1E /* EventEditor.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EventEditor.storyboard; sourceTree = "<group>"; };
 		859BFF221FA74DC000EC7085 /* GridCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
-		859BFF411FA7B06800EC7085 /* Hyze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hyze.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		859BFF441FA7B06800EC7085 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
-		859BFF461FA7B06800EC7085 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		859BFF481FA7B06800EC7085 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		859BFF4D1FA7B06800EC7085 /* Hyze Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Hyze Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		859BFF521FA7B06800EC7085 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
-		859BFF541FA7B06800EC7085 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
-		859BFF561FA7B06800EC7085 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		859BFF581FA7B06800EC7085 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		859BFF5A1FA7B06800EC7085 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		859BFF5B1FA7B06800EC7085 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		859BFF6A1FA7B58700EC7085 /* EventManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManagement.swift; sourceTree = "<group>"; };
 		859F543D1FA0BE070069777F /* SettingsListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsListTableViewCell.xib; sourceTree = "<group>"; };
 		859F54401FA0BFBA0069777F /* SettingsListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsListTableViewCell.swift; sourceTree = "<group>"; };
+		85B165311FC4C03600CB80E3 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
+		85B165331FC4C0EF00CB80E3 /* ColorPickerCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerCollectionViewController.swift; sourceTree = "<group>"; };
+		85B165351FC4C94A00CB80E3 /* MaterialColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialColors.swift; sourceTree = "<group>"; };
 		85BAE8EE1FAB3FDC00F6A61B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		85BAE8F01FAB529300F6A61B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		85BAE8F21FAB598A00F6A61B /* EventController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventController.swift; sourceTree = "<group>"; };
@@ -356,13 +352,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		007A16ECF4DF5C7F0688FF4A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		3EA80D4B1E2BEC9300FD87C3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -374,7 +363,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		859BFF4A1FA7B06800EC7085 /* Frameworks */ = {
+		850BAFC61FC748ED008EF9CE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -406,6 +395,7 @@
 			isa = PBXGroup;
 			children = (
 				3E62854C1F447E3200301A42 /* EventEditorCellProtocol.swift */,
+				850BAFE41FC77B11008EF9CE /* PopoverViewController.swift */,
 				8534F08C1FC49250006616A7 /* ColorPicker */,
 				3EA269211F3CF2330021BB56 /* DateSelection */,
 				3E8B90A21F433CA3000F8449 /* Calendar */,
@@ -466,6 +456,7 @@
 			isa = PBXGroup;
 			children = (
 				3EAD342A1F3E44CF00174FF7 /* Design.swift */,
+				85B165351FC4C94A00CB80E3 /* MaterialColors.swift */,
 			);
 			name = Design;
 			sourceTree = "<group>";
@@ -602,12 +593,12 @@
 			children = (
 				3E533BC01EC36185000CEF5F /* HyzeCalendarForWWDC.app */,
 				3EA80D501E2BEC9300FD87C3 /* HyzeCalendarForWWDC */,
-				859BFF411FA7B06800EC7085 /* Hyze.app */,
 				859BFF421FA7B06800EC7085 /* Hyze */,
-				859BFF4D1FA7B06800EC7085 /* Hyze Extension.appex */,
 				859BFF511FA7B06800EC7085 /* Hyze Extension */,
 				D48AC8556D2AC934DB48314B /* Frameworks */,
 				D0DB78F19C588A5DB8C22CB4 /* Pods */,
+				850BAFBD1FC748ED008EF9CE /* Hyze.app */,
+				850BAFC91FC748ED008EF9CE /* Hyze Extension.appex */,
 			);
 			sourceTree = "<group>";
 		};
@@ -943,10 +934,21 @@
 		8534F08C1FC49250006616A7 /* ColorPicker */ = {
 			isa = PBXGroup;
 			children = (
+				8534F0911FC4B403006616A7 /* ColorPickerPopover */,
 				8534F08D1FC49291006616A7 /* PickColorTableViewCell.swift */,
 				8534F08E1FC49291006616A7 /* PickColorTableViewCell.xib */,
 			);
 			path = ColorPicker;
+			sourceTree = "<group>";
+		};
+		8534F0911FC4B403006616A7 /* ColorPickerPopover */ = {
+			isa = PBXGroup;
+			children = (
+				8534F0961FC4B463006616A7 /* ColorPicker.storyboard */,
+				85B165311FC4C03600CB80E3 /* ColorPickerViewController.swift */,
+				85B165331FC4C0EF00CB80E3 /* ColorPickerCollectionViewController.swift */,
+			);
+			name = ColorPickerPopover;
 			sourceTree = "<group>";
 		};
 		854626AE1F8E712A002D6EF5 /* AddEventCell */ = {
@@ -990,9 +992,9 @@
 		859BFF421FA7B06800EC7085 /* Hyze */ = {
 			isa = PBXGroup;
 			children = (
-				859BFF431FA7B06800EC7085 /* Interface.storyboard */,
-				859BFF461FA7B06800EC7085 /* Assets.xcassets */,
-				859BFF481FA7B06800EC7085 /* Info.plist */,
+				850BAFA11FC74719008EF9CE /* Interface.storyboard */,
+				850BAFA51FC74740008EF9CE /* Assets.xcassets */,
+				850BAFA91FC7475E008EF9CE /* Info.plist */,
 			);
 			path = Hyze;
 			sourceTree = "<group>";
@@ -1001,13 +1003,13 @@
 			isa = PBXGroup;
 			children = (
 				859BFF521FA7B06800EC7085 /* InterfaceController.swift */,
-				859BFF541FA7B06800EC7085 /* ExtensionDelegate.swift */,
-				859BFF561FA7B06800EC7085 /* NotificationController.swift */,
+				850BAFAD1FC74793008EF9CE /* NotificationController.swift */,
 				859BFF6A1FA7B58700EC7085 /* EventManagement.swift */,
 				85F1F22E1FA7D2310074CE00 /* EventRow.swift */,
+				850BAFAF1FC747DB008EF9CE /* ExtensionDelegate.swift */,
+				850BAFB21FC747DB008EF9CE /* Assets.xcassets */,
 				8525D29B1FAB38BA0075B532 /* Timepiece */,
 				859BFF581FA7B06800EC7085 /* Assets.xcassets */,
-				859BFF5A1FA7B06800EC7085 /* Info.plist */,
 				859BFF5B1FA7B06800EC7085 /* PushNotificationPayload.apns */,
 				85BAE8F01FAB529300F6A61B /* Color.swift */,
 				85BAE8F21FAB598A00F6A61B /* EventController.swift */,
@@ -1060,38 +1062,37 @@
 			buildRules = (
 			);
 			dependencies = (
-				859BFF5D1FA7B06800EC7085 /* PBXTargetDependency */,
+				850BAFD91FC748ED008EF9CE /* PBXTargetDependency */,
 			);
 			name = HyzeCalendarForWWDC;
 			productName = HyzeCalendarForWWDC;
 			productReference = 3E533BC01EC36185000CEF5F /* HyzeCalendarForWWDC.app */;
 			productType = "com.apple.product-type.application";
 		};
-		859BFF401FA7B06800EC7085 /* Hyze */ = {
+		850BAFBC1FC748ED008EF9CE /* Hyze */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 859BFF651FA7B06800EC7085 /* Build configuration list for PBXNativeTarget "Hyze" */;
+			buildConfigurationList = 850BAFDF1FC748ED008EF9CE /* Build configuration list for PBXNativeTarget "Hyze" */;
 			buildPhases = (
-				859BFF3F1FA7B06800EC7085 /* Resources */,
-				859BFF641FA7B06800EC7085 /* Embed App Extensions */,
-				007A16ECF4DF5C7F0688FF4A /* Frameworks */,
+				850BAFBB1FC748ED008EF9CE /* Resources */,
+				850BAFDE1FC748ED008EF9CE /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				859BFF501FA7B06800EC7085 /* PBXTargetDependency */,
+				850BAFCC1FC748ED008EF9CE /* PBXTargetDependency */,
 			);
 			name = Hyze;
 			productName = Hyze;
-			productReference = 859BFF411FA7B06800EC7085 /* Hyze.app */;
+			productReference = 850BAFBD1FC748ED008EF9CE /* Hyze.app */;
 			productType = "com.apple.product-type.application.watchapp2";
 		};
-		859BFF4C1FA7B06800EC7085 /* Hyze Extension */ = {
+		850BAFC81FC748ED008EF9CE /* Hyze Extension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 859BFF631FA7B06800EC7085 /* Build configuration list for PBXNativeTarget "Hyze Extension" */;
+			buildConfigurationList = 850BAFDB1FC748ED008EF9CE /* Build configuration list for PBXNativeTarget "Hyze Extension" */;
 			buildPhases = (
-				859BFF491FA7B06800EC7085 /* Sources */,
-				859BFF4A1FA7B06800EC7085 /* Frameworks */,
-				859BFF4B1FA7B06800EC7085 /* Resources */,
+				850BAFC51FC748ED008EF9CE /* Sources */,
+				850BAFC61FC748ED008EF9CE /* Frameworks */,
+				850BAFC71FC748ED008EF9CE /* Resources */,
 			);
 			buildRules = (
 			);
@@ -1099,7 +1100,7 @@
 			);
 			name = "Hyze Extension";
 			productName = "Hyze Extension";
-			productReference = 859BFF4D1FA7B06800EC7085 /* Hyze Extension.appex */;
+			productReference = 850BAFC91FC748ED008EF9CE /* Hyze Extension.appex */;
 			productType = "com.apple.product-type.watchkit2-extension";
 		};
 /* End PBXNativeTarget section */
@@ -1108,7 +1109,7 @@
 		3EA80D461E2BEC9300FD87C3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0910;
+				LastSwiftUpdateCheck = 0920;
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Niklas Bülow";
 				TargetAttributes = {
@@ -1129,13 +1130,13 @@
 							};
 						};
 					};
-					859BFF401FA7B06800EC7085 = {
-						CreatedOnToolsVersion = 9.1;
+					850BAFBC1FC748ED008EF9CE = {
+						CreatedOnToolsVersion = 9.2;
 						DevelopmentTeam = 64M3NJV97W;
 						ProvisioningStyle = Automatic;
 					};
-					859BFF4C1FA7B06800EC7085 = {
-						CreatedOnToolsVersion = 9.1;
+					850BAFC81FC748ED008EF9CE = {
+						CreatedOnToolsVersion = 9.2;
 						DevelopmentTeam = 64M3NJV97W;
 						ProvisioningStyle = Automatic;
 					};
@@ -1155,8 +1156,8 @@
 			projectRoot = "";
 			targets = (
 				3EA80D4D1E2BEC9300FD87C3 /* HyzeCalendarForWWDC */,
-				859BFF401FA7B06800EC7085 /* Hyze */,
-				859BFF4C1FA7B06800EC7085 /* Hyze Extension */,
+				850BAFBC1FC748ED008EF9CE /* Hyze */,
+				850BAFC81FC748ED008EF9CE /* Hyze Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -1169,6 +1170,7 @@
 				3EBCA9DC1F78024E0083EE44 /* ETView.storyboard in Resources */,
 				3E68B5C91E3A886D00AE103F /* Main.storyboard in Resources */,
 				3E62838A1F4DFF1700A799DC /* SetRecurrenceTableViewCell.xib in Resources */,
+				8534F0971FC4B463006616A7 /* ColorPicker.storyboard in Resources */,
 				3EA80D5C1E2BEC9300FD87C3 /* LaunchScreen.storyboard in Resources */,
 				3E46B5161F6888F20050CEBB /* RecurrencePopover.storyboard in Resources */,
 				3E36FF021F4A423700EAC9CC /* ContactTableViewCell.xib in Resources */,
@@ -1203,20 +1205,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		859BFF3F1FA7B06800EC7085 /* Resources */ = {
+		850BAFBB1FC748ED008EF9CE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				859BFF471FA7B06800EC7085 /* Assets.xcassets in Resources */,
-				859BFF451FA7B06800EC7085 /* Interface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		859BFF4B1FA7B06800EC7085 /* Resources */ = {
+		850BAFC71FC748ED008EF9CE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				859BFF591FA7B06800EC7085 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1305,6 +1304,7 @@
 				3EBDF8C91F5DDE9600B66C96 /* SelectLocationTableViewCell.swift in Sources */,
 				3ED0F0DA1F4372E4001A12A8 /* EventEditorState.swift in Sources */,
 				85788BB01F865A030073B90C /* EventListTableViewController.swift in Sources */,
+				85B165361FC4C94A00CB80E3 /* MaterialColors.swift in Sources */,
 				3E61C1121F53814900AE1A2B /* WeekdayTableViewCell.swift in Sources */,
 				3ED0F0D41F4371AB001A12A8 /* Create_EventEditorViewController.swift in Sources */,
 				3E6285451F4471E800301A42 /* UIColorExtension.swift in Sources */,
@@ -1329,9 +1329,11 @@
 				3E533BC71EC364BC000CEF5F /* DayCollectionViewCell.swift in Sources */,
 				3E62854A1F44797900301A42 /* SelectCalendarTableViewCell.swift in Sources */,
 				8534F08B1FC486C5006616A7 /* CoreDataManagement.swift in Sources */,
+				85B165341FC4C0EF00CB80E3 /* ColorPickerCollectionViewController.swift in Sources */,
 				3E7DD5731E4679FA001E1D0B /* EventView.swift in Sources */,
 				3E5E0C1E1F545B1C0096E7E7 /* DateTableViewCell.swift in Sources */,
 				3E36FF011F4A423700EAC9CC /* ContactTableViewCell.swift in Sources */,
+				850BAFE51FC77B11008EF9CE /* PopoverViewController.swift in Sources */,
 				8534F08F1FC49291006616A7 /* PickColorTableViewCell.swift in Sources */,
 				852EC44B1F9FB8A60024126A /* Deprecated_ETView.swift in Sources */,
 				3E0FDDE51F561BCA00086319 /* DaysOfMonthCollectionViewCell.swift in Sources */,
@@ -1363,42 +1365,32 @@
 				859BFF231FA74DC000EC7085 /* GridCollectionViewFlowLayout.swift in Sources */,
 				3E61FE641E5239AF003D796C /* DayViewDecoration.swift in Sources */,
 				3E1B95251E3FAD9D009EB5C9 /* DayView.swift in Sources */,
+				85B165321FC4C03600CB80E3 /* ColorPickerViewController.swift in Sources */,
 				8525D2A51FAB3C3C0075B532 /* DateComponents+Timepiece.swift in Sources */,
 				8525D2A41FAB3C3C0075B532 /* Int+Timepiece.swift in Sources */,
 				85BF6BE91F9FDE0E00D7247F /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		859BFF491FA7B06800EC7085 /* Sources */ = {
+		850BAFC51FC748ED008EF9CE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8525D2991FAB38A50075B532 /* String+Timepiece.swift in Sources */,
-				85BAE8F31FAB598A00F6A61B /* EventController.swift in Sources */,
-				859BFF571FA7B06800EC7085 /* NotificationController.swift in Sources */,
-				8525D2981FAB38A50075B532 /* Int+Timepiece.swift in Sources */,
-				85BAE8F11FAB529300F6A61B /* Color.swift in Sources */,
-				8525D2971FAB38A50075B532 /* Date+Timepiece.swift in Sources */,
-				859BFF551FA7B06800EC7085 /* ExtensionDelegate.swift in Sources */,
-				85F1F22F1FA7D2310074CE00 /* EventRow.swift in Sources */,
-				859BFF531FA7B06800EC7085 /* InterfaceController.swift in Sources */,
-				859BFF6B1FA7B58700EC7085 /* EventManagement.swift in Sources */,
-				8525D2961FAB38A50075B532 /* DateComponents+Timepiece.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		859BFF501FA7B06800EC7085 /* PBXTargetDependency */ = {
+		850BAFCC1FC748ED008EF9CE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 859BFF4C1FA7B06800EC7085 /* Hyze Extension */;
-			targetProxy = 859BFF4F1FA7B06800EC7085 /* PBXContainerItemProxy */;
+			target = 850BAFC81FC748ED008EF9CE /* Hyze Extension */;
+			targetProxy = 850BAFCB1FC748ED008EF9CE /* PBXContainerItemProxy */;
 		};
-		859BFF5D1FA7B06800EC7085 /* PBXTargetDependency */ = {
+		850BAFD91FC748ED008EF9CE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 859BFF401FA7B06800EC7085 /* Hyze */;
-			targetProxy = 859BFF5C1FA7B06800EC7085 /* PBXContainerItemProxy */;
+			target = 850BAFBC1FC748ED008EF9CE /* Hyze */;
+			targetProxy = 850BAFD81FC748ED008EF9CE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1425,14 +1417,6 @@
 				3EA8EE291ED21989000D6EF2 /* Base */,
 			);
 			name = Settings.storyboard;
-			sourceTree = "<group>";
-		};
-		859BFF431FA7B06800EC7085 /* Interface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				859BFF441FA7B06800EC7085 /* Base */,
-			);
-			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1591,43 +1575,37 @@
 			};
 			name = Debug;
 		};
-		859BFF5F1FA7B06800EC7085 /* Release */ = {
+		850BAFDC1FC748ED008EF9CE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Manolito Buelow (H8K5J9JJ2M)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 64M3NJV97W;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				IBSC_MODULE = Hyze_Extension;
-				INFOPLIST_FILE = Hyze/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = net.hyze.insightmind.HyzeCalendar.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "Hyze Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = net.hyze.insightmind.HyzeCalendar.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+				WATCHOS_DEPLOYMENT_TARGET = 4.2;
 			};
 			name = Release;
 		};
-		859BFF601FA7B06800EC7085 /* Debug */ = {
+		850BAFDD1FC748ED008EF9CE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Manolito Buelow (H8K5J9JJ2M)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -1639,11 +1617,11 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				IBSC_MODULE = Hyze_Extension;
-				INFOPLIST_FILE = Hyze/Info.plist;
+				INFOPLIST_FILE = "Hyze Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = net.hyze.insightmind.HyzeCalendar.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = net.hyze.insightmind.HyzeCalendar.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1651,41 +1629,45 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+				WATCHOS_DEPLOYMENT_TARGET = 4.2;
 			};
 			name = Debug;
 		};
-		859BFF611FA7B06800EC7085 /* Release */ = {
+		850BAFE01FC748ED008EF9CE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Manolito Buelow (H8K5J9JJ2M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 64M3NJV97W;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "Hyze Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = net.hyze.insightmind.HyzeCalendar.watchkitapp.watchkitextension;
-				PRODUCT_NAME = "${TARGET_NAME}";
+				IBSC_MODULE = Hyze_Extension;
+				INFOPLIST_FILE = Hyze/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = net.hyze.insightmind.HyzeCalendar.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+				WATCHOS_DEPLOYMENT_TARGET = 4.2;
 			};
 			name = Release;
 		};
-		859BFF621FA7B06800EC7085 /* Debug */ = {
+		850BAFE11FC748ED008EF9CE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Manolito Buelow (H8K5J9JJ2M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -1697,11 +1679,11 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "Hyze Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				IBSC_MODULE = Hyze_Extension;
+				INFOPLIST_FILE = Hyze/Info.plist;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = net.hyze.insightmind.HyzeCalendar.watchkitapp.watchkitextension;
-				PRODUCT_NAME = "${TARGET_NAME}";
+				PRODUCT_BUNDLE_IDENTIFIER = net.hyze.insightmind.HyzeCalendar.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1709,7 +1691,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+				WATCHOS_DEPLOYMENT_TARGET = 4.2;
 			};
 			name = Debug;
 		};
@@ -1734,20 +1716,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		859BFF631FA7B06800EC7085 /* Build configuration list for PBXNativeTarget "Hyze Extension" */ = {
+		850BAFDB1FC748ED008EF9CE /* Build configuration list for PBXNativeTarget "Hyze Extension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				859BFF611FA7B06800EC7085 /* Release */,
-				859BFF621FA7B06800EC7085 /* Debug */,
+				850BAFDC1FC748ED008EF9CE /* Release */,
+				850BAFDD1FC748ED008EF9CE /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		859BFF651FA7B06800EC7085 /* Build configuration list for PBXNativeTarget "Hyze" */ = {
+		850BAFDF1FC748ED008EF9CE /* Build configuration list for PBXNativeTarget "Hyze" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				859BFF5F1FA7B06800EC7085 /* Release */,
-				859BFF601FA7B06800EC7085 /* Debug */,
+				850BAFE01FC748ED008EF9CE /* Release */,
+				850BAFE11FC748ED008EF9CE /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

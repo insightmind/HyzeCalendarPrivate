@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -22,16 +22,16 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uK4-qP-gbU">
-                        <rect key="frame" x="8" y="8" width="280" height="83.5"/>
+                        <rect key="frame" x="16" y="11" width="264" height="78"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s5W-De-cMR">
-                                <rect key="frame" x="0.0" y="0.0" width="280" height="83.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="264" height="78"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kKm-RF-J76">
-                                        <rect key="frame" x="0.0" y="0.0" width="280" height="28"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="264" height="28"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calendar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FuM-ah-0EF">
-                                                <rect key="frame" x="13" y="0.0" width="264" height="28"/>
+                                                <rect key="frame" x="13" y="0.0" width="248" height="28"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -49,13 +49,13 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cKL-kC-C5q">
-                                        <rect key="frame" x="0.0" y="28" width="280" height="55.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="264" height="50"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dmU-uO-1xh">
-                                                <rect key="frame" x="232.5" y="8" width="39.5" height="39.5"/>
+                                                <rect key="frame" x="222" y="8" width="34" height="34"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MxS-gH-1no">
-                                                        <rect key="frame" x="0.0" y="0.0" width="39.5" height="39.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="34" height="34"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <state key="normal" image="ic_keyboard_arrow_right"/>
                                                         <connections>
@@ -74,13 +74,13 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="selectedCalendar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="Krx-Ch-g8Y">
-                                                <rect key="frame" x="31" y="8" width="194" height="40"/>
+                                                <rect key="frame" x="31" y="8" width="183.5" height="34.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eFO-qf-aWY">
-                                                <rect key="frame" x="8" y="8" width="15" height="40"/>
+                                                <rect key="frame" x="8" y="8" width="15" height="34.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="15" id="q89-Jf-uTW"/>
@@ -91,7 +91,7 @@
                                         <constraints>
                                             <constraint firstItem="dmU-uO-1xh" firstAttribute="leading" secondItem="Krx-Ch-g8Y" secondAttribute="trailing" constant="8" id="7xT-MG-g0v"/>
                                             <constraint firstItem="Krx-Ch-g8Y" firstAttribute="top" secondItem="cKL-kC-C5q" secondAttribute="top" constant="8" id="Cj0-03-HDz"/>
-                                            <constraint firstItem="eFO-qf-aWY" firstAttribute="leading" secondItem="cKL-kC-C5q" secondAttribute="leading" constant="8" id="JC4-MW-Bdz"/>
+                                            <constraint firstItem="eFO-qf-aWY" firstAttribute="leading" secondItem="cKL-kC-C5q" secondAttribute="leadingMargin" id="JC4-MW-Bdz"/>
                                             <constraint firstAttribute="trailing" secondItem="dmU-uO-1xh" secondAttribute="trailing" constant="8" id="LyF-U5-2dW"/>
                                             <constraint firstAttribute="bottom" secondItem="eFO-qf-aWY" secondAttribute="bottom" constant="7.5" id="MYZ-yr-eV1"/>
                                             <constraint firstItem="eFO-qf-aWY" firstAttribute="top" secondItem="cKL-kC-C5q" secondAttribute="top" constant="8" id="RA0-fW-AwS"/>

@@ -15,33 +15,27 @@ class PickColorTableViewCell: UITableViewCell, EventEditorCellProtocol {
     
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var cellView: UIView!
-    @IBOutlet weak var topView: UIView!
-    @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var selectButtonView: UIView!
     @IBOutlet weak var selectButton: UIButton!
-    @IBOutlet weak var colorView: UIView!
-    @IBOutlet weak var colorViewLabel: UILabel!
+    @IBOutlet weak var colorLabel: UILabel!
     
     var eventInformations: EventEditorEventInformations!
     
     func reloadInformations() {
         eventInformations = EventManagement.shared.eventInformation
         
-        colorView.backgroundColor = eventInformations.color
-        colorView.layer.shadowColor = colorView.backgroundColor?.cgColor
-        
-        guard let color = eventInformations.calendar?.cgColor else {
-            colorViewLabel.text = customColorText
-            return
+        UIView.animate(withDuration: 0.15) {
+            self.cellView.backgroundColor = self.eventInformations.color
         }
         
-        if eventInformations.color == UIColor(cgColor: color) {
-            colorViewLabel.text = calendarColorText
-            return
-        } else {
-            colorViewLabel.text = customColorText
-            return
-        }
+        colorLabel.text = "Color"
+        
+        
+//        guard let color = eventInformations.calendar?.cgColor else { return }
+//
+//        if eventInformations.color == UIColor(cgColor: color) {
+//            colorLabel.text = calendarColorText
+//        }
         
     }
     
@@ -51,22 +45,34 @@ class PickColorTableViewCell: UITableViewCell, EventEditorCellProtocol {
         
         backgroundColor = UIColor.clear
         mainView.backgroundColor = UIColor.clear
-        cellView.layer.cornerRadius = topView.bounds.height / 2
+        cellView.layer.cornerRadius = cellView.bounds.height / 2
         cellView.layer.masksToBounds = true
-        topView.backgroundColor = Color.lightBlue
-        bottomView.backgroundColor = Color.blue
-        
-        colorView.layer.cornerRadius = cellView.layer.cornerRadius
-        colorView.layer.shadowOffset = CGSize(width: 1, height: 3)
-        colorView.layer.shadowRadius = 5
-        colorView.layer.shadowOpacity = 0.7
         
         reloadInformations()
         
+        setUpButton(selectButtonView, button: selectButton, image: #imageLiteral(resourceName: "ic_edit"))
+        selectButtonView.layer.shadowColor = Color.black.cgColor
         
-        setUpButton(selectButtonView, button: selectButton, image: #imageLiteral(resourceName: "ic_keyboard_arrow_right"))
+        if eventInformations.state == .showDetail {
+            selectButtonView.isHidden = true
+            colorLabel.textAlignment = .center
+        }
     }
-
+    
+    @IBAction func edit(_ sender: Any) {
+        if var topController = UIApplication.shared.keyWindow?.rootViewController {
+            while let presentedViewController = topController.presentedViewController {
+                topController = presentedViewController
+            }
+            let storyBoard = UIStoryboard(name: "ColorPicker", bundle: nil)
+            guard let startDateViewController = storyBoard.instantiateInitialViewController() else {
+                return
+            }
+            startDateViewController.modalTransitionStyle = .coverVertical
+            topController.present(startDateViewController, animated: true, completion: nil)
+        }
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

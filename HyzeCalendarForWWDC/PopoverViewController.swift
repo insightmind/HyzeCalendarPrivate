@@ -10,10 +10,17 @@ import UIKit
 
 class PopoverViewController: UIViewController {
 
+    let eventInformations = EventManagement.shared.eventInformation
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        eventInformations.eventEditor?.setButtons(shouldHide: true)
         // Do any additional setup after loading the view.
+    }
+    
+    override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
+        eventInformations.eventEditor?.setButtons(shouldHide: false)
+        super.dismiss(animated: flag, completion: completion)
     }
 
     override func didReceiveMemoryWarning() {

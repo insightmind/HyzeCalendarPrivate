@@ -212,6 +212,11 @@ class DayViewUIVViewController: UIViewController {
 			
 		}
 		
-		Settings.shared.needsDesignUpdate = true
+        if Settings.shared.needsDesignUpdate == .list || Settings.shared.needsDesignUpdate == .all {
+            Settings.shared.needsDesignUpdate = .all
+        } else {
+            Settings.shared.needsDesignUpdate = .calendarView
+        }
+		
 	}
 }

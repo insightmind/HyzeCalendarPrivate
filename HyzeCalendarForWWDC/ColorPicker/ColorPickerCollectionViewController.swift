@@ -8,9 +8,16 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
-
-class ColorPickerCollectionViewController: UICollectionViewController {
+class ColorPickerCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+    
+    var superViewController: ColorPickerViewController?
+    
+    let spacing: CGFloat = 16
+    let colorsPerRow: CGFloat = 5
+    
+    var colors = [MaterialColor]()
+    
+    let reuseIdentifier = "colorCell"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +27,11 @@ class ColorPickerCollectionViewController: UICollectionViewController {
 
         // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        self.collectionView?.contentInset = UIEdgeInsets(top: 8, left: spacing, bottom: 50, right: spacing)
+        self.collectionView!.allowsMultipleSelection = false
 
+        loadColors()
+        
         // Do any additional setup after loading the view.
     }
 
@@ -43,21 +54,71 @@ class ColorPickerCollectionViewController: UICollectionViewController {
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        return colors.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return spacing
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return spacing
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let insets = (colorsPerRow + 1) * spacing
+        let fullContentWidth = collectionView.bounds.width - insets
+        let width = fullContentWidth / colorsPerRow
+        return CGSize(width: width, height: width)
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
     
-        // Configure the cell
-    
+        cell.contentView.layer.cornerRadius = cell.bounds.width / 2
+        cell.contentView.backgroundColor = colors[indexPath.item].color
+        
+//        cell.contentView.layer.shadowColor = cell.contentView.backgroundColor?.cgColor
+//        cell.contentView.layer.shadowOffset = CGSize(width: 1, height: 3)
+//        cell.contentView.layer.shadowRadius = 5
+//        cell.contentView.layer.shadowOpacity = 0.6
+//    
         return cell
+    }
+    
+    func loadColors() {
+        colors = []
+        let groups = MaterialColors.colorGroups
+        for group in groups {
+            colors.append(group.primaryColor)
+        }
+        colors.append(MaterialColor(name: "Grey", color: Color.grey, textColor: Color.grey))
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        UIView.animate(withDuration: 0.3) {
+            guard let vc = self.superViewController else {
+                return
+            }
+            vc.setCustomColor(self.colors[indexPath.item].color)
+        }
+        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0, options: .curveEaseOut, animations: {
+            cell?.transform = CGAffineTransform(scaleX: 1.15, y: 1.15)
+        }, completion: nil)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0, options: .curveEaseOut, animations: {
+            cell?.transform = CGAffineTransform.identity
+        }, completion: nil)
     }
 
     // MARK: UICollectionViewDelegate

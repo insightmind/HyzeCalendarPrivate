@@ -32,6 +32,7 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
 		self.collectionView!.isScrollEnabled = false
 		self.automaticallyAdjustsScrollViewInsets = true
 		self.collectionView?.autoresizesSubviews = true
+        self.collectionView?.isPrefetchingEnabled = false
 		self.title = "MonthCollectionViewController"
         // Do any additional setup after loading the view.
 		
@@ -213,7 +214,9 @@ extension MonthCollectionViewController {
         let configuredIndexPath = IndexPath(item: calculateConformedItem(indexPath) , section: 0)
 		if prevIndexPath?.item == configuredIndexPath.item && yID == yearID && mID - 1 == monthID && !forcedCellSelection{
             return
-		}
+        } else {
+            
+        }
 		Selection.shared.selectedDayCellIndex = (self.yearID, self.monthID + 1, configuredIndexPath)
 		Selection.shared.selectedIsOnWeekend = self.isOnWeekend(for: indexPath)
 		Selection.shared.selectedIsToday = isToday

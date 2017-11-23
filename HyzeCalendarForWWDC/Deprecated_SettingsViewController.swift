@@ -49,7 +49,11 @@ class Deprecated_SettingsViewController: UIViewController {
         } else {
             Settings.shared.showLinesInCalendarView = true
         }
-        Settings.shared.needsDesignUpdate = true
+        if Settings.shared.needsDesignUpdate == .list || Settings.shared.needsDesignUpdate == .all {
+            Settings.shared.needsDesignUpdate = .all
+        } else {
+            Settings.shared.needsDesignUpdate = .calendarView
+        }
         defaults.set(Settings.shared.showLinesInCalendarView, forKey: "showLinesInCalendarView")
         defaults.synchronize()
     }
@@ -61,7 +65,7 @@ class Deprecated_SettingsViewController: UIViewController {
         } else {
             Settings.shared.isDarkMode = true
         }
-        Settings.shared.needsDesignUpdate = true
+        Settings.shared.needsDesignUpdate = .all
         defaults.set(Settings.shared.isDarkMode, forKey: "DarkMode")
         defaults.synchronize()
 		UIView.animate(withDuration: 0.4) {
@@ -91,7 +95,11 @@ class Deprecated_SettingsViewController: UIViewController {
 		let defaults = UserDefaults.standard
 		defaults.set(Selection.shared.weekDayStart.rawValue, forKey: "firstWeekDayOfWeek")
 		defaults.synchronize()
-		Settings.shared.needsDesignUpdate = true
+        if Settings.shared.needsDesignUpdate == .list || Settings.shared.needsDesignUpdate == .all {
+            Settings.shared.needsDesignUpdate = .all
+        } else {
+            Settings.shared.needsDesignUpdate = .calendarView
+        }
 	}
 	
 	

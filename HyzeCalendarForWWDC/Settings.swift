@@ -9,6 +9,13 @@
 import Foundation
 import UIKit
 
+enum ReloadType {
+    case none
+    case calendarView
+    case list
+    case all
+}
+
 class Settings {
 	
 	// MARK: - Shared
@@ -60,7 +67,7 @@ class Settings {
     }
 	
 	// MARK: Interaction
-	var needsDesignUpdate: Bool = false
+	var needsDesignUpdate: ReloadType = .calendarView
 	var loaded = true
 	var hourDecorationPosition = [[CGFloat]]()
 	
@@ -69,6 +76,7 @@ class Settings {
 	var eventsChange: Bool = false
 	var viewIsDayView: Bool = false
 	var renDayView: DayView? = nil
+    var eventList: EventListTableViewController? = nil
 	
 	
 	// MARK: DEBUG

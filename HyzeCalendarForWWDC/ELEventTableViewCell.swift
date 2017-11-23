@@ -176,7 +176,7 @@ class ELEventTableViewCell: UITableViewCell {
                 let remove = UIAlertAction(title: "Remove", style: .destructive) { (_) in
                     EventManagement.shared.deleteEvent(eventInformations)
                     guard let eList = self.eventList else { return }
-                    eList.reloadCellSize()
+                    eList.reloadList(onlyDesign: false)
                 }
                 alert.addAction(cancel)
                 alert.addAction(remove)

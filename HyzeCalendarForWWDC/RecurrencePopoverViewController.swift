@@ -9,9 +9,7 @@
 import UIKit
 import EventKit
 
-class RecurrencePopoverViewController: UIViewController {
-	
-	var eventInformations = EventManagement.shared.eventInformation
+class RecurrencePopoverViewController: PopoverViewController {
 	
 	var selectedFrequency: EKRecurrenceFrequency? = nil
 	

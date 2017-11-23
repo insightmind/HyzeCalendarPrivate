@@ -38,13 +38,12 @@ class SelectCalendarTableViewCell: UITableViewCell, EventEditorCellProtocol {
 	}
 	
 	fileprivate func setUpSelectButton() {
-		self.selectButton.layer.cornerRadius = self.selectButton.bounds.width / 2
+		self.selectButton.layer.cornerRadius = self.selectButton.bounds.height / 2
 		self.selectButton.backgroundColor = Color.red
 		let image = #imageLiteral(resourceName: "ic_edit").withRenderingMode(.alwaysTemplate)
 		self.arrowButton.setImage(image, for: .normal)
 		self.arrowButton.tintColor = Color.white
-		
-		self.selectButton.layer.shadowPath = UIBezierPath(roundedRect: selectButton.bounds, cornerRadius: selectButton.bounds.width / 2).cgPath
+        
 		self.selectButton.layer.shadowColor = self.selectButton.backgroundColor?.cgColor
 		self.selectButton.layer.shadowRadius = 5
 		self.selectButton.layer.shadowOffset = CGSize(width: 1, height: 3)
@@ -62,7 +61,7 @@ class SelectCalendarTableViewCell: UITableViewCell, EventEditorCellProtocol {
 		self.mainView.layer.masksToBounds = true
 		self.shadowView.backgroundColor = UIColor.clear
 		
-		self.calendarColorView.layer.cornerRadius = self.calendarColorView.bounds.width / 4
+		self.calendarColorView.layer.cornerRadius = self.calendarColorView.bounds.width / 2
 		self.calendarColorView.layer.shadowPath = UIBezierPath(roundedRect: calendarColorView.bounds, cornerRadius: calendarColorView.layer.cornerRadius).cgPath
 		self.calendarColorView.layer.shadowRadius = 5
 		self.calendarColorView.layer.shadowOffset = CGSize(width: 1, height: 3)
@@ -109,7 +108,10 @@ class SelectCalendarTableViewCell: UITableViewCell, EventEditorCellProtocol {
 		
 		if let calendar = eventInformations.calendar {
 			selectedCalendarLabel.text = calendar.title
-			calendarColorView.backgroundColor = UIColor(cgColor: calendar.cgColor)
+            UIView.animate(withDuration: 0.15, animations: {
+                self.calendarColorView.backgroundColor = UIColor(cgColor: calendar.cgColor)
+            })
+			
 			calendarColorView.layer.shadowColor = calendarColorView.backgroundColor?.cgColor
 		}
 	}

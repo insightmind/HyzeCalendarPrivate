@@ -16,7 +16,6 @@ class SettingsViewController: UIViewController {
     
     
     @IBAction func back(_ sender: UIButton) {
-        Settings.shared.needsDesignUpdate = true
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -45,7 +44,6 @@ class SettingsViewController: UIViewController {
         } else {
             Settings.shared.isDarkMode = true
         }
-        Settings.shared.needsDesignUpdate = true
         defaults.set(Settings.shared.isDarkMode, forKey: "DarkMode")
         defaults.synchronize()
         self.dismiss(animated: true, completion: nil)
