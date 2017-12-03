@@ -180,15 +180,15 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
         
         setMonthName()
         
-//        let superViewController = UIApplication.shared.keyWindow?.rootViewController
-//        var mainViewController: ViewController
-//        for i in (superViewController?.childViewControllers)! {
-//            if i.title == "MonthView" {
-////                mainViewController = i as! ViewController
-////                guard let eventList = mainViewController.eventListViewController else { return }
-////                eventList.updateDesign(false)
-//            }
-//        }
+        let superViewController = UIApplication.shared.keyWindow?.rootViewController
+        var mainViewController: ViewController
+        for i in (superViewController?.childViewControllers)! {
+            if i.title == "MonthView" {
+                mainViewController = i as! ViewController
+                guard let eventList = mainViewController.eventListViewController else { return }
+                eventList.updateGeneralDesign()
+            }
+        }
     }
     
     func handleSelection(controller: MonthCollectionViewController ,month: Int, year: Int, isAppearing: Bool) {
@@ -214,15 +214,6 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 		self.collectionView!.scrollToItem(at: indexPath, at: .top, animated: anim)
         calculateETViewUpdate(shouldReload: false)
         setMonthName()
-//        let superViewController = UIApplication.shared.keyWindow?.rootViewController
-//        var mainViewController: ViewController
-//        for i in (superViewController?.childViewControllers)! {
-//            if i.title == "MonthView" {
-//                mainViewController = i as! ViewController
-//                guard let eventList = mainViewController.eventListViewController else { return }
-//                eventList.updateDesign(false)
-//            }
-//        }
 	}
 	
     func updateETViewHeight(_ collectionView: UICollectionView, shouldReload: Bool = false) {
@@ -241,7 +232,7 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
                     mainViewController.view.layoutIfNeeded()
                 }, completion: nil)
                 guard let eventList = mainViewController.eventListViewController else { return }
-                eventList.updateDesign(shouldReload)
+                eventList.updateGeneralDesign()
 			}
 		}
 	}

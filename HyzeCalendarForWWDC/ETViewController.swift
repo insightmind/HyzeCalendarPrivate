@@ -42,8 +42,7 @@ class ETViewController: UIViewController {
     
     var state: ETViewState = .normal
     var isCalendarView = true
-
-    @IBOutlet weak var panView: UIView!
+    
     @IBOutlet weak var gestureBar: UIView!
     @IBOutlet var rightTapGestureRecognizer: UITapGestureRecognizer!
     
@@ -72,7 +71,7 @@ class ETViewController: UIViewController {
     
     func setUpToolbar() {
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan(recognizer:)))
-        self.panView.addGestureRecognizer(panGestureRecognizer)
+        self.toolBar.addGestureRecognizer(panGestureRecognizer)
     }
     
     @objc func handlePan(recognizer: UIPanGestureRecognizer) {
@@ -99,6 +98,7 @@ class ETViewController: UIViewController {
             superController.calendarViewAspectRatio.isActive = false
             superController.calendarViewToETListConstraint.constant = 0
         case .changed:
+            
             guard let visibleView = superController.navigationController?.visibleViewController?.view else { return }
             var translatedCenterY = touchPoint.y + Design.shared.currentETViewHeight
             let minHeight = visibleView.frame.height - 20
@@ -109,6 +109,7 @@ class ETViewController: UIViewController {
             }
             superController.eventListHeightConstraint.constant = translatedCenterY
             superController.view.layoutIfNeeded()
+            
         case .ended, .cancelled:
             guard let maxHeight = superController.navigationController?.visibleViewController?.view.frame.height else { return }
             switch superController.eventListHeightConstraint.constant {
@@ -222,6 +223,12 @@ class ETViewController: UIViewController {
         }
         guard let eList = eventList else { return }
         eList.reloadList(onlyDesign: !shouldReload)
+    }
+    
+    func updateGeneralDesign() {
+        guard let eList = eventList else { return }
+        guard let cell = eList.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? ELAddEventTableViewCell else { return }
+        cell.updateDesign()
     }
     
     func changeState(to state: ETViewState) {

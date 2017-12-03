@@ -123,17 +123,6 @@ class MonthCollectionViewController: UICollectionViewController, UICollectionVie
             cell.label?.text = String(item - daysInMonth)
             cell.isUserInteractionEnabled = false
         } else {
-            if Settings.shared.showLinesInCalendarView {
-            if cell.bottomLine == nil {
-                cell.bline.frame = CGRect(x: -2, y: cell.bounds.height, width: cell.bounds.width + 4, height: 1)
-                cell.addSubview(cell.bline)
-                cell.bottomLine = cell.bline
-                }
-            } else {
-                if cell.bottomLine != nil {
-                    cell.bottomLine?.removeFromSuperview()
-                }
-            }
 			cell.label?.text = String(item)
             isNotInMonth = false
 		}

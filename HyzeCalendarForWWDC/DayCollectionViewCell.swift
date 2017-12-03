@@ -122,8 +122,22 @@ class DayCollectionViewCell: UICollectionViewCell {
             addWeekNumber()
         }
 		layer.shadowColor = self.contentView.backgroundColor?.cgColor
-        
+        addWeekSeperator()
 	}
+    
+    func addWeekSeperator() {
+        if Settings.shared.showLinesInCalendarView {
+            if bottomLine == nil {
+                bline.frame = CGRect(x: -2, y: bounds.height, width: bounds.width + 4, height: 1)
+                addSubview(bline)
+                bottomLine = bline
+            }
+        } else {
+            if bottomLine != nil {
+                bottomLine?.removeFromSuperview()
+            }
+        }
+    }
     
     func addWeekNumber() {
         if !Settings.shared.showWeekNumber {

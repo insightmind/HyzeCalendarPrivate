@@ -67,7 +67,7 @@ class Settings {
     }
 	
 	// MARK: Interaction
-	var needsDesignUpdate: ReloadType = .calendarView
+	var needsDesignUpdate: ReloadType = .all
 	var loaded = true
 	var hourDecorationPosition = [[CGFloat]]()
 	

@@ -26,7 +26,7 @@
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R4n-FU-Sds">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="22"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YwG-iE-EDz">
                                         <rect key="frame" x="167" y="8" width="40" height="6"/>
@@ -42,15 +42,8 @@
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="YwG-iE-EDz" firstAttribute="centerX" secondItem="R4n-FU-Sds" secondAttribute="centerX" id="ZIs-zz-4Wk"/>
-                                    <constraint firstAttribute="height" constant="22" id="jdg-Bi-vm1"/>
+                                    <constraint firstAttribute="height" constant="30" id="jdg-Bi-vm1"/>
                                     <constraint firstItem="YwG-iE-EDz" firstAttribute="top" secondItem="R4n-FU-Sds" secondAttribute="top" constant="8" id="lKD-zc-MJx"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="INh-S4-Owe">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="Asv-8c-sKb"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -59,11 +52,8 @@
                             <constraint firstItem="hoh-Xf-yrS" firstAttribute="top" secondItem="MZq-Cv-fOf" secondAttribute="top" id="1ZM-4O-WEu"/>
                             <constraint firstItem="hoh-Xf-yrS" firstAttribute="leading" secondItem="9N5-sh-Dms" secondAttribute="leading" id="2jq-5J-vHP"/>
                             <constraint firstItem="hoh-Xf-yrS" firstAttribute="trailing" secondItem="9N5-sh-Dms" secondAttribute="trailing" id="5Gk-cK-cVu"/>
-                            <constraint firstItem="INh-S4-Owe" firstAttribute="trailing" secondItem="9N5-sh-Dms" secondAttribute="trailing" id="BcN-zf-WKI"/>
-                            <constraint firstItem="INh-S4-Owe" firstAttribute="top" secondItem="MZq-Cv-fOf" secondAttribute="top" id="Eg0-17-s1f"/>
                             <constraint firstItem="9N5-sh-Dms" firstAttribute="trailing" secondItem="R4n-FU-Sds" secondAttribute="trailing" id="QZQ-0A-ZJp"/>
                             <constraint firstItem="hoh-Xf-yrS" firstAttribute="bottom" secondItem="9N5-sh-Dms" secondAttribute="bottom" id="Slu-TP-r26"/>
-                            <constraint firstItem="INh-S4-Owe" firstAttribute="leading" secondItem="9N5-sh-Dms" secondAttribute="leading" id="bTm-XI-B3b"/>
                             <constraint firstItem="R4n-FU-Sds" firstAttribute="top" secondItem="MZq-Cv-fOf" secondAttribute="top" id="o6f-oa-5gR"/>
                             <constraint firstItem="R4n-FU-Sds" firstAttribute="leading" secondItem="9N5-sh-Dms" secondAttribute="leading" id="wtW-Ez-ywS"/>
                         </constraints>
@@ -71,7 +61,6 @@
                     </view>
                     <connections>
                         <outlet property="gestureBar" destination="YwG-iE-EDz" id="Rsv-ns-YgI"/>
-                        <outlet property="panView" destination="INh-S4-Owe" id="yKj-jK-igU"/>
                         <outlet property="rightTapGestureRecognizer" destination="cZf-qU-B9k" id="Bmm-d2-LOt"/>
                         <outlet property="toolBar" destination="R4n-FU-Sds" id="hb4-jC-4RJ"/>
                     </connections>
