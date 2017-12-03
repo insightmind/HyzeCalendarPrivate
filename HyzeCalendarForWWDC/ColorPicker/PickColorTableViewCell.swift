@@ -53,9 +53,11 @@ class PickColorTableViewCell: UITableViewCell, EventEditorCellProtocol {
         setUpButton(selectButtonView, button: selectButton, image: #imageLiteral(resourceName: "ic_edit"))
         selectButtonView.layer.shadowColor = Color.black.cgColor
         
+        colorLabel.textAlignment = .center
+        
         if eventInformations.state == .showDetail {
             selectButtonView.isHidden = true
-            colorLabel.textAlignment = .center
+            
         }
     }
     

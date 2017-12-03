@@ -197,9 +197,4 @@ class TimeManagement {
 		let angle = ((timeInMinute * CGFloat.pi)/720)
 		return angle
 	}
-    
-    //MARK: Not Finished
-//    class func checkIntersection(first: EKEvent, second: EKEvent) -> EventComparisonResult {
-//
-//    }
 }

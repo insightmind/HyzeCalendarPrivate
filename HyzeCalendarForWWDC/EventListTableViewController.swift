@@ -112,7 +112,7 @@ class EventListTableViewController: UITableViewController {
             height = basicCellHeight
         }
         if self.tableView.indexPathForSelectedRow == indexPath || event.eventIdentifier == Selection.shared.selectedEventIdentifier {
-            height += 45
+            height += 40
         }
         return CGFloat(height)
     }

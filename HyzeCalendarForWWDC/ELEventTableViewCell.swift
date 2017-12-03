@@ -11,7 +11,7 @@ import EventKit
 
 class ELEventTableViewCell: UITableViewCell {
     
-    let selectMenuHeight: CGFloat = 45
+    let selectMenuHeight: CGFloat = 40
     
     var event: EKEvent? = nil
     let smallFontSize = UIFont.systemFont(ofSize: 14)
@@ -145,10 +145,9 @@ class ELEventTableViewCell: UITableViewCell {
             eventViewBottomConstraint.constant = 0
         }
         self.configureButtons()
-        UIView.animate(withDuration: 0.3) {
+        UIView.animate(withDuration: 0.3, animations: {
             self.layoutIfNeeded()
-        }
-        
+        }, completion: nil)
     }
     
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {

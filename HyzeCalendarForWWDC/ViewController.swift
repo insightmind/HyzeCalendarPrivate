@@ -43,6 +43,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var calendarViewToETListConstraint: NSLayoutConstraint!
     @IBOutlet weak var calendarViewAspectRatio: NSLayoutConstraint!
     
+    var loadedViewControllerToBottomConstant: CGFloat?
+    
     lazy var topChange: UIViewPropertyAnimator = {
         let cubicParameters = UICubicTimingParameters(animationCurve: .easeInOut)
         let springParameters = UISpringTimingParameters(dampingRatio: 0.6)
@@ -87,6 +89,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        loadedViewControllerToBottomConstant = calendarViewToETListConstraint.constant
 		
 		if ContactManagement.shared.askForPermission() {
 			print("Contacts access granted")

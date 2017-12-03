@@ -43,6 +43,7 @@ class ETViewController: UIViewController {
     var state: ETViewState = .normal
     var isCalendarView = true
 
+    @IBOutlet weak var panView: UIView!
     @IBOutlet weak var gestureBar: UIView!
     @IBOutlet var rightTapGestureRecognizer: UITapGestureRecognizer!
     
@@ -71,7 +72,7 @@ class ETViewController: UIViewController {
     
     func setUpToolbar() {
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan(recognizer:)))
-        self.toolBar.addGestureRecognizer(panGestureRecognizer)
+        self.panView.addGestureRecognizer(panGestureRecognizer)
     }
     
     @objc func handlePan(recognizer: UIPanGestureRecognizer) {
@@ -96,7 +97,7 @@ class ETViewController: UIViewController {
                 animator.stopAnimation(true)
             }
             superController.calendarViewAspectRatio.isActive = false
-            superController.calendarViewToETListConstraint.isActive = true
+            superController.calendarViewToETListConstraint.constant = 0
         case .changed:
             guard let visibleView = superController.navigationController?.visibleViewController?.view else { return }
             var translatedCenterY = touchPoint.y + Design.shared.currentETViewHeight
@@ -113,7 +114,7 @@ class ETViewController: UIViewController {
             switch superController.eventListHeightConstraint.constant {
             case 0...maxHeight/3:
                 superController.calendarViewAspectRatio.isActive = true
-                superController.calendarViewToETListConstraint.isActive = false
+                superController.calendarViewToETListConstraint.constant = superController.loadedViewControllerToBottomConstant ?? 0
                 superController.eventListHeightConstraint.constant = superController.calendarViewToTopConstraint.constant + 10 + ((superController.calendarView.bounds.width / 7) - 2)
                 eventList?.tableView.isScrollEnabled = true
                 superController.calendarViewController?.collectionView?.isScrollEnabled = false
@@ -121,23 +122,25 @@ class ETViewController: UIViewController {
                 changeState(to: .expanded)
                 
             case 3*maxHeight/4...maxHeight:
-                superController.eventListHeightConstraint.constant = maxHeight - 90
+                superController.eventListHeightConstraint.constant = maxHeight - 95
                 eventList?.tableView.isScrollEnabled = false
                 eventList?.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
                 superController.calendarViewController?.collectionView?.isScrollEnabled = true
                 superController.calendarViewController?.collectionView?.allowsSelection = false
                 changeState(to: .minimal)
             default:
+                superController.calendarViewToETListConstraint.constant = superController.loadedViewControllerToBottomConstant ?? 0
                 superController.calendarViewAspectRatio.isActive = true
-                superController.calendarViewToETListConstraint.isActive = false
+                superController.calendarViewController?.scrollToSection(yearID: Selection.shared.currentYearID, monthID: Selection.shared.currentMonthID - 1, animated: true)
+                
                 let basicHeight = superController.calendarViewToTopConstraint.constant + (self.view.bounds.width / 7 * 6) - 10
                 let expandedValue = Design.shared.currentETViewIsExpandedByNumOfRows * (superController.calendarView.bounds.width / 7)
-                print(basicHeight - expandedValue)
-                superController.eventListHeightConstraint.constant = basicHeight - expandedValue
+                let height = basicHeight - expandedValue
+                superController.eventListHeightConstraint.constant = height
+                
                 eventList?.tableView.isScrollEnabled = true
                 superController.calendarViewController?.collectionView?.isScrollEnabled = false
                 superController.calendarViewController?.collectionView?.allowsSelection = true
-                superController.calendarViewController?.scrollToSection(yearID: Selection.shared.currentYearID, monthID: Selection.shared.currentMonthID - 1, animated: true)
                 changeState(to: .normal)
             }
             animator.addAnimations {
@@ -178,7 +181,7 @@ class ETViewController: UIViewController {
                 eventList?.tableView.isScrollEnabled = true
                 changeState(to: .expanded)
             case 3*maxHeight/4...maxHeight:
-                superController.eventListTopConstraint.constant = maxHeight - 90
+                superController.eventListTopConstraint.constant = maxHeight - 95
                 eventList?.tableView.isScrollEnabled = false
                 eventList?.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
                 changeState(to: .minimal)
