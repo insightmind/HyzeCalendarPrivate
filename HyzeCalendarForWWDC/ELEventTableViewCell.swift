@@ -11,7 +11,10 @@ import EventKit
 
 class ELEventTableViewCell: UITableViewCell {
     
-    let selectMenuHeight: CGFloat = 40
+     var isMenuOpen: Bool = false
+    
+    let normalFont = UIFont.systemFont(ofSize: 17)
+    let selectedFont = UIFont.boldSystemFont(ofSize: 19)
     
     var event: EKEvent? = nil
     let smallFontSize = UIFont.systemFont(ofSize: 14)
@@ -21,20 +24,20 @@ class ELEventTableViewCell: UITableViewCell {
     @IBOutlet weak var startTime: UILabel!
     @IBOutlet weak var endTime: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var selectMenu: UIView!
     @IBOutlet weak var eventView: UIView!
     @IBOutlet weak var topView: UIView!
     
-    @IBOutlet weak var editButtonView: UIView!
-    @IBOutlet weak var editButton: UIButton!
-    
+    @IBOutlet weak var buttonsStackView: UIStackView!
     @IBOutlet weak var showButtonView: UIView!
     @IBOutlet weak var showButton: UIButton!
-    
+    @IBOutlet weak var editButtonView: UIView!
+    @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var removeButtonView: UIView!
     @IBOutlet weak var removeButton: UIButton!
-    @IBOutlet weak var selectMenuHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var eventViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var blurView: UIVisualEffectView!
+    @IBOutlet weak var removeMainView: UIView!
+    @IBOutlet weak var editMainView: UIView!
+    @IBOutlet weak var showMainView: UIView!
     
     func configure() {
         backgroundColor = UIColor.clear
@@ -60,24 +63,82 @@ class ELEventTableViewCell: UITableViewCell {
     }
     
     func configureButtons() {
-        setUpButton(editButtonView, button: editButton, image: #imageLiteral(resourceName: "ic_edit"), backgroundColor: Color.blue)
-        editButtonView.layer.cornerRadius = 0
-        editButtonView.layer.shadowOpacity = 0
-        setUpButton(showButtonView, button: showButton, image: #imageLiteral(resourceName: "ic_star"), backgroundColor: Color.green)
-        showButtonView.layer.cornerRadius = 0
-        showButtonView.layer.shadowOpacity = 0
-        setUpButton(removeButtonView, button: removeButton, image: #imageLiteral(resourceName: "ic_delete"), backgroundColor: Color.red)
-        removeButtonView.layer.cornerRadius = 0
-        removeButtonView.layer.shadowOpacity = 0
+        setUpButton(editButtonView, button: editButton, image: #imageLiteral(resourceName: "ic_edit"), backgroundColor: Color.blue, tintColor: Color.white)
+        editButtonView.layer.shadowColor = Color.black.cgColor
+        setUpButton(showButtonView, button: showButton, image: #imageLiteral(resourceName: "ic_star"), backgroundColor: Color.green, tintColor: Color.white)
+        showButtonView.layer.shadowColor = Color.black.cgColor
+        setUpButton(removeButtonView, button: removeButton, image: #imageLiteral(resourceName: "ic_delete"), backgroundColor: Color.red, tintColor: Color.white)
+        removeButtonView.layer.shadowColor = Color.black.cgColor
+        
+        if isSelected {
+            let transform = CGAffineTransform.identity
+            buttonsStackView.transform = transform
+            blurView.layer.opacity = 1
+        } else {
+            let transform = CGAffineTransform(translationX: self.bounds.width, y: 0)
+            buttonsStackView.transform = transform
+            blurView.layer.opacity = 0
+        }
     }
     
-    func configureRecognizer() {
-        let editRecognizer = UITapGestureRecognizer(target: self, action: #selector(edit(_:)))
-        editButtonView.addGestureRecognizer(editRecognizer)
-        let showRecognizer = UITapGestureRecognizer(target: self, action: #selector(show(_:)))
-        editButtonView.addGestureRecognizer(showRecognizer)
-        let removeRecognizer = UITapGestureRecognizer(target: self, action: #selector(remove(_:)))
-        editButtonView.addGestureRecognizer(removeRecognizer)
+    func configureGestureRecognizer() {
+        let openMenuRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(openMenu))
+        openMenuRecognizer.direction = .left
+        openMenuRecognizer.numberOfTouchesRequired = 1
+        
+        mainView.addGestureRecognizer(openMenuRecognizer)
+        
+        let closeMenuRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(closeMenu))
+        closeMenuRecognizer.direction = .right
+        closeMenuRecognizer.numberOfTouchesRequired = 1
+        
+        buttonsStackView.addGestureRecognizer(closeMenuRecognizer)
+    }
+    
+    @objc func openMenu() {
+        if isMenuOpen { return }
+        
+        let transform = CGAffineTransform.identity
+        
+        let shadowAnimation = CABasicAnimation(keyPath: "shadowOpacity")
+        shadowAnimation.fromValue = 0.6
+        shadowAnimation.toValue = 0
+        shadowAnimation.duration = 0.375
+        self.mainView.layer.add(shadowAnimation, forKey: shadowAnimation.keyPath)
+        mainView.layer.shadowOpacity = 0
+        
+        UIView.animate(withDuration: 0.375, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: .curveEaseOut, animations: {
+            self.buttonsStackView.transform = transform
+            self.blurView.layer.opacity = 0
+            
+            let mainViewTransform = self.isSelected ? CGAffineTransform.identity : CGAffineTransform(scaleX: 0.95, y: 0.95)
+            self.mainView.transform = mainViewTransform
+        }) { (_) in
+            self.isMenuOpen = true
+        }
+    }
+    
+    @objc func closeMenu() {
+        if !isMenuOpen { return }
+        
+        let transform = CGAffineTransform(translationX: self.bounds.width, y: 0)
+        
+        let shadowAnimation = CABasicAnimation(keyPath: "shadowOpacity")
+        shadowAnimation.fromValue = 0
+        shadowAnimation.toValue = 0.6
+        shadowAnimation.duration = 0.225
+        self.mainView.layer.add(shadowAnimation, forKey: shadowAnimation.keyPath)
+        mainView.layer.shadowOpacity = 0.6
+        
+        UIView.animate(withDuration: 0.225, delay: 0, options: .curveEaseOut, animations: {
+            self.buttonsStackView.transform = transform
+            self.blurView.layer.opacity = 0
+            
+            let mainViewTransform = self.isSelected ? CGAffineTransform(scaleX: 1.04, y: 1.04) : CGAffineTransform.identity
+            self.mainView.transform = mainViewTransform
+        }) { (_) in
+            self.isMenuOpen = false
+        }
     }
     
     func loadDateTexts() {
@@ -109,11 +170,11 @@ class ELEventTableViewCell: UITableViewCell {
     func loadReadWriteAccess() {
         guard let evnt = event else { return }
         if evnt.isReadOnly() {
-            editButtonView.isHidden = true
-            removeButtonView.isHidden = true
+            editMainView.isHidden = true
+            removeMainView.isHidden = true
         } else {
-            editButtonView.isHidden = false
-            removeButtonView.isHidden = false
+            editMainView.isHidden = false
+            removeMainView.isHidden = false
         }
     }
     
@@ -129,21 +190,12 @@ class ELEventTableViewCell: UITableViewCell {
         super.awakeFromNib()
         configure()
         configureButtons()
-        configureRecognizer()
+        configureGestureRecognizer()
         layoutIfNeeded()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
-        if selected {
-            Selection.shared.selectedEventIdentifier = event?.eventIdentifier
-            guard let dayView = Settings.shared.renDayView else { return }
-            dayView.selectEventView(with: Selection.shared.selectedEventIdentifier, duration: 0.2)
-        }
-        self.configureButtons()
-        UIView.animate(withDuration: 0.3, animations: {
-            self.eventViewBottomConstraint.constant = selected ? self.selectMenuHeight : 0
-            self.layoutIfNeeded()
-        }, completion: nil)
+        
     }
     
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {
@@ -206,6 +258,7 @@ class ELEventTableViewCell: UITableViewCell {
         titleLabel.text = "unable to load Event"
         startTime.text = ""
         endTime.text = ""
+        isMenuOpen = false
     }
     
 }

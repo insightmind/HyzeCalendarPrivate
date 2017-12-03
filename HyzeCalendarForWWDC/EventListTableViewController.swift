@@ -111,14 +111,28 @@ class EventListTableViewController: UITableViewController {
         if event.isAllDay || !Settings.shared.isEventListRelative {
             height = basicCellHeight
         }
-        if self.tableView.indexPathForSelectedRow == indexPath || event.eventIdentifier == Selection.shared.selectedEventIdentifier {
-            height += 40
-        }
         return CGFloat(height)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        reloadCellSize()
+        guard let c = tableView.cellForRow(at: indexPath) else { return }
+        guard let cell = c as? ELEventTableViewCell else { return }
+        Selection.shared.selectedEventIdentifier = cell.event?.eventIdentifier
+        guard let dayView = Settings.shared.renDayView else { return }
+        dayView.selectEventView(with: Selection.shared.selectedEventIdentifier, duration: 0.2)
+        let transform = cell.isMenuOpen ? CGAffineTransform.identity : CGAffineTransform(scaleX: 1.04, y: 1.04)
+        UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+            cell.mainView.transform = transform
+        }, completion: nil)
+    }
+    
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        guard let c = tableView.cellForRow(at: indexPath) else { return }
+        guard let cell = c as? ELEventTableViewCell else { return }
+        let transform = cell.isMenuOpen ? CGAffineTransform(scaleX: 0.95, y: 0.95) : CGAffineTransform.identity
+        UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+            cell.mainView.transform = transform
+        }, completion: nil)
     }
     
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
