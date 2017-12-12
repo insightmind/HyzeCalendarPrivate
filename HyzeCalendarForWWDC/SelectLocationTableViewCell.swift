@@ -15,19 +15,8 @@ class SelectLocationTableViewCell: UITableViewCell, EventEditorCellProtocol {
 	var eventInformations: EventEditorEventInformations! = EventManagement.shared.eventInformation
 	
 	func reloadInformations() {
-        if let title = eventInformations.location?.title {
-            self.label.text = title
-            self.subLabel.isHidden = true
-            if eventInformations.state == .showDetail {
-               self.selectButtonView.isHidden = true
-            } else {
-               self.selectButtonView.isHidden = false
-                setUpButton(selectButtonView, button: selectButton, image: #imageLiteral(resourceName: "ic_edit"))
-            }
-            self.layoutIfNeeded()
-            return
-        }
         self.selectButtonView.isHidden = false
+        var isRealLocation: Bool = false
         if let location = eventInformations.location?.geoLocation {
 			let geoCoder = CLGeocoder()
 			var place: MKPlacemark?
@@ -50,15 +39,26 @@ class SelectLocationTableViewCell: UITableViewCell, EventEditorCellProtocol {
 						self.subLabel.isHidden = true
 					}
 				}
-				self.layoutIfNeeded()
 			})
+            isRealLocation = true
 			setUpButton(selectButtonView, button: selectButton, image: #imageLiteral(resourceName: "ic_edit"))
+            self.layoutIfNeeded()
 		} else {
 			label.text = "add Location"
 			subLabel.isHidden = true
 			setUpButton(selectButtonView, button: selectButton, image: #imageLiteral(resourceName: "ic_add"))
-			self.layoutIfNeeded()
+            self.layoutIfNeeded()
 		}
+        if let title = eventInformations.location?.title {
+            self.label.text = title
+            self.subLabel.isHidden = true
+            if eventInformations.state == .showDetail {
+                self.selectButtonView.isHidden = isRealLocation ? false : true
+            } else {
+                self.selectButtonView.isHidden = false
+            }
+        }
+        self.layoutIfNeeded()
 	}
 	
 	@IBOutlet weak var cellView: UIView!

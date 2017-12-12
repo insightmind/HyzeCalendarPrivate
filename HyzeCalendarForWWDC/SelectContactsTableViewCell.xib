@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13528" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13526"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -80,12 +80,12 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.0" green="0.31620826569999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="TxB-G9-Wi1" secondAttribute="bottom" constant="8" id="4bn-79-fji"/>
+                                            <constraint firstAttribute="bottom" secondItem="TxB-G9-Wi1" secondAttribute="bottom" priority="750" constant="8" id="4bn-79-fji"/>
                                             <constraint firstAttribute="trailing" secondItem="tw3-Dz-Ezx" secondAttribute="trailing" constant="8" id="Hfd-mi-FFT"/>
                                             <constraint firstItem="TxB-G9-Wi1" firstAttribute="leading" secondItem="Fc3-YZ-Hem" secondAttribute="leading" constant="8" id="IiA-HW-j73"/>
                                             <constraint firstAttribute="height" constant="56" identifier="top" id="JWg-6k-OWX"/>
                                             <constraint firstAttribute="bottom" secondItem="tw3-Dz-Ezx" secondAttribute="bottom" constant="8" id="Jpw-Tb-xu2"/>
-                                            <constraint firstItem="TxB-G9-Wi1" firstAttribute="top" secondItem="Fc3-YZ-Hem" secondAttribute="top" constant="8" id="d1z-mI-nw7"/>
+                                            <constraint firstItem="TxB-G9-Wi1" firstAttribute="top" secondItem="Fc3-YZ-Hem" secondAttribute="top" priority="750" constant="8" id="d1z-mI-nw7"/>
                                             <constraint firstItem="tw3-Dz-Ezx" firstAttribute="top" secondItem="Fc3-YZ-Hem" secondAttribute="top" constant="8" id="eDc-Jo-5Cc"/>
                                             <constraint firstItem="tw3-Dz-Ezx" firstAttribute="leading" secondItem="TxB-G9-Wi1" secondAttribute="trailing" constant="8" id="pxd-Zb-2ed"/>
                                         </constraints>

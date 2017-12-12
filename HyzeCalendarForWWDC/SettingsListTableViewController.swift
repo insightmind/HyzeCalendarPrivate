@@ -61,8 +61,7 @@ class SettingsListTableViewController: UITableViewController {
         let tView = SettingsListGroupTableViewController(style: .plain)
         cell.setTitle(data[indexPath.row].title)
         cell.connect(to: self)
-        let successful = cell.setMainView(to: tView)
-        print(successful)
+        let _ = cell.setMainView(to: tView)
 
         return cell
     }

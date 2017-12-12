@@ -66,10 +66,10 @@
                                 <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tv6-w0-Wuh">
-                                <rect key="frame" x="16" y="28" width="68" height="34"/>
+                                <rect key="frame" x="16" y="28" width="176" height="34"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="68" id="duS-Vm-LfU"/>
+                                    <constraint firstAttribute="width" constant="176" id="iWf-UM-vz6"/>
                                 </constraints>
                                 <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Back">
@@ -80,11 +80,8 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x1F-Xk-9Oo">
-                                <rect key="frame" x="322" y="31" width="46" height="30"/>
+                                <rect key="frame" x="192" y="31" width="176" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="46" id="ckv-1l-Z2Q"/>
-                                </constraints>
                                 <state key="normal" title="Save">
                                     <color key="titleColor" red="0.2036032975" green="0.57139366869999997" blue="0.90090757610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -97,6 +94,7 @@
                         <constraints>
                             <constraint firstItem="gwu-3d-JwG" firstAttribute="leading" secondItem="BC1-TA-A7V" secondAttribute="leading" id="3aV-VO-9Ms"/>
                             <constraint firstItem="Tv6-w0-Wuh" firstAttribute="leading" secondItem="GFL-7v-eya" secondAttribute="leading" id="4aC-NF-LQS"/>
+                            <constraint firstItem="x1F-Xk-9Oo" firstAttribute="leading" secondItem="Tv6-w0-Wuh" secondAttribute="trailing" id="9ii-PK-PsM"/>
                             <constraint firstAttribute="trailingMargin" secondItem="x1F-Xk-9Oo" secondAttribute="trailing" constant="-9" id="CKU-CB-5tb"/>
                             <constraint firstItem="HBP-If-ciW" firstAttribute="top" secondItem="BC1-TA-A7V" secondAttribute="top" id="Fn8-pA-aIq"/>
                             <constraint firstAttribute="trailing" secondItem="gwu-3d-JwG" secondAttribute="trailing" id="GLM-1K-y31"/>
@@ -121,7 +119,7 @@
                 <tapGestureRecognizer id="fYz-HH-68c" userLabel="startDateTap"/>
                 <tapGestureRecognizer id="5sP-A3-HVH" userLabel="endDateTap"/>
             </objects>
-            <point key="canvasLocation" x="8248.7999999999993" y="-85.007496251874073"/>
+            <point key="canvasLocation" x="8248.5" y="-85.5"/>
         </scene>
         <!--Settings List Table View Controller-->
         <scene sceneID="KhF-RT-XYJ">
