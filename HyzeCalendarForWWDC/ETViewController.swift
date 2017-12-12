@@ -113,15 +113,15 @@ class ETViewController: UIViewController {
         case .ended, .cancelled:
             guard let maxHeight = superController.navigationController?.visibleViewController?.view.frame.height else { return }
             switch superController.eventListHeightConstraint.constant {
-            case 0...maxHeight/3:
-                superController.calendarViewAspectRatio.isActive = true
-                superController.calendarViewToETListConstraint.constant = superController.loadedViewControllerToBottomConstant ?? 0
-                superController.eventListHeightConstraint.constant = superController.calendarViewToTopConstraint.constant + 10 + ((superController.calendarView.bounds.width / 7) - 2)
-                eventList?.tableView.isScrollEnabled = true
-                superController.calendarViewController?.collectionView?.isScrollEnabled = false
-                superController.calendarViewController?.collectionView?.allowsSelection = true
-                changeState(to: .expanded)
-                
+//            case 0...maxHeight/3:
+//                superController.calendarViewAspectRatio.isActive = true
+//                superController.calendarViewToETListConstraint.constant = superController.loadedViewControllerToBottomConstant ?? 0
+//                superController.eventListHeightConstraint.constant = superController.calendarViewToTopConstraint.constant + 10 + ((superController.calendarView.bounds.width / 7) - 2)
+//                eventList?.tableView.isScrollEnabled = true
+//                superController.calendarViewController?.collectionView?.isScrollEnabled = false
+//                superController.calendarViewController?.collectionView?.allowsSelection = true
+//                changeState(to: .expanded)
+//
             case 3*maxHeight/4...maxHeight:
                 superController.eventListHeightConstraint.constant = maxHeight - 95
                 eventList?.tableView.isScrollEnabled = false

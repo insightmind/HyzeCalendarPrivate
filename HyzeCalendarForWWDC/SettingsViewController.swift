@@ -14,11 +14,6 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var topBarBlurView: UIVisualEffectView!
     @IBOutlet weak var back: UIButton!
     
-    
-    @IBAction func back(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,14 +33,7 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func save(_ sender: UIButton) {
-        let defaults = UserDefaults.standard
-        if Settings.shared.isDarkMode{
-            Settings.shared.isDarkMode = false
-        } else {
-            Settings.shared.isDarkMode = true
-        }
-        defaults.set(Settings.shared.isDarkMode, forKey: "DarkMode")
-        defaults.synchronize()
+        Settings.shared.needsDesignUpdate = .all
         self.dismiss(animated: true, completion: nil)
     }
     

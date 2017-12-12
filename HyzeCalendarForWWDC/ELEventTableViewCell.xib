@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -214,6 +214,7 @@
                 <outlet property="editButtonView" destination="IsE-Rk-Fmv" id="l5E-1I-hQe"/>
                 <outlet property="editMainView" destination="kyP-nV-Tn5" id="GAT-i2-bUl"/>
                 <outlet property="endTime" destination="bHt-o1-FGy" id="eeM-Ob-4M8"/>
+                <outlet property="endTimeToMainViewConstraint" destination="JjW-YN-pca" id="dky-Gf-axf"/>
                 <outlet property="eventView" destination="ntf-jO-Egg" id="yU4-3a-rhg"/>
                 <outlet property="mainView" destination="jdu-gT-Cz6" id="wvh-en-xxq"/>
                 <outlet property="removeButton" destination="zyF-cU-Byg" id="ffv-Vf-jpk"/>
@@ -223,6 +224,7 @@
                 <outlet property="showButtonView" destination="VGR-kp-zMV" id="NpA-kU-4tt"/>
                 <outlet property="showMainView" destination="e4o-L8-jQP" id="I2T-ZW-9Ef"/>
                 <outlet property="startTime" destination="qAc-gh-edr" id="Pae-3k-K4H"/>
+                <outlet property="startTimeToMainViewConstraint" destination="XLS-ZT-zus" id="AW6-cS-k3c"/>
                 <outlet property="titleLabel" destination="1Lw-mm-cU6" id="YOW-a9-p7G"/>
                 <outlet property="topView" destination="udK-WC-hbd" id="CVn-k3-mfA"/>
             </connections>

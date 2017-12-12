@@ -396,6 +396,7 @@
 			children = (
 				3E62854C1F447E3200301A42 /* EventEditorCellProtocol.swift */,
 				850BAFE41FC77B11008EF9CE /* PopoverViewController.swift */,
+				855B01211FD43FD80026AF83 /* Alarms */,
 				8534F08C1FC49250006616A7 /* ColorPicker */,
 				3EA269211F3CF2330021BB56 /* DateSelection */,
 				3E8B90A21F433CA3000F8449 /* Calendar */,
@@ -958,6 +959,13 @@
 				854626B01F8E7162002D6EF5 /* ELAddEventTableViewCell.xib */,
 			);
 			name = AddEventCell;
+			sourceTree = "<group>";
+		};
+		855B01211FD43FD80026AF83 /* Alarms */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Alarms;
 			sourceTree = "<group>";
 		};
 		85788BB11F865E4B0073B90C /* EventList */ = {

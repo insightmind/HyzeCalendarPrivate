@@ -11,7 +11,8 @@ import EventKit
 
 class ELEventTableViewCell: UITableViewCell {
     
-     var isMenuOpen: Bool = false
+    var isMenuOpen: Bool = false
+    private var isZoomed: Bool = false
     
     let normalFont = UIFont.systemFont(ofSize: 17)
     let selectedFont = UIFont.boldSystemFont(ofSize: 19)
@@ -38,6 +39,9 @@ class ELEventTableViewCell: UITableViewCell {
     @IBOutlet weak var removeMainView: UIView!
     @IBOutlet weak var editMainView: UIView!
     @IBOutlet weak var showMainView: UIView!
+    
+    @IBOutlet weak var startTimeToMainViewConstraint: NSLayoutConstraint!
+    @IBOutlet weak var endTimeToMainViewConstraint: NSLayoutConstraint!
     
     func configure() {
         backgroundColor = UIColor.clear
@@ -111,7 +115,7 @@ class ELEventTableViewCell: UITableViewCell {
             self.buttonsStackView.transform = transform
             self.blurView.layer.opacity = 0
             
-            let mainViewTransform = self.isSelected ? CGAffineTransform.identity : CGAffineTransform(scaleX: 0.95, y: 0.95)
+            let mainViewTransform = self.isZoomed ? CGAffineTransform.identity : CGAffineTransform(scaleX: 0.95, y: 0.95)
             self.mainView.transform = mainViewTransform
         }) { (_) in
             self.isMenuOpen = true
@@ -134,7 +138,7 @@ class ELEventTableViewCell: UITableViewCell {
             self.buttonsStackView.transform = transform
             self.blurView.layer.opacity = 0
             
-            let mainViewTransform = self.isSelected ? CGAffineTransform(scaleX: 1.04, y: 1.04) : CGAffineTransform.identity
+            let mainViewTransform = self.isZoomed ? CGAffineTransform(scaleX: 1.04, y: 1.04) : CGAffineTransform.identity
             self.mainView.transform = mainViewTransform
         }) { (_) in
             self.isMenuOpen = false
@@ -195,7 +199,28 @@ class ELEventTableViewCell: UITableViewCell {
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
+        isZoomed = selected
+        isZoomed ? didSelect() : didDeselect()
+    }
+    
+    func didSelect() {
+        Selection.shared.selectedEventIdentifier = event?.eventIdentifier
+        if let dayView = Settings.shared.renDayView {
+            dayView.selectEventView(with: Selection.shared.selectedEventIdentifier, duration: 0.2)
+        }
+        let transform = isMenuOpen ? CGAffineTransform.identity : CGAffineTransform(scaleX: 1.04, y: 1.04)
         
+        UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+            self.mainView.transform = transform
+        }, completion: nil)
+    }
+    
+    func didDeselect() {
+        let transform = isMenuOpen ? CGAffineTransform(scaleX: 0.95, y: 0.95) : CGAffineTransform.identity
+
+        UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+            self.mainView.transform = transform
+        }, completion: nil)
     }
     
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {
@@ -258,7 +283,7 @@ class ELEventTableViewCell: UITableViewCell {
         titleLabel.text = "unable to load Event"
         startTime.text = ""
         endTime.text = ""
-        isMenuOpen = false
+        closeMenu()
     }
     
 }
