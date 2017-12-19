@@ -272,6 +272,7 @@ class EventManagement {
 		informations.recurrenceRule = event.recurrenceRules?.first
 		informations.location = event.structuredLocation
         informations.color = getColor(eventIdentifier: eventIdentifier) ?? Color.white
+        informations.alarms = event.alarms
         
 		if let complete = completion {
 			complete()

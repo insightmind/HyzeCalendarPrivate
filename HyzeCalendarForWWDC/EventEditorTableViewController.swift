@@ -17,6 +17,7 @@ enum EventEditorCellType: String {
 	case recurrence = "recurrence"
 	case location = "location"
     case colorPicker = "colorPicker"
+    case alarm = "alarm"
 }
 
 struct EventEditorCellInformations {
@@ -36,6 +37,7 @@ class EventEditorTableViewController: UITableViewController {
 	let recurrenceCell = EventEditorCellInformations(cellType: .recurrence, height: 212.0)
 	let locationCell = EventEditorCellInformations(cellType: .location, height: 100.0)
     let colorPickerCell = EventEditorCellInformations(cellType: .colorPicker, height: 100.0)
+    let alarmCell = EventEditorCellInformations(cellType: .alarm, height: 155.0)
 	
 	var eventsInformations: EventEditorEventInformations!
 
@@ -54,7 +56,8 @@ class EventEditorTableViewController: UITableViewController {
 		self.tableView.register(UINib(nibName: "SetRecurrenceTableViewCell", bundle: nil), forCellReuseIdentifier: EventEditorCellType.recurrence.rawValue)
 		self.tableView.register(UINib(nibName: "SelectLocationTableViewCell", bundle: nil), forCellReuseIdentifier: EventEditorCellType.location.rawValue)
         self.tableView.register(UINib(nibName: "PickColorTableViewCell", bundle: nil), forCellReuseIdentifier: EventEditorCellType.colorPicker.rawValue)
-		
+        self.tableView.register(UINib(nibName: "AlarmTableViewCell", bundle: nil), forCellReuseIdentifier: EventEditorCellType.alarm.rawValue)
+        
 		self.eventsInformations = EventManagement.shared.eventInformation
 		eventsInformations.eventEditorTableViewController = self
 		
@@ -113,6 +116,9 @@ class EventEditorTableViewController: UITableViewController {
         case .colorPicker:
             let cell = tableView.dequeueReusableCell(withIdentifier: EventEditorCellType.colorPicker.rawValue) as! PickColorTableViewCell
             return cell
+        case .alarm:
+            let cell = tableView.dequeueReusableCell(withIdentifier: EventEditorCellType.alarm.rawValue) as! AlarmTableViewCell
+            return cell
 		}
     }
 	
@@ -152,6 +158,11 @@ class EventEditorTableViewController: UITableViewController {
                     if onlyInformations {
                         cell.reloadInformations()
                     }
+                case .alarm:
+                    let cell = cellAtIndexPath as! AlarmTableViewCell
+                    if onlyInformations {
+                        cell.reloadInformations()
+                    }
 				default:
 					return
 				}
@@ -163,8 +174,11 @@ class EventEditorTableViewController: UITableViewController {
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		switch cells[indexPath.row].cellType {
 		case .contacts:
-			let (calculated, full) = calculateContactsCellHeight()
-			return eventsInformations.isAllContacts ? full : calculated
+			let (calculated, full) = calculateCellHeight(.contacts)
+			return eventsInformations.showAllContacts ? full : calculated
+        case .alarm:
+            let (calculated, full) = calculateCellHeight(.alarm)
+            return eventsInformations.showAllAlarms ? full : calculated
 		case .recurrence:
 			return calculateRecurrenceCellHeight()
 		default:
@@ -187,6 +201,11 @@ class EventEditorTableViewController: UITableViewController {
 					cells.append(contactsCell)
 				}
 			}
+            if let alarms = eventsInformations.alarms {
+                if !alarms.isEmpty {
+                    cells.append(alarmCell)
+                }
+            }
 			if eventsInformations.recurrenceRule != nil {
 				cells.append(recurrenceCell)
 			}
@@ -196,6 +215,7 @@ class EventEditorTableViewController: UITableViewController {
 		case .create:
 			cells.append(locationCell)
 			cells.append(contactsCell)
+            cells.append(alarmCell)
 			cells.append(recurrenceCell)
 			cells.append(notesCell)
 			if eventsInformations.eventIdentifier != nil {
@@ -204,36 +224,54 @@ class EventEditorTableViewController: UITableViewController {
 		}
 	}
 	
-	func calculateContactsCellHeight() -> (CGFloat, CGFloat){
+    func calculateCellHeight(_ cellType: EventEditorCellType) -> (CGFloat, CGFloat){
 		
 		let normalHeight: CGFloat = 45
 		let defaultCellHeight: CGFloat = 56
 		var calculatedHeight = normalHeight
 		var fullHeight = normalHeight
-		
+        
 		switch eventsInformations.state {
 		case .create:
 			calculatedHeight += defaultCellHeight
 			fullHeight += defaultCellHeight
-			if let count = eventsInformations.participants?.count {
-				fullHeight += defaultCellHeight * CGFloat(count)
-				if count > 2 {
-					fullHeight += defaultCellHeight
-					calculatedHeight += 3 * defaultCellHeight
-				} else {
-					calculatedHeight += defaultCellHeight * CGFloat(count)
-				}
-			}
+            let count: Int
+            switch cellType {
+            case .alarm:
+                guard let checkedCount = eventsInformations.alarms?.count else { return (calculatedHeight, fullHeight) }
+                count = checkedCount
+            case .contacts:
+                guard let checkedCount = eventsInformations.participants?.count else { return (calculatedHeight, fullHeight) }
+                count = checkedCount
+            default:
+                return (calculatedHeight, fullHeight)
+            }
+            fullHeight += defaultCellHeight * CGFloat(count)
+            if count > 2 {
+                fullHeight += defaultCellHeight
+                calculatedHeight += 3 * defaultCellHeight
+            } else {
+                calculatedHeight += defaultCellHeight * CGFloat(count)
+            }
 		case .showDetail:
-			if let count = eventsInformations.participants?.count {
-				fullHeight += defaultCellHeight * CGFloat(count)
-				if count > 3 {
-					fullHeight += defaultCellHeight
-					calculatedHeight += 4 * defaultCellHeight
-				} else {
-					calculatedHeight += defaultCellHeight * CGFloat(count)
-				}
-			}
+            let count: Int
+            switch cellType {
+            case .alarm:
+                guard let checkedCount = eventsInformations.alarms?.count else { return (calculatedHeight, fullHeight) }
+                count = checkedCount
+            case .contacts:
+                guard let checkedCount = eventsInformations.participants?.count else { return (calculatedHeight, fullHeight) }
+                count = checkedCount
+            default:
+                return (calculatedHeight, fullHeight)
+            }
+            fullHeight += defaultCellHeight * CGFloat(count)
+            if count > 3 {
+                fullHeight += defaultCellHeight
+                calculatedHeight += 4 * defaultCellHeight
+            } else {
+                calculatedHeight += defaultCellHeight * CGFloat(count)
+            }
 		}
 		
 		let heights = (calculatedHeight, fullHeight)

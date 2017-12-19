@@ -38,11 +38,9 @@ class SelectCalendarTableViewCell: UITableViewCell, EventEditorCellProtocol {
 	}
 	
 	fileprivate func setUpSelectButton() {
-		self.selectButton.layer.cornerRadius = self.selectButton.bounds.height / 2
-		self.selectButton.backgroundColor = Color.red
-		let image = #imageLiteral(resourceName: "ic_edit").withRenderingMode(.alwaysTemplate)
-		self.arrowButton.setImage(image, for: .normal)
-		self.arrowButton.tintColor = Color.white
+        
+        setUpButton(selectButton, button: arrowButton, image: #imageLiteral(resourceName: "ic_edit"))
+        selectButton.layer.cornerRadius = selectButton.bounds.width / 2
         
 		self.selectButton.layer.shadowColor = self.selectButton.backgroundColor?.cgColor
 		self.selectButton.layer.shadowRadius = 5
@@ -55,6 +53,9 @@ class SelectCalendarTableViewCell: UITableViewCell, EventEditorCellProtocol {
         // Initialization code
 		self.eventInformations = EventManagement.shared.eventInformation
 		
+        
+        setUpSelectButton()
+        
 		self.backgroundColor = UIColor.clear
 		self.mainView.layer.cornerRadius = self.labelView.bounds.height / 2
 		self.mainView.backgroundColor = UIColor.clear
@@ -84,8 +85,6 @@ class SelectCalendarTableViewCell: UITableViewCell, EventEditorCellProtocol {
 		
 		self.labelView.backgroundColor = Color.lightBlue
 		self.informationView.backgroundColor = Color.blue
-		
-		setUpSelectButton()
 		
 		if eventInformations.state == .showDetail {
 			selectButton.isHidden = true

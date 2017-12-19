@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="72" id="KGk-i7-Jjw" customClass="DefaultAlarmTableViewCell" customModule="HyzeCalendarForWWDC" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="72"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="71.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KT6-2i-c78">
+                        <rect key="frame" x="262.5" y="11" width="49.5" height="49.5"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u8M-pE-Cag">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <state key="normal" image="ic_remove"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="KT6-2i-c78" secondAttribute="height" multiplier="1:1" id="0nR-Of-lJt"/>
+                            <constraint firstAttribute="trailing" secondItem="u8M-pE-Cag" secondAttribute="trailing" id="BbW-EF-pmS"/>
+                            <constraint firstAttribute="bottom" secondItem="u8M-pE-Cag" secondAttribute="bottom" id="acC-RY-tY7"/>
+                            <constraint firstItem="u8M-pE-Cag" firstAttribute="top" secondItem="KT6-2i-c78" secondAttribute="top" id="jxY-qS-mky"/>
+                            <constraint firstItem="u8M-pE-Cag" firstAttribute="leading" secondItem="KT6-2i-c78" secondAttribute="leading" id="uZQ-TB-pVW"/>
+                        </constraints>
+                    </view>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="5tL-oP-wgZ">
+                        <rect key="frame" x="16" y="11" width="238.5" height="50"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rxc-ic-eGT">
+                                <rect key="frame" x="0.0" y="0.0" width="238.5" height="25"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g1R-kw-VXY">
+                                <rect key="frame" x="0.0" y="25" width="238.5" height="25"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottomMargin" secondItem="5tL-oP-wgZ" secondAttribute="bottom" id="8HH-9C-MYd"/>
+                    <constraint firstItem="KT6-2i-c78" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="GwV-AB-wwO"/>
+                    <constraint firstItem="KT6-2i-c78" firstAttribute="leading" secondItem="5tL-oP-wgZ" secondAttribute="trailing" constant="8" id="KHY-mc-ud1"/>
+                    <constraint firstItem="KT6-2i-c78" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Kc6-lR-JyC"/>
+                    <constraint firstItem="5tL-oP-wgZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="RBf-tq-Vpx"/>
+                    <constraint firstAttribute="trailing" secondItem="KT6-2i-c78" secondAttribute="trailing" constant="8" id="aix-jL-b7f"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="KT6-2i-c78" secondAttribute="bottom" id="gbQ-sY-fty"/>
+                    <constraint firstItem="5tL-oP-wgZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="wUl-oA-lcz"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="bottomLabel" destination="g1R-kw-VXY" id="kKI-Xx-QWm"/>
+                <outlet property="removeButton" destination="u8M-pE-Cag" id="mOz-4g-0wT"/>
+                <outlet property="removeButtonView" destination="KT6-2i-c78" id="S1T-5R-zW1"/>
+                <outlet property="topLabel" destination="Rxc-ic-eGT" id="ZP9-Jj-AHi"/>
+            </connections>
+            <point key="canvasLocation" x="34" y="68"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ic_remove" width="24" height="24"/>
+    </resources>
+</document>

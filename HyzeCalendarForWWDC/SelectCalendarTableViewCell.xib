@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -74,7 +74,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="selectedCalendar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="Krx-Ch-g8Y">
-                                                <rect key="frame" x="31" y="8" width="183.5" height="34.5"/>
+                                                <rect key="frame" x="31" y="8" width="158" height="34.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -89,15 +89,15 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.0" green="0.31620826567917693" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstItem="dmU-uO-1xh" firstAttribute="leading" secondItem="Krx-Ch-g8Y" secondAttribute="trailing" constant="8" id="7xT-MG-g0v"/>
+                                            <constraint firstItem="dmU-uO-1xh" firstAttribute="centerY" secondItem="cKL-kC-C5q" secondAttribute="centerY" id="1oZ-FN-9u2"/>
                                             <constraint firstItem="Krx-Ch-g8Y" firstAttribute="top" secondItem="cKL-kC-C5q" secondAttribute="top" constant="8" id="Cj0-03-HDz"/>
                                             <constraint firstItem="eFO-qf-aWY" firstAttribute="leading" secondItem="cKL-kC-C5q" secondAttribute="leadingMargin" id="JC4-MW-Bdz"/>
-                                            <constraint firstAttribute="trailing" secondItem="dmU-uO-1xh" secondAttribute="trailing" constant="8" id="LyF-U5-2dW"/>
                                             <constraint firstAttribute="bottom" secondItem="eFO-qf-aWY" secondAttribute="bottom" constant="7.5" id="MYZ-yr-eV1"/>
                                             <constraint firstItem="eFO-qf-aWY" firstAttribute="top" secondItem="cKL-kC-C5q" secondAttribute="top" constant="8" id="RA0-fW-AwS"/>
                                             <constraint firstAttribute="bottom" secondItem="Krx-Ch-g8Y" secondAttribute="bottom" constant="8" id="YxW-ND-EyJ"/>
                                             <constraint firstItem="Krx-Ch-g8Y" firstAttribute="leading" secondItem="eFO-qf-aWY" secondAttribute="trailing" constant="8" id="ctj-TE-V1V"/>
-                                            <constraint firstAttribute="bottom" secondItem="dmU-uO-1xh" secondAttribute="bottom" constant="8" id="eWe-qY-z1b"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="dmU-uO-1xh" secondAttribute="trailing" id="dfY-oZ-Zmj"/>
+                                            <constraint firstAttribute="bottom" secondItem="dmU-uO-1xh" secondAttribute="bottom" constant="8" id="fCh-tz-bKf"/>
                                             <constraint firstItem="dmU-uO-1xh" firstAttribute="top" secondItem="cKL-kC-C5q" secondAttribute="top" constant="8" id="yt9-pn-VDj"/>
                                         </constraints>
                                     </view>

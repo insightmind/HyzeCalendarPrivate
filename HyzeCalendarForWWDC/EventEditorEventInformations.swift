@@ -57,6 +57,7 @@ class EventEditorEventInformations: NSCopying {
     var notes: String? = nil
 	var calendar: EKCalendar? = nil
 	var participants: [EKParticipant]? = nil
+    var alarms: [EKAlarm]? = nil
 	var isReadOnly: Bool = false
 	var recurrenceRule: EKRecurrenceRule? = nil
 	var location: EKStructuredLocation? = nil
@@ -73,5 +74,6 @@ class EventEditorEventInformations: NSCopying {
 	var setCalendarPopoverViewController: SetCalendarPopoverViewController?
 	var eventEditorTableViewController: EventEditorTableViewController?
 	var eventEditor: EventEditorViewController?
-	var isAllContacts: Bool = false
+	var showAllContacts: Bool = false
+    var showAllAlarms: Bool = false
 }

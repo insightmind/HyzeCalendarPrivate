@@ -46,10 +46,10 @@ class SelectContactsTableViewCell: UITableViewCell, EventEditorCellProtocol {
 	}
 	
 	@IBAction func toggleAllContacts(_ sender: UIButton) {
-		eventInformations.isAllContacts = !eventInformations.isAllContacts
+		eventInformations.showAllContacts = !eventInformations.showAllContacts
 		eventInformations.eventEditorTableViewController?.updateContactsCellHeight()
 		UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
-			self.showContactsButton.transform = CGAffineTransform(rotationAngle: self.eventInformations.isAllContacts ? CGFloat.pi : 2*CGFloat.pi)
+			self.showContactsButton.transform = CGAffineTransform(rotationAngle: self.eventInformations.showAllContacts ? CGFloat.pi : 2*CGFloat.pi)
 		}, completion: nil)
 	}
 	

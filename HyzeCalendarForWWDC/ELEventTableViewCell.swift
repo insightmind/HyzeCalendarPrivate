@@ -283,6 +283,7 @@ class ELEventTableViewCell: UITableViewCell {
         titleLabel.text = "unable to load Event"
         startTime.text = ""
         endTime.text = ""
+        mainView.transform = CGAffineTransform.identity
         closeMenu()
     }
     

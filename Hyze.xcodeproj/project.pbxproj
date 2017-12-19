@@ -120,7 +120,12 @@
 		8534F0971FC4B463006616A7 /* ColorPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8534F0961FC4B463006616A7 /* ColorPicker.storyboard */; };
 		854626B11F8E7162002D6EF5 /* ELAddEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854626AF1F8E7162002D6EF5 /* ELAddEventTableViewCell.swift */; };
 		854626B21F8E7162002D6EF5 /* ELAddEventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 854626B01F8E7162002D6EF5 /* ELAddEventTableViewCell.xib */; };
+		854D96281FE981B800FE6CCC /* AlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854D96261FE981B800FE6CCC /* AlarmTableViewCell.swift */; };
+		854D96291FE981B800FE6CCC /* AlarmTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 854D96271FE981B800FE6CCC /* AlarmTableViewCell.xib */; };
 		85577FA11FC1CA2300657E0F /* EventModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 85577F9F1FC1CA2300657E0F /* EventModel.xcdatamodeld */; };
+		855CF9521FE999CB0085460B /* DefaultAlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855CF9501FE999CB0085460B /* DefaultAlarmTableViewCell.swift */; };
+		855CF9531FE999CB0085460B /* DefaultAlarmTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 855CF9511FE999CB0085460B /* DefaultAlarmTableViewCell.xib */; };
+		855CF9551FE99A1A0085460B /* AlarmTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855CF9541FE99A1A0085460B /* AlarmTableView.swift */; };
 		85788BB01F865A030073B90C /* EventListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85788BAF1F865A030073B90C /* EventListTableViewController.swift */; };
 		85788BB81F865EA10073B90C /* ELEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85788BB61F865EA10073B90C /* ELEventTableViewCell.swift */; };
 		85788BB91F865EA10073B90C /* ELEventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85788BB71F865EA10073B90C /* ELEventTableViewCell.xib */; };
@@ -322,7 +327,12 @@
 		8534F0961FC4B463006616A7 /* ColorPicker.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ColorPicker.storyboard; sourceTree = "<group>"; };
 		854626AF1F8E7162002D6EF5 /* ELAddEventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ELAddEventTableViewCell.swift; sourceTree = "<group>"; };
 		854626B01F8E7162002D6EF5 /* ELAddEventTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ELAddEventTableViewCell.xib; sourceTree = "<group>"; };
+		854D96261FE981B800FE6CCC /* AlarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTableViewCell.swift; sourceTree = "<group>"; };
+		854D96271FE981B800FE6CCC /* AlarmTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlarmTableViewCell.xib; sourceTree = "<group>"; };
 		85577FA01FC1CA2300657E0F /* EventModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EventModel.xcdatamodel; sourceTree = "<group>"; };
+		855CF9501FE999CB0085460B /* DefaultAlarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAlarmTableViewCell.swift; sourceTree = "<group>"; };
+		855CF9511FE999CB0085460B /* DefaultAlarmTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DefaultAlarmTableViewCell.xib; sourceTree = "<group>"; };
+		855CF9541FE99A1A0085460B /* AlarmTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTableView.swift; sourceTree = "<group>"; };
 		85788BAF1F865A030073B90C /* EventListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListTableViewController.swift; sourceTree = "<group>"; };
 		85788BB61F865EA10073B90C /* ELEventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ELEventTableViewCell.swift; sourceTree = "<group>"; };
 		85788BB71F865EA10073B90C /* ELEventTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ELEventTableViewCell.xib; sourceTree = "<group>"; };
@@ -964,8 +974,21 @@
 		855B01211FD43FD80026AF83 /* Alarms */ = {
 			isa = PBXGroup;
 			children = (
+				855CF94D1FE999590085460B /* For Cell */,
+				854D96261FE981B800FE6CCC /* AlarmTableViewCell.swift */,
+				854D96271FE981B800FE6CCC /* AlarmTableViewCell.xib */,
 			);
 			name = Alarms;
+			sourceTree = "<group>";
+		};
+		855CF94D1FE999590085460B /* For Cell */ = {
+			isa = PBXGroup;
+			children = (
+				855CF9501FE999CB0085460B /* DefaultAlarmTableViewCell.swift */,
+				855CF9511FE999CB0085460B /* DefaultAlarmTableViewCell.xib */,
+				855CF9541FE99A1A0085460B /* AlarmTableView.swift */,
+			);
+			name = "For Cell";
 			sourceTree = "<group>";
 		};
 		85788BB11F865E4B0073B90C /* EventList */ = {
@@ -1190,6 +1213,7 @@
 				3E61C1171F53815800AE1A2B /* DaysOfMonthTableViewCell.xib in Resources */,
 				8585F0961FA213800068A6E9 /* SettingsListGroupOnOffButtonTableViewCell.xib in Resources */,
 				3EFC00CB1F5E165C0028F387 /* LocationTableViewCell.xib in Resources */,
+				855CF9531FE999CB0085460B /* DefaultAlarmTableViewCell.xib in Resources */,
 				3EE9C86E1F56F23100FD93E9 /* DaysOfMonthPickerTableViewCell.xib in Resources */,
 				85788BB91F865EA10073B90C /* ELEventTableViewCell.xib in Resources */,
 				8534F0901FC49291006616A7 /* PickColorTableViewCell.xib in Resources */,
@@ -1206,6 +1230,7 @@
 				854626B21F8E7162002D6EF5 /* ELAddEventTableViewCell.xib in Resources */,
 				3E68188E1F46FED600E8D7BC /* CalendarTableViewCell.xib in Resources */,
 				85108E0F1F81857000F42FDD /* Podfile in Resources */,
+				854D96291FE981B800FE6CCC /* AlarmTableViewCell.xib in Resources */,
 				3EA8EE2A1ED21989000D6EF2 /* Settings.storyboard in Resources */,
 				3E68188A1F46FB6300E8D7BC /* SelectCalendar.storyboard in Resources */,
 				3EDC110C1F40E1B400E0B250 /* NotesTableViewCell.xib in Resources */,
@@ -1303,6 +1328,7 @@
 				3E6285471F44720400301A42 /* UIViewControllerExtension.swift in Sources */,
 				3EE5426D1F479FCC00B230FF /* RemoveTableViewCell.swift in Sources */,
 				3E6283891F4DFF1700A799DC /* SetRecurrenceTableViewCell.swift in Sources */,
+				855CF9521FE999CB0085460B /* DefaultAlarmTableViewCell.swift in Sources */,
 				8534F0891FC48298006616A7 /* EventMOManagement.swift in Sources */,
 				3EA6E4751F4C7C1F003E9341 /* ContactsManagement.swift in Sources */,
 				3E4A9B291E4BB4C0009E45EF /* EventManagement.swift in Sources */,
@@ -1323,6 +1349,7 @@
 				3E47BD2C1F30E7E900E0646C /* EventEditorTableViewController.swift in Sources */,
 				3EAD342B1F3E44CF00174FF7 /* Design.swift in Sources */,
 				3E6285431F4471B900301A42 /* CGFloatExtension.swift in Sources */,
+				854D96281FE981B800FE6CCC /* AlarmTableViewCell.swift in Sources */,
 				3E2DA5641F5773F4008CECD7 /* MainNavigationViewController.swift in Sources */,
 				3E3AEDF81F23BFEF00792B11 /* SetTimePopoverViewController.swift in Sources */,
 				3ED0C4EB1F5373D4005915B6 /* TimeIntervalTableViewCell.swift in Sources */,
@@ -1345,6 +1372,7 @@
 				8534F08F1FC49291006616A7 /* PickColorTableViewCell.swift in Sources */,
 				852EC44B1F9FB8A60024126A /* Deprecated_ETView.swift in Sources */,
 				3E0FDDE51F561BCA00086319 /* DaysOfMonthCollectionViewCell.swift in Sources */,
+				855CF9551FE99A1A0085460B /* AlarmTableView.swift in Sources */,
 				3E47BD311F30EE0200E0646C /* DateSelectionTableViewCell.swift in Sources */,
 				3EF096B01E3FDC9F0011E726 /* ViewController.swift in Sources */,
 				3EB0AF101F5ED2EB00108D05 /* LocationManagement.swift in Sources */,
