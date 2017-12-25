@@ -19,7 +19,7 @@ class SelectContactsTableViewCell: UITableViewCell, EventEditorCellProtocol {
 		eventInformations = EventManagement.shared.eventInformation
 		setUpLayout()
 		checkEditable()
-		eventInformations.eventEditorTableViewController?.updateContactsCellHeight()
+		eventInformations.eventEditorTableViewController?.updateCellHeights()
 	}
 	
 	@IBOutlet weak var topView: UIView!
@@ -47,7 +47,7 @@ class SelectContactsTableViewCell: UITableViewCell, EventEditorCellProtocol {
 	
 	@IBAction func toggleAllContacts(_ sender: UIButton) {
 		eventInformations.showAllContacts = !eventInformations.showAllContacts
-		eventInformations.eventEditorTableViewController?.updateContactsCellHeight()
+		eventInformations.eventEditorTableViewController?.updateCellHeights()
 		UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
 			self.showContactsButton.transform = CGAffineTransform(rotationAngle: self.eventInformations.showAllContacts ? CGFloat.pi : 2*CGFloat.pi)
 		}, completion: nil)
@@ -166,7 +166,6 @@ class SelectContactsTableViewCell: UITableViewCell, EventEditorCellProtocol {
 				bottomView.isHidden = true
 			}
 		}
-		layoutSubviews()
 	}
 	
 	override func layoutIfNeeded() {
@@ -188,6 +187,14 @@ class SelectContactsTableViewCell: UITableViewCell, EventEditorCellProtocol {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    override func layoutSubviews() {
+        reloadInformations()
+    }
+    
+    override func prepareForReuse() {
+        reloadInformations()
     }
     
 }

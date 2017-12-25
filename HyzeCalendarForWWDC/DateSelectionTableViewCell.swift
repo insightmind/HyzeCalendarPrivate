@@ -222,6 +222,7 @@ class DateSelectionTableViewCell: UITableViewCell, EventEditorCellProtocol {
 		setAllDaySwitchDesign()
 		
 		setUpDateLabel(animated: false)
+        reloadInformations()
 	}
 	
 	func reloadInformations() {
@@ -238,4 +239,8 @@ class DateSelectionTableViewCell: UITableViewCell, EventEditorCellProtocol {
 		}
 		setUpDateLabel(animated: true)
 	}
+    
+    override func prepareForReuse() {
+        reloadInformations()
+    }
 }

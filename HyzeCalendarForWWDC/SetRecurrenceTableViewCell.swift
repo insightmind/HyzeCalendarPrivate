@@ -25,10 +25,8 @@ class SetRecurrenceTableViewCell: UITableViewCell, EventEditorCellProtocol {
 	var eventInformations: EventEditorEventInformations! = EventManagement.shared.eventInformation
 	
 	func reloadInformations() {
-		
 		let type = EventManagement.shared.analyze(eventInformations)
 		self.setDesign(type, animated: true)
-		
 	}
 
 	@IBOutlet weak var topView: UIView!
@@ -96,7 +94,7 @@ class SetRecurrenceTableViewCell: UITableViewCell, EventEditorCellProtocol {
 	}
 	
 	func setDesign(_ type: RecurrenceType, animated: Bool = true) {
-		UIView.animate(withDuration: animated ? 0.15 : 0, animations: {
+		//UIView.animate(withDuration: animated ? 0.15 : 0, animations: {
 			
 			if type != self.selectedRecurrenceType {
 				self.setViewColor(self.predefinedViews, color: Color.lightBlue.withAlphaComponent(0))
@@ -142,7 +140,9 @@ class SetRecurrenceTableViewCell: UITableViewCell, EventEditorCellProtocol {
 			}
 			
 			self.selectedRecurrenceType = type
-		})
+        
+        self.layoutIfNeeded()
+		//})
 	}
 	
 	func setViewColor(_ views: [UIView], color: UIColor) {
@@ -220,10 +220,14 @@ class SetRecurrenceTableViewCell: UITableViewCell, EventEditorCellProtocol {
 		self.setRoundView(predefinedViews, shouldBeRounded: true)
 		
 	}
+    override func layoutSubviews() {
+        reloadInformations()
+    }
 
 	override func prepareForReuse() {
 		self.predefinedViews = []
 		self.selectedRecurrenceType = .none
+        self.reloadInformations()
 	}
     
 }

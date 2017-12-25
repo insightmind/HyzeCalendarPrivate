@@ -51,6 +51,8 @@ class NotesTableViewCell: UITableViewCell, UITextViewDelegate, EventEditorCellPr
 		self.label.textColor = Color.white
 		self.shadowView.backgroundColor = UIColor.clear
 		
+        reloadInformations()
+        
 		if eventInformations.state == .showDetail {
 			self.textView.isUserInteractionEnabled = false
 		}
@@ -78,5 +80,12 @@ class NotesTableViewCell: UITableViewCell, UITextViewDelegate, EventEditorCellPr
 		guard let superView = eventInformations.eventEditorTableViewController else { return }
 		superView.enlarge(false)
 	}
+    
+    override func layoutSubviews() {
+        reloadInformations()
+    }
 	
+    override func prepareForReuse() {
+        reloadInformations()
+    }
 }

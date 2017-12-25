@@ -47,6 +47,7 @@ class EventEditorTableViewController: UITableViewController {
 		self.tableView.backgroundColor = UIColor.clear
 		self.tableView.separatorStyle = .none
 		self.tableView.allowsSelection = false
+
         self.tableView.showsVerticalScrollIndicator = false
 		self.tableView.register(UINib(nibName: "DateSelectionTableViewCell", bundle: nil) ,forCellReuseIdentifier: EventEditorCellType.dateSelection.rawValue)
 		self.tableView.register(UINib(nibName: "NotesTableViewCell", bundle: nil) ,forCellReuseIdentifier: EventEditorCellType.notes.rawValue)
@@ -109,6 +110,7 @@ class EventEditorTableViewController: UITableViewController {
 			return cell
 		case .recurrence:
 			let cell = tableView.dequeueReusableCell(withIdentifier: EventEditorCellType.recurrence.rawValue) as! SetRecurrenceTableViewCell
+            cell.reloadInformations()
 			return cell
 		case .location:
 			let cell = tableView.dequeueReusableCell(withIdentifier: EventEditorCellType.location.rawValue) as! SelectLocationTableViewCell
@@ -163,6 +165,8 @@ class EventEditorTableViewController: UITableViewController {
                     if onlyInformations {
                         cell.reloadInformations()
                     }
+                    let indexPath = IndexPath(row: i, section: 0)
+                    tableView.reloadRows(at: [indexPath], with: .none)
 				default:
 					return
 				}
@@ -213,10 +217,10 @@ class EventEditorTableViewController: UITableViewController {
 				cells.append(notesCell)
 			}
 		case .create:
-			cells.append(locationCell)
+            cells.append(locationCell)
 			cells.append(contactsCell)
+            cells.append(recurrenceCell)
             cells.append(alarmCell)
-			cells.append(recurrenceCell)
 			cells.append(notesCell)
 			if eventsInformations.eventIdentifier != nil {
 				cells.append(removeCell)
@@ -299,7 +303,7 @@ class EventEditorTableViewController: UITableViewController {
 		
 	}
 	
-	func updateContactsCellHeight() {
+	func updateCellHeights() {
 		tableView.beginUpdates()
 		tableView.endUpdates()
 	}

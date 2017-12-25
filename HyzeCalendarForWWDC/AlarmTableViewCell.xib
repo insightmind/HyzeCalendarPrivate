@@ -56,6 +56,9 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="39.5" height="39.5"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <state key="normal" image="ic_add"/>
+                                                        <connections>
+                                                            <action selector="addAlarm:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="5qn-19-lD2"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -101,6 +104,9 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="39.5" height="39.5"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <state key="normal" image="ic_add"/>
+                                                        <connections>
+                                                            <action selector="toggleShowAll:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="TuT-m0-97W"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

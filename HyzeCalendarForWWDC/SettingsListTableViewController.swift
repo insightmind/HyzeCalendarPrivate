@@ -18,7 +18,7 @@ class SettingsListTableViewController: UITableViewController {
 
     let reuseIdentifier = "settingsBasicCell"
     
-    let data = [SettingsListTableViewCellConfiguration(title: "Design", height: 300 + 28 + 16),
+    let data = [SettingsListTableViewCellConfiguration(title: "General", height: 300 + 28 + 16),
                 SettingsListTableViewCellConfiguration(title: "Design", height: 100),
                 SettingsListTableViewCellConfiguration(title: "Usability", height: 125),
                 SettingsListTableViewCellConfiguration(title: "Support", height: 175)]

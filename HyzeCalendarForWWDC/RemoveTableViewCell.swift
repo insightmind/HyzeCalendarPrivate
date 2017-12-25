@@ -54,5 +54,12 @@ class RemoveTableViewCell: UITableViewCell, EventEditorCellProtocol {
 		
 		viewController.present(alert, animated: true, completion: nil)
 	}
+    
+    override func layoutSubviews() {
+        reloadInformations()
+    }
 	
+    override func prepareForReuse() {
+        reloadInformations()
+    }
 }

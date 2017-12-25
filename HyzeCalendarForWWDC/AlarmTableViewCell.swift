@@ -15,7 +15,7 @@ class AlarmTableViewCell: UITableViewCell, EventEditorCellProtocol {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var addAlarmView: UIView!
-    @IBOutlet weak var selectAlarmView: SelectContactsTableView!
+    @IBOutlet weak var selectAlarmView: AlarmTableView!
     @IBOutlet weak var showAllView: UIView!
     @IBOutlet weak var showAllButtonView: UIView!
     @IBOutlet weak var showAllButton: UIButton!
@@ -28,7 +28,8 @@ class AlarmTableViewCell: UITableViewCell, EventEditorCellProtocol {
     var eventInformations: EventEditorEventInformations! = EventManagement.shared.eventInformation
     
     func reloadInformations() {
-        return
+        setLayout()
+        selectAlarmView.reloadSections(IndexSet(integer: 0), with: .none)
     }
     
     override func awakeFromNib() {
@@ -55,6 +56,12 @@ class AlarmTableViewCell: UITableViewCell, EventEditorCellProtocol {
         addAlarmView.backgroundColor = Color.blue
         addAlarmLabel.text = "add Alarm"
         setUpButton(addAlarmButtonView, button: addAlarmButton, image: #imageLiteral(resourceName: "ic_add"))
+        
+        if eventInformations.state == .showDetail {
+            addAlarmButtonView.isHidden = true
+        } else {
+            addAlarmButtonView.isHidden = false
+        }
     }
     
     func setUpShowAll() {
@@ -71,7 +78,7 @@ class AlarmTableViewCell: UITableViewCell, EventEditorCellProtocol {
             addAlarmView.isHidden = false
             addAlarmButtonView.isHidden = false
             if let count = eventInformations.alarms?.count {
-                if count < 2 {
+                if count <= 2 {
                     showAllViewHeightConstraint.constant = 0
                     showAllButtonView.isHidden = true
                 } else {
@@ -87,7 +94,7 @@ class AlarmTableViewCell: UITableViewCell, EventEditorCellProtocol {
             addAlarmView.isHidden = true
             addAlarmButtonView.isHidden = true
             if let count = eventInformations.alarms?.count {
-                if count < 3 {
+                if count <= 3 {
                     showAllViewHeightConstraint.constant = 0
                     showAllButtonView.isHidden = true
                 } else {
@@ -99,14 +106,36 @@ class AlarmTableViewCell: UITableViewCell, EventEditorCellProtocol {
                 showAllButtonView.isHidden = true
             }
         }
-        
-        layoutSubviews()
     }
-
+    
+    @IBAction func toggleShowAll(_ sender: UIButton) {
+        guard let tableView = eventInformations.eventEditorTableViewController else { return }
+        eventInformations.showAllAlarms = !eventInformations.showAllAlarms
+        tableView.updateCellHeights()
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    @IBAction func addAlarm(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "AddAlarmPopover", bundle: nil)
+        guard let viewController = storyboard.instantiateInitialViewController() else { return }
+        guard let superViewController = eventInformations.eventEditor else {
+            fatalError("Where is the mainEventEditorViewController and why did this even happen?")
+        }
+        superViewController.present(viewController, animated: true, completion: nil)
+    }
+    
+    override func layoutSubviews() {
+        reloadInformations()
+    }
+    
+    override func prepareForReuse() {
+        reloadInformations()
+        return
     }
     
 }

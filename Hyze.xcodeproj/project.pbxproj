@@ -105,6 +105,7 @@
 		850BAFDA1FC748ED008EF9CE /* Hyze.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 850BAFBD1FC748ED008EF9CE /* Hyze.app */; };
 		850BAFE51FC77B11008EF9CE /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850BAFE41FC77B11008EF9CE /* PopoverViewController.swift */; };
 		85108E0F1F81857000F42FDD /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 85108E0E1F81857000F42FDD /* Podfile */; };
+		851ADE0D1FEC188E00A622E2 /* TimeIntervalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851ADE0C1FEC188E00A622E2 /* TimeIntervalExtension.swift */; };
 		8525D2A21FAB3C3C0075B532 /* String+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8525D29E1FAB3C3B0075B532 /* String+Timepiece.swift */; };
 		8525D2A31FAB3C3C0075B532 /* Date+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8525D29F1FAB3C3C0075B532 /* Date+Timepiece.swift */; };
 		8525D2A41FAB3C3C0075B532 /* Int+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8525D2A01FAB3C3C0075B532 /* Int+Timepiece.swift */; };
@@ -126,6 +127,8 @@
 		855CF9521FE999CB0085460B /* DefaultAlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855CF9501FE999CB0085460B /* DefaultAlarmTableViewCell.swift */; };
 		855CF9531FE999CB0085460B /* DefaultAlarmTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 855CF9511FE999CB0085460B /* DefaultAlarmTableViewCell.xib */; };
 		855CF9551FE99A1A0085460B /* AlarmTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855CF9541FE99A1A0085460B /* AlarmTableView.swift */; };
+		855F54401FF06716001E30FD /* AddAlarmPopover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 855F543F1FF06716001E30FD /* AddAlarmPopover.storyboard */; };
+		855F54421FF06735001E30FD /* AddAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855F54411FF06735001E30FD /* AddAlarmViewController.swift */; };
 		85788BB01F865A030073B90C /* EventListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85788BAF1F865A030073B90C /* EventListTableViewController.swift */; };
 		85788BB81F865EA10073B90C /* ELEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85788BB61F865EA10073B90C /* ELEventTableViewCell.swift */; };
 		85788BB91F865EA10073B90C /* ELEventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85788BB71F865EA10073B90C /* ELEventTableViewCell.xib */; };
@@ -295,6 +298,7 @@
 		850BAFC91FC748ED008EF9CE /* Hyze Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Hyze Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		850BAFE41FC77B11008EF9CE /* PopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 		85108E0E1F81857000F42FDD /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		851ADE0C1FEC188E00A622E2 /* TimeIntervalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalExtension.swift; sourceTree = "<group>"; };
 		8525D2841FAB33E10075B532 /* Pods_HyzeCalendarForWWDC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_HyzeCalendarForWWDC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8525D2861FAB33E70075B532 /* Pods_HyzeCalendarForWWDC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_HyzeCalendarForWWDC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8525D2881FAB34090075B532 /* Timepiece.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Timepiece.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -333,6 +337,8 @@
 		855CF9501FE999CB0085460B /* DefaultAlarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAlarmTableViewCell.swift; sourceTree = "<group>"; };
 		855CF9511FE999CB0085460B /* DefaultAlarmTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DefaultAlarmTableViewCell.xib; sourceTree = "<group>"; };
 		855CF9541FE99A1A0085460B /* AlarmTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTableView.swift; sourceTree = "<group>"; };
+		855F543F1FF06716001E30FD /* AddAlarmPopover.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddAlarmPopover.storyboard; sourceTree = "<group>"; };
+		855F54411FF06735001E30FD /* AddAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlarmViewController.swift; sourceTree = "<group>"; };
 		85788BAF1F865A030073B90C /* EventListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListTableViewController.swift; sourceTree = "<group>"; };
 		85788BB61F865EA10073B90C /* ELEventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ELEventTableViewCell.swift; sourceTree = "<group>"; };
 		85788BB71F865EA10073B90C /* ELEventTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ELEventTableViewCell.xib; sourceTree = "<group>"; };
@@ -422,6 +428,7 @@
 		3E4A9B261E4BB479009E45EF /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				855F543B1FF0651C001E30FD /* Intelligence */,
 				851122BF1FC1C9AA00A3C974 /* DataModels */,
 				3E59BDA11F432DF000BDCF25 /* General */,
 				3E59BD9F1F432DC200BDCF25 /* Design */,
@@ -459,6 +466,7 @@
 				3E6285441F4471E800301A42 /* UIColorExtension.swift */,
 				3E6285461F44720400301A42 /* UIViewControllerExtension.swift */,
 				3E65607D1F4CC3E700C241BE /* EKEventExtension.swift */,
+				851ADE0C1FEC188E00A622E2 /* TimeIntervalExtension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -974,6 +982,7 @@
 		855B01211FD43FD80026AF83 /* Alarms */ = {
 			isa = PBXGroup;
 			children = (
+				855F543E1FF066F1001E30FD /* Additional Views */,
 				855CF94D1FE999590085460B /* For Cell */,
 				854D96261FE981B800FE6CCC /* AlarmTableViewCell.swift */,
 				854D96271FE981B800FE6CCC /* AlarmTableViewCell.xib */,
@@ -989,6 +998,22 @@
 				855CF9541FE99A1A0085460B /* AlarmTableView.swift */,
 			);
 			name = "For Cell";
+			sourceTree = "<group>";
+		};
+		855F543B1FF0651C001E30FD /* Intelligence */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Intelligence;
+			sourceTree = "<group>";
+		};
+		855F543E1FF066F1001E30FD /* Additional Views */ = {
+			isa = PBXGroup;
+			children = (
+				855F543F1FF06716001E30FD /* AddAlarmPopover.storyboard */,
+				855F54411FF06735001E30FD /* AddAlarmViewController.swift */,
+			);
+			path = "Additional Views";
 			sourceTree = "<group>";
 		};
 		85788BB11F865E4B0073B90C /* EventList */ = {
@@ -1199,6 +1224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3EBCA9DC1F78024E0083EE44 /* ETView.storyboard in Resources */,
+				855F54401FF06716001E30FD /* AddAlarmPopover.storyboard in Resources */,
 				3E68B5C91E3A886D00AE103F /* Main.storyboard in Resources */,
 				3E62838A1F4DFF1700A799DC /* SetRecurrenceTableViewCell.xib in Resources */,
 				8534F0971FC4B463006616A7 /* ColorPicker.storyboard in Resources */,
@@ -1377,6 +1403,7 @@
 				3EF096B01E3FDC9F0011E726 /* ViewController.swift in Sources */,
 				3EB0AF101F5ED2EB00108D05 /* LocationManagement.swift in Sources */,
 				3ED0C4E71F536F6B005915B6 /* RecurrenceTableViewController.swift in Sources */,
+				851ADE0D1FEC188E00A622E2 /* TimeIntervalExtension.swift in Sources */,
 				3ED0C4E51F533961005915B6 /* RecurrencePopoverViewController.swift in Sources */,
 				3EA727561F49F0560041B398 /* SelectContactsTableViewCell.swift in Sources */,
 				3E6818901F46FFFC00E8D7BC /* CalendarTableViewController.swift in Sources */,
@@ -1388,6 +1415,7 @@
 				3E7140431E46844C00D51B17 /* DayViewUIViewController.swift in Sources */,
 				8525D2A21FAB3C3C0075B532 /* String+Timepiece.swift in Sources */,
 				3ED0F0D61F4371C5001A12A8 /* ShowDetail_EventEditorViewController.swift in Sources */,
+				855F54421FF06735001E30FD /* AddAlarmViewController.swift in Sources */,
 				3E68188D1F46FED600E8D7BC /* CalendarTableViewCell.swift in Sources */,
 				3E0C9DDB1F5864C0001B644C /* Settings.swift in Sources */,
 				3ECD09A11E9BFF3000BF9627 /* Selection.swift in Sources */,

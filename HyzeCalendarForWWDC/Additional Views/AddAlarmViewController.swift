@@ -1,0 +1,193 @@
+//
+//  AddAlarmViewController.swift
+//  HyzeCalendarForWWDC
+//
+//  Created by Niklas Bülow on 24.12.17.
+//  Copyright © 2017 Niklas Bülow. All rights reserved.
+//
+
+import UIKit
+import EventKit
+
+class AddAlarmViewController: PopoverViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    
+    enum stateType {
+        case date
+        case time
+    }
+    
+    private var state: stateType = .date
+    private var timeInterval: TimeInterval = 0
+
+    @IBOutlet weak var blurView: UIVisualEffectView!
+    @IBOutlet weak var mainView: UIView!
+    @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var dateButton: UIButton!
+    @IBOutlet weak var timeButton: UIButton!
+    @IBOutlet weak var middleLabel: UILabel!
+    @IBOutlet weak var pickerView: UIPickerView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+        
+        let effect = UIBlurEffect(style: Settings.shared.isDarkMode ? .dark : .light)
+        blurView.effect = effect
+        
+        
+        mainView.layer.cornerRadius = 20
+        mainView.layer.masksToBounds = true
+        
+        setUpDatePicker()
+        setUpTimePicker()
+        setLayout()
+        
+    }
+    
+    func setUpDatePicker() {
+        datePicker.date = eventInformations.startDate
+        datePicker.maximumDate = eventInformations.startDate
+        let yearsInSeconds = 315576000
+        datePicker.minimumDate = eventInformations.startDate.addingTimeInterval(TimeInterval(-yearsInSeconds))
+        datePicker.countDownDuration = 1
+        
+        if Settings.shared.isAMPM {
+            datePicker.locale = Locale(identifier: "en_US")
+        } else {
+            datePicker.locale = Locale(identifier: "de_DE")
+        }
+        
+        datePicker.setValue(Settings.shared.isDarkMode ? Color.white : Color.black, forKey: "textColor")
+    }
+    
+    func setUpTimePicker() {
+        pickerView.delegate = self
+        pickerView.dataSource = self
+    }
+    
+    func setLayout() {
+        switch state {
+        case .date:
+            setDateLayout()
+        case .time:
+            setTimeLayout()
+        }
+    }
+    
+    func setDateLayout() {
+        dateButton.backgroundColor = Color.lightBlue
+        timeButton.backgroundColor = Color.blue
+        
+        datePicker.isHidden = false
+        pickerView.isHidden = true
+        
+        middleLabel.text = String(TimeManagement.calendar.component(.year, from: datePicker.date))
+    }
+    
+    func setTimeLayout() {
+        dateButton.backgroundColor = Color.blue
+        timeButton.backgroundColor = Color.lightBlue
+        
+        datePicker.isHidden = true
+        pickerView.isHidden = false
+        
+        middleLabel.text = "before event"
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func cancel(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    @IBAction func save(_ sender: UIButton) {
+        
+        
+        var alarm: EKAlarm
+        switch state {
+        case .date:
+            alarm = EKAlarm(absoluteDate: datePicker.date)
+        case .time:
+            alarm = EKAlarm(relativeOffset: timeInterval)
+        }
+        if var alarms = eventInformations.alarms {
+            alarms.append(alarm)
+        } else {
+            eventInformations.alarms = [alarm]
+        }
+        eventInformations.eventEditor?.reloadTableViewCells(.alarm, onlyInformations: true)
+        eventInformations.eventEditorTableViewController?.updateCellHeights()
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func setDate(_ sender: UIButton) {
+        state = .date
+        setLayout()
+    }
+    
+    @IBAction func setTime(_ sender: UIButton) {
+        state = .time
+        setLayout()
+    }
+    
+    @IBAction func changeValue(_ sender: UIDatePicker) {
+        switch state {
+        case .date:
+            middleLabel.text = String(TimeManagement.calendar.component(.year, from: datePicker.date))
+        default:
+            break
+        }
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 6
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if component % 2 == 0 {
+            return 1000
+        } else {
+            return 1
+        }
+    }
+    
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}
+
+extension AddAlarmViewController {
+    
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        let color = Settings.shared.isDarkMode ? Color.white : Color.black
+        if component % 2 == 0 {
+            let text = NSAttributedString(string: String(row), attributes: [NSAttributedStringKey.foregroundColor: color])
+            return text
+        } else {
+            let string = component == 1 ? "d" : (component == 3 ? "h" : "m")
+            return NSAttributedString(string: string, attributes: [NSAttributedStringKey.foregroundColor: color])
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let days = pickerView.selectedRow(inComponent: 0) * 24 * 60 * 60
+        let hours = pickerView.selectedRow(inComponent: 2) * 60 * 60
+        let minutes = pickerView.selectedRow(inComponent: 4) * 60
+        let seconds = TimeInterval((days + hours + minutes))
+        timeInterval = -seconds
+        middleLabel.text = seconds.formattedString()
+    }
+}

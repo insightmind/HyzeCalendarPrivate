@@ -154,6 +154,7 @@ class EventManagement {
 			event.isAllDay = from.isAllDay
 			event.notes = from.notes
 			event.structuredLocation = from.location
+            event.alarms = from.alarms
 			if let rule = from.recurrenceRule {
 				event.recurrenceRules = [rule]
 			} else {

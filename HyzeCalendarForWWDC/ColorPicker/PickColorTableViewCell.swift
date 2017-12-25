@@ -81,4 +81,12 @@ class PickColorTableViewCell: UITableViewCell, EventEditorCellProtocol {
         // Configure the view for the selected state
     }
     
+    override func layoutSubviews() {
+        reloadInformations()
+    }
+    
+    override func prepareForReuse() {
+        reloadInformations()
+    }
+    
 }

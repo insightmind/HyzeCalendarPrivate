@@ -27,14 +27,31 @@ class AlarmTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
         self.delegate = self
         self.dataSource = self
         
+        self.allowsSelection = false
+        self.isScrollEnabled = false
+        
+        self.backgroundColor = Color.blue
+        
         let nib = UINib(nibName: "DefaultAlarmTableViewCell", bundle: nil)
         self.register(nib, forCellReuseIdentifier: defaultAlarmCellIdentifier)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = dequeueReusableCell(withIdentifier: defaultAlarmCellIdentifier) as! DefaultAlarmTableViewCell
-        cell.topLabel.text = String(describing: alarms![indexPath.row].absoluteDate)
-        cell.bottomLabel.text = String(describing: alarms![indexPath.row].relativeOffset)
+        guard let alarm = alarms?[indexPath.row] else { return cell }
+        if let date = alarm.absoluteDate {
+            cell.topLabel.text = String(describing: date)
+        } else {
+            cell.topLabel.isHidden = true
+        }
+        cell.bottomLabel.text = alarm.relativeOffset.formattedString() + " before"
+        
+        if eventInformation.state == .showDetail {
+            cell.removeButtonView.isHidden = true
+        } else {
+            cell.removeButtonView.isHidden = false
+        }
+        
         return cell
     }
     

@@ -17,8 +17,14 @@ enum watchHandType {
 
 class DayView: UIView {
     
+    enum stateType {
+        case show
+        case edit
+    }
+    
     let dayCenterButtonSpacing: CGFloat = 20
     var selectedEventIdentifier: String?
+    var state: stateType = .show
     
     lazy var topLabel: UILabel = {
         let lbl = UILabel()

@@ -12,5 +12,4 @@ protocol EventEditorCellProtocol {
 	var eventInformations: EventEditorEventInformations! { get set }
 	
 	func reloadInformations()
-	
 }

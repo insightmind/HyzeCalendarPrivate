@@ -49,6 +49,9 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
 		reloadTableViewCells(.dateSelection, onlyInformations: true)
 		reloadTableViewCells(.calendar, onlyInformations: true)
 		reloadTableViewCells(.notes, onlyInformations: true)
+        if let _ = eventInformations.recurrenceRule {
+            reloadTableViewCells(.recurrence, onlyInformations: true)
+        }
 	}
 	
 	@IBAction func save(_ sender: UIButton) {
@@ -58,9 +61,13 @@ class EventEditorViewController: UIViewController, UITextFieldDelegate {
 			eventInformations.state = .create
 			titleTextField.isUserInteractionEnabled = true
 			createSetUpSaveButton()
+            reloadAllCells()
+            guard let tableView = tableViewController?.tableView else {
+                fatalError("There should be an EventEditorTableView, but there is no!")
+            }
 			self.tableViewController?.updateCellsArray()
-			self.tableViewController?.tableView.reloadSections(IndexSet(integer: 0), with: .left)
-			reloadAllCells()
+            
+            tableView.reloadSections(IndexSet(integer: 0), with: .left)
 		}
 		
 	}
