@@ -28,7 +28,15 @@ class Artwork: NSObject, MKAnnotation {
 class SelectLocationViewController: PopoverViewController {
 	
 	var searchController: SelectLocationSearchViewController?
-
+    var alarmViewController: AddAlarmViewController? {
+        didSet {
+            if alarmViewController == nil {
+                hasAlarmContext = false
+            } else {
+                hasAlarmContext = true
+            }
+        }}
+    private var hasAlarmContext: Bool = false
 
 	@IBOutlet var popover: UIView!
 	@IBOutlet weak var mapView: MKMapView!
@@ -44,19 +52,32 @@ class SelectLocationViewController: PopoverViewController {
 	@IBAction func cancel(_ sender: UIButton) {
 		self.dismiss(animated: true, completion: nil)
 	}
+    
 	@IBAction func save(_ sender: UIButton) {
 		guard let tableView = searchController?.tableViewController else { return }
 		if let location = tableView.selectedLocation.first {
 			let item = MKMapItem(placemark: location)
 			let structuredLocation = EKStructuredLocation(mapItem: item)
 			structuredLocation.title = location.title
-			eventInformations.location = structuredLocation
+            if hasAlarmContext {
+                guard let alarmController = alarmViewController else { return }
+                alarmController.location = structuredLocation
+            } else {
+                eventInformations.location = structuredLocation
+            }
 		} else {
-			eventInformations.location = nil
+            if hasAlarmContext {
+                guard let alarmController = alarmViewController else { return }
+                alarmController.location = nil
+            } else {
+                eventInformations.location = nil
+            }
 		}
 		self.dismiss(animated: true, completion: {
-			guard let eventEditorTableView = self.eventInformations.eventEditorTableViewController else { return }
-			eventEditorTableView.reloadCell(.location, onlyInformations: true)
+            if !self.hasAlarmContext {
+                guard let eventEditorTableView = self.eventInformations.eventEditorTableViewController else { return }
+                eventEditorTableView.reloadCell(.location, onlyInformations: true)
+            }
 		})
 	}
 	
