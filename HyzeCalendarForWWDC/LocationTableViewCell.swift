@@ -78,52 +78,52 @@ class LocationTableViewCell: UITableViewCell {
 	}
 	
 	func setLocation(_ location: CLLocation, title: String? = nil) {
-		
-		let geoCoder = CLGeocoder()
-		geoCoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) in
-			if let e = error {
-				print("Could not reverse GeoLocation" + e.localizedDescription)
-			} else {
-				// Place details
-				var placeMark: CLPlacemark!
-				placeMark = placemarks?[0]
-				self.placemark = MKPlacemark(placemark: placeMark)
-				
-				var subtitle = " "
-				
-				// Location name
-				if let locationName = placeMark.addressDictionary!["Name"] as? NSString {
-					if let secureTitle = title {
-						self.title.text = secureTitle
-						subtitle += "\(String(locationName)), "
-					} else {
-						self.title.text = String(locationName)
-					}
-				}
-				// Zip code
-				if let zip = placeMark.addressDictionary!["ZIP"] as? NSString {
-					subtitle += String(zip)
-				}
-				
-				// City
-				if let city = placeMark.addressDictionary!["City"] as? NSString {
-					subtitle += " " + String(city) + ","
-				}
-				
-				// Country
-				if let country = placeMark.addressDictionary!["CountryCode"] as? NSString {
-					subtitle += " " + String(country)
-				}
-				
-				self.address.text = subtitle
-				
-				guard let _ = self.placemark else {
-					self.title.text = "Unknown location"
-					self.address.text = "No location was associated"
-					return
-				}
-			}
-		})
+        
+        let geoCoder = CLGeocoder()
+        geoCoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) in
+            if let e = error {
+                print("Could not reverse GeoLocation" + e.localizedDescription)
+            } else {
+                // Place details
+                var placeMark: CLPlacemark!
+                placeMark = placemarks?[0]
+                self.placemark = MKPlacemark(placemark: placeMark)
+                
+                var subtitle = " "
+                
+                // Location name
+                if let locationName = placeMark.addressDictionary!["Name"] as? NSString {
+                    if let secureTitle = title {
+                        self.title.text = secureTitle
+                        subtitle += "\(String(locationName)), "
+                    } else {
+                        self.title.text = String(locationName)
+                    }
+                }
+                // Zip code
+                if let zip = placeMark.addressDictionary!["ZIP"] as? NSString {
+                    subtitle += String(zip)
+                }
+                
+                // City
+                if let city = placeMark.addressDictionary!["City"] as? NSString {
+                    subtitle += " " + String(city) + ","
+                }
+                
+                // Country
+                if let country = placeMark.addressDictionary!["CountryCode"] as? NSString {
+                    subtitle += " " + String(country)
+                }
+                
+                self.address.text = subtitle
+                
+                guard let _ = self.placemark else {
+                    self.title.text = "Unknown location"
+                    self.address.text = "No location was associated"
+                    return
+                }
+            }
+        })
 	}
 	
 	func setLocation(_ placemark: MKPlacemark, title: String? = nil) {
@@ -133,8 +133,11 @@ class LocationTableViewCell: UITableViewCell {
 			if let name = placemark.title {
 				self.address.text = name
 			}
-		} else {
-			if let name = placemark.title {
+        } else {
+            if let interest = placemark.areasOfInterest?.first {
+                self.title.text = interest
+                self.address.text = placemark.title
+            } else if let name = placemark.title {
 				if name.contains(",") {
 					let splittedTitle = name.split(separator: ",", maxSplits: 1, omittingEmptySubsequences: true)
 					self.title.text = String(splittedTitle[0])

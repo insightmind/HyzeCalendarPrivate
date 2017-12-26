@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import EventKit
 
 class SelectLocationSearchViewController: UIViewController, UISearchBarDelegate {
 
@@ -19,6 +20,8 @@ class SelectLocationSearchViewController: UIViewController, UISearchBarDelegate 
 	
 	var mapView: MKMapView?
 	var tableViewController: SelectLocationTableViewController?
+    var alarmLocation: EKStructuredLocation? = nil
+    var hasAlarmContext = false
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,6 +69,8 @@ class SelectLocationSearchViewController: UIViewController, UISearchBarDelegate 
 		if segue.identifier == "embed" {
 			if let viewController = segue.destination as? SelectLocationTableViewController {
 				viewController.mapView = self.mapView
+                viewController.hasAlarmContext = self.hasAlarmContext
+                viewController.alarmLocation = self.alarmLocation
 				tableViewController = viewController
 			}
 		}

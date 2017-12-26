@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import EventKit
 
 class SelectLocationTableViewController: UITableViewController {
 	
@@ -19,6 +20,8 @@ class SelectLocationTableViewController: UITableViewController {
 	
 	var locations: [MKPlacemark] = []
 	var selectedLocation: [MKPlacemark] = []
+    var alarmLocation: EKStructuredLocation? = nil
+    var hasAlarmContext = false
 	var withCurrentLocation = false
 	var search = ""
 
@@ -41,21 +44,32 @@ class SelectLocationTableViewController: UITableViewController {
 		self.tableView.register(nib, forCellReuseIdentifier: reuseIdentifier)
 		self.tableView.backgroundColor = UIColor.clear
 		self.tableView.separatorStyle = .none
-		if let location = eventInformations.location?.geoLocation {
-			let geoCoder = CLGeocoder()
-			geoCoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) in
-				if let e = error {
-					print(e.localizedDescription)
-				} else {
-					if let placemark = placemarks?.first {
-						let place = MKPlacemark(placemark: placemark)
-						self.selectLocation(place)
-					}
-				}
-			})
-		}
-		
+        
+        setSelectedLocation()
+        
 		self.searchDidChange("")
+    }
+    
+    func setSelectedLocation() {
+        var location: CLLocation?
+        if hasAlarmContext {
+            location = alarmLocation?.geoLocation
+        } else {
+            location = eventInformations.location?.geoLocation
+        }
+        if let checkedLocation = location {
+            let geoCoder = CLGeocoder()
+            geoCoder.reverseGeocodeLocation(checkedLocation, completionHandler: { (placemarks, error) in
+                if let e = error {
+                    print(e.localizedDescription)
+                } else {
+                    if let placemark = placemarks?.first {
+                        let place = MKPlacemark(placemark: placemark)
+                        self.selectLocation(place)
+                    }
+                }
+            })
+        }
     }
 
     override func didReceiveMemoryWarning() {

@@ -40,7 +40,15 @@ class AlarmTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
         let cell = dequeueReusableCell(withIdentifier: defaultAlarmCellIdentifier) as! DefaultAlarmTableViewCell
         guard let alarm = alarms?[indexPath.row] else { return cell }
         if let date = alarm.absoluteDate {
-            cell.topLabel.text = String(describing: date)
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .short
+            dateFormatter.timeStyle = .short
+            if Settings.shared.isAMPM {
+                dateFormatter.locale = Locale(identifier: "en_US")
+            } else {
+                dateFormatter.locale = Locale(identifier: "de_DE")
+            }
+            cell.topLabel.text = dateFormatter.string(from: date)
         } else {
             cell.topLabel.isHidden = true
         }

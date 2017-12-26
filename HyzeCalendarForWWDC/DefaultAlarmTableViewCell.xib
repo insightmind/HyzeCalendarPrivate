@@ -39,16 +39,16 @@
                         </constraints>
                     </view>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="5tL-oP-wgZ">
-                        <rect key="frame" x="16" y="11" width="238.5" height="50"/>
+                        <rect key="frame" x="8" y="11" width="246.5" height="50"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rxc-ic-eGT">
-                                <rect key="frame" x="0.0" y="0.0" width="238.5" height="25"/>
+                                <rect key="frame" x="0.0" y="0.0" width="246.5" height="25"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g1R-kw-VXY">
-                                <rect key="frame" x="0.0" y="25" width="238.5" height="25"/>
+                                <rect key="frame" x="0.0" y="25" width="246.5" height="25"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -61,7 +61,7 @@
                     <constraint firstItem="KT6-2i-c78" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="GwV-AB-wwO"/>
                     <constraint firstItem="KT6-2i-c78" firstAttribute="leading" secondItem="5tL-oP-wgZ" secondAttribute="trailing" constant="8" id="KHY-mc-ud1"/>
                     <constraint firstItem="KT6-2i-c78" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Kc6-lR-JyC"/>
-                    <constraint firstItem="5tL-oP-wgZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="RBf-tq-Vpx"/>
+                    <constraint firstItem="5tL-oP-wgZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="RBf-tq-Vpx"/>
                     <constraint firstAttribute="trailing" secondItem="KT6-2i-c78" secondAttribute="trailing" constant="8" id="aix-jL-b7f"/>
                     <constraint firstAttribute="bottomMargin" secondItem="KT6-2i-c78" secondAttribute="bottom" id="gbQ-sY-fty"/>
                     <constraint firstItem="5tL-oP-wgZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="wUl-oA-lcz"/>

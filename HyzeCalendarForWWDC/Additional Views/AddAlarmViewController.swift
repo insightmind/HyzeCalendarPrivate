@@ -18,13 +18,14 @@ class AddAlarmViewController: PopoverViewController, UIPickerViewDelegate, UIPic
     }
     
     private var state: stateType = .date
-    var location: EKStructuredLocation? = EKStructuredLocation() {
+    var location: EKStructuredLocation? = nil {
         didSet {
             if location == nil {
                 locationType = .none
             } else {
                 locationType = .enter
             }
+            setLocationTitle()
             setLocationHeight()
             setLocationSettings()
         }
@@ -81,12 +82,6 @@ class AddAlarmViewController: PopoverViewController, UIPickerViewDelegate, UIPic
         addLocationView.backgroundColor = UIColor.clear
         addLocationView.layer.cornerRadius = locationView.layer.cornerRadius
         
-        if location == nil {
-            locationSettingsView.isHidden = true
-        } else {
-            locationSettingsView.isHidden = false
-        }
-        
         setLocationHeight()
         setLocationSettings()
         setLocationTitle()
@@ -110,8 +105,9 @@ class AddAlarmViewController: PopoverViewController, UIPickerViewDelegate, UIPic
             let image = #imageLiteral(resourceName: "ic_add").withRenderingMode(.alwaysTemplate)
             addLocationButton.setImage(image, for: .normal)
         } else {
+            setLocation()
             addLocationSecondaryLabel.isHidden = false
-            let image = #imageLiteral(resourceName: "ic_delete").withRenderingMode(.alwaysTemplate)
+            let image = #imageLiteral(resourceName: "ic_edit").withRenderingMode(.alwaysTemplate)
             addLocationButton.setImage(image, for: .normal)
         }
     }
@@ -119,8 +115,10 @@ class AddAlarmViewController: PopoverViewController, UIPickerViewDelegate, UIPic
     func setLocationHeight(_ animated: Bool = false) {
         if location == nil {
             locationViewHeightConstraint.constant = 60
+            locationSettingsView.isHidden = true
         } else {
             locationViewHeightConstraint.constant = 110
+            locationSettingsView.isHidden = false
         }
         if !animated {
             view.layoutIfNeeded()
@@ -128,6 +126,42 @@ class AddAlarmViewController: PopoverViewController, UIPickerViewDelegate, UIPic
         }
         UIView.animate(withDuration: 0.2) {
             self.view.layoutIfNeeded()
+        }
+    }
+    
+    func setLocation() {
+        guard let coreLocation = location?.geoLocation else { return }
+        if let title = location?.title {
+            if title.contains(",") {
+                let splittedTitle = title.split(separator: ",", maxSplits: 1, omittingEmptySubsequences: true)
+                self.addLocationSecondaryLabel.isHidden = false
+                self.addLocationLabel.text = String(splittedTitle[0])
+                self.addLocationSecondaryLabel.text = String(splittedTitle[1])
+            } else {
+                self.addLocationLabel.text = title
+                self.addLocationSecondaryLabel.isHidden = true
+            }
+        } else {
+            let (locationInformation, areaOfInterests) = LocationManagement.shared.getLocationInformations(location: coreLocation)
+            if let interest = areaOfInterests.first {
+                addLocationLabel.text = interest
+                guard let name = locationInformation["name"] else {
+                    addLocationSecondaryLabel.isHidden = true
+                    return
+                }
+                addLocationSecondaryLabel.isHidden = false
+                addLocationSecondaryLabel.text = name
+            } else if let name = locationInformation["name"] {
+                if name.contains(",") {
+                    let splittedTitle = name.split(separator: ",", maxSplits: 1, omittingEmptySubsequences: true)
+                    self.addLocationSecondaryLabel.isHidden = false
+                    self.addLocationLabel.text = String(splittedTitle[0])
+                    self.addLocationSecondaryLabel.text = String(splittedTitle[1])
+                } else {
+                    self.addLocationLabel.text = name
+                    self.addLocationSecondaryLabel.isHidden = true
+                }
+            }
         }
     }
     

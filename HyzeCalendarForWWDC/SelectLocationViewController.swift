@@ -142,6 +142,8 @@ class SelectLocationViewController: PopoverViewController {
 		if segue.identifier == "embed" {
 			if let viewController = segue.destination as? SelectLocationSearchViewController {
 				viewController.mapView = self.mapView
+                viewController.alarmLocation = self.alarmViewController?.location
+                viewController.hasAlarmContext = self.hasAlarmContext
 				searchController = viewController
 			}
 		}

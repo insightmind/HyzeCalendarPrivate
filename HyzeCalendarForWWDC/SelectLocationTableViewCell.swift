@@ -69,7 +69,6 @@ class SelectLocationTableViewCell: UITableViewCell, EventEditorCellProtocol {
 	@IBOutlet weak var selectButton: UIButton!
 	@IBOutlet weak var label: UILabel!
 	@IBOutlet weak var subLabel: UILabel!
-	@IBOutlet var labelBottomConstraint: NSLayoutConstraint!
 	@IBOutlet var labelHeightConstraint: NSLayoutConstraint!
 	
 	@IBAction func edit(_ sender: UIButton) {
@@ -81,8 +80,8 @@ class SelectLocationTableViewCell: UITableViewCell, EventEditorCellProtocol {
 	}
 	
 	override func layoutIfNeeded() {
+        expandLabel(subLabel.isHidden)
 		super.layoutIfNeeded()
-		expandLabel(subLabel.isHidden)
 	}
 	
 	override func awakeFromNib() {
@@ -103,11 +102,9 @@ class SelectLocationTableViewCell: UITableViewCell, EventEditorCellProtocol {
 	
 	func expandLabel(_ expand: Bool) {
 		if expand {
-			labelHeightConstraint.isActive = false
-			labelBottomConstraint.isActive = true
+            subLabel.isHidden = true
 		} else {
-			labelHeightConstraint.isActive = true
-			labelBottomConstraint.isActive = false
+            subLabel.isHidden = false
 		}
 	}
 

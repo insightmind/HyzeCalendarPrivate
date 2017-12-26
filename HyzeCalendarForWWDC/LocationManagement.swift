@@ -15,8 +15,9 @@ class LocationManagement {
 	
 	static let shared = LocationManagement()
 	
-	func getLocationInformations(location: CLLocation) -> [String: String] {
+	func getLocationInformations(location: CLLocation) -> ([String: String], [String]) {
 		let geoCoder = CLGeocoder()
+        var areaOfInterests = [String]()
 		var placeInformations: [String: String] = [:]
 		geoCoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) in
 			if error != nil {
@@ -38,8 +39,12 @@ class LocationManagement {
 				// City
 				if let city = placeMark.addressDictionary!["City"] as? NSString {
 					placeInformations["city"] = String(city)
-					
 				}
+                
+                // Area of Interests
+                if let interests = placeMark.areasOfInterest {
+                    areaOfInterests = interests
+                }
 				
 				// Country
 				if let country = placeMark.addressDictionary!["CountryCode"] as? NSString {
@@ -47,7 +52,7 @@ class LocationManagement {
 				}
 			}
 		})
-		return placeInformations
+		return (placeInformations, areaOfInterests)
 	}
 	
 }

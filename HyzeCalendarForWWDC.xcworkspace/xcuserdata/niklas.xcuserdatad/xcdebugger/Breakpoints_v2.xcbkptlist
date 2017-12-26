@@ -10,12 +10,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HyzeCalendarForWWDC/Additional Views/AddAlarmViewController.swift"
-            timestampString = "535936004.147049"
+            timestampString = "535994722.548338"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
             landmarkName = "save(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HyzeCalendarForWWDC/Additional Views/AddAlarmViewController.swift"
+            timestampString = "535994722.548418"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
+            landmarkName = "setLocation()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
