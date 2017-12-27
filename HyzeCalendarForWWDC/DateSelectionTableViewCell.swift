@@ -208,6 +208,7 @@ class DateSelectionTableViewCell: UITableViewCell, EventEditorCellProtocol {
     }
 	
 	override func layoutSubviews() {
+        super.layoutSubviews()
 		self.backgroundColor = UIColor.clear
 		mainView.backgroundColor = Color.blue
 		mainView.layer.cornerRadius = mainView.frame.height / 2

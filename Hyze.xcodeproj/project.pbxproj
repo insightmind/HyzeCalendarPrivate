@@ -101,8 +101,6 @@
 		3EFC00CA1F5E165C0028F387 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFC00C81F5E165C0028F387 /* LocationTableViewCell.swift */; };
 		3EFC00CB1F5E165C0028F387 /* LocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EFC00C91F5E165C0028F387 /* LocationTableViewCell.xib */; };
 		3EFE5F491E41310A004E75F9 /* DayMainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFE5F481E41310A004E75F9 /* DayMainButton.swift */; };
-		850BAFCA1FC748ED008EF9CE /* Hyze Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 850BAFC91FC748ED008EF9CE /* Hyze Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		850BAFDA1FC748ED008EF9CE /* Hyze.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 850BAFBD1FC748ED008EF9CE /* Hyze.app */; };
 		850BAFE51FC77B11008EF9CE /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850BAFE41FC77B11008EF9CE /* PopoverViewController.swift */; };
 		85108E0F1F81857000F42FDD /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 85108E0E1F81857000F42FDD /* Podfile */; };
 		851ADE0D1FEC188E00A622E2 /* TimeIntervalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851ADE0C1FEC188E00A622E2 /* TimeIntervalExtension.swift */; };
@@ -147,42 +145,13 @@
 		BD379CE11E3065B18A68D862 /* Pods_HyzeCalendarForWWDC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97F66AFE0BF643DE942FADFE /* Pods_HyzeCalendarForWWDC.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		850BAFCB1FC748ED008EF9CE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3EA80D461E2BEC9300FD87C3 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 850BAFC81FC748ED008EF9CE;
-			remoteInfo = "Hyze Extension";
-		};
-		850BAFD81FC748ED008EF9CE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3EA80D461E2BEC9300FD87C3 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 850BAFBC1FC748ED008EF9CE;
-			remoteInfo = Hyze;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
-		850BAFDE1FC748ED008EF9CE /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				850BAFCA1FC748ED008EF9CE /* Hyze Extension.appex in Embed App Extensions */,
-			);
-			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		859BFF661FA7B06800EC7085 /* Embed Watch Content */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				850BAFDA1FC748ED008EF9CE /* Hyze.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,8 +263,6 @@
 		850BAFAD1FC74793008EF9CE /* NotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		850BAFAF1FC747DB008EF9CE /* ExtensionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		850BAFB21FC747DB008EF9CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		850BAFBD1FC748ED008EF9CE /* Hyze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hyze.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		850BAFC91FC748ED008EF9CE /* Hyze Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Hyze Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		850BAFE41FC77B11008EF9CE /* PopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 		85108E0E1F81857000F42FDD /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		851ADE0C1FEC188E00A622E2 /* TimeIntervalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalExtension.swift; sourceTree = "<group>"; };
@@ -376,13 +343,6 @@
 				3ED0C4DE1F532D18005915B6 /* Contacts.framework in Frameworks */,
 				3ED0C4DC1F532D11005915B6 /* EventKit.framework in Frameworks */,
 				BD379CE11E3065B18A68D862 /* Pods_HyzeCalendarForWWDC.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		850BAFC61FC748ED008EF9CE /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -616,8 +576,6 @@
 				859BFF511FA7B06800EC7085 /* Hyze Extension */,
 				D48AC8556D2AC934DB48314B /* Frameworks */,
 				D0DB78F19C588A5DB8C22CB4 /* Pods */,
-				850BAFBD1FC748ED008EF9CE /* Hyze.app */,
-				850BAFC91FC748ED008EF9CE /* Hyze Extension.appex */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1118,46 +1076,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				850BAFD91FC748ED008EF9CE /* PBXTargetDependency */,
 			);
 			name = HyzeCalendarForWWDC;
 			productName = HyzeCalendarForWWDC;
 			productReference = 3E533BC01EC36185000CEF5F /* HyzeCalendarForWWDC.app */;
 			productType = "com.apple.product-type.application";
-		};
-		850BAFBC1FC748ED008EF9CE /* Hyze */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 850BAFDF1FC748ED008EF9CE /* Build configuration list for PBXNativeTarget "Hyze" */;
-			buildPhases = (
-				850BAFBB1FC748ED008EF9CE /* Resources */,
-				850BAFDE1FC748ED008EF9CE /* Embed App Extensions */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				850BAFCC1FC748ED008EF9CE /* PBXTargetDependency */,
-			);
-			name = Hyze;
-			productName = Hyze;
-			productReference = 850BAFBD1FC748ED008EF9CE /* Hyze.app */;
-			productType = "com.apple.product-type.application.watchapp2";
-		};
-		850BAFC81FC748ED008EF9CE /* Hyze Extension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 850BAFDB1FC748ED008EF9CE /* Build configuration list for PBXNativeTarget "Hyze Extension" */;
-			buildPhases = (
-				850BAFC51FC748ED008EF9CE /* Sources */,
-				850BAFC61FC748ED008EF9CE /* Frameworks */,
-				850BAFC71FC748ED008EF9CE /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Hyze Extension";
-			productName = "Hyze Extension";
-			productReference = 850BAFC91FC748ED008EF9CE /* Hyze Extension.appex */;
-			productType = "com.apple.product-type.watchkit2-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -1186,16 +1109,6 @@
 							};
 						};
 					};
-					850BAFBC1FC748ED008EF9CE = {
-						CreatedOnToolsVersion = 9.2;
-						DevelopmentTeam = 64M3NJV97W;
-						ProvisioningStyle = Automatic;
-					};
-					850BAFC81FC748ED008EF9CE = {
-						CreatedOnToolsVersion = 9.2;
-						DevelopmentTeam = 64M3NJV97W;
-						ProvisioningStyle = Automatic;
-					};
 				};
 			};
 			buildConfigurationList = 3EA80D491E2BEC9300FD87C3 /* Build configuration list for PBXProject "Hyze" */;
@@ -1212,8 +1125,6 @@
 			projectRoot = "";
 			targets = (
 				3EA80D4D1E2BEC9300FD87C3 /* HyzeCalendarForWWDC */,
-				850BAFBC1FC748ED008EF9CE /* Hyze */,
-				850BAFC81FC748ED008EF9CE /* Hyze Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -1261,20 +1172,6 @@
 				3E68188A1F46FB6300E8D7BC /* SelectCalendar.storyboard in Resources */,
 				3EDC110C1F40E1B400E0B250 /* NotesTableViewCell.xib in Resources */,
 				3E62854B1F44797900301A42 /* SelectCalendarTableViewCell.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		850BAFBB1FC748ED008EF9CE /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		850BAFC71FC748ED008EF9CE /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1436,27 +1333,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		850BAFC51FC748ED008EF9CE /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		850BAFCC1FC748ED008EF9CE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 850BAFC81FC748ED008EF9CE /* Hyze Extension */;
-			targetProxy = 850BAFCB1FC748ED008EF9CE /* PBXContainerItemProxy */;
-		};
-		850BAFD91FC748ED008EF9CE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 850BAFBC1FC748ED008EF9CE /* Hyze */;
-			targetProxy = 850BAFD81FC748ED008EF9CE /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		3E68B5C71E3A886D00AE103F /* Main.storyboard */ = {
@@ -1639,126 +1516,6 @@
 			};
 			name = Debug;
 		};
-		850BAFDC1FC748ED008EF9CE /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 64M3NJV97W;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "Hyze Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = net.hyze.insightmind.HyzeCalendar.watchkitapp.watchkitextension;
-				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.2;
-			};
-			name = Release;
-		};
-		850BAFDD1FC748ED008EF9CE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 64M3NJV97W;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Hyze Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = net.hyze.insightmind.HyzeCalendar.watchkitapp.watchkitextension;
-				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.2;
-			};
-			name = Debug;
-		};
-		850BAFE01FC748ED008EF9CE /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Manolito Buelow (H8K5J9JJ2M)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 64M3NJV97W;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				IBSC_MODULE = Hyze_Extension;
-				INFOPLIST_FILE = Hyze/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = net.hyze.insightmind.HyzeCalendar.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.2;
-			};
-			name = Release;
-		};
-		850BAFE11FC748ED008EF9CE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Manolito Buelow (H8K5J9JJ2M)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 64M3NJV97W;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				IBSC_MODULE = Hyze_Extension;
-				INFOPLIST_FILE = Hyze/Info.plist;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = net.hyze.insightmind.HyzeCalendar.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.2;
-			};
-			name = Debug;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1776,24 +1533,6 @@
 			buildConfigurations = (
 				3EA80D6D1E2BEC9300FD87C3 /* Release */,
 				3EDC11311F410C0400E0B250 /* Debug */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		850BAFDB1FC748ED008EF9CE /* Build configuration list for PBXNativeTarget "Hyze Extension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				850BAFDC1FC748ED008EF9CE /* Release */,
-				850BAFDD1FC748ED008EF9CE /* Debug */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		850BAFDF1FC748ED008EF9CE /* Build configuration list for PBXNativeTarget "Hyze" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				850BAFE01FC748ED008EF9CE /* Release */,
-				850BAFE11FC748ED008EF9CE /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

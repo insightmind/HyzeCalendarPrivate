@@ -21,6 +21,7 @@ class ContactTableViewCell: UITableViewCell {
 	var tableView: SelectContactsTableView?
 	var setTableView: SetContactsTableViewController?
 	var isAdded: Bool = false
+    var isInMainCell: Bool = false
 
 	@IBOutlet weak var contactLabel: UILabel!
 	@IBOutlet weak var contactView: UIView!
@@ -103,7 +104,7 @@ class ContactTableViewCell: UITableViewCell {
 		self.contactDeleteView.backgroundColor = Color.red
 		var image: UIImage
 		if isAdded {
-			image = #imageLiteral(resourceName: "ic_remove").withRenderingMode(.alwaysTemplate)
+			image = #imageLiteral(resourceName: "ic_delete").withRenderingMode(.alwaysTemplate)
 		} else {
 			image = #imageLiteral(resourceName: "ic_person_add").withRenderingMode(.alwaysTemplate)
 		}
@@ -138,18 +139,20 @@ class ContactTableViewCell: UITableViewCell {
 		self.backgroundColor = UIColor.clear
 		self.mainView.backgroundColor = UIColor.clear
 		
-		if Settings.shared.isDarkMode {
-			self.contactLabel.textColor = Color.white
-			self.emailLabel.textColor = Color.white.withAlphaComponent(0.7)
-		} else {
-			self.contactLabel.textColor = Color.blue
-			self.emailLabel.textColor = Color.blue.withAlphaComponent(0.7)
-		}
-    
-		
+		setColor()
 		setUpContactDeleteButton()
 		setUpContactImageView()
 		
+    }
+    
+    func setColor() {
+        if Settings.shared.isDarkMode || isAdded || isInMainCell {
+            self.contactLabel.textColor = Color.white
+            self.emailLabel.textColor = Color.white.withAlphaComponent(0.7)
+        } else {
+            self.contactLabel.textColor = Color.blue
+            self.emailLabel.textColor = Color.blue.withAlphaComponent(0.7)
+        }
     }
 	
 	func setIsEditable(_ isEditable: Bool) {
@@ -166,7 +169,7 @@ class ContactTableViewCell: UITableViewCell {
 		self.isAdded = shouldAdd
 		if shouldAdd {
 			self.backgroundColor = Color.blue
-			let image = #imageLiteral(resourceName: "ic_remove").withRenderingMode(.alwaysTemplate)
+			let image = #imageLiteral(resourceName: "ic_delete").withRenderingMode(.alwaysTemplate)
 			self.contactDeleteButton.setImage(image, for: .normal)
 		} else {
 			self.backgroundColor = UIColor.clear
@@ -193,11 +196,13 @@ class ContactTableViewCell: UITableViewCell {
 		self.emailLabel.text = email
 		updateLayout()
 		self.contact = contact
+        setColor()
 	}
 	
 	func setEmail(email: String, shouldAdd: Bool = false, isInMainCell: Bool = false) {
 		setIsAdded(shouldAdd)
 		setUp(email: email)
+        self.isInMainCell = isInMainCell
 		if isInMainCell {
 			self.contactLabel.textColor = Color.white
 			self.emailLabel.textColor = Color.white.withAlphaComponent(0.7)
@@ -220,6 +225,7 @@ class ContactTableViewCell: UITableViewCell {
 		self.contactView.layer.shadowColor = self.contactView.backgroundColor?.cgColor
 		self.isContact = false
 		self.updateLayout()
+        setColor()
 	}
 	
 	func setContact(_ participant: EKParticipant, shouldAdd: Bool = false, email: String? = nil) {
@@ -239,6 +245,7 @@ class ContactTableViewCell: UITableViewCell {
 		}
 		self.contactLabel.textColor = Color.white
 		self.emailLabel.textColor = Color.white.withAlphaComponent(0.7)
+        setColor()
 	}
 	
 	func setContact(_ contact: CNContact, shouldAdd: Bool = false, email: String? = nil, isInMainCell: Bool = false) {
@@ -272,6 +279,7 @@ class ContactTableViewCell: UITableViewCell {
 		self.contactLabel.text = nil
 		self.contact = nil
 		self.contactDeleteButton.imageView?.image = nil
+        setColor()
 	}
     
 }

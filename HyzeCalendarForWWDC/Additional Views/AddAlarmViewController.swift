@@ -234,6 +234,8 @@ class AddAlarmViewController: PopoverViewController, UIPickerViewDelegate, UIPic
         case .time:
             alarm = EKAlarm(relativeOffset: timeInterval)
         }
+        alarm.structuredLocation = location
+        alarm.proximity = locationType
         if let _ = eventInformations.alarms {
             eventInformations.alarms?.append(alarm)
         } else {

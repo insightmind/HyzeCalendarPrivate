@@ -28,8 +28,9 @@ class AlarmTableViewCell: UITableViewCell, EventEditorCellProtocol {
     var eventInformations: EventEditorEventInformations! = EventManagement.shared.eventInformation
     
     func reloadInformations() {
+        selectAlarmView.reloadData()
         setLayout()
-        selectAlarmView.reloadSections(IndexSet(integer: 0), with: .none)
+        layoutIfNeeded()
     }
     
     override func awakeFromNib() {
@@ -112,6 +113,9 @@ class AlarmTableViewCell: UITableViewCell, EventEditorCellProtocol {
         guard let tableView = eventInformations.eventEditorTableViewController else { return }
         eventInformations.showAllAlarms = !eventInformations.showAllAlarms
         tableView.updateCellHeights()
+        UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+            self.showAllButton.transform = CGAffineTransform(rotationAngle: self.eventInformations.showAllAlarms ? CGFloat.pi : 2*CGFloat.pi)
+        }, completion: nil)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -130,6 +134,7 @@ class AlarmTableViewCell: UITableViewCell, EventEditorCellProtocol {
     }
     
     override func layoutSubviews() {
+        super.layoutSubviews()
         reloadInformations()
     }
     

@@ -82,6 +82,7 @@ class PickColorTableViewCell: UITableViewCell, EventEditorCellProtocol {
     }
     
     override func layoutSubviews() {
+        super.layoutSubviews()
         reloadInformations()
     }
     

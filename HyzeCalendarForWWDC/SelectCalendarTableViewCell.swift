@@ -52,9 +52,6 @@ class SelectCalendarTableViewCell: UITableViewCell, EventEditorCellProtocol {
         super.awakeFromNib()
         // Initialization code
 		self.eventInformations = EventManagement.shared.eventInformation
-		
-        
-        setUpSelectButton()
         
 		self.backgroundColor = UIColor.clear
 		self.mainView.layer.cornerRadius = self.labelView.bounds.height / 2
@@ -123,7 +120,9 @@ class SelectCalendarTableViewCell: UITableViewCell, EventEditorCellProtocol {
     }
     
     override func layoutSubviews() {
+        super.layoutSubviews()
         reloadInformations()
+        setUpSelectButton()
     }
     
     override func prepareForReuse() {

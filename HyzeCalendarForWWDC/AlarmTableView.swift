@@ -39,27 +39,13 @@ class AlarmTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = dequeueReusableCell(withIdentifier: defaultAlarmCellIdentifier) as! DefaultAlarmTableViewCell
         guard let alarm = alarms?[indexPath.row] else { return cell }
-        if let date = alarm.absoluteDate {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateStyle = .short
-            dateFormatter.timeStyle = .short
-            if Settings.shared.isAMPM {
-                dateFormatter.locale = Locale(identifier: "en_US")
-            } else {
-                dateFormatter.locale = Locale(identifier: "de_DE")
-            }
-            cell.topLabel.text = dateFormatter.string(from: date)
-        } else {
-            cell.topLabel.isHidden = true
-        }
-        cell.bottomLabel.text = alarm.relativeOffset.formattedString() + " before"
-        
+        cell.set(alarm: alarm)
+        cell.tableView = self
         if eventInformation.state == .showDetail {
             cell.removeButtonView.isHidden = true
         } else {
             cell.removeButtonView.isHidden = false
         }
-        
         return cell
     }
     
@@ -74,6 +60,26 @@ class AlarmTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
     
     func fetch() {
         alarms = eventInformation.alarms ?? []
+    }
+    
+    func remove(alarm: EKAlarm) {
+        guard var eAlarms = eventInformation.alarms else { return }
+        var indexToRemove = 0
+        for index in 0..<eAlarms.count {
+            if alarm == eAlarms[index] {
+                indexToRemove = index
+                break
+            }
+        }
+        
+        eAlarms.remove(at: indexToRemove)
+        eventInformation.alarms = eAlarms
+        fetch()
+        reloadData()
+        
+        guard let eventEditorTableView = eventInformation.eventEditorTableViewController else { return }
+        eventEditorTableView.updateCellHeights()
+        eventEditorTableView.reloadCell(.alarm, onlyInformations: true)
     }
     
 }

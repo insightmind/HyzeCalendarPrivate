@@ -52,6 +52,8 @@ class SetContactsPopoverViewController: PopoverViewController {
 		eventInformations.participants = attendees
 		
 		self.dismiss(animated: true, completion: {
+            self.eventInformations.eventEditorTableViewController?.updateCellHeights()
+            self.eventInformations.eventEditorTableViewController?.tableView.reloadData()
 			self.eventInformations.eventEditorTableViewController?.reloadCell(.contacts, onlyInformations: true)
 		})
 	}

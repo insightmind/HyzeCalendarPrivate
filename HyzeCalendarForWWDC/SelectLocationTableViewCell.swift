@@ -115,6 +115,7 @@ class SelectLocationTableViewCell: UITableViewCell, EventEditorCellProtocol {
     }
     
     override func layoutSubviews() {
+        super.layoutSubviews()
         reloadInformations()
     }
     

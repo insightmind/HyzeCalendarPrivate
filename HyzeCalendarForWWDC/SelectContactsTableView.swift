@@ -70,18 +70,19 @@ class SelectContactsTableView: UITableView, UITableViewDelegate, UITableViewData
 		for i in 0..<contacts.count {
 			if contacts[i].url == email {
 				contacts.remove(at: i)
-				guard let tableView = eventInformation.eventEditorTableViewController else {
-					return
-				}
 				reloadParticipants()
+                reloadData()
+                guard let tableView = eventInformation.eventEditorTableViewController else { return }
 				tableView.reloadCell(.contacts, onlyInformations: true)
-				return
+                tableView.updateCellHeights()
+                return
 			}
 		}
 	}
 	
 	func reloadParticipants() {
 		eventInformation.participants = contacts
+        setUpData()
 	}
 	
 	func setUpData() {

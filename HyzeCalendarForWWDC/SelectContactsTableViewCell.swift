@@ -14,12 +14,11 @@ class SelectContactsTableViewCell: UITableViewCell, EventEditorCellProtocol {
 	var isEditable: Bool = false
 	
 	func reloadInformations() {
-		self.contactsTableView.setUpData()
-		self.contactsTableView.reloadSections(IndexSet(integer: 0), with: .automatic)
 		eventInformations = EventManagement.shared.eventInformation
+        contactsTableView.reloadData()
 		setUpLayout()
 		checkEditable()
-		eventInformations.eventEditorTableViewController?.updateCellHeights()
+		layoutIfNeeded()
 	}
 	
 	@IBOutlet weak var topView: UIView!
@@ -190,11 +189,13 @@ class SelectContactsTableViewCell: UITableViewCell, EventEditorCellProtocol {
     }
     
     override func layoutSubviews() {
+        super.layoutSubviews()
         reloadInformations()
     }
     
     override func prepareForReuse() {
         reloadInformations()
+        return
     }
     
 }

@@ -82,6 +82,7 @@ class NotesTableViewCell: UITableViewCell, UITextViewDelegate, EventEditorCellPr
 	}
     
     override func layoutSubviews() {
+        super.layoutSubviews()
         reloadInformations()
     }
 	

@@ -225,7 +225,7 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
 		for i in (superViewController?.childViewControllers)! {
 			if i.title == "MonthView" {
 				mainViewController = i as! ViewController
-                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
                     let basicHeight = mainViewController.calendarViewToTopConstraint.constant + mainViewController.calendarView.frame.height - 10
                     let expandedValue = Design.shared.currentETViewIsExpandedByNumOfRows * ((collectionView.bounds.width / 7))
                     mainViewController.eventListHeightConstraint.constant = basicHeight - expandedValue

@@ -56,6 +56,7 @@ class RemoveTableViewCell: UITableViewCell, EventEditorCellProtocol {
 	}
     
     override func layoutSubviews() {
+        super.layoutSubviews()
         reloadInformations()
     }
 	
