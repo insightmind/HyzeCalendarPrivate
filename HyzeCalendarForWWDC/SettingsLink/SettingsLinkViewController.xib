@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsLinkViewController" customModule="HyzeCalendarForWWDC" customModuleProvider="target">
+            <connections>
+                <outlet property="contextLabel" destination="jDm-hX-poR" id="Apz-Ie-SfL"/>
+                <outlet property="linkButton" destination="Cyg-5c-bvS" id="IZq-le-R8k"/>
+                <outlet property="linkButtonView" destination="cME-Wc-bdv" id="MEo-Qr-Puw"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@NiklasBuelow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jDm-hX-poR">
+                    <rect key="frame" x="8" y="8" width="306" height="44"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cME-Wc-bdv">
+                    <rect key="frame" x="322" y="8" width="45" height="45"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cyg-5c-bvS">
+                            <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
+                            <state key="normal" image="ic_add"/>
+                            <connections>
+                                <action selector="link:" destination="-1" eventType="touchUpInside" id="nUn-0J-0VJ"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="cME-Wc-bdv" secondAttribute="height" multiplier="1:1" id="D2v-Q8-c0U"/>
+                        <constraint firstAttribute="trailing" secondItem="Cyg-5c-bvS" secondAttribute="trailing" id="cH9-Mj-rSB"/>
+                        <constraint firstItem="Cyg-5c-bvS" firstAttribute="leading" secondItem="cME-Wc-bdv" secondAttribute="leading" id="i3s-4C-SQd"/>
+                        <constraint firstItem="Cyg-5c-bvS" firstAttribute="top" secondItem="cME-Wc-bdv" secondAttribute="top" id="qAJ-lE-990"/>
+                        <constraint firstAttribute="bottom" secondItem="Cyg-5c-bvS" secondAttribute="bottom" id="uX6-ai-M9M"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="cME-Wc-bdv" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="KjW-Ww-o1U"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="jDm-hX-poR" secondAttribute="bottom" constant="8" id="MTh-xs-S2N"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="cME-Wc-bdv" secondAttribute="trailing" constant="8" id="Ngn-58-sDD"/>
+                <constraint firstItem="cME-Wc-bdv" firstAttribute="leading" secondItem="jDm-hX-poR" secondAttribute="trailing" constant="8" id="Rhb-Vf-CHZ"/>
+                <constraint firstItem="cME-Wc-bdv" firstAttribute="width" secondItem="cME-Wc-bdv" secondAttribute="height" multiplier="1:1" id="ZVx-KL-7TC"/>
+                <constraint firstItem="jDm-hX-poR" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="8" id="brf-aY-f9P"/>
+                <constraint firstItem="jDm-hX-poR" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="pvO-iG-VBg"/>
+                <constraint firstItem="cME-Wc-bdv" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="8" id="uqB-Sd-6WE"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="35.5" y="-248.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_add" width="24" height="24"/>
+    </resources>
+</document>

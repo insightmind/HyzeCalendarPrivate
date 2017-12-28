@@ -19,8 +19,8 @@ class SettingsListTableViewController: UITableViewController {
     let reuseIdentifier = "settingsBasicCell"
     
     let data = [SettingsListTableViewCellConfiguration(title: "General", height: 300 + 28 + 16),
-                SettingsListTableViewCellConfiguration(title: "Design", height: 100),
-                SettingsListTableViewCellConfiguration(title: "Usability", height: 125),
+                SettingsListTableViewCellConfiguration(title: "Creator", height: 28 + 16 + 60),
+                SettingsListTableViewCellConfiguration(title: "Design", height: 125),
                 SettingsListTableViewCellConfiguration(title: "Support", height: 175)]
     
     override func viewDidLoad() {
@@ -51,17 +51,23 @@ class SettingsListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         //return data.count
-        return 1
+        return 2
     }
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! SettingsListTableViewCell
 
-        let tView = SettingsListGroupTableViewController(style: .plain)
         cell.setTitle(data[indexPath.row].title)
         cell.connect(to: self)
-        let _ = cell.setMainView(to: tView)
+        
+        if indexPath.row == 0 {
+            let tView = SettingsListGroupTableViewController(style: .plain)
+            let _ = cell.setMainView(to: tView)
+        } else if indexPath.row == 1 {
+            let cellView = SettingsLinkViewController()
+            let _ = cell.setMainView(to: cellView)
+        }
 
         return cell
     }

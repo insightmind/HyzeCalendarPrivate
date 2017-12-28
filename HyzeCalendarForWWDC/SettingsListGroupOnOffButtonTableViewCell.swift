@@ -40,6 +40,11 @@ class SettingsListGroupOnOffButtonTableViewCell: UITableViewCell {
         defaults.set(!settingsSwitch.isOn, forKey: key)
         defaults.synchronize()
         loadSettings()
+        if key != "DarkMode" { return }
+        guard let settings = Settings.shared.globalSettingsView else { return }
+        UIView.animate(withDuration: 0.2) {
+            settings.setColor()
+        }
     }
     
     override func awakeFromNib() {

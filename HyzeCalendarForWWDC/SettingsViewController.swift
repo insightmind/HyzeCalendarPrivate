@@ -16,15 +16,27 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        Settings.shared.globalSettingsView = self
 
+        setColor()
+        
+        back.tintColor = Color.blue
+        
+        // Do any additional setup after loading the view.
+    }
+    
+    func setColor() {
         view.backgroundColor = Settings.shared.isDarkMode ? Color.black : Color.white
         
         topBarBlurView.effect = UIBlurEffect(style: Settings.shared.isDarkMode ? .dark : .light)
         
         titleTextField.textColor = Settings.shared.isDarkMode ? Color.white : Color.black
-        back.tintColor = Color.blue
-        
-        // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        Settings.shared.globalSettingsView = nil
+        super.viewWillDisappear(animated)
     }
 
     override func didReceiveMemoryWarning() {
