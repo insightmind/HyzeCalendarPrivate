@@ -1108,7 +1108,7 @@
 				TargetAttributes = {
 					3EA80D4D1E2BEC9300FD87C3 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 64M3NJV97W;
+						DevelopmentTeam = V6KWUV4A4U;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -1440,12 +1440,12 @@
 				CODE_SIGN_ENTITLEMENTS = HyzeCalendarForWWDC/HyzeCalendarForWWDC.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Manolito Buelow (H8K5J9JJ2M)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 64M3NJV97W;
+				DEVELOPMENT_TEAM = V6KWUV4A4U;
 				INFOPLIST_FILE = HyzeCalendarForWWDC/Info.plist;
 				INFOPLIST_PREPROCESS = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = net.hyze.insightmind.HyzeCalendar;
+				PRODUCT_BUNDLE_IDENTIFIER = com.niklasbuelow.hyze;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1517,12 +1517,12 @@
 				CODE_SIGN_ENTITLEMENTS = HyzeCalendarForWWDC/HyzeCalendarForWWDC.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Manolito Buelow (H8K5J9JJ2M)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 64M3NJV97W;
+				DEVELOPMENT_TEAM = V6KWUV4A4U;
 				INFOPLIST_FILE = HyzeCalendarForWWDC/Info.plist;
 				INFOPLIST_PREPROCESS = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = net.hyze.insightmind.HyzeCalendar;
+				PRODUCT_BUNDLE_IDENTIFIER = com.niklasbuelow.hyze;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

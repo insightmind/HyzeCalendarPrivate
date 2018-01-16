@@ -57,7 +57,7 @@ class ETViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.layer.cornerRadius = 20
-        self.view.layer.masksToBounds = true
+        self.view.clipsToBounds = true
         self.view.layer.insertSublayer(gradientLayer, at: 0)
         setUpGestureBar()
         setUpToolbar()
