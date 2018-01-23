@@ -94,7 +94,7 @@ class DateSelectionTableViewCell: UITableViewCell, EventEditorCellProtocol {
 		if eventInformations.state == .showDetail {
 			return
 		}
-		UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+		UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseIn, animations: {
 			self.eventInformations.isAllDay = !self.eventInformations.isAllDay
 			self.setAllDaySwitchDesign()
 		}, completion: nil)
@@ -168,7 +168,7 @@ class DateSelectionTableViewCell: UITableViewCell, EventEditorCellProtocol {
 		UIView.animate(withDuration: duration / 2, delay: 0, options: .curveEaseInOut, animations: {
 			self.startDateHourLabel.textColor = UIColor.clear
 			self.startDateDayLabel.textColor = UIColor.clear
-			self.endDateHourLabel.textColor = UIColor.clear
+			self.endDateDayLabel.textColor = UIColor.clear
 			self.endDateHourLabel.textColor = UIColor.clear
 		}, completion: nil)
 		
@@ -178,7 +178,7 @@ class DateSelectionTableViewCell: UITableViewCell, EventEditorCellProtocol {
 		UIView.animate(withDuration: duration / 2, delay: 0, options: .curveEaseInOut, animations: {
 			self.startDateHourLabel.textColor = Color.white
 			self.startDateDayLabel.textColor = Color.white
-			self.endDateHourLabel.textColor = Color.white
+			self.endDateDayLabel.textColor = Color.white
 			self.endDateHourLabel.textColor = Color.white
 		}, completion: nil)
 	}
@@ -215,7 +215,7 @@ class DateSelectionTableViewCell: UITableViewCell, EventEditorCellProtocol {
 		
 		self.allDaySwitch.layer.cornerRadius = self.allDaySwitch.bounds.height / 2
 		self.allDaySwitch.layer.shadowPath = UIBezierPath(roundedRect: allDaySwitch.bounds, cornerRadius: allDaySwitch.layer.cornerRadius).cgPath
-		self.allDaySwitch.layer.shadowColor = Color.red.cgColor
+		self.allDaySwitch.layer.shadowColor = Color.blue.cgColor
 		self.allDaySwitch.layer.shadowRadius = 5
 		self.allDaySwitch.layer.shadowOffset = CGSize(width: 1, height: 3)
 		
